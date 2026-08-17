@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Runtime data — high scores are per-deployment state, not source
+prep-rally/data/highscores.json
+
+# Local Claude settings/state (keep launch.json and skills tracked if you want them shared)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Cloned third-party skill repos (re-clone from their GitHub instead of vendoring)
+.claude/skills/impeccable/
+.claude/skills/rtk/

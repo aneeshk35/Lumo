@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumo — SAT Prep</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238B5CF6'/%3E%3Cstop offset='1' stop-color='%236D28D9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='36' fill='url(%23g)'/%3E%3Cellipse cx='36' cy='52' rx='9' ry='11' fill='white'/%3E%3Cellipse cx='66' cy='52' rx='9' ry='11' fill='white'/%3E%3Ccircle cx='12' cy='12' r='12' fill='%23A3E635'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="main">
+    <!-- promo + announcement banners (home & rush) -->
+    <div id="promo-bar" class="promo-bar">
+      <span>Your SAT is in</span>
+      <span class="promo-count" id="promo-count"></span>
+      <button class="promo-cta" id="btn-promo-cta">Open study plan &nbsp;&rsaquo;</button>
+    </div>
+    <div id="announce-bar" class="announce-bar">
+      <svg class="ic ic-fill" style="width:14px;height:14px;color:#0284C7" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8z"/></svg>
+      <span>New original question sets have been added to the bank. <a href="#" data-nav="Question Rush">Try Question Rush</a></span>
+    </div>
+
+    <!-- ============ HOME ============ -->
+    <section id="v-home" class="view active">
+      <div class="page">
+        <div class="topbar-row">
+          <label class="search">
+            <svg class="ic" style="width:15px;height:15px" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+            <input id="search-input" placeholder="Search…">
+          </label>
+          <button class="iconbtn" data-nav="My Classes" title="Classes"><svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M2 20c0-3 3.1-5 7-5s7 2 7 5M17 20c0-2.6-1-4-2.5-5 3 .2 5.5 1.9 5.5 5"/></svg></button>
+          <button class="iconbtn" data-nav="Study Planner" title="Planner"><svg class="ic" style="width:17px;height:17px" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 10v3.5l2 1.5M9 3h6"/></svg></button>
+          <div class="statpills">
+            <span class="sp"><svg class="ic ic-fill" style="width:15px;height:15px;color:#F97316" viewBox="0 0 24 24"><path d="M13 2c1 4-3 5-3 8a3 3 0 0 0 6 0c2 2 3 4 3 6a7 7 0 0 1-14 0c0-6 8-8 8-14z"/></svg><span id="stat-streak">0</span></span>
+            <span class="div"></span>
+            <span class="sp"><svg class="ic ic-fill" style="width:15px;height:15px;color:#6D28D9" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg><span id="stat-points">0</span></span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="greeting"><span id="greet-word">Good afternoon</span>, <span class="brand" id="greet-name">friend</span></div>
+          <div class="cta-row">
+            <button class="btn btn-primary" data-nav="Question Rush">
+              <svg class="ic ic-fill" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+              Start today's session
+            </button>
+            <a href="#" class="textlink" data-nav="Study Planner">View weekly plan <svg class="ic" style="width:13px;height:13px" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+
+        <div class="promo-cards">
+          <div class="promo-card tinted">
+            <span class="lumo"><span class="dot"></span></span>
+            <span class="body"><span class="t">Play a live duel</span><span class="d">Race a friend through real SAT-style questions.</span></span>
+            <button class="pillbtn solid" data-nav="Play">Play &nbsp;&rsaquo;</button>
+          </div>
+          <div class="promo-card">
+            <span class="lumo lilac"></span>
+            <span class="body"><span class="t">Browse the question bank</span><span class="d"><span id="home-bank-count">128</span> original questions across all 8 SAT domains.</span></span>
+            <button class="pillbtn soft" data-nav="Question Bank">Browse &nbsp;&rsaquo;</button>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="section-head">
+            <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Analytics</div>
+            <button class="btn-outline" data-nav="Analytics">View all analytics</button>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card"><span class="lbl">Questions Attempted</span><span class="num" id="an-attempted">0</span></div>
+            <div class="stat-card"><span class="lbl">Current Accuracy</span><span class="num" id="an-accuracy">—</span></div>
+            <div class="stat-card"><span class="lbl">Sessions Played</span><span class="num" id="an-sessions">0</span><button class="btn-outline" data-nav="Question Rush">Play Again</button></div>
+            <div class="stat-card"><span class="lbl">Recent Errors</span><span class="num" id="an-errors">0</span><button class="btn-outline" id="btn-review-errors">Start Review</button></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="section-head">
+            <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h4M4 12h4M4 17h4M11 7h9M11 12h9M11 17h9"/></svg>Today's Study Plan</div>
+            <button class="btn-outline" data-nav="Study Planner">View full study plan</button>
+          </div>
+          <div class="plan-grid">
+            <div class="plan-list">
+              <div class="plan-sub" id="plan-sub">Today</div>
+              <div id="plan-tasks"></div>
+            </div>
+            <div class="exam-card">
+              <span class="t">Time left to SAT exam</span>
+              <div class="exam-nums" id="exam-nums"></div>
+              <div class="hr"></div>
+              <div class="foot">
+                <span class="date" id="exam-date"></span>
+                <a href="#" class="switch" id="btn-switch-date"><svg class="ic" style="width:13px;height:13px" viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Switch test date</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUESTION RUSH ============ -->
+    <section id="v-rush" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 8-12h-6z"/></svg>
+          <span class="page-title">Question Rush</span>
+        </div>
+        <div class="info-card">
+          <span class="lumo"><span class="dot"></span></span>
+          <div>
+            <div class="t">What is Question Rush?</div>
+            <div class="d">Question Rush is a fast practice mode for the Digital SAT. Pick a subject and answer one question at a time against the clock. Quick, accurate answers earn more points, and streaks stack bonuses on top.</div>
+          </div>
+        </div>
+        <div class="hero-grid">
+          <div class="hero-card grad-pink">
+            <div class="body">
+              <span class="t">Reading &amp; Writing</span>
+              <span class="prog-row"><span id="rw-solved">0 of 0 solved</span><b id="rw-pct">0%</b></span>
+              <span class="hero-track"><span class="hero-fill" id="rw-fill" style="width:0%"></span></span>
+              <span class="grow"></span>
+              <button class="hero-btn on-pink" data-solo="rw">Continue <svg class="ic" style="width:12px;height:12px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+            <span class="hero-art"><span class="lumo"><span class="dot"></span></span></span>
+          </div>
+          <div class="hero-card grad-purple">
+            <div class="body">
+              <span class="t">Math</span>
+              <span class="prog-row"><span id="math-solved">0 of 0 solved</span><b id="math-pct">0%</b></span>
+              <span class="hero-track"><span class="hero-fill" id="math-fill" style="width:0%"></span></span>
+              <span class="grow"></span>
+              <button class="hero-btn on-purple" data-solo="math">Continue <svg class="ic" style="width:12px;height:12px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+            <span class="hero-art"><span class="lumo"><span class="dot"></span></span></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.4l3 1.6"/></svg>Recent Sessions</div>
+          <div id="session-list" style="display:flex;flex-direction:column;gap:10px"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PLAY HUB ============ -->
+    <section id="v-play" class="view">
+      <div class="page">
+        <div class="play-head">
+          <div>
+            <div class="title-row">
+              <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg>
+              <span class="page-title">Play</span>
+            </div>
+            <div class="sub">Race real people through real SAT-style questions. Wins add to your weekly ladder.</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="online-pill"><span class="dot-g"></span><span id="online-count">—</span> online</span>
+            <span class="rank-pill" id="elo-pill">1,200 ELO</span>
+          </div>
+        </div>
+        <div class="play-grid">
+          <div class="play-col">
+            <div class="hero-card grad-purple" style="min-height:168px">
+              <div class="body">
+                <span style="display:flex;align-items:center;gap:9px"><span class="t" style="font-size:23px">1v1 Duel</span><span class="mode-tag">RANKED</span></span>
+                <span class="mode-sub">10 questions, same set for both players. Speed and streaks decide it.</span>
+                <span class="duel-modes" id="duel-modes">
+                  <button class="duel-mode sel" data-sec="mixed">Mixed</button>
+                  <button class="duel-mode" data-sec="math">Math</button>
+                  <button class="duel-mode" data-sec="rw">Reading &amp; Writing</button>
+                </span>
+                <span class="grow"></span>
+                <button class="hero-btn on-purple" id="btn-find-match">Find a match <svg class="ic" style="width:12px;height:12px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+              </div>
+              <span class="hero-art"><span class="lumo"><span class="dot"></span></span></span>
+            </div>
+            <div class="mode-grid">
+              <div class="mode-sm grad-pink">
+                <span class="t" style="font-size:19px;font-weight:700">2v2</span>
+                <span class="mode-sub" style="font-size:13px">Pair up. One teammate on Reading, one on Math.</span>
+                <span class="grow" style="flex:1"></span>
+                <span class="mode-meta"><span class="dot-lime"></span>Coming soon</span>
+                <button class="hero-btn on-pink" style="font-size:12.5px" data-soon="2v2 mode">Queue up <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+              </div>
+              <div class="mode-sm grad-lilac">
+                <span style="display:flex;align-items:center;gap:9px"><span style="font-size:19px;font-weight:700">Squad</span><span class="mode-tag" style="background:#EDE9FE">5 PLAYERS</span></span>
+                <span class="mode-sub" style="font-size:13px">Your class against another. Combined score wins.</span>
+                <span class="grow" style="flex:1"></span>
+                <span class="mode-meta">Party codes support up to 20 players</span>
+                <button class="hero-btn on-purple" style="font-size:12.5px" id="btn-squad">Create squad <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+              </div>
+            </div>
+            <div class="ladder-card">
+              <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                <span class="t">Weekly ladder</span>
+                <span class="d" id="ladder-note">Win duels to climb the ladder.</span>
+              </div>
+              <div class="ladder-prog">
+                <span class="track"><span class="fill" id="ladder-fill" style="width:0%"></span></span>
+                <span class="lbl" id="ladder-lbl">0 / 10 wins</span>
+              </div>
+            </div>
+          </div>
+          <div class="play-col">
+            <div class="code-card">
+              <span class="t">Play with friends</span>
+              <span class="d">Host a party and share the 5-letter code, or enter a friend's code to join their game.</span>
+              <button class="btn btn-primary" id="btn-host-party" style="font-size:13px;padding:10px 16px">Host a party</button>
+              <input id="code-input" maxlength="5" placeholder="ENTER CODE">
+              <button class="btn-outline" id="btn-join-party" style="text-align:center;justify-content:center;display:flex">Join with code</button>
+            </div>
+            <div class="friends-card">
+              <div class="head"><span class="t">Friends</span><span class="d" style="font-size:11.5px;color:var(--slate-4)">sample</span></div>
+              <div id="friends-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUEUE ============ -->
+    <section id="v-queue" class="view">
+      <div class="center-stage">
+        <div class="queue-stage">
+          <span class="queue-ring"></span>
+          <span class="queue-ring r2"></span>
+          <span class="lumo"><span class="dot"></span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
+          <div class="stage-title">Searching for an opponent…</div>
+          <div class="stage-sub" id="queue-sub">Matching you with another player</div>
+        </div>
+        <div class="chip-row">
+          <span class="pill pill-purple">1v1 Duel</span>
+          <span class="pill pill-purple" id="queue-mode-chip">Mixed · 10 questions</span>
+          <span class="pill pill-slate tabnum" id="queue-elapsed">0:00 elapsed</span>
+        </div>
+        <div class="stage-btns">
+          <button class="btn-lg-outline" id="btn-queue-cancel">Cancel</button>
+          <button class="btn btn-primary" id="btn-queue-practice">Practice while I wait</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOBBY ============ -->
+    <section id="v-lobby" class="view">
+      <div class="center-stage">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <span class="eyebrow" id="lobby-eyebrow">MATCH FOUND</span>
+          <div class="stage-title" id="lobby-title">1v1 Duel</div>
+          <div class="stage-sub" id="lobby-sub"></div>
+        </div>
+        <div id="lobby-code-wrap" class="hidden" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <span class="lobby-code-chip" id="lobby-code"></span>
+          <span class="stage-sub">Share this code — friends enter it under Play → Join with code</span>
+        </div>
+        <div class="lobby-vs" id="lobby-players"></div>
+        <div class="stage-btns">
+          <button class="btn-ready" id="btn-ready">Ready up</button>
+          <button class="btn-lg-outline" id="btn-leave-lobby">Leave lobby</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MATCH ============ -->
+    <section id="v-match" class="view">
+      <div class="match-head">
+        <div class="r1">
+          <span style="display:flex;align-items:center">
+            <span class="match-mode" id="match-mode">SOLO · MIXED</span>
+            <span class="match-progress" id="match-progress">Question 1 of 10</span>
+          </span>
+          <span class="match-timer" id="match-timer">
+            <svg class="ic" style="width:14px;height:14px;stroke-width:2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.4l3 1.6"/></svg>
+            <span id="match-timer-txt">0:00</span>
+          </span>
+        </div>
+        <div class="hth" id="hth"></div>
+      </div>
+      <div class="match-body">
+        <div class="q-col">
+          <div class="tool-row">
+            <button class="tool-btn" id="btn-highlight" title="Highlight passage text">
+              <svg class="ic" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M4 20h6M9 16l-4 1 1-4 8.5-8.5a2 2 0 0 1 3 3L9 16z"/></svg>
+              Highlight
+            </button>
+            <button class="tool-btn" id="btn-calc" title="Graphing calculator">
+              <svg class="ic" style="width:14px;height:14px" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h4M8 16h2M12 16h4"/></svg>
+              Calculator
+            </button>
+          </div>
+          <div class="q-card">
+            <span class="q-kicker" id="q-kicker"></span>
+            <div class="q-passage hidden" id="q-passage"></div>
+            <div class="q-text" id="q-text"></div>
+          </div>
+          <div class="choice-grid" id="choice-grid"></div>
+          <div class="match-actions" id="match-actions">
+            <button class="btn btn-primary" id="btn-lock" disabled>Lock in answer</button>
+            <span class="auto-note hidden" id="locked-note">Locked in — waiting for others…</span>
+          </div>
+          <div class="reveal-card hidden" id="reveal-card">
+            <span class="t" id="reveal-title"></span>
+            <span class="ex" id="reveal-ex"></span>
+            <span class="counts" id="reveal-counts"></span>
+            <div class="match-actions">
+              <button class="btn btn-primary hidden" id="btn-next">Next question</button>
+              <span class="auto-note" id="reveal-note"></span>
+            </div>
+          </div>
+        </div>
+        <div class="side-col">
+          <div class="side-card">
+            <span class="t">Question track</span>
+            <div class="qtrack" id="qtrack"></div>
+            <div class="legend">
+              <span><span class="sw" style="background:var(--purple)"></span>Correct</span>
+              <span><span class="sw" style="background:var(--magenta)"></span>Missed</span>
+            </div>
+          </div>
+          <div class="side-card soft">
+            <span class="t">Speed bonus</span>
+            <span class="d" id="speed-note">Answer fast to earn up to 2× base points. Streaks add up to +500.</span>
+            <span class="track track-lime"><span class="fill" id="speed-fill" style="width:0%"></span></span>
+          </div>
+          <div class="tip-card">
+            <span class="lumo"><span class="dot"></span></span>
+            <span class="d" id="tip-text">Lumo will explain every question after you answer.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section id="v-results" class="view">
+      <div class="center-stage" style="justify-content:flex-start;padding-top:64px;gap:22px">
+        <span class="lumo" style="width:64px;height:64px;border-radius:25px 25px 30px 30px"><span class="dot"></span></span>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="result-hero" id="result-hero">Match complete</div>
+          <div class="result-sub" id="result-sub"></div>
+        </div>
+        <div class="result-grid" id="result-rows"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%">
+          <div class="section-title" style="font-size:15px">Topic breakdown</div>
+          <div class="bd-list" id="result-bd"></div>
+        </div>
+        <div class="stage-btns">
+          <button class="btn btn-primary hidden" id="btn-play-again">Play again</button>
+          <button class="btn-lg-outline" id="btn-back-play">Back to Play</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ANALYTICS ============ -->
+    <section id="v-analytics" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+          <span class="page-title">Analytics</span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><span class="lbl">Questions Attempted</span><span class="num" id="an2-attempted">0</span></div>
+          <div class="stat-card"><span class="lbl">Current Accuracy</span><span class="num" id="an2-accuracy">—</span></div>
+          <div class="stat-card"><span class="lbl">Duel Wins</span><span class="num" id="an2-wins">0</span></div>
+          <div class="stat-card"><span class="lbl">Best Streak</span><span class="num" id="an2-streak">0</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Accuracy by domain</div>
+          <div id="an2-domains" class="bd-list" style="max-width:640px"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.6.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.6-.8z"/></svg>All-time high scores</div>
+          <div id="hs-list" class="result-grid" style="max-width:640px"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEARCH RESULTS ============ -->
+    <section id="v-search" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+          <span class="page-title">Search</span>
+        </div>
+        <div class="section-head">
+          <div class="section-title" id="search-summary">Results</div>
+          <button class="btn btn-primary" id="btn-practice-results" style="font-size:13px;padding:9px 18px">Practice these</button>
+        </div>
+        <div id="search-results" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+    </section>
+
+    <!-- ============ QUESTION BANK ============ -->
+    <section id="v-bank" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          <span class="page-title">Question Bank</span>
+        </div>
+        <div class="info-card">
+          <span class="lumo"><span class="dot"></span></span>
+          <div>
+            <div class="t"><span id="bank-total">0</span> original Digital SAT questions</div>
+            <div class="d">Every question is written in the official format and tagged with the College Board domain and skill taxonomy. Pick a domain to drill it, or set a difficulty first.</div>
+          </div>
+        </div>
+
+        <div class="bank-controls">
+          <span class="field-inline">Difficulty</span>
+          <div class="seg" id="bank-diff">
+            <button class="seg-btn active" data-diff="">Any</button>
+            <button class="seg-btn" data-diff="easy">Easy</button>
+            <button class="seg-btn" data-diff="medium">Medium</button>
+            <button class="seg-btn" data-diff="hard">Hard</button>
+          </div>
+          <span class="field-inline">Questions</span>
+          <div class="seg" id="bank-count">
+            <button class="seg-btn" data-count="5">5</button>
+            <button class="seg-btn active" data-count="10">10</button>
+            <button class="seg-btn" data-count="20">20</button>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>Reading &amp; Writing</div>
+          <div id="bank-rw" class="bank-grid"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M6 5h12l-7 7 7 7H6"/></svg>Math</div>
+          <div id="bank-math" class="bank-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SAVED & MISTAKES ============ -->
+    <section id="v-mistakes" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.6.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.6-.8z"/></svg>
+          <span class="page-title">Saved &amp; Mistakes</span>
+        </div>
+        <div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="stat-card"><span class="lbl">Questions missed</span><span class="num" id="mk-count">0</span></div>
+          <div class="stat-card"><span class="lbl">Weakest domain</span><span class="num" id="mk-weak" style="font-size:19px;line-height:1.3">—</span></div>
+          <div class="stat-card"><span class="lbl">Retry accuracy</span><span class="num" id="mk-retry">—</span></div>
+        </div>
+        <div class="section-head">
+          <div class="section-title">Your missed questions</div>
+          <div style="display:flex;gap:10px">
+            <button class="btn-outline" id="btn-clear-mistakes">Clear list</button>
+            <button class="btn btn-primary" id="btn-review-all" style="font-size:13px;padding:9px 18px">Review these</button>
+          </div>
+        </div>
+        <div id="mistake-list" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+    </section>
+
+    <!-- ============ STUDY PLANNER ============ -->
+    <section id="v-planner" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16v15H4zM4 10.5h16M8.5 3v4M15.5 3v4"/></svg>
+          <span class="page-title">Study Planner</span>
+        </div>
+        <div class="plan-grid">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="ladder-card">
+              <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                <span class="t">This week's plan</span>
+                <span class="d" id="planner-note">Built from the domains you miss most.</span>
+              </div>
+              <div class="ladder-prog">
+                <span class="track"><span class="fill" id="planner-fill" style="width:0%"></span></span>
+                <span class="lbl" id="planner-lbl">0 / 5 done</span>
+              </div>
+            </div>
+            <div id="planner-tasks" class="plan-list"></div>
+            <div style="display:flex;gap:10px">
+              <button class="btn-outline" id="btn-regen-plan">Rebuild plan</button>
+              <button class="btn-outline" id="btn-reset-plan">Uncheck all</button>
+            </div>
+          </div>
+          <div class="exam-card">
+            <span class="t">Time left to SAT exam</span>
+            <div class="exam-nums" id="planner-exam-nums"></div>
+            <div class="hr"></div>
+            <div class="foot">
+              <span class="date" id="planner-exam-date"></span>
+              <a href="#" class="switch" id="btn-switch-date-2"><svg class="ic" style="width:13px;height:13px" viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Switch test date</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VOCAB ============ -->
+    <section id="v-vocab" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>
+          <span class="page-title">Vocab</span>
+        </div>
+        <div class="info-card">
+          <span class="lumo"><span class="dot"></span></span>
+          <div>
+            <div class="t">High-frequency SAT words</div>
+            <div class="d">Tap a card to flip it. Mark words you know to pull them out of the rotation; the counter tracks what is left.</div>
+          </div>
+        </div>
+        <div class="vocab-wrap">
+          <div class="vocab-card" id="vocab-card">
+            <div class="vocab-front" id="vocab-front">
+              <span class="vc-word" id="vc-word">—</span>
+              <span class="vc-pos" id="vc-pos"></span>
+              <span class="vc-hint">Tap to flip</span>
+            </div>
+            <div class="vocab-back hidden" id="vocab-back">
+              <span class="vc-def" id="vc-def"></span>
+              <span class="vc-ex" id="vc-ex"></span>
+            </div>
+          </div>
+          <div class="vocab-bar">
+            <button class="btn-outline" id="vc-prev">Previous</button>
+            <span class="pill pill-slate tabnum" id="vc-progress">0 / 0</span>
+            <button class="btn-outline" id="vc-known">I know this</button>
+            <button class="btn btn-primary" id="vc-next" style="font-size:13px;padding:9px 18px">Next</button>
+          </div>
+          <button class="btn-outline" id="vc-reset" style="align-self:center">Reset learned words</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMING SOON ============ -->
+    <section id="v-soon" class="view">
+      <div class="center-stage soon">
+        <span class="lumo"><span class="dot"></span></span>
+        <span class="t" id="soon-title">Coming soon</span>
+        <span class="d" id="soon-desc">Lumo is still building this. Question Rush and multiplayer duels are live today.</span>
+        <button class="btn btn-primary" data-nav="Question Rush">Practice instead</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- name modal -->
+<div class="overlay hidden" id="name-overlay">
+  <div class="modal">
+    <span class="lumo"><span class="dot"></span></span>
+    <span class="t">Welcome to Lumo</span>
+    <span class="d">Pick a nickname. It shows up on leaderboards and in duels.</span>
+    <input id="name-input" maxlength="16" placeholder="Your nickname" autocomplete="off">
+    <button class="btn btn-primary" id="btn-save-name">Let's go</button>
+  </div>
+</div>
+
+<!-- graphing calculator -->
+<div class="calc-panel hidden" id="calc-panel">
+  <div class="calc-head">
+    <span class="calc-title">Calculator</span>
+    <button class="calc-x" id="btn-calc-close" aria-label="Close calculator">&times;</button>
+  </div>
+  <input id="calc-input" placeholder="2x + 1   or   sqrt(49)" autocomplete="off" spellcheck="false">
+  <div class="calc-out" id="calc-out">Type an expression. Use x to graph it.</div>
+  <canvas id="calc-graph" width="300" height="200"></canvas>
+  <div class="calc-zoom">
+    <button class="tool-btn" id="calc-zoom-out">−</button>
+    <span class="calc-range" id="calc-range">x: −10 to 10</span>
+    <button class="tool-btn" id="calc-zoom-in">+</button>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

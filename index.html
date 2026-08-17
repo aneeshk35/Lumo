@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cube Tac Toe</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0f0f1a;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+canvas { display: block; }
+
+#banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.82);
+  color: #eee;
+  text-align: center;
+  padding: 13px 20px;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  z-index: 10;
+  pointer-events: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.px { color: #ff6b6b; font-weight: 700; }
+.po { color: #74b9ff; font-weight: 700; }
+
+#move-panel {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.85);
+  padding: 12px 16px 16px;
+  z-index: 10;
+  display: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+#move-panel p {
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+}
+#move-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.move-btn {
+  background: rgba(255,255,255,0.1);
+  color: #eee;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 10px 4px;
+  font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.12s, border-color 0.12s;
+  user-select: none;
+}
+.move-btn:hover {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.45);
+}
+
+#win-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+#win-overlay h1 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+#restart-btn {
+  background: #fff;
+  color: #0f0f1a;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 40px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 0.12s;
+}
+#restart-btn:hover { opacity: 0.88; }
+
+#hint {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.78rem;
+  pointer-events: none;
+  z-index: 5;
+}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="banner">Player <span class="px">X</span>'s turn — click any white sticker to place your mark</div>
+
+<div id="move-panel">
+  <p>Choose a cube move to complete your turn:</p>
+  <div id="move-grid"></div>
+</div>
+
+<div id="win-overlay">
+  <h1 id="win-msg"></h1>
+  <button id="restart-btn">Play Again</button>
+</div>
+
+<div id="hint">drag to rotate · scroll to zoom</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+'use strict';
+
+// ── Move definitions ──────────────────────────────────────────────────────────
+const MOVE_DEFS = [
+  { name: "U",  axis: 'y', val:  1, dir:  1 },
+  { name: "U'", axis: 'y', val:  1, dir: -1 },
+  { name: "D",  axis: 'y', val: -1, dir: -1 },
+  { name: "D'", axis: 'y', val: -1, dir:  1 },
+  { name: "R",  axis: 'x', val:  1, dir:  1 },
+  { name: "R'", axis: 'x', val:  1, dir: -1 },
+  { name: "L",  axis: 'x', val: -1, dir: -1 },
+  { name: "L'", axis: 'x', val: -1, dir:  1 },
+  { name: "F",  axis: 'z', val:  1, dir:  1 },
+  { name: "F'", axis: 'z', val:  1, dir: -1 },
+  { name: "B",  axis: 'z', val: -1, dir: -1 },
+  { name: "B'", axis: 'z', val: -1, dir:  1 },
+];
+
+// Each move rotates its slice by -90° * dir around the positive axis
+// U CW from top  = +Y axis, -90°  → dir=1  means angle = -PI/2
+// U' CCW         = +Y axis, +90°  → dir=-1 means angle = +PI/2
+function getMoveQuaternion(move) {
+  const axisVec = {
+    x: new THREE.Vector3(1,0,0),
+    y: new THREE.Vector3(0,1,0),
+    z: new THREE.Vector3(0,0,1),
+  }[move.axis];
+  return new THREE.Quaternion().setFromAxisAngle(axisVec, -Math.PI/2 * move.dir);
+}
+
+// ── Face descriptors for win detection ───────────────────────────────────────
+// n = outward normal, r = right tangent, u = up tangent (for grid col/row)
+const FACES = [
+  { n: new THREE.Vector3( 0, 1, 0), r: new THREE.Vector3(1,0, 0), u: new THREE.Vector3(0,0,-1) },
+  { n: new THREE.Vector3( 0,-1, 0), r: new THREE.Vector3(1,0, 0), u: new THREE.Vector3(0,0, 1) },
+  { n: new THREE.Vector3( 1, 0, 0), r: new THREE.Vector3(0,0,-1), u: new THREE.Vector3(0,1, 0) },
+  { n: new THREE.Vector3(-1, 0, 0), r: new THREE.Vector3(0,0, 1), u: new THREE.Vector3(0,1, 0) },
+  { n: new THREE.Vector3( 0, 0, 1), r: new THREE.Vector3(1,0, 0), u: new THREE.Vector3(0,1, 0) },
+  { n: new THREE.Vector3( 0, 0,-1), r: new THREE.Vector3(-1,0,0), u: new THREE.Vector3(0,1, 0) },
+];
+
+const WIN_LINES = [
+  [[0,0],[0,1],[0,2]], [[1,0],[1,1],[1,2]], [[2,0],[2,1],[2,2]],
+  [[0,0],[1,0],[2,0]], [[0,1],[1,1],[2,1]], [[0,2],[1,2],[2,2]],
+  [[0,0],[1,1],[2,2]], [[0,2],[1,1],[2,0]],
+];
+
+// ── Three.js setup ────────────────────────────────────────────────────────────
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0f0f1a);
+
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(4.5, 3.5, 5.5);
+
+const controls = new THREE.OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.dampingFactor = 0.07;
+controls.enablePan = false;
+controls.minDistance = 3.5;
+controls.maxDistance = 14;
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+const sun = new THREE.DirectionalLight(0xffffff, 0.75);
+sun.position.set(6, 9, 6);
+scene.add(sun);
+const fill = new THREE.DirectionalLight(0x8899cc, 0.25);
+fill.position.set(-4, -2, -4);
+scene.add(fill);
+
+// ── Shared geometry ───────────────────────────────────────────────────────────
+const BOX_GEO   = new THREE.BoxGeometry(0.92, 0.92, 0.92);
+const PLANE_GEO = new THREE.PlaneGeometry(0.79, 0.79);
+const BLACK_MAT = new THREE.MeshLambertMaterial({ color: 0x111111 });
+
+// ── Game state ────────────────────────────────────────────────────────────────
+let stickers     = [];  // { mesh: Mesh, mark: null|'X'|'O' }
+let cubieGroups  = [];  // THREE.Group[]
+let phase        = 'PLACE'; // 'PLACE' | 'MOVE' | 'ANIM' | 'OVER'
+let currentPlayer = 'X';
+let hoveredSticker = null;
+
+// ── Face euler helper ─────────────────────────────────────────────────────────
+// PlaneGeometry default normal is +Z. Rotate to face each cube face direction.
+function faceEuler(nx, ny, nz) {
+  if (ny ===  1) return new THREE.Euler(-Math.PI/2, 0, 0);
+  if (ny === -1) return new THREE.Euler( Math.PI/2, 0, 0);
+  if (nx ===  1) return new THREE.Euler(0,  Math.PI/2, 0);
+  if (nx === -1) return new THREE.Euler(0, -Math.PI/2, 0);
+  if (nz ===  1) return new THREE.Euler(0, 0, 0);
+               return new THREE.Euler(0, Math.PI, 0);
+}
+
+// ── Build cube ────────────────────────────────────────────────────────────────
+const FACE_DIRS = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+const STICKER_OFFSET = 0.467; // slightly outside the cubie face (half of 0.92 = 0.46)
+
+function buildCube() {
+  stickers    = [];
+  cubieGroups = [];
+
+  for (let ix = -1; ix <= 1; ix++) {
+    for (let iy = -1; iy <= 1; iy++) {
+      for (let iz = -1; iz <= 1; iz++) {
+        const group = new THREE.Group();
+        group.position.set(ix, iy, iz);
+        group.add(new THREE.Mesh(BOX_GEO, BLACK_MAT));
+
+        for (const [nx, ny, nz] of FACE_DIRS) {
+          // Only add sticker if this face direction points outward for this cubie
+          const outward =
+            (nx ===  1 && ix ===  1) || (nx === -1 && ix === -1) ||
+            (ny ===  1 && iy ===  1) || (ny === -1 && iy === -1) ||
+            (nz ===  1 && iz ===  1) || (nz === -1 && iz === -1);
+          if (!outward) continue;
+
+          const mat   = new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.FrontSide });
+          const plane = new THREE.Mesh(PLANE_GEO, mat);
+          plane.position.set(nx * STICKER_OFFSET, ny * STICKER_OFFSET, nz * STICKER_OFFSET);
+          plane.rotation.copy(faceEuler(nx, ny, nz));
+
+          const sticker = { mesh: plane, mark: null };
+          plane.userData.sticker = sticker;
+          stickers.push(sticker);
+          group.add(plane);
+        }
+
+        scene.add(group);
+        cubieGroups.push(group);
+      }
+    }
+  }
+}
+
+// ── Mark rendering ────────────────────────────────────────────────────────────
+function makeX() {
+  const g = new THREE.Group();
+  const mat = new THREE.LineBasicMaterial({ color: 0xff4444 });
+  const d = 0.27;
+  for (const [a, b] of [[[d,d,0],[-d,-d,0]], [[-d,d,0],[d,-d,0]]]) {
+    const geo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...a), new THREE.Vector3(...b)]);
+    g.add(new THREE.Line(geo, mat));
+  }
+  return g;
+}
+
+function makeO() {
+  const pts = [];
+  for (let i = 0; i <= 40; i++) {
+    const a = (i / 40) * Math.PI * 2;
+    pts.push(new THREE.Vector3(Math.cos(a) * 0.27, Math.sin(a) * 0.27, 0));
+  }
+  return new THREE.LineLoop(
+    new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({ color: 0x4488ff })
+  );
+}
+
+function applyMark(sticker) {
+  sticker.mark = currentPlayer;
+  const mark = currentPlayer === 'X' ? makeX() : makeO();
+  mark.position.z = 0.003;
+  sticker.mesh.add(mark);
+  // Tint the sticker background subtly
+  sticker.mesh.material.color.setHex(currentPlayer === 'X' ? 0xffe8e8 : 0xe8eeff);
+}
+
+// ── Move animation ────────────────────────────────────────────────────────────
+const ANIM_MS = 370;
+
+function executeMove(moveDef, onComplete) {
+  phase = 'ANIM';
+  controls.enabled = false;
+
+  const slice = cubieGroups.filter(c =>
+    Math.abs(Math.round(c.position[moveDef.axis]) - moveDef.val) < 0.1
+  );
+
+  const pivot = new THREE.Group();
+  scene.add(pivot);
+  for (const c of slice) pivot.attach(c);
+
+  const q0  = new THREE.Quaternion();
+  const q1  = getMoveQuaternion(moveDef);
+  const t0  = performance.now();
+
+  function step(now) {
+    const raw    = Math.min((now - t0) / ANIM_MS, 1);
+    const eased  = raw < 0.5 ? 2*raw*raw : -1 + (4 - 2*raw)*raw;
+    pivot.quaternion.slerpQuaternions(q0, q1, eased);
+
+    if (raw < 1) {
+      requestAnimationFrame(step);
+    } else {
+      // Detach back to scene and snap positions to integer grid
+      for (const c of slice) {
+        scene.attach(c);
+        c.position.x = Math.round(c.position.x);
+        c.position.y = Math.round(c.position.y);
+        c.position.z = Math.round(c.position.z);
+      }
+      scene.remove(pivot);
+      controls.enabled = true;
+      onComplete();
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+// ── Win detection ─────────────────────────────────────────────────────────────
+function checkWin() {
+  scene.updateMatrixWorld(true);
+  const wn = new THREE.Vector3();
+  const wp = new THREE.Vector3();
+
+  for (const face of FACES) {
+    // Gather the 9 stickers whose world normal aligns with this face
+    const fs = stickers.filter(s => {
+      wn.set(0, 0, 1).transformDirection(s.mesh.matrixWorld);
+      return wn.dot(face.n) > 0.9;
+    });
+    if (fs.length !== 9) continue;
+
+    // Map each sticker to a grid cell [row][col]
+    const grid = Array.from({ length: 3 }, () => Array(3).fill(null));
+    for (const s of fs) {
+      s.mesh.getWorldPosition(wp);
+      const col = Math.round(wp.dot(face.r)) + 1; // maps {-1,0,1} → {0,1,2}
+      const row = Math.round(wp.dot(face.u)) + 1;
+      if (col >= 0 && col <= 2 && row >= 0 && row <= 2) grid[row][col] = s.mark;
+    }
+
+    for (const line of WIN_LINES) {
+      const [m0, m1, m2] = line.map(([r, c]) => grid[r][c]);
+      if (m0 && m0 === m1 && m1 === m2) return m0;
+    }
+  }
+  return null;
+}
+
+// ── UI ────────────────────────────────────────────────────────────────────────
+const banner    = document.getElementById('banner');
+const movePanel = document.getElementById('move-panel');
+const moveGrid  = document.getElementById('move-grid');
+const winOverlay = document.getElementById('win-overlay');
+const winMsg    = document.getElementById('win-msg');
+
+function updateBanner() {
+  if (phase === 'PLACE') {
+    const c = currentPlayer === 'X' ? 'px' : 'po';
+    banner.innerHTML = `Player <span class="${c}">${currentPlayer}</span>'s turn — click any white sticker to place your mark`;
+  } else if (phase === 'MOVE') {
+    const c = currentPlayer === 'X' ? 'px' : 'po';
+    banner.innerHTML = `Player <span class="${c}">${currentPlayer}</span> placed — now choose a move below`;
+  }
+}
+
+function buildMoveButtons() {
+  moveGrid.innerHTML = '';
+  for (const m of MOVE_DEFS) {
+    const btn = document.createElement('button');
+    btn.className = 'move-btn';
+    btn.textContent = m.name;
+    btn.addEventListener('click', () => {
+      if (phase !== 'MOVE') return;
+      movePanel.style.display = 'none';
+      executeMove(m, () => {
+        const winner = checkWin();
+        if (winner) {
+          showWin(winner);
+        } else {
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+          phase = 'PLACE';
+          updateBanner();
+        }
+      });
+    });
+    moveGrid.appendChild(btn);
+  }
+}
+
+function showWin(winner) {
+  phase = 'OVER';
+  const c = winner === 'X' ? 'px' : 'po';
+  winMsg.innerHTML = `Player <span class="${c}">${winner}</span> wins!`;
+  winOverlay.style.display = 'flex';
+}
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+  winOverlay.style.display = 'none';
+  // Clear old cubies from scene
+  for (const g of cubieGroups) scene.remove(g);
+  buildCube();
+  phase         = 'PLACE';
+  currentPlayer = 'X';
+  hoveredSticker = null;
+  movePanel.style.display = 'none';
+  updateBanner();
+});
+
+// ── Raycasting & input ────────────────────────────────────────────────────────
+const raycaster = new THREE.Raycaster();
+const mouse     = new THREE.Vector2();
+let   pointerDown = null;
+
+function castSticker(event) {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x =  ((event.clientX - rect.left) / rect.width)  * 2 - 1;
+  mouse.y = -((event.clientY - rect.top)  / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(stickers.map(s => s.mesh));
+  return hits[0]?.object?.userData?.sticker ?? null;
+}
+
+canvas.addEventListener('pointermove', (e) => {
+  if (phase !== 'PLACE') {
+    if (hoveredSticker) {
+      if (!hoveredSticker.mark) hoveredSticker.mesh.material.color.setHex(0xffffff);
+      hoveredSticker = null;
+    }
+    return;
+  }
+  const hit = castSticker(e);
+  if (hoveredSticker && hoveredSticker !== hit) {
+    if (!hoveredSticker.mark) hoveredSticker.mesh.material.color.setHex(0xffffff);
+  }
+  hoveredSticker = (hit && !hit.mark) ? hit : null;
+  if (hoveredSticker) hoveredSticker.mesh.material.color.setHex(0xcccccc);
+});
+
+canvas.addEventListener('pointerdown', (e) => {
+  pointerDown = { x: e.clientX, y: e.clientY };
+});
+
+canvas.addEventListener('pointerup', (e) => {
+  if (!pointerDown) return;
+  const dx = e.clientX - pointerDown.x;
+  const dy = e.clientY - pointerDown.y;
+  pointerDown = null;
+  if (dx*dx + dy*dy > 36) return; // was a drag — ignore
+
+  if (phase !== 'PLACE') return;
+
+  const sticker = castSticker(e);
+  if (!sticker || sticker.mark) return;
+
+  applyMark(sticker);
+  hoveredSticker = null;
+  phase = 'MOVE';
+  updateBanner();
+  movePanel.style.display = 'block';
+});
+
+// ── Render loop ───────────────────────────────────────────────────────────────
+(function loop() {
+  requestAnimationFrame(loop);
+  controls.update();
+  renderer.render(scene, camera);
+})();
+
+// ── Resize ────────────────────────────────────────────────────────────────────
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+buildCube();
+buildMoveButtons();
+updateBanner();
+</script>
+</body>
+</html>
