@@ -630,10 +630,68 @@ $('btn-highlight').onclick = () => setHighlightMode(!highlightOn);
 /* ---- calculator ---- */
 const calc = { range: 10, expr: '' };
 
+// Desmos is loaded on first use (it is a ~4MB script, so not at page load).
+// If it cannot load — offline, blocked, no network — the built-in calculator
+// takes over so the tool always works.
+const desmos = { state: 'idle', calc: null };
+const DESMOS_SRC =
+  'https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
+
+function useFallbackCalc(reason) {
+  desmos.state = 'failed';
+  $('calc-title').textContent = 'Calculator';
+  $('desmos-mount').classList.remove('ready');
+  $('calc-fallback').classList.remove('hidden');
+  $('calc-note').textContent = reason;
+  $('calc-note').classList.remove('hidden');
+  drawGraph();
+}
+
+function loadDesmos() {
+  if (desmos.state === 'loading' || desmos.state === 'ready') return;
+  desmos.state = 'loading';
+  $('calc-note').textContent = 'Loading Desmos…';
+  $('calc-note').classList.remove('hidden');
+
+  const script = document.createElement('script');
+  script.src = DESMOS_SRC;
+  const timer = setTimeout(() => {
+    if (desmos.state !== 'ready') useFallbackCalc('Desmos took too long to load, so this is the built-in calculator.');
+  }, 12000);
+
+  script.onload = () => {
+    clearTimeout(timer);
+    if (!window.Desmos) return useFallbackCalc('Desmos did not initialise; using the built-in calculator.');
+    try {
+      desmos.calc = Desmos.GraphingCalculator($('desmos-mount'), {
+        keypad: true, expressions: true, settingsMenu: false,
+        zoomButtons: true, border: false, lockViewport: false,
+        expressionsCollapsed: false,
+      });
+      desmos.state = 'ready';
+      $('calc-title').textContent = 'Desmos';
+      $('desmos-mount').classList.add('ready');
+      $('calc-fallback').classList.add('hidden');
+      $('calc-note').classList.add('hidden');
+      desmos.calc.resize();
+    } catch (e) {
+      useFallbackCalc('Desmos failed to start; using the built-in calculator.');
+    }
+  };
+  script.onerror = () => {
+    clearTimeout(timer);
+    useFallbackCalc('No connection to Desmos, so this is the built-in calculator.');
+  };
+  document.head.appendChild(script);
+}
+
 function openCalc(open) {
   $('calc-panel').classList.toggle('hidden', !open);
   $('btn-calc').classList.toggle('on', open);
-  if (open) { $('calc-input').focus(); drawGraph(); }
+  if (!open) return;
+  if (desmos.state === 'idle') loadDesmos();
+  else if (desmos.state === 'ready') desmos.calc.resize();
+  else if (desmos.state === 'failed') { $('calc-input').focus(); drawGraph(); }
 }
 $('btn-calc').onclick = () => openCalc($('calc-panel').classList.contains('hidden'));
 $('btn-calc-close').onclick = () => openCalc(false);

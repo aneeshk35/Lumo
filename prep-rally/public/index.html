@@ -556,19 +556,25 @@
   </div>
 </div>
 
-<!-- graphing calculator -->
+<!-- graphing calculator: real Desmos, with a built-in fallback when offline -->
 <div class="calc-panel hidden" id="calc-panel">
   <div class="calc-head">
-    <span class="calc-title">Calculator</span>
+    <span class="calc-title" id="calc-title">Desmos</span>
     <button class="calc-x" id="btn-calc-close" aria-label="Close calculator">&times;</button>
   </div>
-  <input id="calc-input" placeholder="2x + 1   or   sqrt(49)" autocomplete="off" spellcheck="false">
-  <div class="calc-out" id="calc-out">Type an expression. Use x to graph it.</div>
-  <canvas id="calc-graph" width="300" height="200"></canvas>
-  <div class="calc-zoom">
-    <button class="tool-btn" id="calc-zoom-out">−</button>
-    <span class="calc-range" id="calc-range">x: −10 to 10</span>
-    <button class="tool-btn" id="calc-zoom-in">+</button>
+
+  <div id="desmos-mount" class="desmos-mount"></div>
+  <div class="calc-note" id="calc-note">Loading Desmos…</div>
+
+  <div id="calc-fallback" class="hidden">
+    <input id="calc-input" placeholder="2x + 1   or   sqrt(49)" autocomplete="off" spellcheck="false">
+    <div class="calc-out" id="calc-out">Type an expression. Use x to graph it.</div>
+    <canvas id="calc-graph" width="300" height="200"></canvas>
+    <div class="calc-zoom">
+      <button class="tool-btn" id="calc-zoom-out">−</button>
+      <span class="calc-range" id="calc-range">x: −10 to 10</span>
+      <button class="tool-btn" id="calc-zoom-in">+</button>
+    </div>
   </div>
 </div>
 

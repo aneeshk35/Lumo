@@ -96,6 +96,24 @@ python3 tests/test_lumo.py
 
 It prints PASS/FAIL per check and exits non-zero if anything fails.
 
+## The calculator
+
+Math questions get a **real Desmos graphing calculator**, the same tool the
+Digital SAT provides. It is loaded from Desmos's API on first open (the script
+is about 4MB, so it is not fetched at page load) and hidden on Reading and
+Writing questions, matching the real test.
+
+⚠️ **Get your own Desmos API key before launching publicly.** The key in
+`public/app.js` (`DESMOS_SRC`) is the demo key from Desmos's public API docs,
+which is fine for development but is not yours. Desmos gives out free keys for
+this kind of use — request one at https://www.desmos.com/api and swap it in.
+
+If Desmos cannot load (no connection, blocked, or slow), the panel falls back to
+a built-in calculator in `public/calc.js`: its own tokenizer and shunting-yard
+parser supporting arithmetic, powers, parentheses, implicit multiplication
+(`3(4+1)`, `2x`), `sin/cos/tan/sqrt/abs/ln/log`, `pi`/`e`, and canvas graphing
+with zoom. That fallback has no dependencies and works offline.
+
 ## Identity and sign-in
 
 Lumo has no accounts or passwords. On first visit you pick a nickname, which is

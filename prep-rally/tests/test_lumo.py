@@ -268,15 +268,35 @@ def test_tools(browser):
     page.wait_for_selector("#v-match.active", timeout=8000)
     check("calculator offered on math", page.locator("#btn-calc:not(.hidden)").count() == 1)
     page.click("#btn-calc")
-    page.fill("#calc-input", "2x^2 - 3")
-    page.wait_for_timeout(400)
     check("calculator panel opens", page.locator("#calc-panel:not(.hidden)").count() == 1)
-    painted = page.evaluate("""() => {
-        const cv = document.getElementById('calc-graph');
-        const d = cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;
-        let n = 0; for (let i=0;i<d.length;i+=4) if (d[i]>90 && d[i]<130 && d[i+2]>190) n++;
-        return n; }""")
-    check("graph is actually drawn", painted > 200, f"{painted} curve pixels")
+
+    # Desmos is fetched on first open; allow time, then accept either the real
+    # calculator or the offline fallback — both are valid working states.
+    for _ in range(40):
+        if page.evaluate("desmos.state") != "loading":
+            break
+        page.wait_for_timeout(500)
+    state = page.evaluate("desmos.state")
+    check("calculator resolves to a working state", state in ("ready", "failed"), state)
+
+    if state == "ready":
+        check("real Desmos mounted", page.locator("#desmos-mount.ready").count() == 1)
+        check("Desmos API is live", page.evaluate("typeof window.Desmos") == "object")
+        check("fallback hidden while Desmos works",
+              page.locator("#calc-fallback.hidden").count() == 1)
+        page.evaluate("desmos.calc.setExpression({id:'t', latex:'y=2x^2-3'})")
+        page.wait_for_timeout(600)
+        exprs = page.evaluate("desmos.calc.getExpressions().length")
+        check("Desmos accepts an expression", exprs >= 1, f"{exprs} expressions")
+    else:
+        page.fill("#calc-input", "2x^2 - 3")
+        page.wait_for_timeout(400)
+        painted = page.evaluate("""() => {
+            const cv = document.getElementById('calc-graph');
+            const d = cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;
+            let n = 0; for (let i=0;i<d.length;i+=4) if (d[i]>90 && d[i]<130 && d[i+2]>190) n++;
+            return n; }""")
+        check("fallback graph is drawn", painted > 200, f"{painted} curve pixels")
 
     # reading question: highlighter available, calculator hidden
     page.evaluate("teardownGame(); startPractice({section:'rw', domains:['Information and Ideas'], count:5}, 'Bank')")
