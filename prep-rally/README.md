@@ -78,3 +78,36 @@ python3 -c "import json;qs=json.load(open('data/questions.json'));assert all(len
 ## Deploying
 
 Any host that runs Python works (Render / Railway / Fly.io free tiers). Set the `PORT` env var if the host requires it. Rally state lives in memory and high scores in a JSON file, which is right for one small instance; move to Redis or SQLite before scaling past that. Player profiles (name, ELO, mistakes, plan, vocab progress) live in each browser's localStorage — accounts are the next step if you want progress to follow users across devices.
+
+## Running the tests
+
+The Playwright end-to-end suite covers every screen, both multiplayer modes, the
+mistake review loop, the calculator engine, and the mobile layout.
+
+```bash
+python3 -m pip install --user playwright && python3 -m playwright install chromium
+```
+
+Start the server in one terminal, then in another:
+
+```bash
+python3 tests/test_lumo.py
+```
+
+It prints PASS/FAIL per check and exits non-zero if anything fails.
+
+## Identity and sign-in
+
+Lumo has no accounts or passwords. On first visit you pick a nickname, which is
+stored in your browser's localStorage along with your ELO, mistakes, study plan,
+and vocab progress. Click your name at the bottom of the nav to change it.
+
+Consequences worth knowing:
+- Progress is per-browser. A different browser or device is a different profile.
+- Two tabs on the same origin share one profile, so testing multiplayer locally
+  gives both players the same name (the server auto-suffixes the second one).
+- Clearing site data resets progress.
+
+Real accounts (email sign-in, progress that follows you across devices, and
+server-side ELO) are the next step; they need a user table and sessions on the
+server, which the current in-memory design does not have.
