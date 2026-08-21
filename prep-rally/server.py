@@ -21,6 +21,25 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_DIR = os.path.join(BASE_DIR, "public")
 DATA_DIR = os.path.join(BASE_DIR, "data")
 HIGHSCORES_FILE = os.path.join(DATA_DIR, "highscores.json")
+DESMOS_KEY_FILE = os.path.join(DATA_DIR, "desmos_key.txt")
+
+# Desmos's publicly documented demo key. Fine for local development; a real
+# deployment should supply its own via DESMOS_API_KEY or data/desmos_key.txt.
+DESMOS_DEMO_KEY = "dcb31709b452b1cf9dc26972add0fda6"
+
+
+def desmos_api_key():
+    key = (os.environ.get("DESMOS_API_KEY") or "").strip()
+    if key:
+        return key
+    try:
+        with open(DESMOS_KEY_FILE, encoding="utf-8") as f:
+            key = f.read().strip()
+            if key:
+                return key
+    except OSError:
+        pass
+    return DESMOS_DEMO_KEY
 
 PORT = int(os.environ.get("PORT", 3000))
 
@@ -366,6 +385,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self.api_bank()
             if route == "/api/search":
                 return self.api_search(body)
+            if route == "/api/config":
+                key = desmos_api_key()
+                return self.send_json({
+                    "desmosKey": key,
+                    "desmosIsDemoKey": key == DESMOS_DEMO_KEY,
+                })
             if route == "/api/queue":
                 return self.api_queue(body)
             if route == "/api/queue_status":

@@ -11,3 +11,6 @@ prep-rally/data/highscores.json
 # Cloned third-party skill repos (re-clone from their GitHub instead of vendoring)
 .claude/skills/impeccable/
 .claude/skills/rtk/
+
+# Desmos API key (per-deployment, not committed)
+prep-rally/data/desmos_key.txt

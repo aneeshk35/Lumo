@@ -633,9 +633,24 @@ const calc = { range: 10, expr: '' };
 // Desmos is loaded on first use (it is a ~4MB script, so not at page load).
 // If it cannot load — offline, blocked, no network — the built-in calculator
 // takes over so the tool always works.
-const desmos = { state: 'idle', calc: null };
-const DESMOS_SRC =
-  'https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
+const desmos = { state: 'idle', calc: null, key: null };
+
+// The API key comes from the server (DESMOS_API_KEY env var or
+// data/desmos_key.txt), so it is never hardcoded in the client source.
+async function desmosScriptUrl() {
+  if (!desmos.key) {
+    try {
+      const cfg = await api('config');
+      desmos.key = cfg.desmosKey;
+      if (cfg.desmosIsDemoKey) {
+        console.info('Lumo: using the Desmos demo key. Set DESMOS_API_KEY or data/desmos_key.txt to use your own.');
+      }
+    } catch {
+      return null;
+    }
+  }
+  return `https://www.desmos.com/api/v1.11/calculator.js?apiKey=${encodeURIComponent(desmos.key)}`;
+}
 
 function useFallbackCalc(reason) {
   desmos.state = 'failed';
@@ -647,14 +662,17 @@ function useFallbackCalc(reason) {
   drawGraph();
 }
 
-function loadDesmos() {
+async function loadDesmos() {
   if (desmos.state === 'loading' || desmos.state === 'ready') return;
   desmos.state = 'loading';
   $('calc-note').textContent = 'Loading Desmos…';
   $('calc-note').classList.remove('hidden');
 
+  const url = await desmosScriptUrl();
+  if (!url) return useFallbackCalc('Could not reach the server for the Desmos key; using the built-in calculator.');
+
   const script = document.createElement('script');
-  script.src = DESMOS_SRC;
+  script.src = url;
   const timer = setTimeout(() => {
     if (desmos.state !== 'ready') useFallbackCalc('Desmos took too long to load, so this is the built-in calculator.');
   }, 12000);
