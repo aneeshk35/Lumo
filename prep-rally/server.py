@@ -59,9 +59,58 @@ MATCH_QUEUE = []  # waiting tickets: {ticket, name, section, count, created, res
 QUEUE_TTL = 120  # seconds before an unpolled ticket is dropped
 DUEL_REVEAL_SECS = 7
 
+# 2v2: four players, two teams, one Reading specialist and one Math specialist
+# per team. Answering inside your own specialty pays a bonus.
+TEAM_SIZE = 2
+TEAM_PLAYERS = 4
+SPECIALIST_BONUS = 1.25
+
+CLASSES_FILE = os.path.join(DATA_DIR, "classes.json")
+TUTORS_FILE = os.path.join(DATA_DIR, "tutors.json")
+CLASSES = {}   # code -> class dict
+TUTORS = {}    # playerKey -> application dict
+PRESENCE = {}  # playerKey -> {code, name, elo, activity, lastSeen, invites}
+PRESENCE_TTL = 45      # seconds without a ping before a friend reads as offline
+PRESENCE_SWEEP = 86400  # drop presence rows untouched for a day
+INVITE_TTL = 90        # seconds an unaccepted duel invite survives
+FRIEND_CODE_LEN = 6
+
 
 def now_ms():
     return int(time.time() * 1000)
+
+
+def load_json_file(path, default):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return default
+
+
+def save_json_file(path, data):
+    """Write via a temp file so a crash mid-write cannot truncate the real one."""
+    tmp = path + ".tmp"
+    try:
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+        os.replace(tmp, path)
+    except OSError:
+        pass
+
+
+def save_classes():
+    save_json_file(CLASSES_FILE, CLASSES)
+
+
+def save_tutors():
+    save_json_file(TUTORS_FILE, TUTORS)
+
+
+def clip(value, limit, fallback=""):
+    """Trim any client-supplied string to a sane length."""
+    text = str(value if value is not None else "").strip()
+    return text[:limit] or fallback
 
 
 def load_highscores():
@@ -77,11 +126,17 @@ def save_highscores(scores):
         json.dump(scores, f, indent=2)
 
 
-def generate_code():
+def generate_code(taken=None, length=5):
+    """A short, human-readable code that avoids look-alike characters."""
+    taken = PARTIES if taken is None else taken
     while True:
-        code = "".join(random.choice(CODE_CHARS) for _ in range(5))
-        if code not in PARTIES:
+        code = "".join(random.choice(CODE_CHARS) for _ in range(length))
+        if code not in taken:
             return code
+
+
+def friend_codes():
+    return {p["code"] for p in PRESENCE.values() if p.get("code")}
 
 
 def sanitize_name(name):
@@ -100,8 +155,33 @@ class Party:
         self.current_answers = {}  # pid -> {choice, points, correct}
         self.ends_at = 0
         self.timer = None
-        self.mode = mode  # "party" (host controls) or "duel" (ready-up + auto-advance)
-        self.ready = set()  # pids that have readied up (duel mode)
+        # "party" (host controls), "duel" (1v1 ready-up + auto-advance), or
+        # "team" (2v2: same ready-up and auto-advance, scores summed per team).
+        self.mode = mode
+        self.ready = set()  # pids that have readied up (duel and team modes)
+        self.teams = {}     # pid -> "A" or "B"      (team mode only)
+        self.roles = {}     # pid -> "rw" or "math"  (team mode only)
+
+    def auto_advances(self):
+        return self.mode in ("duel", "team")
+
+    def assign_team(self, pid):
+        """Seat the next arrival: A/B alternating, Reading then Math per team."""
+        seat = sum(1 for x in self.teams if x in self.players and x != pid)
+        self.teams[pid] = "A" if seat % 2 == 0 else "B"
+        self.roles[pid] = "rw" if seat < TEAM_SIZE else "math"
+
+    def team_scores(self):
+        totals = {"A": {"team": "A", "score": 0, "correct": 0, "members": []},
+                  "B": {"team": "B", "score": 0, "correct": 0, "members": []}}
+        for pid, p in self.players.items():
+            side = self.teams.get(pid)
+            if side not in totals:
+                continue
+            totals[side]["score"] += p["score"]
+            totals[side]["correct"] += p["correct"]
+            totals[side]["members"].append(p["name"])
+        return [totals["A"], totals["B"]]
 
     # ---- helpers ----
     def connected(self):
@@ -132,16 +212,19 @@ class Party:
             "settings": self.settings,
             "players": [
                 {"name": p["name"], "isHost": p["id"] == self.host_id,
-                 "connected": p["connected"], "ready": p["id"] in self.ready}
+                 "connected": p["connected"], "ready": p["id"] in self.ready,
+                 "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"])}
                 for p in self.players.values()
             ],
             "questionCount": len(self.questions),
+            "teamSize": TEAM_SIZE if self.mode == "team" else None,
         }
 
     def leaderboard(self):
         board = [
             {"name": p["name"], "score": p["score"], "streak": p["streak"],
-             "correct": p["correct"], "connected": p["connected"]}
+             "correct": p["correct"], "connected": p["connected"],
+             "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"])}
             for p in self.players.values()
         ]
         board.sort(key=lambda p: -p["score"])
@@ -209,9 +292,10 @@ class Party:
                 "perPlayer": per_player,
                 "leaderboard": self.leaderboard(),
                 "isLast": is_last,
-                "autoAdvanceSecs": DUEL_REVEAL_SECS if self.mode == "duel" else None,
+                "autoAdvanceSecs": DUEL_REVEAL_SECS if self.auto_advances() else None,
+                "teamScores": self.team_scores() if self.mode == "team" else None,
             })
-            if self.mode == "duel":
+            if self.auto_advances():
                 self.timer = threading.Timer(DUEL_REVEAL_SECS, self.auto_advance)
                 self.timer.daemon = True
                 self.timer.start()
@@ -259,6 +343,7 @@ class Party:
         self.broadcast("game_over", {
             "leaderboard": board, "total": total,
             "breakdowns": breakdowns, "highscores": top[:10],
+            "teamScores": self.team_scores() if self.mode == "team" else None,
         })
 
 
@@ -391,6 +476,32 @@ class Handler(BaseHTTPRequestHandler):
                     "desmosKey": key,
                     "desmosIsDemoKey": key == DESMOS_DEMO_KEY,
                 })
+            if route == "/api/presence":
+                return self.api_presence(body)
+            if route == "/api/friend_lookup":
+                return self.api_friend_lookup(body)
+            if route == "/api/invite":
+                return self.api_invite(body)
+            if route == "/api/class_create":
+                return self.api_class_create(body)
+            if route == "/api/class_join":
+                return self.api_class_join(body)
+            if route == "/api/class_list":
+                return self.api_class_list(body)
+            if route == "/api/class_get":
+                return self.api_class_get(body)
+            if route == "/api/class_report":
+                return self.api_class_report(body)
+            if route == "/api/class_assign":
+                return self.api_class_assign(body)
+            if route == "/api/class_leave":
+                return self.api_class_leave(body)
+            if route == "/api/tutor_apply":
+                return self.api_tutor_apply(body)
+            if route == "/api/tutor_status":
+                return self.api_tutor_status(body)
+            if route == "/api/tutor_withdraw":
+                return self.api_tutor_withdraw(body)
             if route == "/api/queue":
                 return self.api_queue(body)
             if route == "/api/queue_status":
@@ -460,6 +571,276 @@ class Handler(BaseHTTPRequestHandler):
                 break
         return self.send_json({"results": hits, "query": q})
 
+    # ---------- friends & presence ----------
+    def api_presence(self, body):
+        """Heartbeat. Registers this player, then reports back on their friends.
+
+        Identity is the browser-generated playerKey, the same one the rest of the
+        social features use. There are no passwords, so a key is a claim rather
+        than proof; it is enough for a friends list and deliberately not enough
+        for anything destructive.
+        """
+        key = clip(body.get("playerKey"), 64)
+        if not key:
+            return self.send_json({"error": "Missing player key."}, 400)
+        now = time.time()
+
+        # Drop rows nobody has touched in a day so the dict cannot grow forever.
+        for stale in [k for k, v in PRESENCE.items() if now - v["lastSeen"] > PRESENCE_SWEEP]:
+            PRESENCE.pop(stale, None)
+
+        me = PRESENCE.get(key)
+        if not me:
+            me = {"code": generate_code(friend_codes(), FRIEND_CODE_LEN),
+                  "name": "", "elo": 1200, "activity": "", "lastSeen": now, "invites": []}
+            PRESENCE[key] = me
+        me["name"] = sanitize_name(body.get("name"))
+        me["activity"] = clip(body.get("activity"), 40)
+        me["lastSeen"] = now
+        try:
+            me["elo"] = max(0, min(int(body.get("elo") or 1200), 9999))
+        except (TypeError, ValueError):
+            pass
+
+        wanted = [clip(c, FRIEND_CODE_LEN).upper()
+                  for c in (body.get("friends") or [])][:50]
+        by_code = {v["code"]: v for v in PRESENCE.values()}
+        friends = []
+        for code in wanted:
+            row = by_code.get(code)
+            if not row:
+                friends.append({"code": code, "name": "", "online": False,
+                                "activity": "", "elo": None, "unknown": True})
+                continue
+            friends.append({
+                "code": code, "name": row["name"], "elo": row["elo"],
+                "online": now - row["lastSeen"] < PRESENCE_TTL,
+                "activity": row["activity"],
+                "lastSeen": int(row["lastSeen"] * 1000),
+            })
+
+        me["invites"] = [i for i in me["invites"] if now - i["when"] < INVITE_TTL]
+        invites, me["invites"] = me["invites"], []
+        return self.send_json({"code": me["code"], "friends": friends, "invites": invites})
+
+    def api_friend_lookup(self, body):
+        code = clip(body.get("code"), FRIEND_CODE_LEN).upper()
+        for row in PRESENCE.values():
+            if row["code"] == code:
+                return self.send_json({"found": True, "code": code, "name": row["name"]})
+        return self.send_json({"found": False})
+
+    def api_invite(self, body):
+        """Push a duel invitation into a friend's next presence poll."""
+        key = clip(body.get("playerKey"), 64)
+        target = clip(body.get("toCode"), FRIEND_CODE_LEN).upper()
+        party_code = clip(body.get("partyCode"), 5).upper()
+        if party_code not in PARTIES:
+            return self.send_json({"error": "That game no longer exists."}, 404)
+        me = PRESENCE.get(key)
+        for row in PRESENCE.values():
+            if row["code"] == target:
+                if len(row["invites"]) >= 10:
+                    return self.send_json({"error": "That player has too many pending invites."})
+                row["invites"].append({
+                    "fromName": me["name"] if me else "A player",
+                    "fromCode": me["code"] if me else "",
+                    "partyCode": party_code,
+                    "mode": clip(body.get("mode"), 12, "duel"),
+                    "when": time.time(),
+                })
+                return self.send_json({"ok": True})
+        return self.send_json({"error": "That friend is not online right now."})
+
+    # ---------- classes ----------
+    def class_view(self, cls, key):
+        """A class as the caller is allowed to see it."""
+        is_teacher = cls["teacherKey"] == key
+        students = sorted(cls["students"].values(),
+                          key=lambda st: (-st.get("points", 0), st.get("name", "")))
+        return {
+            "code": cls["code"], "name": cls["name"], "teacherName": cls["teacherName"],
+            "isTeacher": is_teacher, "created": cls["created"],
+            "assignment": cls.get("assignment"),
+            "students": [{
+                "name": st.get("name", ""),
+                "attempted": st.get("attempted", 0),
+                "correct": st.get("correct", 0),
+                "points": st.get("points", 0),
+                "accuracy": (round(100 * st["correct"] / st["attempted"])
+                             if st.get("attempted") else None),
+                "weakest": st.get("weakest", ""),
+                "assignmentDone": st.get("assignmentDone") == (cls.get("assignment") or {}).get("id"),
+                "lastSeen": st.get("lastSeen", 0),
+                "isMe": st.get("key") == key,
+            } for st in students],
+        }
+
+    def api_class_create(self, body):
+        key = clip(body.get("playerKey"), 64)
+        name = clip(body.get("className"), 40)
+        if not key:
+            return self.send_json({"error": "Missing player key."}, 400)
+        if len(name) < 2:
+            return self.send_json({"error": "Give the class a name of at least 2 characters."})
+        mine = [c for c in CLASSES.values() if c["teacherKey"] == key]
+        if len(mine) >= 10:
+            return self.send_json({"error": "You already run 10 classes, which is the limit."})
+        code = generate_code(CLASSES)
+        CLASSES[code] = {
+            "code": code, "name": name, "teacherKey": key,
+            "teacherName": sanitize_name(body.get("name")),
+            "created": int(time.time() * 1000), "assignment": None, "students": {},
+        }
+        save_classes()
+        return self.send_json({"ok": True, "class": self.class_view(CLASSES[code], key)})
+
+    def api_class_join(self, body):
+        key = clip(body.get("playerKey"), 64)
+        code = clip(body.get("code"), 5).upper()
+        cls = CLASSES.get(code)
+        if not cls:
+            return self.send_json({"error": "No class with that code. Check it with your teacher."})
+        if cls["teacherKey"] == key:
+            return self.send_json({"error": "You teach this class already."})
+        if key not in cls["students"] and len(cls["students"]) >= 60:
+            return self.send_json({"error": "That class is full (60 students max)."})
+        student = cls["students"].setdefault(key, {"key": key})
+        student["name"] = sanitize_name(body.get("name"))
+        student["lastSeen"] = int(time.time() * 1000)
+        student.setdefault("attempted", 0)
+        student.setdefault("correct", 0)
+        student.setdefault("points", 0)
+        save_classes()
+        return self.send_json({"ok": True, "class": self.class_view(cls, key)})
+
+    def api_class_list(self, body):
+        key = clip(body.get("playerKey"), 64)
+        out = []
+        for cls in CLASSES.values():
+            if cls["teacherKey"] == key or key in cls["students"]:
+                out.append({
+                    "code": cls["code"], "name": cls["name"],
+                    "teacherName": cls["teacherName"],
+                    "isTeacher": cls["teacherKey"] == key,
+                    "size": len(cls["students"]),
+                    "hasAssignment": bool(cls.get("assignment")),
+                })
+        out.sort(key=lambda c: (not c["isTeacher"], c["name"]))
+        return self.send_json({"classes": out})
+
+    def api_class_get(self, body):
+        key = clip(body.get("playerKey"), 64)
+        cls = CLASSES.get(clip(body.get("code"), 5).upper())
+        if not cls:
+            return self.send_json({"error": "Class not found."}, 404)
+        if cls["teacherKey"] != key and key not in cls["students"]:
+            return self.send_json({"error": "You are not in this class."}, 403)
+        return self.send_json({"class": self.class_view(cls, key)})
+
+    def api_class_report(self, body):
+        """Students push their own totals up after finishing a session."""
+        key = clip(body.get("playerKey"), 64)
+        cls = CLASSES.get(clip(body.get("code"), 5).upper())
+        if not cls or key not in cls["students"]:
+            return self.send_json({"ok": False})
+        stats = body.get("stats") or {}
+        student = cls["students"][key]
+        student["name"] = sanitize_name(body.get("name"))
+        student["lastSeen"] = int(time.time() * 1000)
+        for field in ("attempted", "correct", "points"):
+            try:
+                student[field] = max(0, min(int(stats.get(field) or 0), 10 ** 7))
+            except (TypeError, ValueError):
+                student[field] = 0
+        student["weakest"] = clip(stats.get("weakest"), 48)
+        done = clip(stats.get("assignmentDone"), 40)
+        if done:
+            student["assignmentDone"] = done
+        save_classes()
+        return self.send_json({"ok": True})
+
+    def api_class_assign(self, body):
+        key = clip(body.get("playerKey"), 64)
+        cls = CLASSES.get(clip(body.get("code"), 5).upper())
+        if not cls:
+            return self.send_json({"error": "Class not found."}, 404)
+        if cls["teacherKey"] != key:
+            return self.send_json({"error": "Only the teacher can set an assignment."}, 403)
+        raw = body.get("assignment")
+        if raw is None:
+            cls["assignment"] = None
+        else:
+            settings = clean_settings(raw.get("settings"))
+            if not pick_questions(settings):
+                return self.send_json({"error": "No questions match those filters."})
+            cls["assignment"] = {
+                "id": uuid.uuid4().hex[:12],
+                "title": clip(raw.get("title"), 60, "Practice set"),
+                "settings": settings,
+                "set": int(time.time() * 1000),
+            }
+            for student in cls["students"].values():
+                student.pop("assignmentDone", None)
+        save_classes()
+        return self.send_json({"ok": True, "class": self.class_view(cls, key)})
+
+    def api_class_leave(self, body):
+        key = clip(body.get("playerKey"), 64)
+        code = clip(body.get("code"), 5).upper()
+        cls = CLASSES.get(code)
+        if not cls:
+            return self.send_json({"ok": True})
+        if cls["teacherKey"] == key:
+            CLASSES.pop(code, None)  # the teacher leaving closes the class
+        else:
+            cls["students"].pop(key, None)
+        save_classes()
+        return self.send_json({"ok": True})
+
+    # ---------- tutor applications ----------
+    def api_tutor_apply(self, body):
+        key = clip(body.get("playerKey"), 64)
+        if not key:
+            return self.send_json({"error": "Missing player key."}, 400)
+        name = clip(body.get("applicantName"), 40)
+        email = clip(body.get("email"), 80)
+        subjects = [clip(x, 40) for x in (body.get("subjects") or [])][:4]
+        about = clip(body.get("about"), 800)
+        if len(name) < 2:
+            return self.send_json({"error": "Enter your full name."})
+        if "@" not in email or "." not in email.split("@")[-1] or len(email) < 6:
+            return self.send_json({"error": "Enter a valid email address."})
+        if not subjects:
+            return self.send_json({"error": "Pick at least one subject you can tutor."})
+        if len(about) < 40:
+            return self.send_json({"error": "Tell us a little more — 40 characters minimum."})
+        app = {
+            "playerKey": key, "name": name, "email": email,
+            "grade": clip(body.get("grade"), 24),
+            "score": clip(body.get("score"), 12),
+            "subjects": subjects, "availability": clip(body.get("availability"), 40),
+            "about": about, "status": "submitted",
+            "submitted": int(time.time() * 1000),
+            "stats": {
+                "attempted": int(body.get("attempted") or 0),
+                "accuracy": int(body.get("accuracy") or 0),
+            },
+        }
+        TUTORS[key] = app
+        save_tutors()
+        return self.send_json({"ok": True, "application": app})
+
+    def api_tutor_status(self, body):
+        key = clip(body.get("playerKey"), 64)
+        return self.send_json({"application": TUTORS.get(key)})
+
+    def api_tutor_withdraw(self, body):
+        key = clip(body.get("playerKey"), 64)
+        TUTORS.pop(key, None)
+        save_tutors()
+        return self.send_json({"ok": True})
+
     # ---------- stats & matchmaking ----------
     def api_stats(self):
         online = sum(
@@ -471,31 +852,45 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json({"bank": by_section, "online": online, "queued": len(MATCH_QUEUE)})
 
     def api_queue(self, body):
+        """Join the ladder queue. 1v1 fills at two players, 2v2 at four."""
         now = time.time()
         # Keep matched tickets around until their owner polls and collects the result.
         MATCH_QUEUE[:] = [t for t in MATCH_QUEUE if now - t["polled"] < QUEUE_TTL]
         section = body.get("section") if body.get("section") in ("math", "rw", "mixed") else "mixed"
         name = sanitize_name(body.get("name"))
         count = max(3, min(int(body.get("count") or 10), 20))
+        mode = "2v2" if body.get("mode") == "2v2" else "1v1"
+        needed = TEAM_PLAYERS if mode == "2v2" else 2
 
-        for t in MATCH_QUEUE:
-            if t["section"] == section and not t["result"]:
-                settings = {"section": section, "domains": [], "difficulties": [], "count": count}
-                questions = pick_questions(settings)
-                code = generate_code()
-                party = Party(code, settings, questions, mode="duel")
-                pid_a = party.add_player(t["name"])
-                pid_b = party.add_player(name)
-                party.host_id = pid_a
-                PARTIES[code] = party
-                t["result"] = {"code": code, "playerId": pid_a, "yourName": party.players[pid_a]["name"]}
-                return self.send_json({"matched": True, "code": code, "playerId": pid_b,
-                                       "yourName": party.players[pid_b]["name"]})
+        waiting = [t for t in MATCH_QUEUE
+                   if t["mode"] == mode and t["section"] == section and not t["result"]]
+        if len(waiting) >= needed - 1:
+            joining = waiting[: needed - 1]
+            settings = {"section": section, "domains": [], "difficulties": [], "count": count}
+            questions = pick_questions(settings)
+            code = generate_code()
+            party = Party(code, settings, questions, mode="team" if mode == "2v2" else "duel")
+
+            # Seat everyone who was waiting, then the caller last.
+            for t in joining:
+                pid = party.add_player(t["name"])
+                if mode == "2v2":
+                    party.assign_team(pid)
+                t["result"] = {"code": code, "playerId": pid,
+                               "yourName": party.players[pid]["name"]}
+            mine = party.add_player(name)
+            if mode == "2v2":
+                party.assign_team(mine)
+            party.host_id = joining[0]["result"]["playerId"]
+            PARTIES[code] = party
+            return self.send_json({"matched": True, "code": code, "playerId": mine,
+                                   "yourName": party.players[mine]["name"], "mode": mode})
 
         ticket = uuid.uuid4().hex
-        MATCH_QUEUE.append({"ticket": ticket, "name": name, "section": section,
+        MATCH_QUEUE.append({"ticket": ticket, "name": name, "section": section, "mode": mode,
                             "count": count, "polled": now, "result": None})
-        return self.send_json({"matched": False, "ticket": ticket})
+        return self.send_json({"matched": False, "ticket": ticket, "mode": mode,
+                               "waiting": len(waiting) + 1, "needed": needed})
 
     def api_queue_status(self, body):
         ticket = body.get("ticket")
@@ -504,8 +899,12 @@ class Handler(BaseHTTPRequestHandler):
                 t["polled"] = time.time()
                 if t["result"]:
                     MATCH_QUEUE.remove(t)
-                    return self.send_json(dict({"matched": True}, **t["result"]))
-                return self.send_json({"matched": False})
+                    return self.send_json(dict({"matched": True, "mode": t["mode"]}, **t["result"]))
+                peers = sum(1 for o in MATCH_QUEUE
+                            if o["mode"] == t["mode"] and o["section"] == t["section"]
+                            and not o["result"])
+                needed = TEAM_PLAYERS if t["mode"] == "2v2" else 2
+                return self.send_json({"matched": False, "waiting": peers, "needed": needed})
         return self.send_json({"matched": False, "expired": True})
 
     def api_queue_cancel(self, body):
@@ -519,7 +918,9 @@ class Handler(BaseHTTPRequestHandler):
         party.ready.add(player["id"])
         party.broadcast("lobby_update", party.lobby_state())
         connected = party.connected()
-        if party.mode == "duel" and len(connected) >= 2 and all(p["id"] in party.ready for p in connected):
+        needed = TEAM_PLAYERS if party.mode == "team" else 2
+        if (party.auto_advances() and len(connected) >= needed
+                and all(p["id"] in party.ready for p in connected)):
             party.broadcast("game_started", {})
             party.start_question()
         return self.send_json({"ok": True})
@@ -581,6 +982,9 @@ class Handler(BaseHTTPRequestHandler):
             player["streak"] += 1
             streak_bonus = min(STREAK_CAP, (player["streak"] - 1) * STREAK_BONUS)
             points = round(BASE_POINTS[q["difficulty"]] * (0.5 + 0.5 * frac)) + streak_bonus
+            # 2v2: answering inside the section you were assigned pays extra.
+            if party.mode == "team" and party.roles.get(player["id"]) == q["section"]:
+                points = round(points * SPECIALIST_BONUS)
             player["score"] += points
             player["correct"] += 1
         else:
@@ -684,6 +1088,8 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    CLASSES.update(load_json_file(CLASSES_FILE, {}))
+    TUTORS.update(load_json_file(TUTORS_FILE, {}))
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     print(f"PrepRally running on http://localhost:{PORT}")
     server.serve_forever()

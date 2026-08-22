@@ -1,0 +1,1390 @@
+[
+  {
+    "id": "rw-ii-1",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Central Ideas and Details",
+    "title": "Find the main idea before you read the choices",
+    "minutes": 6,
+    "summary": "Central-idea questions are won before you look at the answers. Say the point of the passage in your own words first, then match.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "What the question is really asking",
+        "body": "A central-idea question asks what the whole text is doing, not what one interesting sentence says. The most common wrong answer is a true detail that only covers part of the passage. If a choice is accurate but narrow, it is still wrong."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read the passage once, at normal speed. Do not annotate everything.",
+          "Cover the choices. In under ten words, say the point out loud or in your head.",
+          "Ask what the last sentence is doing. On SAT passages it usually carries the point.",
+          "Match your sentence to a choice. Pick the one that covers the whole passage, start to finish.",
+          "Check the loser choices for scope: too narrow, too broad, or about a detail the passage only mentions once."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Urban beekeepers often report that their hives outproduce rural ones. The explanation is not that cities are cleaner but that they are varied. A rural hive surrounded by a single crop feasts for three weeks and then starves. A city hive, by contrast, draws on garden flowers, street trees, balcony planters, and weeds in vacant lots, each blooming on a different schedule. The result is a thinner but far steadier supply of nectar across the whole season.",
+        "question": "Which choice best states the main idea of the text?",
+        "choices": [
+          "City air is cleaner than rural air, which helps bees produce more honey.",
+          "Urban hives can outproduce rural ones because varied city plantings supply nectar steadily all season.",
+          "Rural hives surrounded by a single crop produce nothing for most of the year.",
+          "Beekeeping has become a popular hobby among people who live in cities."
+        ],
+        "answer": 1,
+        "walkthrough": "Your own sentence should have been close to: city hives do better because the food supply is spread out. Choice B says exactly that. A is contradicted outright, the passage says the explanation is not that cities are cleaner. C overstates a detail, the rural hive starves after three weeks but the text never says it produces nothing for most of the year. D is about hobbyists, a topic the passage never raises."
+      },
+      {
+        "type": "trap",
+        "body": "Watch for choices that quote a striking phrase from the passage. Test writers reuse memorable wording in wrong answers because it feels familiar. Familiar is not the same as central."
+      },
+      {
+        "type": "tip",
+        "body": "If two choices both look defensible, the tiebreaker is coverage. Ask which one the last sentence of the passage supports."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Information and Ideas"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-ii-2",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Command of Evidence",
+    "title": "Command of evidence: let the claim pick the answer",
+    "minutes": 7,
+    "summary": "Evidence questions give you a claim and ask which finding supports it. Turn the claim into a prediction of what the data must show, then find the choice that shows it.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Two flavours, one method",
+        "body": "Textual evidence questions hand you a hypothesis and four possible findings. Quantitative ones hand you a graph or table and four statements about it. Both reward the same move: decide what the correct evidence would have to look like before you read any choice."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Underline the claim. Find the two things it links and the direction of the link.",
+          "Write the prediction: if this claim is true, then ___ should be higher, lower, or unchanged.",
+          "For graphs, read the axis labels and units first. Most errors are unit errors, not reasoning errors.",
+          "Eliminate any choice that is true but does not touch the claim. Correct facts that miss the point are the most common trap.",
+          "Eliminate any choice that supports the opposite direction, and any that adds a comparison the claim never made."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "A researcher hypothesizes that the reflective coating on a new roofing tile lowers indoor temperature mainly by cutting heat that arrives during the afternoon, not by improving overnight cooling.",
+        "question": "Which finding, if true, would most directly support the researcher's hypothesis?",
+        "choices": [
+          "Buildings with the coated tile were cooler than uncoated buildings at every hour of the day.",
+          "Buildings with the coated tile were 4 degrees cooler than uncoated buildings at 3 p.m. but nearly identical at 5 a.m.",
+          "The coated tile reflected more light in laboratory tests than any tile previously measured.",
+          "Residents of buildings with the coated tile reported using their air conditioning less often."
+        ],
+        "answer": 1,
+        "walkthrough": "The claim has two halves: afternoon heat matters, overnight cooling does not. The prediction is a big gap in the afternoon and no gap at night. Choice B is that prediction, stated in numbers. A actually undercuts the claim, an equal gap at every hour would mean the afternoon is not special. C is about the material in a lab, not indoor temperature over a day. D is a real effect but says nothing about which time of day produced it."
+      },
+      {
+        "type": "tip",
+        "body": "On graph questions, cover the choices and describe the graph in one sentence first: what goes up, what goes down, and where the lines cross. Then read."
+      },
+      {
+        "type": "trap",
+        "body": "A choice that is more dramatic than the claim is usually wrong. Evidence has to match the claim's size, not beat it."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Information and Ideas"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-ii-3",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "title": "Inference questions: finish the sentence the text started",
+    "minutes": 6,
+    "summary": "An SAT inference is not a guess. It is the one conclusion the passage forces. Look for the logical gap the text leaves open and fill it with the smallest possible step.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "The smallest step wins",
+        "body": "These questions usually end with a blank and the words most logically completes the text. The right answer is the statement that must be true given what you just read. Anything that requires outside knowledge, or one extra assumption, is wrong."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Find the structural signal right before the blank: however, therefore, but, because, this suggests.",
+          "Decide whether the blank continues the previous idea or reverses it.",
+          "Predict the missing piece in plain language before reading the choices.",
+          "Test each choice with the words must be true. If you can imagine the passage being true while the choice is false, cross it off.",
+          "Prefer the modest choice. Words like may, tends to, and at least survive scrutiny; always, proves, and never rarely do."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Archaeologists once assumed the tools at the site were made where they were found. But the stone is a type that outcrops only in a valley some ninety kilometers away, and the flakes struck off during shaping are absent from the site entirely. This suggests that ______",
+        "question": "Which choice most logically completes the text?",
+        "choices": [
+          "the tools were shaped elsewhere and carried to the site already finished.",
+          "the people at the site did not know how to make stone tools.",
+          "the valley ninety kilometers away was more densely populated than the site.",
+          "the tools were traded for food rather than made by their owners."
+        ],
+        "answer": 0,
+        "walkthrough": "Two facts: the stone comes from far away, and the debris from shaping is missing. Missing debris means the shaping did not happen here. Choice A is exactly that and nothing more. B goes further than the evidence, not shaping tools at this spot does not mean they lacked the skill. C invents a population comparison the passage never sets up. D adds a trade mechanism, which is plausible but not forced."
+      },
+      {
+        "type": "trap",
+        "body": "Plausible and forced are different standards. Several choices will be things a reasonable person might believe. Only one is something the passage makes unavoidable."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Information and Ideas"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-cs-1",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Words in Context",
+    "title": "Words in context: cover the blank and write your own word",
+    "minutes": 6,
+    "summary": "The hardest vocabulary questions use easy words in unusual senses. Predicting your own word before reading the choices beats recognizing definitions.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Context beats dictionary",
+        "body": "The tested word is almost never rare. It is a common word being used precisely. The passage always contains a clue, usually a restatement, a contrast, or an example, that pins the meaning down."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Cover the four choices with your hand or your eyes. This single habit is worth the most points on this question type.",
+          "Find the clue: a semicolon, a that is, a but, or an example that restates the idea.",
+          "Write your own word in the blank. A plain word is fine, you are not being graded on style.",
+          "Uncover the choices and keep only those that match your word's meaning and its charge, positive, negative, or neutral.",
+          "Plug the survivor back into the sentence and read the whole sentence again."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Critics initially found the composer's late works ______: the harmonies were plain, the melodies short, the orchestration stripped of the effects that had made her early symphonies famous.",
+        "question": "Which choice completes the text with the most logical and precise word?",
+        "choices": [
+          "austere",
+          "chaotic",
+          "ornate",
+          "derivative"
+        ],
+        "answer": 0,
+        "walkthrough": "The colon means the rest of the sentence defines the blank. Plain, short, stripped. Your own word might be bare or simple. Austere means severely plain, so it matches. Chaotic is a different kind of negative, disorder rather than plainness. Ornate is the opposite of stripped. Derivative would mean copied from others, which the sentence never suggests."
+      },
+      {
+        "type": "tip",
+        "body": "Charge is a fast filter. If the sentence is clearly critical, drop every warm-sounding choice before you compare fine shades of meaning."
+      },
+      {
+        "type": "trap",
+        "body": "Beware the choice that fits the topic but not the sentence. A music passage will offer musical-sounding words that do not match the actual blank."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Craft and Structure"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-cs-2",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Text Structure and Purpose",
+    "title": "Purpose questions: describe the job, not the topic",
+    "minutes": 6,
+    "summary": "Purpose questions ask what a sentence or passage is doing. Answer with a verb, then match. Choices that only describe the topic are decoys.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Function, not content",
+        "body": "The right answer to a purpose question begins with a verb: introduces, qualifies, illustrates, contrasts, concedes. If you find yourself picking a choice because it mentions the right subject matter, slow down. Every choice will mention the right subject matter."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read one sentence before and one sentence after the underlined portion. Purpose is always relative to neighbours.",
+          "Name the job in a single verb phrase, for example gives an example of the claim just made.",
+          "Check the verb in each choice first, before the rest of the sentence. Most choices die on their verb.",
+          "For whole-text purpose, ask whether the passage is mainly arguing, explaining, describing, or narrating."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Most guides claim that the species nests only in dead trees. Yet a 2019 survey along the river found more than a third of nests in living cottonwoods, several of them in trees with no visible decay at all. The guides may simply be repeating an early description that no one has rechecked.",
+        "question": "Which choice best describes the function of the second sentence in the text as a whole?",
+        "choices": [
+          "It provides evidence that complicates the claim made in the first sentence.",
+          "It explains why the species prefers dead trees for nesting.",
+          "It introduces a new species that nests in living trees.",
+          "It offers a theory about how an error entered the guidebooks."
+        ],
+        "answer": 0,
+        "walkthrough": "The sentence opens with Yet, so its job is to push back. It supplies survey numbers against the guides. Choice A names that job. B has the wrong direction, it would support the guides. C invents a second species. D describes the third sentence, not the second, a very common trap: the right function attached to the wrong sentence."
+      },
+      {
+        "type": "tip",
+        "body": "When two choices share a verb, the difference is scope. Check whether the choice describes the sentence or the entire paragraph."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Craft and Structure"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-cs-3",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Cross-Text Connections",
+    "title": "Two texts: map the disagreement before you read the question",
+    "minutes": 7,
+    "summary": "Paired passages are quick once you know each author's position and exactly where they part ways. Do that mapping first, every time.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Find the seam",
+        "body": "Two texts on the SAT rarely disagree about everything. They usually agree on a fact and disagree about what it means, or agree on the goal and disagree about the method. Your job is to locate that seam."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read Text 1. In your head, finish this sentence: the author thinks ___.",
+          "Read Text 2 and do the same. Do not reread Text 1 yet.",
+          "State the relationship in one line: agrees and extends, agrees on the fact but disagrees on the cause, or flatly disagrees.",
+          "The question usually asks how the author of Text 2 would respond to Text 1. Answer from your one-line map, then confirm with a specific sentence.",
+          "Eliminate choices that make either author more extreme than the text supports."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Text 1: Rooftop gardens cool a building because the plants shade the roof surface, which would otherwise absorb sunlight all afternoon.\n\nText 2: Shading matters, but measurements suggest most of the cooling comes from evaporation. A dry rooftop garden in drought conditions cools its building far less than a watered one, even though the shade is unchanged.",
+        "question": "Based on the texts, how would the author of Text 2 most likely respond to the explanation in Text 1?",
+        "choices": [
+          "By arguing that rooftop gardens do not actually cool buildings.",
+          "By agreeing that shading contributes but arguing that evaporation accounts for more of the effect.",
+          "By pointing out that Text 1 fails to consider the cost of installing a rooftop garden.",
+          "By noting that shade from nearby buildings produces the same cooling as a garden."
+        ],
+        "answer": 1,
+        "walkthrough": "Map it: both authors agree gardens cool buildings. The seam is the mechanism, shade versus evaporation. Text 2 opens with Shading matters, but, which is agreement plus a correction. Choice B is that exactly. A makes Text 2 far more extreme than it is. C introduces cost, which neither text mentions. D invents a comparison to neighbouring buildings."
+      },
+      {
+        "type": "trap",
+        "body": "Do not assume the second text must disagree. Sometimes it agrees and adds a limit or a condition, and choices built on flat disagreement are then all wrong."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Craft and Structure"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-ei-1",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical Synthesis",
+    "title": "Rhetorical synthesis: the goal sentence is the whole question",
+    "minutes": 6,
+    "summary": "You get bullet notes and a stated goal. Almost every point here comes from reading the goal precisely and refusing to be impressed by true-but-irrelevant choices.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Serve the goal, ignore the rest",
+        "body": "All four choices will be factually consistent with the notes. Only one does the job the question names. If the goal is to compare two things, the answer must mention both. If the goal is to explain a purpose, the answer must contain a reason."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read the goal sentence twice, before you read the notes. Underline the key verb: compare, emphasize, explain, introduce.",
+          "Turn the goal into a checklist. Compare X and Y means the sentence must name X, name Y, and state a relationship.",
+          "Skim the notes only for the items your checklist needs.",
+          "Score each choice against the checklist. Cross off any choice that misses one item, even if everything it says is true.",
+          "If two choices survive, prefer the one that puts the emphasis where the goal asks for it."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Notes:\n- The Cassini probe launched in 1997 and reached Saturn in 2004.\n- The Juno probe launched in 2011 and reached Jupiter in 2016.\n- Cassini traveled about 3.5 billion kilometers before arrival.\n- Juno traveled about 2.8 billion kilometers before arrival.\n\nGoal: emphasize how long Cassini's journey took compared with Juno's.",
+        "question": "Which choice most effectively uses relevant information from the notes to accomplish the goal?",
+        "choices": [
+          "Cassini launched in 1997, and Juno launched in 2011.",
+          "Cassini spent about seven years in transit before reaching Saturn, while Juno reached Jupiter in about five.",
+          "Cassini traveled about 3.5 billion kilometers, farther than Juno's 2.8 billion.",
+          "Both Cassini and Juno were sent to study the outer planets of the solar system."
+        ],
+        "answer": 1,
+        "walkthrough": "The checklist from the goal: mention Cassini's duration, mention Juno's duration, compare them. Choice B has all three, and the durations come straight from subtracting the note years. A gives launch dates, not journey lengths. C compares distance, which is a real comparison but the wrong one. D is true background with no comparison at all."
+      },
+      {
+        "type": "tip",
+        "body": "Duration questions usually require one subtraction. Do it before reading the choices so you recognize the number instantly."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Expression of Ideas"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-ei-2",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "title": "Transitions: name the relationship before you look",
+    "minutes": 5,
+    "summary": "Transition questions test one thing: the logical relationship between two sentences. Decide it in your own words, then pick the word that means that.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Four buckets",
+        "body": "Nearly every SAT transition falls into one of four relationships. Same direction: also, moreover, in addition, similarly. Opposite direction: however, nevertheless, on the other hand, still. Cause and effect: therefore, consequently, as a result, thus. Example or restatement: for instance, specifically, in other words."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Cover the choices. Read the sentence before the blank and the sentence after it.",
+          "Say the relationship out loud in plain words: this is the opposite, this is the result, this is an example.",
+          "Pick the bucket, then choose the choice from that bucket.",
+          "If two choices come from the same bucket, one of them is being used wrongly. Check whether it needs a comparison, like similarly, or a concession, like admittedly."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "The alloy is far lighter than steel and resists corrosion in salt water. ______ its cost per kilogram is roughly six times higher, which has kept it out of most commercial shipbuilding.",
+        "question": "Which choice completes the text with the most logical transition?",
+        "choices": [
+          "Therefore,",
+          "However,",
+          "For example,",
+          "Similarly,"
+        ],
+        "answer": 1,
+        "walkthrough": "The first sentence lists advantages. The second gives a drawback that blocks its use. That is a reversal, so the opposite-direction bucket. However is the only word from that bucket. Therefore would mean the high cost follows from being light and corrosion resistant, which is nonsense. For example would make the price an instance of an advantage. Similarly would claim the two sentences point the same way."
+      },
+      {
+        "type": "trap",
+        "body": "A transition can be a real word used in the wrong role. Consequently and nevertheless both sound formal, but only one of them reverses direction."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Expression of Ideas"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-sec-1",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Boundaries",
+    "title": "Sentence boundaries: count the complete sentences",
+    "minutes": 6,
+    "summary": "Half of all punctuation questions are decided by one count: how many independent clauses are on either side of the punctuation mark.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "The rule that decides it",
+        "body": "An independent clause has a subject and a verb and could stand alone. If you have two independent clauses, you may join them with a period, a semicolon, a colon when the second explains the first, or a comma plus a coordinating conjunction such as and, but, or, so, for, nor, yet. A comma alone is never enough. That error is a comma splice."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read the words before the punctuation. Ask: could this be a sentence on its own?",
+          "Read the words after it and ask the same question.",
+          "Both complete: use a period, a semicolon, a colon, or a comma plus and, but, or, so.",
+          "Only one complete: never use a semicolon and never use a period. A comma is usually right, or no punctuation at all.",
+          "If a choice adds a word like therefore or however, recount. However does not join sentences, so a comma before it and a comma after it creates a splice."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "The colony collapsed within two seasons ______ the queen had stopped laying by midsummer and no replacement was ever raised.",
+        "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+        "choices": [
+          ", the",
+          "; the",
+          "the",
+          ", which the"
+        ],
+        "answer": 1,
+        "walkthrough": "Before the blank, The colony collapsed within two seasons is a complete sentence. After it, the queen had stopped laying by midsummer and no replacement was ever raised is also complete. Two complete sentences need a strong join, and the semicolon in B is the only one offered. A is a comma splice, a comma alone can never hold two sentences together. C runs them straight into each other with no punctuation at all. D turns the second half into a broken relative clause that no longer has a working subject."
+      },
+      {
+        "type": "tip",
+        "body": "A colon also works when the second sentence explains the first, which is true here. On the real test you will not be given two correct choices, so use the count to eliminate, then read for meaning."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Standard English Conventions"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-sec-2",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuation within a sentence",
+    "title": "Commas, dashes, and the removable middle",
+    "minutes": 6,
+    "summary": "Most within-sentence punctuation questions are about extra information. If a phrase can be lifted out and leave a working sentence, it needs a matching pair of marks.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Matching pairs",
+        "body": "Non-essential information gets fenced off with two commas, two dashes, or two parentheses. The two marks must match: a comma cannot close what a dash opened. If lifting the phrase out breaks the sentence or changes which thing you mean, the information is essential and takes no punctuation at all."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Find the phrase that could be removed. Read the sentence without it.",
+          "Still works and still means the same thing? It is non-essential, so fence it with a matching pair.",
+          "Breaks or changes the meaning? Essential, so no commas.",
+          "Check the opening mark and the closing mark are the same type.",
+          "Never put a single comma between a subject and its verb, no matter how long the subject is."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "The violinist ______ spent three years restoring an instrument that had been stored in a damp attic since the war.",
+        "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+        "choices": [
+          "who trained as a cabinetmaker before turning to music,",
+          ", who trained as a cabinetmaker before turning to music,",
+          ", who trained as a cabinetmaker before turning to music",
+          "who trained as a cabinetmaker before turning to music"
+        ],
+        "answer": 1,
+        "walkthrough": "The clause about cabinetmaking is background: remove it and The violinist spent three years restoring an instrument still works and still refers to the same person. So it is non-essential and needs a matching pair of commas, one before who and one after music. Choice B is the only one with both. A and C each have one comma, which strands the phrase. D omits punctuation entirely, which would mark the clause as essential."
+      },
+      {
+        "type": "trap",
+        "body": "A very long phrase feels like it needs a comma to breathe. Length is not a rule. Removability is."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Standard English Conventions"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "rw-sec-3",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Form, structure, and sense",
+    "title": "Verbs, pronouns, and modifiers: find the word it belongs to",
+    "minutes": 7,
+    "summary": "Agreement and modifier questions all resolve the same way: locate the word the underlined part refers to, and ignore everything between them.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Cross out the middle",
+        "body": "SAT sentences bury the subject under prepositional phrases so that a nearby noun tempts you into the wrong number. The verb agrees with the subject, never with the noun closest to it. The same trick appears with pronouns: they agree with what they replace, not with what sits beside them."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "For verbs, cross out every phrase starting with of, in, along with, as well as, or between. Then read subject plus verb alone.",
+          "Remember that collective subjects like the team and each of the students are singular.",
+          "For pronouns, name the noun out loud. If you cannot name one specific noun, the pronoun is ambiguous and the choice is wrong.",
+          "For modifiers, find the opening phrase and check the very next noun. Whatever follows the comma must be the thing doing the action.",
+          "For verb tense, look for a time marker elsewhere in the sentence, such as since 1990, last year, or by the time."
+        ]
+      },
+      {
+        "type": "example",
+        "passage": "Having been sealed in clay jars for nearly two thousand years, ______",
+        "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+        "choices": [
+          "researchers found the scrolls remarkably well preserved.",
+          "the scrolls were remarkably well preserved when researchers found them.",
+          "it was remarkable how well preserved the scrolls were to researchers.",
+          "finding the scrolls well preserved was remarkable to researchers."
+        ],
+        "answer": 1,
+        "walkthrough": "The opening phrase describes whatever was sealed in clay jars. That has to be the scrolls, so the scrolls must be the first noun after the comma. Only choice B does that. A puts researchers there, which claims the researchers spent two thousand years in a jar. C starts with it, which was not sealed in anything. D starts with the act of finding, which also was not sealed in a jar."
+      },
+      {
+        "type": "tip",
+        "body": "Dangling modifiers are easy points once you know the pattern. Any question whose sentence opens with an -ing or -ed phrase followed by a comma is testing this rule."
+      }
+    ],
+    "drill": {
+      "section": "rw",
+      "domains": [
+        "Standard English Conventions"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-alg-1",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "title": "Linear equations: translate, then isolate",
+    "minutes": 6,
+    "summary": "Most Algebra misses are translation errors, not arithmetic errors. Build the equation deliberately and the solving is mechanical.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Every linear word problem has the same shape",
+        "body": "Something starts at a fixed amount and changes by the same amount per unit. That is y equals mx plus b, where b is the starting value and m is the rate. Once you name what x is, in words and with units, the rest follows."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Write down what x stands for, including units. Write it on the screen or say it aloud.",
+          "Find the starting value, the number that applies when x is zero. That is b.",
+          "Find the per-unit change. Increases are positive, decreases are negative. That is m.",
+          "Translate the question into an equation: set the expression equal to the target value.",
+          "Solve, then reread the question. It often asks for something other than x, such as x plus 2 or the total."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "A pool contains 240 gallons of water and is being drained at a constant rate of 15 gallons per minute. After how many minutes will the pool contain 90 gallons?",
+        "choices": [
+          "6",
+          "10",
+          "16",
+          "22"
+        ],
+        "answer": 1,
+        "walkthrough": "Let x be minutes of draining. Start value is 240, so b equals 240. Draining means the rate is negative, so m equals negative 15. The amount left is 240 minus 15x. Set that equal to 90: 240 minus 15x equals 90, so 15x equals 150 and x equals 10. Check it: 10 minutes times 15 gallons is 150 gallons drained, and 240 minus 150 is 90."
+      },
+      {
+        "type": "tip",
+        "body": "No solution and infinitely many solutions are pure pattern recognition. If both sides simplify to the same slope but different constants, there is no solution. If both sides become identical, there are infinitely many."
+      },
+      {
+        "type": "trap",
+        "body": "Answer choices often include the value of x when the question asked for something built from x. Underline what is being asked before you start solving."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Algebra"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-alg-2",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "title": "Systems: pick elimination or substitution on purpose",
+    "minutes": 6,
+    "summary": "Both methods always work. Choosing the right one for the shape of the system cuts the work roughly in half.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Read the shape first",
+        "body": "If one variable is already alone on a side, or has a coefficient of 1, substitute. If the same variable has matching or opposite coefficients, or coefficients that scale easily, eliminate. If the question asks for a combination such as x plus y, look for a shortcut that produces it directly."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Line both equations up in the same order, with variables on the left and constants on the right.",
+          "Scan for a coefficient of 1 or negative 1. If you see one, substitute.",
+          "Otherwise multiply one equation so a variable cancels when you add. Then add the equations.",
+          "Solve for the first variable, then plug back into the simpler original equation.",
+          "If the question wants x plus y or x minus y, try adding or subtracting the two equations before solving for either variable."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "If 3x plus 2y equals 19 and 3x minus 2y equals 5, what is the value of x plus y?",
+        "choices": [
+          "5",
+          "6.5",
+          "7.5",
+          "9"
+        ],
+        "answer": 2,
+        "walkthrough": "The y coefficients are already opposites, so eliminate by adding. Adding gives 6x equals 24, so x equals 4. Substitute into the first equation: 12 plus 2y equals 19, so 2y equals 7 and y equals 3.5. Then x plus y equals 4 plus 3.5, which is 7.5. Notice the shortcut too, adding the equations immediately handled y with no fractions."
+      },
+      {
+        "type": "tip",
+        "body": "For questions about the number of solutions: same slope and same intercept means infinitely many, same slope and different intercept means none, different slopes means exactly one."
+      },
+      {
+        "type": "trap",
+        "body": "After solving for one variable, plug back into the original equation, not into a version you rearranged. Rearrangement is where sign errors hide."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Algebra"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-alg-3",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear functions and inequalities",
+    "title": "Slope, intercepts, and what they mean in context",
+    "minutes": 6,
+    "summary": "Interpretation questions give away free points if you can attach units to slope and intercept without hesitating.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Units make the interpretation obvious",
+        "body": "In y equals mx plus b, the slope m carries the units of y per unit of x, and it is the change in y for a one-unit increase in x. The y-intercept b is the value of y when x is zero, so it is the starting amount. The x-intercept is when y hits zero, which in context is usually when something runs out."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Write the units of x and the units of y from the problem's own wording.",
+          "Slope units are y units per x unit. Say the sentence: every extra one x unit changes y by m.",
+          "Intercept: set x to zero and read what the situation looks like at the start.",
+          "For inequalities, solve exactly like an equation, but flip the sign whenever you multiply or divide by a negative number.",
+          "For a system of inequalities, test the origin. If the origin satisfies the inequality, shade the side containing it."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "The cost C, in dollars, of printing n copies of a booklet is given by C equals 0.45n plus 60. Which statement best interprets the number 0.45?",
+        "choices": [
+          "The fixed setup cost of a print run, in dollars.",
+          "The cost of printing each additional copy, in dollars.",
+          "The number of copies that can be printed for one dollar.",
+          "The total cost of printing 60 copies, in dollars."
+        ],
+        "answer": 1,
+        "walkthrough": "x is n, measured in copies. y is C, measured in dollars. So the slope has units of dollars per copy, and it says every extra copy adds 0.45 dollars. That is choice B. Choice A describes the 60, the value when n is zero. C inverts the units, dollars per copy is not copies per dollar. D misreads the 60 as a quantity of copies rather than a fixed cost."
+      },
+      {
+        "type": "tip",
+        "body": "If a choice states the interpretation with the units reversed, it is wrong. Checking units alone eliminates one or two choices on nearly every interpretation question."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Algebra"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-adv-1",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Quadratic equations and their graphs",
+    "title": "Quadratics: choose the form that answers the question",
+    "minutes": 7,
+    "summary": "Standard, factored, and vertex form each hand you a different fact for free. Convert to the one the question wants instead of solving blind.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Three forms, three gifts",
+        "body": "Standard form, y equals ax squared plus bx plus c, gives you the y-intercept c immediately. Factored form, y equals a times x minus p times x minus q, gives you the roots p and q. Vertex form, y equals a times the quantity x minus h squared plus k, gives you the vertex at h comma k, which is the maximum or minimum."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read what the question wants: a root, the vertex, the y-intercept, or the number of solutions.",
+          "Roots wanted? Factor, or use the quadratic formula if factoring is not clean.",
+          "Vertex wanted? Use the axis of symmetry, x equals negative b over 2a, then plug back in to get the y value.",
+          "Number of real solutions? Compute the discriminant, b squared minus 4ac. Positive gives two, zero gives one, negative gives none.",
+          "The vertex always sits halfway between the two roots. If you know both roots, average them."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "A ball is thrown so that its height in feet after t seconds is h equals negative 16t squared plus 64t plus 5. What is the maximum height, in feet, that the ball reaches?",
+        "choices": [
+          "64",
+          "69",
+          "80",
+          "133"
+        ],
+        "answer": 1,
+        "walkthrough": "Maximum means vertex, and a is negative so the parabola opens downward. The axis of symmetry is t equals negative b over 2a, which is negative 64 over 2 times negative 16, or 2 seconds. Plug t equals 2 back in: negative 16 times 4 is negative 64, plus 64 times 2 which is 128, plus 5. That is negative 64 plus 128 plus 5, which equals 69. Choice A is the tempting mistake of reading 64 straight off the equation. Choice C forgets the plus 5 and mishandles a sign."
+      },
+      {
+        "type": "trap",
+        "body": "The vertex t value is the time, not the height. Half of all misses on this question type are people who stop after finding the axis of symmetry."
+      },
+      {
+        "type": "tip",
+        "body": "The Desmos calculator finds a vertex instantly, and it is worth using here. Type the equation, then click the turning point and Desmos labels the coordinates."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Advanced Math"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-adv-2",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Exponential functions and radicals",
+    "title": "Exponential growth: get the base right",
+    "minutes": 6,
+    "summary": "Linear means adding the same amount. Exponential means multiplying by the same factor. Reading which one a problem describes is most of the work.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Percent change becomes a multiplier",
+        "body": "The exponential model is y equals a times b to the power x, where a is the starting value and b is the growth factor. An increase of r percent means b equals 1 plus r over 100. A decrease of r percent means b equals 1 minus r over 100. Doubling means b equals 2, halving means b equals 0.5."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Decide the model. Same amount added each period is linear. Same percent or same factor is exponential.",
+          "Identify a, the amount at time zero.",
+          "Convert the percent into the multiplier b. Grows 8 percent becomes 1.08. Falls 8 percent becomes 0.92.",
+          "Check the exponent's units. If the rate is per year but x is in months, the exponent is x over 12.",
+          "For radicals, remember that a to the power one over n is the nth root of a, and squaring both sides can create solutions that do not work. Always check them."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "A colony of 500 bacteria increases by 20 percent every hour. Which equation gives the population P after h hours?",
+        "choices": [
+          "P equals 500 plus 20h",
+          "P equals 500 times 0.20 to the power h",
+          "P equals 500 times 1.20 to the power h",
+          "P equals 500 times 20 to the power h"
+        ],
+        "answer": 2,
+        "walkthrough": "Increases by 20 percent every hour is a repeated percent change, so the model is exponential. The starting value a is 500. Growth of 20 percent gives b equals 1 plus 0.20, which is 1.20. So P equals 500 times 1.20 to the power h. Choice A models adding 20 each hour, which is linear. Choice B uses 0.20 as the base, which would shrink the colony by 80 percent an hour. Choice D multiplies by 20 each hour, which is a 1900 percent increase."
+      },
+      {
+        "type": "trap",
+        "body": "The single most common error is using the percent itself as the base. Twenty percent growth is a base of 1.20, never 0.20 and never 20."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Advanced Math"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-adv-3",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Function notation and nonlinear systems",
+    "title": "Function notation: f of x is just a machine",
+    "minutes": 6,
+    "summary": "Notation questions look abstract and are almost always mechanical once you read f of x as put this in, get that out.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Input, output, and the graph",
+        "body": "f of 3 equals 7 means three facts at once: the input is 3, the output is 7, and the point 3 comma 7 lies on the graph. Composition, f of g of x, means run g first, then feed its result into f. Always work from the inside out."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Replace x everywhere it appears, including inside exponents and parentheses.",
+          "For composition, evaluate the inner function completely and write down the number before touching the outer one.",
+          "For a graph question, translate the notation to a point. f of a equals 0 means the graph crosses the x-axis at a.",
+          "For a nonlinear system, set the two expressions equal and solve. The solutions are the x-coordinates of the intersection points.",
+          "Substituting a whole expression? Wrap it in parentheses before you simplify. Missing parentheses is the top source of sign errors."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "If f of x equals x squared minus 4x and g of x equals x plus 3, what is the value of f of g of 1?",
+        "choices": [
+          "negative 3",
+          "0",
+          "12",
+          "negative 4"
+        ],
+        "answer": 1,
+        "walkthrough": "Work inside out. First g of 1 equals 1 plus 3, which is 4. Now compute f of 4: 4 squared is 16, minus 4 times 4 which is 16, so 16 minus 16 equals 0. The answer is 0. Choice A, negative 3, is the value of f of 1, which catches anyone who evaluates the outer function first."
+      },
+      {
+        "type": "tip",
+        "body": "A nonlinear system with no real solution means the graphs never meet. On a quadratic set equal to a line, that shows up as a negative discriminant."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Advanced Math"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-psda-1",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios, rates, and percentages",
+    "title": "Percent change and the of-what problem",
+    "minutes": 6,
+    "summary": "Percent questions go wrong at one place: using the wrong number as the base. Name the base out loud and the arithmetic is easy.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Percent of what",
+        "body": "Percent change is the change divided by the original amount, times 100. The word original is doing all the work. A price that rises 20 percent and then falls 20 percent does not return to where it started, because the second 20 percent is taken from a larger number."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Write down the base, the number that comes after the word of or before the word to.",
+          "Percent change equals new minus old, divided by old.",
+          "Chain percent changes by multiplying factors, not by adding percentages. Up 20 then down 20 is 1.2 times 0.8, which is 0.96, a 4 percent net loss.",
+          "For unit rates, write the units as a fraction and cancel them the way you cancel numbers.",
+          "Sanity check the size. An answer larger than 100 percent for a small change means you divided by the wrong number."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "A jacket originally priced at 80 dollars is marked down to 68 dollars. By what percentage was the price reduced?",
+        "choices": [
+          "12 percent",
+          "15 percent",
+          "17.6 percent",
+          "85 percent"
+        ],
+        "answer": 1,
+        "walkthrough": "The base is the original price, 80. The change is 80 minus 68, which is 12. So the percent reduction is 12 divided by 80, which equals 0.15, or 15 percent. Choice A is the raw dollar change mistaken for a percent. Choice C divides by 68, the new price, instead of the original. Choice D is the percent the new price is of the old one, which answers a different question."
+      },
+      {
+        "type": "trap",
+        "body": "Percent of and percent less than are different questions. 68 is 85 percent of 80, but it is 15 percent less than 80. Read which one is being asked."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Problem-Solving and Data Analysis"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-psda-2",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Statistics: center and spread",
+    "title": "Mean, median, and what an outlier does to each",
+    "minutes": 6,
+    "summary": "You will be asked how a data change moves the mean and the median. Knowing which measure resists outliers answers most of these without any calculation.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Resistant and not resistant",
+        "body": "The mean uses every value, so a single extreme value drags it. The median is a position, so an extreme value barely moves it. Standard deviation measures spread, how far values sit from the mean, and it grows when data is more spread out, regardless of where the center is."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Sort the values before you look for a median. Every median error starts with unsorted data.",
+          "With an even count, the median is the average of the two middle values.",
+          "Adding a value far above everything pulls the mean up and leaves the median nearly still.",
+          "For standard deviation questions, do not compute it. Compare how tightly clustered each data set is.",
+          "For a frequency table, remember each row represents many values. Multiply value by frequency for the mean and count positions for the median."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "The list 4, 6, 7, 9, 10 has a mean of 7.2 and a median of 7. If the value 40 is added to the list, which statement is true?",
+        "choices": [
+          "The mean increases and the median increases by the same amount.",
+          "The mean increases substantially while the median increases only slightly.",
+          "The mean stays the same and the median increases.",
+          "Both the mean and the median stay the same."
+        ],
+        "answer": 1,
+        "walkthrough": "The new list is 4, 6, 7, 9, 10, 40. The sum was 36, now it is 76, and there are 6 values, so the mean becomes about 12.7, up more than 5. The median with six values is the average of the third and fourth, which are 7 and 9, giving 8. So the median rose by only 1. That is the resistant-versus-not pattern, and choice B states it."
+      },
+      {
+        "type": "tip",
+        "body": "When a question mentions a survey sample and a margin of error, the conclusion may only extend to the population that was actually sampled. Choices that generalize beyond it are wrong."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Problem-Solving and Data Analysis"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-psda-3",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Probability and two-way tables",
+    "title": "Two-way tables: the denominator is the question",
+    "minutes": 5,
+    "summary": "Every probability question from a table comes down to picking the right total. The wording tells you which row, column, or grand total to divide by.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Three denominators",
+        "body": "Probability of A and B uses the grand total. Probability of A given B, which shows up as of those who or among the students who, uses only B's row or column total. Probability of A or B uses the grand total but requires you not to double count the overlap."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Read the question and underline the group being selected from. That group is your denominator.",
+          "Find that group's total in the margin of the table.",
+          "Find the count that satisfies the condition. That is your numerator.",
+          "Divide, then check that the result is at most 1 and makes intuitive sense.",
+          "Phrases like given that, of those, and among all signal a conditional, so use the smaller subgroup total."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "In a survey of 200 students, 120 take a language class and, of those, 45 also play a sport. If a student who takes a language class is selected at random, what is the probability that the student plays a sport?",
+        "choices": [
+          "45 over 200",
+          "45 over 120",
+          "120 over 200",
+          "75 over 120"
+        ],
+        "answer": 1,
+        "walkthrough": "The phrase a student who takes a language class is selected sets the group. You are only choosing from the 120 language students, so 120 is the denominator. Of those, 45 play a sport, so the probability is 45 over 120, which is 0.375. Choice A uses the grand total, which answers the different question of picking any student at random and getting one who does both."
+      },
+      {
+        "type": "trap",
+        "body": "The grand total is always the most visible number in a table, which is exactly why it is the most common wrong denominator."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Problem-Solving and Data Analysis"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-geo-1",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Lines, angles, and triangles",
+    "title": "Angles and similar triangles: label the picture",
+    "minutes": 6,
+    "summary": "Geometry rewards writing on the figure. Fill in every angle you can deduce before you look for the one you want.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "The facts you will reuse constantly",
+        "body": "Angles in a triangle sum to 180 degrees. Angles on a straight line sum to 180. Vertical angles are equal. When a transversal crosses parallel lines, corresponding and alternate angles are equal. Similar triangles have equal angles and proportional sides, and the exterior angle of a triangle equals the sum of the two remote interior angles."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Copy the figure and write in every angle you can determine, even ones you think you will not need.",
+          "Look for parallel marks and equal-length ticks. They are given for a reason and are never decoration.",
+          "Two triangles sharing an angle plus a parallel line means similar. Write the ratio as small over large, consistently.",
+          "Set up the proportion with matching sides in matching positions, then cross-multiply.",
+          "Check the answer against the picture's scale. If a side comes out longer than the whole figure, you inverted the ratio."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "In a triangle, one angle measures 40 degrees and a second measures 75 degrees. An exterior angle is formed by extending the side adjacent to both of these angles. What is the measure of the exterior angle at the third vertex?",
+        "choices": [
+          "65 degrees",
+          "105 degrees",
+          "115 degrees",
+          "140 degrees"
+        ],
+        "answer": 2,
+        "walkthrough": "The third interior angle is 180 minus 40 minus 75, which is 65 degrees. The exterior angle at that vertex is on a straight line with it, so it equals 180 minus 65, which is 115 degrees. You can also use the remote interior angle shortcut directly: the exterior angle equals 40 plus 75, which is also 115. Choice A stops at the interior angle."
+      },
+      {
+        "type": "tip",
+        "body": "The remote exterior angle rule turns a two-step problem into a one-step problem. It is worth memorizing: exterior angle equals the sum of the two non-adjacent interior angles."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Geometry and Trigonometry"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-geo-2",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circles",
+    "title": "Circles: equations, arcs, and radians",
+    "minutes": 6,
+    "summary": "Circle questions split into two piles: the equation of a circle, and arcs and sectors. Each has one formula that does most of the work.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "The two toolkits",
+        "body": "The equation of a circle is x minus h squared plus y minus k squared equals r squared, with center h comma k and radius r. For arcs and sectors, everything is a fraction of the whole: an arc is the central angle over 360 times the circumference, and a sector is the central angle over 360 times the area."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Given an equation in expanded form, complete the square in x and again in y to recover the center and radius.",
+          "Remember r squared, not r, sits on the right side. Take the square root before answering.",
+          "For arc length or sector area, write the fraction of the circle first, then multiply by the whole.",
+          "To convert degrees to radians multiply by pi over 180. To go the other way multiply by 180 over pi.",
+          "An inscribed angle is half the central angle that subtends the same arc."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "A circle has the equation x squared plus y squared minus 6x plus 4y equals 12. What is the radius of the circle?",
+        "choices": [
+          "5",
+          "12",
+          "25",
+          "the square root of 12"
+        ],
+        "answer": 0,
+        "walkthrough": "Complete the square in each variable. For x squared minus 6x, half of negative 6 is negative 3, and negative 3 squared is 9, so add 9. For y squared plus 4y, half of 4 is 2, and 2 squared is 4, so add 4. Add both to the right side too: 12 plus 9 plus 4 equals 25. The equation becomes x minus 3 squared plus y plus 2 squared equals 25. So r squared equals 25 and the radius is 5. Choice C is the trap of reporting r squared instead of r."
+      },
+      {
+        "type": "trap",
+        "body": "The sign flips when you read the center. x minus 3 squared means the center's x-coordinate is positive 3, and y plus 2 squared means the y-coordinate is negative 2."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Geometry and Trigonometry"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "m-geo-3",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles and trigonometry",
+    "title": "Right triangles: SOHCAHTOA and the two special triangles",
+    "minutes": 6,
+    "summary": "Recognizing the special right triangles saves real time, and one identity about complementary angles turns up almost every test.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "What to have memorized",
+        "body": "Sine is opposite over hypotenuse, cosine is adjacent over hypotenuse, tangent is opposite over adjacent. The 30-60-90 triangle has sides in the ratio 1, root 3, 2. The 45-45-90 has sides 1, 1, root 2. The common Pythagorean triples are 3-4-5, 5-12-13, and 8-15-17, along with their multiples."
+      },
+      {
+        "type": "steps",
+        "heading": "The method",
+        "items": [
+          "Mark the right angle and the reference angle. Then label each side opposite, adjacent, or hypotenuse relative to that reference angle.",
+          "Check for a triple or a special triangle before reaching for the Pythagorean theorem.",
+          "Pick the ratio that uses the side you know and the side you want.",
+          "For complementary angles, use sine of x equals cosine of 90 minus x. Questions love this identity.",
+          "The hypotenuse is always the longest side. If your answer says otherwise, you mislabeled."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "In a right triangle, the sine of angle A equals 0.6. What is the cosine of the angle complementary to angle A?",
+        "choices": [
+          "0.4",
+          "0.6",
+          "0.8",
+          "It cannot be determined."
+        ],
+        "answer": 1,
+        "walkthrough": "The identity is sine of A equals cosine of 90 minus A, and the angle complementary to A is exactly 90 minus A. So the cosine of that complementary angle equals the sine of A, which is 0.6. No triangle sketch is needed. Choice C is what you would get by computing the cosine of A itself, using the 3-4-5 triangle, which answers a different question."
+      },
+      {
+        "type": "tip",
+        "body": "Whenever a question mentions both sine and cosine of two angles that add to 90, the answer is almost always the identity rather than a calculation."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Geometry and Trigonometry"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "d-1",
+    "section": "math",
+    "domain": "Desmos",
+    "skill": "Solving by graphing",
+    "title": "Desmos move 1: never solve an equation by hand again",
+    "minutes": 5,
+    "summary": "Any equation with one variable can be solved by graphing both sides and reading the intersection. This is the single highest-value calculator skill on the test.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Why this works",
+        "body": "An equation says two expressions are equal. Graph the left side as one function and the right side as another, and the x-coordinate where the curves cross is exactly the value that makes them equal. It works for linear, quadratic, exponential, radical, and absolute value equations without changing your approach."
+      },
+      {
+        "type": "desmos",
+        "heading": "Type this in",
+        "items": [
+          "y = <the entire left side of the equation>",
+          "y = <the entire right side of the equation>",
+          "Click the point where the two curves cross. Desmos labels its coordinates.",
+          "Read the x-coordinate. That is your solution.",
+          "If the curves cross more than once, there is more than one solution. Check which one the question wants."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "Solve 3 times the quantity x minus 2, plus 5, equals x squared minus 5, for the positive value of x.",
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "answer": 2,
+        "walkthrough": "Enter y equals 3 times the quantity x minus 2, plus 5 on the first line, then y equals x squared minus 5 on the second. The curves cross twice, at x equals negative 1 and at x equals 4. The question asks for the positive value, so the answer is 4. Check it by hand: the left side is 3 times 2 plus 5, which is 11, and the right side is 16 minus 5, which is also 11."
+      },
+      {
+        "type": "tip",
+        "body": "If the intersection is off screen, zoom out with the minus button or drag the graph. You can also type a rough window by editing the axis settings in the wrench menu."
+      },
+      {
+        "type": "trap",
+        "body": "Graph the whole side, not part of it. Forgetting to include a constant is the usual reason the intersection lands somewhere unexpected."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Algebra",
+        "Advanced Math"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "d-2",
+    "section": "math",
+    "domain": "Desmos",
+    "skill": "Systems and intersections",
+    "title": "Desmos move 2: systems, inequalities, and shaded regions",
+    "minutes": 5,
+    "summary": "Systems of equations and systems of inequalities both become picture problems. Type both lines and look.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "One picture, both answers",
+        "body": "A system of two equations is solved at the intersection point, which gives you x and y at the same time. A system of inequalities is solved by the overlap of the shaded regions, and Desmos shades automatically when you type an inequality sign."
+      },
+      {
+        "type": "desmos",
+        "heading": "Type this in",
+        "items": [
+          "Enter each equation on its own line, in any form. Desmos does not need y isolated.",
+          "Click the intersection dot to read x and y together.",
+          "For inequalities, type the inequality directly, for example y is greater than 2x minus 1, and Desmos shades the solution region.",
+          "The overlapping darker area is the solution set of the system.",
+          "To test whether a specific point is a solution, type the point as an ordered pair and see whether it lands in the overlap."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "The system consists of y equals 2x plus 1 and y equals negative x plus 7. What is the value of x plus y at the solution?",
+        "choices": [
+          "2",
+          "5",
+          "7",
+          "9"
+        ],
+        "answer": 2,
+        "walkthrough": "Type both equations. The lines cross at the point 2 comma 5, which Desmos labels when you click it. So x equals 2, y equals 5, and x plus y equals 7. That took about eight seconds, and it removes any chance of an arithmetic slip during substitution."
+      },
+      {
+        "type": "tip",
+        "body": "Desmos will graph an equation like 3x plus 2y equals 12 without any rearranging. Do not waste time solving for y first."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Algebra"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "d-3",
+    "section": "math",
+    "domain": "Desmos",
+    "skill": "Quadratics in Desmos",
+    "title": "Desmos move 3: vertex, roots, and maximum values in one click",
+    "minutes": 5,
+    "summary": "Desmos labels every turning point and every x-intercept. Quadratic questions about maximums, minimums, and roots become reading exercises.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Grey dots are answers",
+        "body": "When you graph a parabola, Desmos puts faint dots at the vertex and at each x-intercept. Clicking one shows its exact coordinates. That covers maximum height, minimum cost, break-even points, and how many real solutions the equation has."
+      },
+      {
+        "type": "desmos",
+        "heading": "Type this in",
+        "items": [
+          "Graph the quadratic exactly as written in the problem, including negative leading coefficients.",
+          "Click the peak or valley to read the vertex. The y-coordinate is the maximum or minimum value.",
+          "Click each x-intercept to read the roots.",
+          "Count the x-intercepts to answer how many real solutions there are: two crossings, one touch, or none.",
+          "For a question about the axis of symmetry, read the vertex's x-coordinate."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "For h equals negative 16t squared plus 64t plus 5, what is the maximum value of h?",
+        "choices": [
+          "2",
+          "64",
+          "69",
+          "133"
+        ],
+        "answer": 2,
+        "walkthrough": "Type y equals negative 16x squared plus 64x plus 5, since Desmos uses x as the variable. The parabola opens downward and its peak sits at 2 comma 69. The x-coordinate 2 is the time and the y-coordinate 69 is the height, so the maximum value is 69. Choice A catches anyone who clicks the vertex and reads the wrong coordinate."
+      },
+      {
+        "type": "trap",
+        "body": "Desmos graphs in x and y. If your problem uses t, h, or n, retype it in x and remember which real quantity each axis stands for."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Advanced Math"
+      ],
+      "count": 5
+    }
+  },
+  {
+    "id": "d-4",
+    "section": "math",
+    "domain": "Desmos",
+    "skill": "Tables, statistics, and lists",
+    "title": "Desmos move 4: tables, means, and lines of best fit",
+    "minutes": 6,
+    "summary": "Desmos does statistics. A list gives you the mean and median instantly, and a table plus a regression gives you the line of best fit.",
+    "blocks": [
+      {
+        "type": "concept",
+        "heading": "Lists and regressions",
+        "body": "Typing a list in square brackets creates a data set you can run functions on. Typing mean of that list returns the average. Adding a table and then a regression line fits a model to the points, and Desmos reports the slope and intercept it found."
+      },
+      {
+        "type": "desmos",
+        "heading": "Type this in",
+        "items": [
+          "For a data set: L equals the list of values in square brackets, separated by commas.",
+          "Then type mean of L, or median of L, or total of L, each on its own line.",
+          "For a best-fit line, click the plus button and add a table, then type your x values and y values into the columns.",
+          "On a new line type y sub 1 tilde m times x sub 1 plus b. Desmos reports the values of m and b it fitted.",
+          "Read the slope m as the predicted change in y per one unit of x, which is what interpretation questions ask for."
+        ]
+      },
+      {
+        "type": "example",
+        "question": "A data set is 4, 6, 7, 9, 10, 40. What is the mean, rounded to the nearest tenth?",
+        "choices": [
+          "8.0",
+          "9.5",
+          "12.7",
+          "13.5"
+        ],
+        "answer": 2,
+        "walkthrough": "Type L equals the bracketed list 4, 6, 7, 9, 10, 40 on one line, then mean of L on the next. Desmos returns 12.666 and so on, which rounds to 12.7. Doing it by hand: the sum is 76 and there are 6 values, so 76 divided by 6 is about 12.67. The list method is faster and removes the risk of a dropped value, which matters when the data set has ten or more entries."
+      },
+      {
+        "type": "tip",
+        "body": "Desmos is available for the whole Math section on the real test, including questions that do not obviously need a calculator. Practising these four moves until they are automatic is worth more than any single formula."
+      }
+    ],
+    "drill": {
+      "section": "math",
+      "domains": [
+        "Problem-Solving and Data Analysis"
+      ],
+      "count": 5
+    }
+  }
+]
