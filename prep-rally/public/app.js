@@ -10,7 +10,7 @@ const DEFAULT_PROFILE = {
   name: '', elo: 1200, wins: 0, losses: 0, points: 0,
   attempted: 0, correct: 0, errors: 0, bestStreak: 0, dayStreak: 1,
   solved: { math: 0, rw: 0 }, sessions: [], testDate: '2026-10-03',
-  promoEnd: 0, lastPlayed: 0,
+  lastPlayed: 0,
   mistakes: [],        // [{id, question, passage, choices, domain, skill, difficulty, mine, correctIndex, explanation, when}]
   domainStats: {},     // { [domain]: {correct, total} }
   plan: null,          // { week, tasks: [{id, label, domain, section, count, done}] }
@@ -69,45 +69,27 @@ const ICONS = {
   gear: 'M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M12 3v2.2M12 18.8V21M4.9 7.5l1.9 1.1M17.2 15.4l1.9 1.1M4.9 16.5l1.9-1.1M17.2 8.6l1.9-1.1',
 };
 const NAV = [
-  { label: '', items: [
+  { items: [
     { name: 'Home', icon: 'home', view: 'v-home' },
-    { name: 'Apply As A Tutor', icon: 'tutor', view: 'soon' },
-    { name: 'Ask Lumo AI', icon: 'ai', view: 'soon' },
     { name: 'Study Planner', icon: 'planner', view: 'v-planner', badge: plannerBadge },
   ]},
-  { label: 'MASTERCLASS', items: [
-    { name: 'Reading & Writing', icon: 'reading', view: 'soon', tag: 'New' },
-    { name: 'Math & Desmos', icon: 'math', view: 'soon', tag: 'New' },
-  ]},
-  { label: 'PRACTICE', items: [
+  { items: [
     { name: 'Question Bank', icon: 'bank', view: 'v-bank' },
     { name: 'Question Rush', icon: 'rush', view: 'v-rush' },
     { name: 'Challenge Questions', icon: 'target', view: 'challenge' },
     { name: 'Full-Length Tests', icon: 'tests', view: 'test' },
     { name: 'Vocab', icon: 'vocab', view: 'v-vocab' },
   ]},
-  { label: 'MULTIPLAYER', items: [
-    { name: 'Play', icon: 'play', view: 'v-play', tag: 'New' },
+  { items: [
+    { name: 'Play', icon: 'play', view: 'v-play' },
   ]},
-  { label: 'PROGRESS', items: [
+  { items: [
     { name: 'Saved & Mistakes', icon: 'saved', view: 'v-mistakes' },
     { name: 'Analytics', icon: 'analytics', view: 'v-analytics' },
-  ]},
-  { label: 'CLASSROOMS', items: [
-    { name: 'My Classes', icon: 'classes', view: 'soon' },
   ]},
 ];
 const BANNER_VIEWS = new Set(['v-home', 'v-rush']);
 
-// Honest copy for the features that are not built yet, so each screen says what
-// it will be and what to use in the meantime.
-const ROADMAP = {
-  'Apply As A Tutor': 'Tutor applications open once Lumo has enough active students to match them with. Until then, host a party and walk your friends through questions live.',
-  'Ask Lumo AI': 'An AI explainer for any question you miss. Every question already ships with a written explanation on the reveal screen and in Saved & Mistakes.',
-  'Reading & Writing': 'Video masterclass lessons for each Reading and Writing domain. The Question Bank already drills all four of those domains with explanations.',
-  'Math & Desmos': 'Video masterclass lessons plus a built-in Desmos calculator. Math practice is live now in the Question Bank and Question Rush.',
-  'My Classes': 'Teacher dashboards and class rosters, which need accounts. Party codes already work for a whole class at once, up to 20 players.',
-};
 
 function icon(k, size = 18, sw = 1.7) {
   return `<svg class="ic" style="width:${size}px;height:${size}px;stroke-width:${sw}" viewBox="0 0 24 24"><path d="${ICONS[k]}"/></svg>`;
@@ -117,29 +99,133 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// Three near-identical blob outlines the mascot morphs between.
+const LUMO_BLOBS = [
+  'M50 4C78 4 96 22 96 50C96 78 78 96 50 96C22 96 4 78 4 50C4 22 22 4 50 4Z',
+  'M50 6C77 6 95 25 95 53C95 79 75 95 50 95C24 95 5 79 5 51C5 24 23 6 50 6Z',
+  'M50 5C81 7 93 25 96 53C98 78 73 96 49 95C25 94 4 77 4 49C4 23 21 3 50 5Z',
+];
+
 function buildSidebar() {
   const sb = $('sidebar');
-  let html = `<div class="sb-brand"><span class="lumo"><span class="dot"></span></span><span class="name">Lumo</span></div><nav class="sb-nav">`;
-  for (const group of NAV) {
-    if (group.label) html += `<div class="sb-label">${group.label}</div>`;
+  let html = `
+    <button class="sb-brand" id="sb-brand" aria-label="Lumo — go home">
+      <svg class="lumo-svg" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="lumoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#6D28D9"/>
+          </linearGradient>
+        </defs>
+        <path id="lumo-blob" class="lumo-blob" d="${LUMO_BLOBS[0]}"/>
+        <ellipse class="eye" cx="36" cy="53" rx="8.5" ry="10.5"/>
+        <ellipse class="eye" cx="66" cy="53" rx="8.5" ry="10.5"/>
+        <circle class="spark" cx="13" cy="13" r="10"/>
+      </svg>
+    </button>
+    <nav class="sb-nav" id="sb-nav">`;
+
+  NAV.forEach((group) => {
     for (const it of group.items) {
       const badge = typeof it.badge === 'function' ? it.badge() : it.badge;
-      html += `<button class="sb-item" data-navitem="${esc(it.name)}">
-        ${icon(it.icon)}
-        <span class="grow">${esc(it.name)}</span>
-        ${it.tag ? `<span class="sb-tag">${it.tag}</span>` : ''}
+      html += `<button class="sb-item" data-navitem="${esc(it.name)}" aria-label="${esc(it.name)}">
+        ${icon(it.icon, 21)}
         ${badge ? `<span class="sb-badge">${esc(badge)}</span>` : ''}
+        <span class="sb-tip">${esc(it.name)}</span>
       </button>`;
     }
-  }
-  html += `</nav><div class="sb-foot"><button class="sb-user" id="btn-user">
-    <span class="lumo"></span><span class="uname" id="sb-username"></span>${icon('gear')}
-  </button></div>`;
+  });
+
+  html += `</nav>
+    <div class="sb-foot">
+      <button class="sb-user" id="btn-user" aria-label="Signed in as ${esc(profile.name || 'guest')} — change nickname">
+        <span class="lumo round lilac"></span>
+        <span class="sb-tip" id="sb-username">${esc(profile.name || 'Set nickname')}</span>
+      </button>
+    </div>`;
+
   sb.innerHTML = html;
   sb.querySelectorAll('[data-navitem]').forEach((b) => {
     b.onclick = () => navTo(b.dataset.navitem);
   });
   $('btn-user').onclick = () => promptName();
+  $('sb-brand').onclick = () => navTo('Home');
+}
+
+/* ================= Motion (GSAP) =================
+   Every animation here is optional decoration. If the GSAP bundles fail to
+   load the app still works: CSS handles hover and the active state, and each
+   helper below no-ops. */
+const anim = { on: false, morph: false, pill: null, blob: 0 };
+
+function initAnimations() {
+  // Honour the OS "reduce motion" setting: no bouncing, no morphing, no stagger.
+  const calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  anim.on = typeof window.gsap !== 'undefined' && !calm;
+  if (!anim.on) return;
+  if (window.Flip) gsap.registerPlugin(Flip);
+  if (window.MorphSVGPlugin) { gsap.registerPlugin(MorphSVGPlugin); anim.morph = true; }
+
+  $('sidebar').classList.add('gsap-on');
+  anim.pill = document.createElement('span');
+  anim.pill.className = 'sb-pill';
+
+  // Icons lean and grow under the cursor.
+  document.querySelectorAll('.sb-item').forEach((b) => {
+    const ico = b.querySelector('.ic');
+    if (!ico) return;
+    b.addEventListener('mouseenter', () =>
+      gsap.to(ico, { scale: 1.12, duration: 0.22, ease: 'power2.out' }));
+    b.addEventListener('mouseleave', () =>
+      gsap.to(ico, { scale: 1, duration: 0.22, ease: 'power2.out', clearProps: 'transform' }));
+  });
+
+  // The mascot breathes between blob shapes.
+  if (anim.morph) idleMorph();
+  gsap.fromTo('.sb-item', { y: 8, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.35, stagger: 0.03, ease: 'power2.out', clearProps: 'all' });
+}
+
+function idleMorph() {
+  anim.blob = (anim.blob + 1) % LUMO_BLOBS.length;
+  gsap.to('#lumo-blob', {
+    morphSVG: LUMO_BLOBS[anim.blob],
+    duration: 1.2,
+    ease: 'sine.inOut',
+    onComplete: () => gsap.delayedCall(2.4, idleMorph),
+  });
+}
+
+// FLIP: the pill measures its old box, jumps to the new item, then animates the difference.
+function movePill(btn) {
+  if (!anim.on || !anim.pill || !btn) return;
+  if (anim.pill.parentElement === btn) return;
+  if (!anim.pill.parentElement || !window.Flip) { btn.appendChild(anim.pill); return; }
+  const state = Flip.getState(anim.pill);
+  btn.appendChild(anim.pill);
+  Flip.from(state, { duration: 0.34, ease: 'power3.out', absolute: true });
+}
+
+function popIcon(btn) {
+  if (!anim.on || !btn) return;
+  const ico = btn.querySelector('.ic');
+  if (ico) gsap.fromTo(ico, { scale: 0.88 },
+    { scale: 1, duration: 0.3, ease: 'back.out(1.7)', clearProps: 'transform' });
+  gsap.fromTo('#sb-brand', { scale: 0.94 },
+    { scale: 1, duration: 0.3, ease: 'back.out(1.7)', clearProps: 'transform' });
+  if (anim.morph) {
+    anim.blob = (anim.blob + 1) % LUMO_BLOBS.length;
+    gsap.to('#lumo-blob', { morphSVG: LUMO_BLOBS[anim.blob], duration: 0.5, ease: 'back.inOut(3)' });
+  }
+}
+
+// Content settles in behind the pill. Only page-style views; the match screen
+// stays still so questions never jump while you are reading them.
+function animateView(id) {
+  if (!anim.on) return;
+  const els = document.querySelectorAll(`#${id} .page > *, #${id} .center-stage > *`);
+  if (!els.length) return;
+  gsap.fromTo(els, { y: 10, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.32, stagger: 0.035, ease: 'power2.out', clearProps: 'all' });
 }
 
 // Keeps the Study Planner count in the sidebar in sync as tasks get checked off.
@@ -163,8 +249,14 @@ function navTo(name) {
   if (!item) return;
   if (leaveGuard()) return;
   activeNav = name;
-  document.querySelectorAll('.sb-item').forEach((b) =>
-    b.classList.toggle('active', b.dataset.navitem === name));
+  let activeBtn = null;
+  document.querySelectorAll('.sb-item').forEach((b) => {
+    const on = b.dataset.navitem === name;
+    b.classList.toggle('active', on);
+    if (on) activeBtn = b;
+  });
+  movePill(activeBtn);
+  popIcon(activeBtn);
   if (item.view === 'challenge') {
     // Challenge Questions = a hard-only mixed drill straight from the bank.
     startPractice({ section: 'mixed', difficulties: ['hard'], count: 10 }, 'Challenge');
@@ -175,11 +267,7 @@ function navTo(name) {
     startPractice({ section: 'mixed', count: 20 }, 'Practice test');
     return;
   }
-  if (item.view === 'soon') {
-    $('soon-title').textContent = name;
-    $('soon-desc').textContent = ROADMAP[name] || 'Lumo is still building this.';
-    switchView('v-soon');
-  } else {
+  {
     switchView(item.view);
     if (item.view === 'v-home') renderHome();
     if (item.view === 'v-rush') renderRush();
@@ -196,9 +284,9 @@ function switchView(id) {
   document.querySelectorAll('.view').forEach((v) => v.classList.remove('active'));
   $(id).classList.add('active');
   const showBanners = BANNER_VIEWS.has(id);
-  $('promo-bar').classList.toggle('hidden', !showBanners);
   $('announce-bar').classList.toggle('hidden', !showBanners);
   document.querySelector('.main').scrollTop = 0;
+  animateView(id);
 }
 
 // Warn when navigating away from an active game.
@@ -1052,21 +1140,6 @@ $('btn-review-errors').onclick = () => {
   navTo('Saved & Mistakes');
 };
 
-/* Banner countdown — ticks down to the user's own test date, not a fake sale. */
-function tickPromo() {
-  const el = $('promo-count');
-  const paint = () => {
-    const diff = Math.max(0, new Date(profile.testDate + 'T08:00:00') - Date.now());
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    el.innerHTML = `${d}<span>d</span> ${String(h).padStart(2, '0')}<span>h</span> ${String(m).padStart(2, '0')}<span>m</span> ${String(s).padStart(2, '0')}<span>s</span>`;
-  };
-  paint();
-  setInterval(paint, 1000);
-}
-$('btn-promo-cta').onclick = () => navTo('Study Planner');
 
 /* ================= Rush ================= */
 let bankStats = { math: 32, rw: 32 };
@@ -1547,6 +1620,7 @@ $('btn-save-name').onclick = () => {
   saveProfile();
   $('name-overlay').classList.add('hidden');
   $('sb-username').textContent = n;
+  $('btn-user').setAttribute('aria-label', `Signed in as ${n} — change nickname`);
   $('greet-name').textContent = n;
   const cb = nameCallback; nameCallback = null;
   if (cb) cb();
@@ -1555,10 +1629,11 @@ $('name-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('b
 
 /* ================= Boot ================= */
 buildSidebar();
+initAnimations();
 if (profile.plan && profile.plan.week !== weekKey()) buildPlan(); // fresh week, fresh plan
 refreshPlannerBadge();
-$('sb-username').textContent = profile.name || 'Set nickname';
-document.querySelector('.sb-item[data-navitem="Home"]').classList.add('active');
+const homeBtn = document.querySelector('.sb-item[data-navitem="Home"]');
+homeBtn.classList.add('active');
+movePill(homeBtn);
 renderHome();
-tickPromo();
 if (!profile.name) promptName();

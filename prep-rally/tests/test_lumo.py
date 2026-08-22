@@ -91,7 +91,8 @@ def test_first_run(browser):
     page.wait_for_timeout(300)
     check("modal closes after saving a name", page.locator("#name-overlay.hidden").count() == 1)
     check("greeting uses the name", "Aneesh" in page.inner_text("#greet-name"))
-    check("sidebar shows the name", "Aneesh" in page.inner_text("#sb-username"))
+    check("sidebar identifies the player",
+          "Aneesh" in page.get_attribute("#btn-user", "aria-label"))
     check("no page errors on boot", not errors, str(errors))
     ctx.close()
 
@@ -102,7 +103,18 @@ def test_navigation(browser):
     errors = []
     page.on("pageerror", lambda e: errors.append(str(e)))
     items = page.eval_on_selector_all(".sb-item", "els => els.map(e => e.dataset.navitem)")
-    check("all 15 nav items render", len(items) == 15, f"got {len(items)}")
+    check("all 10 nav items render", len(items) == 10, f"got {len(items)}")
+    check("no dead roadmap stubs in nav",
+          not ({"Apply As A Tutor", "Ask Lumo AI", "My Classes"} & set(items)), str(items))
+    gaps = page.evaluate("""() => {
+        const ys = [...document.querySelectorAll('.sb-item')].map(b => Math.round(b.getBoundingClientRect().y));
+        return ys.slice(1).map((y, i) => y - ys[i]); }""")
+    # sub-pixel layout rounding means gaps land within a pixel of each other
+    check("rail spacing is uniform", max(gaps) - min(gaps) <= 2, str(gaps))
+    # labels exist for screen readers but must stay invisible until hover
+    check("rail shows no text at rest", page.evaluate("""() => {
+        const tips = [...document.querySelectorAll('.sb-item .sb-tip')];
+        return tips.length === 10 && tips.every(t => getComputedStyle(t).opacity === '0'); }"""))
     for item in items:
         if item in ("Challenge Questions", "Full-Length Tests"):
             continue  # these launch games, covered separately

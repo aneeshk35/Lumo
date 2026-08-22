@@ -96,6 +96,24 @@ python3 tests/test_lumo.py
 
 It prints PASS/FAIL per check and exits non-zero if anything fails.
 
+## Interface
+
+The left rail is icons only, ten destinations, uniform spacing. Hovering an
+icon reveals its label; the labels stay in the DOM for screen readers and the
+buttons carry `aria-label`, so the rail is readable without being cluttered.
+
+Motion is handled by GSAP, loaded from a CDN:
+
+- **Flip** moves the purple selection pill between nav icons. It measures the
+  pill's old box, moves it into the new button, and animates the difference.
+- **MorphSVG** morphs the mascot between three blob outlines, idling slowly and
+  reacting when you change page.
+- Icons grow slightly on hover and settle on click; page content fades up.
+
+All of it is optional. If the GSAP bundles fail to load, CSS handles hover and
+the active state and every animation helper becomes a no-op. Motion is also
+skipped entirely when the OS requests reduced motion.
+
 ## The calculator
 
 Math questions get a **real Desmos graphing calculator**, the same tool the
@@ -103,10 +121,19 @@ Digital SAT provides. It is loaded from Desmos's API on first open (the script
 is about 4MB, so it is not fetched at page load) and hidden on Reading and
 Writing questions, matching the real test.
 
-⚠️ **Get your own Desmos API key before launching publicly.** The key in
-`public/app.js` (`DESMOS_SRC`) is the demo key from Desmos's public API docs,
-which is fine for development but is not yours. Desmos gives out free keys for
-this kind of use — request one at https://www.desmos.com/api and swap it in.
+The API key is supplied by the server, never hardcoded in the client. It is
+resolved in this order: the `DESMOS_API_KEY` environment variable, then
+`data/desmos_key.txt`, then Desmos's public demo key as a last resort. The key
+file is gitignored, so a deployment's own key never lands in the repo.
+
+```bash
+echo "YOUR_KEY" > data/desmos_key.txt     # local
+DESMOS_API_KEY=YOUR_KEY python3 server.py # or per-process, for hosts
+```
+
+Check which one is live with `curl -s -X POST localhost:3000/api/config -H
+'Content-Type: application/json' -d '{}'`; `"desmosIsDemoKey": false` means your
+own key is in use. Free keys come from https://www.desmos.com/api.
 
 If Desmos cannot load (no connection, blocked, or slow), the panel falls back to
 a built-in calculator in `public/calc.js`: its own tokenizer and shunting-yard
