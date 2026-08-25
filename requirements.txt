@@ -1,0 +1,3 @@
+# Lumo has no third-party dependencies: the server is Python standard library
+# only. This file exists so Render and similar hosts detect a Python service
+# and run a no-op install instead of failing to find one.
