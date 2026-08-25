@@ -16,12 +16,26 @@ const DEFAULT_PROFILE = {
   plan: null,          // { week, tasks: [{id, label, domain, section, count, done}] }
   vocabKnown: [],
   retryCorrect: 0, retryTotal: 0,
+  // Social identity. playerKey is this browser's handle for classes, the friends
+  // list, and tutor applications. There are no passwords, so it identifies a
+  // browser rather than a person — enough for a roster, not for anything risky.
+  playerKey: '', friendCode: '',
+  friends: [],         // [{code, name}] added by friend code
+  classes: [],         // [{code, name, isTeacher}] cached for the sidebar
+  lessonsDone: [],     // ids from lessons.json
 };
 let profile = { ...DEFAULT_PROFILE, ...JSON.parse(localStorage.getItem('lumo-profile') || '{}') };
 profile.solved = { ...DEFAULT_PROFILE.solved, ...(profile.solved || {}) };
 profile.mistakes = profile.mistakes || [];
 profile.domainStats = profile.domainStats || {};
 profile.vocabKnown = profile.vocabKnown || [];
+profile.friends = profile.friends || [];
+profile.classes = profile.classes || [];
+profile.lessonsDone = profile.lessonsDone || [];
+if (!profile.playerKey) {
+  profile.playerKey = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now())
+    .replace(/-/g, '');
+}
 function saveProfile() { localStorage.setItem('lumo-profile', JSON.stringify(profile)); }
 
 const DOMAIN_SECTION = {
@@ -66,6 +80,8 @@ const ICONS = {
   analytics: 'M5 20V10M12 20V4M19 20v-7',
   classes: 'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M2 20c0-3 3.1-5 7-5s7 2 7 5M17 20c0-2.6-1-4-2.5-5 3 .2 5.5 1.9 5.5 5',
   play: 'M9 6.5v11l9-5.5z',
+  spark: 'M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8',
+  chat: 'M4 5h16v11H9l-5 4z M8 9h8M8 12.5h5',
   gear: 'M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M12 3v2.2M12 18.8V21M4.9 7.5l1.9 1.1M17.2 15.4l1.9 1.1M4.9 16.5l1.9-1.1M17.2 8.6l1.9-1.1',
 };
 const NAV = [
@@ -87,7 +103,20 @@ const NAV = [
     { name: 'Saved & Mistakes', icon: 'saved', view: 'v-mistakes' },
     { name: 'Analytics', icon: 'analytics', view: 'v-analytics' },
   ]},
+  { items: [
+    { name: 'Reading & Writing', icon: 'reading', view: 'v-masterclass', mcSection: 'rw' },
+    { name: 'Math & Desmos', icon: 'math', view: 'v-masterclass', mcSection: 'math' },
+    { name: 'Ask Lumo', icon: 'spark', view: 'v-coach' },
+  ]},
+  { items: [
+    { name: 'My Classes', icon: 'classes', view: 'v-classes' },
+    { name: 'Apply As A Tutor', icon: 'tutor', view: 'v-tutor' },
+  ]},
 ];
+
+// Feature modules register their render function here so navTo does not need to
+// know about every screen. Filled in by masterclass.js, coach.js, classroom.js.
+const RENDERERS = {};
 const BANNER_VIEWS = new Set(['v-home', 'v-rush']);
 
 
@@ -220,13 +249,40 @@ function popIcon(btn) {
 
 // Content settles in behind the pill. Only page-style views; the match screen
 // stays still so questions never jump while you are reading them.
+let viewTween = null;
+let viewTweenEls = null;
+
+// Abandon whatever the last screen was doing and strip the inline styles GSAP
+// left on it. Without this, a tween that never finished — a background tab
+// throttles requestAnimationFrame and freezes it mid-fade — leaves the screen
+// stuck at partial opacity for good.
+function clearViewTween() {
+  if (viewTween) { viewTween.kill(); viewTween = null; }
+  if (viewTweenEls) {
+    if (window.gsap) gsap.set(viewTweenEls, { clearProps: 'all' });
+    viewTweenEls = null;
+  }
+}
+
 function animateView(id) {
-  if (!anim.on) return;
+  clearViewTween();
   const els = document.querySelectorAll(`#${id} .page > *, #${id} .center-stage > *`);
   if (!els.length) return;
-  gsap.fromTo(els, { y: 10, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.32, stagger: 0.035, ease: 'power2.out', clearProps: 'all' });
+  // Nothing to animate towards while the tab is hidden, and rAF is throttled
+  // there, so show the content outright and let the next visit animate it.
+  if (!anim.on || document.hidden) return;
+  viewTweenEls = els;
+  viewTween = gsap.fromTo(els, { y: 10, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.32, stagger: 0.035, ease: 'power2.out',
+      clearProps: 'all',
+      onComplete: () => { viewTween = null; viewTweenEls = null; } });
 }
+
+// Coming back to a hidden tab: snap any half-finished fade to its end state.
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && viewTween) viewTween.progress(1);
+  else if (!document.hidden) clearViewTween();
+});
 
 // Keeps the Study Planner count in the sidebar in sync as tasks get checked off.
 function refreshPlannerBadge() {
@@ -267,17 +323,16 @@ function navTo(name) {
     startPractice({ section: 'mixed', count: 20 }, 'Practice test');
     return;
   }
-  {
-    switchView(item.view);
-    if (item.view === 'v-home') renderHome();
-    if (item.view === 'v-rush') renderRush();
-    if (item.view === 'v-play') renderPlay();
-    if (item.view === 'v-analytics') renderAnalytics();
-    if (item.view === 'v-bank') renderBank();
-    if (item.view === 'v-mistakes') renderMistakes();
-    if (item.view === 'v-planner') renderPlanner();
-    if (item.view === 'v-vocab') renderVocab();
-  }
+  switchView(item.view);
+  if (item.view === 'v-home') renderHome();
+  if (item.view === 'v-rush') renderRush();
+  if (item.view === 'v-play') renderPlay();
+  if (item.view === 'v-analytics') renderAnalytics();
+  if (item.view === 'v-bank') renderBank();
+  if (item.view === 'v-mistakes') renderMistakes();
+  if (item.view === 'v-planner') renderPlanner();
+  if (item.view === 'v-vocab') renderVocab();
+  if (RENDERERS[item.view]) RENDERERS[item.view](item);
 }
 
 function switchView(id) {
@@ -311,9 +366,14 @@ function toast(msg) {
 }
 
 /* ================= Networking ================= */
+// Empty means "same origin", which is how it runs locally and on a single host.
+// When the frontend is served from somewhere else (a static host such as
+// Vercel), public/config.js points this at the game server.
+const API_BASE = (window.LUMO_API_BASE || '').replace(/\/+$/, '');
+
 const ME = { code: null, playerId: null };
 async function api(action, extra = {}) {
-  const res = await fetch(`/api/${action}`, {
+  const res = await fetch(`${API_BASE}/api/${action}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ code: ME.code, player: ME.playerId, ...extra }),
@@ -326,7 +386,7 @@ let eventSource = null;
 // has registered this listener would drop the first question broadcast.
 function connectEvents() {
   if (eventSource) eventSource.close();
-  eventSource = new EventSource(`/api/events?code=${ME.code}&player=${ME.playerId}`);
+  eventSource = new EventSource(`${API_BASE}/api/events?code=${ME.code}&player=${ME.playerId}`);
   const on = (name, fn) => eventSource.addEventListener(name, (e) => fn(JSON.parse(e.data)));
   on('lobby_update', onLobbyUpdate);
   on('host_changed', ({ hostName }) => {
@@ -441,13 +501,20 @@ async function joinParty() {
 
 /* ================= Matchmaking ================= */
 let duelSection = 'mixed';
-async function findMatch() {
-  if (!profile.name) return promptName(findMatch);
+async function findMatch(mode) {
+  const queueMode = mode === '2v2' ? '2v2' : '1v1';
+  if (!profile.name) return promptName(() => findMatch(queueMode));
   game.phase = 'queue';
-  game.mode = 'duel';
+  game.mode = queueMode === '2v2' ? 'team' : 'duel';
+  game.queueMode = queueMode;
   game.section = duelSection;
+  $('queue-kind').textContent = queueMode === '2v2' ? '2v2 Team duel' : '1v1 Duel';
   $('queue-mode-chip').textContent = `${SECTION_LABEL[duelSection]} · 10 questions`;
-  $('queue-sub').textContent = `Matching you with someone near ${profile.elo.toLocaleString()} ELO`;
+  $('queue-title').textContent = queueMode === '2v2'
+    ? 'Building two teams…' : 'Searching for an opponent…';
+  $('queue-sub').textContent = queueMode === '2v2'
+    ? 'A 2v2 starts once four players are waiting'
+    : `Matching you with someone near ${profile.elo.toLocaleString()} ELO`;
   switchView('v-queue');
   const started = Date.now();
   const tick = setInterval(() => {
@@ -456,16 +523,30 @@ async function findMatch() {
   }, 500);
   game.queueTimers.push(tick);
 
-  const res = await api('queue', { name: profile.name, section: duelSection, count: 10 });
+  const res = await api('queue', {
+    name: profile.name, section: duelSection, count: 10, mode: queueMode,
+  });
   if (res.matched) return enterDuel(res);
   game.queueTicket = res.ticket;
+  showQueueWaiting(res.waiting, res.needed);
   const poll = setInterval(async () => {
     if (game.phase !== 'queue') return clearInterval(poll);
     const st = await api('queue_status', { ticket: game.queueTicket });
     if (st.matched) { clearInterval(poll); enterDuel(st); }
     else if (st.expired) { clearInterval(poll); cancelQueue(); toast('Queue timed out — try again.'); }
+    else showQueueWaiting(st.waiting, st.needed);
   }, 1500);
   game.queueTimers.push(poll);
+}
+
+// 2v2 needs four players, so say how many are still missing.
+function showQueueWaiting(waiting, needed) {
+  const chip = $('queue-waiting');
+  if (!chip) return;
+  if (!needed || needed <= 2) { chip.classList.add('hidden'); return; }
+  const have = Math.max(1, waiting || 1);
+  chip.textContent = `${have} of ${needed} players ready`;
+  chip.classList.remove('hidden');
 }
 
 async function enterDuel(res) {
@@ -493,15 +574,20 @@ function onLobbyUpdate(lobby) {
 }
 
 function renderLobby(lobby) {
-  const isDuel = lobby.mode === 'duel';
-  game.mode = isDuel ? 'duel' : game.mode;
+  const isTeam = lobby.mode === 'team';
+  const isDuel = lobby.mode === 'duel' || isTeam;
+  game.mode = lobby.mode === 'party' ? game.mode : lobby.mode;
   $('lobby-eyebrow').textContent = isDuel ? 'MATCH FOUND' : 'PARTY LOBBY';
-  $('lobby-title').textContent = isDuel
-    ? `1v1 Duel · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`
-    : `Party · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`;
-  $('lobby-sub').textContent = isDuel
-    ? 'Same questions for both players · speed and streaks decide it · Ranked'
-    : `${lobby.players.length} player${lobby.players.length === 1 ? '' : 's'} in — up to 20 can join`;
+  $('lobby-title').textContent = isTeam
+    ? `2v2 Team duel · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`
+    : isDuel
+      ? `1v1 Duel · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`
+      : `Party · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`;
+  $('lobby-sub').textContent = isTeam
+    ? 'Two teams of two · answer inside your own section for a 25% specialist bonus'
+    : isDuel
+      ? 'Same questions for both players · speed and streaks decide it · Ranked'
+      : `${lobby.players.length} player${lobby.players.length === 1 ? '' : 's'} in — up to 20 can join`;
   $('lobby-code-wrap').classList.toggle('hidden', isDuel);
   if (!isDuel) $('lobby-code').textContent = lobby.code;
 
@@ -521,7 +607,26 @@ function renderLobby(lobby) {
     </div>`;
 
   let html = '';
-  if (isDuel && mine && others.length === 1) {
+  if (isTeam) {
+    const side = (t) => lobby.players.filter((p) => p.team === t);
+    const teamBlock = (t) => `
+      <div class="team-block team-${t.toLowerCase()}">
+        <span class="team-tag">Team ${t}</span>
+        ${side(t).map((p) => `
+          <div class="player-card compact ${p.name === game.myName ? 'me' : ''}">
+            <span class="lumo round ${t === 'A' ? 'lilac' : 'pink'}"></span>
+            <span class="n">${esc(p.name)}${p.name === game.myName ? ' <span class="you-tag">you</span>' : ''}</span>
+            <span class="s">${p.role === 'math' ? 'Math specialist' : 'Reading specialist'}</span>
+            <span class="ready-pill ${p.ready ? 'yes' : 'no'}">
+              <span class="${p.ready ? 'dot-g' : 'dot-a'}"></span>${p.ready ? 'Ready' : 'Getting ready…'}
+            </span>
+          </div>`).join('')}
+      </div>`;
+    html = teamBlock('A')
+      + `<div class="vs-block"><span class="vs">VS</span><span class="in">${
+          lobby.players.every((p) => p.ready) ? 'starting…' : 'waiting for ready'}</span></div>`
+      + teamBlock('B');
+  } else if (isDuel && mine && others.length === 1) {
     html = cardFor(mine, false)
       + `<div class="vs-block"><span class="vs">VS</span><span class="in">${others[0].ready && mine.ready ? 'starting…' : 'waiting for ready'}</span></div>`
       + cardFor(others[0], true);
@@ -998,7 +1103,20 @@ function onGameOver(data) {
   profile.sessions = profile.sessions.slice(0, 12);
 
   let sub = `${meRow.correct || 0}/${data.total} correct · ${fmtDur(secs)}`;
-  if (game.mode === 'duel' && game.opponent) {
+  if (game.mode === 'team' && data.teamScores) {
+    const mineRow = board.find((p) => p.name === game.myName);
+    const myTeam = mineRow && mineRow.team;
+    const us = data.teamScores.find((t) => t.team === myTeam);
+    const them = data.teamScores.find((t) => t.team !== myTeam);
+    const won = us && them && us.score > them.score;
+    const tie = us && them && us.score === them.score;
+    const delta = won ? 24 : tie ? 0 : -18;
+    profile.elo = Math.max(100, profile.elo + delta);
+    if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
+    $('result-hero').textContent = won ? 'Team victory' : tie ? 'Team tie' : 'Team defeat';
+    sub = `Team ${myTeam} ${us ? us.score.toLocaleString() : 0} — ${them ? them.score.toLocaleString() : 0} Team ${them ? them.team : ''}`
+      + ` · you scored ${(meRow.score || 0).toLocaleString()} · ${delta >= 0 ? '+' : ''}${delta} ELO`;
+  } else if (game.mode === 'duel' && game.opponent) {
     const opp = board.find((p) => p.name === game.opponent) || { score: 0 };
     const won = (meRow.score || 0) > opp.score;
     const tie = (meRow.score || 0) === opp.score;
@@ -1018,6 +1136,13 @@ function onGameOver(data) {
   }
   saveProfile();
   $('result-sub').textContent = sub;
+  // Push fresh totals to any class this player is a student in.
+  if (typeof reportToClasses === 'function') {
+    const done = (typeof activeAssignment !== 'undefined' && activeAssignment
+      && game.label === 'Assignment') ? activeAssignment.id : '';
+    reportToClasses(done);
+    if (done) activeAssignment = null;
+  }
 
   $('result-rows').innerHTML = board.map((p, i) => `
     <div class="result-row ${p.name === game.myName ? 'me' : ''}">
@@ -1183,14 +1308,6 @@ async function renderRush() {
 }
 
 /* ================= Play ================= */
-const SAMPLE_FRIENDS = [
-  { name: 'Priya M.', status: 'In a duel · Math', dot: '#F59E0B', btn: 'Spectate', solid: false },
-  { name: 'Dev K.', status: 'Online', dot: '#22C55E', btn: 'Challenge', solid: true },
-  { name: 'Sofia R.', status: 'Online · 1,410 ELO', dot: '#22C55E', btn: 'Challenge', solid: true },
-  { name: 'Marcus T.', status: 'Studying Vocab', dot: '#22C55E', btn: 'Challenge', solid: true },
-  { name: 'Hana L.', status: 'Last online 2h ago', dot: '#CBD5E1', btn: 'Invite', solid: false },
-  { name: 'Owen B.', status: 'Last online yesterday', dot: '#CBD5E1', btn: 'Invite', solid: false },
-];
 async function renderPlay() {
   $('elo-pill').textContent = `${profile.elo.toLocaleString()} ELO`;
   const wins = profile.wins % 10;
@@ -1199,13 +1316,9 @@ async function renderPlay() {
   $('ladder-note').textContent = profile.wins
     ? `Win ${10 - wins} more duel${10 - wins === 1 ? '' : 's'} to climb a tier.`
     : 'Win duels to climb the ladder.';
-  $('friends-list').innerHTML = SAMPLE_FRIENDS.map((f) => `
-    <div class="friend">
-      <span class="ava"><span class="circ"></span><span class="st" style="background:${f.dot}"></span></span>
-      <span class="body"><span class="n">${f.name}</span><span class="s">${f.status}</span></span>
-      <button class="friend-btn ${f.solid ? 'solid' : 'soft'}" data-soon="Friend accounts">${f.btn}</button>
-    </div>`).join('');
-  bindSoonButtons();
+  $('my-friend-code').textContent = profile.friendCode || '—';
+  paintFriends();
+  pingPresence();
   try {
     const res = await api('stats');
     $('online-count').textContent = Math.max(1, res.online || 0).toLocaleString();
@@ -1574,11 +1687,6 @@ async function renderAnalytics() {
 function bindSoloButtons() {
   document.querySelectorAll('[data-solo]').forEach((b) => {
     b.onclick = () => startSolo(b.dataset.solo);
-  });
-}
-function bindSoonButtons() {
-  document.querySelectorAll('[data-soon]').forEach((b) => {
-    b.onclick = () => toast(`${b.dataset.soon} is coming soon — duels and parties are live today.`);
   });
 }
 function bindNavButtons() {

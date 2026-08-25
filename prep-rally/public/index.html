@@ -178,10 +178,10 @@
             <div class="mode-grid">
               <div class="mode-sm grad-pink">
                 <span class="t" style="font-size:19px;font-weight:700">2v2</span>
-                <span class="mode-sub" style="font-size:13px">Pair up. One teammate on Reading, one on Math.</span>
+                <span class="mode-sub" style="font-size:13px">Pair up. One teammate on Reading, one on Math — answer in your own section for a 25% bonus.</span>
                 <span class="grow" style="flex:1"></span>
-                <span class="mode-meta"><span class="dot-lime"></span>Coming soon</span>
-                <button class="hero-btn on-pink" style="font-size:12.5px" data-soon="2v2 mode">Queue up <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+                <span class="mode-meta"><span class="dot-lime"></span>Fills at 4 players</span>
+                <button class="hero-btn on-pink" style="font-size:12.5px" id="btn-find-2v2">Queue up <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
               </div>
               <div class="mode-sm grad-lilac">
                 <span style="display:flex;align-items:center;gap:9px"><span style="font-size:19px;font-weight:700">Squad</span><span class="mode-tag" style="background:#EDE9FE">5 PLAYERS</span></span>
@@ -211,7 +211,16 @@
               <button class="btn-outline" id="btn-join-party" style="text-align:center;justify-content:center;display:flex">Join with code</button>
             </div>
             <div class="friends-card">
-              <div class="head"><span class="t">Friends</span><span class="d" style="font-size:11.5px;color:var(--slate-4)">sample</span></div>
+              <div class="head">
+                <span class="t">Friends</span>
+                <button class="mycode" id="btn-my-code" title="Copy your friend code">
+                  <span class="lbl">Your code</span><span class="code" id="my-friend-code">—</span>
+                </button>
+              </div>
+              <div class="friend-add">
+                <input id="friend-code-input" maxlength="6" placeholder="ADD BY CODE" autocomplete="off">
+                <button class="btn-outline" id="btn-add-friend">Add</button>
+              </div>
               <div id="friends-list"></div>
             </div>
           </div>
@@ -228,12 +237,13 @@
           <span class="lumo"><span class="dot"></span></span>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
-          <div class="stage-title">Searching for an opponent…</div>
+          <div class="stage-title" id="queue-title">Searching for an opponent…</div>
           <div class="stage-sub" id="queue-sub">Matching you with another player</div>
         </div>
         <div class="chip-row">
-          <span class="pill pill-purple">1v1 Duel</span>
+          <span class="pill pill-purple" id="queue-kind">1v1 Duel</span>
           <span class="pill pill-purple" id="queue-mode-chip">Mixed · 10 questions</span>
+          <span class="pill pill-lime hidden" id="queue-waiting">1 of 4 players ready</span>
           <span class="pill pill-slate tabnum" id="queue-elapsed">0:00 elapsed</span>
         </div>
         <div class="stage-btns">
@@ -531,6 +541,221 @@
       </div>
     </section>
 
+    <!-- ============ MASTERCLASS ============ -->
+    <section id="v-masterclass" class="view">
+      <div class="page">
+        <div class="play-head">
+          <div>
+            <div class="title-row">
+              <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path id="mc-icon" d=""/></svg>
+              <span class="page-title" id="mc-title">Masterclass</span>
+            </div>
+            <div class="sub" id="mc-sub">Short lessons on the skills the test actually rewards.</div>
+          </div>
+          <div class="mc-progress">
+            <span class="mc-ring" id="mc-ring"><span class="mc-ring-num" id="mc-ring-num">0%</span></span>
+            <span class="mc-prog-lbl"><span id="mc-done-count">0</span> of <span id="mc-total-count">0</span> done</span>
+          </div>
+        </div>
+        <div id="mc-groups" class="mc-groups"></div>
+      </div>
+    </section>
+
+    <!-- ============ LESSON READER ============ -->
+    <section id="v-lesson" class="view">
+      <div class="page lesson-page">
+        <button class="back-link" id="lesson-back">
+          <svg class="ic" style="width:14px;height:14px;stroke-width:2.2" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          <span id="lesson-back-lbl">Back to lessons</span>
+        </button>
+        <div class="lesson-head">
+          <span class="lesson-kicker" id="lesson-kicker"></span>
+          <h1 class="lesson-title" id="lesson-title"></h1>
+          <p class="lesson-summary" id="lesson-summary"></p>
+        </div>
+        <div id="lesson-body" class="lesson-body"></div>
+        <div class="lesson-foot">
+          <button class="btn btn-primary" id="lesson-complete">Mark complete</button>
+          <button class="btn-outline" id="lesson-drill">Drill this skill</button>
+          <span class="grow"></span>
+          <button class="btn-outline" id="lesson-next">Next lesson &rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ASK LUMO ============ -->
+    <section id="v-coach" class="view">
+      <div class="page coach-page">
+        <div class="play-head">
+          <div>
+            <div class="title-row">
+              <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
+              <span class="page-title">Ask Lumo</span>
+            </div>
+            <div class="sub">Your built-in coach. Answers come from Lumo's own lesson library, question bank, vocab deck, and your stats — it works offline and never invents facts.</div>
+          </div>
+        </div>
+        <div class="coach-thread" id="coach-thread"></div>
+        <div class="coach-chips" id="coach-chips"></div>
+        <form class="coach-bar" id="coach-form">
+          <input id="coach-input" placeholder="Ask about a skill, a word, or what to study next…" autocomplete="off">
+          <button class="btn btn-primary" type="submit" id="coach-send">Ask</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ MY CLASSES ============ -->
+    <section id="v-classes" class="view">
+      <div class="page">
+        <div class="play-head">
+          <div>
+            <div class="title-row">
+              <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M2 20c0-3 3.1-5 7-5s7 2 7 5M17 20c0-2.6-1-4-2.5-5 3 .2 5.5 1.9 5.5 5"/></svg>
+              <span class="page-title">My Classes</span>
+            </div>
+            <div class="sub">Join your teacher's class with a code, or start one and track everyone's progress live.</div>
+          </div>
+        </div>
+
+        <div id="class-detail" class="hidden">
+          <button class="back-link" id="class-back">
+            <svg class="ic" style="width:14px;height:14px;stroke-width:2.2" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+            All classes
+          </button>
+          <div class="class-head">
+            <div class="class-head-main">
+              <span class="class-name" id="cd-name"></span>
+              <span class="class-meta" id="cd-meta"></span>
+            </div>
+            <div class="class-code-chip">
+              <span class="lbl">Class code</span>
+              <span class="code" id="cd-code"></span>
+              <button class="tool-btn" id="cd-copy" title="Copy code">Copy</button>
+            </div>
+          </div>
+
+          <div class="assign-card" id="cd-assign-card">
+            <div class="assign-main">
+              <span class="t" id="cd-assign-title">No assignment set</span>
+              <span class="d" id="cd-assign-sub">The teacher can set a practice set for everyone.</span>
+            </div>
+            <button class="btn btn-primary" id="cd-assign-start">Start assignment</button>
+          </div>
+
+          <div class="teacher-tools hidden" id="cd-teacher-tools">
+            <span class="tt-title">Set an assignment</span>
+            <div class="tt-row">
+              <input id="cd-assign-name" maxlength="60" placeholder="Assignment name (e.g. Algebra warm-up)">
+              <select id="cd-assign-domain"></select>
+              <select id="cd-assign-count">
+                <option value="5">5 questions</option>
+                <option value="10" selected>10 questions</option>
+                <option value="15">15 questions</option>
+                <option value="20">20 questions</option>
+              </select>
+              <button class="btn btn-primary" id="cd-assign-save">Assign</button>
+            </div>
+            <button class="linkbtn danger" id="cd-clear-assign">Clear current assignment</button>
+          </div>
+
+          <div class="roster-card">
+            <div class="roster-head">
+              <span class="t">Roster</span>
+              <span class="d" id="cd-roster-count"></span>
+            </div>
+            <div class="roster-table" id="cd-roster"></div>
+          </div>
+          <button class="linkbtn danger" id="cd-leave"></button>
+        </div>
+
+        <div id="class-list-wrap">
+          <div id="class-list" class="class-list"></div>
+          <div class="class-actions">
+            <div class="code-card">
+              <span class="t">Join a class</span>
+              <span class="d">Enter the 5-letter code your teacher gave you.</span>
+              <input id="class-join-code" maxlength="5" placeholder="ENTER CODE">
+              <button class="btn btn-primary" id="btn-class-join" style="font-size:13px;padding:10px 16px">Join class</button>
+            </div>
+            <div class="code-card">
+              <span class="t">Start a class</span>
+              <span class="d">Create a class, share the code, and watch the roster fill in as students practise.</span>
+              <input id="class-new-name" maxlength="40" placeholder="Class name">
+              <button class="btn-outline" id="btn-class-create" style="text-align:center;justify-content:center;display:flex">Create class</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPLY AS A TUTOR ============ -->
+    <section id="v-tutor" class="view">
+      <div class="page">
+        <div class="play-head">
+          <div>
+            <div class="title-row">
+              <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M4 21c0-3.3 3.6-6 8-6s8 2.7 8 6"/></svg>
+              <span class="page-title">Apply As A Tutor</span>
+            </div>
+            <div class="sub">Tutors run party sessions and answer questions for students working through the bank.</div>
+          </div>
+        </div>
+
+        <div id="tutor-status-card" class="hidden">
+          <div class="status-card">
+            <span class="status-badge" id="ts-badge">Submitted</span>
+            <span class="t" id="ts-title">Your application is in review</span>
+            <span class="d" id="ts-sub"></span>
+            <div class="ts-grid" id="ts-grid"></div>
+            <button class="linkbtn danger" id="btn-tutor-withdraw">Withdraw application</button>
+          </div>
+        </div>
+
+        <div id="tutor-form-wrap">
+          <div class="elig-card">
+            <span class="t">Eligibility</span>
+            <div class="elig-list" id="elig-list"></div>
+            <span class="elig-note" id="elig-note"></span>
+          </div>
+
+          <form class="tutor-form" id="tutor-form">
+            <div class="tf-row">
+              <label class="tf">Full name<input id="tf-name" maxlength="40" required placeholder="Your name"></label>
+              <label class="tf">Email<input id="tf-email" type="email" maxlength="80" required placeholder="you@example.com"></label>
+            </div>
+            <div class="tf-row">
+              <label class="tf">Grade
+                <select id="tf-grade">
+                  <option>9th grade</option><option>10th grade</option>
+                  <option selected>11th grade</option><option>12th grade</option>
+                  <option>College student</option><option>Graduate</option>
+                </select>
+              </label>
+              <label class="tf">SAT score (optional)<input id="tf-score" maxlength="12" placeholder="e.g. 1480"></label>
+              <label class="tf">Availability
+                <select id="tf-avail">
+                  <option>1–2 hours a week</option><option selected>3–5 hours a week</option>
+                  <option>6–10 hours a week</option><option>More than 10 hours</option>
+                </select>
+              </label>
+            </div>
+            <fieldset class="tf-subjects">
+              <legend>Which sections can you tutor?</legend>
+              <div class="chipset" id="tf-subjects"></div>
+            </fieldset>
+            <label class="tf">Why do you want to tutor, and how would you explain a hard question to someone who is stuck?
+              <textarea id="tf-about" maxlength="800" rows="5" placeholder="A few sentences is plenty."></textarea>
+              <span class="tf-count"><span id="tf-about-count">0</span> / 800</span>
+            </label>
+            <div class="tf-foot">
+              <button class="btn btn-primary" type="submit" id="btn-tutor-submit">Submit application</button>
+              <span class="tf-error" id="tf-error"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </div>
 </div>
 
@@ -567,9 +792,25 @@
   </div>
 </div>
 
+<!-- duel invitation from a friend -->
+<div id="invite-pop" class="invite-pop hidden">
+  <span class="lumo round lilac"></span>
+  <span class="body">
+    <span class="t" id="invite-title">Duel invite</span>
+    <span class="d" id="invite-sub"></span>
+  </span>
+  <button class="btn btn-primary" id="invite-accept">Join</button>
+  <button class="invite-x" id="invite-dismiss" aria-label="Dismiss invite">&times;</button>
+</div>
+
 <div id="toast" class="toast hidden"></div>
 
 <script src="calc.js"></script>
+<script src="config.js"></script>
 <script src="app.js"></script>
+<script src="masterclass.js"></script>
+<script src="coach.js"></script>
+<script src="classroom.js"></script>
+<script src="social.js"></script>
 </body>
 </html>
