@@ -103,9 +103,13 @@ def test_navigation(browser):
     errors = []
     page.on("pageerror", lambda e: errors.append(str(e)))
     items = page.eval_on_selector_all(".sb-item", "els => els.map(e => e.dataset.navitem)")
-    check("all 10 nav items render", len(items) == 10, f"got {len(items)}")
-    check("no dead roadmap stubs in nav",
-          not ({"Apply As A Tutor", "Ask Lumo AI", "My Classes"} & set(items)), str(items))
+    check("nav renders every configured destination",
+          len(items) == page.evaluate("NAV.flatMap(g => g.items).length"), f"got {len(items)}")
+    # The rail must not carry links that go nowhere. Rather than naming
+    # screens, assert structurally that nothing routes to a placeholder.
+    check("no dead links in nav",
+          page.evaluate("NAV.flatMap(g => g.items).every(i => i.view && i.view !== 'soon')"),
+          str(items))
     gaps = page.evaluate("""() => {
         const ys = [...document.querySelectorAll('.sb-item')].map(b => Math.round(b.getBoundingClientRect().y));
         return ys.slice(1).map((y, i) => y - ys[i]); }""")
@@ -113,8 +117,9 @@ def test_navigation(browser):
     check("rail spacing is uniform", max(gaps) - min(gaps) <= 2, str(gaps))
     # labels exist for screen readers but must stay invisible until hover
     check("rail shows no text at rest", page.evaluate("""() => {
+        const items = document.querySelectorAll('.sb-item');
         const tips = [...document.querySelectorAll('.sb-item .sb-tip')];
-        return tips.length === 10 && tips.every(t => getComputedStyle(t).opacity === '0'); }"""))
+        return tips.length === items.length && tips.every(t => getComputedStyle(t).opacity === '0'); }"""))
     for item in items:
         if item in ("Challenge Questions", "Full-Length Tests"):
             continue  # these launch games, covered separately

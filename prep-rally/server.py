@@ -43,6 +43,13 @@ def desmos_api_key():
 
 PORT = int(os.environ.get("PORT", 3000))
 
+# When the frontend is hosted separately (e.g. on Vercel) the browser calls this
+# server cross-origin. List those origins in ALLOWED_ORIGINS, comma separated.
+# Same-origin deploys need nothing: the header is only sent for listed origins.
+ALLOWED_ORIGINS = [
+    o.strip() for o in (os.environ.get("ALLOWED_ORIGINS") or "").split(",") if o.strip()
+]
+
 with open(os.path.join(DATA_DIR, "questions.json"), encoding="utf-8") as f:
     QUESTIONS = json.load(f)
 
@@ -423,9 +430,25 @@ class Handler(BaseHTTPRequestHandler):
         pass  # keep stdout clean
 
     # ---------- helpers ----------
+    def send_cors(self):
+        """Echo the origin only when it is explicitly allowed."""
+        origin = self.headers.get("Origin")
+        if origin and origin in ALLOWED_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.send_cors()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def send_json(self, obj, status=200):
         body = json.dumps(obj).encode()
         self.send_response(status)
+        self.send_cors()
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -1041,6 +1064,7 @@ class Handler(BaseHTTPRequestHandler):
             player["connected"] = True
 
         self.send_response(200)
+        self.send_cors()
         self.send_header("Content-Type", "text/event-stream")
         self.send_header("Cache-Control", "no-cache")
         self.send_header("Connection", "keep-alive")

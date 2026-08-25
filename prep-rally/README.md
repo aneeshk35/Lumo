@@ -77,7 +77,21 @@ python3 -c "import json;qs=json.load(open('data/questions.json'));assert all(len
 
 ## Deploying
 
-Any host that runs Python works (Render / Railway / Fly.io free tiers). Set the `PORT` env var if the host requires it. Rally state lives in memory and high scores in a JSON file, which is right for one small instance; move to Redis or SQLite before scaling past that. Player profiles (name, ELO, mistakes, plan, vocab progress) live in each browser's localStorage — accounts are the next step if you want progress to follow users across devices.
+See [DEPLOY.md](../DEPLOY.md) for the full walkthrough. Short version:
+
+- **Render / Railway / Fly** run the game server. It holds party and duel state
+  in memory, streams SSE, and runs question timers on background threads, so it
+  needs one long-lived process. `render.yaml` at the repo root is ready to use.
+- **Vercel** can host `public/` as a static site. Set `LUMO_API_BASE` in
+  `public/config.js` to the game server URL, and list the Vercel origin in the
+  server's `ALLOWED_ORIGINS` env var so CORS lets the calls through. Skip this
+  and the game server serves the frontend itself, which is simpler.
+- **Supabase** is for accounts. `supabase/schema.sql` creates profiles,
+  attempts, and high scores with row level security. The client still needs
+  wiring to it; profiles live in localStorage today.
+
+Serverless alone cannot host the game server: stateless functions lose the
+in-memory parties between requests and cannot hold SSE connections or timers.
 
 ## Running the tests
 

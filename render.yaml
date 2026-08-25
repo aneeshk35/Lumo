@@ -1,0 +1,22 @@
+# Render blueprint for the Lumo game server.
+# The server holds party/duel state in memory and streams SSE, so it needs a
+# long-lived process. One instance only: scaling out would split that state.
+services:
+  - type: web
+    name: lumo
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: ""
+    startCommand: python3 prep-rally/server.py
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      # Set this if the frontend is hosted separately (e.g. on Vercel).
+      # Comma separated, no trailing slash: https://lumo.vercel.app
+      - key: ALLOWED_ORIGINS
+        sync: false
+      # Your own key from https://www.desmos.com/api
+      - key: DESMOS_API_KEY
+        sync: false
