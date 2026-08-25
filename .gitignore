@@ -3,6 +3,8 @@
 
 # Runtime data — high scores are per-deployment state, not source
 prep-rally/data/highscores.json
+prep-rally/data/classes.json
+prep-rally/data/tutors.json
 
 # Local Claude settings/state (keep launch.json and skills tracked if you want them shared)
 .claude/settings.local.json
