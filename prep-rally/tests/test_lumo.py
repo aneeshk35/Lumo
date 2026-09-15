@@ -31,8 +31,12 @@ def new_player(browser, name):
     """Fresh context with a pre-seeded profile, so the name modal is skipped."""
     ctx = browser.new_context(viewport={"width": 1280, "height": 900})
     page = ctx.new_page()
+    # Seed only on the first load. add_init_script runs on every navigation, so
+    # overwriting unconditionally would wipe the profile on each reload and make
+    # persistence impossible to test.
     page.add_init_script(
-        f"localStorage.setItem('lumo-profile', JSON.stringify({{name: {name!r}}}))"
+        "if (!localStorage.getItem('lumo-profile'))"
+        f" localStorage.setItem('lumo-profile', JSON.stringify({{name: {name!r}}}))"
     )
     page.goto(BASE)
     page.wait_for_selector(".sb-item")
@@ -428,13 +432,366 @@ def test_responsive(browser):
     ctx.close()
 
 
+def test_masterclass(browser):
+    print("\n11. Masterclass lessons")
+    ctx, page = new_player(browser, "Aneesh")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+
+    nav(page, "Reading & Writing")
+    page.wait_for_selector(".mc-card", timeout=8000)
+    rw_cards = page.locator(".mc-card").count()
+    check("Reading & Writing lists its lessons", rw_cards == 11, f"{rw_cards} cards")
+    check("grouped by domain", page.locator(".mc-group").count() == 4,
+          f"{page.locator('.mc-group').count()} groups")
+    check("progress starts at zero", "0%" in page.inner_text("#mc-ring-num"))
+
+    nav(page, "Math & Desmos")
+    page.wait_for_selector(".mc-card", timeout=8000)
+    math_cards = page.locator(".mc-card").count()
+    check("Math & Desmos lists its lessons", math_cards == 16, f"{math_cards} cards")
+    domains = page.eval_on_selector_all(".mc-domain", "els => els.map(e => e.innerText)")
+    check("Desmos gets its own group, sorted last",
+          domains and domains[-1] == "Desmos", str(domains))
+
+    # open a lesson and work its example
+    page.click(".mc-card")
+    page.wait_for_selector("#v-lesson.active", timeout=8000)
+    check("lesson reader opens", len(page.inner_text("#lesson-title")) > 0)
+    check("lesson has a method block", page.locator(".lb-steps, .lb-desmos").count() >= 1)
+    check("lesson has a worked example", page.locator(".lb-example").count() == 1)
+    check("walkthrough hidden before answering", page.locator("#lb-walk.hidden").count() == 1)
+
+    answer = page.evaluate(
+        "currentLesson.blocks.find(b => b.type === 'example').answer")
+    page.click(f'.lb-choice[data-ex-choice="{answer}"]')
+    page.wait_for_timeout(300)
+    check("answering reveals the walkthrough", page.locator("#lb-walk:not(.hidden)").count() == 1)
+    check("correct choice is marked right", page.locator(".lb-choice.correct").count() == 1)
+    check("choices lock after answering",
+          page.eval_on_selector_all(".lb-choice", "els => els.every(e => e.disabled)"))
+
+    page.click("#lesson-complete")
+    page.wait_for_timeout(250)
+    done = page.evaluate("JSON.parse(localStorage.getItem('lumo-profile')).lessonsDone.length")
+    check("marking complete persists", done == 1, f"{done} done")
+
+    page.click("#lesson-back")
+    page.wait_for_selector("#v-masterclass.active", timeout=5000)
+    check("back returns to the right masterclass",
+          "Math" in page.inner_text("#mc-title"), page.inner_text("#mc-title"))
+    check("progress ring updates", page.inner_text("#mc-ring-num") != "0%",
+          page.inner_text("#mc-ring-num"))
+    check("completed card is ticked", page.locator(".mc-card.done").count() == 1)
+
+    # drilling a lesson launches a real session from the bank
+    page.click(".mc-card.done")
+    page.wait_for_selector("#v-lesson.active", timeout=5000)
+    page.click("#lesson-drill")
+    page.wait_for_selector("#v-match.active", timeout=8000)
+    check("drill this skill starts a session", page.locator("#v-match.active").count() == 1)
+    check("no page errors in the masterclass", not errors, str(errors))
+    ctx.close()
+
+
+def test_coach(browser):
+    print("\n12. Ask Lumo")
+    ctx, page = new_player(browser, "Aneesh")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    nav(page, "Ask Lumo")
+    page.wait_for_timeout(500)
+    check("greeting card renders", page.locator(".coach-card").count() >= 1)
+    check("suggested chips offered", page.locator(".coach-chip").count() >= 3)
+
+    def ask(q):
+        page.fill("#coach-input", q)
+        page.click("#coach-send")
+        page.wait_for_timeout(700)
+        return page.locator(".coach-card").last.inner_text()
+
+    a = ask("How do transitions work?")
+    check("finds the transitions lesson", "Transitions" in a, a[:80])
+    check("offers to open the lesson and drill it",
+          "Read the full lesson" in a and "Drill" in a, a[:120])
+
+    a = ask("what does ambivalent mean")
+    check("answers a vocab word from the deck", "mixed or conflicting" in a.lower(), a[:80])
+
+    a = ask("explain quadratic vertex")
+    check("prefers the concept lesson over the Desmos one",
+          "Quadratics" in a and "Desmos move" not in a, a[:80])
+
+    a = ask("how do i use desmos")
+    check("still routes calculator questions to Desmos", "Desmos" in a, a[:80])
+
+    a = ask("qwertyzxcvbnm")
+    check("says so when it has nothing", "don't have anything solid" in a, a[:80])
+
+    a = ask("what should I study next")
+    check("study advice is grounded in real data",
+          "Not enough data" in a or "worst first" in a, a[:80])
+
+    # an action button actually does something
+    page.locator(".coach-card").last.locator("[data-act]").first.click()
+    page.wait_for_timeout(900)
+    check("answer actions are wired",
+          page.locator("#v-match.active, #v-analytics.active, #v-mistakes.active").count() == 1)
+    check("no page errors in the coach", not errors, str(errors))
+    ctx.close()
+
+
+def test_tutor(browser):
+    print("\n13. Apply As A Tutor")
+    ctx, page = new_player(browser, "Aneesh")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    nav(page, "Apply As A Tutor")
+    page.wait_for_timeout(500)
+    check("eligibility checklist renders", page.locator(".elig").count() == 3)
+    check("form is shown before applying",
+          page.locator("#tutor-form-wrap:not(.hidden)").count() == 1)
+    check("nickname pre-fills the name", page.input_value("#tf-name") == "Aneesh")
+
+    def submit():
+        page.evaluate("document.getElementById('tutor-form')"
+                      ".dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}))")
+        page.wait_for_timeout(350)
+        return page.inner_text("#tf-error")
+
+    page.fill("#tf-email", "nope")
+    check("rejects a malformed email", "valid email" in submit())
+    page.fill("#tf-email", "aneesh@example.com")
+    check("requires a subject", "at least one subject" in submit())
+    page.check('#tf-subjects input[value="Math"]')
+    page.fill("#tf-about", "too short")
+    check("requires a real answer", "more character" in submit())
+
+    page.fill("#tf-about", "I have worked through most of the bank and I like breaking a hard "
+                           "question down into the smallest step that still makes sense.")
+    check("accepts a complete application", submit() == "")
+    page.wait_for_timeout(600)
+    check("status card replaces the form",
+          page.locator("#tutor-status-card:not(.hidden)").count() == 1)
+    check("status names the review state", "review" in page.inner_text("#ts-title").lower())
+    check("submitted details are shown back", page.locator(".ts-cell").count() >= 5)
+
+    # the application survives a reload, because it lives on the server
+    page.reload()
+    page.wait_for_selector(".sb-item")
+    nav(page, "Apply As A Tutor")
+    page.wait_for_timeout(600)
+    check("application persists across a reload",
+          page.locator("#tutor-status-card:not(.hidden)").count() == 1)
+
+    page.on("dialog", lambda d: d.accept())
+    page.click("#btn-tutor-withdraw")
+    page.wait_for_timeout(700)
+    check("withdrawing brings the form back",
+          page.locator("#tutor-form-wrap:not(.hidden)").count() == 1)
+    check("no page errors in the tutor flow", not errors, str(errors))
+    ctx.close()
+
+
+def test_classes(browser):
+    print("\n14. My Classes")
+    t_ctx, teacher = new_player(browser, "MsRivera")
+    s_ctx, student = new_player(browser, "Sam")
+    errors = []
+    teacher.on("pageerror", lambda e: errors.append(str(e)))
+    student.on("pageerror", lambda e: errors.append(str(e)))
+
+    nav(teacher, "My Classes")
+    teacher.wait_for_timeout(400)
+    check("empty state before any class", teacher.locator(".empty-note").count() == 1)
+    teacher.fill("#class-new-name", "Period 3 SAT Prep")
+    teacher.click("#btn-class-create")
+    teacher.wait_for_selector("#class-detail:not(.hidden)", timeout=8000)
+    code = teacher.inner_text("#cd-code").strip()
+    check("teacher gets a 5-letter class code", len(code) == 5, code)
+    check("teacher tools are shown",
+          teacher.locator("#cd-teacher-tools:not(.hidden)").count() == 1)
+    check("domain dropdown is populated",
+          teacher.eval_on_selector("#cd-assign-domain", "el => el.options.length") == 9)
+
+    # student joins
+    nav(student, "My Classes")
+    student.wait_for_timeout(400)
+    student.fill("#class-join-code", code)
+    student.click("#btn-class-join")
+    student.wait_for_selector("#class-detail:not(.hidden)", timeout=8000)
+    check("student joins with the code", "Period 3" in student.inner_text("#cd-name"))
+    check("student does not see teacher tools",
+          student.locator("#cd-teacher-tools.hidden").count() == 1)
+
+    # teacher sees the roster fill in
+    teacher.click("#class-back")
+    teacher.wait_for_timeout(300)
+    teacher.click("[data-class]")
+    teacher.wait_for_selector("#class-detail:not(.hidden)", timeout=8000)
+    names = teacher.eval_on_selector_all("#cd-roster .roster-row:not(.head) .rn",
+                                         "els => els.map(e => e.innerText)")
+    check("roster shows the student", any("Sam" in n for n in names), str(names))
+
+    # teacher sets an assignment
+    teacher.fill("#cd-assign-name", "Algebra warm-up")
+    teacher.select_option("#cd-assign-domain", "Algebra")
+    teacher.select_option("#cd-assign-count", "5")
+    teacher.click("#cd-assign-save")
+    teacher.wait_for_timeout(700)
+    check("assignment is set", "Algebra warm-up" in teacher.inner_text("#cd-assign-title"))
+
+    # student sees it and plays it
+    student.click("#class-back")
+    student.wait_for_timeout(300)
+    student.click("[data-class]")
+    student.wait_for_selector("#class-detail:not(.hidden)", timeout=8000)
+    check("student sees the assignment",
+          "Algebra warm-up" in student.inner_text("#cd-assign-title"))
+    student.click("#cd-assign-start")
+    student.wait_for_selector("#v-match.active", timeout=8000)
+    check("assignment launches the right set",
+          "of 5" in student.inner_text("#match-progress"), student.inner_text("#match-progress"))
+    play_session(student, max_q=8, choice=0)
+    student.wait_for_timeout(900)
+
+    # teacher refreshes and sees the work reported
+    teacher.click("#class-back")
+    teacher.wait_for_timeout(300)
+    teacher.click("[data-class]")
+    teacher.wait_for_selector("#class-detail:not(.hidden)", timeout=8000)
+    row = teacher.inner_text("#cd-roster .roster-row:not(.head)")
+    check("student progress reaches the teacher", "Done" in row, row.replace("\n", " "))
+    attempted = teacher.eval_on_selector_all(
+        "#cd-roster .roster-row:not(.head) .rv", "els => els[0].innerText")
+    check("answered count is reported", attempted not in ("", "0"), f"attempted={attempted}")
+
+    check("no page errors in classes", not errors, str(errors))
+    s_ctx.close()
+    t_ctx.close()
+
+
+def test_friends(browser):
+    print("\n15. Friends and invites")
+    a_ctx, a = new_player(browser, "FriendA")
+    b_ctx, b = new_player(browser, "FriendB")
+    errors = []
+    a.on("pageerror", lambda e: errors.append(str(e)))
+    b.on("pageerror", lambda e: errors.append(str(e)))
+
+    nav(a, "Play")
+    nav(b, "Play")
+    a.wait_for_timeout(1200)
+    b.wait_for_timeout(1200)
+    a_code = a.inner_text("#my-friend-code").strip()
+    b_code = b.inner_text("#my-friend-code").strip()
+    check("each player gets a 6-character friend code",
+          len(a_code) == 6 and len(b_code) == 6 and a_code != b_code, f"{a_code} / {b_code}")
+    check("friends list starts empty", a.locator("#friends-list .empty-note").count() == 1)
+
+    b.fill("#friend-code-input", a_code)
+    b.click("#btn-add-friend")
+    b.wait_for_timeout(1200)
+    check("adding by code works", b.locator("#friends-list .friend").count() == 1)
+    check("friend shows as online", "Online" in b.inner_text("#friends-list .friend .s")
+          or "Play" in b.inner_text("#friends-list .friend .s"),
+          b.inner_text("#friends-list .friend .s"))
+
+    # B challenges A; A picks the invite up on its next presence poll
+    b.click("[data-challenge]")
+    b.wait_for_selector("#v-lobby.active", timeout=8000)
+    check("challenger lands in a lobby", b.locator("#v-lobby.active").count() == 1)
+    a.evaluate("pingPresence()")
+    a.wait_for_timeout(900)
+    check("invite reaches the friend", a.locator("#invite-pop:not(.hidden)").count() == 1)
+    check("invite names the challenger", "FriendB" in a.inner_text("#invite-title"),
+          a.inner_text("#invite-title"))
+    a.click("#invite-accept")
+    a.wait_for_selector("#v-lobby.active", timeout=8000)
+    b.wait_for_timeout(700)
+    players = b.eval_on_selector_all("#lobby-players .player-card .n", "els => els.map(e => e.innerText)")
+    check("both players are in the same lobby", len(players) == 2, str(players))
+
+    # removing a friend
+    b.evaluate("teardownGame()")
+    nav(b, "Play")
+    b.wait_for_timeout(600)
+    b.click("[data-unfriend]")
+    b.wait_for_timeout(400)
+    check("removing a friend empties the list",
+          b.locator("#friends-list .empty-note").count() == 1)
+    check("no page errors in friends", not errors, str(errors))
+    b_ctx.close()
+    a_ctx.close()
+
+
+def test_2v2(browser):
+    print("\n16. 2v2 team duel")
+    ctxs, pages = [], []
+    for i in range(4):
+        c, p = new_player(browser, f"Team{i + 1}")
+        ctxs.append(c)
+        pages.append(p)
+    errors = []
+    for p in pages:
+        p.on("pageerror", lambda e: errors.append(str(e)))
+
+    for p in pages:
+        nav(p, "Play")
+    pages[0].click("#btn-find-2v2")
+    pages[0].wait_for_selector("#v-queue.active", timeout=8000)
+    check("2v2 queue is labelled", "2v2" in pages[0].inner_text("#queue-kind"),
+          pages[0].inner_text("#queue-kind"))
+    pages[0].wait_for_timeout(1800)
+    check("queue reports how many are still needed",
+          "of 4" in pages[0].inner_text("#queue-waiting"),
+          pages[0].inner_text("#queue-waiting"))
+
+    for p in pages[1:]:
+        p.click("#btn-find-2v2")
+        p.wait_for_timeout(400)
+    for p in pages:
+        p.wait_for_selector("#v-lobby.active", timeout=15000)
+    check("four players form a 2v2 lobby", True)
+    check("lobby names the mode", "2v2" in pages[0].inner_text("#lobby-title"),
+          pages[0].inner_text("#lobby-title"))
+    check("two teams are shown", pages[0].locator(".team-block").count() == 2)
+    roles = pages[0].eval_on_selector_all(".team-block .player-card .s",
+                                          "els => els.map(e => e.innerText)")
+    check("each team gets a Reading and a Math specialist",
+          sorted(roles) == ["Math specialist", "Math specialist",
+                            "Reading specialist", "Reading specialist"], str(roles))
+
+    for p in pages:
+        p.click("#btn-ready")
+    for p in pages:
+        p.wait_for_selector("#v-match.active", timeout=12000)
+    check("all four ready-ups start the match", True)
+    texts = [p.inner_text("#q-text") for p in pages]
+    check("same question for all four", len(set(texts)) == 1)
+
+    for i, p in enumerate(pages):
+        answer_current(p, i % 4)
+    pages[0].wait_for_selector("#reveal-card:not(.hidden)", timeout=10000)
+    check("reveal reaches the team match",
+          pages[0].locator("#reveal-card:not(.hidden)").count() == 1)
+    check("2v2 auto-advances like a duel",
+          "in" in pages[0].inner_text("#reveal-note").lower(),
+          pages[0].inner_text("#reveal-note"))
+    check("no page errors in 2v2", not errors, str(errors))
+    for c in ctxs:
+        c.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
         browser = p.chromium.launch()
         for fn in (test_first_run, test_navigation, test_question_bank,
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
-                   test_tools, test_party, test_duel, test_responsive):
+                   test_tools, test_party, test_duel, test_responsive,
+                   test_masterclass, test_coach, test_tutor, test_classes,
+                   test_friends, test_2v2):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest
