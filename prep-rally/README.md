@@ -110,9 +110,31 @@ python3 tests/test_lumo.py
 
 It prints PASS/FAIL per check and exits non-zero if anything fails.
 
+### UI audit
+
+`tests/audit_ui.py` crawls every screen and state (first-run prompt, all nav
+destinations, matchmaking, lobby, a reading and a math question, the calculator,
+the reveal, results) at a desktop and a phone viewport, and checks what a user
+actually sees:
+
+- text contrast against its real background, walking through translucent layers
+  and judging the worst stop of any gradient, so white text left sitting on a
+  missing gradient shows up as `1.00:1`
+- sideways page scroll and elements running off the screen
+- text clipped by `overflow: hidden` without an ellipsis
+- controls with no accessible name
+- tap targets under 24px on phones (a wrapping `<label>` counts toward the target)
+- page errors, console errors, and failed requests
+
+```bash
+python3 tests/audit_ui.py
+```
+
+It exits non-zero on any finding. Run it after UI changes, before committing.
+
 ## Interface
 
-The left rail is icons only, ten destinations, uniform spacing. Hovering an
+The left rail is icons only, one per destination, at uniform spacing. Hovering an
 icon reveals its label; the labels stay in the DOM for screen readers and the
 buttons carry `aria-label`, so the rail is readable without being cluttered.
 

@@ -32,11 +32,15 @@ profile.vocabKnown = profile.vocabKnown || [];
 profile.friends = profile.friends || [];
 profile.classes = profile.classes || [];
 profile.lessonsDone = profile.lessonsDone || [];
+function saveProfile() { localStorage.setItem('lumo-profile', JSON.stringify(profile)); }
+// Mint the social identity once and persist it immediately. Without the save,
+// every reload would hand out a new key and the browser would silently lose its
+// classes, friend code, and tutor application.
 if (!profile.playerKey) {
   profile.playerKey = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now())
     .replace(/-/g, '');
+  saveProfile();
 }
-function saveProfile() { localStorage.setItem('lumo-profile', JSON.stringify(profile)); }
 
 const DOMAIN_SECTION = {
   'Algebra': 'math', 'Advanced Math': 'math',
@@ -210,8 +214,7 @@ function initAnimations() {
 
   // The mascot breathes between blob shapes.
   if (anim.morph) idleMorph();
-  gsap.fromTo('.sb-item', { y: 8, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.35, stagger: 0.03, ease: 'power2.out', clearProps: 'all' });
+  $('sidebar').classList.add('rail-in');
 }
 
 function idleMorph() {
@@ -249,40 +252,20 @@ function popIcon(btn) {
 
 // Content settles in behind the pill. Only page-style views; the match screen
 // stays still so questions never jump while you are reading them.
-let viewTween = null;
-let viewTweenEls = null;
-
-// Abandon whatever the last screen was doing and strip the inline styles GSAP
-// left on it. Without this, a tween that never finished — a background tab
-// throttles requestAnimationFrame and freezes it mid-fade — leaves the screen
-// stuck at partial opacity for good.
-function clearViewTween() {
-  if (viewTween) { viewTween.kill(); viewTween = null; }
-  if (viewTweenEls) {
-    if (window.gsap) gsap.set(viewTweenEls, { clearProps: 'all' });
-    viewTweenEls = null;
-  }
-}
-
+// Content settles in behind the pill. This is a CSS animation, not a GSAP tween,
+// on purpose: an element's resting style is the visible one, so if the animation
+// never runs — a background tab throttles rAF and timers to a standstill — the
+// content is simply there. A JS tween that fades from opacity 0 can freeze
+// half-way and leave a screen permanently blank. The rise distance does the
+// staggering, because an animation-delay would need a fill mode that reintroduces
+// exactly that risk.
 function animateView(id) {
-  clearViewTween();
-  const els = document.querySelectorAll(`#${id} .page > *, #${id} .center-stage > *`);
-  if (!els.length) return;
-  // Nothing to animate towards while the tab is hidden, and rAF is throttled
-  // there, so show the content outright and let the next visit animate it.
-  if (!anim.on || document.hidden) return;
-  viewTweenEls = els;
-  viewTween = gsap.fromTo(els, { y: 10, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.32, stagger: 0.035, ease: 'power2.out',
-      clearProps: 'all',
-      onComplete: () => { viewTween = null; viewTweenEls = null; } });
+  const view = $(id);
+  if (!view) return;
+  view.classList.remove('animate-in');
+  void view.offsetWidth;   // reflow, so the animation restarts on every visit
+  view.classList.add('animate-in');
 }
-
-// Coming back to a hidden tab: snap any half-finished fade to its end state.
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden && viewTween) viewTween.progress(1);
-  else if (!document.hidden) clearViewTween();
-});
 
 // Keeps the Study Planner count in the sidebar in sync as tasks get checked off.
 function refreshPlannerBadge() {
@@ -313,6 +296,11 @@ function navTo(name) {
   });
   movePill(activeBtn);
   popIcon(activeBtn);
+  // On narrow screens the rail becomes a horizontally scrolling top bar, so the
+  // item you just picked can sit off-screen. Bring it into view.
+  if (activeBtn && activeBtn.scrollIntoView) {
+    activeBtn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
   if (item.view === 'challenge') {
     // Challenge Questions = a hard-only mixed drill straight from the bank.
     startPractice({ section: 'mixed', difficulties: ['hard'], count: 10 }, 'Challenge');
@@ -651,7 +639,9 @@ function renderLobby(lobby) {
 }
 
 $('btn-ready').onclick = async () => {
-  if (game.mode === 'duel') await api('ready');
+  // Duels and 2v2 start once every player has readied up. Only a party's host
+  // starts a match by hand; sending 'start' here let a 2v2 host skip ready-up.
+  if (game.mode === 'duel' || game.mode === 'team') await api('ready');
   else await api('start');
 };
 $('btn-leave-lobby').onclick = () => { teardownGame(); navTo('Play'); };
@@ -1204,7 +1194,7 @@ function renderHome() {
     <div class="task">
       <div class="row1">
         <button class="chk" data-home-check="${t.id}" style="${t.done ? 'background:var(--purple);border-color:var(--purple)' : ''}" aria-label="Mark ${esc(t.label)} done">${t.done ? icon('play', 11, 3) : ''}</button>
-        <span class="name" style="${t.done ? 'color:var(--slate-4);text-decoration:line-through' : ''}">${esc(t.label)}</span>
+        <span class="name" style="${t.done ? 'color:var(--slate-5);text-decoration:line-through' : ''}">${esc(t.label)}</span>
         ${t.section === 'review' && !profile.mistakes.length ? '<span class="tag tag-overdue">nothing to review</span>' : ''}
       </div>
       <div class="row2">
@@ -1572,7 +1562,7 @@ function renderPlanner() {
     <div class="task">
       <div class="row1">
         <button class="chk" data-plan-check="${t.id}" style="${t.done ? 'background:var(--purple);border-color:var(--purple)' : ''}" aria-label="Mark done">${t.done ? icon('play', 11, 3) : ''}</button>
-        <span class="name" style="${t.done ? 'color:var(--slate-4);text-decoration:line-through' : ''}">${esc(t.label)}</span>
+        <span class="name" style="${t.done ? 'color:var(--slate-5);text-decoration:line-through' : ''}">${esc(t.label)}</span>
         ${t.section === 'review' && !profile.mistakes.length ? '<span class="tag tag-overdue">nothing to review</span>' : ''}
       </div>
       <div class="row2">

@@ -62,6 +62,7 @@ function paintClass() {
   $('cd-assign-start').classList.toggle('hidden', !a);
 
   $('cd-teacher-tools').classList.toggle('hidden', !c.isTeacher);
+  if (c.isTeacher) fillAssignDomains();
   $('cd-clear-assign').classList.toggle('hidden', !a);
   $('cd-leave').textContent = c.isTeacher ? 'Close this class' : 'Leave this class';
 
