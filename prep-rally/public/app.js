@@ -88,35 +88,47 @@ const ICONS = {
   chat: 'M4 5h16v11H9l-5 4z M8 9h8M8 12.5h5',
   gear: 'M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M12 3v2.2M12 18.8V21M4.9 7.5l1.9 1.1M17.2 15.4l1.9 1.1M4.9 16.5l1.9-1.1M17.2 8.6l1.9-1.1',
 };
+// Six rail destinations, not fourteen. Each one is a section: the rail picks the
+// section, a tab row inside the page picks the screen within it. Nothing was
+// dropped — Vocab, Analytics and the rest moved one level down.
 const NAV = [
-  { items: [
-    { name: 'Home', icon: 'home', view: 'v-home' },
-    { name: 'Study Planner', icon: 'planner', view: 'v-planner', badge: plannerBadge },
+  { name: 'Home', icon: 'home', items: [
+    { name: 'Home', view: 'v-home' },
   ]},
-  { items: [
-    { name: 'Question Bank', icon: 'bank', view: 'v-bank' },
-    { name: 'Question Rush', icon: 'rush', view: 'v-rush' },
-    { name: 'Challenge Questions', icon: 'target', view: 'challenge' },
-    { name: 'Full-Length Tests', icon: 'tests', view: 'test' },
-    { name: 'Vocab', icon: 'vocab', view: 'v-vocab' },
+  { name: 'Practice', icon: 'target', items: [
+    { name: 'Question Bank', view: 'v-bank' },
+    { name: 'Question Rush', view: 'v-rush' },
+    { name: 'Vocab', view: 'v-vocab' },
+    { name: 'Challenge Questions', view: 'challenge' },
+    { name: 'Full-Length Tests', view: 'test' },
   ]},
-  { items: [
-    { name: 'Play', icon: 'play', view: 'v-play' },
+  { name: 'Play', icon: 'play', items: [
+    { name: 'Play', view: 'v-play' },
   ]},
-  { items: [
-    { name: 'Saved & Mistakes', icon: 'saved', view: 'v-mistakes' },
-    { name: 'Analytics', icon: 'analytics', view: 'v-analytics' },
+  { name: 'Learn', icon: 'reading', items: [
+    { name: 'Reading & Writing', view: 'v-masterclass', mcSection: 'rw' },
+    { name: 'Math & Desmos', view: 'v-masterclass', mcSection: 'math' },
+    { name: 'Ask Lumo', view: 'v-coach' },
   ]},
-  { items: [
-    { name: 'Reading & Writing', icon: 'reading', view: 'v-masterclass', mcSection: 'rw' },
-    { name: 'Math & Desmos', icon: 'math', view: 'v-masterclass', mcSection: 'math' },
-    { name: 'Ask Lumo', icon: 'spark', view: 'v-coach' },
+  { name: 'Progress', icon: 'analytics', items: [
+    { name: 'Study Planner', view: 'v-planner', badge: plannerBadge },
+    { name: 'Saved & Mistakes', view: 'v-mistakes' },
+    { name: 'Analytics', view: 'v-analytics' },
   ]},
-  { items: [
-    { name: 'My Classes', icon: 'classes', view: 'v-classes' },
-    { name: 'Apply As A Tutor', icon: 'tutor', view: 'v-tutor' },
+  { name: 'Classes', icon: 'classes', items: [
+    { name: 'My Classes', view: 'v-classes' },
+    { name: 'Apply As A Tutor', view: 'v-tutor' },
   ]},
 ];
+
+const navItems = () => NAV.flatMap((g) => g.items.map((i) => ({ item: i, group: g })));
+const findNav = (name) => navItems().find((n) => n.item.name === name)
+  || navItems().find((n) => n.group.name === name);
+// Badges are strings ('' when there is nothing to show), so coerce before adding.
+const groupBadge = (g) => g.items.reduce((n, i) => {
+  const b = typeof i.badge === 'function' ? i.badge() : i.badge;
+  return n + (Number(b) || 0);
+}, 0);
 
 // Feature modules register their render function here so navTo does not need to
 // know about every screen. Filled in by masterclass.js, coach.js, classroom.js.
@@ -158,14 +170,12 @@ function buildSidebar() {
     <nav class="sb-nav" id="sb-nav">`;
 
   NAV.forEach((group) => {
-    for (const it of group.items) {
-      const badge = typeof it.badge === 'function' ? it.badge() : it.badge;
-      html += `<button class="sb-item" data-navitem="${esc(it.name)}" aria-label="${esc(it.name)}">
-        ${icon(it.icon, 21)}
-        ${badge ? `<span class="sb-badge">${esc(badge)}</span>` : ''}
-        <span class="sb-tip">${esc(it.name)}</span>
-      </button>`;
-    }
+    const badge = groupBadge(group);
+    html += `<button class="sb-item" data-navgroup="${esc(group.name)}" aria-label="${esc(group.name)}">
+      ${icon(group.icon, 21)}
+      ${badge ? `<span class="sb-badge">${esc(badge)}</span>` : ''}
+      <span class="sb-tip">${esc(group.name)}</span>
+    </button>`;
   });
 
   html += `</nav>
@@ -174,14 +184,51 @@ function buildSidebar() {
         <span class="lumo round lilac"></span>
         <span class="sb-tip" id="sb-username">${esc(profile.name || 'Set nickname')}</span>
       </button>
+      <button class="sb-theme" id="btn-theme" aria-label="Switch between light and dark">
+        <svg class="ic moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="ic sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+        <span class="sb-tip" id="theme-tip">Dark mode</span>
+      </button>
     </div>`;
 
   sb.innerHTML = html;
-  sb.querySelectorAll('[data-navitem]').forEach((b) => {
-    b.onclick = () => navTo(b.dataset.navitem);
+  sb.querySelectorAll('[data-navgroup]').forEach((b) => {
+    b.onclick = () => navTo(b.dataset.navgroup);
   });
   $('btn-user').onclick = () => promptName();
   $('sb-brand').onclick = () => navTo('Home');
+  $('btn-theme').onclick = toggleTheme;
+  syncThemeLabel();
+}
+
+/* ================= Theme =================
+   No stored choice means follow the OS. Picking one pins it for this browser. */
+function systemPrefersDark() {
+  return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
+
+function isDark() {
+  const set = document.documentElement.dataset.theme;
+  return set ? set === 'dark' : systemPrefersDark();
+}
+
+function syncThemeLabel() {
+  const tip = $('theme-tip');
+  if (tip) tip.textContent = isDark() ? 'Light mode' : 'Dark mode';
+}
+
+function toggleTheme() {
+  const next = isDark() ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('lumo-theme', next); } catch (e) { /* private mode */ }
+  syncThemeLabel();
+}
+
+// Follow the OS while the viewer has not chosen for themselves.
+if (window.matchMedia) {
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const onChange = () => { if (!document.documentElement.dataset.theme) syncThemeLabel(); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange);
 }
 
 /* ================= Motion (GSAP) =================
@@ -269,28 +316,64 @@ function animateView(id) {
 
 // Keeps the Study Planner count in the sidebar in sync as tasks get checked off.
 function refreshPlannerBadge() {
-  const item = document.querySelector('.sb-item[data-navitem="Study Planner"]');
+  const group = NAV.find((g) => g.items.some((i) => i.name === 'Study Planner'));
+  const item = document.querySelector(`.sb-item[data-navgroup="${group.name}"]`);
   if (!item) return;
-  const count = plannerBadge();
+  const count = groupBadge(group);
   let badge = item.querySelector('.sb-badge');
-  if (!count) { if (badge) badge.remove(); return; }
-  if (!badge) {
-    badge = document.createElement('span');
-    badge.className = 'sb-badge';
-    item.appendChild(badge);
+  if (count) {
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'sb-badge';
+      item.appendChild(badge);
+    }
+    badge.textContent = count;
+  } else if (badge) {
+    badge.remove();
   }
-  badge.textContent = count;
+  const tabCount = document.querySelector('.subnav-tab[data-navitem="Study Planner"] .subnav-count');
+  if (!tabCount) return;
+  const left = plannerBadge();
+  if (left) tabCount.textContent = left; else tabCount.remove();
+}
+
+// The rail picks a section; this row picks the screen inside it, and sits with
+// the page title it belongs to. Sections with one screen get no row.
+function renderSubnav(group, activeItem) {
+  const view = $(activeItem.view);
+  const page = view && view.querySelector('.page');
+  if (!page) return;
+  const existing = page.querySelector('.subnav');
+  if (group.items.length < 2) { if (existing) existing.remove(); return; }
+  const nav = existing || document.createElement('nav');
+  nav.className = 'subnav';
+  nav.setAttribute('aria-label', `${group.name} sections`);
+  nav.innerHTML = group.items.map((it) => {
+    const badge = typeof it.badge === 'function' ? it.badge() : it.badge;
+    const on = it.name === activeItem.name;
+    return `<button class="subnav-tab${on ? ' active' : ''}" data-navitem="${esc(it.name)}"${on ? ' aria-current="page"' : ''}>
+      ${esc(it.name)}${badge ? `<span class="subnav-count">${esc(badge)}</span>` : ''}
+    </button>`;
+  }).join('');
+  nav.querySelectorAll('[data-navitem]').forEach((b) => {
+    b.onclick = () => navTo(b.dataset.navitem);
+  });
+  if (!existing) {
+    const head = page.querySelector('.play-head') || page.querySelector('.title-row');
+    if (head) head.after(nav); else page.prepend(nav);
+  }
 }
 
 let activeNav = 'Home';
 function navTo(name) {
-  const item = NAV.flatMap((g) => g.items).find((i) => i.name === name);
-  if (!item) return;
+  const found = findNav(name);
+  if (!found) return;
+  const { item, group } = found;
   if (leaveGuard()) return;
-  activeNav = name;
+  activeNav = item.name;
   let activeBtn = null;
   document.querySelectorAll('.sb-item').forEach((b) => {
-    const on = b.dataset.navitem === name;
+    const on = b.dataset.navgroup === group.name;
     b.classList.toggle('active', on);
     if (on) activeBtn = b;
   });
@@ -312,6 +395,7 @@ function navTo(name) {
     return;
   }
   switchView(item.view);
+  renderSubnav(group, item);
   if (item.view === 'v-home') renderHome();
   if (item.view === 'v-rush') renderRush();
   if (item.view === 'v-play') renderPlay();
@@ -1192,17 +1276,18 @@ function renderHome() {
   const tasks = profile.plan.tasks.slice(0, 3);
   $('plan-tasks').innerHTML = tasks.map((t) => `
     <div class="task">
-      <div class="row1">
-        <button class="chk" data-home-check="${t.id}" style="${t.done ? 'background:var(--purple);border-color:var(--purple)' : ''}" aria-label="Mark ${esc(t.label)} done">${t.done ? icon('play', 11, 3) : ''}</button>
-        <span class="name" style="${t.done ? 'color:var(--slate-5);text-decoration:line-through' : ''}">${esc(t.label)}</span>
-        ${t.section === 'review' && !profile.mistakes.length ? '<span class="tag tag-overdue">nothing to review</span>' : ''}
+      <button class="chk" data-home-check="${t.id}" style="${t.done ? 'background:var(--purple);border-color:var(--purple)' : ''}" aria-label="Mark ${esc(t.label)} done">${t.done ? icon('play', 11, 3) : ''}</button>
+      <div class="task-main">
+        <div class="task-title">
+          <span class="name" style="${t.done ? 'color:var(--slate-5);text-decoration:line-through' : ''}">${esc(t.label)}</span>
+          ${t.section === 'review' && !profile.mistakes.length ? '<span class="tag tag-overdue">nothing to review</span>' : ''}
+        </div>
+        <div class="task-meta">
+          <span class="tag-subject">${t.domain ? esc(t.domain) : (t.section === 'review' ? 'Mistakes' : 'Mixed')}</span>
+          <span class="time">${icon('planner', 13, 2)}${t.count} questions</span>
+        </div>
       </div>
-      <div class="row2">
-        <span class="tag-subject">${t.domain ? esc(t.domain) : (t.section === 'review' ? 'Mistakes' : 'Mixed')}</span>
-        <span class="time">${icon('planner', 13, 2)}${t.count} questions</span>
-        <span class="spacer"></span>
-        <button class="btn-soft" data-home-start="${t.id}">Start ${icon('play', 12, 2.2)}</button>
-      </div>
+      <button class="btn-soft" data-home-start="${t.id}">Start ${icon('play', 12, 2.2)}</button>
     </div>`).join('');
 
   document.querySelectorAll('[data-home-check]').forEach((b) => {
@@ -1560,17 +1645,18 @@ function renderPlanner() {
 
   $('planner-tasks').innerHTML = tasks.map((t) => `
     <div class="task">
-      <div class="row1">
-        <button class="chk" data-plan-check="${t.id}" style="${t.done ? 'background:var(--purple);border-color:var(--purple)' : ''}" aria-label="Mark done">${t.done ? icon('play', 11, 3) : ''}</button>
-        <span class="name" style="${t.done ? 'color:var(--slate-5);text-decoration:line-through' : ''}">${esc(t.label)}</span>
-        ${t.section === 'review' && !profile.mistakes.length ? '<span class="tag tag-overdue">nothing to review</span>' : ''}
+      <button class="chk" data-plan-check="${t.id}" style="${t.done ? 'background:var(--purple);border-color:var(--purple)' : ''}" aria-label="Mark done">${t.done ? icon('play', 11, 3) : ''}</button>
+      <div class="task-main">
+        <div class="task-title">
+          <span class="name" style="${t.done ? 'color:var(--slate-5);text-decoration:line-through' : ''}">${esc(t.label)}</span>
+          ${t.section === 'review' && !profile.mistakes.length ? '<span class="tag tag-overdue">nothing to review</span>' : ''}
+        </div>
+        <div class="task-meta">
+          <span class="tag-subject">${t.domain ? esc(t.domain) : (t.section === 'review' ? 'Mistakes' : 'Mixed')}</span>
+          <span class="time">${icon('planner', 13, 2)}${t.count} questions</span>
+        </div>
       </div>
-      <div class="row2">
-        <span class="tag-subject">${t.domain ? esc(t.domain) : (t.section === 'review' ? 'Mistakes' : 'Mixed')}</span>
-        <span class="time">${icon('planner', 13, 2)}${t.count} questions</span>
-        <span class="spacer"></span>
-        <button class="btn-soft" data-plan-start="${t.id}">Start ${icon('play', 12, 2.2)}</button>
-      </div>
+      <button class="btn-soft" data-plan-start="${t.id}">Start ${icon('play', 12, 2.2)}</button>
     </div>`).join('');
 
   document.querySelectorAll('[data-plan-check]').forEach((b) => {
@@ -1730,7 +1816,7 @@ buildSidebar();
 initAnimations();
 if (profile.plan && profile.plan.week !== weekKey()) buildPlan(); // fresh week, fresh plan
 refreshPlannerBadge();
-const homeBtn = document.querySelector('.sb-item[data-navitem="Home"]');
+const homeBtn = document.querySelector('.sb-item[data-navgroup="Home"]');
 homeBtn.classList.add('active');
 movePill(homeBtn);
 renderHome();

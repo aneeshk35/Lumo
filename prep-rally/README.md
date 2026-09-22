@@ -122,9 +122,14 @@ actually sees:
   missing gradient shows up as `1.00:1`
 - sideways page scroll and elements running off the screen
 - text clipped by `overflow: hidden` without an ellipsis
+- a control sitting under another control, which is neither an overflow nor a
+  contrast problem: both are on screen and one is simply unclickable
 - controls with no accessible name
 - tap targets under 24px on phones (a wrapping `<label>` counts toward the target)
 - page errors, console errors, and failed requests
+
+Each viewport runs in light and dark, so a colour that only works in one theme
+is a failure.
 
 ```bash
 python3 tests/audit_ui.py
@@ -134,9 +139,21 @@ It exits non-zero on any finding. Run it after UI changes, before committing.
 
 ## Interface
 
-The left rail is icons only, one per destination, at uniform spacing. Hovering an
-icon reveals its label; the labels stay in the DOM for screen readers and the
-buttons carry `aria-label`, so the rail is readable without being cluttered.
+The left rail holds six sections — Home, Practice, Play, Learn, Progress,
+Classes — not one icon per screen. Picking a section opens its first screen and
+a tab row under the page title lists the rest, so every destination is two
+clicks away and the rail stays scannable. Hovering an icon reveals its label;
+the labels stay in the DOM for screen readers and the buttons carry
+`aria-label`, so the rail is readable without being cluttered.
+
+Light and dark both ship. With no choice stored the app follows the OS; the
+button beside the avatar pins one for this browser, and `index.html` applies the
+stored value before the first paint so a dark viewer never sees a white flash.
+Colours resolve through tokens on `:root`, which the dark block redefines — so
+dark mode is a token swap, not a second stylesheet. Two pairs are deliberately
+split: `--purple` fills a button that carries white text while `--purple-ink`
+is purple *as* text on a wash, and `--purple-deep` stays fixed because it only
+ever sits on a white chip over a brand gradient.
 
 Motion is handled by GSAP, loaded from a CDN:
 

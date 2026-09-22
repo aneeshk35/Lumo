@@ -44,7 +44,16 @@ def new_player(browser, name):
 
 
 def nav(page, item):
-    page.click(f'.sb-item[data-navitem="{item}"]')
+    """Reach a destination the way a user does: rail picks the section, the tab
+    row inside the page picks the screen. Single-screen sections have no tabs."""
+    group = page.evaluate(
+        "(n) => (NAV.find((g) => g.items.some((i) => i.name === n)) || {}).name", item)
+    assert group, f"no nav section contains {item!r}"
+    page.click(f'.sb-item[data-navgroup="{group}"]')
+    page.wait_for_timeout(250)
+    tab = page.locator(f'.view.active .subnav-tab[data-navitem="{item}"]')
+    if tab.count():
+        tab.click()
     page.wait_for_timeout(350)
 
 
@@ -106,9 +115,14 @@ def test_navigation(browser):
     ctx, page = new_player(browser, "Aneesh")
     errors = []
     page.on("pageerror", lambda e: errors.append(str(e)))
-    items = page.eval_on_selector_all(".sb-item", "els => els.map(e => e.dataset.navitem)")
-    check("nav renders every configured destination",
-          len(items) == page.evaluate("NAV.flatMap(g => g.items).length"), f"got {len(items)}")
+    rail = page.eval_on_selector_all(".sb-item", "els => els.map(e => e.dataset.navgroup)")
+    items = page.evaluate("NAV.flatMap(g => g.items).map(i => i.name)")
+    check("rail renders one button per section",
+          rail == page.evaluate("NAV.map(g => g.name)"), f"got {rail}")
+    check("rail stays short enough to scan", len(rail) <= 7, f"{len(rail)} rail buttons")
+    check("every destination is reachable from a section",
+          all(page.evaluate("(n) => !!NAV.find(g => g.items.some(i => i.name === n))", n)
+              for n in items), str(items))
     # The rail must not carry links that go nowhere. Rather than naming
     # screens, assert structurally that nothing routes to a placeholder.
     check("no dead links in nav",
@@ -219,7 +233,7 @@ def test_planner_and_vocab(browser):
     page.wait_for_timeout(250)
     check("checking a task updates progress", page.inner_text("#planner-lbl") != before,
           f"{before} -> {page.inner_text('#planner-lbl')}")
-    badge = page.locator('.sb-item[data-navitem="Study Planner"] .sb-badge')
+    badge = page.locator('.sb-item[data-navgroup="Progress"] .sb-badge')
     check("sidebar badge reflects open tasks", badge.count() == 1 and badge.inner_text() == "4",
           badge.inner_text() if badge.count() else "no badge")
     page.click("#btn-reset-plan")
@@ -429,6 +443,42 @@ def test_responsive(browser):
         nav(page, item)
         overflow = page.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
         check(f"{item} has no horizontal scroll", not overflow)
+    ctx.close()
+
+
+def test_theme(browser):
+    print("\n17. Light and dark")
+    ctx, page = new_player(browser, "Aneesh")
+
+    def bg():
+        return page.evaluate("getComputedStyle(document.body).backgroundColor")
+
+    light_bg = bg()
+    check("starts light when the OS is light", page.evaluate("!!document.documentElement.dataset.theme") is False
+          or page.evaluate("document.documentElement.dataset.theme") == "light", light_bg)
+    page.click("#btn-theme")
+    page.wait_for_timeout(200)
+    dark_bg = bg()
+    check("the toggle switches to dark",
+          page.evaluate("document.documentElement.dataset.theme") == "dark" and dark_bg != light_bg,
+          f"{light_bg} -> {dark_bg}")
+    check("the choice is remembered",
+          page.evaluate("localStorage.getItem('lumo-theme')") == "dark")
+    # Anything readable must stay readable: the rail tooltip and the match timer
+    # both paint white text on --ink, which inverts in dark mode.
+    tip = page.evaluate("""() => {
+        const t = document.querySelector('.sb-tip');
+        const cs = getComputedStyle(t);
+        return [cs.color, cs.backgroundColor]; }""")
+    check("rail tooltip is not white on white", tip[0] != tip[1], str(tip))
+    page.reload()
+    page.wait_for_selector(".sb-item")
+    check("dark survives a reload",
+          page.evaluate("document.documentElement.dataset.theme") == "dark")
+    page.click("#btn-theme")
+    page.wait_for_timeout(200)
+    check("the toggle switches back to light",
+          page.evaluate("document.documentElement.dataset.theme") == "light" and bg() == light_bg)
     ctx.close()
 
 
@@ -791,7 +841,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_2v2):
+                   test_friends, test_2v2, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

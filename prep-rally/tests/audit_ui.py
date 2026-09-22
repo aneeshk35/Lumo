@@ -24,6 +24,7 @@ from playwright.sync_api import sync_playwright
 
 BASE = os.environ.get("LUMO_URL", "http://localhost:3000")
 VIEWPORTS = {"desktop": (1280, 900), "phone": (375, 812)}
+SCHEMES = ("light", "dark")
 
 # Runs in the page. Returns a list of findings for whatever is on screen now.
 PROBE = r"""
@@ -199,6 +200,41 @@ PROBE = r"""
     }
   }
 
+  // ---- controls covering each other ----
+  // The rail's last icon slid under the avatar once a second button joined the
+  // foot: both were on screen, neither overflowed, one was simply unclickable.
+  const ctrls = [...document.querySelectorAll('button, a[href], [role="button"], input:not([type="hidden"]), select, textarea')]
+    .filter((el) => !skip(el) && shown(el))
+    .map((el) => ({ el, r: el.getBoundingClientRect() }))
+    .filter((c) => c.r.width > 1 && c.r.height > 1)
+    .slice(0, 220);
+  for (let i = 0; i < ctrls.length; i++) {
+    for (let j = i + 1; j < ctrls.length; j++) {
+      const a = ctrls[i], b = ctrls[j];
+      if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
+      const ox = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left);
+      const oy = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
+      if (ox <= 2 || oy <= 2) continue;
+      const cx = (Math.max(a.r.left, b.r.left) + Math.min(a.r.right, b.r.right)) / 2;
+      const cy = (Math.max(a.r.top, b.r.top) + Math.min(a.r.bottom, b.r.bottom)) / 2;
+      if (cx < 0 || cy < 0 || cx > W || cy > innerHeight) continue;
+      const top = document.elementFromPoint(cx, cy);
+      if (!top) continue;
+      // Only report when one of the two actually wins the hit test there; an
+      // overlay or sticky bar on top of both is a different, legitimate stack.
+      let covered = null, cover = null;
+      if (a.el.contains(top) || a.el === top) { covered = b; cover = a; }
+      else if (b.el.contains(top) || b.el === top) { covered = a; cover = b; }
+      if (!covered) continue;
+      // A dialog sitting over the page it interrupts is the point of a dialog.
+      const inModal = (el) => el.closest('.overlay, .modal, dialog, [role="dialog"]');
+      if (inModal(cover.el) && !inModal(covered.el)) continue;
+      out.push({ kind: 'control covered by another control', severity: 'error',
+                 where: desc(covered.el),
+                 detail: `${Math.round(ox)}x${Math.round(oy)}px of it sits under ${desc(cover.el)}` });
+    }
+  }
+
   // ---- names and targets ----
   for (const el of document.querySelectorAll('button, a[href], [role="button"], input:not([type="hidden"]), select, textarea')) {
     if (skip(el) || !shown(el)) continue;
@@ -232,7 +268,14 @@ PROBE = r"""
 
 
 def nav(page, name):
-    page.click(f'.sb-item[data-navitem="{name}"]')
+    """The rail picks a section; a tab inside the page picks the screen."""
+    group = page.evaluate(
+        "(n) => (NAV.find((g) => g.items.some((i) => i.name === n)) || {}).name", name)
+    page.click(f'.sb-item[data-navgroup="{group}"]')
+    page.wait_for_timeout(250)
+    tab = page.locator(f'.view.active .subnav-tab[data-navitem="{name}"]')
+    if tab.count():
+        tab.click()
     page.wait_for_timeout(450)
 
 
@@ -312,10 +355,11 @@ def plan(page):
     ]
 
 
-def audit_viewport(pw_browser, label, size):
+def audit_viewport(pw_browser, label, size, scheme="light"):
     findings = []
     ctx = pw_browser.new_context(viewport={"width": size[0], "height": size[1]},
-                                 is_mobile=(label == "phone"), has_touch=(label == "phone"))
+                                 is_mobile=(label == "phone"), has_touch=(label == "phone"),
+                                 color_scheme=scheme)
 
     def attach(page, state_ref):
         page.on("dialog", lambda d: d.accept())
@@ -362,7 +406,8 @@ def main():
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
         for label, size in VIEWPORTS.items():
-            found = audit_viewport(browser, label, size)
+          for scheme in SCHEMES:
+            found = audit_viewport(browser, label, size, scheme)
             seen = set()
             grouped = defaultdict(list)
             for state, f in found:
@@ -375,7 +420,8 @@ def main():
             errors = sum(1 for v in grouped.values() for f in v if f["severity"] == "error")
             total += count
             total_errors += errors
-            print(f"\n{'=' * 70}\n{label.upper()} {size[0]}x{size[1]} — {count} findings ({errors} errors)")
+            print(f"\n{'=' * 70}\n{label.upper()} {size[0]}x{size[1]} {scheme.upper()} — "
+                  f"{count} findings ({errors} errors)")
             for state, items in grouped.items():
                 print(f"\n  [{state}]")
                 for f in sorted(items, key=lambda x: (x["severity"] != "error", x["kind"])):

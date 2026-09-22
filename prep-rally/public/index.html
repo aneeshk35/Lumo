@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Applied before the first paint so a dark viewer never sees a white flash. -->
+  <script>
+    try {
+      var t = localStorage.getItem('lumo-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+    } catch (e) { /* private mode: fall back to the OS preference */ }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lumo — SAT Prep</title>
@@ -207,7 +214,7 @@
               <span class="t">Play with friends</span>
               <span class="d">Host a party and share the 5-letter code, or enter a friend's code to join their game.</span>
               <button class="btn btn-primary" id="btn-host-party" style="font-size:13px;padding:10px 16px">Host a party</button>
-              <input id="code-input" maxlength="5" placeholder="ENTER CODE">
+              <input class="code-field" id="code-input" maxlength="5" placeholder="Enter a 5-letter code" aria-label="Party code">
               <button class="btn-outline" id="btn-join-party" style="text-align:center;justify-content:center;display:flex">Join with code</button>
             </div>
             <div class="friends-card">
@@ -218,7 +225,7 @@
                 </button>
               </div>
               <div class="friend-add">
-                <input id="friend-code-input" maxlength="6" placeholder="ADD BY CODE" autocomplete="off">
+                <input id="friend-code-input" maxlength="6" placeholder="Friend code" autocomplete="off" aria-label="Friend code">
                 <button class="btn-outline" id="btn-add-friend">Add</button>
               </div>
               <div id="friends-list"></div>
@@ -351,9 +358,9 @@
           <div class="result-sub" id="result-sub"></div>
         </div>
         <div class="result-grid" id="result-rows"></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%">
+        <div class="result-bd-block">
           <div class="section-title" style="font-size:15px">Topic breakdown</div>
-          <div class="bd-list" id="result-bd"></div>
+          <div class="bd-list panel" id="result-bd"></div>
         </div>
         <div class="stage-btns">
           <button class="btn btn-primary hidden" id="btn-play-again">Play again</button>
@@ -375,13 +382,13 @@
           <div class="stat-card"><span class="lbl">Duel Wins</span><span class="num" id="an2-wins">0</span></div>
           <div class="stat-card"><span class="lbl">Best Streak</span><span class="num" id="an2-streak">0</span></div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="section-block">
           <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Accuracy by domain</div>
-          <div id="an2-domains" class="bd-list" style="max-width:640px"></div>
+          <div id="an2-domains" class="bd-list panel"></div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="section-block">
           <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.6.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.6-.8z"/></svg>All-time high scores</div>
-          <div id="hs-list" class="result-grid" style="max-width:640px"></div>
+          <div id="hs-list" class="result-grid panel two-col"></div>
         </div>
       </div>
     </section>
@@ -674,13 +681,13 @@
             <div class="code-card">
               <span class="t">Join a class</span>
               <span class="d">Enter the 5-letter code your teacher gave you.</span>
-              <input id="class-join-code" maxlength="5" placeholder="ENTER CODE">
+              <input class="code-field" id="class-join-code" maxlength="5" placeholder="Enter a 5-letter code" aria-label="Class code">
               <button class="btn btn-primary" id="btn-class-join" style="font-size:13px;padding:10px 16px">Join class</button>
             </div>
             <div class="code-card">
               <span class="t">Start a class</span>
               <span class="d">Create a class, share the code, and watch the roster fill in as students practise.</span>
-              <input id="class-new-name" maxlength="40" placeholder="Class name">
+              <input id="class-new-name" maxlength="40" placeholder="e.g. Period 3 SAT" aria-label="Class name">
               <button class="btn-outline" id="btn-class-create" style="text-align:center;justify-content:center;display:flex">Create class</button>
             </div>
           </div>
