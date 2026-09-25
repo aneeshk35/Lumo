@@ -46,8 +46,9 @@ PORT = int(os.environ.get("PORT", 3000))
 # When the frontend is hosted separately (e.g. on Vercel) the browser calls this
 # server cross-origin. List those origins in ALLOWED_ORIGINS, comma separated.
 # Same-origin deploys need nothing: the header is only sent for listed origins.
-ALLOWED_ORIGINS = [
-    o.strip() for o in (os.environ.get("ALLOWED_ORIGINS") or "").split(",") if o.strip()
+# The production frontend is always allowed so it works even without the env var.
+ALLOWED_ORIGINS = ["https://lumosat.vercel.app"] + [
+    o.strip().rstrip("/") for o in (os.environ.get("ALLOWED_ORIGINS") or "").split(",") if o.strip()
 ]
 
 with open(os.path.join(DATA_DIR, "questions.json"), encoding="utf-8") as f:
