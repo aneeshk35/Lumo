@@ -495,6 +495,13 @@ def test_practice_and_grid_in(browser):
           and page.locator("#tb-untimed:not(.hidden)").count() == 1)
     check("typed-answer box replaces the choices", page.locator("#spr:not(.hidden)").count() == 1
           and page.locator("#choice-grid.hidden").count() == 1)
+    bg = lambda: page.evaluate("getComputedStyle(document.getElementById('v-match')).backgroundColor")
+    before = bg()
+    page.click("#btn-test-theme")
+    page.wait_for_timeout(200)
+    check("the test screen has its own light/dark switch", bg() != before, f"{before} -> {bg()}")
+    page.click("#btn-test-theme")
+    page.wait_for_timeout(200)
     page.fill("#spr-input", "5/6x")
     check("letters are stripped from typed answers", page.input_value("#spr-input") == "5/6", page.input_value("#spr-input"))
     page.fill("#spr-input", ".833")

@@ -220,6 +220,9 @@ function isDark() {
 function syncThemeLabel() {
   const tip = $('theme-tip');
   if (tip) tip.textContent = isDark() ? 'Light mode' : 'Dark mode';
+  // the test screen hides the rail, so it carries its own switch
+  const label = $('test-theme-label');
+  if (label) label.textContent = isDark() ? 'Light' : 'Dark';
 }
 
 function toggleTheme() {
@@ -1016,6 +1019,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTrack(); });
 
 $('btn-exit-test').onclick = () => navTo('Home');
+$('btn-test-theme').onclick = toggleTheme;
 
 /* ---- floating panels: calculator and reference sheet ----
    Drag the header to move, drag the corner to resize, arrow keys on the header
