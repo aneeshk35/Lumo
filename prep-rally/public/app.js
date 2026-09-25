@@ -477,7 +477,8 @@ function connectEvents() {
   });
   on('question', onQuestion);
   on('answer_progress', ({ answered, total }) => {
-    if (game.answered) $('locked-note').textContent = `Locked in — ${answered} / ${total} answered`;
+    // only meaningful with other players; solo practice just reveals
+    if (game.answered && game.mode !== 'solo') $('locked-note').textContent = `Locked in — ${answered} / ${total} answered`;
   });
   on('reveal', onReveal);
   on('game_over', onGameOver);
@@ -889,7 +890,8 @@ $('btn-lock').onclick = async () => {
     document.querySelectorAll('#choice-grid .mchoice').forEach((b) => (b.disabled = true));
     $('locked-note').textContent = `Locked in ${LETTERS[game.selected]} — waiting…`;
   }
-  $('locked-note').classList.remove('hidden');
+  // Solo practice has no one to wait for: Submit goes straight to the answer.
+  $('locked-note').classList.toggle('hidden', game.mode === 'solo');
   await api('answer', spr ? { response: game.response } : { choice: game.selected });
 };
 
@@ -918,6 +920,8 @@ function renderBars() {
   const board = game.lastBoard;
   const meRow = board.find((p) => p.name === game.myName) || { score: game.myScore };
   $('tb-score').textContent = `${(meRow.score || 0).toLocaleString()} pts`;
+  // points only matter against other players
+  $('tb-score').classList.toggle('hidden', game.mode === 'solo');
   // Before the first reveal there is no leaderboard yet, so show the opponent
   // at zero rather than hiding their bar for a whole question.
   const oppRow = game.opponent

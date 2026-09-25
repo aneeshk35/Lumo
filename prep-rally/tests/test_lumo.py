@@ -508,7 +508,9 @@ def test_practice_and_grid_in(browser):
     page.click("#btn-lock")
     page.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
     check("a rounded decimal equal to the fraction is correct", "Correct" in page.inner_text("#reveal-title"), page.inner_text("#reveal-title"))
-    check("practice pays full points with no speed factor", page.inner_text("#tb-score").startswith("750"), page.inner_text("#tb-score"))
+    check("practice pays full points with no speed factor", page.evaluate("game.myScore") == 750, str(page.evaluate("game.myScore")))
+    check("practice hides the score and the answered count",
+          page.locator("#tb-score.hidden").count() == 1 and page.locator("#locked-note.hidden").count() == 1)
 
     page.wait_for_timeout(1200)
     practice("mth-0006")   # answer is -9
