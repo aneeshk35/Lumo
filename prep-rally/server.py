@@ -58,6 +58,11 @@ GRAMMAR_FILE = os.path.join(DATA_DIR, "grammar.json")
 if os.path.exists(GRAMMAR_FILE):
     with open(GRAMMAR_FILE, encoding="utf-8") as f:
         QUESTIONS += json.load(f)
+# Generated math drills, about a quarter of them typed-answer (tools/gen_math.py).
+MATH_FILE = os.path.join(DATA_DIR, "math.json")
+if os.path.exists(MATH_FILE):
+    with open(MATH_FILE, encoding="utf-8") as f:
+        QUESTIONS += json.load(f)
 # Figures (tools/gen_figures.py): SVGs for existing questions plus questions
 # that are answered from a graph, diagram, chart, or table.
 FIGURES_FILE = os.path.join(DATA_DIR, "figures.json")
@@ -177,6 +182,43 @@ def clean_elo(elo):
 DIFFICULTIES = ("easy", "medium", "hard")
 
 
+def parse_number(text):
+    """A typed answer as an exact Fraction, or None. Accepts 7, -3, 3.5, .5, 7/2."""
+    from fractions import Fraction
+    t = str(text or "").strip().replace("\u2212", "-").replace(" ", "")
+    if not t or len(t) > 8:
+        return None
+    try:
+        if t.count("/") == 1:
+            num, den = t.split("/")
+            if not num or not den or "." in den:
+                return None
+            return Fraction(Fraction(num), Fraction(den))
+        return Fraction(t)
+    except (ValueError, ZeroDivisionError):
+        return None
+
+
+def grade_response(q, text):
+    """Grade a typed answer the way the digital SAT does: any equivalent form
+    counts (7/2 = 3.5), and a long decimal counts if it is the true value
+    rounded or cut off to at least three decimal places (2/3 as .666 or .667)."""
+    got = parse_number(text)
+    if got is None:
+        return False
+    raw = str(text).strip()
+    places = len(raw.split(".", 1)[1]) if "." in raw and "/" not in raw else 0
+    for ans in q["answers"]:
+        want = parse_number(ans)
+        if want is None:
+            continue
+        if got == want:
+            return True
+        if places >= 3 and abs(float(got) - float(want)) < 10 ** -places:
+            return True
+    return False
+
+
 class Party:
     def __init__(self, code, settings, questions, mode="party"):
         self.code = code
@@ -195,6 +237,9 @@ class Party:
         self.ready = set()  # pids that have readied up (duel and team modes)
         self.teams = {}     # pid -> "A" or "B"      (team mode only)
         self.roles = {}     # pid -> "rw" or "math"  (team mode only)
+        # Practice has no per-question clock and no speed bonus; ranked duels,
+        # 2v2, and multiplayer parties keep both.
+        self.untimed = bool(settings.get("practice")) and mode == "party"
 
     def auto_advances(self):
         return self.mode in ("duel", "team")
@@ -274,10 +319,12 @@ class Party:
             "difficulty": q["difficulty"],
             "passage": q.get("passage"),
             "figure": q.get("figure"),
-            "question": q["question"], "choices": q["choices"],
+            "type": q.get("type", "mcq"),
+            "question": q["question"], "choices": q.get("choices") or [],
             "basePoints": BASE_POINTS[q["difficulty"]],
-            "durationMs": TIMER_MS[q["difficulty"]],
-            "endsAt": self.ends_at,
+            "untimed": self.untimed,
+            "durationMs": None if self.untimed else TIMER_MS[q["difficulty"]],
+            "endsAt": None if self.untimed else self.ends_at,
             "serverNow": now_ms(),
         }
 
@@ -292,12 +339,16 @@ class Party:
         q = self.questions[self.q_index]
         self.phase = "question"
         self.current_answers = {}
-        self.ends_at = now_ms() + TIMER_MS[q["difficulty"]]
         if self.timer:
             self.timer.cancel()
-        self.timer = threading.Timer(TIMER_MS[q["difficulty"]] / 1000 + 0.5, self.end_question)
-        self.timer.daemon = True
-        self.timer.start()
+            self.timer = None
+        if self.untimed:
+            self.ends_at = 0
+        else:
+            self.ends_at = now_ms() + TIMER_MS[q["difficulty"]]
+            self.timer = threading.Timer(TIMER_MS[q["difficulty"]] / 1000 + 0.5, self.end_question)
+            self.timer.daemon = True
+            self.timer.start()
         self.broadcast("question", self.public_question())
 
     def end_question(self):
@@ -317,11 +368,16 @@ class Party:
                     p["answers"].append({"qId": q["id"], "choice": None, "correct": False, "points": 0})
                     per_player[p["name"]] = {"correct": False, "points": 0}
                 else:
-                    counts[ans["choice"]] += 1
+                    if ans["choice"] is not None:
+                        counts[ans["choice"]] += 1
                     per_player[p["name"]] = {"correct": ans["correct"], "points": ans["points"]}
             is_last = self.q_index >= len(self.questions) - 1
+            spr = q.get("type") == "spr"
             self.broadcast("reveal", {
-                "correctIndex": q["answer"],
+                "type": q.get("type", "mcq"),
+                "correctIndex": None if spr else q["answer"],
+                "correctAnswer": q["answers"][0] if spr else None,
+                "correctCount": sum(1 for a in self.current_answers.values() if a["correct"]),
                 "explanation": q["explanation"],
                 "counts": counts,
                 "perPlayer": per_player,
@@ -435,7 +491,9 @@ def clean_settings(raw):
     except (TypeError, ValueError):
         count = 10
     return {"section": section, "domains": domains, "difficulties": difficulties,
-            "skills": skills, "ids": ids, "count": count}
+            "skills": skills, "ids": ids, "count": count,
+            # Solo practice: no clock and no speed scoring. Ranked play stays timed.
+            "practice": bool(raw.get("practice"))}
 
 
 def handle_disconnect(party, player):
@@ -1034,19 +1092,30 @@ class Handler(BaseHTTPRequestHandler):
     def api_answer(self, party, player, body):
         if party.phase != "question" or player["id"] in party.current_answers:
             return self.send_json({"ok": False})
-        try:
-            choice = int(body.get("choice"))
-        except (TypeError, ValueError):
-            return self.send_json({"ok": False})
-        if not 0 <= choice <= 3:
-            return self.send_json({"ok": False})
-
         q = party.questions[party.q_index]
-        remaining = max(0, party.ends_at - now_ms())
-        if remaining <= 0:
-            return self.send_json({"ok": False, "error": "Time's up!"})
-        frac = remaining / TIMER_MS[q["difficulty"]]
-        correct = choice == q["answer"]
+        response = None
+        if q.get("type") == "spr":
+            response = str(body.get("response") or "").strip()[:8]
+            if not response:
+                return self.send_json({"ok": False})
+            choice = None
+            correct = grade_response(q, response)
+        else:
+            try:
+                choice = int(body.get("choice"))
+            except (TypeError, ValueError):
+                return self.send_json({"ok": False})
+            if not 0 <= choice <= 3:
+                return self.send_json({"ok": False})
+            correct = choice == q["answer"]
+
+        if party.untimed:
+            frac = 1.0   # practice: full points however long it takes
+        else:
+            remaining = max(0, party.ends_at - now_ms())
+            if remaining <= 0:
+                return self.send_json({"ok": False, "error": "Time's up!"})
+            frac = remaining / TIMER_MS[q["difficulty"]]
 
         points = 0
         if correct:
@@ -1060,8 +1129,10 @@ class Handler(BaseHTTPRequestHandler):
             player["correct"] += 1
         else:
             player["streak"] = 0
-        player["answers"].append({"qId": q["id"], "choice": choice, "correct": correct, "points": points})
-        party.current_answers[player["id"]] = {"choice": choice, "points": points, "correct": correct}
+        player["answers"].append({"qId": q["id"], "choice": choice, "response": response,
+                                  "correct": correct, "points": points})
+        party.current_answers[player["id"]] = {"choice": choice, "response": response,
+                                               "points": points, "correct": correct}
 
         party.broadcast("answer_progress", {
             "answered": len(party.current_answers),

@@ -295,6 +295,7 @@
           <span class="tb-title" id="tb-section">Math</span>
         </div>
         <div class="tb-center">
+          <span class="tb-untimed hidden" id="tb-untimed">Untimed practice</span>
           <span class="match-timer" id="match-timer" aria-live="off">
             <svg class="ic tb-clock" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4.2l2.6 1.5M10 3h4"/></svg>
             <span id="match-timer-txt">0:00</span>
@@ -343,6 +344,13 @@
             <figure class="q-figure hidden" id="q-figure"></figure>
             <div class="q-text" id="q-text"></div>
             <div class="choice-grid stack" id="choice-grid"></div>
+            <!-- student-produced response (grid-in): typed answer, like the real test -->
+            <div class="spr hidden" id="spr">
+              <label class="spr-label" for="spr-input">Your answer</label>
+              <input id="spr-input" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="7" aria-describedby="spr-help">
+              <div class="spr-preview">Answer preview: <b id="spr-preview">—</b></div>
+              <p class="spr-help" id="spr-help">Type a number, a fraction like 7/2, or a decimal like 3.5. For a long decimal, enter at least three decimal places.</p>
+            </div>
             <div class="reveal-card hidden" id="reveal-card">
               <span class="t" id="reveal-title"></span>
               <span class="ex" id="reveal-ex"></span>

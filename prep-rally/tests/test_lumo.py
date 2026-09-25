@@ -63,7 +63,14 @@ def nav(page, item):
 
 
 def answer_current(page, choice=0):
-    """Pick a choice and lock it in; returns True if an answer was submitted."""
+    """Pick a choice and lock it in; returns True if an answer was submitted.
+    Typed-answer (grid-in) questions get a deliberately wrong number, since
+    untimed practice waits for an answer instead of timing out."""
+    if page.locator("#spr:not(.hidden)").count():
+        page.fill("#spr-input", choice if isinstance(choice, str) else "-9999")
+        page.wait_for_timeout(120)
+        page.click("#btn-lock")
+        return True
     btn = page.locator(f'#choice-grid .mchoice[data-i="{choice}"]')
     if btn.count() == 0:
         return False
@@ -202,7 +209,7 @@ def test_solo_and_mistakes(browser):
     # Review them, answering correctly using the stored answer keys.
     key = page.evaluate(
         "Object.fromEntries(JSON.parse(localStorage.getItem('lumo-profile'))"
-        ".mistakes.map(m => [m.id, m.correctIndex]))")
+        ".mistakes.map(m => [m.id, m.type === 'spr' ? m.correctAnswer : m.correctIndex]))")
     page.click("#btn-review-all")
     page.wait_for_selector("#v-match.active", timeout=8000)
     check("review session launches", "REVIEW" in page.inner_text("#match-mode"))
@@ -470,6 +477,41 @@ def test_duel_difficulty(browser):
           and elos["after"]["easy"] == elos["before"]["easy"], str(elos))
     b_ctx.close()
     a_ctx.close()
+
+
+def test_practice_and_grid_in(browser):
+    print("\n9c. Untimed practice, typed answers, and Elo")
+    ctx, page = new_player(browser, "Gridder")
+    page.on("dialog", lambda d: d.accept())
+    elo_before = page.evaluate("JSON.stringify(profile.elos)")
+
+    def practice(qid):
+        page.evaluate(f"startPractice({{ ids: ['{qid}'], count: 1 }}, 'Test')")
+        page.wait_for_selector("#v-match.active", timeout=8000)
+        page.wait_for_timeout(400)
+
+    practice("mth-0056")   # slope of a perpendicular line: 5/6
+    check("practice shows no countdown", page.locator("#match-timer.hidden").count() == 1
+          and page.locator("#tb-untimed:not(.hidden)").count() == 1)
+    check("typed-answer box replaces the choices", page.locator("#spr:not(.hidden)").count() == 1
+          and page.locator("#choice-grid.hidden").count() == 1)
+    page.fill("#spr-input", "5/6x")
+    check("letters are stripped from typed answers", page.input_value("#spr-input") == "5/6", page.input_value("#spr-input"))
+    page.fill("#spr-input", ".833")
+    page.click("#btn-lock")
+    page.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
+    check("a rounded decimal equal to the fraction is correct", "Correct" in page.inner_text("#reveal-title"), page.inner_text("#reveal-title"))
+    check("practice pays full points with no speed factor", page.inner_text("#tb-score").startswith("750"), page.inner_text("#tb-score"))
+
+    page.wait_for_timeout(1200)
+    practice("mth-0006")   # answer is -9
+    page.fill("#spr-input", "9")
+    page.click("#btn-lock")
+    page.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
+    check("a wrong typed answer shows the right one", "−9" in page.inner_text("#reveal-title"), page.inner_text("#reveal-title"))
+    page.wait_for_timeout(1500)
+    check("practice never changes Elo", page.evaluate("JSON.stringify(profile.elos)") == elo_before)
+    ctx.close()
 
 
 def test_responsive(browser):
@@ -890,7 +932,7 @@ def main():
         browser = p.chromium.launch()
         for fn in (test_first_run, test_navigation, test_question_bank,
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
-                   test_tools, test_party, test_duel, test_duel_difficulty, test_responsive,
+                   test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
                    test_friends, test_2v2, test_theme):
             try:

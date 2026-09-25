@@ -761,7 +761,7 @@ body.testing .sidebar { display: none; }
 }
 .q-abc[aria-pressed="true"] { background: var(--tb-accent); border-color: var(--tb-accent); color: #fff; }
 .q-kicker { font-size: 11px; font-weight: 600; letter-spacing: .6px; color: var(--slate-6); text-transform: uppercase; }
-.q-text { font-size: 17px; line-height: 1.6; font-weight: 500; text-wrap: pretty; }
+.q-text { font-size: 17px; line-height: 1.6; font-weight: 500; text-wrap: pretty; white-space: pre-line; }
 
 .choice-grid { display: flex; flex-direction: column; gap: 12px; }
 .mrow { display: flex; align-items: center; gap: 10px; }
@@ -796,6 +796,21 @@ body.testing .sidebar { display: none; }
 .mrow.out .xo { width: auto; min-width: 40px; border: none; border-radius: 0; text-decoration: underline; font-size: 12.5px; }
 .mrow.out .xo::after { display: none; }
 .xo:disabled { opacity: .5; cursor: default; }
+
+/* typed (grid-in) answers */
+.spr { display: flex; flex-direction: column; gap: 8px; max-width: 320px; }
+.spr-label { font-size: 13px; font-weight: 600; color: var(--slate-7); }
+#spr-input {
+  font: inherit; font-size: 20px; font-weight: 600; letter-spacing: .5px; padding: 10px 14px; min-height: 48px;
+  border: 1.5px solid var(--slate-4); border-radius: 10px; background: #fff; color: var(--ink); outline: none;
+}
+#spr-input:focus { border-color: var(--tb-accent); box-shadow: 0 0 0 3px var(--tb-accent-wash); }
+#spr-input.correct { border-color: var(--green-deep); background: var(--good-wash); }
+#spr-input.wrong { border-color: var(--danger); background: var(--danger-wash); }
+.spr-preview { font-size: 14px; color: var(--slate-7); }
+.spr-preview b { font-size: 16px; color: var(--ink); }
+.spr-help { font-size: 12.5px; line-height: 1.5; color: var(--slate-6); margin: 0; }
+.tb-untimed { font-size: 13px; font-weight: 600; color: var(--slate-7); padding: 6px 0; }
 
 .reveal-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; background: var(--bg-soft); }
 .reveal-card .t { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 9px; }
@@ -923,7 +938,8 @@ body.testing .sidebar { display: none; }
 .mistake .kicker { font-size: 11px; font-weight: 700; letter-spacing: .6px; color: var(--slate-5); text-transform: uppercase; }
 .mistake .qt { font-size: 14.5px; line-height: 1.55; font-weight: 500; }
 .mistake .answers { display: flex; gap: 8px; flex-wrap: wrap; }
-.ans-chip { font-size: 11.5px; font-weight: 600; padding: 5px 11px; border-radius: 999px; }
+/* not a pill: long answer text (typed answers, word choices) wraps cleanly */
+.ans-chip { font-size: 11.5px; font-weight: 600; line-height: 1.45; padding: 5px 11px; border-radius: 8px; max-width: 100%; }
 .ans-chip.mine { background: var(--danger-wash); color: var(--danger); }
 .ans-chip.right { background: var(--good-wash); color: var(--green-deep); }
 .mistake .why { font-size: 13px; line-height: 1.6; color: var(--slate-6); border-left: 2px solid var(--purple-line); padding-left: 12px; }

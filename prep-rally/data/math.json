@@ -1,0 +1,4460 @@
+[
+ {
+  "id": "mth-0001",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 3(x − 6) − 7 = 9x − 37?",
+  "choices": [
+   "−2",
+   "2",
+   "4",
+   "8"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 3x − 18 − 7 = 9x − 37, so 3x − 25 = 9x − 37. Subtract 9x from both sides and move the constants: −6x = −12, so x = 2. A common slip is multiplying only the x by 3 and not the −6."
+ },
+ {
+  "id": "mth-0002",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "What is the solution to the equation 7(x + 3) − 8 = 4x + 43?",
+  "choices": [
+   "−10",
+   "10",
+   "16",
+   "24"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 7x + 21 − 8 = 4x + 43, so 7x + 13 = 4x + 43. Subtract 4x from both sides and move the constants: 3x = 30, so x = 10. A common slip is multiplying only the x by 7 and not the 3."
+ },
+ {
+  "id": "mth-0003",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 2(x − 3) − 15 = 9x − 49?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Distribute: 2x − 6 − 15 = 9x − 49, so 2x − 21 = 9x − 49. Subtract 9x from both sides and move the constants: −7x = −28, so x = 4."
+ },
+ {
+  "id": "mth-0004",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "What is the solution to the equation 4(x − 2) − 4 = x − 39?",
+  "choices": [
+   "−43/3",
+   "−11",
+   "−9",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "Distribute: 4x − 8 − 4 = x − 39, so 4x − 12 = x − 39. Subtract 1x from both sides and move the constants: 3x = −27, so x = −9. A common slip is multiplying only the x by 4 and not the −2."
+ },
+ {
+  "id": "mth-0005",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "What is the solution to the equation 6(x + 1) − 10 = 4x + 18?",
+  "choices": [
+   "−11",
+   "11",
+   "27/2",
+   "17"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 6x + 6 − 10 = 4x + 18, so 6x − 4 = 4x + 18. Subtract 4x from both sides and move the constants: 2x = 22, so x = 11. A common slip is multiplying only the x by 6 and not the 1."
+ },
+ {
+  "id": "mth-0006",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 2(x + 2) − 5 = 4x + 17?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-9"
+  ],
+  "explanation": "Distribute: 2x + 4 − 5 = 4x + 17, so 2x − 1 = 4x + 17. Subtract 4x from both sides and move the constants: −2x = 18, so x = −9."
+ },
+ {
+  "id": "mth-0007",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 5(x − 4) − 15 = 6x − 45?",
+  "choices": [
+   "−10",
+   "10",
+   "26",
+   "50"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 5x − 20 − 15 = 6x − 45, so 5x − 35 = 6x − 45. Subtract 6x from both sides and move the constants: −x = −10, so x = 10. A common slip is multiplying only the x by 5 and not the −4."
+ },
+ {
+  "id": "mth-0008",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 8(x + 5) − 14 = 4x + 18?",
+  "choices": [
+   "−2",
+   "2",
+   "27/4",
+   "18"
+  ],
+  "answer": 0,
+  "explanation": "Distribute: 8x + 40 − 14 = 4x + 18, so 8x + 26 = 4x + 18. Subtract 4x from both sides and move the constants: 4x = −8, so x = −2. A common slip is multiplying only the x by 8 and not the 5."
+ },
+ {
+  "id": "mth-0009",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 8(x + 1) − 3 = 5x − 16?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-7"
+  ],
+  "explanation": "Distribute: 8x + 8 − 3 = 5x − 16, so 8x + 5 = 5x − 16. Subtract 5x from both sides and move the constants: 3x = −21, so x = −7."
+ },
+ {
+  "id": "mth-0010",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "What is the solution to the equation 3(x − 1) − 6 = 8x − 14?",
+  "choices": [
+   "−1",
+   "1",
+   "7/5",
+   "11/5"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 3x − 3 − 6 = 8x − 14, so 3x − 9 = 8x − 14. Subtract 8x from both sides and move the constants: −5x = −5, so x = 1. A common slip is multiplying only the x by 3 and not the −1."
+ },
+ {
+  "id": "mth-0011",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 8(x + 7) − 14 = 7x + 37?",
+  "choices": [
+   "−5",
+   "5",
+   "44",
+   "107"
+  ],
+  "answer": 0,
+  "explanation": "Distribute: 8x + 56 − 14 = 7x + 37, so 8x + 42 = 7x + 37. Subtract 7x from both sides and move the constants: x = −5, so x = −5. A common slip is multiplying only the x by 8 and not the 7."
+ },
+ {
+  "id": "mth-0012",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 8(x + 2) − 1 = 9x + 8?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "7"
+  ],
+  "explanation": "Distribute: 8x + 16 − 1 = 9x + 8, so 8x + 15 = 9x + 8. Subtract 9x from both sides and move the constants: −x = −7, so x = 7."
+ },
+ {
+  "id": "mth-0013",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 6(x − 6) − 14 = 9x − 26?",
+  "choices": [
+   "−8",
+   "2",
+   "8",
+   "16"
+  ],
+  "answer": 0,
+  "explanation": "Distribute: 6x − 36 − 14 = 9x − 26, so 6x − 50 = 9x − 26. Subtract 9x from both sides and move the constants: −3x = 24, so x = −8. A common slip is multiplying only the x by 6 and not the −6."
+ },
+ {
+  "id": "mth-0014",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 3(x + 7) − 2 = x + 39?",
+  "choices": [
+   "−10",
+   "10",
+   "17",
+   "31"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 3x + 21 − 2 = x + 39, so 3x + 19 = x + 39. Subtract 1x from both sides and move the constants: 2x = 20, so x = 10. A common slip is multiplying only the x by 3 and not the 7."
+ },
+ {
+  "id": "mth-0015",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "medium",
+  "question": "What is the solution to the equation 8(x − 4) − 12 = 5x − 35?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Distribute: 8x − 32 − 12 = 5x − 35, so 8x − 44 = 5x − 35. Subtract 5x from both sides and move the constants: 3x = 9, so x = 3."
+ },
+ {
+  "id": "mth-0016",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "What is the solution to the equation 7(x + 2) − 2 = 5x + 24?",
+  "choices": [
+   "−6",
+   "6",
+   "12",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "Distribute: 7x + 14 − 2 = 5x + 24, so 7x + 12 = 5x + 24. Subtract 5x from both sides and move the constants: 2x = 12, so x = 6. A common slip is multiplying only the x by 7 and not the 2."
+ },
+ {
+  "id": "mth-0017",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A plumber charges a $40 service fee plus $8 per hour of work. A customer's bill was $128. For how many hours did the plumber work?",
+  "choices": [
+   "11",
+   "12",
+   "16",
+   "21"
+  ],
+  "answer": 0,
+  "explanation": "The bill is 40 + 8n = 128. Subtract 40: 8n = 88, so n = 11 hours. Dividing the whole bill by 8 forgets to take off the fixed fee first."
+ },
+ {
+  "id": "mth-0018",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A gym charges a one-time fee of $30 plus $22 per month. Dana has paid $184 in total. For how many months has Dana been a member?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "7"
+  ],
+  "explanation": "The bill is 30 + 22n = 184. Subtract 30: 22n = 154, so n = 7 months."
+ },
+ {
+  "id": "mth-0019",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A taxi ride costs $60 plus $18 per mile. A ride cost $330. How many miles long was the ride?",
+  "choices": [
+   "15",
+   "16",
+   "55/3",
+   "65/3"
+  ],
+  "answer": 0,
+  "explanation": "The bill is 60 + 18n = 330. Subtract 60: 18n = 270, so n = 15 miles. Dividing the whole bill by 18 forgets to take off the fixed fee first."
+ },
+ {
+  "id": "mth-0020",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A moving company charges $45 plus $22 for each box it moves. A customer paid $309. How many boxes did the company move?",
+  "choices": [
+   "12",
+   "13",
+   "309/22",
+   "177/11"
+  ],
+  "answer": 0,
+  "explanation": "The bill is 45 + 22n = 309. Subtract 45: 22n = 264, so n = 12 boxes. Dividing the whole bill by 22 forgets to take off the fixed fee first."
+ },
+ {
+  "id": "mth-0021",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A bike rental shop charges $25 plus $35 per hour. A rental cost $270. For how many hours was the bike rented?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "7"
+  ],
+  "explanation": "The bill is 25 + 35n = 270. Subtract 25: 35n = 245, so n = 7 hours."
+ },
+ {
+  "id": "mth-0022",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A caterer charges a $40 setup fee plus $15 per guest. The bill for an event was $100. How many guests were at the event?",
+  "choices": [
+   "4",
+   "5",
+   "20/3",
+   "28/3"
+  ],
+  "answer": 0,
+  "explanation": "The bill is 40 + 15n = 100. Subtract 40: 15n = 60, so n = 4 guests. Dividing the whole bill by 15 forgets to take off the fixed fee first."
+ },
+ {
+  "id": "mth-0023",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A streaming service charges $25 to sign up plus $15 per month. A subscriber has paid $220. How many months has the subscriber paid for?",
+  "choices": [
+   "13",
+   "14",
+   "44/3",
+   "49/3"
+  ],
+  "answer": 0,
+  "explanation": "The bill is 25 + 15n = 220. Subtract 25: 15n = 195, so n = 13 months. Dividing the whole bill by 15 forgets to take off the fixed fee first."
+ },
+ {
+  "id": "mth-0024",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear equations in one variable",
+  "difficulty": "easy",
+  "question": "A printing shop charges $50 to set up a job plus $6 per poster. An order cost $140. How many posters were printed?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "The bill is 50 + 6n = 140. Subtract 50: 6n = 90, so n = 15 posters."
+ },
+ {
+  "id": "mth-0025",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation C = 12 + 4h models the cost, in dollars, of renting a kayak for h hours. What is the best interpretation of 4 in this context?",
+  "choices": [
+   "the cost per hour to rent the kayak, in dollars",
+   "the number of hours the kayak can be rented for $12",
+   "the cost to rent the kayak before any hours are added, in dollars",
+   "the total cost of renting the kayak for 4 hours, in dollars"
+  ],
+  "answer": 0,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 4 is the cost per hour to rent the kayak, in dollars."
+ },
+ {
+  "id": "mth-0026",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation C = 12 + 4h models the cost, in dollars, of renting a kayak for h hours. What is the best interpretation of 12 in this context?",
+  "choices": [
+   "the total cost of renting the kayak for 4 hours, in dollars",
+   "the cost to rent the kayak before any hours are added, in dollars",
+   "the number of hours the kayak can be rented for $12",
+   "the cost per hour to rent the kayak, in dollars"
+  ],
+  "answer": 1,
+  "explanation": "The constant term is the value of C when the variable is 0, so 12 is the cost to rent the kayak before any hours are added, in dollars."
+ },
+ {
+  "id": "mth-0027",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation P = 240 − 8d models the number of pages Mira has left to read d days after starting a book. What is the best interpretation of 8 in this context?",
+  "choices": [
+   "the number of days it takes Mira to finish the book",
+   "the number of pages in the book",
+   "the number of pages Mira reads each day",
+   "the number of pages Mira has left after 8 days"
+  ],
+  "answer": 2,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 8 is the number of pages Mira reads each day."
+ },
+ {
+  "id": "mth-0028",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation P = 240 − 8d models the number of pages Mira has left to read d days after starting a book. What is the best interpretation of 240 in this context?",
+  "choices": [
+   "the number of pages Mira has left after 8 days",
+   "the number of pages Mira reads each day",
+   "the number of days it takes Mira to finish the book",
+   "the number of pages in the book"
+  ],
+  "answer": 3,
+  "explanation": "The constant term is the value of P when the variable is 0, so 240 is the number of pages in the book."
+ },
+ {
+  "id": "mth-0029",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation T = 12 + 5w models the height, in centimeters, of a plant w weeks after it was measured. What is the best interpretation of 5 in this context?",
+  "choices": [
+   "the number of centimeters the plant grows each week",
+   "the plant's height, in centimeters, after 5 weeks",
+   "the plant's height, in centimeters, when it was first measured",
+   "the number of weeks the plant has been growing"
+  ],
+  "answer": 0,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 5 is the number of centimeters the plant grows each week."
+ },
+ {
+  "id": "mth-0030",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation T = 12 + 5w models the height, in centimeters, of a plant w weeks after it was measured. What is the best interpretation of 12 in this context?",
+  "choices": [
+   "the plant's height, in centimeters, after 5 weeks",
+   "the plant's height, in centimeters, when it was first measured",
+   "the number of weeks the plant has been growing",
+   "the number of centimeters the plant grows each week"
+  ],
+  "answer": 1,
+  "explanation": "The constant term is the value of T when the variable is 0, so 12 is the plant's height, in centimeters, when it was first measured."
+ },
+ {
+  "id": "mth-0031",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation B = 150 − 12m models the balance, in dollars, on a gift card after m movie tickets are bought. What is the best interpretation of 12 in this context?",
+  "choices": [
+   "the amount on the gift card before any tickets are bought, in dollars",
+   "the number of tickets the card can buy",
+   "the price of one movie ticket, in dollars",
+   "the balance on the card after 12 tickets are bought, in dollars"
+  ],
+  "answer": 2,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 12 is the price of one movie ticket, in dollars."
+ },
+ {
+  "id": "mth-0032",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation B = 150 − 12m models the balance, in dollars, on a gift card after m movie tickets are bought. What is the best interpretation of 150 in this context?",
+  "choices": [
+   "the number of tickets the card can buy",
+   "the balance on the card after 12 tickets are bought, in dollars",
+   "the price of one movie ticket, in dollars",
+   "the amount on the gift card before any tickets are bought, in dollars"
+  ],
+  "answer": 3,
+  "explanation": "The constant term is the value of B when the variable is 0, so 150 is the amount on the gift card before any tickets are bought, in dollars."
+ },
+ {
+  "id": "mth-0033",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation W = 18 + 12t models the amount of water, in liters, in a tank t minutes after a hose is turned on. What is the best interpretation of 12 in this context?",
+  "choices": [
+   "the number of liters the hose adds each minute",
+   "the number of minutes it takes to fill the tank",
+   "the amount of water in the tank after 12 minutes, in liters",
+   "the amount of water, in liters, in the tank when the hose is turned on"
+  ],
+  "answer": 0,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 12 is the number of liters the hose adds each minute."
+ },
+ {
+  "id": "mth-0034",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation W = 18 + 12t models the amount of water, in liters, in a tank t minutes after a hose is turned on. What is the best interpretation of 18 in this context?",
+  "choices": [
+   "the amount of water in the tank after 12 minutes, in liters",
+   "the amount of water, in liters, in the tank when the hose is turned on",
+   "the number of liters the hose adds each minute",
+   "the number of minutes it takes to fill the tank"
+  ],
+  "answer": 1,
+  "explanation": "The constant term is the value of W when the variable is 0, so 18 is the amount of water, in liters, in the tank when the hose is turned on."
+ },
+ {
+  "id": "mth-0035",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation S = 42,000 + 1500y models a worker's annual salary, in dollars, y years after being hired. What is the best interpretation of 1500 in this context?",
+  "choices": [
+   "the number of years the worker has been employed",
+   "the worker's salary after 1500 years, in dollars",
+   "the raise the worker receives each year, in dollars",
+   "the worker's starting salary, in dollars"
+  ],
+  "answer": 2,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 1500 is the raise the worker receives each year, in dollars."
+ },
+ {
+  "id": "mth-0036",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation S = 42,000 + 1500y models a worker's annual salary, in dollars, y years after being hired. What is the best interpretation of 42,000 in this context?",
+  "choices": [
+   "the worker's salary after 1500 years, in dollars",
+   "the raise the worker receives each year, in dollars",
+   "the number of years the worker has been employed",
+   "the worker's starting salary, in dollars"
+  ],
+  "answer": 3,
+  "explanation": "The constant term is the value of S when the variable is 0, so 42,000 is the worker's starting salary, in dollars."
+ },
+ {
+  "id": "mth-0037",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation D = 120 − 5t models a hiker's distance, in kilometers, from the end of a trail t hours after starting. What is the best interpretation of 5 in this context?",
+  "choices": [
+   "the number of kilometers the hiker covers each hour",
+   "the hiker's distance from the end of the trail after 5 hours, in kilometers",
+   "the number of hours the hike takes",
+   "the length of the trail, in kilometers"
+  ],
+  "answer": 0,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 5 is the number of kilometers the hiker covers each hour."
+ },
+ {
+  "id": "mth-0038",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation D = 120 − 5t models a hiker's distance, in kilometers, from the end of a trail t hours after starting. What is the best interpretation of 120 in this context?",
+  "choices": [
+   "the number of kilometers the hiker covers each hour",
+   "the length of the trail, in kilometers",
+   "the hiker's distance from the end of the trail after 5 hours, in kilometers",
+   "the number of hours the hike takes"
+  ],
+  "answer": 1,
+  "explanation": "The constant term is the value of D when the variable is 0, so 120 is the length of the trail, in kilometers."
+ },
+ {
+  "id": "mth-0039",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "medium",
+  "question": "The equation F = 25 + 4n models the total fee, in dollars, for a school trip with n students. What is the best interpretation of 4 in this context?",
+  "choices": [
+   "the cost of the trip, in dollars, before any students are counted",
+   "the total fee for 4 students, in dollars",
+   "the added cost, in dollars, for each student",
+   "the number of students on the trip"
+  ],
+  "answer": 2,
+  "explanation": "In a linear model, the number multiplying the variable is the rate of change. Here 4 is the added cost, in dollars, for each student."
+ },
+ {
+  "id": "mth-0040",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions in context",
+  "difficulty": "easy",
+  "question": "The equation F = 25 + 4n models the total fee, in dollars, for a school trip with n students. What is the best interpretation of 25 in this context?",
+  "choices": [
+   "the number of students on the trip",
+   "the total fee for 4 students, in dollars",
+   "the added cost, in dollars, for each student",
+   "the cost of the trip, in dollars, before any students are counted"
+  ],
+  "answer": 3,
+  "explanation": "The constant term is the value of F when the variable is 0, so 25 is the cost of the trip, in dollars, before any students are counted."
+ },
+ {
+  "id": "mth-0041",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(2) = −4 and f(−3) = 11. What is the value of f(−2)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "The slope is (f(−3) − f(2))/(−3 − (2)) = 15/−5 = −3. So f(x) = −3x + 2, and f(−2) = 8."
+ },
+ {
+  "id": "mth-0042",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(6) = 34 and f(1) = 9. What is the value of f(−4)?",
+  "choices": [
+   "−24",
+   "−16",
+   "−11",
+   "24"
+  ],
+  "answer": 1,
+  "explanation": "The slope is (f(1) − f(6))/(1 − (6)) = −25/−5 = 5. So f(x) = 5x + 4, and f(−4) = −16."
+ },
+ {
+  "id": "mth-0043",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(6) = 2 and f(−8) = 9. What is the value of f(2)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "The slope is (f(−8) − f(6))/(−8 − (6)) = 7/−14 = −1/2. So f(x) = −1/2x + 5, and f(2) = 4."
+ },
+ {
+  "id": "mth-0044",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(−4) = −15 and f(5) = 12. What is the value of f(3)?",
+  "choices": [
+   "−12",
+   "6",
+   "9",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "The slope is (f(5) − f(−4))/(5 − (−4)) = 27/9 = 3. So f(x) = 3x − 3, and f(3) = 6."
+ },
+ {
+  "id": "mth-0045",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(4) = −19 and f(1) = −7. What is the value of f(8)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-35"
+  ],
+  "explanation": "The slope is (f(1) − f(4))/(1 − (4)) = 12/−3 = −4. So f(x) = −4x − 3, and f(8) = −35."
+ },
+ {
+  "id": "mth-0046",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(3) = 17 and f(−4) = −18. What is the value of f(1)?",
+  "choices": [
+   "−3",
+   "3",
+   "7",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "The slope is (f(−4) − f(3))/(−4 − (3)) = −35/−7 = 5. So f(x) = 5x + 2, and f(1) = 7."
+ },
+ {
+  "id": "mth-0047",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(3) = −11 and f(5) = −15. What is the value of f(8)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-21"
+  ],
+  "explanation": "The slope is (f(5) − f(3))/(5 − (3)) = −4/2 = −2. So f(x) = −2x − 5, and f(8) = −21."
+ },
+ {
+  "id": "mth-0048",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(2) = −8 and f(6) = −20. What is the value of f(11)?",
+  "choices": [
+   "−38",
+   "−35",
+   "−31",
+   "31"
+  ],
+  "answer": 1,
+  "explanation": "The slope is (f(6) − f(2))/(6 − (2)) = −12/4 = −3. So f(x) = −3x − 2, and f(11) = −35."
+ },
+ {
+  "id": "mth-0049",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(6) = −9 and f(14) = −13. What is the value of f(−4)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-4"
+  ],
+  "explanation": "The slope is (f(14) − f(6))/(14 − (6)) = −4/8 = −1/2. So f(x) = −1/2x − 6, and f(−4) = −4."
+ },
+ {
+  "id": "mth-0050",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "medium",
+  "question": "For the linear function f, f(7) = 24 and f(2) = 4. What is the value of f(11)?",
+  "choices": [
+   "−48",
+   "40",
+   "44",
+   "48"
+  ],
+  "answer": 1,
+  "explanation": "The slope is (f(2) − f(7))/(2 − (7)) = −20/−5 = 4. So f(x) = 4x − 4, and f(11) = 40."
+ },
+ {
+  "id": "mth-0051",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "easy",
+  "question": "What is the slope of the line with equation 2x + 3y = 6 in the xy-plane?",
+  "choices": [
+   "−3/2",
+   "−2/3",
+   "2/3",
+   "3/2"
+  ],
+  "answer": 1,
+  "explanation": "Solve for y: 3y = −2x + 6, so y = −(2/3)x + 2. The slope is −2/3. Forgetting the negative sign gives the positive fraction."
+ },
+ {
+  "id": "mth-0052",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Parallel and perpendicular lines",
+  "difficulty": "medium",
+  "question": "Line ℓ is perpendicular to the line 3x + 4y = 20 in the xy-plane. What is the slope of line ℓ?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4/3"
+  ],
+  "explanation": "The given line has slope −3/4. Perpendicular slopes are negative reciprocals, so ℓ has slope 4/3."
+ },
+ {
+  "id": "mth-0053",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "easy",
+  "question": "What is the slope of the line with equation 4x + 5y = 24 in the xy-plane?",
+  "choices": [
+   "−5/4",
+   "−4/5",
+   "4/5",
+   "5/4"
+  ],
+  "answer": 1,
+  "explanation": "Solve for y: 5y = −4x + 24, so y = −(4/5)x + 24/5. The slope is −4/5. Forgetting the negative sign gives the positive fraction."
+ },
+ {
+  "id": "mth-0054",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Parallel and perpendicular lines",
+  "difficulty": "medium",
+  "question": "Line ℓ is perpendicular to the line 5x + 2y = 30 in the xy-plane. What is the slope of line ℓ?",
+  "choices": [
+   "−5/2",
+   "−2/5",
+   "2/5",
+   "5/2"
+  ],
+  "answer": 2,
+  "explanation": "The given line has slope −5/2. Perpendicular slopes are negative reciprocals, so ℓ has slope 2/5."
+ },
+ {
+  "id": "mth-0055",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "easy",
+  "question": "What is the slope of the line with equation 3x + 7y = 24 in the xy-plane?",
+  "choices": [
+   "−7/3",
+   "−3/7",
+   "3/7",
+   "7/3"
+  ],
+  "answer": 1,
+  "explanation": "Solve for y: 7y = −3x + 24, so y = −(3/7)x + 24/7. The slope is −3/7. Forgetting the negative sign gives the positive fraction."
+ },
+ {
+  "id": "mth-0056",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Parallel and perpendicular lines",
+  "difficulty": "medium",
+  "question": "Line ℓ is perpendicular to the line 6x + 5y = 6 in the xy-plane. What is the slope of line ℓ?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5/6"
+  ],
+  "explanation": "The given line has slope −6/5. Perpendicular slopes are negative reciprocals, so ℓ has slope 5/6."
+ },
+ {
+  "id": "mth-0057",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "easy",
+  "question": "What is the slope of the line with equation 2x + 9y = 24 in the xy-plane?",
+  "choices": [
+   "−9/2",
+   "−2/9",
+   "2/9",
+   "9/2"
+  ],
+  "answer": 1,
+  "explanation": "Solve for y: 9y = −2x + 24, so y = −(2/9)x + 8/3. The slope is −2/9. Forgetting the negative sign gives the positive fraction."
+ },
+ {
+  "id": "mth-0058",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Parallel and perpendicular lines",
+  "difficulty": "medium",
+  "question": "Line ℓ is perpendicular to the line 7x + 4y = 20 in the xy-plane. What is the slope of line ℓ?",
+  "choices": [
+   "−7/4",
+   "−4/7",
+   "4/7",
+   "7/4"
+  ],
+  "answer": 2,
+  "explanation": "The given line has slope −7/4. Perpendicular slopes are negative reciprocals, so ℓ has slope 4/7."
+ },
+ {
+  "id": "mth-0059",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "3x − y = −3\nx − y = 3\nThe solution to the given system of equations is (x, y). What is the value of x + y?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-9"
+  ],
+  "explanation": "Solving by elimination or substitution gives x = −3 and y = −6, so x + y = −9."
+ },
+ {
+  "id": "mth-0060",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "2x + y = 2\n3x + y = 5\nThe solution to the given system of equations is (x, y). What is the value of x?",
+  "choices": [
+   "−4",
+   "−3",
+   "−1",
+   "3"
+  ],
+  "answer": 3,
+  "explanation": "Solving by elimination or substitution gives x = 3 and y = −4, so x = 3."
+ },
+ {
+  "id": "mth-0061",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "x − y = −3\nx + 3y = 21\nThe solution to the given system of equations is (x, y). What is the value of y?",
+  "choices": [
+   "−6",
+   "3",
+   "6",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "Solving by elimination or substitution gives x = 3 and y = 6, so y = 6."
+ },
+ {
+  "id": "mth-0062",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "2x + 2y = 10\n2x − 2y = −6\nThe solution to the given system of equations is (x, y). What is the value of x − y?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-3"
+  ],
+  "explanation": "Solving by elimination or substitution gives x = 1 and y = 4, so x − y = −3."
+ },
+ {
+  "id": "mth-0063",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "x − 2y = 10\n5x + 3y = 24\nThe solution to the given system of equations is (x, y). What is the value of x + y?",
+  "choices": [
+   "−4",
+   "4",
+   "6",
+   "8"
+  ],
+  "answer": 1,
+  "explanation": "Solving by elimination or substitution gives x = 6 and y = −2, so x + y = 4."
+ },
+ {
+  "id": "mth-0064",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "3x − y = 11\n3x + 4y = −14\nThe solution to the given system of equations is (x, y). What is the value of x?",
+  "choices": [
+   "−5",
+   "−3",
+   "−2",
+   "2"
+  ],
+  "answer": 3,
+  "explanation": "Solving by elimination or substitution gives x = 2 and y = −5, so x = 2."
+ },
+ {
+  "id": "mth-0065",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "2x − y = −16\n5x − y = −34\nThe solution to the given system of equations is (x, y). What is the value of y?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Solving by elimination or substitution gives x = −6 and y = 4, so y = 4."
+ },
+ {
+  "id": "mth-0066",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "x + 2y = 22\n2x − 4y = −12\nThe solution to the given system of equations is (x, y). What is the value of x − y?",
+  "choices": [
+   "−1",
+   "1",
+   "8",
+   "15"
+  ],
+  "answer": 1,
+  "explanation": "Solving by elimination or substitution gives x = 8 and y = 7, so x − y = 1."
+ },
+ {
+  "id": "mth-0067",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "x − 3y = 10\nx + y = −6\nThe solution to the given system of equations is (x, y). What is the value of x + y?",
+  "choices": [
+   "−6",
+   "−2",
+   "2",
+   "6"
+  ],
+  "answer": 0,
+  "explanation": "Solving by elimination or substitution gives x = −2 and y = −4, so x + y = −6."
+ },
+ {
+  "id": "mth-0068",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "3x + 2y = 39\n3x − 4y = 3\nThe solution to the given system of equations is (x, y). What is the value of x?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "Solving by elimination or substitution gives x = 9 and y = 6, so x = 9."
+ },
+ {
+  "id": "mth-0069",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "4x + y = −17\n5x + 3y = −30\nThe solution to the given system of equations is (x, y). What is the value of y?",
+  "choices": [
+   "−8",
+   "−5",
+   "−3",
+   "5"
+  ],
+  "answer": 1,
+  "explanation": "Solving by elimination or substitution gives x = −3 and y = −5, so y = −5."
+ },
+ {
+  "id": "mth-0070",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "2x − 3y = 27\nx + 3y = 0\nThe solution to the given system of equations is (x, y). What is the value of x − y?",
+  "choices": [
+   "−12",
+   "6",
+   "9",
+   "12"
+  ],
+  "answer": 3,
+  "explanation": "Solving by elimination or substitution gives x = 9 and y = −3, so x − y = 12."
+ },
+ {
+  "id": "mth-0071",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "2x + y = 16\nx − 4y = 17\nThe solution to the given system of equations is (x, y). What is the value of x + y?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "7"
+  ],
+  "explanation": "Solving by elimination or substitution gives x = 9 and y = −2, so x + y = 7."
+ },
+ {
+  "id": "mth-0072",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems of two linear equations",
+  "difficulty": "medium",
+  "question": "3x − 3y = −30\n2x − 4y = −38\nThe solution to the given system of equations is (x, y). What is the value of x?",
+  "choices": [
+   "−1",
+   "1",
+   "8",
+   "9"
+  ],
+  "answer": 0,
+  "explanation": "Solving by elimination or substitution gives x = −1 and y = 9, so x = −1."
+ },
+ {
+  "id": "mth-0073",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A school sold 88 tickets to its play for a total of $1,088. Adult tickets cost $14 and student tickets cost $8. How many student tickets were sold?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "Let a be the pricier item and s the student tickets. Then a + s = 88 and 14a + 8s = 1,088. Substituting a = 88 − s gives 1,232 − 6s = 1,088, so s = 24."
+ },
+ {
+  "id": "mth-0074",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A farm stand sold 100 baskets of fruit for a total of $2,230. Large baskets cost $25 and small baskets cost $15. How many small baskets were sold?",
+  "choices": [
+   "27",
+   "37",
+   "50",
+   "73"
+  ],
+  "answer": 0,
+  "explanation": "Let a be the pricier item and s the small baskets. Then a + s = 100 and 25a + 15s = 2,230. Substituting a = 100 − s gives 2,500 − 10s = 2,230, so s = 27. 73 is the number of the other item."
+ },
+ {
+  "id": "mth-0075",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A club ordered 119 shirts for a total of $1,150. Long-sleeve shirts cost $14 and short-sleeve shirts cost $8. How many short-sleeve shirts were ordered?",
+  "choices": [
+   "33",
+   "59",
+   "86",
+   "92"
+  ],
+  "answer": 2,
+  "explanation": "Let a be the pricier item and s the short-sleeve shirts. Then a + s = 119 and 14a + 8s = 1,150. Substituting a = 119 − s gives 1,666 − 6s = 1,150, so s = 86. 33 is the number of the other item."
+ },
+ {
+  "id": "mth-0076",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A theater sold 107 seats for a total of $2,035. Balcony seats cost $25 and floor seats cost $15. How many floor seats were sold?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "64"
+  ],
+  "explanation": "Let a be the pricier item and s the floor seats. Then a + s = 107 and 25a + 15s = 2,035. Substituting a = 107 − s gives 2,675 − 10s = 2,035, so s = 64."
+ },
+ {
+  "id": "mth-0077",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A bakery sold 121 pies for a total of $1,057. Apple pies cost $12 and cherry pies cost $7. How many cherry pies were sold?",
+  "choices": [
+   "42",
+   "60",
+   "79",
+   "84"
+  ],
+  "answer": 2,
+  "explanation": "Let a be the pricier item and s the cherry pies. Then a + s = 121 and 12a + 7s = 1,057. Substituting a = 121 − s gives 1,452 − 5s = 1,057, so s = 79. 42 is the number of the other item."
+ },
+ {
+  "id": "mth-0078",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A museum admitted 162 visitors and collected $1,514. Adults paid $12 and children paid $7. How many children visited?",
+  "choices": [
+   "76",
+   "81",
+   "86",
+   "91"
+  ],
+  "answer": 2,
+  "explanation": "Let a be the pricier item and s the children. Then a + s = 162 and 12a + 7s = 1,514. Substituting a = 162 − s gives 1,944 − 5s = 1,514, so s = 86. 76 is the number of the other item."
+ },
+ {
+  "id": "mth-0079",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear systems in context",
+  "difficulty": "medium",
+  "question": "A band sold 47 items at a concert for a total of $646. Posters cost $18 and stickers cost $10. How many stickers were sold?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "25"
+  ],
+  "explanation": "Let a be the pricier item and s the stickers. Then a + s = 47 and 18a + 10s = 646. Substituting a = 47 − s gives 846 − 8s = 646, so s = 25."
+ },
+ {
+  "id": "mth-0080",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with no solution",
+  "difficulty": "hard",
+  "question": "3x + 7y = 4\n6x + ky = 9\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
+  "choices": [
+   "−14",
+   "7",
+   "9",
+   "14"
+  ],
+  "answer": 3,
+  "explanation": "The system has no solution when the lines are parallel but different. Multiplying the first equation by 2 gives 6x + 14y = 8. The x-terms match, so k = 14 makes the y-terms match too, and 8 ≠ 9, so the lines never meet."
+ },
+ {
+  "id": "mth-0081",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with infinitely many solutions",
+  "difficulty": "hard",
+  "question": "2x + 3y = 5\n4x + 6y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "Infinitely many solutions means the two equations describe the same line. The second equation is the first multiplied by 2, so m = 5·2 = 10."
+ },
+ {
+  "id": "mth-0082",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with no solution",
+  "difficulty": "hard",
+  "question": "3x + 4y = 7\n9x + ky = 26\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
+  "choices": [
+   "−12",
+   "4",
+   "12",
+   "26"
+  ],
+  "answer": 2,
+  "explanation": "The system has no solution when the lines are parallel but different. Multiplying the first equation by 3 gives 9x + 12y = 21. The x-terms match, so k = 12 makes the y-terms match too, and 21 ≠ 26, so the lines never meet."
+ },
+ {
+  "id": "mth-0083",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with infinitely many solutions",
+  "difficulty": "hard",
+  "question": "4x + 5y = 9\n12x + 15y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
+  "choices": [
+   "9",
+   "12",
+   "27",
+   "30"
+  ],
+  "answer": 2,
+  "explanation": "Infinitely many solutions means the two equations describe the same line. The second equation is the first multiplied by 3, so m = 9·3 = 27."
+ },
+ {
+  "id": "mth-0084",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with no solution",
+  "difficulty": "hard",
+  "question": "4x + 3y = 6\n16x + ky = 29\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
+  "choices": [
+   "−12",
+   "3",
+   "12",
+   "29"
+  ],
+  "answer": 2,
+  "explanation": "The system has no solution when the lines are parallel but different. Multiplying the first equation by 4 gives 16x + 12y = 24. The x-terms match, so k = 12 makes the y-terms match too, and 24 ≠ 29, so the lines never meet."
+ },
+ {
+  "id": "mth-0085",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with infinitely many solutions",
+  "difficulty": "hard",
+  "question": "6x + 5y = 11\n18x + 15y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "33"
+  ],
+  "explanation": "Infinitely many solutions means the two equations describe the same line. The second equation is the first multiplied by 3, so m = 11·3 = 33."
+ },
+ {
+  "id": "mth-0086",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with no solution",
+  "difficulty": "hard",
+  "question": "3x + 7y = 4\n6x + ky = 10\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
+  "choices": [
+   "−14",
+   "7",
+   "10",
+   "14"
+  ],
+  "answer": 3,
+  "explanation": "The system has no solution when the lines are parallel but different. Multiplying the first equation by 2 gives 6x + 14y = 8. The x-terms match, so k = 14 makes the y-terms match too, and 8 ≠ 10, so the lines never meet."
+ },
+ {
+  "id": "mth-0087",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Systems with infinitely many solutions",
+  "difficulty": "hard",
+  "question": "3x + 4y = 7\n6x + 8y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
+  "choices": [
+   "7",
+   "9",
+   "14",
+   "16"
+  ],
+  "answer": 2,
+  "explanation": "Infinitely many solutions means the two equations describe the same line. The second equation is the first multiplied by 2, so m = 7·2 = 14."
+ },
+ {
+  "id": "mth-0088",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear inequalities in context",
+  "difficulty": "medium",
+  "question": "Jalen has $95 to spend at a fair. Admission is $15, and each ride ticket costs $3. What is the maximum number of ride tickets Jalen can buy?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "26"
+  ],
+  "explanation": "15 + 3n ≤ 95 gives 3n ≤ 80, so n ≤ 26.67. The greatest whole number is 26."
+ },
+ {
+  "id": "mth-0089",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear inequalities in context",
+  "difficulty": "medium",
+  "question": "A delivery van can carry at most 254 kilograms. The driver weighs 12 kilograms, and each package weighs 9 kilograms. What is the greatest number of packages the van can carry with the driver?",
+  "choices": [
+   "25",
+   "26",
+   "27",
+   "28"
+  ],
+  "answer": 1,
+  "explanation": "12 + 9n ≤ 254 gives 9n ≤ 242, so n ≤ 26.89. The greatest whole number is 26. Rounding up would go over the limit."
+ },
+ {
+  "id": "mth-0090",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear inequalities in context",
+  "difficulty": "medium",
+  "question": "A student has $80 for school supplies. A backpack costs $15, and notebooks cost $3 each. What is the greatest number of notebooks the student can buy along with the backpack?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "21"
+  ],
+  "explanation": "15 + 3n ≤ 80 gives 3n ≤ 65, so n ≤ 21.67. The greatest whole number is 21."
+ },
+ {
+  "id": "mth-0091",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear inequalities in context",
+  "difficulty": "medium",
+  "question": "An elevator can hold at most 113 pounds. A cart weighing 35 pounds is already inside, and each box weighs 7 pounds. What is the maximum number of boxes that can be loaded?",
+  "choices": [
+   "10",
+   "11",
+   "12",
+   "16"
+  ],
+  "answer": 1,
+  "explanation": "35 + 7n ≤ 113 gives 7n ≤ 78, so n ≤ 11.14. The greatest whole number is 11. Rounding up would go over the limit."
+ },
+ {
+  "id": "mth-0092",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear inequalities in context",
+  "difficulty": "medium",
+  "question": "Priya can spend at most $61 on a party. The room costs $20, and each guest's meal costs $3. What is the maximum number of guests she can invite?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "13"
+  ],
+  "explanation": "20 + 3n ≤ 61 gives 3n ≤ 41, so n ≤ 13.67. The greatest whole number is 13."
+ },
+ {
+  "id": "mth-0093",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear inequalities in context",
+  "difficulty": "medium",
+  "question": "A phone plan allows $279 of charges each month. The base fee is $15, and each extra gigabyte costs $9. What is the most whole gigabytes a user can add without going over?",
+  "choices": [
+   "28",
+   "29",
+   "30",
+   "31"
+  ],
+  "answer": 1,
+  "explanation": "15 + 9n ≤ 279 gives 9n ≤ 264, so n ≤ 29.33. The greatest whole number is 29. Rounding up would go over the limit."
+ },
+ {
+  "id": "mth-0094",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula A = (1/2)bh gives the area A of a triangle with base b and height h. Which equation correctly expresses h in terms of the other variables?",
+  "choices": [
+   "h = 2A/b",
+   "h = A − 2b",
+   "h = A/(2b)",
+   "h = 2b/A"
+  ],
+  "answer": 0,
+  "explanation": "Isolate h by undoing each operation on it in reverse order, doing the same thing to both sides: h = 2A/b."
+ },
+ {
+  "id": "mth-0095",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula P = 2ℓ + 2w gives the perimeter P of a rectangle with length ℓ and width w. Which equation correctly expresses w in terms of the other variables?",
+  "choices": [
+   "w = P/2 − 2ℓ",
+   "w = (P − 2ℓ)/2",
+   "w = P − ℓ",
+   "w = (P − ℓ)/2"
+  ],
+  "answer": 1,
+  "explanation": "Isolate w by undoing each operation on it in reverse order, doing the same thing to both sides: w = (P − 2ℓ)/2."
+ },
+ {
+  "id": "mth-0096",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula F = (9/5)C + 32 gives a temperature F in degrees Fahrenheit in terms of the temperature C in degrees Celsius. Which equation correctly expresses C in terms of the other variables?",
+  "choices": [
+   "C = F − 32 − 9/5",
+   "C = (5/9)F − 32",
+   "C = (5/9)(F − 32)",
+   "C = (9/5)(F − 32)"
+  ],
+  "answer": 2,
+  "explanation": "Isolate C by undoing each operation on it in reverse order, doing the same thing to both sides: C = (5/9)(F − 32)."
+ },
+ {
+  "id": "mth-0097",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula V = πr²h gives the volume V of a cylinder with radius r and height h. Which equation correctly expresses h in terms of the other variables?",
+  "choices": [
+   "h = Vπr²",
+   "h = πr²/V",
+   "h = V − πr²",
+   "h = V/(πr²)"
+  ],
+  "answer": 3,
+  "explanation": "Isolate h by undoing each operation on it in reverse order, doing the same thing to both sides: h = V/(πr²)."
+ },
+ {
+  "id": "mth-0098",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula I = Prt gives the simple interest I earned on a principal P at rate r for t years. Which equation correctly expresses r in terms of the other variables?",
+  "choices": [
+   "r = I/(Pt)",
+   "r = I − Pt",
+   "r = Pt/I",
+   "r = IPt"
+  ],
+  "answer": 0,
+  "explanation": "Isolate r by undoing each operation on it in reverse order, doing the same thing to both sides: r = I/(Pt)."
+ },
+ {
+  "id": "mth-0099",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula v = u + at gives the velocity v of an object with starting velocity u and constant acceleration a after time t. Which equation correctly expresses a in terms of the other variables?",
+  "choices": [
+   "a = t/(v − u)",
+   "a = (v − u)/t",
+   "a = (v + u)/t",
+   "a = v − u − t"
+  ],
+  "answer": 1,
+  "explanation": "Isolate a by undoing each operation on it in reverse order, doing the same thing to both sides: a = (v − u)/t."
+ },
+ {
+  "id": "mth-0100",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The formula E = (1/2)mv² gives the kinetic energy E of an object with mass m moving at speed v. Which equation correctly expresses m in terms of the other variables?",
+  "choices": [
+   "m = 2v²/E",
+   "m = E/(2v²)",
+   "m = 2E/v²",
+   "m = E − v²/2"
+  ],
+  "answer": 2,
+  "explanation": "Isolate m by undoing each operation on it in reverse order, doing the same thing to both sides: m = 2E/v²."
+ },
+ {
+  "id": "mth-0101",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the positive solution to the equation 3x² + 6x − 24 = 0?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "Factor: 3x² + 6x − 24 = 3(x + 4)(x − 2), so the solutions are x = −4 and x = 2, and the positive one is 2."
+ },
+ {
+  "id": "mth-0102",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the sum of the solutions to the equation x² − 14x + 40 = 0?",
+  "choices": [
+   "−14",
+   "14",
+   "15",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "Factor: x² − 14x + 40 = (x − 10)(x − 4), so the solutions are x = 10 and x = 4, and their sum is 14."
+ },
+ {
+  "id": "mth-0103",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "hard",
+  "question": "What is the product of the solutions to the equation 2x² + 22x + 36 = 0?",
+  "choices": [
+   "−18",
+   "−11",
+   "11",
+   "18"
+  ],
+  "answer": 3,
+  "explanation": "Factor: 2x² + 22x + 36 = 2(x + 2)(x + 9), so the solutions are x = −2 and x = −9, and their product is 18."
+ },
+ {
+  "id": "mth-0104",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "If x is a solution to the equation x² + 11x + 28 = 0 and x < -6, what is the value of x?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-7"
+  ],
+  "explanation": "Factor: x² + 11x + 28 = (x + 4)(x + 7), so the solutions are x = −4 and x = −7, and the smaller one is −7."
+ },
+ {
+  "id": "mth-0105",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the positive solution to the equation x² − 6x − 27 = 0?",
+  "choices": [
+   "−27",
+   "−9",
+   "6",
+   "9"
+  ],
+  "answer": 3,
+  "explanation": "Factor: x² − 6x − 27 = (x − 9)(x + 3), so the solutions are x = 9 and x = −3, and the positive one is 9."
+ },
+ {
+  "id": "mth-0106",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "hard",
+  "question": "What is the sum of the solutions to the equation 3x² − 15x − 18 = 0?",
+  "choices": [
+   "−6",
+   "−5",
+   "5",
+   "6"
+  ],
+  "answer": 2,
+  "explanation": "Factor: 3x² − 15x − 18 = 3(x + 1)(x − 6), so the solutions are x = −1 and x = 6, and their sum is 5."
+ },
+ {
+  "id": "mth-0107",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the product of the solutions to the equation 3x² − 3x − 270 = 0?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-90"
+  ],
+  "explanation": "Factor: 3x² − 3x − 270 = 3(x + 9)(x − 10), so the solutions are x = −9 and x = 10, and their product is −90."
+ },
+ {
+  "id": "mth-0108",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "If x is a solution to the equation x² − 9 = 0 and x < -2, what is the value of x?",
+  "choices": [
+   "−9",
+   "−3",
+   "0",
+   "3"
+  ],
+  "answer": 1,
+  "explanation": "Factor: x² − 9 = (x − 3)(x + 3), so the solutions are x = 3 and x = −3, and the smaller one is −3."
+ },
+ {
+  "id": "mth-0109",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "hard",
+  "question": "What is the positive solution to the equation 2x² + 16x − 18 = 0?",
+  "choices": [
+   "−9",
+   "−8",
+   "−1",
+   "1"
+  ],
+  "answer": 3,
+  "explanation": "Factor: 2x² + 16x − 18 = 2(x + 9)(x − 1), so the solutions are x = −9 and x = 1, and the positive one is 1."
+ },
+ {
+  "id": "mth-0110",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the sum of the solutions to the equation x² + 3x − 10 = 0?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-3"
+  ],
+  "explanation": "Factor: x² + 3x − 10 = (x + 5)(x − 2), so the solutions are x = −5 and x = 2, and their sum is −3."
+ },
+ {
+  "id": "mth-0111",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the product of the solutions to the equation x² − 13x + 42 = 0?",
+  "choices": [
+   "−42",
+   "−13",
+   "13",
+   "42"
+  ],
+  "answer": 3,
+  "explanation": "Factor: x² − 13x + 42 = (x − 7)(x − 6), so the solutions are x = 7 and x = 6, and their product is 42."
+ },
+ {
+  "id": "mth-0112",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "hard",
+  "question": "If x is a solution to the equation 3x² − 33x + 72 = 0 and x < 4, what is the value of x?",
+  "choices": [
+   "−3",
+   "3",
+   "11",
+   "24"
+  ],
+  "answer": 1,
+  "explanation": "Factor: 3x² − 33x + 72 = 3(x − 8)(x − 3), so the solutions are x = 8 and x = 3, and the smaller one is 3."
+ },
+ {
+  "id": "mth-0113",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "If x is a solution to the equation x² + 6x + 8 = 0 and x < -3, what is the value of x?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-4"
+  ],
+  "explanation": "Factor: x² + 6x + 8 = (x + 4)(x + 2), so the solutions are x = −4 and x = −2, and the smaller one is −4."
+ },
+ {
+  "id": "mth-0114",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic equations",
+  "difficulty": "medium",
+  "question": "What is the sum of the solutions to the equation x² − 2x − 24 = 0?",
+  "choices": [
+   "−24",
+   "−2",
+   "2",
+   "3"
+  ],
+  "answer": 2,
+  "explanation": "Factor: x² − 2x − 24 = (x − 6)(x + 4), so the solutions are x = 6 and x = −4, and their sum is 2."
+ },
+ {
+  "id": "mth-0115",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = −2x² + 24x − 67. What is the maximum value of f(x)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "The vertex's x-coordinate is −b/(2a) = −24/−4 = 6. Then f(6) = 5, the maximum value because the parabola opens down."
+ },
+ {
+  "id": "mth-0116",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "easy",
+  "question": "The graph of y = −2(x + 2)² − 11 is a parabola in the xy-plane. What are the coordinates of its vertex?",
+  "choices": [
+   "(−2, −11)",
+   "(−2, 11)",
+   "(−11, −2)",
+   "(2, −11)"
+  ],
+  "answer": 0,
+  "explanation": "In vertex form y = a(x − h)² + k, the vertex is (h, k). Here x − h is x + 2, so h = −2, and k = −11."
+ },
+ {
+  "id": "mth-0117",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = −2x² + 28x − 106. What is the maximum value of f(x)?",
+  "choices": [
+   "−106",
+   "−8",
+   "7",
+   "8"
+  ],
+  "answer": 1,
+  "explanation": "The vertex's x-coordinate is −b/(2a) = −28/−4 = 7. Then f(7) = −8, the maximum value because the parabola opens down. 7 is where it happens, not the value itself."
+ },
+ {
+  "id": "mth-0118",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "easy",
+  "question": "The graph of y = (x + 1)² − 12 is a parabola in the xy-plane. What are the coordinates of its vertex?",
+  "choices": [
+   "(−1, 12)",
+   "(−1, −12)",
+   "(−12, −1)",
+   "(1, −12)"
+  ],
+  "answer": 1,
+  "explanation": "In vertex form y = a(x − h)² + k, the vertex is (h, k). Here x − h is x + 1, so h = −1, and k = −12."
+ },
+ {
+  "id": "mth-0119",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = −x² + 14x − 47. What is the maximum value of f(x)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "The vertex's x-coordinate is −b/(2a) = −14/−2 = 7. Then f(7) = 2, the maximum value because the parabola opens down."
+ },
+ {
+  "id": "mth-0120",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "easy",
+  "question": "The graph of y = 3(x + 4)² + 1 is a parabola in the xy-plane. What are the coordinates of its vertex?",
+  "choices": [
+   "(−4, −1)",
+   "(1, −4)",
+   "(−4, 1)",
+   "(4, 1)"
+  ],
+  "answer": 2,
+  "explanation": "In vertex form y = a(x − h)² + k, the vertex is (h, k). Here x − h is x + 4, so h = −4, and k = 1."
+ },
+ {
+  "id": "mth-0121",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = 2x² − 12x + 6. What is the minimum value of f(x)?",
+  "choices": [
+   "−12",
+   "3",
+   "6",
+   "12"
+  ],
+  "answer": 0,
+  "explanation": "The vertex's x-coordinate is −b/(2a) = 12/4 = 3. Then f(3) = −12, the minimum value because the parabola opens up. 3 is where it happens, not the value itself."
+ },
+ {
+  "id": "mth-0122",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "easy",
+  "question": "The graph of y = 3(x + 6)² − 12 is a parabola in the xy-plane. What are the coordinates of its vertex?",
+  "choices": [
+   "(−12, −6)",
+   "(6, −12)",
+   "(−6, 12)",
+   "(−6, −12)"
+  ],
+  "answer": 3,
+  "explanation": "In vertex form y = a(x − h)² + k, the vertex is (h, k). Here x − h is x + 6, so h = −6, and k = −12."
+ },
+ {
+  "id": "mth-0123",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = 3x² + 18x + 18. What is the minimum value of f(x)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-9"
+  ],
+  "explanation": "The vertex's x-coordinate is −b/(2a) = −18/6 = −3. Then f(−3) = −9, the minimum value because the parabola opens up."
+ },
+ {
+  "id": "mth-0124",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Vertex of a parabola",
+  "difficulty": "easy",
+  "question": "The graph of y = 3(x − 5)² − 1 is a parabola in the xy-plane. What are the coordinates of its vertex?",
+  "choices": [
+   "(5, −1)",
+   "(5, 1)",
+   "(−1, 5)",
+   "(−5, −1)"
+  ],
+  "answer": 0,
+  "explanation": "In vertex form y = a(x − h)² + k, the vertex is (h, k). Here x − h is x − 5, so h = 5, and k = −1."
+ },
+ {
+  "id": "mth-0125",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation x² − 6x + 9 = 0 have?",
+  "choices": [
+   "Exactly one",
+   "Exactly two",
+   "Zero",
+   "Infinitely many"
+  ],
+  "answer": 0,
+  "explanation": "The discriminant is b² − 4ac = (−6)² − 4(1)(9) = 0. A discriminant of 0 means exactly one real solution."
+ },
+ {
+  "id": "mth-0126",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation x² + 4x + 4 = 0 have?",
+  "choices": [
+   "Exactly two",
+   "Exactly one",
+   "Infinitely many",
+   "Zero"
+  ],
+  "answer": 1,
+  "explanation": "The discriminant is b² − 4ac = (4)² − 4(1)(4) = 0. A discriminant of 0 means exactly one real solution."
+ },
+ {
+  "id": "mth-0127",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation 2x² − 4x + 2 = 0 have?",
+  "choices": [
+   "Zero",
+   "Infinitely many",
+   "Exactly one",
+   "Exactly two"
+  ],
+  "answer": 2,
+  "explanation": "The discriminant is b² − 4ac = (−4)² − 4(2)(2) = 0. A discriminant of 0 means exactly one real solution."
+ },
+ {
+  "id": "mth-0128",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation x² + 3x + 5 = 0 have?",
+  "choices": [
+   "Infinitely many",
+   "Exactly one",
+   "Exactly two",
+   "Zero"
+  ],
+  "answer": 3,
+  "explanation": "The discriminant is b² − 4ac = (3)² − 4(1)(5) = −11. A negative discriminant means no real solutions."
+ },
+ {
+  "id": "mth-0129",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation 2x² + x + 3 = 0 have?",
+  "choices": [
+   "Zero",
+   "Exactly two",
+   "Infinitely many",
+   "Exactly one"
+  ],
+  "answer": 0,
+  "explanation": "The discriminant is b² − 4ac = (1)² − 4(2)(3) = −23. A negative discriminant means no real solutions."
+ },
+ {
+  "id": "mth-0130",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation x² − 2x + 4 = 0 have?",
+  "choices": [
+   "Infinitely many",
+   "Zero",
+   "Exactly one",
+   "Exactly two"
+  ],
+  "answer": 1,
+  "explanation": "The discriminant is b² − 4ac = (−2)² − 4(1)(4) = −12. A negative discriminant means no real solutions."
+ },
+ {
+  "id": "mth-0131",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation x² + 5x + 3 = 0 have?",
+  "choices": [
+   "Zero",
+   "Infinitely many",
+   "Exactly two",
+   "Exactly one"
+  ],
+  "answer": 2,
+  "explanation": "The discriminant is b² − 4ac = (5)² − 4(1)(3) = 13. A positive discriminant means two real solutions."
+ },
+ {
+  "id": "mth-0132",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation 3x² − 7x + 2 = 0 have?",
+  "choices": [
+   "Infinitely many",
+   "Zero",
+   "Exactly one",
+   "Exactly two"
+  ],
+  "answer": 3,
+  "explanation": "The discriminant is b² − 4ac = (−7)² − 4(3)(2) = 25. A positive discriminant means two real solutions."
+ },
+ {
+  "id": "mth-0133",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation x² − x − 12 = 0 have?",
+  "choices": [
+   "Exactly two",
+   "Exactly one",
+   "Zero",
+   "Infinitely many"
+  ],
+  "answer": 0,
+  "explanation": "The discriminant is b² − 4ac = (−1)² − 4(1)(−12) = 49. A positive discriminant means two real solutions."
+ },
+ {
+  "id": "mth-0134",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Discriminant",
+  "difficulty": "medium",
+  "question": "How many distinct real solutions does the equation 4x² + 4x + 1 = 0 have?",
+  "choices": [
+   "Infinitely many",
+   "Exactly one",
+   "Zero",
+   "Exactly two"
+  ],
+  "answer": 1,
+  "explanation": "The discriminant is b² − 4ac = (4)² − 4(4)(1) = 0. A discriminant of 0 means exactly one real solution."
+ },
+ {
+  "id": "mth-0135",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = 2x² − 3x − 7. What is the value of f(4)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "13"
+  ],
+  "explanation": "Substitute 4 for x: 2(4)² − 3(4) − 7 = 32 − 12 − 7 = 13."
+ },
+ {
+  "id": "mth-0136",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "medium",
+  "question": "The function g is defined by g(x) = 3ˣ + 4. What is the value of g(3)?",
+  "choices": [
+   "13",
+   "31",
+   "85",
+   "343"
+  ],
+  "answer": 1,
+  "explanation": "g(3) = 3^3 + 4 = 27 + 4 = 31."
+ },
+ {
+  "id": "mth-0137",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "medium",
+  "question": "The function h is defined by h(x) = 4x − 3. If h(t) = 17, what is the value of t?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Set 4x − 3 equal to 17: 4t = 20, so t = 5."
+ },
+ {
+  "id": "mth-0138",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = 4x² + 6x + 5. What is the value of f(−3)?",
+  "choices": [
+   "−49",
+   "23",
+   "59",
+   "131"
+  ],
+  "answer": 1,
+  "explanation": "Substitute −3 for x: 4(−3)² + 6(−3) + 5 = 36 − 18 + 5 = 23."
+ },
+ {
+  "id": "mth-0139",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "medium",
+  "question": "The function g is defined by g(x) = 2ˣ + 2. What is the value of g(4)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "g(4) = 2^4 + 2 = 16 + 2 = 18."
+ },
+ {
+  "id": "mth-0140",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "medium",
+  "question": "The function h is defined by h(x) = 4x − 1. If h(t) = 3, what is the value of t?",
+  "choices": [
+   "−1",
+   "1",
+   "3",
+   "11"
+  ],
+  "answer": 1,
+  "explanation": "Set 4x − 1 equal to 3: 4t = 4, so t = 1."
+ },
+ {
+  "id": "mth-0141",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = 3x² − 2x − 1. What is the value of f(−3)?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "32"
+  ],
+  "explanation": "Substitute −3 for x: 3(−3)² − 2(−3) − 1 = 27 + 6 − 1 = 32."
+ },
+ {
+  "id": "mth-0142",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "medium",
+  "question": "The function g is defined by g(x) = 5ˣ + 2. What is the value of g(2)?",
+  "choices": [
+   "12",
+   "27",
+   "49",
+   "127"
+  ],
+  "answer": 1,
+  "explanation": "g(2) = 5^2 + 2 = 25 + 2 = 27."
+ },
+ {
+  "id": "mth-0143",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "medium",
+  "question": "The function h is defined by h(x) = 2x + 6. If h(t) = 8, what is the value of t?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1"
+  ],
+  "explanation": "Set 2x + 6 equal to 8: 2t = 2, so t = 1."
+ },
+ {
+  "id": "mth-0144",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Function notation",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = 4x² − 3x − 4. What is the value of f(2)?",
+  "choices": [
+   "−26",
+   "6",
+   "18",
+   "54"
+  ],
+  "answer": 1,
+  "explanation": "Substitute 2 for x: 4(2)² − 3(2) − 4 = 16 − 6 − 4 = 6."
+ },
+ {
+  "id": "mth-0145",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "The value V, in dollars, of a car t years after it was bought is modeled by V = 500(0.92)ᵗ. Which statement best describes how the value of the car changes?",
+  "choices": [
+   "It decreases by 8% each year.",
+   "It increases by 8% each year.",
+   "It decreases by 0.92 each year.",
+   "It decreases by 92% each year."
+  ],
+  "answer": 0,
+  "explanation": "Each year the value of the car is multiplied by 0.92, which is 100% − 8%. So it decreases by 8% each time, not by a fixed amount."
+ },
+ {
+  "id": "mth-0146",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "A quantity is 6,000 at time t = 0 and decreases by 7% every year. Which function Q gives the quantity after t years?",
+  "choices": [
+   "Q(t) = 6,000(0.07)ᵗ",
+   "Q(t) = 6,000(0.93)ᵗ",
+   "Q(t) = 6,000 − 0.07t",
+   "Q(t) = 6,000(1.07)ᵗ"
+  ],
+  "answer": 1,
+  "explanation": "A 7% decrease each year multiplies the amount by 0.93, so Q(t) = 6,000(0.93)ᵗ. The last choice is linear, which adds the same amount every year."
+ },
+ {
+  "id": "mth-0147",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "The population P of a town t years after 2020 is modeled by P = 1,200(1.12)ᵗ. Which statement best describes how the town's population changes?",
+  "choices": [
+   "It increases by 112% each year.",
+   "It increases by 1.12 each year.",
+   "It increases by 12% each year.",
+   "It decreases by 12% each year."
+  ],
+  "answer": 2,
+  "explanation": "Each year the town's population is multiplied by 1.12, which is 100% + 12%. So it increases by 12% each time, not by a fixed amount."
+ },
+ {
+  "id": "mth-0148",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "A quantity is 6,000 at time t = 0 and increases by 10% every year. Which function Q gives the quantity after t years?",
+  "choices": [
+   "Q(t) = 6,000 + 0.1t",
+   "Q(t) = 6,000(0.9)ᵗ",
+   "Q(t) = 6,000(0.1)ᵗ",
+   "Q(t) = 6,000(1.1)ᵗ"
+  ],
+  "answer": 3,
+  "explanation": "A 10% increase each year multiplies the amount by 1.1, so Q(t) = 6,000(1.1)ᵗ. The last choice is linear, which adds the same amount every year."
+ },
+ {
+  "id": "mth-0149",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "The number of bacteria N in a sample h hours after an experiment begins is modeled by N = 24,000(1.05)ʰ. Which statement best describes how the number of bacteria changes?",
+  "choices": [
+   "It increases by 5% each hour.",
+   "It decreases by 5% each hour.",
+   "It increases by 1.05 each hour.",
+   "It increases by 105% each hour."
+  ],
+  "answer": 0,
+  "explanation": "Each hour the number of bacteria is multiplied by 1.05, which is 100% + 5%. So it increases by 5% each time, not by a fixed amount."
+ },
+ {
+  "id": "mth-0150",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "A quantity is 1,500 at time t = 0 and increases by 7% every year. Which function Q gives the quantity after t years?",
+  "choices": [
+   "Q(t) = 1,500(0.93)ᵗ",
+   "Q(t) = 1,500(1.07)ᵗ",
+   "Q(t) = 1,500(0.07)ᵗ",
+   "Q(t) = 1,500 + 0.07t"
+  ],
+  "answer": 1,
+  "explanation": "A 7% increase each year multiplies the amount by 1.07, so Q(t) = 1,500(1.07)ᵗ. The last choice is linear, which adds the same amount every year."
+ },
+ {
+  "id": "mth-0151",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "The mass M, in grams, of a substance d days after it was measured is modeled by M = 800(0.95)ᵈ. Which statement best describes how the mass of the substance changes?",
+  "choices": [
+   "It decreases by 0.95 each day.",
+   "It increases by 5% each day.",
+   "It decreases by 5% each day.",
+   "It decreases by 95% each day."
+  ],
+  "answer": 2,
+  "explanation": "Each day the mass of the substance is multiplied by 0.95, which is 100% − 5%. So it decreases by 5% each time, not by a fixed amount."
+ },
+ {
+  "id": "mth-0152",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "A quantity is 2,400 at time t = 0 and decreases by 30% every year. Which function Q gives the quantity after t years?",
+  "choices": [
+   "Q(t) = 2,400(0.3)ᵗ",
+   "Q(t) = 2,400 − 0.3t",
+   "Q(t) = 2,400(1.3)ᵗ",
+   "Q(t) = 2,400(0.7)ᵗ"
+  ],
+  "answer": 3,
+  "explanation": "A 30% decrease each year multiplies the amount by 0.7, so Q(t) = 2,400(0.7)ᵗ. The last choice is linear, which adds the same amount every year."
+ },
+ {
+  "id": "mth-0153",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "The number of subscribers S to a channel m months after launch is modeled by S = 800(1.08)ᵐ. Which statement best describes how the number of subscribers changes?",
+  "choices": [
+   "It increases by 8% each month.",
+   "It decreases by 8% each month.",
+   "It increases by 1.08 each month.",
+   "It increases by 108% each month."
+  ],
+  "answer": 0,
+  "explanation": "Each month the number of subscribers is multiplied by 1.08, which is 100% + 8%. So it increases by 8% each time, not by a fixed amount."
+ },
+ {
+  "id": "mth-0154",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "The amount A, in milligrams, of a medicine in a patient's blood h hours after a dose is modeled by A = 24,000(0.88)ʰ. Which statement best describes how the amount of medicine changes?",
+  "choices": [
+   "It decreases by 88% each hour.",
+   "It decreases by 12% each hour.",
+   "It decreases by 0.88 each hour.",
+   "It increases by 12% each hour."
+  ],
+  "answer": 1,
+  "explanation": "Each hour the amount of medicine is multiplied by 0.88, which is 100% − 12%. So it decreases by 12% each time, not by a fixed amount."
+ },
+ {
+  "id": "mth-0155",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "medium",
+  "question": "A quantity is 3,200 at time t = 0 and decreases by 30% every year. Which function Q gives the quantity after t years?",
+  "choices": [
+   "Q(t) = 3,200 − 0.3t",
+   "Q(t) = 3,200(1.3)ᵗ",
+   "Q(t) = 3,200(0.7)ᵗ",
+   "Q(t) = 3,200(0.3)ᵗ"
+  ],
+  "answer": 2,
+  "explanation": "A 30% decrease each year multiplies the amount by 0.7, so Q(t) = 3,200(0.7)ᵗ. The last choice is linear, which adds the same amount every year."
+ },
+ {
+  "id": "mth-0156",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁸ · x⁵) / x⁵ is equivalent to xⁿ. What is the value of n?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 8 + 5 − 5 = 8."
+ },
+ {
+  "id": "mth-0157",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁴ · x²) / x⁴ is equivalent to xⁿ. What is the value of n?",
+  "choices": [
+   "2",
+   "3",
+   "4",
+   "10"
+  ],
+  "answer": 0,
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 4 + 2 − 4 = 2. Multiplying the exponents is a common mistake."
+ },
+ {
+  "id": "mth-0158",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁷ · x⁷) / x¹ is equivalent to xⁿ. What is the value of n?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "13"
+  ],
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 7 + 7 − 1 = 13."
+ },
+ {
+  "id": "mth-0159",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁷ · x⁹) / x⁴ is equivalent to xⁿ. What is the value of n?",
+  "choices": [
+   "12",
+   "63/4",
+   "20",
+   "59"
+  ],
+  "answer": 0,
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 7 + 9 − 4 = 12. Multiplying the exponents is a common mistake."
+ },
+ {
+  "id": "mth-0160",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁹ · x⁴) / x³ is equivalent to xⁿ. What is the value of n?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 9 + 4 − 3 = 10."
+ },
+ {
+  "id": "mth-0161",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁹ · x⁸) / x² is equivalent to xⁿ. What is the value of n?",
+  "choices": [
+   "15",
+   "19",
+   "36",
+   "70"
+  ],
+  "answer": 0,
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 9 + 8 − 2 = 15. Multiplying the exponents is a common mistake."
+ },
+ {
+  "id": "mth-0162",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁹ · x⁵) / x⁶ is equivalent to xⁿ. What is the value of n?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 9 + 5 − 6 = 8."
+ },
+ {
+  "id": "mth-0163",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "easy",
+  "question": "For x > 0, the expression (x⁹ · x⁸) / x⁴ is equivalent to xⁿ. What is the value of n?",
+  "choices": [
+   "13",
+   "18",
+   "21",
+   "68"
+  ],
+  "answer": 0,
+  "explanation": "Multiplying powers adds exponents and dividing subtracts them: 9 + 8 − 4 = 13. Multiplying the exponents is a common mistake."
+ },
+ {
+  "id": "mth-0164",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For x > 0, which expression is equivalent to the fourth root of x³?",
+  "choices": [
+   "x^(3/4)",
+   "x¹²",
+   "x⁻¹",
+   "x^(4/3)"
+  ],
+  "answer": 0,
+  "explanation": "The nth root of xᵐ is x^(m/n). Here that is x^(3/4)."
+ },
+ {
+  "id": "mth-0165",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For x > 0, which expression is equivalent to the fifth root of x²?",
+  "choices": [
+   "x¹⁰",
+   "x^(2/5)",
+   "x⁻³",
+   "x^(5/2)"
+  ],
+  "answer": 1,
+  "explanation": "The nth root of xᵐ is x^(m/n). Here that is x^(2/5)."
+ },
+ {
+  "id": "mth-0166",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For x > 0, which expression is equivalent to the cube root of x⁵?",
+  "choices": [
+   "x¹⁵",
+   "x^(3/5)",
+   "x^(5/3)",
+   "x²"
+  ],
+  "answer": 2,
+  "explanation": "The nth root of xᵐ is x^(m/n). Here that is x^(5/3)."
+ },
+ {
+  "id": "mth-0167",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For x > 0, which expression is equivalent to √(x⁷)?",
+  "choices": [
+   "x¹⁴",
+   "x⁵",
+   "x^(2/7)",
+   "x^(7/2)"
+  ],
+  "answer": 3,
+  "explanation": "The nth root of xᵐ is x^(m/n). Here that is x^(7/2)."
+ },
+ {
+  "id": "mth-0168",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The expression (5x + 4)(x + 1) is equivalent to px² + qx + r, where p, q, and r are constants. What is the value of q?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "Expanding gives 5x² + 9x + 4: the x-terms are 5x and 4x, which combine to 9x."
+ },
+ {
+  "id": "mth-0169",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "If (4x − 1)(3x + 1) = px² + qx + r for all values of x, what is the value of p + q + r?",
+  "choices": [
+   "−12",
+   "7",
+   "11",
+   "12"
+  ],
+  "answer": 3,
+  "explanation": "Setting x = 1 on both sides gives p + q + r = (3)(4) = 12."
+ },
+ {
+  "id": "mth-0170",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The expression (3x + 2)(2x + 3) is equivalent to px² + qx + r, where p, q, and r are constants. What is the value of q?",
+  "choices": [
+   "6",
+   "9",
+   "13",
+   "14"
+  ],
+  "answer": 2,
+  "explanation": "Expanding gives 6x² + 13x + 6: the x-terms are 9x and 4x, which combine to 13x."
+ },
+ {
+  "id": "mth-0171",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "If (4x − 7)(2x + 5) = px² + qx + r for all values of x, what is the value of p + q + r?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-21"
+  ],
+  "explanation": "Setting x = 1 on both sides gives p + q + r = (−3)(7) = −21."
+ },
+ {
+  "id": "mth-0172",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The expression (3x + 6)(x + 1) is equivalent to px² + qx + r, where p, q, and r are constants. What is the value of q?",
+  "choices": [
+   "3",
+   "6",
+   "9",
+   "10"
+  ],
+  "answer": 2,
+  "explanation": "Expanding gives 3x² + 9x + 6: the x-terms are 3x and 6x, which combine to 9x."
+ },
+ {
+  "id": "mth-0173",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "If (3x − 5)(x + 5) = px² + qx + r for all values of x, what is the value of p + q + r?",
+  "choices": [
+   "−75",
+   "−22",
+   "−12",
+   "4"
+  ],
+  "answer": 2,
+  "explanation": "Setting x = 1 on both sides gives p + q + r = (−2)(6) = −12."
+ },
+ {
+  "id": "mth-0174",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The expression (2x + 4)(3x + 3) is equivalent to px² + qx + r, where p, q, and r are constants. What is the value of q?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "Expanding gives 6x² + 18x + 12: the x-terms are 6x and 12x, which combine to 18x."
+ },
+ {
+  "id": "mth-0175",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "If (2x − 5)(2x + 5) = px² + qx + r for all values of x, what is the value of p + q + r?",
+  "choices": [
+   "−100",
+   "−21",
+   "−20",
+   "4"
+  ],
+  "answer": 1,
+  "explanation": "Setting x = 1 on both sides gives p + q + r = (−3)(7) = −21."
+ },
+ {
+  "id": "mth-0176",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "The expression (4x − 7)(3x + 1) is equivalent to px² + qx + r, where p, q, and r are constants. What is the value of q?",
+  "choices": [
+   "−17",
+   "−7",
+   "4",
+   "12"
+  ],
+  "answer": 0,
+  "explanation": "Expanding gives 12x² − 17x − 7: the x-terms are 4x and −21x, which combine to −17x."
+ },
+ {
+  "id": "mth-0177",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "medium",
+  "question": "If (4x + 4)(x − 6) = px² + qx + r for all values of x, what is the value of p + q + r?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-40"
+  ],
+  "explanation": "Setting x = 1 on both sides gives p + q + r = (8)(−5) = −40."
+ },
+ {
+  "id": "mth-0178",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic functions",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = (x − 2)(x − 8). Which of the following is an x-intercept of the graph of y = f(x) in the xy-plane?",
+  "choices": [
+   "(2, 0)",
+   "(−2, 0)",
+   "(−8, 0)",
+   "(0, 2)"
+  ],
+  "answer": 0,
+  "explanation": "f(x) = 0 when x − 2 = 0 or x − 8 = 0, so the x-intercepts are (2, 0) and (8, 0). The sign flips: x − 2 is zero at x = 2."
+ },
+ {
+  "id": "mth-0179",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "For the polynomial p, p(−5) = −3. What is the remainder when p(x) is divided by x + 5?",
+  "choices": [
+   "−5",
+   "−3",
+   "0",
+   "3"
+  ],
+  "answer": 1,
+  "explanation": "The remainder when p(x) is divided by x − a is p(a). Here a = −5, so the remainder is −3."
+ },
+ {
+  "id": "mth-0180",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic functions",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = (x + 5)(x + 3). Which of the following is an x-intercept of the graph of y = f(x) in the xy-plane?",
+  "choices": [
+   "(3, 0)",
+   "(−5, 0)",
+   "(5, 0)",
+   "(0, −5)"
+  ],
+  "answer": 1,
+  "explanation": "f(x) = 0 when x + 5 = 0 or x + 3 = 0, so the x-intercepts are (−5, 0) and (−3, 0). The sign flips: x + 5 is zero at x = −5."
+ },
+ {
+  "id": "mth-0181",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "For the polynomial p, p(−5) = 7. What is the remainder when p(x) is divided by x + 5?",
+  "choices": [
+   "−7",
+   "−5",
+   "0",
+   "7"
+  ],
+  "answer": 3,
+  "explanation": "The remainder when p(x) is divided by x − a is p(a). Here a = −5, so the remainder is 7."
+ },
+ {
+  "id": "mth-0182",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic functions",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = (x + 6)(x − 5). Which of the following is an x-intercept of the graph of y = f(x) in the xy-plane?",
+  "choices": [
+   "(−5, 0)",
+   "(0, −6)",
+   "(−6, 0)",
+   "(6, 0)"
+  ],
+  "answer": 2,
+  "explanation": "f(x) = 0 when x + 6 = 0 or x − 5 = 0, so the x-intercepts are (−6, 0) and (5, 0). The sign flips: x + 6 is zero at x = −6."
+ },
+ {
+  "id": "mth-0183",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "For the polynomial p, p(2) = 4. What is the remainder when p(x) is divided by x − 2?",
+  "choices": [
+   "−4",
+   "0",
+   "2",
+   "4"
+  ],
+  "answer": 3,
+  "explanation": "The remainder when p(x) is divided by x − a is p(a). Here a = 2, so the remainder is 4."
+ },
+ {
+  "id": "mth-0184",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Quadratic functions",
+  "difficulty": "easy",
+  "question": "The function f is defined by f(x) = (x + 2)(x − 6). Which of the following is an x-intercept of the graph of y = f(x) in the xy-plane?",
+  "choices": [
+   "(0, −2)",
+   "(−6, 0)",
+   "(2, 0)",
+   "(−2, 0)"
+  ],
+  "answer": 3,
+  "explanation": "f(x) = 0 when x + 2 = 0 or x − 6 = 0, so the x-intercepts are (−2, 0) and (6, 0). The sign flips: x + 2 is zero at x = −2."
+ },
+ {
+  "id": "mth-0185",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "For the polynomial p, p(−5) = 0. Which of the following must be a factor of p(x)?",
+  "choices": [
+   "x + 5",
+   "x − 5",
+   "−5x",
+   "x + 4"
+  ],
+  "answer": 0,
+  "explanation": "If p(a) = 0, then x − a is a factor. With a = −5, the factor is x + 5."
+ },
+ {
+  "id": "mth-0186",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "y = x² − 4x + 6\ny = x + 2\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Set the right sides equal: x² − 5x + 4 = 0, which factors as (x − 1)(x − 4) = 0. The x-coordinates are 1 and 4, with sum 5."
+ },
+ {
+  "id": "mth-0187",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "y = x² − 3x − 1\ny = x + 4\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
+  "choices": [
+   "−5",
+   "−4",
+   "3",
+   "4"
+  ],
+  "answer": 3,
+  "explanation": "Set the right sides equal: x² − 4x − 5 = 0, which factors as (x − 5)(x + 1) = 0. The x-coordinates are 5 and −1, with sum 4."
+ },
+ {
+  "id": "mth-0188",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "y = x² − 9x + 5\ny = −2x − 1\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "7"
+  ],
+  "explanation": "Set the right sides equal: x² − 7x + 6 = 0, which factors as (x − 1)(x − 6) = 0. The x-coordinates are 1 and 6, with sum 7."
+ },
+ {
+  "id": "mth-0189",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "y = x² − 20\ny = −x\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
+  "choices": [
+   "−20",
+   "−1",
+   "0",
+   "1"
+  ],
+  "answer": 1,
+  "explanation": "Set the right sides equal: x² + x − 20 = 0, which factors as (x − 4)(x + 5) = 0. The x-coordinates are 4 and −5, with sum −1."
+ },
+ {
+  "id": "mth-0190",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "y = x² − 2x − 9\ny = 2x + 3\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Set the right sides equal: x² − 4x − 12 = 0, which factors as (x + 2)(x − 6) = 0. The x-coordinates are −2 and 6, with sum 4."
+ },
+ {
+  "id": "mth-0191",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "y = x² + 2x + 1\ny = −x − 1\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
+  "choices": [
+   "−3",
+   "−2",
+   "2",
+   "3"
+  ],
+  "answer": 0,
+  "explanation": "Set the right sides equal: x² + 3x + 2 = 0, which factors as (x + 1)(x + 2) = 0. The x-coordinates are −1 and −2, with sum −3."
+ },
+ {
+  "id": "mth-0192",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "What is 20% of 45?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "20% of 45 is 20/100 × 45 = 9."
+ },
+ {
+  "id": "mth-0193",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "What is 15% of 80?",
+  "choices": [
+   "16/3",
+   "12",
+   "95",
+   "120"
+  ],
+  "answer": 1,
+  "explanation": "15% of 80 is 15/100 × 80 = 12."
+ },
+ {
+  "id": "mth-0194",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "What is 35% of 60?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "21"
+  ],
+  "explanation": "35% of 60 is 35/100 × 60 = 21."
+ },
+ {
+  "id": "mth-0195",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "What is 12% of 250?",
+  "choices": [
+   "125/6",
+   "30",
+   "262",
+   "300"
+  ],
+  "answer": 1,
+  "explanation": "12% of 250 is 12/100 × 250 = 30."
+ },
+ {
+  "id": "mth-0196",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "A jacket originally priced at $64 is on sale for 25% off. What is the sale price, in dollars?",
+  "choices": [
+   "16",
+   "39",
+   "48",
+   "80"
+  ],
+  "answer": 2,
+  "explanation": "25% off leaves 75% of the price: 75/100 × 64 = 48. Choice 16 is the discount, not the sale price."
+ },
+ {
+  "id": "mth-0197",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "A jacket originally priced at $90 is on sale for 40% off. What is the sale price, in dollars?",
+  "choices": [
+   "36",
+   "50",
+   "54",
+   "126"
+  ],
+  "answer": 2,
+  "explanation": "40% off leaves 60% of the price: 60/100 × 90 = 54. Choice 36 is the discount, not the sale price."
+ },
+ {
+  "id": "mth-0198",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "A jacket originally priced at $150 is on sale for 8% off. What is the sale price, in dollars?",
+  "choices": [
+   "12",
+   "138",
+   "142",
+   "162"
+  ],
+  "answer": 1,
+  "explanation": "8% off leaves 92% of the price: 92/100 × 150 = 138. Choice 12 is the discount, not the sale price."
+ },
+ {
+  "id": "mth-0199",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "easy",
+  "question": "A jacket originally priced at $70 is on sale for 30% off. What is the sale price, in dollars?",
+  "choices": [
+   "21",
+   "40",
+   "49",
+   "91"
+  ],
+  "answer": 2,
+  "explanation": "30% off leaves 70% of the price: 70/100 × 70 = 49. Choice 21 is the discount, not the sale price."
+ },
+ {
+  "id": "mth-0200",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent change",
+  "difficulty": "easy",
+  "question": "The number of members in a club was 4,500 last year and increased by 10% this year. How many members does the club have this year?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4950"
+  ],
+  "explanation": "A 10% increase multiplies by 1.1: 4,500 × 1.1 = 4,950."
+ },
+ {
+  "id": "mth-0201",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent change",
+  "difficulty": "easy",
+  "question": "The number of members in a club was 12,500 last year and increased by 20% this year. How many members does the club have this year?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15000"
+  ],
+  "explanation": "A 20% increase multiplies by 1.2: 12,500 × 1.2 = 15,000."
+ },
+ {
+  "id": "mth-0202",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent change",
+  "difficulty": "easy",
+  "question": "The number of members in a club was 8,000 last year and increased by 15% this year. How many members does the club have this year?",
+  "choices": [
+   "1200",
+   "6800",
+   "8015",
+   "9200"
+  ],
+  "answer": 3,
+  "explanation": "A 15% increase multiplies by 1.15: 8,000 × 1.15 = 9,200."
+ },
+ {
+  "id": "mth-0203",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent change",
+  "difficulty": "easy",
+  "question": "The number of members in a club was 3,200 last year and increased by 5% this year. How many members does the club have this year?",
+  "choices": [
+   "160",
+   "3040",
+   "3205",
+   "3360"
+  ],
+  "answer": 3,
+  "explanation": "A 5% increase multiplies by 1.05: 3,200 × 1.05 = 3,360."
+ },
+ {
+  "id": "mth-0204",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent increase (reverse)",
+  "difficulty": "hard",
+  "question": "After a 25% increase, the price of a ticket is $50. What was the price, in dollars, before the increase?",
+  "choices": [
+   "25/2",
+   "25",
+   "75/2",
+   "40"
+  ],
+  "answer": 3,
+  "explanation": "The new price is 1.25 times the original, so the original is 50 ÷ 1.25 = 40. Taking 25% off the new price undoes the wrong amount, because the 25% was of the smaller original price."
+ },
+ {
+  "id": "mth-0205",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent increase (reverse)",
+  "difficulty": "hard",
+  "question": "After a 20% increase, the price of a ticket is $96. What was the price, in dollars, before the increase?",
+  "choices": [
+   "96/5",
+   "76",
+   "384/5",
+   "80"
+  ],
+  "answer": 3,
+  "explanation": "The new price is 1.2 times the original, so the original is 96 ÷ 1.2 = 80. Taking 20% off the new price undoes the wrong amount, because the 20% was of the smaller original price."
+ },
+ {
+  "id": "mth-0206",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent increase (reverse)",
+  "difficulty": "hard",
+  "question": "After a 60% increase, the price of a ticket is $40. What was the price, in dollars, before the increase?",
+  "choices": [
+   "−20",
+   "16",
+   "24",
+   "25"
+  ],
+  "answer": 3,
+  "explanation": "The new price is 1.6 times the original, so the original is 40 ÷ 1.6 = 25. Taking 60% off the new price undoes the wrong amount, because the 60% was of the smaller original price."
+ },
+ {
+  "id": "mth-0207",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percent increase (reverse)",
+  "difficulty": "hard",
+  "question": "After a 15% increase, the price of a ticket is $69. What was the price, in dollars, before the increase?",
+  "choices": [
+   "207/20",
+   "54",
+   "1173/20",
+   "60"
+  ],
+  "answer": 3,
+  "explanation": "The new price is 1.15 times the original, so the original is 69 ÷ 1.15 = 60. Taking 15% off the new price undoes the wrong amount, because the 15% was of the smaller original price."
+ },
+ {
+  "id": "mth-0208",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A store raised the price of a lamp by 20% and later lowered the new price by 25%. The final price is what percent of the original price?",
+  "choices": [
+   "90",
+   "95",
+   "100",
+   "105"
+  ],
+  "answer": 0,
+  "explanation": "Multiply the factors: 1.2 × 0.75 = 0.9, so the final price is 90% of the original. Adding and subtracting the percents ignores that the second change applies to a different amount."
+ },
+ {
+  "id": "mth-0209",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A store raised the price of a lamp by 10% and later lowered the new price by 30%. The final price is what percent of the original price?",
+  "choices": [
+   "77",
+   "80",
+   "100",
+   "120"
+  ],
+  "answer": 0,
+  "explanation": "Multiply the factors: 1.1 × 0.7 = 0.77, so the final price is 77% of the original. Adding and subtracting the percents ignores that the second change applies to a different amount."
+ },
+ {
+  "id": "mth-0210",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A store raised the price of a lamp by 25% and later lowered the new price by 20%. The final price is what percent of the original price?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "100"
+  ],
+  "explanation": "Multiply the factors: 1.25 × 0.8 = 1, so the final price is 100% of the original."
+ },
+ {
+  "id": "mth-0211",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A store raised the price of a lamp by 50% and later lowered the new price by 20%. The final price is what percent of the original price?",
+  "choices": [
+   "70",
+   "100",
+   "120",
+   "130"
+  ],
+  "answer": 2,
+  "explanation": "Multiply the factors: 1.5 × 0.8 = 1.2, so the final price is 120% of the original. Adding and subtracting the percents ignores that the second change applies to a different amount."
+ },
+ {
+  "id": "mth-0212",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "easy",
+  "question": "A recipe uses 3 cups of flour for every 2 cups of sugar. How many cups of flour are needed for 10 cups of sugar?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "3/2 = f/10, so f = 3·10/2 = 15."
+ },
+ {
+  "id": "mth-0213",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "easy",
+  "question": "On a map, 4 centimeters represent 25 kilometers. How many kilometers do 18 centimeters represent?",
+  "choices": [
+   "72/25",
+   "50/9",
+   "39",
+   "225/2"
+  ],
+  "answer": 3,
+  "explanation": "25/4 kilometers per centimeter × 18 centimeters = 225/2. Flipping the ratio is the usual mistake."
+ },
+ {
+  "id": "mth-0214",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "easy",
+  "question": "A printer prints 150 pages in 6 minutes. At this rate, how many pages does it print in 20 minutes?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "500"
+  ],
+  "explanation": "The rate is 150/6 pages per minute, and 20 minutes gives 500 pages."
+ },
+ {
+  "id": "mth-0215",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "easy",
+  "question": "A car travels 140 miles on 5 gallons of gas. At this rate, how many gallons does it need to travel 364 miles?",
+  "choices": [
+   "25/13",
+   "13",
+   "499",
+   "10192"
+  ],
+  "answer": 1,
+  "explanation": "The car uses 5/140 gallons per mile, so 364 miles needs 13 gallons. Flipping the ratio is the usual mistake."
+ },
+ {
+  "id": "mth-0216",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "easy",
+  "question": "The ratio of boys to girls in a club is 7 to 4. If there are 36 girls, how many boys are in the club?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "63"
+  ],
+  "explanation": "boys/girls = 7/4 = x/36, so x = 63."
+ },
+ {
+  "id": "mth-0217",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "easy",
+  "question": "A 12-ounce bottle of shampoo costs $9. At the same price per ounce, how much, in dollars, does a 20-ounce bottle cost?",
+  "choices": [
+   "27/5",
+   "15",
+   "17",
+   "80/3"
+  ],
+  "answer": 1,
+  "explanation": "The price is 9/12 dollars per ounce, so 20 ounces cost 15 dollars. Flipping the ratio is the usual mistake."
+ },
+ {
+  "id": "mth-0218",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A cyclist rides at 18 kilometers per hour. What is this speed in meters per minute? (1 kilometer = 1,000 meters)",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "300"
+  ],
+  "explanation": "18 km/h = 18,000 meters per 60 minutes = 300 meters per minute."
+ },
+ {
+  "id": "mth-0219",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A cyclist rides at 24 kilometers per hour. What is this speed in meters per minute? (1 kilometer = 1,000 meters)",
+  "choices": [
+   "40",
+   "400",
+   "4000",
+   "24000"
+  ],
+  "answer": 1,
+  "explanation": "24 km/h = 24,000 meters per 60 minutes = 400 meters per minute."
+ },
+ {
+  "id": "mth-0220",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A faucet drips 5 milliliters per minute. How many liters does it drip in one day? (1 liter = 1,000 milliliters)",
+  "choices": [
+   "18/25",
+   "36/5",
+   "72",
+   "432"
+  ],
+  "answer": 1,
+  "explanation": "5 mL/min × 60 × 24 = 7,200 mL per day, which is 36/5 liters."
+ },
+ {
+  "id": "mth-0221",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A faucet drips 25 milliliters per minute. How many liters does it drip in one day? (1 liter = 1,000 milliliters)",
+  "choices": [
+   "18/5",
+   "36",
+   "360",
+   "2160"
+  ],
+  "answer": 1,
+  "explanation": "25 mL/min × 60 × 24 = 36,000 mL per day, which is 36 liters."
+ },
+ {
+  "id": "mth-0222",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A rectangular rug is 7 feet long. How long is it in inches? (1 foot = 12 inches)",
+  "choices": [
+   "42/5",
+   "84",
+   "840",
+   "5040"
+  ],
+  "answer": 1,
+  "explanation": "7 × 12 = 84 inches."
+ },
+ {
+  "id": "mth-0223",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A rectangular rug is 9 feet long. How long is it in inches? (1 foot = 12 inches)",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "108"
+  ],
+  "explanation": "9 × 12 = 108 inches."
+ },
+ {
+  "id": "mth-0224",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A runner covers 4 meters per second. How many kilometers does the runner cover in one hour at this pace? (1 kilometer = 1,000 meters)",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "72/5"
+  ],
+  "explanation": "4 m/s × 3,600 seconds = 14,400 meters, or 72/5 kilometers."
+ },
+ {
+  "id": "mth-0225",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Unit conversion",
+  "difficulty": "medium",
+  "question": "A runner covers 5 meters per second. How many kilometers does the runner cover in one hour at this pace? (1 kilometer = 1,000 meters)",
+  "choices": [
+   "9/5",
+   "18",
+   "180",
+   "1080"
+  ],
+  "answer": 1,
+  "explanation": "5 m/s × 3,600 seconds = 18,000 meters, or 18 kilometers."
+ },
+ {
+  "id": "mth-0226",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Median of a data set",
+  "difficulty": "easy",
+  "question": "What is the median of the data set 21, 31, 7, 6, 28, 39, 14?",
+  "choices": [
+   "6",
+   "146/7",
+   "21",
+   "45/2"
+  ],
+  "answer": 2,
+  "explanation": "In order the values are 6, 7, 14, 21, 28, 31, 39. With 7 values the median is the middle one, 21. Taking the middle of the unsorted list is the trap."
+ },
+ {
+  "id": "mth-0227",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Median of a data set",
+  "difficulty": "easy",
+  "question": "What is the median of the data set 2, 11, 26, 18, 22, 32, 7?",
+  "choices": [
+   "118/7",
+   "17",
+   "18",
+   "19"
+  ],
+  "answer": 2,
+  "explanation": "In order the values are 2, 7, 11, 18, 22, 26, 32. With 7 values the median is the middle one, 18. Taking the middle of the unsorted list is the trap."
+ },
+ {
+  "id": "mth-0228",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Mean of a data set",
+  "difficulty": "medium",
+  "question": "The mean of the data set 3, 5, 6, 8, 9, 10, 17, x is 17. What is the value of x?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "78"
+  ],
+  "explanation": "The 8 values must total 8 × 17 = 136. The known values add to 58, so x = 78."
+ },
+ {
+  "id": "mth-0229",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Median of a data set",
+  "difficulty": "easy",
+  "question": "What is the median of the data set 38, 29, 20, 4, 8, 33?",
+  "choices": [
+   "4",
+   "21",
+   "22",
+   "49/2"
+  ],
+  "answer": 3,
+  "explanation": "In order the values are 4, 8, 20, 29, 33, 38. With 6 values the median is the average of the two middle values, 49/2. Taking the middle of the unsorted list is the trap."
+ },
+ {
+  "id": "mth-0230",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Mean of a data set",
+  "difficulty": "medium",
+  "question": "The mean of the data set 11, 16, 19, 22, 23, 25, 37, x is 23. What is the value of x?",
+  "choices": [
+   "8",
+   "23",
+   "31",
+   "54"
+  ],
+  "answer": 2,
+  "explanation": "The 8 values must total 8 × 23 = 184. The known values add to 153, so x = 31."
+ },
+ {
+  "id": "mth-0231",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Median of a data set",
+  "difficulty": "easy",
+  "question": "What is the median of the data set 39, 3, 33, 21, 32, 26, 8?",
+  "choices": [
+   "21",
+   "162/7",
+   "26",
+   "27"
+  ],
+  "answer": 2,
+  "explanation": "In order the values are 3, 8, 21, 26, 32, 33, 39. With 7 values the median is the middle one, 26. Taking the middle of the unsorted list is the trap."
+ },
+ {
+  "id": "mth-0232",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Conditional probability",
+  "difficulty": "hard",
+  "question": "In a survey, 120 students were asked whether they play an instrument. Of the 80 ninth graders, 25 play an instrument; of the 40 tenth graders, 27 play an instrument. If one of the students who play an instrument is chosen at random, what is the probability that the student is a ninth grader?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "25/52"
+  ],
+  "explanation": "Only the 52 students who play an instrument count (25 + 27). Of those, 25 are ninth graders, so the probability is 25/52 = 25/52."
+ },
+ {
+  "id": "mth-0233",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Conditional probability",
+  "difficulty": "hard",
+  "question": "A park counted 110 dogs. Of the 40 large dogs, 13 were on a leash; of the 70 small dogs, 57 were on a leash. If one of the dogs on a leash is chosen at random, what is the probability that the dog is a large dog?",
+  "choices": [
+   "13/110",
+   "13/70",
+   "13/40",
+   "57/70"
+  ],
+  "answer": 1,
+  "explanation": "Only the 70 dogs on a leash count (13 + 57). Of those, 13 are large dogs, so the probability is 13/70 = 13/70. 13/40 answers a different question: what fraction of the large dogs are among the dogs on a leash."
+ },
+ {
+  "id": "mth-0234",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Conditional probability",
+  "difficulty": "hard",
+  "question": "A cafe served 100 customers. Of the 60 customers who ordered coffee, 46 also bought a pastry; of the 40 who ordered tea, 13 also bought a pastry. If one of the customers who bought a pastry is chosen at random, what is the probability that the customer ordered coffee?",
+  "choices": [
+   "13/59",
+   "23/50",
+   "23/30",
+   "46/59"
+  ],
+  "answer": 3,
+  "explanation": "Only the 59 customers who bought a pastry count (46 + 13). Of those, 46 are coffee drinkers, so the probability is 46/59 = 46/59. 23/30 answers a different question: what fraction of the coffee drinkers are among the customers who bought a pastry."
+ },
+ {
+  "id": "mth-0235",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Conditional probability",
+  "difficulty": "hard",
+  "question": "A clinic tracked 140 patients. Of the 50 patients who got the new treatment, 37 improved; of the 90 who got the standard treatment, 74 improved. If one of the patients who improved is chosen at random, what is the probability that the patient got the new treatment?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1/3"
+  ],
+  "explanation": "Only the 111 patients who improved count (37 + 74). Of those, 37 are new-treatment patients, so the probability is 37/111 = 1/3."
+ },
+ {
+  "id": "mth-0236",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Conditional probability",
+  "difficulty": "hard",
+  "question": "A school polled 80 seniors. Of the 50 seniors who drive to school, 12 have a part-time job; of the 30 who take the bus, 10 have a part-time job. If one of the seniors with a part-time job is chosen at random, what is the probability that the senior drives to school?",
+  "choices": [
+   "3/20",
+   "6/25",
+   "5/11",
+   "6/11"
+  ],
+  "answer": 3,
+  "explanation": "Only the 22 seniors with a part-time job count (12 + 10). Of those, 12 are drivers, so the probability is 12/22 = 6/11. 6/25 answers a different question: what fraction of the drivers are among the seniors with a part-time job."
+ },
+ {
+  "id": "mth-0237",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Conditional probability",
+  "difficulty": "hard",
+  "question": "An orchard picked 130 apples. Of the 40 red apples, 23 were bruised; of the 90 green apples, 49 were bruised. If one of the bruised apples is chosen at random, what is the probability that the apple is red?",
+  "choices": [
+   "23/130",
+   "23/72",
+   "23/40",
+   "49/72"
+  ],
+  "answer": 1,
+  "explanation": "Only the 72 bruised apples count (23 + 49). Of those, 23 are red apples, so the probability is 23/72 = 23/72. 23/40 answers a different question: what fraction of the red apples are among the bruised apples."
+ },
+ {
+  "id": "mth-0238",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Inference from a sample",
+  "difficulty": "medium",
+  "question": "A random sample of 40 of the 1,000 students at a school found that 6 of them walk to school. Based on the sample, about how many students at the school walk to school?",
+  "choices": [
+   "60",
+   "150",
+   "190",
+   "300"
+  ],
+  "answer": 1,
+  "explanation": "In the sample, 6/40 of the students have the trait. Applying that to all 1,000: (6/40) × 1,000 = 150."
+ },
+ {
+  "id": "mth-0239",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Inference from a sample",
+  "difficulty": "medium",
+  "question": "A quality inspector randomly selected 200 of the 5,000 bolts made in one day and found 51 defective. About how many of the day's bolts are defective?",
+  "choices": [
+   "510",
+   "1275",
+   "1475",
+   "2550"
+  ],
+  "answer": 1,
+  "explanation": "In the sample, 51/200 of the bolts have the trait. Applying that to all 5,000: (51/200) × 5,000 = 1,275."
+ },
+ {
+  "id": "mth-0240",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Inference from a sample",
+  "difficulty": "medium",
+  "question": "A random sample of 120 voters out of 2,400 registered voters in a town showed that 32 support a new library. About how many registered voters support it?",
+  "choices": [
+   "320",
+   "640",
+   "760",
+   "1280"
+  ],
+  "answer": 1,
+  "explanation": "In the sample, 32/120 of the voters have the trait. Applying that to all 2,400: (32/120) × 2,400 = 640."
+ },
+ {
+  "id": "mth-0241",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Inference from a sample",
+  "difficulty": "medium",
+  "question": "Researchers tagged fish in a random sample of 80 from a lake with 2,000 fish and found 23 with a parasite. About how many fish in the lake have the parasite?",
+  "choices": [
+   "230",
+   "575",
+   "655",
+   "1150"
+  ],
+  "answer": 1,
+  "explanation": "In the sample, 23/80 of the fish have the trait. Applying that to all 2,000: (23/80) × 2,000 = 575."
+ },
+ {
+  "id": "mth-0242",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has legs of length 3 and 4. What is the length of its hypotenuse?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "c² = 3² + 4² = 9 + 16 = 25, so c = 5."
+ },
+ {
+  "id": "mth-0243",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has a hypotenuse of length 13 and one leg of length 5. What is the length of the other leg?",
+  "choices": [
+   "8",
+   "9",
+   "12",
+   "144"
+  ],
+  "answer": 2,
+  "explanation": "b² = 13² − 5² = 169 − 25 = 144, so b = 12."
+ },
+ {
+  "id": "mth-0244",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has legs of length 8 and 15. What is the length of its hypotenuse?",
+  "choices": [
+   "16",
+   "17",
+   "23",
+   "289"
+  ],
+  "answer": 1,
+  "explanation": "c² = 8² + 15² = 64 + 225 = 289, so c = 17."
+ },
+ {
+  "id": "mth-0245",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has a hypotenuse of length 25 and one leg of length 7. What is the length of the other leg?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "b² = 25² − 7² = 625 − 49 = 576, so b = 24."
+ },
+ {
+  "id": "mth-0246",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has legs of length 6 and 8. What is the length of its hypotenuse?",
+  "choices": [
+   "9",
+   "10",
+   "14",
+   "100"
+  ],
+  "answer": 1,
+  "explanation": "c² = 6² + 8² = 36 + 64 = 100, so c = 10."
+ },
+ {
+  "id": "mth-0247",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has a hypotenuse of length 15 and one leg of length 9. What is the length of the other leg?",
+  "choices": [
+   "6",
+   "12",
+   "13",
+   "144"
+  ],
+  "answer": 1,
+  "explanation": "b² = 15² − 9² = 225 − 81 = 144, so b = 12."
+ },
+ {
+  "id": "mth-0248",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has legs of length 20 and 21. What is the length of its hypotenuse?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "29"
+  ],
+  "explanation": "c² = 20² + 21² = 400 + 441 = 841, so c = 29."
+ },
+ {
+  "id": "mth-0249",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "easy",
+  "question": "A right triangle has a hypotenuse of length 20 and one leg of length 12. What is the length of the other leg?",
+  "choices": [
+   "8",
+   "16",
+   "17",
+   "256"
+  ],
+  "answer": 1,
+  "explanation": "b² = 20² − 12² = 400 − 144 = 256, so b = 16."
+ },
+ {
+  "id": "mth-0250",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle R is the right angle, PR = 12, QR = 5, and PQ = 13. What is the value of sin P?",
+  "choices": [
+   "5/13",
+   "5/12",
+   "12/13",
+   "12/5"
+  ],
+  "answer": 0,
+  "explanation": "For angle P, the opposite side is QR = 5, the adjacent side is PR = 12, and the hypotenuse is PQ = 13. sin P = 5/13."
+ },
+ {
+  "id": "mth-0251",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle R is the right angle, PR = 15, QR = 8, and PQ = 17. What is the value of cos P?",
+  "choices": [
+   "8/17",
+   "8/15",
+   "15/17",
+   "15/8"
+  ],
+  "answer": 2,
+  "explanation": "For angle P, the opposite side is QR = 8, the adjacent side is PR = 15, and the hypotenuse is PQ = 17. cos P = 15/17."
+ },
+ {
+  "id": "mth-0252",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle R is the right angle, PR = 24, QR = 7, and PQ = 25. What is the value of tan P?",
+  "choices": [
+   "7/25",
+   "7/24",
+   "24/25",
+   "24/7"
+  ],
+  "answer": 1,
+  "explanation": "For angle P, the opposite side is QR = 7, the adjacent side is PR = 24, and the hypotenuse is PQ = 25. tan P = 7/24."
+ },
+ {
+  "id": "mth-0253",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle R is the right angle, PR = 4, QR = 3, and PQ = 5. What is the value of sin P?",
+  "choices": [
+   "3/5",
+   "3/4",
+   "4/5",
+   "4/3"
+  ],
+  "answer": 0,
+  "explanation": "For angle P, the opposite side is QR = 3, the adjacent side is PR = 4, and the hypotenuse is PQ = 5. sin P = 3/5."
+ },
+ {
+  "id": "mth-0254",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle R is the right angle, PR = 21, QR = 20, and PQ = 29. What is the value of cos P?",
+  "choices": [
+   "20/29",
+   "21/29",
+   "20/21",
+   "21/20"
+  ],
+  "answer": 1,
+  "explanation": "For angle P, the opposite side is QR = 20, the adjacent side is PR = 21, and the hypotenuse is PQ = 29. cos P = 21/29."
+ },
+ {
+  "id": "mth-0255",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle R is the right angle, PR = 40, QR = 9, and PQ = 41. What is the value of tan P?",
+  "choices": [
+   "9/41",
+   "9/40",
+   "40/41",
+   "40/9"
+  ],
+  "answer": 1,
+  "explanation": "For angle P, the opposite side is QR = 9, the adjacent side is PR = 40, and the hypotenuse is PQ = 41. tan P = 9/40."
+ },
+ {
+  "id": "mth-0256",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The equation x² + y² − 6x − 8y + 16 = 0 defines a circle in the xy-plane. What is the radius of the circle?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Complete the square: (x − 3)² + (y − 4)² = 9 + 16 − 16 = 9. The radius is √9 = 3."
+ },
+ {
+  "id": "mth-0257",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "easy",
+  "question": "The equation (x + 3)² + (y + 7)² = 16 defines a circle in the xy-plane. What are the coordinates of its center?",
+  "choices": [
+   "(−3, −7)",
+   "(−3, 7)",
+   "(−7, −3)",
+   "(3, 7)"
+  ],
+  "answer": 0,
+  "explanation": "A circle (x − h)² + (y − k)² = r² has center (h, k). The signs inside the parentheses are opposite the coordinates, so the center is (−3, −7)."
+ },
+ {
+  "id": "mth-0258",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The equation x² + y² + 2x − 4y − 76 = 0 defines a circle in the xy-plane. What is the radius of the circle?",
+  "choices": [
+   "3",
+   "9",
+   "76",
+   "81"
+  ],
+  "answer": 1,
+  "explanation": "Complete the square: (x + 1)² + (y − 2)² = 1 + 4 + 76 = 81. The radius is √81 = 9."
+ },
+ {
+  "id": "mth-0259",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "easy",
+  "question": "The equation (x − 3)² + (y − 1)² = 9 defines a circle in the xy-plane. What are the coordinates of its center?",
+  "choices": [
+   "(−3, −1)",
+   "(3, 1)",
+   "(1, 3)",
+   "(3, −1)"
+  ],
+  "answer": 1,
+  "explanation": "A circle (x − h)² + (y − k)² = r² has center (h, k). The signs inside the parentheses are opposite the coordinates, so the center is (3, 1)."
+ },
+ {
+  "id": "mth-0260",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The equation x² + y² + 4x − 10y + 4 = 0 defines a circle in the xy-plane. What is the radius of the circle?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Complete the square: (x + 2)² + (y − 5)² = 4 + 25 − 4 = 25. The radius is √25 = 5."
+ },
+ {
+  "id": "mth-0261",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "easy",
+  "question": "The equation (x + 7)² + (y − 1)² = 25 defines a circle in the xy-plane. What are the coordinates of its center?",
+  "choices": [
+   "(7, −1)",
+   "(−7, −1)",
+   "(−7, 1)",
+   "(1, −7)"
+  ],
+  "answer": 2,
+  "explanation": "A circle (x − h)² + (y − k)² = r² has center (h, k). The signs inside the parentheses are opposite the coordinates, so the center is (−7, 1)."
+ },
+ {
+  "id": "mth-0262",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The equation x² + y² + 2x + 4y − 20 = 0 defines a circle in the xy-plane. What is the radius of the circle?",
+  "choices": [
+   "3",
+   "5",
+   "20",
+   "25"
+  ],
+  "answer": 1,
+  "explanation": "Complete the square: (x + 1)² + (y + 2)² = 1 + 4 + 20 = 25. The radius is √25 = 5."
+ },
+ {
+  "id": "mth-0263",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "easy",
+  "question": "The equation (x + 1)² + (y − 3)² = 4 defines a circle in the xy-plane. What are the coordinates of its center?",
+  "choices": [
+   "(3, −1)",
+   "(1, −3)",
+   "(−1, −3)",
+   "(−1, 3)"
+  ],
+  "answer": 3,
+  "explanation": "A circle (x − h)² + (y − k)² = r² has center (h, k). The signs inside the parentheses are opposite the coordinates, so the center is (−1, 3)."
+ },
+ {
+  "id": "mth-0264",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has a radius of 6. The length of an arc intercepted by a central angle of 60° is aπ. What is the value of a?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "The arc is 60/360 of the circumference 2π(6) = 12π, so its length is 2π and a = 2."
+ },
+ {
+  "id": "mth-0265",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "medium",
+  "question": "A circle has a radius of 9. What is the area of a sector of the circle with a central angle of 120°?",
+  "choices": [
+   "27π",
+   "54π",
+   "81π",
+   "6π"
+  ],
+  "answer": 0,
+  "explanation": "The sector is 120/360 of the circle's area π(9)² = 81π, so its area is 27π. The first wrong choice is the arc length."
+ },
+ {
+  "id": "mth-0266",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has a radius of 12. The length of an arc intercepted by a central angle of 30° is aπ. What is the value of a?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "The arc is 30/360 of the circumference 2π(12) = 24π, so its length is 2π and a = 2."
+ },
+ {
+  "id": "mth-0267",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "medium",
+  "question": "A circle has a radius of 10. What is the area of a sector of the circle with a central angle of 72°?",
+  "choices": [
+   "40π",
+   "20π",
+   "4π",
+   "100π"
+  ],
+  "answer": 1,
+  "explanation": "The sector is 72/360 of the circle's area π(10)² = 100π, so its area is 20π. The first wrong choice is the arc length."
+ },
+ {
+  "id": "mth-0268",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has a radius of 8. The length of an arc intercepted by a central angle of 135° is aπ. What is the value of a?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "The arc is 135/360 of the circumference 2π(8) = 16π, so its length is 6π and a = 6."
+ },
+ {
+  "id": "mth-0269",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "medium",
+  "question": "A circle has a radius of 15. What is the area of a sector of the circle with a central angle of 48°?",
+  "choices": [
+   "60π",
+   "225π",
+   "30π",
+   "4π"
+  ],
+  "answer": 2,
+  "explanation": "The sector is 48/360 of the circle's area π(15)² = 225π, so its area is 30π. The first wrong choice is the arc length."
+ },
+ {
+  "id": "mth-0270",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a right circular cylinder with radius 3 and height 7 is kπ cubic units. What is the value of k?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "63"
+  ],
+  "explanation": "Use V = πr²h: π(3)²(7) = 63π."
+ },
+ {
+  "id": "mth-0271",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a right circular cone with radius 9 and height 10 is kπ cubic units. What is the value of k?",
+  "choices": [
+   "270",
+   "271",
+   "405",
+   "810"
+  ],
+  "answer": 0,
+  "explanation": "Use V = (1/3)πr²h: (1/3)π(9)²(10) = 270π."
+ },
+ {
+  "id": "mth-0272",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a sphere with radius 9 is kπ cubic units. What is the value of k?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "972"
+  ],
+  "explanation": "Use V = (4/3)πr³: (4/3)π(9)³ = 972π."
+ },
+ {
+  "id": "mth-0273",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a right circular cone with radius 6 and height 8 is kπ cubic units. What is the value of k?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "96"
+  ],
+  "explanation": "Use V = (1/3)πr²h: (1/3)π(6)²(8) = 96π."
+ },
+ {
+  "id": "mth-0274",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a sphere with radius 3 is kπ cubic units. What is the value of k?",
+  "choices": [
+   "12",
+   "36",
+   "37",
+   "108"
+  ],
+  "answer": 1,
+  "explanation": "Use V = (4/3)πr³: (4/3)π(3)³ = 36π."
+ },
+ {
+  "id": "mth-0275",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a right circular cylinder with radius 4 and height 7 is kπ cubic units. What is the value of k?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "112"
+  ],
+  "explanation": "Use V = πr²h: π(4)²(7) = 112π."
+ },
+ {
+  "id": "mth-0276",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "medium",
+  "question": "The volume of a right circular cone with radius 3 and height 8 is kπ cubic units. What is the value of k?",
+  "choices": [
+   "24",
+   "25",
+   "36",
+   "72"
+  ],
+  "answer": 0,
+  "explanation": "Use V = (1/3)πr²h: (1/3)π(3)²(8) = 24π."
+ },
+ {
+  "id": "mth-0277",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "Triangle ABC is similar to triangle DEF, where A corresponds to D and B corresponds to E. If AB = 4, BC = 6, and DE = 10, what is the length of EF?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "The scale factor from ABC to DEF is DE/AB = 10/4 = 5/2. So EF = 5/2 × BC = 5/2 × 6 = 15."
+ },
+ {
+  "id": "mth-0278",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "Triangle ABC is similar to triangle DEF, where A corresponds to D and B corresponds to E. If AB = 6, BC = 9, and DE = 8, what is the length of EF?",
+  "choices": [
+   "27/4",
+   "32/3",
+   "11",
+   "12"
+  ],
+  "answer": 3,
+  "explanation": "The scale factor from ABC to DEF is DE/AB = 8/6 = 4/3. So EF = 4/3 × BC = 4/3 × 9 = 12. Adding the difference instead of multiplying by the scale factor is the trap."
+ },
+ {
+  "id": "mth-0279",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "Triangle ABC is similar to triangle DEF, where A corresponds to D and B corresponds to E. If AB = 5, BC = 8, and DE = 15, what is the length of EF?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "The scale factor from ABC to DEF is DE/AB = 15/5 = 3. So EF = 3 × BC = 3 × 8 = 24."
+ },
+ {
+  "id": "mth-0280",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "Triangle ABC is similar to triangle DEF, where A corresponds to D and B corresponds to E. If AB = 9, BC = 12, and DE = 6, what is the length of EF?",
+  "choices": [
+   "4",
+   "8",
+   "9",
+   "18"
+  ],
+  "answer": 1,
+  "explanation": "The scale factor from ABC to DEF is DE/AB = 6/9 = 2/3. So EF = 2/3 × BC = 2/3 × 12 = 8. Adding the difference instead of multiplying by the scale factor is the trap."
+ },
+ {
+  "id": "mth-0281",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Angle relationships",
+  "difficulty": "medium",
+  "question": "What is the measure, in degrees, of each interior angle of a regular pentagon?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "108"
+  ],
+  "explanation": "A polygon with 5 sides has interior angles summing to (5 − 2) × 180° = 540°. Split evenly, each angle is 540/5 = 108°."
+ },
+ {
+  "id": "mth-0282",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Angle relationships",
+  "difficulty": "medium",
+  "question": "What is the measure, in degrees, of each interior angle of a regular hexagon?",
+  "choices": [
+   "60",
+   "120",
+   "180",
+   "720"
+  ],
+  "answer": 1,
+  "explanation": "A polygon with 6 sides has interior angles summing to (6 − 2) × 180° = 720°. Split evenly, each angle is 720/6 = 120°. 360/n is the exterior angle, not the interior one."
+ },
+ {
+  "id": "mth-0283",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Angle relationships",
+  "difficulty": "medium",
+  "question": "What is the measure, in degrees, of each interior angle of a regular octagon?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "135"
+  ],
+  "explanation": "A polygon with 8 sides has interior angles summing to (8 − 2) × 180° = 1080°. Split evenly, each angle is 1080/8 = 135°."
+ },
+ {
+  "id": "mth-0284",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Angle relationships",
+  "difficulty": "medium",
+  "question": "What is the measure, in degrees, of each interior angle of a regular decagon?",
+  "choices": [
+   "36",
+   "144",
+   "180",
+   "1440"
+  ],
+  "answer": 1,
+  "explanation": "A polygon with 10 sides has interior angles summing to (10 − 2) × 180° = 1440°. Split evenly, each angle is 1440/10 = 144°. 360/n is the exterior angle, not the interior one."
+ },
+ {
+  "id": "mth-0285",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Angle relationships",
+  "difficulty": "medium",
+  "question": "What is the measure, in degrees, of each interior angle of a regular dodecagon?",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "150"
+  ],
+  "explanation": "A polygon with 12 sides has interior angles summing to (12 − 2) × 180° = 1800°. Split evenly, each angle is 1800/12 = 150°."
+ },
+ {
+  "id": "mth-0286",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Complementary angle identities",
+  "difficulty": "medium",
+  "question": "In a right triangle, one acute angle measures 28°, and sin(28°) ≈ 0.47. What is the approximate value of cos(62°)?",
+  "choices": [
+   "0.47",
+   "0.235",
+   "0.53",
+   "−0.47"
+  ],
+  "answer": 0,
+  "explanation": "The two acute angles of a right triangle are complementary (28° + 62° = 90°), and the sine of an angle equals the cosine of its complement. So cos(62°) = sin(28°) ≈ 0.47."
+ },
+ {
+  "id": "mth-0287",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Complementary angle identities",
+  "difficulty": "medium",
+  "question": "In a right triangle, one acute angle measures 35°, and sin(35°) ≈ 0.82. What is the approximate value of cos(55°)?",
+  "choices": [
+   "−0.82",
+   "0.82",
+   "0.18",
+   "0.41"
+  ],
+  "answer": 1,
+  "explanation": "The two acute angles of a right triangle are complementary (35° + 55° = 90°), and the sine of an angle equals the cosine of its complement. So cos(55°) = sin(35°) ≈ 0.82."
+ },
+ {
+  "id": "mth-0288",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Complementary angle identities",
+  "difficulty": "medium",
+  "question": "In a right triangle, one acute angle measures 53°, and sin(53°) ≈ 0.60. What is the approximate value of cos(37°)?",
+  "choices": [
+   "0.40",
+   "−0.60",
+   "0.60",
+   "0.3"
+  ],
+  "answer": 2,
+  "explanation": "The two acute angles of a right triangle are complementary (53° + 37° = 90°), and the sine of an angle equals the cosine of its complement. So cos(37°) = sin(53°) ≈ 0.60."
+ },
+ {
+  "id": "mth-0289",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Complementary angle identities",
+  "difficulty": "medium",
+  "question": "In a right triangle, one acute angle measures 17°, and sin(17°) ≈ 0.29. What is the approximate value of cos(73°)?",
+  "choices": [
+   "0.71",
+   "−0.29",
+   "0.145",
+   "0.29"
+  ],
+  "answer": 3,
+  "explanation": "The two acute angles of a right triangle are complementary (17° + 73° = 90°), and the sine of an angle equals the cosine of its complement. So cos(73°) = sin(17°) ≈ 0.29."
+ }
+]

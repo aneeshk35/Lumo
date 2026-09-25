@@ -531,7 +531,9 @@ async function startPractice(settings, label) {
     difficulties: settings.difficulties || [],
     ids: settings.ids || [],
     count: settings.count || 10,
+    practice: true,          // untimed, no speed scoring, never rated
   };
+  game.ranked = false;
   const res = await api('create', { name: profile.name, elo: myElo(), settings: s });
   if (res.error) return toast(res.error);
   ME.code = res.code; ME.playerId = res.playerId;
@@ -558,7 +560,7 @@ async function hostParty() {
   if (res.error) return toast(res.error);
   ME.code = res.code; ME.playerId = res.playerId;
   game.myName = res.yourName || profile.name;
-  game.mode = 'party'; game.isHost = true; game.section = 'mixed'; game.phase = 'lobby';
+  game.mode = 'party'; game.isHost = true; game.section = 'mixed'; game.phase = 'lobby'; game.ranked = false;
   await connectEvents();
   renderLobby(res.state);
   switchView('v-lobby');
@@ -572,7 +574,7 @@ async function joinParty() {
   if (res.error) return toast(res.error);
   ME.code = res.code; ME.playerId = res.playerId;
   game.myName = res.yourName || profile.name;
-  game.mode = 'party'; game.isHost = false; game.phase = 'lobby';
+  game.mode = 'party'; game.isHost = false; game.phase = 'lobby'; game.ranked = false;
   await connectEvents();
   renderLobby(res.state);
   switchView('v-lobby');
@@ -602,6 +604,7 @@ async function findMatch(mode) {
   game.queueMode = queueMode;
   game.section = duelSection;
   game.difficulty = duelDifficulty;
+  game.ranked = true;      // only the ranked queue moves Elo
   $('queue-kind').textContent = queueMode === '2v2' ? '2v2 Team duel' : '1v1 Duel';
   $('queue-mode-chip').textContent = `${SECTION_LABEL[duelSection]} · ${DIFF_LABEL[duelDifficulty]} · 10 questions`;
   $('queue-title').textContent = queueMode === '2v2'
@@ -792,8 +795,18 @@ function onQuestion(q) {
   $('q-text').textContent = q.question;
   setMarked(game.marked.has(q.index));
 
+  const spr = q.type === 'spr';
+  game.response = '';
+  $('spr').classList.toggle('hidden', !spr);
+  $('choice-grid').classList.toggle('hidden', spr);
+  $('btn-abc').classList.toggle('hidden', spr);
+  const input = $('spr-input');
+  input.value = '';
+  input.disabled = false;
+  input.className = '';
+  $('spr-preview').textContent = '—';
   const grid = $('choice-grid');
-  grid.className = `choice-grid${game.crossOut ? ' xo-on' : ''}`;
+  grid.className = `choice-grid${game.crossOut ? ' xo-on' : ''}${spr ? ' hidden' : ''}`;
   grid.innerHTML = q.choices.map((c, i) => `
     <div class="mrow" data-row="${i}">
       <button class="mchoice" data-i="${i}">
@@ -818,6 +831,7 @@ function onQuestion(q) {
 
   $('btn-lock').disabled = true;
   $('btn-lock').classList.remove('hidden');
+  if (spr) setTimeout(() => $('spr-input').focus(), 50);
   $('locked-note').classList.add('hidden');
   $('match-actions').classList.remove('hidden');
   $('reveal-actions').classList.add('hidden');
@@ -826,7 +840,9 @@ function onQuestion(q) {
   document.querySelector('#v-match .tb-q-pane').scrollTop = 0;
   $('tb-passage-pane').scrollTop = 0;
   closeTrack();
-  $('speed-note').textContent = `Base ${q.basePoints} pts. Answer fast for up to 2×; streaks add up to +500.`;
+  $('speed-note').textContent = q.untimed
+    ? `Practice is untimed: a correct answer earns the full ${q.basePoints} pts however long you take.`
+    : `Base ${q.basePoints} pts. Answer fast for up to 2×; streaks add up to +500.`;
   $('tip-text').textContent = game.mode === 'duel'
     ? 'Hints are off in ranked duels. Lumo explains every question at the reveal.'
     : 'Lumo will explain the answer as soon as the question closes.';
@@ -845,18 +861,43 @@ function onQuestion(q) {
   switchView('v-match');
 }
 
+// Grid-in: keep only characters a typed SAT answer can contain.
+$('spr-input').addEventListener('input', () => {
+  const input = $('spr-input');
+  const clean = input.value.replace(/−/g, '-').replace(/[^0-9./-]/g, '').slice(0, 7);
+  if (clean !== input.value) input.value = clean;
+  game.response = clean;
+  $('spr-preview').textContent = clean ? clean.replace(/-/g, '−') : '—';
+  $('btn-lock').disabled = !clean || game.answered;
+});
+$('spr-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !$('btn-lock').disabled) $('btn-lock').click();
+});
+
 $('btn-lock').onclick = async () => {
-  if (game.selected === null || game.answered) return;
+  const spr = game.currentQ && game.currentQ.type === 'spr';
+  if (game.answered || (spr ? !game.response : game.selected === null)) return;
   game.answered = true;
   $('btn-lock').disabled = true;
-  document.querySelectorAll('#choice-grid .mchoice').forEach((b) => (b.disabled = true));
-  $('locked-note').textContent = `Locked in ${LETTERS[game.selected]} — waiting…`;
+  if (spr) {
+    $('spr-input').disabled = true;
+    $('locked-note').textContent = `Locked in ${game.response.replace(/-/g, '−')} — waiting…`;
+  } else {
+    document.querySelectorAll('#choice-grid .mchoice').forEach((b) => (b.disabled = true));
+    $('locked-note').textContent = `Locked in ${LETTERS[game.selected]} — waiting…`;
+  }
   $('locked-note').classList.remove('hidden');
-  await api('answer', { choice: game.selected });
+  await api('answer', spr ? { response: game.response } : { choice: game.selected });
 };
 
 function startTimer(endsAt, durationMs) {
   clearInterval(game.timerInterval);
+  // Practice is untimed: no countdown, no draining bar, nothing to hurry for.
+  const untimed = !endsAt;
+  $('tb-untimed').classList.toggle('hidden', !untimed);
+  $('match-timer').classList.toggle('hidden', untimed);
+  $('btn-hide-timer').classList.toggle('hidden', untimed);
+  if (untimed) { $('speed-fill').style.width = '0%'; return; }
   const tick = () => {
     const remaining = Math.max(0, endsAt - (Date.now() + game.clockOffset));
     const secs = Math.ceil(remaining / 1000);
@@ -1286,8 +1327,17 @@ function onReveal(data) {
   game.phase = 'reveal';
   clearInterval(game.timerInterval);
   const q = game.currentQ;
-  const mine = game.selected !== null && game.answered ? game.selected : null;
-  const correct = mine === data.correctIndex;
+  const spr = data.type === 'spr';
+  const answered = game.answered && (spr ? !!game.response : game.selected !== null);
+  const mine = answered ? (spr ? game.response : game.selected) : null;
+  const correct = spr
+    ? !!(data.perPlayer[game.myName] && data.perPlayer[game.myName].correct)
+    : mine === data.correctIndex;
+  const rightLabel = spr ? String(data.correctAnswer).replace(/-/g, '−') : LETTERS[data.correctIndex];
+  if (spr) {
+    $('spr-input').disabled = true;
+    $('spr-input').classList.add(correct ? 'correct' : 'wrong');
+  }
 
   document.querySelectorAll('#choice-grid .mchoice').forEach((b) => {
     const i = parseInt(b.dataset.i, 10);
@@ -1304,11 +1354,14 @@ function onReveal(data) {
   const title = $('reveal-title');
   if (mine === null) { title.innerHTML = `${icon('planner', 16, 2)} Time's up — no answer`; title.className = 't bad'; }
   else if (correct) { title.textContent = 'Correct'; title.className = 't good'; }
-  else { title.textContent = `Not quite — the answer was ${LETTERS[data.correctIndex]}`; title.className = 't bad'; }
+  else { title.textContent = `Not quite — the answer was ${rightLabel}`; title.className = 't bad'; }
   $('reveal-ex').textContent = data.explanation;
-  $('reveal-counts').innerHTML = data.counts
-    .map((n, i) => `<span class="count-pill ${i === data.correctIndex ? 'correct' : ''}">${LETTERS[i]}: ${n}</span>`)
-    .join('');
+  const players = data.leaderboard.length;
+  $('reveal-counts').innerHTML = spr
+    ? (players > 1 ? `<span class="count-pill correct">${data.correctCount} of ${players} got it</span>` : '')
+    : data.counts
+      .map((n, i) => `<span class="count-pill ${i === data.correctIndex ? 'correct' : ''}">${LETTERS[i]}: ${n}</span>`)
+      .join('');
 
   game.results.push(correct);
   game.lastBoard = data.leaderboard;
@@ -1341,6 +1394,7 @@ function onReveal(data) {
     } else {
       const entry = {
         id: q.id, question: q.question, passage: q.passage || null, choices: q.choices,
+        type: spr ? 'spr' : 'mcq', correctAnswer: spr ? data.correctAnswer : null,
         domain: q.domain, skill: q.skill, difficulty: q.difficulty,
         mine, correctIndex: data.correctIndex, explanation: data.explanation, when: Date.now(),
       };
@@ -1401,12 +1455,12 @@ function onGameOver(data) {
     const tie = us && them && us.score === them.score;
     const rivals = board.filter((p) => p.team && p.team !== myTeam);
     const rivalElo = rivals.length ? rivals.reduce((t, p) => t + (p.elo || 1200), 0) / rivals.length : 1200;
-    const delta = applyElo(game.difficulty, rivalElo, won ? 1 : tie ? 0.5 : 0);
+    const delta = game.ranked ? applyElo(game.difficulty, rivalElo, won ? 1 : tie ? 0.5 : 0) : 0;
     if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
     $('result-hero').textContent = won ? 'Team victory' : tie ? 'Team tie' : 'Team defeat';
     sub = `Team ${myTeam} ${us ? us.score.toLocaleString() : 0} — ${them ? them.score.toLocaleString() : 0} Team ${them ? them.team : ''}`
       + ` · you scored ${(meRow.score || 0).toLocaleString()} · ${delta >= 0 ? '+' : ''}${delta} ELO`;
-  } else if (game.mode === 'duel' && game.opponent) {
+  } else if (game.mode === 'duel' && game.opponent && game.ranked) {
     const opp = board.find((p) => p.name === game.opponent) || { score: 0 };
     const won = (meRow.score || 0) > opp.score;
     const tie = (meRow.score || 0) === opp.score;
@@ -1781,8 +1835,11 @@ function renderMistakes() {
       ${m.passage ? `<div class="why" style="border-left-color:var(--border)">${esc(m.passage.slice(0, 220))}${m.passage.length > 220 ? '…' : ''}</div>` : ''}
       <div class="qt">${esc(m.question)}</div>
       <div class="answers">
+        ${m.type === 'spr' ? `
+        <span class="ans-chip mine">You: ${m.mine === null || m.mine === undefined || m.mine === '' ? 'no answer' : esc(String(m.mine).replace(/-/g, '−'))}</span>
+        <span class="ans-chip right">Correct: ${esc(String(m.correctAnswer).replace(/-/g, '−'))}</span>` : `
         <span class="ans-chip mine">You: ${m.mine === null || m.mine === undefined ? 'no answer' : `${LETTERS[m.mine]}. ${esc(String(m.choices[m.mine]).slice(0, 40))}`}</span>
-        <span class="ans-chip right">Correct: ${LETTERS[m.correctIndex]}. ${esc(String(m.choices[m.correctIndex]).slice(0, 40))}</span>
+        <span class="ans-chip right">Correct: ${LETTERS[m.correctIndex]}. ${esc(String(m.choices[m.correctIndex]).slice(0, 40))}</span>`}
       </div>
       <div class="why">${esc(m.explanation)}</div>
       <div class="acts">

@@ -333,7 +333,10 @@ def start_drill(page, domain, count="5"):
 
 
 def answer(page):
-    page.click('#choice-grid .mchoice[data-i="0"]')
+    if page.locator("#spr:not(.hidden)").count():
+        page.fill("#spr-input", "-9999")
+    else:
+        page.click('#choice-grid .mchoice[data-i="0"]')
     page.wait_for_timeout(120)
     if page.locator("#btn-lock").is_enabled():
         page.click("#btn-lock")
@@ -394,6 +397,9 @@ def plan(page):
         ("calculator open", lambda: open_calc(page)),
         ("answer revealed", lambda: (page.click("#btn-calc-close"), page.wait_for_timeout(200), answer(page))),
         ("results", lambda: finish(page)),
+        ("typed-answer question", lambda: (page.evaluate("startPractice({ ids: ['mth-0056'], count: 1 }, 'Audit')"),
+                                           page.wait_for_selector("#v-match.active"), page.wait_for_timeout(500),
+                                           page.fill("#spr-input", "5/6"), page.wait_for_timeout(200))),
         ("saved & mistakes, filled", lambda: nav(page, "Saved & Mistakes")),
         ("analytics, filled", lambda: nav(page, "Analytics")),
     ]

@@ -114,6 +114,7 @@ async function challengeFriend(code) {
   if (res.error) return toast(res.error);
   ME.code = res.code;
   ME.playerId = res.playerId;
+  game.ranked = false;     // friendly challenges never move Elo
   await connectEvents();
   const sent = await api('invite', {
     playerKey: profile.playerKey, toCode: code, partyCode: res.code, mode: 'duel',
@@ -145,6 +146,7 @@ $('invite-accept').onclick = async () => {
   const res = await api('join', { code: pendingInvite.partyCode, name: profile.name, elo: profile.elo });
   pendingInvite = null;
   if (res.error) return toast(res.error);
+  game.ranked = false;
   ME.code = res.code;
   ME.playerId = res.playerId;
   await connectEvents();
