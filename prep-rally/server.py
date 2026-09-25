@@ -53,6 +53,21 @@ ALLOWED_ORIGINS = ["https://lumosat.vercel.app"] + [
 
 with open(os.path.join(DATA_DIR, "questions.json"), encoding="utf-8") as f:
     QUESTIONS = json.load(f)
+# Generated grammar and transition drills (tools/gen_grammar.py builds this file).
+GRAMMAR_FILE = os.path.join(DATA_DIR, "grammar.json")
+if os.path.exists(GRAMMAR_FILE):
+    with open(GRAMMAR_FILE, encoding="utf-8") as f:
+        QUESTIONS += json.load(f)
+# Figures (tools/gen_figures.py): SVGs for existing questions plus questions
+# that are answered from a graph, diagram, chart, or table.
+FIGURES_FILE = os.path.join(DATA_DIR, "figures.json")
+if os.path.exists(FIGURES_FILE):
+    with open(FIGURES_FILE, encoding="utf-8") as f:
+        _figures = json.load(f)
+    for _q in QUESTIONS:
+        if _q["id"] in _figures["attach"]:
+            _q["figure"] = _figures["attach"][_q["id"]]
+    QUESTIONS += _figures["questions"]
 
 TIMER_MS = {"easy": 60000, "medium": 75000, "hard": 90000}
 BASE_POINTS = {"easy": 500, "medium": 750, "hard": 1000}
@@ -151,6 +166,17 @@ def sanitize_name(name):
     return (str(name or "").strip()[:16]) or "Player"
 
 
+def clean_elo(elo):
+    """Ratings are kept on the client; the server only relays them for pairing."""
+    try:
+        return max(100, min(int(elo), 4000))
+    except (TypeError, ValueError):
+        return 1200
+
+
+DIFFICULTIES = ("easy", "medium", "hard")
+
+
 class Party:
     def __init__(self, code, settings, questions, mode="party"):
         self.code = code
@@ -204,12 +230,12 @@ class Party:
             i += 1
         return f"{name} {i}"
 
-    def add_player(self, name):
+    def add_player(self, name, elo=None):
         pid = uuid.uuid4().hex
         self.players[pid] = {
             "id": pid, "name": self.unique_name(sanitize_name(name)),
             "score": 0, "streak": 0, "correct": 0, "answers": [],
-            "connected": True, "queues": [],
+            "connected": True, "queues": [], "elo": clean_elo(elo),
         }
         return pid
 
@@ -219,7 +245,7 @@ class Party:
             "mode": self.mode,
             "settings": self.settings,
             "players": [
-                {"name": p["name"], "isHost": p["id"] == self.host_id,
+                {"name": p["name"], "isHost": p["id"] == self.host_id, "elo": p["elo"],
                  "connected": p["connected"], "ready": p["id"] in self.ready,
                  "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"])}
                 for p in self.players.values()
@@ -230,7 +256,7 @@ class Party:
 
     def leaderboard(self):
         board = [
-            {"name": p["name"], "score": p["score"], "streak": p["streak"],
+            {"name": p["name"], "score": p["score"], "streak": p["streak"], "elo": p["elo"],
              "correct": p["correct"], "connected": p["connected"],
              "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"])}
             for p in self.players.values()
@@ -247,6 +273,7 @@ class Party:
             "section": q["section"], "domain": q["domain"], "skill": q["skill"],
             "difficulty": q["difficulty"],
             "passage": q.get("passage"),
+            "figure": q.get("figure"),
             "question": q["question"], "choices": q["choices"],
             "basePoints": BASE_POINTS[q["difficulty"]],
             "durationMs": TIMER_MS[q["difficulty"]],
@@ -377,7 +404,20 @@ def pick_questions(settings):
     ]
     random.shuffle(pool)
     count = max(1, min(int(settings.get("count") or 10), len(pool)))
-    return pool[:count]
+    # Deal round-robin across domains so the thousand generated grammar drills
+    # can't crowd everything else out of a mixed or whole-section session.
+    by_domain = {}
+    for q in pool:
+        by_domain.setdefault(q["domain"], []).append(q)
+    decks = list(by_domain.values())
+    random.shuffle(decks)
+    picked = []
+    while len(picked) < count:
+        for deck in decks:
+            if deck and len(picked) < count:
+                picked.append(deck.pop())
+    random.shuffle(picked)
+    return picked
 
 
 def clean_settings(raw):
@@ -881,28 +921,34 @@ class Handler(BaseHTTPRequestHandler):
         # Keep matched tickets around until their owner polls and collects the result.
         MATCH_QUEUE[:] = [t for t in MATCH_QUEUE if now - t["polled"] < QUEUE_TTL]
         section = body.get("section") if body.get("section") in ("math", "rw", "mixed") else "mixed"
+        # Each difficulty is its own ladder: players only meet others who picked
+        # the same subject and difficulty, closest rating first.
+        difficulty = body.get("difficulty") if body.get("difficulty") in DIFFICULTIES else "medium"
+        elo = clean_elo(body.get("elo"))
         name = sanitize_name(body.get("name"))
         count = max(3, min(int(body.get("count") or 10), 20))
         mode = "2v2" if body.get("mode") == "2v2" else "1v1"
         needed = TEAM_PLAYERS if mode == "2v2" else 2
 
         waiting = [t for t in MATCH_QUEUE
-                   if t["mode"] == mode and t["section"] == section and not t["result"]]
+                   if t["mode"] == mode and t["section"] == section
+                   and t["difficulty"] == difficulty and not t["result"]]
+        waiting.sort(key=lambda t: abs(t["elo"] - elo))
         if len(waiting) >= needed - 1:
             joining = waiting[: needed - 1]
-            settings = {"section": section, "domains": [], "difficulties": [], "count": count}
+            settings = {"section": section, "domains": [], "difficulties": [difficulty], "count": count}
             questions = pick_questions(settings)
             code = generate_code()
             party = Party(code, settings, questions, mode="team" if mode == "2v2" else "duel")
 
             # Seat everyone who was waiting, then the caller last.
             for t in joining:
-                pid = party.add_player(t["name"])
+                pid = party.add_player(t["name"], t["elo"])
                 if mode == "2v2":
                     party.assign_team(pid)
                 t["result"] = {"code": code, "playerId": pid,
                                "yourName": party.players[pid]["name"]}
-            mine = party.add_player(name)
+            mine = party.add_player(name, elo)
             if mode == "2v2":
                 party.assign_team(mine)
             party.host_id = joining[0]["result"]["playerId"]
@@ -912,6 +958,7 @@ class Handler(BaseHTTPRequestHandler):
 
         ticket = uuid.uuid4().hex
         MATCH_QUEUE.append({"ticket": ticket, "name": name, "section": section, "mode": mode,
+                            "difficulty": difficulty, "elo": elo,
                             "count": count, "polled": now, "result": None})
         return self.send_json({"matched": False, "ticket": ticket, "mode": mode,
                                "waiting": len(waiting) + 1, "needed": needed})
@@ -926,7 +973,7 @@ class Handler(BaseHTTPRequestHandler):
                     return self.send_json(dict({"matched": True, "mode": t["mode"]}, **t["result"]))
                 peers = sum(1 for o in MATCH_QUEUE
                             if o["mode"] == t["mode"] and o["section"] == t["section"]
-                            and not o["result"])
+                            and o["difficulty"] == t["difficulty"] and not o["result"])
                 needed = TEAM_PLAYERS if t["mode"] == "2v2" else 2
                 return self.send_json({"matched": False, "waiting": peers, "needed": needed})
         return self.send_json({"matched": False, "expired": True})
@@ -957,7 +1004,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json({"error": "No questions match those filters. Try widening them."})
         code = generate_code()
         party = Party(code, settings, questions)
-        pid = party.add_player(body.get("name"))
+        pid = party.add_player(body.get("name"), body.get("elo"))
         party.host_id = pid
         PARTIES[code] = party
         self.send_json({"ok": True, "code": code, "playerId": pid,
@@ -972,7 +1019,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json({"error": "That game already started. Ask the host for a rematch!"})
         if len(party.connected()) >= MAX_PLAYERS:
             return self.send_json({"error": "This party is full (20 players max)."})
-        pid = party.add_player(body.get("name"))
+        pid = party.add_player(body.get("name"), body.get("elo"))
         party.broadcast("lobby_update", party.lobby_state())
         self.send_json({"ok": True, "code": code, "playerId": pid,
                         "yourName": party.players[pid]["name"], "state": party.lobby_state()})

@@ -108,8 +108,8 @@ async function addFriend() {
 async function challengeFriend(code) {
   if (!profile.name) return promptName(() => challengeFriend(code));
   const res = await api('create', {
-    name: profile.name,
-    settings: { section: duelSection, count: 10 },
+    name: profile.name, elo: myElo(),
+    settings: { section: duelSection, difficulties: [duelDifficulty], count: 10 },
   });
   if (res.error) return toast(res.error);
   ME.code = res.code;
@@ -142,7 +142,7 @@ $('invite-accept').onclick = async () => {
   if (!pendingInvite) return;
   $('invite-pop').classList.add('hidden');
   if (!profile.name) return promptName();
-  const res = await api('join', { code: pendingInvite.partyCode, name: profile.name });
+  const res = await api('join', { code: pendingInvite.partyCode, name: profile.name, elo: profile.elo });
   pendingInvite = null;
   if (res.error) return toast(res.error);
   ME.code = res.code;

@@ -7,4 +7,6 @@
          -> use when the frontend is hosted separately, e.g. static on Vercel.
             That server must list this site in its ALLOWED_ORIGINS env var,
             otherwise the browser blocks the cross-origin calls.  */
-window.LUMO_API_BASE = 'https://lumo-3vut.onrender.com';
+// The static copy on Vercel talks to the Render server; anywhere else (local
+// dev, or the Render server serving the page itself) the API is same-origin.
+window.LUMO_API_BASE = location.hostname.endsWith('.vercel.app') ? 'https://lumo-3vut.onrender.com' : '';

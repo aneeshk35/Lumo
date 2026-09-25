@@ -49,6 +49,11 @@ def nav(page, item):
     group = page.evaluate(
         "(n) => (NAV.find((g) => g.items.some((i) => i.name === n)) || {}).name", item)
     assert group, f"no nav section contains {item!r}"
+    if page.locator("#v-match.active").count():
+        # the test screen is full-window like the real SAT; leave through Exit
+        page.once("dialog", lambda d: d.accept())
+        page.click("#btn-exit-test")
+        page.wait_for_timeout(300)
     page.click(f'.sb-item[data-navgroup="{group}"]')
     page.wait_for_timeout(250)
     tab = page.locator(f'.view.active .subnav-tab[data-navitem="{item}"]')
@@ -417,6 +422,52 @@ def test_duel(browser):
     a.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
     check("duel reveal auto-advances", "in" in a.inner_text("#reveal-note").lower(),
           a.inner_text("#reveal-note"))
+    b_ctx.close()
+    a_ctx.close()
+
+
+def test_duel_difficulty(browser):
+    print("\n9b. Duels by difficulty and per-difficulty Elo")
+    a_ctx, a = new_player(browser, "HardA")
+    b_ctx, b = new_player(browser, "EasyB")
+
+    def queue(page, section, difficulty):
+        nav(page, "Play")
+        page.click(f'#duel-modes [data-sec="{section}"]')
+        page.click(f'#duel-diffs [data-diff="{difficulty}"]')
+        page.click("#btn-find-match")
+
+    queue(a, "math", "hard")
+    a.wait_for_selector("#v-queue.active", timeout=5000)
+    check("queue chip names the difficulty", "Hard" in a.inner_text("#queue-mode-chip"), a.inner_text("#queue-mode-chip"))
+    queue(b, "math", "easy")
+    b.wait_for_selector("#v-queue.active", timeout=5000)
+    b.wait_for_timeout(2500)
+    check("different difficulties are not paired",
+          a.locator("#v-queue.active").count() == 1 and b.locator("#v-queue.active").count() == 1)
+
+    b.click("#btn-queue-cancel")
+    b.wait_for_timeout(400)
+    queue(b, "math", "hard")
+    b.wait_for_selector("#v-lobby.active", timeout=8000)
+    a.wait_for_selector("#v-lobby.active", timeout=10000)
+    check("same difficulty pairs up", True)
+    check("lobby title names the difficulty", "Hard" in a.inner_text("#lobby-title"), a.inner_text("#lobby-title"))
+    check("lobby shows both ratings", a.inner_text("#lobby-players").count("ELO") == 2, a.inner_text("#lobby-players"))
+
+    a.click("#btn-ready")
+    b.click("#btn-ready")
+    a.wait_for_selector("#v-match.active", timeout=8000)
+    check("hard duel serves hard questions", "hard" in a.inner_text("#q-kicker").lower(), a.inner_text("#q-kicker"))
+
+    elos = a.evaluate("""() => {
+        const before = { ...profile.elos };
+        const delta = applyElo('hard', 1400, 1);   // beat a higher-rated player
+        return { before, after: { ...profile.elos }, delta };
+    }""")
+    check("beating a stronger player gains Elo on that ladder only",
+          elos["delta"] == 24 and elos["after"]["hard"] == elos["before"]["hard"] + 24
+          and elos["after"]["easy"] == elos["before"]["easy"], str(elos))
     b_ctx.close()
     a_ctx.close()
 
@@ -839,7 +890,7 @@ def main():
         browser = p.chromium.launch()
         for fn in (test_first_run, test_navigation, test_question_bank,
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
-                   test_tools, test_party, test_duel, test_responsive,
+                   test_tools, test_party, test_duel, test_duel_difficulty, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
                    test_friends, test_2v2, test_theme):
             try:

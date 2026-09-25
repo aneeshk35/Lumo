@@ -226,12 +226,51 @@ PROBE = r"""
       if (a.el.contains(top) || a.el === top) { covered = b; cover = a; }
       else if (b.el.contains(top) || b.el === top) { covered = a; cover = b; }
       if (!covered) continue;
+      // Scrolled out of its own scroll area is not covered: the student scrolls
+      // to it. Only judge the part of it that its scroller actually shows.
+      const scroller = (el) => {
+        for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) {
+          const o = getComputedStyle(n).overflowY;
+          if (o === 'auto' || o === 'scroll') return n;
+        }
+        return null;
+      };
+      const sc = scroller(covered.el);
+      if (sc && !sc.contains(cover.el)) {
+        const v = sc.getBoundingClientRect();
+        if (cy < v.top || cy > v.bottom || cx < v.left || cx > v.right) continue;
+      }
       // A dialog sitting over the page it interrupts is the point of a dialog.
       const inModal = (el) => el.closest('.overlay, .modal, dialog, [role="dialog"]');
       if (inModal(cover.el) && !inModal(covered.el)) continue;
       out.push({ kind: 'control covered by another control', severity: 'error',
                  where: desc(covered.el),
                  detail: `${Math.round(ox)}x${Math.round(oy)}px of it sits under ${desc(cover.el)}` });
+    }
+  }
+
+  // ---- stacked cards touching ----
+  // Home's study-plan rows sat edge to edge: their wrapper was one child of a
+  // flex list, so the list's gap never reached them. Rounded, bordered boxes
+  // stacked one above the other need visible space between them.
+  const boxed = (el) => {
+    const cs = getComputedStyle(el);
+    return parseFloat(cs.borderTopWidth) > 0 && parseFloat(cs.borderBottomWidth) > 0
+      && cs.borderTopStyle !== 'none' && (parseFloat(cs.borderTopLeftRadius) || 0) >= 4;
+  };
+  for (const el of document.querySelectorAll('body *')) {
+    if (skip(el) || !shown(el) || !boxed(el)) continue;
+    let next = el.nextElementSibling;
+    while (next && !shown(next)) next = next.nextElementSibling;
+    if (!next || !boxed(next)) continue;
+    const a = el.getBoundingClientRect(), b = next.getBoundingClientRect();
+    if (a.height < 24 || b.height < 24) continue;
+    const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+    if (ox < Math.min(a.width, b.width) / 2) continue;
+    const space = b.top - a.bottom;
+    if (space >= -1 && space < 4) {
+      out.push({ kind: 'stacked cards touching', severity: 'error', where: desc(el),
+                 detail: `only ${Math.round(space)}px between it and ${desc(next)}` });
     }
   }
 
@@ -271,6 +310,11 @@ def nav(page, name):
     """The rail picks a section; a tab inside the page picks the screen."""
     group = page.evaluate(
         "(n) => (NAV.find((g) => g.items.some((i) => i.name === n)) || {}).name", name)
+    if page.locator("#v-match.active").count():
+        # the test screen is full-window like the real SAT; leave through Exit
+        # (the page's dialog handler accepts the "leave this game?" prompt)
+        page.click("#btn-exit-test")
+        page.wait_for_timeout(300)
     page.click(f'.sb-item[data-navgroup="{group}"]')
     page.wait_for_timeout(250)
     tab = page.locator(f'.view.active .subnav-tab[data-navitem="{name}"]')

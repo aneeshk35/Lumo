@@ -4,10 +4,13 @@
 const $ = (id) => document.getElementById(id);
 const LETTERS = ['A', 'B', 'C', 'D'];
 const SECTION_LABEL = { math: 'Math', rw: 'Reading & Writing', mixed: 'Mixed' };
+const DIFF_LABEL = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
 
 /* ================= Profile (localStorage) ================= */
 const DEFAULT_PROFILE = {
   name: '', elo: 1200, wins: 0, losses: 0, points: 0,
+  // One rating per duel difficulty; `elo` above is the best of the three.
+  elos: { easy: 1200, medium: 1200, hard: 1200 },
   attempted: 0, correct: 0, errors: 0, bestStreak: 0, dayStreak: 1,
   solved: { math: 0, rw: 0 }, sessions: [], testDate: '2026-10-03',
   lastPlayed: 0,
@@ -26,6 +29,8 @@ const DEFAULT_PROFILE = {
 };
 let profile = { ...DEFAULT_PROFILE, ...JSON.parse(localStorage.getItem('lumo-profile') || '{}') };
 profile.solved = { ...DEFAULT_PROFILE.solved, ...(profile.solved || {}) };
+// Profiles from before per-difficulty ratings start every ladder at their old rating.
+profile.elos = { easy: profile.elo, medium: profile.elo, hard: profile.elo, ...(profile.elos || {}) };
 profile.mistakes = profile.mistakes || [];
 profile.domainStats = profile.domainStats || {};
 profile.vocabKnown = profile.vocabKnown || [];
@@ -410,6 +415,8 @@ function navTo(name) {
 function switchView(id) {
   document.querySelectorAll('.view').forEach((v) => v.classList.remove('active'));
   $(id).classList.add('active');
+  document.body.classList.toggle('testing', id === 'v-match');
+  if (id !== 'v-match') { openCalc(false); openRef(false); closeTrack(); }
   const showBanners = BANNER_VIEWS.has(id);
   $('announce-bar').classList.toggle('hidden', !showBanners);
   document.querySelector('.main').scrollTop = 0;
@@ -525,7 +532,7 @@ async function startPractice(settings, label) {
     ids: settings.ids || [],
     count: settings.count || 10,
   };
-  const res = await api('create', { name: profile.name, settings: s });
+  const res = await api('create', { name: profile.name, elo: myElo(), settings: s });
   if (res.error) return toast(res.error);
   ME.code = res.code; ME.playerId = res.playerId;
   game.myName = res.yourName || profile.name;
@@ -561,7 +568,7 @@ async function joinParty() {
   const code = $('code-input').value.trim().toUpperCase();
   if (code.length !== 5) return toast('Party codes are 5 letters.');
   if (!profile.name) return promptName(joinParty);
-  const res = await api('join', { code, name: profile.name });
+  const res = await api('join', { code, name: profile.name, elo: myElo() });
   if (res.error) return toast(res.error);
   ME.code = res.code; ME.playerId = res.playerId;
   game.myName = res.yourName || profile.name;
@@ -573,6 +580,20 @@ async function joinParty() {
 
 /* ================= Matchmaking ================= */
 let duelSection = 'mixed';
+let duelDifficulty = 'medium';
+const myElo = (d = duelDifficulty) => profile.elos[d] || 1200;
+
+// Standard Elo against the opponent's rating on the same difficulty ladder.
+// score: 1 win, 0.5 tie, 0 loss. Returns the change applied.
+function applyElo(difficulty, oppElo, score) {
+  const d = DIFF_LABEL[difficulty] ? difficulty : 'medium';
+  const mine = myElo(d);
+  const expected = 1 / (1 + Math.pow(10, ((oppElo || 1200) - mine) / 400));
+  const delta = Math.round(32 * (score - expected));
+  profile.elos[d] = Math.max(100, mine + delta);
+  profile.elo = Math.max(...Object.values(profile.elos));
+  return delta;
+}
 async function findMatch(mode) {
   const queueMode = mode === '2v2' ? '2v2' : '1v1';
   if (!profile.name) return promptName(() => findMatch(queueMode));
@@ -580,13 +601,14 @@ async function findMatch(mode) {
   game.mode = queueMode === '2v2' ? 'team' : 'duel';
   game.queueMode = queueMode;
   game.section = duelSection;
+  game.difficulty = duelDifficulty;
   $('queue-kind').textContent = queueMode === '2v2' ? '2v2 Team duel' : '1v1 Duel';
-  $('queue-mode-chip').textContent = `${SECTION_LABEL[duelSection]} · 10 questions`;
+  $('queue-mode-chip').textContent = `${SECTION_LABEL[duelSection]} · ${DIFF_LABEL[duelDifficulty]} · 10 questions`;
   $('queue-title').textContent = queueMode === '2v2'
     ? 'Building two teams…' : 'Searching for an opponent…';
   $('queue-sub').textContent = queueMode === '2v2'
     ? 'A 2v2 starts once four players are waiting'
-    : `Matching you with someone near ${profile.elo.toLocaleString()} ELO`;
+    : `Matching you with someone near ${myElo().toLocaleString()} ${DIFF_LABEL[duelDifficulty]} ELO`;
   switchView('v-queue');
   const started = Date.now();
   const tick = setInterval(() => {
@@ -597,6 +619,7 @@ async function findMatch(mode) {
 
   const res = await api('queue', {
     name: profile.name, section: duelSection, count: 10, mode: queueMode,
+    difficulty: duelDifficulty, elo: myElo(),
   });
   if (res.matched) return enterDuel(res);
   game.queueTicket = res.ticket;
@@ -649,11 +672,13 @@ function renderLobby(lobby) {
   const isTeam = lobby.mode === 'team';
   const isDuel = lobby.mode === 'duel' || isTeam;
   game.mode = lobby.mode === 'party' ? game.mode : lobby.mode;
+  const diffs = (lobby.settings && lobby.settings.difficulties) || [];
+  if (isDuel) game.difficulty = diffs.length === 1 ? diffs[0] : (game.difficulty || 'medium');
   $('lobby-eyebrow').textContent = isDuel ? 'MATCH FOUND' : 'PARTY LOBBY';
   $('lobby-title').textContent = isTeam
     ? `2v2 Team duel · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`
     : isDuel
-      ? `1v1 Duel · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`
+      ? `1v1 Duel · ${SECTION_LABEL[lobby.settings.section]} · ${DIFF_LABEL[game.difficulty] || 'Medium'} · ${lobby.questionCount} questions`
       : `Party · ${SECTION_LABEL[lobby.settings.section]} · ${lobby.questionCount} questions`;
   $('lobby-sub').textContent = isTeam
     ? 'Two teams of two · answer inside your own section for a 25% specialist bonus'
@@ -671,7 +696,7 @@ function renderLobby(lobby) {
     <div class="player-card">
       <span class="lumo round ${them ? 'pink' : 'lilac'}"></span>
       <span class="n">${esc(p.name)}</span>
-      <span class="s">${p.isHost ? 'Host · ' : ''}${them ? '' : `${profile.elo.toLocaleString()} ELO · `}${p.connected ? 'connected' : 'disconnected'}</span>
+      <span class="s">${p.isHost ? 'Host · ' : ''}${isDuel ? `${(p.elo || 1200).toLocaleString()} ELO · ` : ''}${p.connected ? 'connected' : 'disconnected'}</span>
       <span class="ready-pill ${p.ready || (!isDuel && p.isHost) ? 'yes' : 'no'}">
         <span class="${p.ready || (!isDuel && p.isHost) ? 'dot-g' : 'dot-a'}"></span>
         ${p.ready ? 'Ready' : (isDuel ? 'Getting ready…' : (p.isHost ? 'Host' : 'Joined'))}
@@ -738,50 +763,80 @@ function onQuestion(q) {
   game.answered = false;
   game.total = q.total;
   game.clockOffset = q.serverNow - Date.now();
-  if (q.index === 0) { game.startedAt = Date.now(); game.results = []; game.myScore = 0; game.lastBoard = []; }
+  if (q.index === 0) {
+    game.startedAt = Date.now(); game.results = []; game.myScore = 0; game.lastBoard = [];
+    game.marked = new Set();
+  }
+  game.crossed = new Set();
 
   const modeLbl = game.mode === 'duel' ? '1V1 DUEL'
     : game.mode === 'party' ? 'PARTY'
     : (game.label ? game.label.toUpperCase() : 'SOLO RUSH');
   $('match-mode').textContent = `${modeLbl} · ${q.domain.toUpperCase()}`;
   $('match-progress').textContent = `Question ${q.index + 1} of ${q.total}`;
+  $('tb-section').textContent = q.section === 'math' ? 'Math' : 'Reading and Writing';
+  $('tb-name').textContent = game.myName || 'You';
+  $('q-num').textContent = q.index + 1;
   $('q-kicker').textContent = `${q.domain} · ${q.difficulty}`;
   const passage = $('q-passage');
   if (q.passage) { passage.textContent = q.passage; passage.classList.remove('hidden'); }
   else passage.classList.add('hidden');
+  $('tb-body').classList.toggle('split', !!q.passage);
+  // Figures are SVGs drawn by tools/gen_figures.py and served with the question.
+  // Reading questions show theirs under the passage; math shows it above the stem.
+  const fig = $('q-figure');
+  fig.innerHTML = q.figure || '';
+  fig.classList.toggle('hidden', !q.figure);
+  if (q.passage) $('tb-passage-pane').appendChild(fig);
+  else $('q-text').before(fig);
   $('q-text').textContent = q.question;
+  setMarked(game.marked.has(q.index));
 
-  const stack = !!q.passage || q.choices.some((c) => c.length > 55);
   const grid = $('choice-grid');
-  grid.className = `choice-grid${stack ? ' stack' : ''}`;
+  grid.className = `choice-grid${game.crossOut ? ' xo-on' : ''}`;
   grid.innerHTML = q.choices.map((c, i) => `
-    <button class="mchoice" data-i="${i}">
-      <span class="key">${LETTERS[i]}</span>
-      <span class="val">${esc(c)}</span>
-    </button>`).join('');
+    <div class="mrow" data-row="${i}">
+      <button class="mchoice" data-i="${i}">
+        <span class="key">${LETTERS[i]}</span>
+        <span class="val">${esc(c)}</span>
+      </button>
+      <button class="xo" data-x="${i}" aria-label="Cross out choice ${LETTERS[i]}">${LETTERS[i]}</button>
+    </div>`).join('');
   grid.querySelectorAll('.mchoice').forEach((b) => {
     b.onclick = () => {
       if (game.answered) return;
-      game.selected = parseInt(b.dataset.i, 10);
+      const i = parseInt(b.dataset.i, 10);
+      if (game.crossed.has(i)) toggleCross(i);    // picking a crossed-out choice brings it back
+      game.selected = i;
       grid.querySelectorAll('.mchoice').forEach((x) => x.classList.toggle('sel', x === b));
       $('btn-lock').disabled = false;
     };
+  });
+  grid.querySelectorAll('.xo').forEach((b) => {
+    b.onclick = () => { if (!game.answered) toggleCross(parseInt(b.dataset.x, 10)); };
   });
 
   $('btn-lock').disabled = true;
   $('btn-lock').classList.remove('hidden');
   $('locked-note').classList.add('hidden');
   $('match-actions').classList.remove('hidden');
+  $('reveal-actions').classList.add('hidden');
+  $('reveal-note').textContent = '';
   $('reveal-card').classList.add('hidden');
+  document.querySelector('#v-match .tb-q-pane').scrollTop = 0;
+  $('tb-passage-pane').scrollTop = 0;
+  closeTrack();
   $('speed-note').textContent = `Base ${q.basePoints} pts. Answer fast for up to 2×; streaks add up to +500.`;
   $('tip-text').textContent = game.mode === 'duel'
     ? 'Hints are off in ranked duels. Lumo explains every question at the reveal.'
     : 'Lumo will explain the answer as soon as the question closes.';
 
-  // tools reset per question; calculator is math-only, like the real test
+  // Highlighting resets per question. The calculator and reference sheet stay
+  // where the student put them across math questions and close on reading.
   setHighlightMode(false);
-  openCalc(false);
+  if (q.section !== 'math') { openCalc(false); openRef(false); }
   $('btn-calc').classList.toggle('hidden', q.section !== 'math');
+  $('btn-ref').classList.toggle('hidden', q.section !== 'math');
   $('btn-highlight').classList.toggle('hidden', !q.passage);
 
   renderTrack(q.index);
@@ -818,6 +873,7 @@ function renderBars() {
   const hth = $('hth');
   const board = game.lastBoard;
   const meRow = board.find((p) => p.name === game.myName) || { score: game.myScore };
+  $('tb-score').textContent = `${(meRow.score || 0).toLocaleString()} pts`;
   // Before the first reveal there is no leaderboard yet, so show the opponent
   // at zero rather than hiding their bar for a whole question.
   const oppRow = game.opponent
@@ -848,11 +904,165 @@ function renderTrack(currentIndex) {
     let cls = '';
     if (i < game.results.length) cls = game.results[i] ? 'me' : 'them';
     else if (i === currentIndex && game.phase === 'question') cls = 'now';
+    if (game.marked && game.marked.has(i)) cls += ' flag';
     cells.push(`<div class="q ${cls}">${i + 1}</div>`);
   }
   $('qtrack').innerHTML = cells.join('');
 }
 
+
+/* ================= Test-screen controls ================= */
+game.marked = new Set();
+game.crossed = new Set();
+game.crossOut = false;
+
+function setMarked(on) {
+  $('btn-mark').setAttribute('aria-pressed', String(on));
+}
+$('btn-mark').onclick = () => {
+  const q = game.currentQ;
+  if (!q) return;
+  if (game.marked.has(q.index)) game.marked.delete(q.index);
+  else game.marked.add(q.index);
+  setMarked(game.marked.has(q.index));
+  renderTrack(game.phase === 'question' ? q.index : -1);
+};
+
+// Answer eliminator: the ABC button shows a cross-out control beside each choice.
+$('btn-abc').onclick = () => {
+  game.crossOut = !game.crossOut;
+  $('btn-abc').setAttribute('aria-pressed', String(game.crossOut));
+  $('choice-grid').classList.toggle('xo-on', game.crossOut);
+};
+function toggleCross(i) {
+  const row = document.querySelector(`#choice-grid .mrow[data-row="${i}"]`);
+  if (!row) return;
+  const out = !game.crossed.has(i);
+  if (out) game.crossed.add(i); else game.crossed.delete(i);
+  row.classList.toggle('out', out);
+  const xo = row.querySelector('.xo');
+  xo.textContent = out ? 'Undo' : LETTERS[i];
+  xo.setAttribute('aria-label', `${out ? 'Restore' : 'Cross out'} choice ${LETTERS[i]}`);
+  // crossing out the selected answer clears the selection, as on the real test
+  if (out && game.selected === i) {
+    game.selected = null;
+    row.querySelector('.mchoice').classList.remove('sel');
+    $('btn-lock').disabled = true;
+  }
+}
+
+$('btn-hide-timer').onclick = () => {
+  const hide = !$('match-timer').classList.contains('hide-time');
+  $('match-timer').classList.toggle('hide-time', hide);
+  $('btn-hide-timer').textContent = hide ? 'Show' : 'Hide';
+  $('btn-hide-timer').setAttribute('aria-pressed', String(hide));
+};
+
+function closeTrack() {
+  $('tb-pop').classList.add('hidden');
+  $('match-progress').setAttribute('aria-expanded', 'false');
+}
+$('match-progress').onclick = () => {
+  const open = $('tb-pop').classList.contains('hidden');
+  $('tb-pop').classList.toggle('hidden', !open);
+  $('match-progress').setAttribute('aria-expanded', String(open));
+};
+$('btn-pop-close').onclick = closeTrack;
+document.addEventListener('click', (e) => {
+  if ($('tb-pop').classList.contains('hidden')) return;
+  if (!e.target.closest('#tb-pop, #match-progress')) closeTrack();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTrack(); });
+
+$('btn-exit-test').onclick = () => navTo('Home');
+
+/* ---- floating panels: calculator and reference sheet ----
+   Drag the header to move, drag the corner to resize, arrow keys on the header
+   nudge it. Position and size are remembered per panel. On phones the panels
+   are a fixed bottom sheet (CSS), so none of this applies there. */
+const phoneLayout = () => window.matchMedia('(max-width: 900px)').matches;
+
+function makeFloating(panel, minW, minH) {
+  const key = `lumo.float.${panel.id}`;
+  const grip = panel.querySelector('.float-grip');
+  const corner = panel.querySelector('.float-resize');
+
+  const place = (x, y, w, h) => {
+    w = Math.min(Math.max(w, minW), innerWidth - 16);
+    h = Math.min(Math.max(h, minH), innerHeight - 16);
+    x = Math.min(Math.max(x, 8), innerWidth - w - 8);
+    y = Math.min(Math.max(y, 8), innerHeight - h - 8);
+    Object.assign(panel.style, {
+      left: `${x}px`, top: `${y}px`, width: `${w}px`, height: `${h}px`, right: 'auto', bottom: 'auto',
+    });
+  };
+  const save = () => {
+    const r = panel.getBoundingClientRect();
+    try { localStorage.setItem(key, JSON.stringify({ x: r.left, y: r.top, w: r.width, h: r.height })); } catch {}
+  };
+  // Called after the panel is shown: reapply the saved spot, kept on screen.
+  const restore = () => {
+    if (phoneLayout()) {
+      ['left', 'top', 'width', 'height', 'right', 'bottom'].forEach((k) => (panel.style[k] = ''));
+      return;
+    }
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch {}
+    const r = panel.getBoundingClientRect();
+    if (saved) place(saved.x, saved.y, saved.w, saved.h);
+    else place(r.left, r.top, r.width, r.height);
+  };
+
+  const drag = (e, mode) => {
+    if (phoneLayout() || e.button > 0) return;
+    if (mode === 'move' && e.target.closest('button')) return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    const start = { x: e.clientX, y: e.clientY, r: panel.getBoundingClientRect() };
+    panel.classList.add(mode === 'move' ? 'dragging' : 'resizing');
+    el.setPointerCapture(e.pointerId);
+    const onMove = (ev) => {
+      const dx = ev.clientX - start.x, dy = ev.clientY - start.y;
+      const { left, top, width, height } = start.r;
+      if (mode === 'move') place(left + dx, top + dy, width, height);
+      else place(left, top, width + dx, height + dy);
+    };
+    const onUp = () => {
+      el.removeEventListener('pointermove', onMove);
+      el.removeEventListener('pointerup', onUp);
+      el.removeEventListener('pointercancel', onUp);
+      panel.classList.remove('dragging', 'resizing');
+      save();
+    };
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerup', onUp);
+    el.addEventListener('pointercancel', onUp);
+  };
+  grip.addEventListener('pointerdown', (e) => drag(e, 'move'));
+  corner.addEventListener('pointerdown', (e) => drag(e, 'size'));
+  grip.addEventListener('keydown', (e) => {
+    const step = e.shiftKey ? 48 : 16;
+    const d = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+    if (!d || phoneLayout()) return;
+    e.preventDefault();
+    const r = panel.getBoundingClientRect();
+    place(r.left + d[0], r.top + d[1], r.width, r.height);
+    save();
+  });
+  window.addEventListener('resize', () => { if (!panel.classList.contains('hidden')) restore(); });
+  return { restore };
+}
+
+const calcFloat = makeFloating($('calc-panel'), 320, 360);
+const refFloat = makeFloating($('ref-panel'), 260, 220);
+
+function openRef(open) {
+  $('ref-panel').classList.toggle('hidden', !open);
+  $('btn-ref').classList.toggle('on', open);
+  if (open) refFloat.restore();
+}
+$('btn-ref').onclick = () => openRef($('ref-panel').classList.contains('hidden'));
+$('btn-ref-close').onclick = () => openRef(false);
 
 /* ================= Question tools: highlighter + calculator ================= */
 let highlightOn = false;
@@ -959,6 +1169,8 @@ async function loadDesmos() {
       $('calc-fallback').classList.add('hidden');
       $('calc-note').classList.add('hidden');
       desmos.calc.resize();
+      // redraw when the student drags the panel's corner
+      if (window.ResizeObserver) new ResizeObserver(() => desmos.calc.resize()).observe($('desmos-mount'));
     } catch (e) {
       useFallbackCalc('Desmos failed to start; using the built-in calculator.');
     }
@@ -974,6 +1186,7 @@ function openCalc(open) {
   $('calc-panel').classList.toggle('hidden', !open);
   $('btn-calc').classList.toggle('on', open);
   if (!open) return;
+  calcFloat.restore();
   if (desmos.state === 'idle') loadDesmos();
   else if (desmos.state === 'ready') desmos.calc.resize();
   else if (desmos.state === 'failed') { $('calc-input').focus(); drawGraph(); }
@@ -1084,6 +1297,8 @@ function onReveal(data) {
   });
 
   $('match-actions').classList.add('hidden');
+  $('reveal-actions').classList.remove('hidden');
+  document.querySelectorAll('#choice-grid .xo').forEach((b) => (b.disabled = true));
   const card = $('reveal-card');
   card.classList.remove('hidden');
   const title = $('reveal-title');
@@ -1184,8 +1399,9 @@ function onGameOver(data) {
     const them = data.teamScores.find((t) => t.team !== myTeam);
     const won = us && them && us.score > them.score;
     const tie = us && them && us.score === them.score;
-    const delta = won ? 24 : tie ? 0 : -18;
-    profile.elo = Math.max(100, profile.elo + delta);
+    const rivals = board.filter((p) => p.team && p.team !== myTeam);
+    const rivalElo = rivals.length ? rivals.reduce((t, p) => t + (p.elo || 1200), 0) / rivals.length : 1200;
+    const delta = applyElo(game.difficulty, rivalElo, won ? 1 : tie ? 0.5 : 0);
     if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
     $('result-hero').textContent = won ? 'Team victory' : tie ? 'Team tie' : 'Team defeat';
     sub = `Team ${myTeam} ${us ? us.score.toLocaleString() : 0} — ${them ? them.score.toLocaleString() : 0} Team ${them ? them.team : ''}`
@@ -1194,11 +1410,10 @@ function onGameOver(data) {
     const opp = board.find((p) => p.name === game.opponent) || { score: 0 };
     const won = (meRow.score || 0) > opp.score;
     const tie = (meRow.score || 0) === opp.score;
-    const delta = won ? 24 : tie ? 0 : -18;
-    profile.elo = Math.max(100, profile.elo + delta);
+    const delta = applyElo(game.difficulty, opp.elo, won ? 1 : tie ? 0.5 : 0);
     if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
     $('result-hero').textContent = won ? 'Victory' : tie ? 'Tie game' : 'Defeat';
-    sub += ` · ${delta >= 0 ? '+' : ''}${delta} ELO → ${profile.elo.toLocaleString()}`;
+    sub += ` · ${delta >= 0 ? '+' : ''}${delta} ${DIFF_LABEL[game.difficulty] || ''} ELO → ${myElo(game.difficulty).toLocaleString()}`;
   } else if (game.label === 'Practice test') {
     const acc = data.total ? (meRow.correct || 0) / data.total : 0;
     const est = Math.round((400 + acc * 1200) / 10) * 10;
@@ -1384,7 +1599,7 @@ async function renderRush() {
 
 /* ================= Play ================= */
 async function renderPlay() {
-  $('elo-pill').textContent = `${profile.elo.toLocaleString()} ELO`;
+  paintEloPill();
   const wins = profile.wins % 10;
   $('ladder-fill').style.width = `${wins * 10}%`;
   $('ladder-lbl').textContent = `${wins} / 10 wins`;
@@ -1404,6 +1619,16 @@ document.querySelectorAll('#duel-modes .duel-mode').forEach((b) => {
   b.onclick = () => {
     duelSection = b.dataset.sec;
     document.querySelectorAll('#duel-modes .duel-mode').forEach((x) => x.classList.toggle('sel', x === b));
+  };
+});
+function paintEloPill() {
+  $('elo-pill').textContent = `${DIFF_LABEL[duelDifficulty]} · ${myElo().toLocaleString()} ELO`;
+}
+document.querySelectorAll('#duel-diffs .duel-mode').forEach((b) => {
+  b.onclick = () => {
+    duelDifficulty = b.dataset.diff;
+    document.querySelectorAll('#duel-diffs .duel-mode').forEach((x) => x.classList.toggle('sel', x === b));
+    paintEloPill();
   };
 });
 $('btn-find-match').onclick = findMatch;
