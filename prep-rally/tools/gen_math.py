@@ -12,6 +12,7 @@ and wrong choices come from the specific mistakes students make.
 """
 
 import json
+import math
 import os
 import random
 from fractions import Fraction as F
@@ -171,7 +172,7 @@ def tpl_A1():
             spr(ALG, "Linear equations in one variable", "medium", stem, x0, why)
         else:
             wrong = distinct(x0, [F(e + c - b, a - d), F(e + c + a * b, a - d), -x0, F(e - a * b - c, a - d)])
-            mcq(ALG, "Linear equations in one variable", "easy" if abs(b) < 4 else "medium", stem, x0, wrong,
+            mcq(ALG, "Linear equations in one variable", "medium", stem, x0, wrong,
                 why + " A common slip is multiplying only the x by " + str(a) + " and not the " + num(b) + ".")
         count += 1
 
@@ -337,14 +338,14 @@ def tpl_A8():
             stem = f"{a}x + {b}y = {c}\n{a * k}x + ky = {d}\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?"
             why = (f"The system has no solution when the lines are parallel but different. Multiplying the first equation by {k} gives "
                    f"{a * k}x + {b * k}y = {c * k}. The x-terms match, so k = {b * k} makes the y-terms match too, and {c * k} ≠ {d}, so the lines never meet.")
-            mcq(ALG, "Systems with no solution", "hard", stem, b * k, distinct(b * k, [b, d, -b * k]), why)
+            mcq(ALG, "Systems with no solution", "medium", stem, b * k, distinct(b * k, [b, d, -b * k]), why)
         else:
             stem = f"{a}x + {b}y = {c}\n{a * k}x + {b * k}y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?"
             why = f"Infinitely many solutions means the two equations describe the same line. The second equation is the first multiplied by {k}, so m = {c}·{k} = {c * k}."
             if i % 4 == 1:
-                spr(ALG, "Systems with infinitely many solutions", "hard", stem, c * k, why)
+                spr(ALG, "Systems with infinitely many solutions", "medium", stem, c * k, why)
             else:
-                mcq(ALG, "Systems with infinitely many solutions", "hard", stem, c * k, distinct(c * k, [c, c + k, c * k + k]), why)
+                mcq(ALG, "Systems with infinitely many solutions", "medium", stem, c * k, distinct(c * k, [c, c + k, c * k + k]), why)
 
 
 # A9: inequality word problems (budget)
@@ -415,7 +416,7 @@ def tpl_B1():
         if i % 3 == 0:
             spr(ADV, "Quadratic equations", "medium", stem, val, why)
         else:
-            mcq(ADV, "Quadratic equations", "medium" if a == 1 else "hard", stem, val,
+            mcq(ADV, "Quadratic equations", "medium", stem, val,
                 distinct(val, [-val, r1 + r2 if kind != 1 else -(r1 + r2), r1 * r2 if kind != 2 else r1 + r2, F(b, a)]), why)
 
 
@@ -433,9 +434,9 @@ def tpl_B2():
             stem = f"The function f is defined by f(x) = {expr}. What is the {what} value of f(x)?"
             why = f"The vertex's x-coordinate is −b/(2a) = {num(-b)}/{num(2 * a)} = {num(h)}. Then f({num(h)}) = {num(k)}, the {what} value because the parabola opens {'up' if a > 0 else 'down'}."
             if i % 4 == 0:
-                spr(ADV, "Vertex of a parabola", "hard", stem, k, why)
+                spr(ADV, "Vertex of a parabola", "medium", stem, k, why)
             else:
-                mcq(ADV, "Vertex of a parabola", "hard", stem, k, distinct(k, [h, c, -k, F(-b, 2 * a) if a != 1 else h + k]), why + f" {num(h)} is where it happens, not the value itself.")
+                mcq(ADV, "Vertex of a parabola", "medium", stem, k, distinct(k, [h, c, -k, F(-b, 2 * a) if a != 1 else h + k]), why + f" {num(h)} is where it happens, not the value itself.")
         else:
             stem = f"The graph of y = {'' if a == 1 else ('−' if a == -1 else num(a))}(x {signed(-h)})² {signed(k)} is a parabola in the xy-plane. What are the coordinates of its vertex?"
             right = f"({num(h)}, {num(k)})"
@@ -594,9 +595,9 @@ def tpl_B8():
             else:
                 stem = f"For the polynomial p, p({num(k)}) = {num(v)}. What is the remainder when p(x) is divided by x {signed(-k)}?"
                 why = f"The remainder when p(x) is divided by x − a is p(a). Here a = {num(k)}, so the remainder is {num(v)}."
-                mcq(ADV, "Polynomial factors and remainders", "hard", stem, v, distinct(v, [k, -v, 0, -k]), why)
+                mcq(ADV, "Polynomial factors and remainders", "medium", stem, v, distinct(v, [k, -v, 0, -k]), why)
                 continue
-            mcq(ADV, "Polynomial factors and remainders", "hard", stem, right, wrong, why, numeric=False)
+            mcq(ADV, "Polynomial factors and remainders", "medium", stem, right, wrong, why, numeric=False)
 
 
 # B9: line meets parabola
@@ -609,9 +610,9 @@ def tpl_B9():
                 f"The graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?")
         why = f"Set the right sides equal: {poly((1, 'x²'), (b - m, 'x'), (c - n, ''))} = 0, which factors as (x {signed(-r1)})(x {signed(-r2)}) = 0. The x-coordinates are {num(r1)} and {num(r2)}, with sum {num(r1 + r2)}."
         if i % 2 == 0:
-            spr(ADV, "Nonlinear systems", "hard", stem, r1 + r2, why)
+            spr(ADV, "Nonlinear systems", "medium", stem, r1 + r2, why)
         else:
-            mcq(ADV, "Nonlinear systems", "hard", stem, r1 + r2, distinct(r1 + r2, [-b, -(r1 + r2), r1 * r2]), why)
+            mcq(ADV, "Nonlinear systems", "medium", stem, r1 + r2, distinct(r1 + r2, [-b, -(r1 + r2), r1 * r2]), why)
 
 
 # ============================================================ PROBLEM SOLVING
@@ -655,7 +656,7 @@ def tpl_C1():
         v = F(n * 100, 100 + p)
         stem = f"After a {p}% increase, the price of a ticket is ${n}. What was the price, in dollars, before the increase?"
         why = f"The new price is {dec(F(100 + p, 100))} times the original, so the original is {n} ÷ {dec(F(100 + p, 100))} = {num(v)}."
-        mcq(PSD, "Percent increase (reverse)", "hard", stem, v, distinct(v, [F(n * (100 - p), 100), n - p, F(n * p, 100)]),
+        mcq(PSD, "Percent increase (reverse)", "medium", stem, v, distinct(v, [F(n * (100 - p), 100), n - p, F(n * p, 100)]),
             why + f" Taking {p}% off the new price undoes the wrong amount, because the {p}% was of the smaller original price.")
     for a, b in [(20, 25), (10, 30), (25, 20), (50, 20)]:
         v = F(100 + a, 100) * F(100 - b, 100)
@@ -663,9 +664,9 @@ def tpl_C1():
         stem = f"A store raised the price of a lamp by {a}% and later lowered the new price by {b}%. The final price is what percent of the original price?"
         why = f"Multiply the factors: {dec(F(100 + a, 100))} × {dec(F(100 - b, 100))} = {dec(v, 3)}, so the final price is {dec(v * 100)}% of the original."
         if a == 25:
-            spr(PSD, "Successive percent changes", "hard", stem, v * 100, why)
+            spr(PSD, "Successive percent changes", "medium", stem, v * 100, why)
         else:
-            mcq(PSD, "Successive percent changes", "hard", stem, v * 100, distinct(v * 100, [100 + a - b, 100, 100 - a + b]), why + " Adding and subtracting the percents ignores that the second change applies to a different amount.")
+            mcq(PSD, "Successive percent changes", "medium", stem, v * 100, distinct(v * 100, [100 + a - b, 100, 100 - a + b]), why + " Adding and subtracting the percents ignores that the second change applies to a different amount.")
 
 
 # C2: ratios, proportions, and rates
@@ -770,9 +771,9 @@ def tpl_C5():
                 + f" If one of the {pool} is chosen at random, what is the probability that {event}?")
         why = f"Only the {a + b} {pool} count ({a} + {b}). Of those, {a} are {g1n}, so the probability is {a}/{a + b} = {num(v)}."
         if i % 3 == 0:
-            spr(PSD, "Conditional probability", "hard", stem, v, why)
+            spr(PSD, "Conditional probability", "medium", stem, v, why)
         else:
-            mcq(PSD, "Conditional probability", "hard", stem, v, distinct(v, [F(a, g1), F(a, g1 + g2), F(b, a + b)]),
+            mcq(PSD, "Conditional probability", "medium", stem, v, distinct(v, [F(a, g1), F(a, g1 + g2), F(b, a + b)]),
                 why + f" {num(F(a, g1))} answers a different question: what fraction of the {g1n} are among the {pool}.")
 
 
@@ -830,7 +831,7 @@ def tpl_D2():
         stem = (f"In right triangle {nm}, angle {R} is the right angle, {P}{R} = {b}, {Q}{R} = {a}, and {P}{Q} = {c}. What is the value of {ratio} {P}?")
         why = (f"For angle {P}, the opposite side is {Q}{R} = {a}, the adjacent side is {P}{R} = {b}, and the hypotenuse is {P}{Q} = {c}. "
                f"{ratio} {P} = {num(val)}.")
-        mcq(GEO, "Right triangle trigonometry", "medium", stem, val, distinct(val, [F(a, c), F(b, c), F(a, b), F(b, a), F(c, a)]), why)
+        mcq(GEO, "Right triangle trigonometry", "easy", stem, val, distinct(val, [F(a, c), F(b, c), F(a, b), F(b, a), F(c, a)]), why)
 
 
 # D3: circles in the xy-plane
@@ -951,8 +952,212 @@ def tpl_D8():
             numeric=False)
 
 
+# ===================================================================== HARD
+# These carry the "hard" label: each needs a parameter, a trap to reject, a
+# structural insight, or several ideas chained together, as SAT hard items do.
+
+def hard_H1():
+    """A line and a parabola meet at exactly one point: solve for the constant."""
+    for i in range(6):
+        b, m = rng.choice([-8, -6, -4, -2, 2, 4, 6, 8]), rng.choice([-3, -1, 1, 2, 3])
+        if (b - m) % 2:
+            m += 1
+        if b == m:
+            continue
+        n = rng.randint(-9, 9)
+        k = n + F((b - m) ** 2, 4)
+        stem = (f"In the xy-plane, the graph of y = {poly((1, 'x²'), (b, 'x'))} + k, where k is a constant, and the graph of "
+                f"y = {poly((m, 'x'), (n, ''))} intersect at exactly one point. What is the value of k?")
+        why = (f"Setting the equations equal gives x² {signed(b - m)}x + (k {signed(-n)}) = 0. One intersection means the discriminant is 0: "
+               f"({num(b - m)})² − 4(k {signed(-n)}) = 0, so k {signed(-n)} = {num(F((b - m) ** 2, 4))} and k = {num(k)}.")
+        if i % 2 == 0:
+            spr(ADV, "Nonlinear systems", "hard", stem, k, why)
+        else:
+            mcq(ADV, "Nonlinear systems", "hard", stem, k, distinct(k, [n, F((b - m) ** 2, 4), n - F((b - m) ** 2, 4), n + (b - m) ** 2]), why)
+
+
+def hard_H2():
+    """Radical equation with an extraneous solution."""
+    made = 0
+    while made < 5:
+        good, bad = rng.randint(2, 14), rng.randint(-6, 8)
+        if (good + bad - 1) % 2 or good == bad:
+            continue
+        b = (good + bad - 1) // 2
+        a = b * b - good * bad
+        if not (bad < b <= good) or a == 0 or good + a < 0 or bad + a < 0:
+            continue
+        stem = f"What is the solution set of the equation √(x {signed(a)}) = x {signed(-b)}?"
+        if stem in stems:
+            continue
+        why = (f"Squaring both sides gives x {signed(a)} = x² − {2 * b}x + {b * b} if you expand (x {signed(-b)})², so x² − {2 * b + 1}x {signed(b * b - a)} = 0, "
+               f"which factors as (x {signed(-good)})(x {signed(-bad)}) = 0. Check both: x = {num(good)} makes the right side {num(good - b)}, which matches √{num(good + a)}; "
+               f"x = {num(bad)} makes the right side {num(bad - b)}, a negative number, but a square root can't be negative. So only {num(good)} works.")
+        mcq(ADV, "Radical equations", "hard", stem, f"{{{num(good)}}}",
+            [f"{{{num(bad)}}}", f"{{{num(bad)}, {num(good)}}}" if bad < good else f"{{{num(good)}, {num(bad)}}}", "There is no solution."],
+            why, numeric=False)
+        made += 1
+
+
+def hard_H3():
+    """Rewrite an exponential model for a different time unit."""
+    ROOTS = [(F(11, 10), F(121, 100)), (F(6, 5), F(36, 25)), (F(13, 10), F(169, 100)), (F(9, 10), F(81, 100)), (F(4, 5), F(16, 25))]
+    for i in range(5):
+        r, b = rng.choice(ROOTS)
+        A = rng.choice([500, 800, 1200, 2000, 3500])
+        what = rng.choice(["the value, in dollars, of an investment", "the number of fish in a pond", "the number of users of an app"])
+        stem = (f"The function V(t) = {A:,}({dec(b)})ᵗ gives {what} t years after it was first measured. "
+                f"Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?")
+        right = f"V = {A:,}({dec(r)})ʰ"
+        wrong = [f"V = {A:,}({dec(b)})^(2h)", f"V = {A:,}({dec(r)})^(h/2)", f"V = {A:,}({dec(b / 2, 4)})ʰ"]
+        why = (f"h half-years is t = h/2 years, so V = {A:,}({dec(b)})^(h/2). Since {dec(b)} = ({dec(r)})², "
+               f"({dec(b)})^(h/2) = ({dec(r)})ʰ. So V = {A:,}({dec(r)})ʰ.")
+        mcq(ADV, "Exponential functions", "hard", stem, right, wrong, why, numeric=False)
+
+
+def hard_H4():
+    """Equal percent increase then decrease with a known net change."""
+    for d in rng.sample([1, 4, 9, 16, 25, 36, 49], 4):
+        p = 10 * math.isqrt(d)
+        stem = (f"The price of a bicycle was increased by p% and later the new price was decreased by p%. "
+                f"The final price was {d}% less than the original price. What is the value of p?")
+        why = (f"The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A {d}% net decrease means "
+               f"1 − (p/100)² = {dec(F(100 - d, 100))}, so (p/100)² = {dec(F(d, 100))} and p/100 = {dec(F(p, 100))}. So p = {p}.")
+        if d % 2:
+            spr(PSD, "Successive percent changes", "hard", stem, p, why)
+        else:
+            mcq(PSD, "Successive percent changes", "hard", stem, p, distinct(p, [d, F(d, 2), 2 * d]), why + f" Choosing {d} treats the net change as the size of each step.")
+
+
+def hard_H5():
+    """Combined mean of two groups: find a group size."""
+    made = 0
+    while made < 5:
+        n1, a = rng.choice([12, 15, 18, 20, 24, 30]), rng.randint(70, 84)
+        M = a + rng.randint(2, 6)
+        b = M + rng.randint(2, 8)
+        n2 = F(n1 * (M - a), b - M)
+        if n2.denominator != 1 or not 4 <= n2 <= 60:
+            continue
+        stem = (f"Class A has {n1} students, and their mean test score is {a}. The mean score of the students in class B is {b}. "
+                f"The mean score of all the students in both classes combined is {M}. How many students are in class B?")
+        if stem in stems:
+            continue
+        why = (f"Total points: {n1}({a}) + {b}n = {M}({n1} + n). So {n1 * a} + {b}n = {n1 * M} + {M}n, which gives "
+               f"{b - M}n = {n1 * (M - a)} and n = {num(n2)}.")
+        if made % 2 == 0:
+            spr(PSD, "Weighted averages", "hard", stem, n2, why)
+        else:
+            mcq(PSD, "Weighted averages", "hard", stem, n2, distinct(n2, [n1, F(n1 * (b - M), M - a), n2 + n1]), why)
+        made += 1
+
+
+def hard_H6():
+    """Exponential equation with different bases: 9^(x+p) = 27^(x-q)."""
+    for i in range(5):
+        r = rng.choice([2, 3, 5])
+        sq, cu = r * r, r ** 3
+        p_, q_ = rng.randint(1, 6), rng.randint(1, 6)
+        x = 2 * p_ + 3 * q_
+        stem = f"What value of x satisfies the equation {sq}^(x + {p_}) = {cu}^(x − {q_})?"
+        why = (f"Write both sides as powers of {r}: {r}^(2(x + {p_})) = {r}^(3(x − {q_})). Set the exponents equal: "
+               f"2x + {2 * p_} = 3x − {3 * q_}, so x = {x}.")
+        if i % 2 == 0:
+            spr(ADV, "Exponential equations", "hard", stem, x, why)
+        else:
+            mcq(ADV, "Exponential equations", "hard", stem, x, distinct(x, [p_ + q_, 3 * p_ + 2 * q_, x - 2 * q_]), why)
+
+
+def hard_H7():
+    """Constant that makes x - r a factor of a cubic."""
+    made = 0
+    while made < 5:
+        r = rng.choice([-3, -2, -1, 1, 2, 3])
+        c, d = rng.randint(-12, 12), rng.randint(-20, 20)
+        k = F(-(r ** 3 + c * r + d), r * r)
+        if k.denominator != 1 or k == 0 or c == 0 or d == 0:
+            continue
+        tail = poly((c, "x"), (d, ""))
+        tail = f"− {tail[1:]}" if tail.startswith("−") else f"+ {tail}"
+        stem = f"In the polynomial p(x) = x³ + kx² {tail}, k is a constant. If x {signed(-r)} is a factor of p(x), what is the value of k?"
+        if stem in stems:
+            continue
+        why = (f"If x {signed(-r)} is a factor, then p({num(r)}) = 0: ({num(r)})³ + k({num(r)})² {signed(c)}({num(r)}) {signed(d)} = 0, "
+               f"so {r ** 3} + {r * r}k {signed(c * r)} {signed(d)} = 0 and k = {num(k)}.")
+        if made % 2 == 0:
+            spr(ADV, "Polynomial factors and remainders", "hard", stem, k, why)
+        else:
+            mcq(ADV, "Polynomial factors and remainders", "hard", stem, k, distinct(k, [-k, F(r ** 3 + c * r + d, r), d]), why)
+        made += 1
+
+
+def hard_H8():
+    """(x + p)(x + q) with a known sum and difference of p and q."""
+    i = 0
+    for _ in range(200):
+        if i >= 5:
+            break
+        p_, q_ = rng.sample(range(-9, 13), 2)
+        S, D = p_ + q_, p_ - q_
+        if p_ <= q_ or 0 in (p_, q_) or abs(S) < 3 or D < 2:
+            continue
+        stem = (f"If (x + p)(x + q) = {poly((1, 'x²'), (S, 'x'))} + k for all values of x, where p, q, and k are constants and p − q = {D}, "
+                f"what is the value of k?")
+        why = (f"Expanding gives x² + (p + q)x + pq, so p + q = {S} and k = pq. With p − q = {D}, adding the equations gives p = {p_}, "
+               f"so q = {q_} and k = ({num(p_)})({num(q_)}) = {num(p_ * q_)}.")
+        if stem in stems:
+            continue
+        if i % 2 == 0:
+            spr(ADV, "Equivalent expressions", "hard", stem, p_ * q_, why)
+        else:
+            mcq(ADV, "Equivalent expressions", "hard", stem, p_ * q_, distinct(p_ * q_, [S * D, S + D, F(S * S - D * D, 2)]), why)
+        i += 1
+
+
+def hard_H9():
+    """Right triangle: from tan of one angle to cos of the other."""
+    for (a, b, c) in rng.sample([(3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25), (20, 21, 29), (9, 40, 41)], 4):
+        stem = f"In right triangle ABC, angle C is the right angle and tan A = {a}/{b}. What is the value of cos B?"
+        why = (f"tan A = {a}/{b} means the side opposite A is {a}k and the side adjacent to A is {b}k, so the hypotenuse is {c}k. "
+               f"Angles A and B are complementary, so cos B = sin A = {a}/{c}.")
+        mcq(GEO, "Right triangle trigonometry", "hard", stem, F(a, c), distinct(F(a, c), [F(b, c), F(a, b), F(b, a)]), why)
+
+
+def hard_H10():
+    """A horizontal line tangent to a circle."""
+    for i in range(4):
+        h, v, r = rng.choice([v for v in range(-6, 7) if v]), rng.choice([v for v in range(-6, 7) if v]), rng.choice([2, 3, 4, 5, 6])
+        if abs(v) == r or abs(h) == r or v + r == h + r:
+            continue
+        stem = (f"The graph of (x {signed(-h)})² + (y {signed(-v)})² = {r * r} in the xy-plane is a circle. "
+                f"The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?")
+        why = (f"The circle has center ({num(h)}, {num(v)}) and radius {r}. A horizontal line touches it at exactly one point at the top or bottom, "
+               f"y = {num(v)} ± {r}, so k could be {num(v + r)} or {num(v - r)}.")
+        mcq(GEO, "Circle equations", "hard", stem, v + r, distinct(v + r, [v, r * r, h + r, -v + r]), why)
+
+
+def hard_H11():
+    """Linear function described by a difference."""
+    for i in range(5):
+        step, rise = rng.choice([2, 3, 4, 5]), rng.choice([-12, -10, -8, 6, 8, 9, 12, 15])
+        slope = F(rise, step)
+        f0, n = rng.randint(-10, 10), rng.choice([6, 8, 10, 12])
+        val = f0 + slope * n
+        if val.denominator != 1:
+            continue
+        stem = f"For the linear function f, f(x + {step}) − f(x) = {num(rise)} for all values of x, and f(0) = {num(f0)}. What is the value of f({n})?"
+        why = (f"Increasing x by {step} changes f by {num(rise)}, so the slope is {num(rise)}/{step} = {num(slope)}. "
+               f"Then f({n}) = {num(f0)} + {num(slope)}({n}) = {num(val)}.")
+        if i % 2 == 0:
+            spr(ALG, "Linear functions", "hard", stem, val, why)
+        else:
+            mcq(ALG, "Linear functions", "hard", stem, val, distinct(val, [f0 + rise * n, rise * n, f0 + F(rise * n, step) + step]), why)
+
+
 # ------------------------------------------------------------------- runners
 TEMPLATES = {name[4:]: fn for name, fn in list(globals().items()) if name.startswith("tpl_")}
+HARD = {name[5:]: fn for name, fn in list(globals().items()) if name.startswith("hard_")}
+ALL_TEMPLATES = {**TEMPLATES, **HARD}
 SEED = 20260925
 PASSES = 4   # each pass redraws every template's numbers; pass 1 is the original set
 
@@ -968,6 +1173,13 @@ def build():
         for name, fn in TEMPLATES.items():
             CURRENT[0] = name
             fn()
+    # hard templates run after every regular pass, so earlier ids never move
+    for p in range(PASSES):
+        PASS[0] = p + 1
+        rng = random.Random(SEED * 3 + p * 104729)
+        for name, fn in HARD.items():
+            CURRENT[0] = name
+            fn()
     return list(questions)
 
 
@@ -975,7 +1187,7 @@ def variants(tpl, skill=None, n=5, seed=None, avoid=()):
     """Fresh questions from one template, for "More like this". Nothing is
     stored: the server keeps them in memory for the session that asks."""
     global rng
-    if tpl not in TEMPLATES:
+    if tpl not in ALL_TEMPLATES:
         return []
     seed = random.randrange(1 << 30) if seed is None else seed
     found = []
@@ -985,7 +1197,7 @@ def variants(tpl, skill=None, n=5, seed=None, avoid=()):
         PASS[0] = 1 + attempt
         rng = random.Random(seed + attempt)
         CURRENT[0] = tpl
-        TEMPLATES[tpl]()
+        ALL_TEMPLATES[tpl]()
         for q in questions:
             if (skill is None or q["skill"] == skill) and q["question"] not in {f["question"] for f in found}:
                 found.append(q)

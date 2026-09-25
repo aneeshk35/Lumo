@@ -68,7 +68,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Systems with infinitely many solutions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The system of equations 6x − 9y = 12 and ax − 6y = 8 has infinitely many solutions. What is the value of a?",
     "choices": [
       "2",
@@ -84,7 +84,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Linear inequalities in context",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "Aisha has at most $60 to spend on notebooks that cost $4 each and pens that cost $2 each. If she buys exactly 8 notebooks, which inequality gives all possible numbers of pens p she can buy?",
     "choices": [
       "2p + 32 ≤ 60",
@@ -164,7 +164,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Completing the square",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "If x² + 10x + c = (x + 5)² − 4 for all values of x, what is the value of c?",
     "choices": [
       "4",
@@ -180,7 +180,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Vertex of a parabola",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In the xy-plane, what is the y-coordinate of the vertex of the parabola y = x² − 6x + 11?",
     "choices": [
       "−2",
@@ -244,7 +244,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Probability",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "A jar contains 5 red, 3 green, and 2 blue marbles. If one marble is selected at random, what is the probability that it is NOT blue?",
     "choices": [
       "1/5",
@@ -260,7 +260,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Percent increase (reverse)",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "After a 20% price increase, a jacket costs $54. What was the original price?",
     "choices": [
       "$43.20",
@@ -276,7 +276,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Weighted averages",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "Class A has 20 students with a mean score of 80, and Class B has 30 students with a mean score of 90. What is the mean score of all 50 students?",
     "choices": [
       "84",
@@ -324,7 +324,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Circles",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "What is the circumference of a circle with radius 6?",
     "choices": [
       "6π",
@@ -340,7 +340,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Right triangles",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "A right triangle has legs of length 9 and 12. What is the length of the hypotenuse?",
     "choices": [
       "13",
@@ -356,7 +356,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Right triangle trigonometry",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In right triangle ABC, angle C is the right angle and sin A = 3/5. What is the value of cos A?",
     "choices": [
       "3/5",
@@ -372,7 +372,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Complementary angle identities",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "If sin 40° = a, what is the value of cos 50°?",
     "choices": [
       "a",
@@ -456,7 +456,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Logical completion",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Deep-sea anglerfish live where sunlight never reaches, so vision is of limited use for finding prey. Yet anglerfish devote considerable energy to a bioluminescent lure. This apparent contradiction dissolves once one considers the visual abilities of the anglerfish's prey: many deep-sea animals are exquisitely sensitive to even faint points of light. Therefore, the lure is best understood not as a tool for the anglerfish to see, but as _______",
     "question": "Which choice most logically completes the text?",
     "choices": [
@@ -473,7 +473,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Quantitative evidence",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "A city tested two methods to boost bus ridership. On Route 1, it lowered fares by 25%; ridership rose 4%. On Route 2, it kept fares the same but doubled service frequency; ridership rose 19%. A transit analyst concludes that riders on these routes were more responsive to service frequency than to price.",
     "question": "Which statement best describes how the data support the analyst's conclusion?",
     "choices": [
@@ -558,7 +558,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Text structure and purpose",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "It is tempting to credit the printing press alone for the rapid spread of Renaissance ideas. Yet presses were expensive, and most Europeans could not read. The machine mattered, but it worked through a human network: itinerant booksellers, translators who rendered Latin texts into local languages, and readers who read aloud to the unlettered. Print accelerated the Renaissance the way a river accelerates trade — only where people had already built the ports.",
     "question": "Which choice best describes the overall structure of the text?",
     "choices": [
@@ -575,7 +575,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Cross-text connections",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Text 1: Some ecologists argue that reintroducing wolves to Yellowstone caused a \"trophic cascade\": wolves reduced elk browsing, which allowed willows and aspens to recover along streams.\n\nText 2: Other researchers caution that stream-side vegetation recovery has been patchy and slow. They note that beaver dams, rainfall changes, and elk hunting outside the park also affect willow growth, making it difficult to isolate the wolves' contribution.",
     "question": "Based on the texts, how would the researchers in Text 2 most likely respond to the ecologists' argument in Text 1?",
     "choices": [
@@ -660,7 +660,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Rhetorical synthesis",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "While researching a topic, a student has taken the following notes:\n• The Great Green Wall is an African-led project launched in 2007.\n• Its goal is to restore 100 million hectares of degraded land across the Sahel by 2030.\n• As of 2024, roughly 18 million hectares had been restored.\n• Restored land has created jobs in tree planting and sustainable farming.\n• Critics note that progress has been slower than planned.",
     "question": "The student wants to present a balanced assessment of the project's progress. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     "choices": [
@@ -762,7 +762,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Modifier placement",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "_______ the ancient mosaic required three years of painstaking restoration before it could be displayed.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -779,7 +779,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Punctuating appositives",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Katherine Johnson _______ calculated flight trajectories for NASA's earliest crewed missions.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -812,7 +812,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Absolute value equations",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "What is the sum of the solutions to the equation |2x − 5| = 11?",
     "choices": [
       "−3",
@@ -844,7 +844,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Minimum value of a quadratic",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "What is the minimum value of the function f(x) = x² − 4x + 7?",
     "choices": [
       "2",
@@ -876,7 +876,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Means of data sets",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The mean of 5 numbers is 12. When one number is removed, the mean of the remaining 4 numbers is 10. What number was removed?",
     "choices": [
       "2",
@@ -892,7 +892,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Volume",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "What is the volume of a right circular cylinder with radius 3 and height 5?",
     "choices": [
       "15π",
@@ -975,7 +975,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Text structure and purpose",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Coral reefs are often called the rainforests of the sea because of their extraordinary biodiversity. The comparison is apt in another way: like rainforests, reefs recycle scarce nutrients with remarkable efficiency. The waters surrounding many reefs are nutrient-poor, yet reef ecosystems flourish because corals, algae, and microbes pass nutrients among themselves in tight loops, losing almost nothing to the open ocean.",
     "question": "Which choice best describes the function of the final sentence in the text as a whole?",
     "choices": [
@@ -1009,7 +1009,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Rhetorical synthesis",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "While researching a topic, a student has taken the following notes:\n• Wangari Maathai founded the Green Belt Movement in Kenya in 1977.\n• The movement paid rural women to plant trees.\n• More than 50 million trees have been planted through the movement.\n• In 2004, Maathai became the first African woman to win the Nobel Peace Prize.",
     "question": "The student wants to emphasize the scale of the movement's environmental impact. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     "choices": [
@@ -1026,7 +1026,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Subject-verb agreement",
-    "difficulty": "easy",
+    "difficulty": "medium",
     "passage": "Neither of the two experiments _______ the researchers' original hypothesis.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -1043,7 +1043,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Punctuating nonessential elements",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The results of the clinical trial—which enrolled more than 4,000 patients across twelve countries_______surprised even the study's lead researchers.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -1140,7 +1140,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Parallel and perpendicular lines",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In the xy-plane, a line passes through the point (1, 4) and is parallel to the line y = −3x + 2. What is the y-intercept of this line?",
     "choices": [
       "−3",
@@ -1156,7 +1156,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Systems with no solution",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The system of equations 2x + ky = 5 and 6x + 9y = 11 has no solution. What is the value of k?",
     "choices": [
       "2",
@@ -1172,7 +1172,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Linear inequalities",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "If 3x − 7 > 2x + 5, what is the least integer value of x that satisfies the inequality?",
     "choices": [
       "11",
@@ -1268,7 +1268,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Quadratic functions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The function f is defined by f(x) = a(x − 3)² + 5, where a is a constant. If f(1) = 13, what is the value of a?",
     "choices": [
       "1",
@@ -1284,7 +1284,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Rational expressions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "For x ≠ 3, which expression is equivalent to (x² − 9) / (x − 3)?",
     "choices": [
       "x − 3",
@@ -1300,7 +1300,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Exponential decay",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A sample of a substance has a mass of 800 milligrams and loses half its mass every 6 years. What is the mass, in milligrams, of the sample after 18 years?",
     "choices": [
       "50",
@@ -1380,7 +1380,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Probability from a sample",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "In a survey of 200 people, 120 said they prefer brand A. If one person from the survey is selected at random, what is the probability that the person prefers brand A?",
     "choices": [
       "1/5",
@@ -1396,7 +1396,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Percent change",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The number of members of a club decreased from 250 to 200. What was the percent decrease?",
     "choices": [
       "20%",
@@ -1412,7 +1412,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Successive percent changes",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A store's revenue increased by 10% one year and then decreased by 10% the following year. Compared with the original revenue, the final revenue is",
     "choices": [
       "unchanged",
@@ -1428,7 +1428,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Spread of a data set",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "Data set X consists of the values 48, 49, 50, 51, 52. Data set Y consists of the values 10, 30, 50, 70, 90. Which statement about the two data sets is true?",
     "choices": [
       "X and Y have the same mean, and X has the smaller standard deviation",
@@ -1476,7 +1476,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Circles",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "What is the area of a circle with a radius of 5?",
     "choices": [
       "10π",
@@ -1508,7 +1508,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Volume",
-    "difficulty": "medium",
+    "difficulty": "easy",
     "question": "What is the volume of a rectangular prism with dimensions 3, 4, and 5?",
     "choices": [
       "12",
@@ -1524,7 +1524,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Arc length",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In a circle with radius 6, a central angle measures 60°. What is the length of the arc it intercepts?",
     "choices": [
       "π",
@@ -1540,7 +1540,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Circle equations",
-    "difficulty": "hard",
+    "difficulty": "easy",
     "question": "In the xy-plane, the equation (x − 2)² + (y + 3)² = 25 defines a circle. What is the radius of the circle?",
     "choices": [
       "5",
@@ -1556,7 +1556,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Right triangle trigonometry",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In a right triangle, angle A is an acute angle and tan A = 3/4. What is the value of sin A?",
     "choices": [
       "3/5",
@@ -1657,7 +1657,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Quantitative evidence",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "A library tested two ways to increase teen borrowing. At Branch A, it extended weekday hours by two hours; teen checkouts rose 6%. At Branch B, hours stayed the same but the library added a teen-curated display near the entrance; teen checkouts rose 22%. A librarian concludes that visibility of teen-relevant titles mattered more to these borrowers than additional hours.",
     "question": "Which statement best describes how the data support the librarian's conclusion?",
     "choices": [
@@ -1691,7 +1691,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Inferences",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "A manuscript long attributed to a single fifteenth-century scribe contains passages in two distinct hands. The differences are subtle, appearing mainly in the formation of certain letters. Scholars once explained the variation as the effect of aging on one writer's hand, but the two styles alternate section by section throughout the manuscript rather than shifting gradually from beginning to end.",
     "question": "Which choice most logically follows from the text?",
     "choices": [
@@ -1725,7 +1725,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Words in context",
-    "difficulty": "easy",
+    "difficulty": "medium",
     "passage": "Early maps of the region were largely _______: cartographers who had never visited filled the blank interior with rivers and mountains that did not exist.",
     "question": "Which choice completes the text with the most logical and precise word?",
     "choices": [
@@ -1810,7 +1810,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Words in context",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The committee praised the architect's plan for its _______ use of the site: rather than leveling the hillside, the design steps down the slope so that each floor opens onto the grade it meets.",
     "question": "Which choice completes the text with the most logical and precise word?",
     "choices": [
@@ -1912,7 +1912,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Rhetorical synthesis",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "While researching a topic, a student has taken the following notes:\n• Community solar programs let households subscribe to a shared solar array.\n• Subscribers receive credits on their electricity bills.\n• The programs serve renters and people whose roofs are unsuitable for panels.\n• Enrollment in some programs has been limited by long waiting lists.",
     "question": "The student wants to present a balanced assessment of community solar programs. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     "choices": [
@@ -1929,7 +1929,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Transitions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "For decades, textbooks described the tongue as divided into zones that each detect one taste. Careful experiments found taste receptors for every basic taste distributed across the entire tongue. _______, the familiar tongue map that generations of students copied into their notebooks described a structure that does not exist.",
     "question": "Which choice completes the text with the most logical transition?",
     "choices": [
@@ -1997,7 +1997,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Verb tense",
-    "difficulty": "easy",
+    "difficulty": "medium",
     "passage": "By the time the storm reached the coast last night, residents _______ the beach houses.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -2065,7 +2065,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Modifier placement",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "_______ the telescope captured images sharper than any produced from the ground.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -2099,7 +2099,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Punctuating supplementary elements",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The rover's cameras, which capture images in wavelengths invisible to the human eye _______ revealed mineral deposits beneath the surface dust.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -2148,7 +2148,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Linear equations with no solution",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In the equation (k − 2)x + 6 = 4x − 2k, k is a constant. For what value of k does the equation have no solution?",
     "choices": [
       "−3",
@@ -2180,7 +2180,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Linear functions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "For the linear function f, f(2) = 11 and f(6) = 23. What is the value of f(0)?",
     "choices": [
       "3",
@@ -2228,7 +2228,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Systems with no solution",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In the system 3x + ky = 7 and 6x + 10y = 12, k is a constant. For what value of k does the system have no solution?",
     "choices": [
       "2",
@@ -2244,7 +2244,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Linear systems in context",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A school play sold 150 tickets for a total of $1,400. Adult tickets cost $12 and student tickets cost $7. How many student tickets were sold?",
     "choices": [
       "70",
@@ -2292,7 +2292,7 @@
     "section": "math",
     "domain": "Algebra",
     "skill": "Linear equations in two variables",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The graph of 4x + 3y = 60 in the xy-plane forms a triangle with the x-axis and the y-axis. What is the area of the triangle?",
     "choices": [
       "35",
@@ -2324,7 +2324,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Quadratic functions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The function f is defined by f(x) = (x − 3)(x + 7). What is the minimum value of f(x)?",
     "choices": [
       "−25",
@@ -2340,7 +2340,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Quadratic functions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The graph of y = x² − 8x + k in the xy-plane has exactly one x-intercept. What is the value of k?",
     "choices": [
       "4",
@@ -2388,7 +2388,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Vertex of a parabola",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The graph of f(x) = 3x² − 12x + c in the xy-plane has its vertex at (h, 5). What is the value of c?",
     "choices": [
       "5",
@@ -2404,7 +2404,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Nonlinear systems",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The system y = x² − 4x + 1 and y = 2x − 8 has exactly one solution (a, b). What is the value of a + b?",
     "choices": [
       "−5",
@@ -2420,7 +2420,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Discriminant",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The equation x² + bx + 36 = 0, where b is a constant, has no real solutions. Which of the following could be the value of b?",
     "choices": [
       "11",
@@ -2500,7 +2500,7 @@
     "section": "math",
     "domain": "Advanced Math",
     "skill": "Equivalent expressions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "Which expression is equivalent to (3x − 2)² − (3x + 2)²?",
     "choices": [
       "−24x",
@@ -2612,7 +2612,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Percentages",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "The number x is 150% of y, and y is 40% of z. The number x is what percent of z?",
     "choices": [
       "40%",
@@ -2660,7 +2660,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Density",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A solid metal cube has edges 5 centimeters long and a density of 7.2 grams per cubic centimeter. What is the mass of the cube, in kilograms?",
     "choices": [
       "0.036",
@@ -2692,7 +2692,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Margin of error",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A researcher surveyed a random sample of 200 residents and got a margin of error of 6%. Which change to the next survey would most likely produce a smaller margin of error?",
     "choices": [
       "Surveying a random sample of 800 residents",
@@ -2708,7 +2708,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Mean of a data set",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A data set of 5 numbers has a mean of 12. When the value 20 is removed, what is the mean of the remaining 4 numbers?",
     "choices": [
       "8",
@@ -2724,7 +2724,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Standard deviation",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A data set of test scores has a mean of 30, and the scores aren't all equal. A new score of exactly 30 is added. Which statement must be true?",
     "choices": [
       "The mean and the standard deviation both stay the same.",
@@ -2756,7 +2756,7 @@
     "section": "math",
     "domain": "Problem-Solving and Data Analysis",
     "skill": "Conditional probability",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In a survey of 200 students, 120 play a sport. Of the students who play a sport, 45 also play an instrument. Of the students who don't play a sport, 35 play an instrument. If a student who plays an instrument is chosen at random, what is the probability that the student plays a sport?",
     "choices": [
       "9/40",
@@ -2820,7 +2820,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Arc length",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A circle has a radius of 9 centimeters. An arc of the circle has a length of 4π centimeters. What is the measure, in degrees, of the arc's central angle?",
     "choices": [
       "40",
@@ -2948,7 +2948,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Volume",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A sphere has a volume of 288π cubic centimeters. What is the surface area of the sphere, in square centimeters?",
     "choices": [
       "48π",
@@ -2996,7 +2996,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Complementary angle identities",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "Two acute angles measure (2k + 10)° and (3k − 5)°. If sin((2k + 10)°) = cos((3k − 5)°), what is the value of k?",
     "choices": [
       "13",
@@ -3012,7 +3012,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Special right triangles",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "In a 30°-60°-90° triangle, the longer leg has length 9. What is the perimeter of the triangle?",
     "choices": [
       "27",
@@ -3044,7 +3044,7 @@
     "section": "math",
     "domain": "Geometry and Trigonometry",
     "skill": "Exterior angles",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "An exterior angle of a triangle measures 130°. The two remote interior angles have measures in the ratio 2:3. What is the measure of the largest interior angle of the triangle?",
     "choices": [
       "50°",
@@ -3108,7 +3108,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Command of evidence",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "A student is writing about a short story in which the narrator, Teodora, presents her research at a science fair. The student claims that Teodora hides her nervousness behind an appearance of calm confidence.",
     "question": "Which quotation from the story would most effectively illustrate the student's claim?",
     "choices": [
@@ -3142,7 +3142,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Command of evidence",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Some historians argue that inexpensive printed almanacs spread widely in the eighteenth century mainly because farmers wanted their weather predictions. Other historians contend that readers valued almanacs chiefly for their calendars of market days and court sessions.",
     "question": "Which finding, if true, would most directly weaken the first group's argument?",
     "choices": [
@@ -3159,7 +3159,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Quantitative evidence",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "A team recorded how many years it took saplings of three tree species to reach 2 meters in height under full sun and under partial shade. Oak: 9 years in full sun, 14 years in shade. Maple: 7 years in full sun, 8 years in shade. Pine: 6 years in full sun, 13 years in shade. The team concluded that one species' growth was much less affected by shade than the others'.",
     "question": "Which choice best uses data from the text to support the team's conclusion?",
     "choices": [
@@ -3176,7 +3176,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Quantitative evidence",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "A city surveyed residents about how they commute to work. In 2015, 62% drove alone, 21% used public transit, and 9% biked. In 2025, 51% drove alone, 24% used public transit, and 17% biked. A city planner claims that the drop in driving alone was matched mostly by a rise in biking rather than in transit use.",
     "question": "Which choice best uses data from the text to support the planner's claim?",
     "choices": [
@@ -3210,7 +3210,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Inferences",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Young male sparrows learn their songs by imitating adult males. Researcher Lionel Okafor raised two groups of young sparrows in the lab. One group heard recordings of adult songs during their first 60 days of life; the other group heard the same recordings only after day 60. The first group developed typical adult songs, while the second group's songs stayed simple and irregular even after months of listening. Okafor's results suggest that ______",
     "question": "Which choice most logically completes the text?",
     "choices": [
@@ -3261,7 +3261,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Central ideas and details",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "For decades, glowing mushrooms puzzled biologists: why would a fungus spend energy making light? One proposal held that the glow was simply a by-product of the fungus's metabolism and served no purpose. But when researchers placed glowing and non-glowing artificial mushrooms on a forest floor, the glowing ones attracted far more insects, which can carry fungal spores to new places. The finding suggests the glow may help the fungus spread.",
     "question": "Which choice best states the main idea of the text?",
     "choices": [
@@ -3278,7 +3278,7 @@
     "section": "rw",
     "domain": "Information and Ideas",
     "skill": "Central ideas and details",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The following text is from a short story.\n\nWalter had lived above the bakery for thirty years, and in all that time he had never once bought bread there. Each morning the smell rose through his floorboards, and each morning he told himself that tomorrow he would go down and introduce himself. Now the shop windows were papered over beneath a sign announcing its closing, and Walter stood on the sidewalk holding the coins he had carried in his pocket all week.",
     "question": "Which choice best states the main idea of the text?",
     "choices": [
@@ -3329,7 +3329,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Words in context",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The biologist's early papers were largely ______: they catalogued the plants of the region in careful detail but proposed no theories about why the plants grew where they did.",
     "question": "Which choice completes the text with the most logical and precise word or phrase?",
     "choices": [
@@ -3380,7 +3380,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Words in context",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Historian Amara Diallo cautions against treating the merchant's letters as ______ accounts of the trade: because the merchant was writing to his investors, he had every reason to exaggerate his successes and play down his losses.",
     "question": "Which choice completes the text with the most logical and precise word or phrase?",
     "choices": [
@@ -3397,7 +3397,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Text structure and purpose",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Many people assume that the bright colors of poison dart frogs evolved only to warn predators. Recent studies complicate this view. In some species, females prefer to mate with the most brightly colored males, suggesting that coloration may also help attract mates. Moreover, frogs in sunnier habitats tend to be brighter, raising the possibility that coloration helps regulate body temperature.",
     "question": "Which choice best describes the overall structure of the text?",
     "choices": [
@@ -3431,7 +3431,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Text structure and purpose",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The following text is from a novel.\n\nRosa examined the letter for the third time. The handwriting was her grandmother's; she would have known those looping capitals anywhere. But the postmark was dated two weeks after the funeral.",
     "question": "Which choice best states the main purpose of the text?",
     "choices": [
@@ -3465,7 +3465,7 @@
     "section": "rw",
     "domain": "Craft and Structure",
     "skill": "Cross-text connections",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Text 1\nUrban planners have promoted rooftop gardens as a way to cool cities, since plants release water vapor that lowers nearby air temperatures. Several cities now offer tax incentives to building owners who install them.\n\nText 2\nEngineer Tomas Reyes compared air temperatures above rooftop gardens with those above white-painted roofs in the same city. White roofs, which reflect sunlight, lowered temperatures slightly more than gardens did and cost far less, though gardens offered other benefits, such as absorbing rainwater.",
     "question": "Based on the texts, how would Reyes (Text 2) most likely respond to the incentive programs described in Text 1?",
     "choices": [
@@ -3533,7 +3533,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Transitions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Early studies suggested that the drug shortened colds by several days. Those studies, however, involved only small numbers of patients. When a much larger trial was conducted, the drug's effect proved minimal. ______ many physicians have stopped recommending it.",
     "question": "Which choice completes the text with the most logical transition?",
     "choices": [
@@ -3550,7 +3550,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Transitions",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The ancient city's walls were long believed to have been built for defense. Recent excavations, ______ have found that the walls were too low and thin to stop attackers; archaeologists now think they mainly served to control trade and collect taxes.",
     "question": "Which choice completes the text with the most logical transition?",
     "choices": [
@@ -3584,7 +3584,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Rhetorical synthesis",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "While researching a topic, a student has taken the following notes:\n• The Riverbend Reforestation Project plants native trees along a 300-kilometer stretch of river.\n• The project began in 2016.\n• Its goal is to plant 2 million trees by 2030.\n• By 2024, about 450,000 trees had been planted.\n• Organizers say the pace of planting has increased every year.",
     "question": "The student wants to emphasize how far the project remains from its goal. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     "choices": [
@@ -3601,7 +3601,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Rhetorical synthesis",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "While researching a topic, a student has taken the following notes:\n• Pianist and composer Lena Hartmann wrote more than 200 works.\n• Most of her works were never published during her lifetime.\n• In 2019, a music archive digitized her handwritten scores.\n• Since then, orchestras in six countries have performed her pieces.",
     "question": "The student wants to explain why Hartmann's music has recently reached a wider audience. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     "choices": [
@@ -3635,7 +3635,7 @@
     "section": "rw",
     "domain": "Expression of Ideas",
     "skill": "Rhetorical synthesis",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "While researching a topic, a student has taken the following notes:\n• Solar farm A, in a desert, produces about 1,200 megawatt-hours per acre each year.\n• Solar farm B, in a cloudier northern region, produces about 650 megawatt-hours per acre each year.\n• Both farms use the same type of panel.\n• Farm B's panels are cleaned less often because rain washes off dust.",
     "question": "The student wants to emphasize a difference in output between the two farms. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     "choices": [
@@ -3669,7 +3669,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Punctuating a list",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The recipe calls for three unusual ______ black garlic, a fermented bulb with a sweet, molasses-like flavor; sumac, a tart red spice; and preserved lemon.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -3686,7 +3686,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Punctuation between clauses",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The glacier has retreated more than a kilometer since ______ researchers now visit it each summer to measure how quickly it is shrinking.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -3720,7 +3720,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Punctuating supplementary elements",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The festival's most popular ______ a race in which teams paddle homemade boats across the harbor—draws crowds of several thousand each year.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -3771,7 +3771,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Restrictive clauses",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The scientist ______ discovered the comet was only nineteen years old at the time.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -3839,7 +3839,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Modifier placement",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "Carved from a single block of marble over eleven years, ______",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [
@@ -3890,7 +3890,7 @@
     "section": "rw",
     "domain": "Standard English Conventions",
     "skill": "Verb forms",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "passage": "The ancient manuscript, ______ in a monastery library for centuries, was rediscovered in 1972 by a graduate student.",
     "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
     "choices": [

@@ -93,7 +93,7 @@
    "section": "math",
    "domain": "Geometry and Trigonometry",
    "skill": "Area",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "question": "The figure shows a rectangle with a semicircle attached to one of its sides. What is the area of the figure?",
    "choices": [
     "60 + 4.5π",
@@ -229,7 +229,7 @@
    "section": "math",
    "domain": "Problem-Solving and Data Analysis",
    "skill": "Conditional probability",
-   "difficulty": "hard",
+   "difficulty": "medium",
    "question": "The table shows how 70 students prefer to take a class. If a student who prefers in person is selected at random, what is the probability that the student is in grade 11?",
    "choices": [
     "8/35",

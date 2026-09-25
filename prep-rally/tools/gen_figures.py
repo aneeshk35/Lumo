@@ -395,7 +395,7 @@ fig5 = svg(340, 180, "A 10 by 6 rectangle with a semicircle attached to its righ
            f'<path d="M210,30 A51,51 0 0 1 210,132" fill="none" stroke="{INK}" stroke-width="2"/>',
            line(210, 30, 210, 132, MUTED, 1.4, dash=True), text(125, 148, "10"), text(26, 81, "6"))
 area_rect, semi = 10 * 6, Fr(1, 2) * 3 ** 2
-Q("fig-005", "math", G, "Area", "hard",
+Q("fig-005", "math", G, "Area", "medium",
   "The figure shows a rectangle with a semicircle attached to one of its sides. What is the area of the figure?", fig5,
   ["60 + 4.5π", "60 + 9π", "60 + 18π", "60 + 36π"], 0,
   "The rectangle's area is 10 × 6 = 60. The semicircle has diameter 6, so its radius is 3 and its area is (1/2)π(3²) = 4.5π. The total is 60 + 4.5π. Choice B uses the whole circle.",
@@ -512,7 +512,7 @@ fig13 = svg(360, 175, "Table of 70 students by grade and learning preference. Gr
             rows, line(10, 124, 350, 124, INK, 1.2), text(24, 142, "Total", anchor="start", size=14, weight=700),
             text(190, 142, "42", size=14, weight=700), text(290, 142, "28", size=14, weight=700))
 p13 = Fr(16, 12 + 16)
-Q("fig-013", "math", P, "Conditional probability", "hard",
+Q("fig-013", "math", P, "Conditional probability", "medium",
   "The table shows how 70 students prefer to take a class. If a student who prefers in person is selected at random, what is the probability that the student is in grade 11?", fig13,
   ["8/35", "2/5", "3/7", "4/7"], 3,
   "Only the 28 students who prefer in person count. Of those, 16 are in grade 11, so the probability is 16/28 = 4/7. Choice A is 16/70, which uses all students, and choice C is the grade 10 share.",

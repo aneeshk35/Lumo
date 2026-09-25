@@ -21,7 +21,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 7(x + 3) − 8 = 4x + 43?",
   "tpl": "A1",
   "choices": [
@@ -53,7 +53,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 4(x − 2) − 4 = x − 39?",
   "tpl": "A1",
   "choices": [
@@ -70,7 +70,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 6(x + 1) − 10 = 4x + 18?",
   "tpl": "A1",
   "choices": [
@@ -151,7 +151,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 3(x − 1) − 6 = 8x − 14?",
   "tpl": "A1",
   "choices": [
@@ -249,7 +249,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 7(x + 2) − 2 = 5x + 24?",
   "tpl": "A1",
   "choices": [
@@ -1301,7 +1301,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 7y = 4\n6x + ky = 9\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -1318,7 +1318,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 3y = 5\n4x + 6y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "type": "spr",
@@ -1333,7 +1333,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 4y = 7\n9x + ky = 26\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -1350,7 +1350,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 5y = 9\n12x + 15y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -1367,7 +1367,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 3y = 6\n16x + ky = 29\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -1384,7 +1384,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "6x + 5y = 11\n18x + 15y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "type": "spr",
@@ -1399,7 +1399,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 7y = 4\n6x + ky = 10\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -1416,7 +1416,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 4y = 7\n6x + 8y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -1680,7 +1680,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the product of the solutions to the equation 2x² + 22x + 36 = 0?",
   "tpl": "B1",
   "choices": [
@@ -1729,7 +1729,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the sum of the solutions to the equation 3x² − 15x − 18 = 0?",
   "tpl": "B1",
   "choices": [
@@ -1778,7 +1778,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the positive solution to the equation 2x² + 16x − 18 = 0?",
   "tpl": "B1",
   "choices": [
@@ -1827,7 +1827,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "If x is a solution to the equation 3x² − 33x + 72 = 0 and x < 4, what is the value of x?",
   "tpl": "B1",
   "choices": [
@@ -1876,7 +1876,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −2x² + 24x − 67. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -1908,7 +1908,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −2x² + 28x − 106. What is the maximum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -1942,7 +1942,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −x² + 14x − 47. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -1974,7 +1974,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 2x² − 12x + 6. What is the minimum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -2008,7 +2008,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 3x² + 18x + 18. What is the minimum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -2932,7 +2932,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(−5) = −3. What is the remainder when p(x) is divided by x + 5?",
   "tpl": "B8",
   "choices": [
@@ -2966,7 +2966,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(−5) = 7. What is the remainder when p(x) is divided by x + 5?",
   "tpl": "B8",
   "choices": [
@@ -3000,7 +3000,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(2) = 4. What is the remainder when p(x) is divided by x − 2?",
   "tpl": "B8",
   "choices": [
@@ -3034,7 +3034,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(−5) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -3051,7 +3051,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 4x + 6\ny = x + 2\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -3066,7 +3066,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 3x − 1\ny = x + 4\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -3083,7 +3083,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 9x + 5\ny = −2x − 1\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -3098,7 +3098,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 20\ny = −x\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -3115,7 +3115,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 2x − 9\ny = 2x + 3\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -3130,7 +3130,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² + 2x + 1\ny = −x − 1\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -3343,7 +3343,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 25% increase, the price of a ticket is $50. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -3360,7 +3360,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 20% increase, the price of a ticket is $96. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -3377,7 +3377,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 60% increase, the price of a ticket is $40. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -3394,7 +3394,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 15% increase, the price of a ticket is $69. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -3411,7 +3411,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Successive percent changes",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A store raised the price of a lamp by 20% and later lowered the new price by 25%. The final price is what percent of the original price?",
   "tpl": "C1",
   "choices": [
@@ -3428,7 +3428,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Successive percent changes",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A store raised the price of a lamp by 10% and later lowered the new price by 30%. The final price is what percent of the original price?",
   "tpl": "C1",
   "choices": [
@@ -3445,7 +3445,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Successive percent changes",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A store raised the price of a lamp by 25% and later lowered the new price by 20%. The final price is what percent of the original price?",
   "tpl": "C1",
   "type": "spr",
@@ -3460,7 +3460,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Successive percent changes",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A store raised the price of a lamp by 50% and later lowered the new price by 20%. The final price is what percent of the original price?",
   "tpl": "C1",
   "choices": [
@@ -3803,7 +3803,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "In a survey, 120 students were asked whether they play an instrument. Of the 80 ninth graders, 25 play an instrument; of the 40 tenth graders, 27 play an instrument. If one of the students who play an instrument is chosen at random, what is the probability that the student is a ninth grader?",
   "tpl": "C5",
   "type": "spr",
@@ -3818,7 +3818,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A park counted 110 dogs. Of the 40 large dogs, 13 were on a leash; of the 70 small dogs, 57 were on a leash. If one of the dogs on a leash is chosen at random, what is the probability that the dog is a large dog?",
   "tpl": "C5",
   "choices": [
@@ -3835,7 +3835,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A cafe served 100 customers. Of the 60 customers who ordered coffee, 46 also bought a pastry; of the 40 who ordered tea, 13 also bought a pastry. If one of the customers who bought a pastry is chosen at random, what is the probability that the customer ordered coffee?",
   "tpl": "C5",
   "choices": [
@@ -3852,7 +3852,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A clinic tracked 140 patients. Of the 50 patients who got the new treatment, 37 improved; of the 90 who got the standard treatment, 74 improved. If one of the patients who improved is chosen at random, what is the probability that the patient got the new treatment?",
   "tpl": "C5",
   "type": "spr",
@@ -3867,7 +3867,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A school polled 80 seniors. Of the 50 seniors who drive to school, 12 have a part-time job; of the 30 who take the bus, 10 have a part-time job. If one of the seniors with a part-time job is chosen at random, what is the probability that the senior drives to school?",
   "tpl": "C5",
   "choices": [
@@ -3884,7 +3884,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "An orchard picked 130 apples. Of the 40 red apples, 23 were bruised; of the 90 green apples, 49 were bruised. If one of the bruised apples is chosen at random, what is the probability that the apple is red?",
   "tpl": "C5",
   "choices": [
@@ -4099,7 +4099,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 12, QR = 5, and PQ = 13. What is the value of sin P?",
   "tpl": "D2",
   "choices": [
@@ -4116,7 +4116,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 15, QR = 8, and PQ = 17. What is the value of cos P?",
   "tpl": "D2",
   "choices": [
@@ -4133,7 +4133,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 24, QR = 7, and PQ = 25. What is the value of tan P?",
   "tpl": "D2",
   "choices": [
@@ -4150,7 +4150,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 4, QR = 3, and PQ = 5. What is the value of sin P?",
   "tpl": "D2",
   "choices": [
@@ -4167,7 +4167,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 21, QR = 20, and PQ = 29. What is the value of cos P?",
   "tpl": "D2",
   "choices": [
@@ -4184,7 +4184,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 40, QR = 9, and PQ = 41. What is the value of tan P?",
   "tpl": "D2",
   "choices": [
@@ -4751,7 +4751,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 7(x + 2) − 1 = x − 35?",
   "tpl": "A1",
   "choices": [
@@ -4849,7 +4849,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 3(x − 3) − 14 = 4x − 15?",
   "tpl": "A1",
   "choices": [
@@ -4866,7 +4866,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 3(x + 1) − 10 = 2x − 8?",
   "tpl": "A1",
   "choices": [
@@ -4947,7 +4947,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 7(x − 1) − 15 = x + 32?",
   "tpl": "A1",
   "choices": [
@@ -4964,7 +4964,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 2(x + 3) − 9 = 4x − 27?",
   "tpl": "A1",
   "choices": [
@@ -4996,7 +4996,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 5(x + 3) − 5 = 7x − 14?",
   "tpl": "A1",
   "choices": [
@@ -5933,7 +5933,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 3y = 5\n8x + ky = 21\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -5950,7 +5950,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 9y = 13\n8x + 36y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "type": "spr",
@@ -5965,7 +5965,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 3y = 6\n12x + ky = 19\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -5982,7 +5982,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "5x + 2y = 8\n20x + 8y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -5999,7 +5999,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 5y = 9\n8x + ky = 19\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -6016,7 +6016,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "5x + 2y = 8\n10x + 4y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -6144,7 +6144,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the sum of the solutions to the equation 2x² + 20x + 32 = 0?",
   "tpl": "B1",
   "choices": [
@@ -6193,7 +6193,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "If x is a solution to the equation 2x² − 26x + 60 = 0 and x < 4, what is the value of x?",
   "tpl": "B1",
   "choices": [
@@ -6259,7 +6259,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the positive solution to the equation 2x² − 10x − 12 = 0?",
   "tpl": "B1",
   "choices": [
@@ -6291,7 +6291,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the product of the solutions to the equation 3x² − 243 = 0?",
   "tpl": "B1",
   "choices": [
@@ -6308,7 +6308,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "If x is a solution to the equation 3x² + 27x + 54 = 0 and x < -5, what is the value of x?",
   "tpl": "B1",
   "choices": [
@@ -6357,7 +6357,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = x² − 4x. What is the minimum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -6389,7 +6389,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 2x² − 24x + 62. What is the minimum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -6423,7 +6423,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = x² − 12x + 44. What is the minimum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -6455,7 +6455,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −x² + 14x − 38. What is the maximum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -6489,7 +6489,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −2x² − 4x − 13. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -7158,7 +7158,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(2) = −3. What is the remainder when p(x) is divided by x − 2?",
   "tpl": "B8",
   "choices": [
@@ -7192,7 +7192,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(−3) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -7226,7 +7226,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(3) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -7260,7 +7260,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² + 7x + 4\ny = x − 1\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -7275,7 +7275,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − x − 7\ny = −x − 3\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -7292,7 +7292,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 5x + 7\ny = 3x − 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -7307,7 +7307,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − x − 4\ny = 2x − 4\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -7324,7 +7324,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 2x − 8\ny = −2x − 4\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -7339,7 +7339,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − x − 7\ny = −2x + 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -7554,7 +7554,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 50% increase, the price of a ticket is $276. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -7571,7 +7571,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 50% increase, the price of a ticket is $210. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -7588,7 +7588,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 25% increase, the price of a ticket is $180. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -7605,7 +7605,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 10% increase, the price of a ticket is $220. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -7912,7 +7912,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "In a survey, 120 students were asked whether they play an instrument. Of the 80 ninth graders, 46 play an instrument; of the 40 tenth graders, 24 play an instrument. If one of the students who play an instrument is chosen at random, what is the probability that the student is a ninth grader?",
   "tpl": "C5",
   "type": "spr",
@@ -7927,7 +7927,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A park counted 130 dogs. Of the 60 large dogs, 40 were on a leash; of the 70 small dogs, 25 were on a leash. If one of the dogs on a leash is chosen at random, what is the probability that the dog is a large dog?",
   "tpl": "C5",
   "choices": [
@@ -7944,7 +7944,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A cafe served 110 customers. Of the 80 customers who ordered coffee, 21 also bought a pastry; of the 30 who ordered tea, 21 also bought a pastry. If one of the customers who bought a pastry is chosen at random, what is the probability that the customer ordered coffee?",
   "tpl": "C5",
   "choices": [
@@ -7961,7 +7961,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A clinic tracked 120 patients. Of the 50 patients who got the new treatment, 37 improved; of the 70 who got the standard treatment, 38 improved. If one of the patients who improved is chosen at random, what is the probability that the patient got the new treatment?",
   "tpl": "C5",
   "type": "spr",
@@ -7976,7 +7976,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A school polled 120 seniors. Of the 50 seniors who drive to school, 23 have a part-time job; of the 70 who take the bus, 24 have a part-time job. If one of the seniors with a part-time job is chosen at random, what is the probability that the senior drives to school?",
   "tpl": "C5",
   "choices": [
@@ -7993,7 +7993,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "An orchard picked 130 apples. Of the 40 red apples, 25 were bruised; of the 90 green apples, 55 were bruised. If one of the bruised apples is chosen at random, what is the probability that the apple is red?",
   "tpl": "C5",
   "choices": [
@@ -8193,7 +8193,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle ABC, angle C is the right angle, AC = 36, BC = 15, and AB = 39. What is the value of tan A?",
   "tpl": "D2",
   "choices": [
@@ -8210,7 +8210,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle DEF, angle F is the right angle, DF = 48, EF = 14, and DE = 50. What is the value of tan D?",
   "tpl": "D2",
   "choices": [
@@ -8227,7 +8227,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle DEF, angle F is the right angle, DF = 12, EF = 9, and DE = 15. What is the value of tan D?",
   "tpl": "D2",
   "choices": [
@@ -8244,7 +8244,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle DEF, angle F is the right angle, DF = 12, EF = 5, and DE = 13. What is the value of sin D?",
   "tpl": "D2",
   "choices": [
@@ -8261,7 +8261,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle DEF, angle F is the right angle, DF = 45, EF = 24, and DE = 51. What is the value of cos D?",
   "tpl": "D2",
   "choices": [
@@ -8278,7 +8278,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle XYZ, angle Z is the right angle, XZ = 8, YZ = 6, and XY = 10. What is the value of sin X?",
   "tpl": "D2",
   "choices": [
@@ -8783,7 +8783,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 5(x − 2) − 5 = 2x − 42?",
   "tpl": "A1",
   "choices": [
@@ -8864,7 +8864,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 5(x − 2) − 1 = 7x + 7?",
   "tpl": "A1",
   "choices": [
@@ -8930,7 +8930,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 8(x + 3) − 1 = x − 12?",
   "tpl": "A1",
   "choices": [
@@ -8962,7 +8962,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 3(x + 3) − 5 = 5x − 16?",
   "tpl": "A1",
   "choices": [
@@ -8979,7 +8979,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 7(x + 1) − 14 = 6x − 8?",
   "tpl": "A1",
   "choices": [
@@ -9963,7 +9963,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 5y = 9\n8x + ky = 20\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -9980,7 +9980,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "6x + 5y = 11\n24x + ky = 45\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -9997,7 +9997,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 4y = 7\n9x + 12y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -10014,7 +10014,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 9y = 13\n4x + ky = 28\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -10031,7 +10031,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 3y = 5\n6x + 9y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "type": "spr",
@@ -10046,7 +10046,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "6x + 5y = 11\n12x + ky = 24\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -10063,7 +10063,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 3y = 6\n12x + 9y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -10191,7 +10191,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the sum of the solutions to the equation 3x² − 39x + 108 = 0?",
   "tpl": "B1",
   "choices": [
@@ -10240,7 +10240,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "If x is a solution to the equation 3x² − 36x + 105 = 0 and x < 6, what is the value of x?",
   "tpl": "B1",
   "choices": [
@@ -10289,7 +10289,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "If x is a solution to the equation 2x² + 6x − 36 = 0 and x < -5, what is the value of x?",
   "tpl": "B1",
   "choices": [
@@ -10306,7 +10306,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the positive solution to the equation 2x² − 2x − 60 = 0?",
   "tpl": "B1",
   "choices": [
@@ -10338,7 +10338,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the product of the solutions to the equation 3x² − 27x + 42 = 0?",
   "tpl": "B1",
   "choices": [
@@ -10389,7 +10389,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −x² + 2x − 3. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -10421,7 +10421,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 3x² − 12x + 22. What is the minimum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -10455,7 +10455,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 3x² + 36x + 101. What is the minimum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -10470,7 +10470,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 3x² − 18x + 35. What is the minimum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -10504,7 +10504,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −x² − 8x − 18. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -11141,7 +11141,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(6) = 4. What is the remainder when p(x) is divided by x − 6?",
   "tpl": "B8",
   "choices": [
@@ -11192,7 +11192,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(1) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -11226,7 +11226,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(1) = 4. What is the remainder when p(x) is divided by x − 1?",
   "tpl": "B8",
   "choices": [
@@ -11243,7 +11243,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 6x + 11\ny = x − 1\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -11258,7 +11258,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 5x − 9\ny = −x − 4\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -11275,7 +11275,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 6x + 17\ny = x + 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -11290,7 +11290,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 3x − 23\ny = −2x − 3\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -11307,7 +11307,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 2\ny = −x\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -11322,7 +11322,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − x − 7\ny = −x + 2\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -11533,7 +11533,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 25% increase, the price of a ticket is $135. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -11550,7 +11550,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 25% increase, the price of a ticket is $145. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -11567,7 +11567,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 50% increase, the price of a ticket is $270. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -11584,7 +11584,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 25% increase, the price of a ticket is $130. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -11861,7 +11861,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "In a survey, 110 students were asked whether they play an instrument. Of the 40 ninth graders, 21 play an instrument; of the 70 tenth graders, 34 play an instrument. If one of the students who play an instrument is chosen at random, what is the probability that the student is a ninth grader?",
   "tpl": "C5",
   "type": "spr",
@@ -11876,7 +11876,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A park counted 150 dogs. Of the 60 large dogs, 31 were on a leash; of the 90 small dogs, 20 were on a leash. If one of the dogs on a leash is chosen at random, what is the probability that the dog is a large dog?",
   "tpl": "C5",
   "choices": [
@@ -11893,7 +11893,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A cafe served 140 customers. Of the 50 customers who ordered coffee, 29 also bought a pastry; of the 90 who ordered tea, 69 also bought a pastry. If one of the customers who bought a pastry is chosen at random, what is the probability that the customer ordered coffee?",
   "tpl": "C5",
   "choices": [
@@ -11910,7 +11910,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A clinic tracked 130 patients. Of the 60 patients who got the new treatment, 36 improved; of the 70 who got the standard treatment, 48 improved. If one of the patients who improved is chosen at random, what is the probability that the patient got the new treatment?",
   "tpl": "C5",
   "type": "spr",
@@ -11925,7 +11925,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A school polled 100 seniors. Of the 60 seniors who drive to school, 48 have a part-time job; of the 40 who take the bus, 35 have a part-time job. If one of the seniors with a part-time job is chosen at random, what is the probability that the senior drives to school?",
   "tpl": "C5",
   "choices": [
@@ -11942,7 +11942,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "An orchard picked 100 apples. Of the 60 red apples, 36 were bruised; of the 40 green apples, 18 were bruised. If one of the bruised apples is chosen at random, what is the probability that the apple is red?",
   "tpl": "C5",
   "choices": [
@@ -12108,7 +12108,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle XYZ, angle Z is the right angle, XZ = 40, YZ = 9, and XY = 41. What is the value of sin X?",
   "tpl": "D2",
   "choices": [
@@ -12125,7 +12125,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle JKL, angle L is the right angle, JL = 12, KL = 9, and JK = 15. What is the value of tan J?",
   "tpl": "D2",
   "choices": [
@@ -12142,7 +12142,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle ABC, angle C is the right angle, AC = 24, BC = 7, and AB = 25. What is the value of cos A?",
   "tpl": "D2",
   "choices": [
@@ -12159,7 +12159,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle DEF, angle F is the right angle, DF = 48, EF = 14, and DE = 50. What is the value of sin D?",
   "tpl": "D2",
   "choices": [
@@ -12176,7 +12176,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle ABC, angle C is the right angle, AC = 12, BC = 5, and AB = 13. What is the value of sin A?",
   "tpl": "D2",
   "choices": [
@@ -12666,7 +12666,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 4(x − 1) − 7 = 7x + 7?",
   "tpl": "A1",
   "choices": [
@@ -12715,7 +12715,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 2(x + 3) − 14 = 4x − 28?",
   "tpl": "A1",
   "choices": [
@@ -12732,7 +12732,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 7(x + 2) − 5 = 4x + 12?",
   "tpl": "A1",
   "choices": [
@@ -12781,7 +12781,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear equations in one variable",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "question": "What is the solution to the equation 6(x − 2) − 3 = x − 30?",
   "tpl": "A1",
   "choices": [
@@ -13829,7 +13829,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 9y = 13\n8x + ky = 54\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -13846,7 +13846,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 7y = 4\n9x + 21y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "type": "spr",
@@ -13861,7 +13861,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 5y = 9\n12x + ky = 29\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -13878,7 +13878,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "4x + 3y = 6\n16x + 12y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -13895,7 +13895,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "3x + 4y = 7\n6x + ky = 16\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -13912,7 +13912,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with no solution",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "6x + 5y = 11\n24x + ky = 46\nIn the given system of equations, k is a constant. For what value of k does the system have no solution?",
   "tpl": "A8",
   "choices": [
@@ -13929,7 +13929,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Systems with infinitely many solutions",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "2x + 9y = 13\n4x + 18y = m\nIn the given system of equations, m is a constant. For what value of m does the system have infinitely many solutions?",
   "tpl": "A8",
   "choices": [
@@ -14074,7 +14074,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the product of the solutions to the equation 2x² − 10x − 100 = 0?",
   "tpl": "B1",
   "choices": [
@@ -14172,7 +14172,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "If x is a solution to the equation 2x² − 10x + 12 = 0 and x < 3, what is the value of x?",
   "tpl": "B1",
   "choices": [
@@ -14236,7 +14236,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Quadratic equations",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "What is the sum of the solutions to the equation 2x² + 34x + 144 = 0?",
   "tpl": "B1",
   "choices": [
@@ -14253,7 +14253,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −2x² + 16x − 27. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -14285,7 +14285,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −x² − 12x − 26. What is the maximum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -14319,7 +14319,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −x² − 10x − 37. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -14351,7 +14351,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = 2x² − 16x + 22. What is the minimum value of f(x)?",
   "tpl": "B2",
   "choices": [
@@ -14385,7 +14385,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Vertex of a parabola",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "The function f is defined by f(x) = −2x² − 24x − 79. What is the maximum value of f(x)?",
   "tpl": "B2",
   "type": "spr",
@@ -14988,7 +14988,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(3) = 4. What is the remainder when p(x) is divided by x − 3?",
   "tpl": "B8",
   "choices": [
@@ -15039,7 +15039,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(3) = −3. What is the remainder when p(x) is divided by x − 3?",
   "tpl": "B8",
   "choices": [
@@ -15073,7 +15073,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "For the polynomial p, p(−3) = −3. What is the remainder when p(x) is divided by x + 3?",
   "tpl": "B8",
   "choices": [
@@ -15090,7 +15090,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 6x + 4\ny = −x − 2\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -15105,7 +15105,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 5x\ny = −2x − 2\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -15122,7 +15122,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² + 3x − 11\ny = 2x − 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -15137,7 +15137,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² + 4x − 11\ny = 3x − 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -15154,7 +15154,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² − 9x + 35\ny = 2x + 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "type": "spr",
@@ -15169,7 +15169,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Nonlinear systems",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "y = x² + 2x − 5\ny = 3x − 5\nThe graphs of the given equations intersect at two points. What is the sum of the x-coordinates of the intersection points?",
   "tpl": "B9",
   "choices": [
@@ -15378,7 +15378,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 20% increase, the price of a ticket is $168. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -15395,7 +15395,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 20% increase, the price of a ticket is $216. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -15412,7 +15412,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 10% increase, the price of a ticket is $44. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -15429,7 +15429,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Percent increase (reverse)",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "After a 25% increase, the price of a ticket is $210. What was the price, in dollars, before the increase?",
   "tpl": "C1",
   "choices": [
@@ -15706,7 +15706,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "In a survey, 150 students were asked whether they play an instrument. Of the 80 ninth graders, 58 play an instrument; of the 70 tenth graders, 38 play an instrument. If one of the students who play an instrument is chosen at random, what is the probability that the student is a ninth grader?",
   "tpl": "C5",
   "type": "spr",
@@ -15721,7 +15721,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A park counted 140 dogs. Of the 50 large dogs, 32 were on a leash; of the 90 small dogs, 44 were on a leash. If one of the dogs on a leash is chosen at random, what is the probability that the dog is a large dog?",
   "tpl": "C5",
   "choices": [
@@ -15738,7 +15738,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A cafe served 90 customers. Of the 50 customers who ordered coffee, 27 also bought a pastry; of the 40 who ordered tea, 16 also bought a pastry. If one of the customers who bought a pastry is chosen at random, what is the probability that the customer ordered coffee?",
   "tpl": "C5",
   "choices": [
@@ -15755,7 +15755,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A clinic tracked 110 patients. Of the 80 patients who got the new treatment, 8 improved; of the 30 who got the standard treatment, 25 improved. If one of the patients who improved is chosen at random, what is the probability that the patient got the new treatment?",
   "tpl": "C5",
   "type": "spr",
@@ -15770,7 +15770,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "A school polled 120 seniors. Of the 80 seniors who drive to school, 43 have a part-time job; of the 40 who take the bus, 27 have a part-time job. If one of the seniors with a part-time job is chosen at random, what is the probability that the senior drives to school?",
   "tpl": "C5",
   "choices": [
@@ -15787,7 +15787,7 @@
   "section": "math",
   "domain": "Problem-Solving and Data Analysis",
   "skill": "Conditional probability",
-  "difficulty": "hard",
+  "difficulty": "medium",
   "question": "An orchard picked 120 apples. Of the 50 red apples, 15 were bruised; of the 70 green apples, 53 were bruised. If one of the bruised apples is chosen at random, what is the probability that the apple is red?",
   "tpl": "C5",
   "choices": [
@@ -15938,7 +15938,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle RST, angle T is the right angle, RT = 4, ST = 3, and RS = 5. What is the value of sin R?",
   "tpl": "D2",
   "choices": [
@@ -15955,7 +15955,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle JKL, angle L is the right angle, JL = 40, KL = 9, and JK = 41. What is the value of sin J?",
   "tpl": "D2",
   "choices": [
@@ -15972,7 +15972,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle DEF, angle F is the right angle, DF = 21, EF = 20, and DE = 29. What is the value of cos D?",
   "tpl": "D2",
   "choices": [
@@ -15989,7 +15989,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle PQR, angle R is the right angle, PR = 12, QR = 5, and PQ = 13. What is the value of tan P?",
   "tpl": "D2",
   "choices": [
@@ -16006,7 +16006,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle RST, angle T is the right angle, RT = 120, ST = 27, and RS = 123. What is the value of tan R?",
   "tpl": "D2",
   "choices": [
@@ -16023,7 +16023,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Right triangle trigonometry",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In right triangle ABC, angle C is the right angle, AC = 72, BC = 21, and AB = 75. What is the value of sin A?",
   "tpl": "D2",
   "choices": [
@@ -16441,5 +16441,2917 @@
   ],
   "answer": 3,
   "explanation": "The two acute angles of a right triangle are complementary (58° + 32° = 90°), and the sine of an angle equals the cosine of its complement. So cos(32°) = sin(58°) ≈ 0.85."
+ },
+ {
+  "id": "mth-1004",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 8x + k, where k is a constant, and the graph of y = 2x + 8 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "33"
+  ],
+  "explanation": "Setting the equations equal gives x² − 10x + (k − 8) = 0. One intersection means the discriminant is 0: (−10)² − 4(k − 8) = 0, so k − 8 = 25 and k = 33."
+ },
+ {
+  "id": "mth-1005",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 4x + k, where k is a constant, and the graph of y = 2x − 1 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−2",
+   "−1",
+   "0",
+   "1"
+  ],
+  "answer": 2,
+  "explanation": "Setting the equations equal gives x² + 2x + (k + 1) = 0. One intersection means the discriminant is 0: (2)² − 4(k + 1) = 0, so k + 1 = 1 and k = 0."
+ },
+ {
+  "id": "mth-1006",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 2x + k, where k is a constant, and the graph of y = 3 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Setting the equations equal gives x² − 2x + (k − 3) = 0. One intersection means the discriminant is 0: (−2)² − 4(k − 3) = 0, so k − 3 = 1 and k = 4."
+ },
+ {
+  "id": "mth-1007",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 6x + k, where k is a constant, and the graph of y = 9 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "0",
+   "9",
+   "18",
+   "45"
+  ],
+  "answer": 2,
+  "explanation": "Setting the equations equal gives x² − 6x + (k − 9) = 0. One intersection means the discriminant is 0: (−6)² − 4(k − 9) = 0, so k − 9 = 9 and k = 18."
+ },
+ {
+  "id": "mth-1008",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 2x + k, where k is a constant, and the graph of y = 4x + 4 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Setting the equations equal gives x² − 2x + (k − 4) = 0. One intersection means the discriminant is 0: (−2)² − 4(k − 4) = 0, so k − 4 = 1 and k = 5."
+ },
+ {
+  "id": "mth-1009",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 2x + k, where k is a constant, and the graph of y = 7 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "1",
+   "6",
+   "7",
+   "8"
+  ],
+  "answer": 3,
+  "explanation": "Setting the equations equal gives x² + 2x + (k − 7) = 0. One intersection means the discriminant is 0: (2)² − 4(k − 7) = 0, so k − 7 = 1 and k = 8."
+ },
+ {
+  "id": "mth-1010",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 14) = x + 2?",
+  "tpl": "H2",
+  "choices": [
+   "{2}",
+   "{−5, 2}",
+   "{−5}",
+   "There is no solution."
+  ],
+  "answer": 0,
+  "explanation": "Squaring both sides gives x + 14 = x² − -4x + 4 if you expand (x + 2)², so x² − -3x − 10 = 0, which factors as (x − 2)(x + 5) = 0. Check both: x = 2 makes the right side 4, which matches √16; x = −5 makes the right side −3, a negative number, but a square root can't be negative. So only 2 works."
+ },
+ {
+  "id": "mth-1011",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 86) = x − 4?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{14}",
+   "{−5}",
+   "{−5, 14}"
+  ],
+  "answer": 1,
+  "explanation": "Squaring both sides gives x + 86 = x² − 8x + 16 if you expand (x − 4)², so x² − 9x − 70 = 0, which factors as (x − 14)(x + 5) = 0. Check both: x = 14 makes the right side 10, which matches √100; x = −5 makes the right side −9, a negative number, but a square root can't be negative. So only 14 works."
+ },
+ {
+  "id": "mth-1012",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x − 7) = x − 9?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{8, 11}",
+   "{11}",
+   "{8}"
+  ],
+  "answer": 2,
+  "explanation": "Squaring both sides gives x − 7 = x² − 18x + 81 if you expand (x − 9)², so x² − 19x + 88 = 0, which factors as (x − 11)(x − 8) = 0. Check both: x = 11 makes the right side 2, which matches √4; x = 8 makes the right side −1, a negative number, but a square root can't be negative. So only 11 works."
+ },
+ {
+  "id": "mth-1013",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x − 3) = x − 5?",
+  "tpl": "H2",
+  "choices": [
+   "{4}",
+   "There is no solution.",
+   "{4, 7}",
+   "{7}"
+  ],
+  "answer": 3,
+  "explanation": "Squaring both sides gives x − 3 = x² − 10x + 25 if you expand (x − 5)², so x² − 11x + 28 = 0, which factors as (x − 7)(x − 4) = 0. Check both: x = 7 makes the right side 2, which matches √4; x = 4 makes the right side −1, a negative number, but a square root can't be negative. So only 7 works."
+ },
+ {
+  "id": "mth-1014",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 50) = x − 6?",
+  "tpl": "H2",
+  "choices": [
+   "{14}",
+   "There is no solution.",
+   "{−1}",
+   "{−1, 14}"
+  ],
+  "answer": 0,
+  "explanation": "Squaring both sides gives x + 50 = x² − 12x + 36 if you expand (x − 6)², so x² − 13x − 14 = 0, which factors as (x − 14)(x + 1) = 0. Check both: x = 14 makes the right side 8, which matches √64; x = −1 makes the right side −7, a negative number, but a square root can't be negative. So only 14 works."
+ },
+ {
+  "id": "mth-1015",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 1,200(1.44)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 1,200(1.44)^(2h)",
+   "V = 1,200(1.2)ʰ",
+   "V = 1,200(1.2)^(h/2)",
+   "V = 1,200(0.72)ʰ"
+  ],
+  "answer": 1,
+  "explanation": "h half-years is t = h/2 years, so V = 1,200(1.44)^(h/2). Since 1.44 = (1.2)², (1.44)^(h/2) = (1.2)ʰ. So V = 1,200(1.2)ʰ."
+ },
+ {
+  "id": "mth-1016",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 800(1.69)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 800(1.3)^(h/2)",
+   "V = 800(1.69)^(2h)",
+   "V = 800(1.3)ʰ",
+   "V = 800(0.845)ʰ"
+  ],
+  "answer": 2,
+  "explanation": "h half-years is t = h/2 years, so V = 800(1.69)^(h/2). Since 1.69 = (1.3)², (1.69)^(h/2) = (1.3)ʰ. So V = 800(1.3)ʰ."
+ },
+ {
+  "id": "mth-1017",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 1,200(0.81)ᵗ gives the value, in dollars, of an investment t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 1,200(0.405)ʰ",
+   "V = 1,200(0.81)^(2h)",
+   "V = 1,200(0.9)^(h/2)",
+   "V = 1,200(0.9)ʰ"
+  ],
+  "answer": 3,
+  "explanation": "h half-years is t = h/2 years, so V = 1,200(0.81)^(h/2). Since 0.81 = (0.9)², (0.81)^(h/2) = (0.9)ʰ. So V = 1,200(0.9)ʰ."
+ },
+ {
+  "id": "mth-1018",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 500(1.69)ᵗ gives the number of fish in a pond t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 500(1.3)ʰ",
+   "V = 500(1.3)^(h/2)",
+   "V = 500(0.845)ʰ",
+   "V = 500(1.69)^(2h)"
+  ],
+  "answer": 0,
+  "explanation": "h half-years is t = h/2 years, so V = 500(1.69)^(h/2). Since 1.69 = (1.3)², (1.69)^(h/2) = (1.3)ʰ. So V = 500(1.3)ʰ."
+ },
+ {
+  "id": "mth-1019",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 1,200(0.81)ᵗ gives the number of fish in a pond t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 1,200(0.405)ʰ",
+   "V = 1,200(0.9)ʰ",
+   "V = 1,200(0.81)^(2h)",
+   "V = 1,200(0.9)^(h/2)"
+  ],
+  "answer": 1,
+  "explanation": "h half-years is t = h/2 years, so V = 1,200(0.81)^(h/2). Since 0.81 = (0.9)², (0.81)^(h/2) = (0.9)ʰ. So V = 1,200(0.9)ʰ."
+ },
+ {
+  "id": "mth-1020",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 9% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "30"
+  ],
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 9% net decrease means 1 − (p/100)² = 0.91, so (p/100)² = 0.09 and p/100 = 0.3. So p = 30."
+ },
+ {
+  "id": "mth-1021",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 49% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "70"
+  ],
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 49% net decrease means 1 − (p/100)² = 0.51, so (p/100)² = 0.49 and p/100 = 0.7. So p = 70."
+ },
+ {
+  "id": "mth-1022",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 25% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "50"
+  ],
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 25% net decrease means 1 − (p/100)² = 0.75, so (p/100)² = 0.25 and p/100 = 0.5. So p = 50."
+ },
+ {
+  "id": "mth-1023",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 36% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "choices": [
+   "18",
+   "36",
+   "60",
+   "72"
+  ],
+  "answer": 2,
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 36% net decrease means 1 − (p/100)² = 0.64, so (p/100)² = 0.36 and p/100 = 0.6. So p = 60. Choosing 36 treats the net change as the size of each step."
+ },
+ {
+  "id": "mth-1024",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 12 students, and their mean test score is 71. The mean score of the students in class B is 79. The mean score of all the students in both classes combined is 76. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Total points: 12(71) + 79n = 76(12 + n). So 852 + 79n = 912 + 76n, which gives 3n = 60 and n = 20."
+ },
+ {
+  "id": "mth-1025",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 15 students, and their mean test score is 79. The mean score of the students in class B is 84. The mean score of all the students in both classes combined is 81. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "10",
+   "15",
+   "45/2",
+   "25"
+  ],
+  "answer": 0,
+  "explanation": "Total points: 15(79) + 84n = 81(15 + n). So 1185 + 84n = 1215 + 81n, which gives 3n = 30 and n = 10."
+ },
+ {
+  "id": "mth-1026",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 15 students, and their mean test score is 79. The mean score of the students in class B is 87. The mean score of all the students in both classes combined is 83. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "Total points: 15(79) + 87n = 83(15 + n). So 1185 + 87n = 1245 + 83n, which gives 4n = 60 and n = 15."
+ },
+ {
+  "id": "mth-1027",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 18 students, and their mean test score is 79. The mean score of the students in class B is 87. The mean score of all the students in both classes combined is 84. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "54/5",
+   "18",
+   "30",
+   "48"
+  ],
+  "answer": 2,
+  "explanation": "Total points: 18(79) + 87n = 84(18 + n). So 1422 + 87n = 1512 + 84n, which gives 3n = 90 and n = 30."
+ },
+ {
+  "id": "mth-1028",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 24 students, and their mean test score is 82. The mean score of the students in class B is 90. The mean score of all the students in both classes combined is 87. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "40"
+  ],
+  "explanation": "Total points: 24(82) + 90n = 87(24 + n). So 1968 + 90n = 2088 + 87n, which gives 3n = 120 and n = 40."
+ },
+ {
+  "id": "mth-1029",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 6) = 27^(x − 2)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 6)) = 3^(3(x − 2)). Set the exponents equal: 2x + 12 = 3x − 6, so x = 18."
+ },
+ {
+  "id": "mth-1030",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 2) = 27^(x − 2)?",
+  "tpl": "H6",
+  "choices": [
+   "4",
+   "6",
+   "10",
+   "11"
+  ],
+  "answer": 2,
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 2)) = 3^(3(x − 2)). Set the exponents equal: 2x + 4 = 3x − 6, so x = 10."
+ },
+ {
+  "id": "mth-1031",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 3) = 27^(x − 3)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 3)) = 3^(3(x − 3)). Set the exponents equal: 2x + 6 = 3x − 9, so x = 15."
+ },
+ {
+  "id": "mth-1032",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 25^(x + 6) = 125^(x − 2)?",
+  "tpl": "H6",
+  "choices": [
+   "8",
+   "14",
+   "18",
+   "22"
+  ],
+  "answer": 2,
+  "explanation": "Write both sides as powers of 5: 5^(2(x + 6)) = 5^(3(x − 2)). Set the exponents equal: 2x + 12 = 3x − 6, so x = 18."
+ },
+ {
+  "id": "mth-1033",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 25^(x + 5) = 125^(x − 3)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "19"
+  ],
+  "explanation": "Write both sides as powers of 5: 5^(2(x + 5)) = 5^(3(x − 3)). Set the exponents equal: 2x + 10 = 3x − 9, so x = 19."
+ },
+ {
+  "id": "mth-1034",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 10x + 5, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² + 10(−1) + 5 = 0, so -1 + 1k − 10 + 5 = 0 and k = 6."
+ },
+ {
+  "id": "mth-1035",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + x + 4, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−2",
+   "−1",
+   "2",
+   "4"
+  ],
+  "answer": 0,
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² + 1(−1) + 4 = 0, so -1 + 1k − 1 + 4 = 0 and k = −2."
+ },
+ {
+  "id": "mth-1036",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² − 11x + 2, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-12"
+  ],
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² − 11(−1) + 2 = 0, so -1 + 1k + 11 + 2 = 0 and k = −12."
+ },
+ {
+  "id": "mth-1037",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² − 3x − 8, k is a constant. If x − 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−10",
+   "−8",
+   "10",
+   "11"
+  ],
+  "answer": 2,
+  "explanation": "If x − 1 is a factor, then p(1) = 0: (1)³ + k(1)² − 3(1) − 8 = 0, so 1 + 1k − 3 − 8 = 0 and k = 10."
+ },
+ {
+  "id": "mth-1038",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 9x + 14, k is a constant. If x − 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-24"
+  ],
+  "explanation": "If x − 1 is a factor, then p(1) = 0: (1)³ + k(1)² + 9(1) + 14 = 0, so 1 + 1k + 9 + 14 = 0 and k = −24."
+ },
+ {
+  "id": "mth-1039",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 18x + k for all values of x, where p, q, and k are constants and p − q = 4, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "77"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 18 and k = pq. With p − q = 4, adding the equations gives p = 11, so q = 7 and k = (11)(7) = 77."
+ },
+ {
+  "id": "mth-1040",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 5x + k for all values of x, where p, q, and k are constants and p − q = 3, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "4",
+   "5",
+   "8",
+   "15"
+  ],
+  "answer": 0,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 5 and k = pq. With p − q = 3, adding the equations gives p = 4, so q = 1 and k = (4)(1) = 4."
+ },
+ {
+  "id": "mth-1041",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 6x + k for all values of x, where p, q, and k are constants and p − q = 2, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 6 and k = pq. With p − q = 2, adding the equations gives p = 4, so q = 2 and k = (4)(2) = 8."
+ },
+ {
+  "id": "mth-1042",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² − 14x + k for all values of x, where p, q, and k are constants and p − q = 4, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "−56",
+   "−10",
+   "45",
+   "90"
+  ],
+  "answer": 2,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = -14 and k = pq. With p − q = 4, adding the equations gives p = -5, so q = -9 and k = (−5)(−9) = 45."
+ },
+ {
+  "id": "mth-1043",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 5x + k for all values of x, where p, q, and k are constants and p − q = 17, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-66"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 5 and k = pq. With p − q = 17, adding the equations gives p = 11, so q = -6 and k = (11)(−6) = −66."
+ },
+ {
+  "id": "mth-1044",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is the right angle and tan A = 20/21. What is the value of cos B?",
+  "tpl": "H9",
+  "choices": [
+   "20/29",
+   "21/29",
+   "20/21",
+   "21/20"
+  ],
+  "answer": 0,
+  "explanation": "tan A = 20/21 means the side opposite A is 20k and the side adjacent to A is 21k, so the hypotenuse is 29k. Angles A and B are complementary, so cos B = sin A = 20/29."
+ },
+ {
+  "id": "mth-1045",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is the right angle and tan A = 5/12. What is the value of cos B?",
+  "tpl": "H9",
+  "choices": [
+   "5/13",
+   "5/12",
+   "12/13",
+   "12/5"
+  ],
+  "answer": 0,
+  "explanation": "tan A = 5/12 means the side opposite A is 5k and the side adjacent to A is 12k, so the hypotenuse is 13k. Angles A and B are complementary, so cos B = sin A = 5/13."
+ },
+ {
+  "id": "mth-1046",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is the right angle and tan A = 3/4. What is the value of cos B?",
+  "tpl": "H9",
+  "choices": [
+   "3/5",
+   "3/4",
+   "4/5",
+   "4/3"
+  ],
+  "answer": 0,
+  "explanation": "tan A = 3/4 means the side opposite A is 3k and the side adjacent to A is 4k, so the hypotenuse is 5k. Angles A and B are complementary, so cos B = sin A = 3/5."
+ },
+ {
+  "id": "mth-1047",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is the right angle and tan A = 7/24. What is the value of cos B?",
+  "tpl": "H9",
+  "choices": [
+   "7/25",
+   "7/24",
+   "24/25",
+   "24/7"
+  ],
+  "answer": 0,
+  "explanation": "tan A = 7/24 means the side opposite A is 7k and the side adjacent to A is 24k, so the hypotenuse is 25k. Angles A and B are complementary, so cos B = sin A = 7/25."
+ },
+ {
+  "id": "mth-1048",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x − 2)² + (y + 4)² = 36 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "−4",
+   "2",
+   "8",
+   "36"
+  ],
+  "answer": 1,
+  "explanation": "The circle has center (2, −4) and radius 6. A horizontal line touches it at exactly one point at the top or bottom, y = −4 ± 6, so k could be 2 or −10."
+ },
+ {
+  "id": "mth-1049",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x + 2)² + (y + 1)² = 9 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "−1",
+   "1",
+   "2",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "The circle has center (−2, −1) and radius 3. A horizontal line touches it at exactly one point at the top or bottom, y = −1 ± 3, so k could be 2 or −4."
+ },
+ {
+  "id": "mth-1050",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x + 4)² + (y − 6)² = 25 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "1",
+   "6",
+   "11",
+   "25"
+  ],
+  "answer": 2,
+  "explanation": "The circle has center (−4, 6) and radius 5. A horizontal line touches it at exactly one point at the top or bottom, y = 6 ± 5, so k could be 11 or 1."
+ },
+ {
+  "id": "mth-1051",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 5) − f(x) = 8 for all values of x, and f(0) = 4. What is the value of f(10)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Increasing x by 5 changes f by 8, so the slope is 8/5 = 8/5. Then f(10) = 4 + 8/5(10) = 20."
+ },
+ {
+  "id": "mth-1052",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = −8 for all values of x, and f(0) = −8. What is the value of f(12)?",
+  "tpl": "H11",
+  "choices": [
+   "−104",
+   "−96",
+   "−32",
+   "−28"
+  ],
+  "answer": 2,
+  "explanation": "Increasing x by 4 changes f by −8, so the slope is −8/4 = −2. Then f(12) = −8 + −2(12) = −32."
+ },
+ {
+  "id": "mth-1053",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = −12 for all values of x, and f(0) = −7. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-43"
+  ],
+  "explanation": "Increasing x by 4 changes f by −12, so the slope is −12/4 = −3. Then f(12) = −7 + −3(12) = −43."
+ },
+ {
+  "id": "mth-1054",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = −12 for all values of x, and f(0) = 9. What is the value of f(6)?",
+  "tpl": "H11",
+  "choices": [
+   "−72",
+   "−63",
+   "−9",
+   "−5"
+  ],
+  "answer": 2,
+  "explanation": "Increasing x by 4 changes f by −12, so the slope is −12/4 = −3. Then f(6) = 9 + −3(6) = −9."
+ },
+ {
+  "id": "mth-1055",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = 8 for all values of x, and f(0) = −2. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "22"
+  ],
+  "explanation": "Increasing x by 4 changes f by 8, so the slope is 8/4 = 2. Then f(12) = −2 + 2(12) = 22."
+ },
+ {
+  "id": "mth-1056",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 4x + k, where k is a constant, and the graph of y = 2x − 6 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-5"
+  ],
+  "explanation": "Setting the equations equal gives x² + 2x + (k + 6) = 0. One intersection means the discriminant is 0: (2)² − 4(k + 6) = 0, so k + 6 = 1 and k = −5."
+ },
+ {
+  "id": "mth-1057",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 4x + k, where k is a constant, and the graph of y = 2x + 2 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−7",
+   "2",
+   "9",
+   "11"
+  ],
+  "answer": 3,
+  "explanation": "Setting the equations equal gives x² − 6x + (k − 2) = 0. One intersection means the discriminant is 0: (−6)² − 4(k − 2) = 0, so k − 2 = 9 and k = 11."
+ },
+ {
+  "id": "mth-1058",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 6x + k, where k is a constant, and the graph of y = −3 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "Setting the equations equal gives x² + 6x + (k + 3) = 0. One intersection means the discriminant is 0: (6)² − 4(k + 3) = 0, so k + 3 = 9 and k = 6."
+ },
+ {
+  "id": "mth-1059",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 2x + k, where k is a constant, and the graph of y = 2x + 9 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "4",
+   "5",
+   "9",
+   "13"
+  ],
+  "answer": 3,
+  "explanation": "Setting the equations equal gives x² − 4x + (k − 9) = 0. One intersection means the discriminant is 0: (−4)² − 4(k − 9) = 0, so k − 9 = 4 and k = 13."
+ },
+ {
+  "id": "mth-1060",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 8x + k, where k is a constant, and the graph of y = 2x + 1 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "Setting the equations equal gives x² + 6x + (k − 1) = 0. One intersection means the discriminant is 0: (6)² − 4(k − 1) = 0, so k − 1 = 9 and k = 10."
+ },
+ {
+  "id": "mth-1061",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 4x + k, where k is a constant, and the graph of y = 2x + 6 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "1",
+   "5",
+   "6",
+   "7"
+  ],
+  "answer": 3,
+  "explanation": "Setting the equations equal gives x² + 2x + (k − 6) = 0. One intersection means the discriminant is 0: (2)² − 4(k − 6) = 0, so k − 6 = 1 and k = 7."
+ },
+ {
+  "id": "mth-1062",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 4) = x − 8?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{12}",
+   "{5}",
+   "{5, 12}"
+  ],
+  "answer": 1,
+  "explanation": "Squaring both sides gives x + 4 = x² − 16x + 64 if you expand (x − 8)², so x² − 17x + 60 = 0, which factors as (x − 12)(x − 5) = 0. Check both: x = 12 makes the right side 4, which matches √16; x = 5 makes the right side −3, a negative number, but a square root can't be negative. So only 12 works."
+ },
+ {
+  "id": "mth-1063",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 16) = x − 4?",
+  "tpl": "H2",
+  "choices": [
+   "{0, 9}",
+   "{0}",
+   "{9}",
+   "There is no solution."
+  ],
+  "answer": 2,
+  "explanation": "Squaring both sides gives x + 16 = x² − 8x + 16 if you expand (x − 4)², so x² − 9x + 0 = 0, which factors as (x − 9)(x + 0) = 0. Check both: x = 9 makes the right side 5, which matches √25; x = 0 makes the right side −4, a negative number, but a square root can't be negative. So only 9 works."
+ },
+ {
+  "id": "mth-1064",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 21) = x + 1?",
+  "tpl": "H2",
+  "choices": [
+   "{−5, 4}",
+   "There is no solution.",
+   "{−5}",
+   "{4}"
+  ],
+  "answer": 3,
+  "explanation": "Squaring both sides gives x + 21 = x² − -2x + 1 if you expand (x + 1)², so x² − -1x − 20 = 0, which factors as (x − 4)(x + 5) = 0. Check both: x = 4 makes the right side 5, which matches √25; x = −5 makes the right side −4, a negative number, but a square root can't be negative. So only 4 works."
+ },
+ {
+  "id": "mth-1065",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 22) = x − 8?",
+  "tpl": "H2",
+  "choices": [
+   "{14}",
+   "{3, 14}",
+   "There is no solution.",
+   "{3}"
+  ],
+  "answer": 0,
+  "explanation": "Squaring both sides gives x + 22 = x² − 16x + 64 if you expand (x − 8)², so x² − 17x + 42 = 0, which factors as (x − 14)(x − 3) = 0. Check both: x = 14 makes the right side 6, which matches √36; x = 3 makes the right side −5, a negative number, but a square root can't be negative. So only 14 works."
+ },
+ {
+  "id": "mth-1066",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 17) = x − 3?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{8}",
+   "{−1}",
+   "{−1, 8}"
+  ],
+  "answer": 1,
+  "explanation": "Squaring both sides gives x + 17 = x² − 6x + 9 if you expand (x − 3)², so x² − 7x − 8 = 0, which factors as (x − 8)(x + 1) = 0. Check both: x = 8 makes the right side 5, which matches √25; x = −1 makes the right side −4, a negative number, but a square root can't be negative. So only 8 works."
+ },
+ {
+  "id": "mth-1067",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 3,500(0.81)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 3,500(0.9)^(h/2)",
+   "V = 3,500(0.405)ʰ",
+   "V = 3,500(0.9)ʰ",
+   "V = 3,500(0.81)^(2h)"
+  ],
+  "answer": 2,
+  "explanation": "h half-years is t = h/2 years, so V = 3,500(0.81)^(h/2). Since 0.81 = (0.9)², (0.81)^(h/2) = (0.9)ʰ. So V = 3,500(0.9)ʰ."
+ },
+ {
+  "id": "mth-1068",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 500(1.21)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 500(0.605)ʰ",
+   "V = 500(1.1)^(h/2)",
+   "V = 500(1.21)^(2h)",
+   "V = 500(1.1)ʰ"
+  ],
+  "answer": 3,
+  "explanation": "h half-years is t = h/2 years, so V = 500(1.21)^(h/2). Since 1.21 = (1.1)², (1.21)^(h/2) = (1.1)ʰ. So V = 500(1.1)ʰ."
+ },
+ {
+  "id": "mth-1069",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 1,200(1.44)ᵗ gives the number of fish in a pond t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 1,200(1.2)ʰ",
+   "V = 1,200(1.2)^(h/2)",
+   "V = 1,200(1.44)^(2h)",
+   "V = 1,200(0.72)ʰ"
+  ],
+  "answer": 0,
+  "explanation": "h half-years is t = h/2 years, so V = 1,200(1.44)^(h/2). Since 1.44 = (1.2)², (1.44)^(h/2) = (1.2)ʰ. So V = 1,200(1.2)ʰ."
+ },
+ {
+  "id": "mth-1070",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 2,000(1.44)ᵗ gives the value, in dollars, of an investment t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 2,000(1.2)^(h/2)",
+   "V = 2,000(1.2)ʰ",
+   "V = 2,000(0.72)ʰ",
+   "V = 2,000(1.44)^(2h)"
+  ],
+  "answer": 1,
+  "explanation": "h half-years is t = h/2 years, so V = 2,000(1.44)^(h/2). Since 1.44 = (1.2)², (1.44)^(h/2) = (1.2)ʰ. So V = 2,000(1.2)ʰ."
+ },
+ {
+  "id": "mth-1071",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 500(0.64)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 500(0.8)^(h/2)",
+   "V = 500(0.32)ʰ",
+   "V = 500(0.8)ʰ",
+   "V = 500(0.64)^(2h)"
+  ],
+  "answer": 2,
+  "explanation": "h half-years is t = h/2 years, so V = 500(0.64)^(h/2). Since 0.64 = (0.8)², (0.64)^(h/2) = (0.8)ʰ. So V = 500(0.8)ʰ."
+ },
+ {
+  "id": "mth-1072",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 4% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "choices": [
+   "2",
+   "4",
+   "8",
+   "20"
+  ],
+  "answer": 3,
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 4% net decrease means 1 − (p/100)² = 0.96, so (p/100)² = 0.04 and p/100 = 0.2. So p = 20. Choosing 4 treats the net change as the size of each step."
+ },
+ {
+  "id": "mth-1073",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 1% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 1% net decrease means 1 − (p/100)² = 0.99, so (p/100)² = 0.01 and p/100 = 0.1. So p = 10."
+ },
+ {
+  "id": "mth-1074",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 30 students, and their mean test score is 80. The mean score of the students in class B is 89. The mean score of all the students in both classes combined is 84. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "Total points: 30(80) + 89n = 84(30 + n). So 2400 + 89n = 2520 + 84n, which gives 5n = 120 and n = 24."
+ },
+ {
+  "id": "mth-1075",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 24 students, and their mean test score is 71. The mean score of the students in class B is 78. The mean score of all the students in both classes combined is 75. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "18",
+   "24",
+   "32",
+   "56"
+  ],
+  "answer": 2,
+  "explanation": "Total points: 24(71) + 78n = 75(24 + n). So 1704 + 78n = 1800 + 75n, which gives 3n = 96 and n = 32."
+ },
+ {
+  "id": "mth-1076",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 20 students, and their mean test score is 80. The mean score of the students in class B is 89. The mean score of all the students in both classes combined is 86. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "40"
+  ],
+  "explanation": "Total points: 20(80) + 89n = 86(20 + n). So 1600 + 89n = 1720 + 86n, which gives 3n = 120 and n = 40."
+ },
+ {
+  "id": "mth-1077",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 15 students, and their mean test score is 73. The mean score of the students in class B is 85. The mean score of all the students in both classes combined is 79. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "14",
+   "15",
+   "16",
+   "30"
+  ],
+  "answer": 1,
+  "explanation": "Total points: 15(73) + 85n = 79(15 + n). So 1095 + 85n = 1185 + 79n, which gives 6n = 90 and n = 15."
+ },
+ {
+  "id": "mth-1078",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 15 students, and their mean test score is 83. The mean score of the students in class B is 91. The mean score of all the students in both classes combined is 87. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "Total points: 15(83) + 91n = 87(15 + n). So 1245 + 91n = 1305 + 87n, which gives 4n = 60 and n = 15."
+ },
+ {
+  "id": "mth-1079",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 2) = 27^(x − 5)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "19"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 2)) = 3^(3(x − 5)). Set the exponents equal: 2x + 4 = 3x − 15, so x = 19."
+ },
+ {
+  "id": "mth-1080",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 4) = 27^(x − 5)?",
+  "tpl": "H6",
+  "choices": [
+   "9",
+   "13",
+   "22",
+   "23"
+  ],
+  "answer": 3,
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 4)) = 3^(3(x − 5)). Set the exponents equal: 2x + 8 = 3x − 15, so x = 23."
+ },
+ {
+  "id": "mth-1081",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 3) = 27^(x − 2)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 3)) = 3^(3(x − 2)). Set the exponents equal: 2x + 6 = 3x − 6, so x = 12."
+ },
+ {
+  "id": "mth-1082",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 4) = 8^(x − 5)?",
+  "tpl": "H6",
+  "choices": [
+   "9",
+   "13",
+   "22",
+   "23"
+  ],
+  "answer": 3,
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 4)) = 2^(3(x − 5)). Set the exponents equal: 2x + 8 = 3x − 15, so x = 23."
+ },
+ {
+  "id": "mth-1083",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 2) = 27^(x − 6)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "22"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 2)) = 3^(3(x − 6)). Set the exponents equal: 2x + 4 = 3x − 18, so x = 22."
+ },
+ {
+  "id": "mth-1084",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 6x − 18, k is a constant. If x − 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "11"
+  ],
+  "explanation": "If x − 1 is a factor, then p(1) = 0: (1)³ + k(1)² + 6(1) − 18 = 0, so 1 + 1k + 6 − 18 = 0 and k = 11."
+ },
+ {
+  "id": "mth-1085",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² − 12x − 5, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−7",
+   "−6",
+   "−5",
+   "6"
+  ],
+  "answer": 1,
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² − 12(−1) − 5 = 0, so -1 + 1k + 12 − 5 = 0 and k = −6."
+ },
+ {
+  "id": "mth-1086",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 8x + 3, k is a constant. If x − 3 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-6"
+  ],
+  "explanation": "If x − 3 is a factor, then p(3) = 0: (3)³ + k(3)² + 8(3) + 3 = 0, so 27 + 9k + 24 + 3 = 0 and k = −6."
+ },
+ {
+  "id": "mth-1087",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² − x − 1, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−1",
+   "0",
+   "1",
+   "2"
+  ],
+  "answer": 2,
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² − 1(−1) − 1 = 0, so -1 + 1k + 1 − 1 = 0 and k = 1."
+ },
+ {
+  "id": "mth-1088",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 4x + 4, k is a constant. If x − 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-9"
+  ],
+  "explanation": "If x − 1 is a factor, then p(1) = 0: (1)³ + k(1)² + 4(1) + 4 = 0, so 1 + 1k + 4 + 4 = 0 and k = −9."
+ },
+ {
+  "id": "mth-1089",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 6x + k for all values of x, where p, q, and k are constants and p − q = 10, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-16"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 6 and k = pq. With p − q = 10, adding the equations gives p = 8, so q = -2 and k = (8)(−2) = −16."
+ },
+ {
+  "id": "mth-1090",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² − 6x + k for all values of x, where p, q, and k are constants and p − q = 10, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "−60",
+   "−32",
+   "−16",
+   "4"
+  ],
+  "answer": 2,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = -6 and k = pq. With p − q = 10, adding the equations gives p = 2, so q = -8 and k = (2)(−8) = −16."
+ },
+ {
+  "id": "mth-1091",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 14x + k for all values of x, where p, q, and k are constants and p − q = 6, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "40"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 14 and k = pq. With p − q = 6, adding the equations gives p = 10, so q = 4 and k = (10)(4) = 40."
+ },
+ {
+  "id": "mth-1092",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 5x + k for all values of x, where p, q, and k are constants and p − q = 13, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "−72",
+   "−36",
+   "18",
+   "65"
+  ],
+  "answer": 1,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 5 and k = pq. With p − q = 13, adding the equations gives p = 9, so q = -4 and k = (9)(−4) = −36."
+ },
+ {
+  "id": "mth-1093",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 4x + k for all values of x, where p, q, and k are constants and p − q = 2, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 4 and k = pq. With p − q = 2, adding the equations gives p = 3, so q = 1 and k = (3)(1) = 3."
+ },
+ {
+  "id": "mth-1094",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is the right angle and tan A = 9/40. What is the value of cos B?",
+  "tpl": "H9",
+  "choices": [
+   "9/41",
+   "9/40",
+   "40/41",
+   "40/9"
+  ],
+  "answer": 0,
+  "explanation": "tan A = 9/40 means the side opposite A is 9k and the side adjacent to A is 40k, so the hypotenuse is 41k. Angles A and B are complementary, so cos B = sin A = 9/41."
+ },
+ {
+  "id": "mth-1095",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x + 1)² + (y + 6)² = 9 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "−6",
+   "−3",
+   "2",
+   "9"
+  ],
+  "answer": 1,
+  "explanation": "The circle has center (−1, −6) and radius 3. A horizontal line touches it at exactly one point at the top or bottom, y = −6 ± 3, so k could be −3 or −9."
+ },
+ {
+  "id": "mth-1096",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x − 2)² + (y − 6)² = 25 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "6",
+   "7",
+   "11",
+   "25"
+  ],
+  "answer": 2,
+  "explanation": "The circle has center (2, 6) and radius 5. A horizontal line touches it at exactly one point at the top or bottom, y = 6 ± 5, so k could be 11 or 1."
+ },
+ {
+  "id": "mth-1097",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 3) − f(x) = −8 for all values of x, and f(0) = −2. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-34"
+  ],
+  "explanation": "Increasing x by 3 changes f by −8, so the slope is −8/3 = −8/3. Then f(12) = −2 + −8/3(12) = −34."
+ },
+ {
+  "id": "mth-1098",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 2) − f(x) = −12 for all values of x, and f(0) = −5. What is the value of f(10)?",
+  "tpl": "H11",
+  "choices": [
+   "−125",
+   "−120",
+   "−65",
+   "−63"
+  ],
+  "answer": 2,
+  "explanation": "Increasing x by 2 changes f by −12, so the slope is −12/2 = −6. Then f(10) = −5 + −6(10) = −65."
+ },
+ {
+  "id": "mth-1099",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = 8 for all values of x, and f(0) = −7. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "17"
+  ],
+  "explanation": "Increasing x by 4 changes f by 8, so the slope is 8/4 = 2. Then f(12) = −7 + 2(12) = 17."
+ },
+ {
+  "id": "mth-1100",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 5) − f(x) = 12 for all values of x, and f(0) = 10. What is the value of f(10)?",
+  "tpl": "H11",
+  "choices": [
+   "34",
+   "39",
+   "120",
+   "130"
+  ],
+  "answer": 0,
+  "explanation": "Increasing x by 5 changes f by 12, so the slope is 12/5 = 12/5. Then f(10) = 10 + 12/5(10) = 34."
+ },
+ {
+  "id": "mth-1101",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = −10 for all values of x, and f(0) = −1. What is the value of f(10)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-26"
+  ],
+  "explanation": "Increasing x by 4 changes f by −10, so the slope is −10/4 = −5/2. Then f(10) = −1 + −5/2(10) = −26."
+ },
+ {
+  "id": "mth-1102",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 8x + k, where k is a constant, and the graph of y = −2x − 9 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "0"
+  ],
+  "explanation": "Setting the equations equal gives x² − 6x + (k + 9) = 0. One intersection means the discriminant is 0: (−6)² − 4(k + 9) = 0, so k + 9 = 9 and k = 0."
+ },
+ {
+  "id": "mth-1103",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 4x + k, where k is a constant, and the graph of y = −4 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−8",
+   "−4",
+   "0",
+   "4"
+  ],
+  "answer": 2,
+  "explanation": "Setting the equations equal gives x² − 4x + (k + 4) = 0. One intersection means the discriminant is 0: (−4)² − 4(k + 4) = 0, so k + 4 = 4 and k = 0."
+ },
+ {
+  "id": "mth-1104",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 8x + k, where k is a constant, and the graph of y = 2x + 4 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "29"
+  ],
+  "explanation": "Setting the equations equal gives x² − 10x + (k − 4) = 0. One intersection means the discriminant is 0: (−10)² − 4(k − 4) = 0, so k − 4 = 25 and k = 29."
+ },
+ {
+  "id": "mth-1105",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 2x + k, where k is a constant, and the graph of y = 2x − 4 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−8",
+   "−4",
+   "0",
+   "4"
+  ],
+  "answer": 2,
+  "explanation": "Setting the equations equal gives x² − 4x + (k + 4) = 0. One intersection means the discriminant is 0: (−4)² − 4(k + 4) = 0, so k + 4 = 4 and k = 0."
+ },
+ {
+  "id": "mth-1106",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 8x + k, where k is a constant, and the graph of y = −2x − 7 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "Setting the equations equal gives x² − 6x + (k + 7) = 0. One intersection means the discriminant is 0: (−6)² − 4(k + 7) = 0, so k + 7 = 9 and k = 2."
+ },
+ {
+  "id": "mth-1107",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 13) = x − 7?",
+  "tpl": "H2",
+  "choices": [
+   "{3}",
+   "{3, 12}",
+   "{12}",
+   "There is no solution."
+  ],
+  "answer": 2,
+  "explanation": "Squaring both sides gives x + 13 = x² − 14x + 49 if you expand (x − 7)², so x² − 15x + 36 = 0, which factors as (x − 12)(x − 3) = 0. Check both: x = 12 makes the right side 5, which matches √25; x = 3 makes the right side −4, a negative number, but a square root can't be negative. So only 12 works."
+ },
+ {
+  "id": "mth-1108",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 41) = x − 1?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{−5}",
+   "{−5, 8}",
+   "{8}"
+  ],
+  "answer": 3,
+  "explanation": "Squaring both sides gives x + 41 = x² − 2x + 1 if you expand (x − 1)², so x² − 3x − 40 = 0, which factors as (x − 8)(x + 5) = 0. Check both: x = 8 makes the right side 7, which matches √49; x = −5 makes the right side −6, a negative number, but a square root can't be negative. So only 8 works."
+ },
+ {
+  "id": "mth-1109",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 1) = x − 1?",
+  "tpl": "H2",
+  "choices": [
+   "{3}",
+   "{0}",
+   "There is no solution.",
+   "{0, 3}"
+  ],
+  "answer": 0,
+  "explanation": "Squaring both sides gives x + 1 = x² − 2x + 1 if you expand (x − 1)², so x² − 3x + 0 = 0, which factors as (x − 3)(x + 0) = 0. Check both: x = 3 makes the right side 2, which matches √4; x = 0 makes the right side −1, a negative number, but a square root can't be negative. So only 3 works."
+ },
+ {
+  "id": "mth-1110",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 2) = x − 10?",
+  "tpl": "H2",
+  "choices": [
+   "{7}",
+   "{14}",
+   "There is no solution.",
+   "{7, 14}"
+  ],
+  "answer": 1,
+  "explanation": "Squaring both sides gives x + 2 = x² − 20x + 100 if you expand (x − 10)², so x² − 21x + 98 = 0, which factors as (x − 14)(x − 7) = 0. Check both: x = 14 makes the right side 4, which matches √16; x = 7 makes the right side −3, a negative number, but a square root can't be negative. So only 14 works."
+ },
+ {
+  "id": "mth-1111",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 26) = x − 4?",
+  "tpl": "H2",
+  "choices": [
+   "{−1, 10}",
+   "There is no solution.",
+   "{10}",
+   "{−1}"
+  ],
+  "answer": 2,
+  "explanation": "Squaring both sides gives x + 26 = x² − 8x + 16 if you expand (x − 4)², so x² − 9x − 10 = 0, which factors as (x − 10)(x + 1) = 0. Check both: x = 10 makes the right side 6, which matches √36; x = −1 makes the right side −5, a negative number, but a square root can't be negative. So only 10 works."
+ },
+ {
+  "id": "mth-1112",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 1,200(1.69)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 1,200(1.3)ʰ",
+   "V = 1,200(1.69)^(2h)",
+   "V = 1,200(1.3)^(h/2)",
+   "V = 1,200(0.845)ʰ"
+  ],
+  "answer": 0,
+  "explanation": "h half-years is t = h/2 years, so V = 1,200(1.69)^(h/2). Since 1.69 = (1.3)², (1.69)^(h/2) = (1.3)ʰ. So V = 1,200(1.3)ʰ."
+ },
+ {
+  "id": "mth-1113",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 500(0.64)ᵗ gives the value, in dollars, of an investment t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 500(0.32)ʰ",
+   "V = 500(0.8)ʰ",
+   "V = 500(0.64)^(2h)",
+   "V = 500(0.8)^(h/2)"
+  ],
+  "answer": 1,
+  "explanation": "h half-years is t = h/2 years, so V = 500(0.64)^(h/2). Since 0.64 = (0.8)², (0.64)^(h/2) = (0.8)ʰ. So V = 500(0.8)ʰ."
+ },
+ {
+  "id": "mth-1114",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 800(1.44)ᵗ gives the number of fish in a pond t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 800(1.44)^(2h)",
+   "V = 800(0.72)ʰ",
+   "V = 800(1.2)ʰ",
+   "V = 800(1.2)^(h/2)"
+  ],
+  "answer": 2,
+  "explanation": "h half-years is t = h/2 years, so V = 800(1.44)^(h/2). Since 1.44 = (1.2)², (1.44)^(h/2) = (1.2)ʰ. So V = 800(1.2)ʰ."
+ },
+ {
+  "id": "mth-1115",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 500(1.44)ᵗ gives the value, in dollars, of an investment t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 500(1.44)^(2h)",
+   "V = 500(1.2)^(h/2)",
+   "V = 500(0.72)ʰ",
+   "V = 500(1.2)ʰ"
+  ],
+  "answer": 3,
+  "explanation": "h half-years is t = h/2 years, so V = 500(1.44)^(h/2). Since 1.44 = (1.2)², (1.44)^(h/2) = (1.2)ʰ. So V = 500(1.2)ʰ."
+ },
+ {
+  "id": "mth-1116",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "The price of a bicycle was increased by p% and later the new price was decreased by p%. The final price was 16% less than the original price. What is the value of p?",
+  "tpl": "H4",
+  "choices": [
+   "8",
+   "16",
+   "32",
+   "40"
+  ],
+  "answer": 3,
+  "explanation": "The two changes multiply the price by (1 + p/100)(1 − p/100) = 1 − (p/100)². A 16% net decrease means 1 − (p/100)² = 0.84, so (p/100)² = 0.16 and p/100 = 0.4. So p = 40. Choosing 16 treats the net change as the size of each step."
+ },
+ {
+  "id": "mth-1117",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 15 students, and their mean test score is 74. The mean score of the students in class B is 85. The mean score of all the students in both classes combined is 80. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "Total points: 15(74) + 85n = 80(15 + n). So 1110 + 85n = 1200 + 80n, which gives 5n = 90 and n = 18."
+ },
+ {
+  "id": "mth-1118",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 20 students, and their mean test score is 84. The mean score of the students in class B is 89. The mean score of all the students in both classes combined is 87. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "40/3",
+   "20",
+   "30",
+   "50"
+  ],
+  "answer": 2,
+  "explanation": "Total points: 20(84) + 89n = 87(20 + n). So 1680 + 89n = 1740 + 87n, which gives 2n = 60 and n = 30."
+ },
+ {
+  "id": "mth-1119",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 15 students, and their mean test score is 77. The mean score of the students in class B is 81. The mean score of all the students in both classes combined is 79. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "Total points: 15(77) + 81n = 79(15 + n). So 1155 + 81n = 1185 + 79n, which gives 2n = 30 and n = 15."
+ },
+ {
+  "id": "mth-1120",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 24 students, and their mean test score is 77. The mean score of the students in class B is 84. The mean score of all the students in both classes combined is 80. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "18",
+   "24",
+   "32",
+   "42"
+  ],
+  "answer": 0,
+  "explanation": "Total points: 24(77) + 84n = 80(24 + n). So 1848 + 84n = 1920 + 80n, which gives 4n = 72 and n = 18."
+ },
+ {
+  "id": "mth-1121",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 24 students, and their mean test score is 71. The mean score of the students in class B is 80. The mean score of all the students in both classes combined is 74. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "Total points: 24(71) + 80n = 74(24 + n). So 1704 + 80n = 1776 + 74n, which gives 6n = 72 and n = 12."
+ },
+ {
+  "id": "mth-1122",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 1) = 8^(x − 1)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 1)) = 2^(3(x − 1)). Set the exponents equal: 2x + 2 = 3x − 3, so x = 5."
+ },
+ {
+  "id": "mth-1123",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 5) = 8^(x − 5)?",
+  "tpl": "H6",
+  "choices": [
+   "10",
+   "15",
+   "25",
+   "26"
+  ],
+  "answer": 2,
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 5)) = 2^(3(x − 5)). Set the exponents equal: 2x + 10 = 3x − 15, so x = 25."
+ },
+ {
+  "id": "mth-1124",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 5) = 8^(x − 3)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "19"
+  ],
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 5)) = 2^(3(x − 3)). Set the exponents equal: 2x + 10 = 3x − 9, so x = 19."
+ },
+ {
+  "id": "mth-1125",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 4) = 8^(x − 2)?",
+  "tpl": "H6",
+  "choices": [
+   "6",
+   "10",
+   "14",
+   "16"
+  ],
+  "answer": 2,
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 4)) = 2^(3(x − 2)). Set the exponents equal: 2x + 8 = 3x − 6, so x = 14."
+ },
+ {
+  "id": "mth-1126",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 25^(x + 6) = 125^(x − 6)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "30"
+  ],
+  "explanation": "Write both sides as powers of 5: 5^(2(x + 6)) = 5^(3(x − 6)). Set the exponents equal: 2x + 12 = 3x − 18, so x = 30."
+ },
+ {
+  "id": "mth-1127",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 5x − 5, k is a constant. If x − 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-1"
+  ],
+  "explanation": "If x − 1 is a factor, then p(1) = 0: (1)³ + k(1)² + 5(1) − 5 = 0, so 1 + 1k + 5 − 5 = 0 and k = −1."
+ },
+ {
+  "id": "mth-1128",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 2x + 8, k is a constant. If x + 2 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−1",
+   "1",
+   "2",
+   "8"
+  ],
+  "answer": 1,
+  "explanation": "If x + 2 is a factor, then p(−2) = 0: (−2)³ + k(−2)² + 2(−2) + 8 = 0, so -8 + 4k − 4 + 8 = 0 and k = 1."
+ },
+ {
+  "id": "mth-1129",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 7x + 6, k is a constant. If x + 2 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "If x + 2 is a factor, then p(−2) = 0: (−2)³ + k(−2)² + 7(−2) + 6 = 0, so -8 + 4k − 14 + 6 = 0 and k = 4."
+ },
+ {
+  "id": "mth-1130",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² − 8x + 9, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−16",
+   "−15",
+   "9",
+   "16"
+  ],
+  "answer": 0,
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² − 8(−1) + 9 = 0, so -1 + 1k + 8 + 9 = 0 and k = −16."
+ },
+ {
+  "id": "mth-1131",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² − 10x + 9, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-18"
+  ],
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² − 10(−1) + 9 = 0, so -1 + 1k + 10 + 9 = 0 and k = −18."
+ },
+ {
+  "id": "mth-1132",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 5x + k for all values of x, where p, q, and k are constants and p − q = 7, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-6"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 5 and k = pq. With p − q = 7, adding the equations gives p = 6, so q = -1 and k = (6)(−1) = −6."
+ },
+ {
+  "id": "mth-1133",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² − 5x + k for all values of x, where p, q, and k are constants and p − q = 11, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "−55",
+   "−48",
+   "−24",
+   "6"
+  ],
+  "answer": 2,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = -5 and k = pq. With p − q = 11, adding the equations gives p = 3, so q = -8 and k = (3)(−8) = −24."
+ },
+ {
+  "id": "mth-1134",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 12x + k for all values of x, where p, q, and k are constants and p − q = 2, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "35"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 12 and k = pq. With p − q = 2, adding the equations gives p = 7, so q = 5 and k = (7)(5) = 35."
+ },
+ {
+  "id": "mth-1135",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² − 4x + k for all values of x, where p, q, and k are constants and p − q = 12, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "−64",
+   "−48",
+   "−32",
+   "8"
+  ],
+  "answer": 2,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = -4 and k = pq. With p − q = 12, adding the equations gives p = 4, so q = -8 and k = (4)(−8) = −32."
+ },
+ {
+  "id": "mth-1136",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 11x + k for all values of x, where p, q, and k are constants and p − q = 7, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 11 and k = pq. With p − q = 7, adding the equations gives p = 9, so q = 2 and k = (9)(2) = 18."
+ },
+ {
+  "id": "mth-1137",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangle trigonometry",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is the right angle and tan A = 8/15. What is the value of cos B?",
+  "tpl": "H9",
+  "choices": [
+   "8/17",
+   "8/15",
+   "15/17",
+   "15/8"
+  ],
+  "answer": 0,
+  "explanation": "tan A = 8/15 means the side opposite A is 8k and the side adjacent to A is 15k, so the hypotenuse is 17k. Angles A and B are complementary, so cos B = sin A = 8/17."
+ },
+ {
+  "id": "mth-1138",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x − 4)² + (y − 5)² = 9 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "5",
+   "7",
+   "8",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "The circle has center (4, 5) and radius 3. A horizontal line touches it at exactly one point at the top or bottom, y = 5 ± 3, so k could be 8 or 2."
+ },
+ {
+  "id": "mth-1139",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x + 5)² + (y − 3)² = 36 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "1",
+   "3",
+   "9",
+   "36"
+  ],
+  "answer": 2,
+  "explanation": "The circle has center (−5, 3) and radius 6. A horizontal line touches it at exactly one point at the top or bottom, y = 3 ± 6, so k could be 9 or −3."
+ },
+ {
+  "id": "mth-1140",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x + 5)² + (y − 1)² = 9 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "−2",
+   "1",
+   "4",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "The circle has center (−5, 1) and radius 3. A horizontal line touches it at exactly one point at the top or bottom, y = 1 ± 3, so k could be 4 or −2."
+ },
+ {
+  "id": "mth-1141",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 5) − f(x) = −10 for all values of x, and f(0) = 9. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-15"
+  ],
+  "explanation": "Increasing x by 5 changes f by −10, so the slope is −10/5 = −2. Then f(12) = 9 + −2(12) = −15."
+ },
+ {
+  "id": "mth-1142",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 3) − f(x) = −12 for all values of x, and f(0) = −7. What is the value of f(6)?",
+  "tpl": "H11",
+  "choices": [
+   "−79",
+   "−72",
+   "−31",
+   "−28"
+  ],
+  "answer": 2,
+  "explanation": "Increasing x by 3 changes f by −12, so the slope is −12/3 = −4. Then f(6) = −7 + −4(6) = −31."
+ },
+ {
+  "id": "mth-1143",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 2) − f(x) = −10 for all values of x, and f(0) = −6. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-66"
+  ],
+  "explanation": "Increasing x by 2 changes f by −10, so the slope is −10/2 = −5. Then f(12) = −6 + −5(12) = −66."
+ },
+ {
+  "id": "mth-1144",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 6x + k, where k is a constant, and the graph of y = −1 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "Setting the equations equal gives x² + 6x + (k + 1) = 0. One intersection means the discriminant is 0: (6)² − 4(k + 1) = 0, so k + 1 = 9 and k = 8."
+ },
+ {
+  "id": "mth-1145",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 6x + k, where k is a constant, and the graph of y = −8 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−17",
+   "−8",
+   "1",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "Setting the equations equal gives x² + 6x + (k + 8) = 0. One intersection means the discriminant is 0: (6)² − 4(k + 8) = 0, so k + 8 = 9 and k = 1."
+ },
+ {
+  "id": "mth-1146",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 6x + k, where k is a constant, and the graph of y = 6 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15"
+  ],
+  "explanation": "Setting the equations equal gives x² − 6x + (k − 6) = 0. One intersection means the discriminant is 0: (−6)² − 4(k − 6) = 0, so k − 6 = 9 and k = 15."
+ },
+ {
+  "id": "mth-1147",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² + 6x + k, where k is a constant, and the graph of y = 4 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−5",
+   "4",
+   "9",
+   "13"
+  ],
+  "answer": 3,
+  "explanation": "Setting the equations equal gives x² + 6x + (k − 4) = 0. One intersection means the discriminant is 0: (6)² − 4(k − 4) = 0, so k − 4 = 9 and k = 13."
+ },
+ {
+  "id": "mth-1148",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Nonlinear systems",
+  "difficulty": "hard",
+  "question": "In the xy-plane, the graph of y = x² − 4x + k, where k is a constant, and the graph of y = 2 intersect at exactly one point. What is the value of k?",
+  "tpl": "H1",
+  "choices": [
+   "−2",
+   "2",
+   "4",
+   "6"
+  ],
+  "answer": 3,
+  "explanation": "Setting the equations equal gives x² − 4x + (k − 2) = 0. One intersection means the discriminant is 0: (−4)² − 4(k − 2) = 0, so k − 2 = 4 and k = 6."
+ },
+ {
+  "id": "mth-1149",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 39) = x − 3?",
+  "tpl": "H2",
+  "choices": [
+   "{−3, 10}",
+   "{−3}",
+   "There is no solution.",
+   "{10}"
+  ],
+  "answer": 3,
+  "explanation": "Squaring both sides gives x + 39 = x² − 6x + 9 if you expand (x − 3)², so x² − 7x − 30 = 0, which factors as (x − 10)(x + 3) = 0. Check both: x = 10 makes the right side 7, which matches √49; x = −3 makes the right side −6, a negative number, but a square root can't be negative. So only 10 works."
+ },
+ {
+  "id": "mth-1150",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 53) = x − 3?",
+  "tpl": "H2",
+  "choices": [
+   "{11}",
+   "There is no solution.",
+   "{−4}",
+   "{−4, 11}"
+  ],
+  "answer": 0,
+  "explanation": "Squaring both sides gives x + 53 = x² − 6x + 9 if you expand (x − 3)², so x² − 7x − 44 = 0, which factors as (x − 11)(x + 4) = 0. Check both: x = 11 makes the right side 8, which matches √64; x = −4 makes the right side −7, a negative number, but a square root can't be negative. So only 11 works."
+ },
+ {
+  "id": "mth-1151",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 51) = x − 5?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{13}",
+   "{−2, 13}",
+   "{−2}"
+  ],
+  "answer": 1,
+  "explanation": "Squaring both sides gives x + 51 = x² − 10x + 25 if you expand (x − 5)², so x² − 11x − 26 = 0, which factors as (x − 13)(x + 2) = 0. Check both: x = 13 makes the right side 8, which matches √64; x = −2 makes the right side −7, a negative number, but a square root can't be negative. So only 13 works."
+ },
+ {
+  "id": "mth-1152",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 10) = x − 2?",
+  "tpl": "H2",
+  "choices": [
+   "There is no solution.",
+   "{−1, 6}",
+   "{6}",
+   "{−1}"
+  ],
+  "answer": 2,
+  "explanation": "Squaring both sides gives x + 10 = x² − 4x + 4 if you expand (x − 2)², so x² − 5x − 6 = 0, which factors as (x − 6)(x + 1) = 0. Check both: x = 6 makes the right side 4, which matches √16; x = −1 makes the right side −3, a negative number, but a square root can't be negative. So only 6 works."
+ },
+ {
+  "id": "mth-1153",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Radical equations",
+  "difficulty": "hard",
+  "question": "What is the solution set of the equation √(x + 23) = x − 7?",
+  "tpl": "H2",
+  "choices": [
+   "{2}",
+   "There is no solution.",
+   "{2, 13}",
+   "{13}"
+  ],
+  "answer": 3,
+  "explanation": "Squaring both sides gives x + 23 = x² − 14x + 49 if you expand (x − 7)², so x² − 15x + 26 = 0, which factors as (x − 13)(x − 2) = 0. Check both: x = 13 makes the right side 6, which matches √36; x = 2 makes the right side −5, a negative number, but a square root can't be negative. So only 13 works."
+ },
+ {
+  "id": "mth-1154",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 500(0.81)ᵗ gives the number of users of an app t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 500(0.9)ʰ",
+   "V = 500(0.9)^(h/2)",
+   "V = 500(0.405)ʰ",
+   "V = 500(0.81)^(2h)"
+  ],
+  "answer": 0,
+  "explanation": "h half-years is t = h/2 years, so V = 500(0.81)^(h/2). Since 0.81 = (0.9)², (0.81)^(h/2) = (0.9)ʰ. So V = 500(0.9)ʰ."
+ },
+ {
+  "id": "mth-1155",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 800(0.64)ᵗ gives the value, in dollars, of an investment t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 800(0.32)ʰ",
+   "V = 800(0.8)ʰ",
+   "V = 800(0.64)^(2h)",
+   "V = 800(0.8)^(h/2)"
+  ],
+  "answer": 1,
+  "explanation": "h half-years is t = h/2 years, so V = 800(0.64)^(h/2). Since 0.64 = (0.8)², (0.64)^(h/2) = (0.8)ʰ. So V = 800(0.8)ʰ."
+ },
+ {
+  "id": "mth-1156",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential functions",
+  "difficulty": "hard",
+  "question": "The function V(t) = 1,200(1.69)ᵗ gives the number of fish in a pond t years after it was first measured. Which equation gives the same quantity in terms of h, the number of half-years since it was first measured?",
+  "tpl": "H3",
+  "choices": [
+   "V = 1,200(1.69)^(2h)",
+   "V = 1,200(1.3)^(h/2)",
+   "V = 1,200(0.845)ʰ",
+   "V = 1,200(1.3)ʰ"
+  ],
+  "answer": 3,
+  "explanation": "h half-years is t = h/2 years, so V = 1,200(1.69)^(h/2). Since 1.69 = (1.3)², (1.69)^(h/2) = (1.3)ʰ. So V = 1,200(1.3)ʰ."
+ },
+ {
+  "id": "mth-1157",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 30 students, and their mean test score is 78. The mean score of the students in class B is 84. The mean score of all the students in both classes combined is 82. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "60"
+  ],
+  "explanation": "Total points: 30(78) + 84n = 82(30 + n). So 2340 + 84n = 2460 + 82n, which gives 2n = 120 and n = 60."
+ },
+ {
+  "id": "mth-1158",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 24 students, and their mean test score is 78. The mean score of the students in class B is 87. The mean score of all the students in both classes combined is 84. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "12",
+   "24",
+   "48",
+   "72"
+  ],
+  "answer": 2,
+  "explanation": "Total points: 24(78) + 87n = 84(24 + n). So 1872 + 87n = 2016 + 84n, which gives 3n = 144 and n = 48."
+ },
+ {
+  "id": "mth-1159",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 24 students, and their mean test score is 74. The mean score of the students in class B is 82. The mean score of all the students in both classes combined is 78. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "Total points: 24(74) + 82n = 78(24 + n). So 1776 + 82n = 1872 + 78n, which gives 4n = 96 and n = 24."
+ },
+ {
+  "id": "mth-1160",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 12 students, and their mean test score is 73. The mean score of the students in class B is 78. The mean score of all the students in both classes combined is 76. How many students are in class B?",
+  "tpl": "H5",
+  "choices": [
+   "8",
+   "12",
+   "18",
+   "30"
+  ],
+  "answer": 2,
+  "explanation": "Total points: 12(73) + 78n = 76(12 + n). So 876 + 78n = 912 + 76n, which gives 2n = 36 and n = 18."
+ },
+ {
+  "id": "mth-1161",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Weighted averages",
+  "difficulty": "hard",
+  "question": "Class A has 20 students, and their mean test score is 74. The mean score of the students in class B is 78. The mean score of all the students in both classes combined is 76. How many students are in class B?",
+  "tpl": "H5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Total points: 20(74) + 78n = 76(20 + n). So 1480 + 78n = 1520 + 76n, which gives 2n = 40 and n = 20."
+ },
+ {
+  "id": "mth-1162",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 6) = 27^(x − 5)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "27"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 6)) = 3^(3(x − 5)). Set the exponents equal: 2x + 12 = 3x − 15, so x = 27."
+ },
+ {
+  "id": "mth-1163",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 2) = 8^(x − 5)?",
+  "tpl": "H6",
+  "choices": [
+   "7",
+   "9",
+   "16",
+   "19"
+  ],
+  "answer": 3,
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 2)) = 2^(3(x − 5)). Set the exponents equal: 2x + 4 = 3x − 15, so x = 19."
+ },
+ {
+  "id": "mth-1164",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 9^(x + 1) = 27^(x − 3)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "11"
+  ],
+  "explanation": "Write both sides as powers of 3: 3^(2(x + 1)) = 3^(3(x − 3)). Set the exponents equal: 2x + 2 = 3x − 9, so x = 11."
+ },
+ {
+  "id": "mth-1165",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 4^(x + 4) = 8^(x − 1)?",
+  "tpl": "H6",
+  "choices": [
+   "5",
+   "9",
+   "11",
+   "14"
+  ],
+  "answer": 2,
+  "explanation": "Write both sides as powers of 2: 2^(2(x + 4)) = 2^(3(x − 1)). Set the exponents equal: 2x + 8 = 3x − 3, so x = 11."
+ },
+ {
+  "id": "mth-1166",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponential equations",
+  "difficulty": "hard",
+  "question": "What value of x satisfies the equation 25^(x + 3) = 125^(x − 2)?",
+  "tpl": "H6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "Write both sides as powers of 5: 5^(2(x + 3)) = 5^(3(x − 2)). Set the exponents equal: 2x + 6 = 3x − 6, so x = 12."
+ },
+ {
+  "id": "mth-1167",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 11x − 6, k is a constant. If x − 2 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-6"
+  ],
+  "explanation": "If x − 2 is a factor, then p(2) = 0: (2)³ + k(2)² + 11(2) − 6 = 0, so 8 + 4k + 22 − 6 = 0 and k = −6."
+ },
+ {
+  "id": "mth-1168",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 12x − 5, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−18",
+   "−5",
+   "18",
+   "19"
+  ],
+  "answer": 2,
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² + 12(−1) − 5 = 0, so -1 + 1k − 12 − 5 = 0 and k = 18."
+ },
+ {
+  "id": "mth-1169",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 6x − 18, k is a constant. If x − 3 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-3"
+  ],
+  "explanation": "If x − 3 is a factor, then p(3) = 0: (3)³ + k(3)² + 6(3) − 18 = 0, so 27 + 9k + 18 − 18 = 0 and k = −3."
+ },
+ {
+  "id": "mth-1170",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 2x − 4, k is a constant. If x + 1 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "choices": [
+   "−7",
+   "−4",
+   "7",
+   "8"
+  ],
+  "answer": 2,
+  "explanation": "If x + 1 is a factor, then p(−1) = 0: (−1)³ + k(−1)² + 2(−1) − 4 = 0, so -1 + 1k − 2 − 4 = 0 and k = 7."
+ },
+ {
+  "id": "mth-1171",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Polynomial factors and remainders",
+  "difficulty": "hard",
+  "question": "In the polynomial p(x) = x³ + kx² + 7x + 10, k is a constant. If x − 2 is a factor of p(x), what is the value of k?",
+  "tpl": "H7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "-8"
+  ],
+  "explanation": "If x − 2 is a factor, then p(2) = 0: (2)³ + k(2)² + 7(2) + 10 = 0, so 8 + 4k + 14 + 10 = 0 and k = −8."
+ },
+ {
+  "id": "mth-1172",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² − 9x + k for all values of x, where p, q, and k are constants and p − q = 3, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = -9 and k = pq. With p − q = 3, adding the equations gives p = -3, so q = -6 and k = (−3)(−6) = 18."
+ },
+ {
+  "id": "mth-1173",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 8x + k for all values of x, where p, q, and k are constants and p − q = 10, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "−18",
+   "−9",
+   "18",
+   "80"
+  ],
+  "answer": 1,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 8 and k = pq. With p − q = 10, adding the equations gives p = 9, so q = -1 and k = (9)(−1) = −9."
+ },
+ {
+  "id": "mth-1174",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 15x + k for all values of x, where p, q, and k are constants and p − q = 5, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "50"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 15 and k = pq. With p − q = 5, adding the equations gives p = 10, so q = 5 and k = (10)(5) = 50."
+ },
+ {
+  "id": "mth-1175",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 8x + k for all values of x, where p, q, and k are constants and p − q = 2, what is the value of k?",
+  "tpl": "H8",
+  "choices": [
+   "10",
+   "15",
+   "16",
+   "30"
+  ],
+  "answer": 1,
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 8 and k = pq. With p − q = 2, adding the equations gives p = 5, so q = 3 and k = (5)(3) = 15."
+ },
+ {
+  "id": "mth-1176",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Equivalent expressions",
+  "difficulty": "hard",
+  "question": "If (x + p)(x + q) = x² + 17x + k for all values of x, where p, q, and k are constants and p − q = 5, what is the value of k?",
+  "tpl": "H8",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "66"
+  ],
+  "explanation": "Expanding gives x² + (p + q)x + pq, so p + q = 17 and k = pq. With p − q = 5, adding the equations gives p = 11, so q = 6 and k = (11)(6) = 66."
+ },
+ {
+  "id": "mth-1177",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x − 6)² + (y + 1)² = 9 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "−1",
+   "2",
+   "4",
+   "9"
+  ],
+  "answer": 1,
+  "explanation": "The circle has center (6, −1) and radius 3. A horizontal line touches it at exactly one point at the top or bottom, y = −1 ± 3, so k could be 2 or −4."
+ },
+ {
+  "id": "mth-1178",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of (x + 1)² + (y + 4)² = 9 in the xy-plane is a circle. The line y = k intersects the circle at exactly one point. Which of the following could be the value of k?",
+  "tpl": "H10",
+  "choices": [
+   "−4",
+   "−1",
+   "2",
+   "9"
+  ],
+  "answer": 1,
+  "explanation": "The circle has center (−1, −4) and radius 3. A horizontal line touches it at exactly one point at the top or bottom, y = −4 ± 3, so k could be −1 or −7."
+ },
+ {
+  "id": "mth-1179",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 3) − f(x) = 9 for all values of x, and f(0) = −3. What is the value of f(8)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "21"
+  ],
+  "explanation": "Increasing x by 3 changes f by 9, so the slope is 9/3 = 3. Then f(8) = −3 + 3(8) = 21."
+ },
+ {
+  "id": "mth-1180",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 4) − f(x) = 6 for all values of x, and f(0) = 2. What is the value of f(8)?",
+  "tpl": "H11",
+  "choices": [
+   "14",
+   "18",
+   "48",
+   "50"
+  ],
+  "answer": 0,
+  "explanation": "Increasing x by 4 changes f by 6, so the slope is 6/4 = 3/2. Then f(8) = 2 + 3/2(8) = 14."
+ },
+ {
+  "id": "mth-1181",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 2) − f(x) = 12 for all values of x, and f(0) = 3. What is the value of f(12)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "75"
+  ],
+  "explanation": "Increasing x by 2 changes f by 12, so the slope is 12/2 = 6. Then f(12) = 3 + 6(12) = 75."
+ },
+ {
+  "id": "mth-1182",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 3) − f(x) = 6 for all values of x, and f(0) = 3. What is the value of f(10)?",
+  "tpl": "H11",
+  "choices": [
+   "23",
+   "26",
+   "60",
+   "63"
+  ],
+  "answer": 0,
+  "explanation": "Increasing x by 3 changes f by 6, so the slope is 6/3 = 2. Then f(10) = 3 + 2(10) = 23."
+ },
+ {
+  "id": "mth-1183",
+  "section": "math",
+  "domain": "Algebra",
+  "skill": "Linear functions",
+  "difficulty": "hard",
+  "question": "For the linear function f, f(x + 2) − f(x) = 15 for all values of x, and f(0) = 0. What is the value of f(10)?",
+  "tpl": "H11",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "75"
+  ],
+  "explanation": "Increasing x by 2 changes f by 15, so the slope is 15/2 = 15/2. Then f(10) = 0 + 15/2(10) = 75."
  }
 ]
