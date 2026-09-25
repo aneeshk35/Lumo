@@ -2110,5 +2110,1796 @@
     ],
     "answer": 0,
     "explanation": "The nonessential clause opens with a comma after \"cameras,\" so it must close with a matching comma before the main verb \"revealed.\" Punctuation marks that set off an interruption have to come in a matching pair."
+  },
+  {
+    "id": "alg-017",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear equations in one variable",
+    "difficulty": "easy",
+    "question": "If x/4 + 3 = 8, what is the value of x?",
+    "choices": [
+      "5",
+      "11",
+      "20",
+      "44"
+    ],
+    "answer": 2,
+    "explanation": "Subtract 3: x/4 = 5. Multiply by 4: x = 20."
+  },
+  {
+    "id": "alg-018",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear equations with no solution",
+    "difficulty": "medium",
+    "question": "How many solutions does the equation 5(2x − 3) = 3(x + 2) + 7x have?",
+    "choices": [
+      "Exactly one",
+      "Exactly two",
+      "Infinitely many",
+      "Zero"
+    ],
+    "answer": 3,
+    "explanation": "The left side is 10x − 15 and the right side is 10x + 6. Subtracting 10x leaves −15 = 6, which is never true, so there are no solutions."
+  },
+  {
+    "id": "alg-019",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear equations with no solution",
+    "difficulty": "hard",
+    "question": "In the equation (k − 2)x + 6 = 4x − 2k, k is a constant. For what value of k does the equation have no solution?",
+    "choices": [
+      "−3",
+      "2",
+      "4",
+      "6"
+    ],
+    "answer": 3,
+    "explanation": "A linear equation has no solution when the x-coefficients match but the constants don't. k − 2 = 4 gives k = 6. Then the constants are 6 and −12, which differ, so there's no solution."
+  },
+  {
+    "id": "alg-020",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Slope",
+    "difficulty": "easy",
+    "question": "What is the slope of the line that passes through the points (2, 5) and (6, 17)?",
+    "choices": [
+      "1/3",
+      "3",
+      "4",
+      "12"
+    ],
+    "answer": 1,
+    "explanation": "Slope = (17 − 5)/(6 − 2) = 12/4 = 3. Choice A inverts the ratio."
+  },
+  {
+    "id": "alg-021",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear functions",
+    "difficulty": "hard",
+    "question": "For the linear function f, f(2) = 11 and f(6) = 23. What is the value of f(0)?",
+    "choices": [
+      "3",
+      "5",
+      "8",
+      "11"
+    ],
+    "answer": 1,
+    "explanation": "The slope is (23 − 11)/(6 − 2) = 3. Going from x = 2 back to x = 0 lowers f by 2 × 3 = 6, so f(0) = 11 − 6 = 5. Choice A is the slope."
+  },
+  {
+    "id": "alg-022",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Parallel and perpendicular lines",
+    "difficulty": "hard",
+    "question": "In the xy-plane, line ℓ is perpendicular to the line 2x + 5y = 10 and passes through the point (0, −3). What is the x-intercept of line ℓ?",
+    "choices": [
+      "−6/5",
+      "6/5",
+      "5/2",
+      "3"
+    ],
+    "answer": 1,
+    "explanation": "2x + 5y = 10 has slope −2/5, so line ℓ has slope 5/2 and equation y = (5/2)x − 3. Setting y = 0 gives (5/2)x = 3, so x = 6/5."
+  },
+  {
+    "id": "alg-023",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Systems of two linear equations",
+    "difficulty": "medium",
+    "question": "If x + y = 14 and x − y = 4, what is the value of xy?",
+    "choices": [
+      "36",
+      "40",
+      "45",
+      "50"
+    ],
+    "answer": 2,
+    "explanation": "Adding the equations gives 2x = 18, so x = 9 and y = 5. Then xy = 45."
+  },
+  {
+    "id": "alg-024",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Systems with no solution",
+    "difficulty": "hard",
+    "question": "In the system 3x + ky = 7 and 6x + 10y = 12, k is a constant. For what value of k does the system have no solution?",
+    "choices": [
+      "2",
+      "5",
+      "10",
+      "20"
+    ],
+    "answer": 1,
+    "explanation": "Divide the second equation by 2: 3x + 5y = 6. If k = 5, the first equation is 3x + 5y = 7. The lines are parallel with different constants, so there's no solution."
+  },
+  {
+    "id": "alg-025",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear systems in context",
+    "difficulty": "hard",
+    "question": "A school play sold 150 tickets for a total of $1,400. Adult tickets cost $12 and student tickets cost $7. How many student tickets were sold?",
+    "choices": [
+      "70",
+      "80",
+      "90",
+      "110"
+    ],
+    "answer": 1,
+    "explanation": "Let a + s = 150 and 12a + 7s = 1,400. Substituting a = 150 − s: 1,800 − 12s + 7s = 1,400, so 5s = 400 and s = 80. Choice A is the number of adult tickets."
+  },
+  {
+    "id": "alg-026",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear inequalities in context",
+    "difficulty": "medium",
+    "question": "A gym charges a $30 sign-up fee plus $4.50 per hour of court time. Dana can spend at most $120. What is the maximum number of whole hours of court time Dana can buy?",
+    "choices": [
+      "18",
+      "20",
+      "26",
+      "30"
+    ],
+    "answer": 1,
+    "explanation": "30 + 4.5h ≤ 120 gives 4.5h ≤ 90, so h ≤ 20."
+  },
+  {
+    "id": "alg-027",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Systems of linear inequalities",
+    "difficulty": "medium",
+    "question": "Which point (x, y) is a solution to the system y > 2x − 3 and y < −x + 6?",
+    "choices": [
+      "(0, 7)",
+      "(1, 2)",
+      "(3, 2)",
+      "(4, 1)"
+    ],
+    "answer": 1,
+    "explanation": "Test (1, 2): 2 > 2(1) − 3 = −1 ✓ and 2 < −1 + 6 = 5 ✓. The other points fail: (0, 7) needs 7 < 6, (3, 2) needs 2 > 3, and (4, 1) needs 1 > 5."
+  },
+  {
+    "id": "alg-028",
+    "section": "math",
+    "domain": "Algebra",
+    "skill": "Linear equations in two variables",
+    "difficulty": "hard",
+    "question": "The graph of 4x + 3y = 60 in the xy-plane forms a triangle with the x-axis and the y-axis. What is the area of the triangle?",
+    "choices": [
+      "35",
+      "60",
+      "150",
+      "300"
+    ],
+    "answer": 2,
+    "explanation": "The x-intercept is 60/4 = 15 and the y-intercept is 60/3 = 20. The triangle is a right triangle with legs 15 and 20, so the area is (1/2)(15)(20) = 150. Choice D forgets the 1/2."
+  },
+  {
+    "id": "adv-017",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Exponential functions",
+    "difficulty": "medium",
+    "question": "The function f is defined by f(x) = a · 2ˣ, where a is a constant. If f(3) = 40, what is the value of f(5)?",
+    "choices": [
+      "80",
+      "120",
+      "160",
+      "200"
+    ],
+    "answer": 2,
+    "explanation": "f(3) = 8a = 40, so a = 5. Then f(5) = 5 · 2⁵ = 5 · 32 = 160."
+  },
+  {
+    "id": "adv-018",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Quadratic functions",
+    "difficulty": "hard",
+    "question": "The function f is defined by f(x) = (x − 3)(x + 7). What is the minimum value of f(x)?",
+    "choices": [
+      "−25",
+      "−21",
+      "−2",
+      "21"
+    ],
+    "answer": 0,
+    "explanation": "The vertex lies midway between the zeros 3 and −7, at x = −2. The minimum value is f(−2) = (−5)(5) = −25. Choice C is the x-coordinate of the vertex, and choice B is f(0)."
+  },
+  {
+    "id": "adv-019",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Quadratic functions",
+    "difficulty": "hard",
+    "question": "The graph of y = x² − 8x + k in the xy-plane has exactly one x-intercept. What is the value of k?",
+    "choices": [
+      "4",
+      "8",
+      "16",
+      "64"
+    ],
+    "answer": 2,
+    "explanation": "Exactly one x-intercept means the discriminant is 0: (−8)² − 4(1)(k) = 0, so 64 = 4k and k = 16. Then the equation is y = (x − 4)²."
+  },
+  {
+    "id": "adv-020",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Exponential decay",
+    "difficulty": "medium",
+    "question": "A town's population is 1,200 and decreases by 15% each year. Which function gives the population P(t) after t years?",
+    "choices": [
+      "P(t) = 1,200(0.15)ᵗ",
+      "P(t) = 1,200(0.85)ᵗ",
+      "P(t) = 1,200(1.15)ᵗ",
+      "P(t) = 1,200 − 0.15t"
+    ],
+    "answer": 1,
+    "explanation": "Losing 15% each year leaves 85% of the previous year's population, so the growth factor is 0.85. Choice A keeps only 15% each year, choice C is 15% growth, and choice D is linear."
+  },
+  {
+    "id": "adv-021",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Transformations of functions",
+    "difficulty": "medium",
+    "question": "The function f is defined by f(x) = x². The function g is defined by g(x) = f(x − 2) + 3. What are the coordinates of the vertex of the graph of y = g(x) in the xy-plane?",
+    "choices": [
+      "(−2, 3)",
+      "(2, −3)",
+      "(2, 3)",
+      "(3, 2)"
+    ],
+    "answer": 2,
+    "explanation": "Replacing x with x − 2 shifts the graph right 2, and adding 3 shifts it up 3. The vertex moves from (0, 0) to (2, 3)."
+  },
+  {
+    "id": "adv-022",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Vertex of a parabola",
+    "difficulty": "hard",
+    "question": "The graph of f(x) = 3x² − 12x + c in the xy-plane has its vertex at (h, 5). What is the value of c?",
+    "choices": [
+      "5",
+      "7",
+      "17",
+      "29"
+    ],
+    "answer": 2,
+    "explanation": "The vertex's x-coordinate is h = −(−12)/(2 · 3) = 2. So f(2) = 12 − 24 + c = c − 12 = 5, giving c = 17."
+  },
+  {
+    "id": "adv-023",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Nonlinear systems",
+    "difficulty": "hard",
+    "question": "The system y = x² − 4x + 1 and y = 2x − 8 has exactly one solution (a, b). What is the value of a + b?",
+    "choices": [
+      "−5",
+      "1",
+      "3",
+      "5"
+    ],
+    "answer": 1,
+    "explanation": "Set the expressions equal: x² − 4x + 1 = 2x − 8, so x² − 6x + 9 = 0, or (x − 3)² = 0. Then a = 3 and b = 2(3) − 8 = −2, so a + b = 1."
+  },
+  {
+    "id": "adv-024",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Discriminant",
+    "difficulty": "hard",
+    "question": "The equation x² + bx + 36 = 0, where b is a constant, has no real solutions. Which of the following could be the value of b?",
+    "choices": [
+      "11",
+      "12",
+      "13",
+      "15"
+    ],
+    "answer": 0,
+    "explanation": "No real solutions means b² − 4(36) < 0, so b² < 144 and −12 < b < 12. Only 11 works. With b = 12 there is exactly one solution."
+  },
+  {
+    "id": "adv-025",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Radical equations",
+    "difficulty": "hard",
+    "question": "What value of x satisfies the equation √(x + 7) = x − 5?",
+    "choices": [
+      "2",
+      "9",
+      "Both 2 and 9",
+      "There is no solution."
+    ],
+    "answer": 1,
+    "explanation": "Squaring gives x + 7 = x² − 10x + 25, so x² − 11x + 18 = 0 and x = 2 or x = 9. Check: x = 2 gives √9 = 3 on the left but −3 on the right, so it's extraneous. x = 9 gives 4 = 4."
+  },
+  {
+    "id": "adv-026",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Quadratic equations",
+    "difficulty": "medium",
+    "question": "What is the sum of the solutions to (x − 4)² = 49?",
+    "choices": [
+      "7",
+      "8",
+      "11",
+      "14"
+    ],
+    "answer": 1,
+    "explanation": "x − 4 = 7 or x − 4 = −7, so x = 11 or x = −3. Their sum is 11 + (−3) = 8."
+  },
+  {
+    "id": "adv-027",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Rational equations",
+    "difficulty": "medium",
+    "question": "What is the solution to the equation 2/(x − 1) + 3 = 5/(x − 1)?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "There is no solution."
+    ],
+    "answer": 1,
+    "explanation": "Subtract 2/(x − 1) from both sides: 3 = 3/(x − 1). So x − 1 = 1 and x = 2. Since x = 2 doesn't make a denominator 0, it's valid."
+  },
+  {
+    "id": "adv-028",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Quadratic equations",
+    "difficulty": "easy",
+    "question": "If x² − 5 = 44 and x > 0, what is the value of x?",
+    "choices": [
+      "7",
+      "√39",
+      "24.5",
+      "49"
+    ],
+    "answer": 0,
+    "explanation": "Add 5 to both sides: x² = 49. Since x > 0, x = 7."
+  },
+  {
+    "id": "adv-029",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "hard",
+    "question": "Which expression is equivalent to (3x − 2)² − (3x + 2)²?",
+    "choices": [
+      "−24x",
+      "−8",
+      "0",
+      "18x² − 8"
+    ],
+    "answer": 0,
+    "explanation": "Expand: (9x² − 12x + 4) − (9x² + 12x + 4) = −24x. You can also use a² − b² = (a − b)(a + b) = (−4)(6x) = −24x."
+  },
+  {
+    "id": "adv-030",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Exponent rules",
+    "difficulty": "medium",
+    "question": "For x > 0, which expression is equivalent to ∛(x⁵)?",
+    "choices": [
+      "x^(3/5)",
+      "x^(5/3)",
+      "x²",
+      "x¹⁵"
+    ],
+    "answer": 1,
+    "explanation": "The nth root of xᵐ is x^(m/n). The cube root of x⁵ is x^(5/3)."
+  },
+  {
+    "id": "adv-031",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Rational expressions",
+    "difficulty": "medium",
+    "question": "For x ≠ −3/2, which expression is equivalent to (4x² − 9)/(2x + 3)?",
+    "choices": [
+      "2x + 3",
+      "2x − 3",
+      "4x − 3",
+      "2x − 9"
+    ],
+    "answer": 1,
+    "explanation": "4x² − 9 is a difference of squares: (2x − 3)(2x + 3). Dividing by 2x + 3 leaves 2x − 3."
+  },
+  {
+    "id": "adv-032",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "hard",
+    "question": "If (ax − 2)(2x + b) = 6x² + 5x − 6 for all values of x, where a and b are constants, what is the value of a + b?",
+    "choices": [
+      "1",
+      "5",
+      "6",
+      "9"
+    ],
+    "answer": 2,
+    "explanation": "Expanding gives 2ax² + (ab − 4)x − 2b. Matching coefficients: 2a = 6, so a = 3, and −2b = −6, so b = 3. Check the middle term: ab − 4 = 9 − 4 = 5. So a + b = 6."
+  },
+  {
+    "id": "adv-033",
+    "section": "math",
+    "domain": "Advanced Math",
+    "skill": "Equivalent expressions",
+    "difficulty": "easy",
+    "question": "Which expression is equivalent to 3(x + 4) − 2(x − 1)?",
+    "choices": [
+      "x + 10",
+      "x + 11",
+      "x + 14",
+      "5x + 14"
+    ],
+    "answer": 2,
+    "explanation": "Distribute: 3x + 12 − 2x + 2 = x + 14. Choice A forgets that −2 times −1 is +2."
+  },
+  {
+    "id": "psd-017",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Successive percent changes",
+    "difficulty": "hard",
+    "question": "The price of a jacket was increased by 25%, and then the new price was decreased by 10%. The final price was $153. What was the original price?",
+    "choices": [
+      "$118",
+      "$136",
+      "$142",
+      "$172"
+    ],
+    "answer": 1,
+    "explanation": "The two changes multiply the price by 1.25 × 0.90 = 1.125. So the original price was 153/1.125 = $136. Adding the percents (+15%) gives the wrong multiplier."
+  },
+  {
+    "id": "psd-018",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "medium",
+    "question": "At a school, 40% of the students are juniors, and 25% of the juniors take chemistry. What percent of all students at the school are juniors who take chemistry?",
+    "choices": [
+      "10%",
+      "15%",
+      "25%",
+      "65%"
+    ],
+    "answer": 0,
+    "explanation": "Take 25% of 40%: 0.25 × 0.40 = 0.10, which is 10% of all students."
+  },
+  {
+    "id": "psd-019",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Percentages",
+    "difficulty": "hard",
+    "question": "The number x is 150% of y, and y is 40% of z. The number x is what percent of z?",
+    "choices": [
+      "40%",
+      "60%",
+      "110%",
+      "190%"
+    ],
+    "answer": 1,
+    "explanation": "x = 1.5y and y = 0.4z, so x = 1.5(0.4z) = 0.6z. That means x is 60% of z."
+  },
+  {
+    "id": "psd-020",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Unit conversion",
+    "difficulty": "medium",
+    "question": "A train travels at 72 kilometers per hour. What is this speed in meters per second? (1 kilometer = 1,000 meters)",
+    "choices": [
+      "12",
+      "20",
+      "43.2",
+      "259.2"
+    ],
+    "answer": 1,
+    "explanation": "72 km/h = 72,000 meters per 3,600 seconds = 20 m/s. Choice D multiplies by 3.6 instead of dividing."
+  },
+  {
+    "id": "psd-021",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Ratios and proportions",
+    "difficulty": "easy",
+    "question": "A mix uses flour and sugar in a ratio of 3 to 2 by volume. How many cups of flour are in 25 cups of the mix?",
+    "choices": [
+      "10",
+      "12.5",
+      "15",
+      "16.7"
+    ],
+    "answer": 2,
+    "explanation": "Flour makes up 3 of every 3 + 2 = 5 parts, so it's (3/5)(25) = 15 cups."
+  },
+  {
+    "id": "psd-022",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Density",
+    "difficulty": "hard",
+    "question": "A solid metal cube has edges 5 centimeters long and a density of 7.2 grams per cubic centimeter. What is the mass of the cube, in kilograms?",
+    "choices": [
+      "0.036",
+      "0.9",
+      "9",
+      "900"
+    ],
+    "answer": 1,
+    "explanation": "Volume = 5³ = 125 cm³. Mass = 125 × 7.2 = 900 grams = 0.9 kilograms. Choice D is the mass in grams."
+  },
+  {
+    "id": "psd-023",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Margin of error",
+    "difficulty": "medium",
+    "question": "In a poll of 400 randomly selected voters in a district, 58% supported a new park, with a margin of error of 4%. Which conclusion is most appropriate?",
+    "choices": [
+      "Exactly 58% of the district's voters support the park.",
+      "It is plausible that between 54% and 62% of all voters in the district support the park.",
+      "Between 54% and 62% of voters in the entire state support the park.",
+      "Between 54% and 62% of the 400 surveyed voters support the park."
+    ],
+    "answer": 1,
+    "explanation": "A margin of error gives a plausible range for the whole population that was sampled (the district's voters). It isn't exact (A), doesn't cover the state (C), and the sample's own value is exactly 58% (D)."
+  },
+  {
+    "id": "psd-024",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Margin of error",
+    "difficulty": "hard",
+    "question": "A researcher surveyed a random sample of 200 residents and got a margin of error of 6%. Which change to the next survey would most likely produce a smaller margin of error?",
+    "choices": [
+      "Surveying a random sample of 800 residents",
+      "Surveying 200 residents who volunteer online",
+      "Surveying 100 residents chosen at random",
+      "Asking the same 200 residents twice"
+    ],
+    "answer": 0,
+    "explanation": "With a random sample, the margin of error shrinks as the sample gets larger. Volunteers (B) add bias, a smaller sample (C) increases the margin, and repeating the same people (D) adds no new information."
+  },
+  {
+    "id": "psd-025",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Mean of a data set",
+    "difficulty": "hard",
+    "question": "A data set of 5 numbers has a mean of 12. When the value 20 is removed, what is the mean of the remaining 4 numbers?",
+    "choices": [
+      "8",
+      "10",
+      "11",
+      "12"
+    ],
+    "answer": 1,
+    "explanation": "The total is 5 × 12 = 60. Removing 20 leaves 40, and 40/4 = 10."
+  },
+  {
+    "id": "psd-026",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Standard deviation",
+    "difficulty": "hard",
+    "question": "A data set of test scores has a mean of 30, and the scores aren't all equal. A new score of exactly 30 is added. Which statement must be true?",
+    "choices": [
+      "The mean and the standard deviation both stay the same.",
+      "The mean stays the same, and the standard deviation decreases.",
+      "The mean increases, and the standard deviation stays the same.",
+      "The mean stays the same, and the standard deviation increases."
+    ],
+    "answer": 1,
+    "explanation": "Adding a value equal to the mean keeps the mean at 30. The new value's distance from the mean is 0, so average spread goes down and the standard deviation decreases."
+  },
+  {
+    "id": "psd-027",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Median of a data set",
+    "difficulty": "medium",
+    "question": "What is the median of the data set 3, 8, 8, 10, 14, 21?",
+    "choices": [
+      "8",
+      "9",
+      "10",
+      "10.67"
+    ],
+    "answer": 1,
+    "explanation": "There are 6 values, so the median is the average of the 3rd and 4th values: (8 + 10)/2 = 9. Choice D is the mean."
+  },
+  {
+    "id": "psd-028",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Conditional probability",
+    "difficulty": "hard",
+    "question": "In a survey of 200 students, 120 play a sport. Of the students who play a sport, 45 also play an instrument. Of the students who don't play a sport, 35 play an instrument. If a student who plays an instrument is chosen at random, what is the probability that the student plays a sport?",
+    "choices": [
+      "9/40",
+      "3/8",
+      "9/16",
+      "3/4"
+    ],
+    "answer": 2,
+    "explanation": "80 students play an instrument (45 + 35), and 45 of them play a sport. The probability is 45/80 = 9/16. Choice B is 45/120, the chance that a sport player plays an instrument."
+  },
+  {
+    "id": "psd-029",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Interpreting linear models",
+    "difficulty": "medium",
+    "question": "A botanist models the height h, in centimeters, of a plant w weeks after planting with h = 2.4w + 15. What is the best interpretation of 2.4 in this context?",
+    "choices": [
+      "The plant's height when it was planted",
+      "The predicted increase in the plant's height each week",
+      "The number of weeks until the plant reaches 15 cm",
+      "The plant's predicted height after 1 week"
+    ],
+    "answer": 1,
+    "explanation": "In a linear model, the coefficient of w is the rate of change: the predicted height increases by 2.4 cm per week. 15 is the starting height."
+  },
+  {
+    "id": "psd-030",
+    "section": "math",
+    "domain": "Problem-Solving and Data Analysis",
+    "skill": "Scatterplots and models",
+    "difficulty": "easy",
+    "question": "A line of best fit for a scatterplot is y = 2.4x + 15. What value of y does the line predict when x = 10?",
+    "choices": [
+      "17.4",
+      "24",
+      "39",
+      "49"
+    ],
+    "answer": 2,
+    "explanation": "y = 2.4(10) + 15 = 24 + 15 = 39."
+  },
+  {
+    "id": "geo-017",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circle equations",
+    "difficulty": "hard",
+    "question": "In the xy-plane, the graph of x² + y² − 6x + 10y − 2 = 0 is a circle. What is the radius of the circle?",
+    "choices": [
+      "√2",
+      "6",
+      "√34",
+      "36"
+    ],
+    "answer": 1,
+    "explanation": "Complete the square in x and y: (x² − 6x + 9) + (y² + 10y + 25) = 2 + 9 + 25, so (x − 3)² + (y + 5)² = 36. The radius is √36 = 6. Choice D is r², not r."
+  },
+  {
+    "id": "geo-018",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Arc length",
+    "difficulty": "hard",
+    "question": "A circle has a radius of 9 centimeters. An arc of the circle has a length of 4π centimeters. What is the measure, in degrees, of the arc's central angle?",
+    "choices": [
+      "40",
+      "80",
+      "160",
+      "220"
+    ],
+    "answer": 1,
+    "explanation": "The circumference is 2π(9) = 18π. The arc is 4π/18π = 2/9 of the circle, so the central angle is (2/9)(360°) = 80°."
+  },
+  {
+    "id": "geo-019",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Sector area",
+    "difficulty": "medium",
+    "question": "A circle has a radius of 10 inches. What is the area, in square inches, of a sector of the circle with a central angle of 72°?",
+    "choices": [
+      "4π",
+      "10π",
+      "20π",
+      "40π"
+    ],
+    "answer": 2,
+    "explanation": "The full circle has area π(10)² = 100π. A 72° sector is 72/360 = 1/5 of the circle, so its area is 100π/5 = 20π."
+  },
+  {
+    "id": "geo-020",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Circle equations",
+    "difficulty": "hard",
+    "question": "In the xy-plane, the line y = x + k, where k is a positive constant, is tangent to the circle x² + y² = 50. What is the value of k?",
+    "choices": [
+      "5",
+      "5√2",
+      "10",
+      "50"
+    ],
+    "answer": 2,
+    "explanation": "A line is tangent to a circle when its distance from the center equals the radius. The distance from (0, 0) to x − y + k = 0 is |k|/√2, and the radius is √50 = 5√2. So k/√2 = 5√2, giving k = 10."
+  },
+  {
+    "id": "geo-021",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Inscribed angles",
+    "difficulty": "medium",
+    "question": "Points A, B, and C lie on a circle with center O. Central angle AOB measures 110°, and point C lies on the major arc AB. What is the measure of inscribed angle ACB?",
+    "choices": [
+      "35°",
+      "55°",
+      "70°",
+      "110°"
+    ],
+    "answer": 1,
+    "explanation": "An inscribed angle is half the central angle that intercepts the same arc. Angle ACB intercepts minor arc AB, so it measures 110°/2 = 55°."
+  },
+  {
+    "id": "geo-022",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Chords",
+    "difficulty": "hard",
+    "question": "A chord of a circle is 16 units long and is 6 units from the center of the circle. What is the circumference of the circle?",
+    "choices": [
+      "10π",
+      "20π",
+      "36π",
+      "100π"
+    ],
+    "answer": 1,
+    "explanation": "The perpendicular from the center bisects the chord, forming a right triangle with legs 8 and 6. The hypotenuse is the radius: √(8² + 6²) = 10. The circumference is 2π(10) = 20π. Choice D is the area."
+  },
+  {
+    "id": "geo-023",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Volume",
+    "difficulty": "easy",
+    "question": "A rectangular box is 4 feet long, 5 feet wide, and 6 feet tall. What is the volume of the box, in cubic feet?",
+    "choices": [
+      "15",
+      "60",
+      "120",
+      "148"
+    ],
+    "answer": 2,
+    "explanation": "Volume = length × width × height = 4 × 5 × 6 = 120. Choice D (148) is the surface area."
+  },
+  {
+    "id": "geo-024",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Volume",
+    "difficulty": "medium",
+    "question": "A right circular cylinder has a volume of 72π cubic meters and a height of 8 meters. What is the radius of the cylinder, in meters?",
+    "choices": [
+      "3",
+      "4.5",
+      "6",
+      "9"
+    ],
+    "answer": 0,
+    "explanation": "V = πr²h, so 72π = πr²(8). Then r² = 9 and r = 3. Choice D is r², not r."
+  },
+  {
+    "id": "geo-025",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Volume",
+    "difficulty": "hard",
+    "question": "A cube has a surface area of 150 square inches. What is the volume, in cubic inches, of a cube whose edges are each twice as long as the edges of this cube?",
+    "choices": [
+      "250",
+      "500",
+      "1,000",
+      "1,200"
+    ],
+    "answer": 2,
+    "explanation": "Each of the 6 faces has area 150/6 = 25, so the edge is 5. Doubling gives an edge of 10, and the volume is 10³ = 1,000. Doubling every edge multiplies volume by 2³ = 8, not 2."
+  },
+  {
+    "id": "geo-026",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Volume",
+    "difficulty": "hard",
+    "question": "A sphere has a volume of 288π cubic centimeters. What is the surface area of the sphere, in square centimeters?",
+    "choices": [
+      "48π",
+      "72π",
+      "144π",
+      "576π"
+    ],
+    "answer": 2,
+    "explanation": "(4/3)πr³ = 288π gives r³ = 216, so r = 6. Surface area = 4πr² = 4π(36) = 144π."
+  },
+  {
+    "id": "geo-027",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Similar solids",
+    "difficulty": "hard",
+    "question": "Two cones are similar. The smaller cone has a height of 4 inches and a volume of 32 cubic inches. The larger cone has a height of 6 inches. What is the volume of the larger cone, in cubic inches?",
+    "choices": [
+      "48",
+      "72",
+      "108",
+      "162"
+    ],
+    "answer": 2,
+    "explanation": "The scale factor is 6/4 = 3/2. Volumes of similar solids scale by the cube of the scale factor: 32 × (3/2)³ = 32 × 27/8 = 108. Choice A scales linearly and choice B by the square."
+  },
+  {
+    "id": "geo-028",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangle trigonometry",
+    "difficulty": "hard",
+    "question": "In right triangle ABC, angle C is the right angle and sin A = 5/13. What is the value of tan B?",
+    "choices": [
+      "5/13",
+      "5/12",
+      "12/13",
+      "12/5"
+    ],
+    "answer": 3,
+    "explanation": "sin A = BC/AB = 5/13, so take BC = 5 and AB = 13; then AC = √(13² − 5²) = 12. For angle B, the opposite side is AC and the adjacent side is BC, so tan B = 12/5."
+  },
+  {
+    "id": "geo-029",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Complementary angle identities",
+    "difficulty": "hard",
+    "question": "Two acute angles measure (2k + 10)° and (3k − 5)°. If sin((2k + 10)°) = cos((3k − 5)°), what is the value of k?",
+    "choices": [
+      "13",
+      "17",
+      "19",
+      "21"
+    ],
+    "answer": 1,
+    "explanation": "sin x° = cos y° when x + y = 90. So (2k + 10) + (3k − 5) = 90, which gives 5k + 5 = 90 and k = 17."
+  },
+  {
+    "id": "geo-030",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Special right triangles",
+    "difficulty": "hard",
+    "question": "In a 30°-60°-90° triangle, the longer leg has length 9. What is the perimeter of the triangle?",
+    "choices": [
+      "27",
+      "9 + 6√3",
+      "9 + 9√3",
+      "18 + 3√3"
+    ],
+    "answer": 2,
+    "explanation": "The longer leg is √3 times the shorter leg, so the shorter leg is 9/√3 = 3√3. The hypotenuse is twice the shorter leg, 6√3. Perimeter = 9 + 3√3 + 6√3 = 9 + 9√3."
+  },
+  {
+    "id": "geo-031",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Parallel lines and transversals",
+    "difficulty": "medium",
+    "question": "Two parallel lines are cut by a transversal. Two same-side interior angles formed measure (3x + 15)° and (5x + 5)°. What is the value of x?",
+    "choices": [
+      "10",
+      "20",
+      "25",
+      "45"
+    ],
+    "answer": 1,
+    "explanation": "Same-side interior angles formed by parallel lines are supplementary: (3x + 15) + (5x + 5) = 180, so 8x + 20 = 180 and x = 20."
+  },
+  {
+    "id": "geo-032",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Exterior angles",
+    "difficulty": "hard",
+    "question": "An exterior angle of a triangle measures 130°. The two remote interior angles have measures in the ratio 2:3. What is the measure of the largest interior angle of the triangle?",
+    "choices": [
+      "50°",
+      "52°",
+      "78°",
+      "130°"
+    ],
+    "answer": 2,
+    "explanation": "An exterior angle equals the sum of the two remote interior angles: 2t + 3t = 130, so t = 26 and the angles are 52° and 78°. The third interior angle is 180° − 130° = 50°. The largest is 78°."
+  },
+  {
+    "id": "geo-033",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Similar triangles",
+    "difficulty": "medium",
+    "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that segment DE is parallel to side BC. If AD = 6, DB = 4, and DE = 9, what is the length of BC?",
+    "choices": [
+      "6",
+      "13.5",
+      "15",
+      "22.5"
+    ],
+    "answer": 2,
+    "explanation": "Because DE ∥ BC, triangle ADE is similar to triangle ABC. AB = 6 + 4 = 10, so BC/DE = AB/AD = 10/6. BC = 9 × 10/6 = 15."
+  },
+  {
+    "id": "geo-034",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Isosceles triangles",
+    "difficulty": "easy",
+    "question": "The vertex angle of an isosceles triangle measures 40°. What is the measure of each base angle?",
+    "choices": [
+      "40°",
+      "70°",
+      "80°",
+      "140°"
+    ],
+    "answer": 1,
+    "explanation": "The two base angles are equal and the three angles sum to 180°: (180° − 40°)/2 = 70°."
+  },
+  {
+    "id": "geo-035",
+    "section": "math",
+    "domain": "Geometry and Trigonometry",
+    "skill": "Right triangles",
+    "difficulty": "easy",
+    "question": "A right triangle has legs of length 6 and 8. What is the length of the hypotenuse?",
+    "choices": [
+      "10",
+      "12",
+      "14",
+      "100"
+    ],
+    "answer": 0,
+    "explanation": "By the Pythagorean theorem, c² = 6² + 8² = 100, so c = 10. Choice D is c², not c."
+  },
+  {
+    "id": "ii-017",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Command of evidence",
+    "difficulty": "hard",
+    "passage": "A student is writing about a short story in which the narrator, Teodora, presents her research at a science fair. The student claims that Teodora hides her nervousness behind an appearance of calm confidence.",
+    "question": "Which quotation from the story would most effectively illustrate the student's claim?",
+    "choices": [
+      "\"Teodora had rehearsed her talk so many times that her little brother could recite the opening line.\"",
+      "\"When the judge approached, Teodora smiled easily and began to speak, though beneath the table her fingers were twisting the hem of her sweater into knots.\"",
+      "\"The gymnasium was louder than Teodora had expected, filled with the hum of fans and the chatter of parents.\"",
+      "\"After the judges left, Teodora admitted to her friend that she had been terrified the entire time.\""
+    ],
+    "answer": 1,
+    "explanation": "The claim has two parts: a calm outward appearance and hidden nerves. Only B shows both at the same moment (she \"smiled easily\" while her fingers twisted her sweater). D shows nervousness, but only after the fact and openly admitted, not concealed."
+  },
+  {
+    "id": "ii-018",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Command of evidence",
+    "difficulty": "hard",
+    "passage": "Bumblebees are often thought to forage simply by visiting whichever flowers are nearest. Ecologist Farah Rahimi hypothesizes, however, that bumblebees remember the locations of flowers that were especially rich in nectar and will fly past closer flowers to return to them.",
+    "question": "Which finding, if true, would most directly support Rahimi's hypothesis?",
+    "choices": [
+      "Bumblebees in the study visited more flowers on warm days than on cool days.",
+      "Bumblebees preferred flowers of certain colors regardless of how much nectar the flowers contained.",
+      "Marked bees that had fed at an artificially enriched flower repeatedly bypassed nearer, unenriched flowers to revisit it, even after its color was changed to match the others.",
+      "Flowers with the most nectar tend to grow in clusters near the centers of meadows."
+    ],
+    "answer": 2,
+    "explanation": "Rahimi's hypothesis says bees remember rich flowers and skip closer ones to return. C shows exactly that, and changing the flower's color rules out the idea that the bees were just following a color cue. B points toward color, not memory of nectar."
+  },
+  {
+    "id": "ii-019",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Command of evidence",
+    "difficulty": "hard",
+    "passage": "Some historians argue that inexpensive printed almanacs spread widely in the eighteenth century mainly because farmers wanted their weather predictions. Other historians contend that readers valued almanacs chiefly for their calendars of market days and court sessions.",
+    "question": "Which finding, if true, would most directly weaken the first group's argument?",
+    "choices": [
+      "Surviving almanacs owned by farmers show heavy handwritten notes on the pages listing market days, while the weather-prediction pages are largely unmarked.",
+      "Almanacs were often printed in small towns rather than in large cities.",
+      "Many almanacs included weather predictions for the entire year.",
+      "Farmers made up a large share of the eighteenth-century population."
+    ],
+    "answer": 0,
+    "explanation": "If farmers mostly used the market-day pages and ignored the weather pages, weather predictions probably weren't the main draw, which undercuts the first group. C is consistent with their argument, and B and D don't bear on why readers bought almanacs."
+  },
+  {
+    "id": "ii-020",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Quantitative evidence",
+    "difficulty": "hard",
+    "passage": "A team recorded how many years it took saplings of three tree species to reach 2 meters in height under full sun and under partial shade. Oak: 9 years in full sun, 14 years in shade. Maple: 7 years in full sun, 8 years in shade. Pine: 6 years in full sun, 13 years in shade. The team concluded that one species' growth was much less affected by shade than the others'.",
+    "question": "Which choice best uses data from the text to support the team's conclusion?",
+    "choices": [
+      "Pine saplings reached 2 meters faster in full sun than oak or maple saplings did.",
+      "Maple saplings took only 1 year longer to reach 2 meters in shade than in full sun, whereas oak and pine saplings took 5 and 7 years longer, respectively.",
+      "Oak saplings took 14 years to reach 2 meters in shade, longer than any species took in full sun.",
+      "All three species reached 2 meters more slowly in shade than in full sun."
+    ],
+    "answer": 1,
+    "explanation": "The conclusion is about the difference between sun and shade for each species. B compares those differences (1 year for maple against 5 and 7 years) and shows maple was far less affected. D is true, but it doesn't single out one species."
+  },
+  {
+    "id": "ii-021",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Quantitative evidence",
+    "difficulty": "hard",
+    "passage": "A city surveyed residents about how they commute to work. In 2015, 62% drove alone, 21% used public transit, and 9% biked. In 2025, 51% drove alone, 24% used public transit, and 17% biked. A city planner claims that the drop in driving alone was matched mostly by a rise in biking rather than in transit use.",
+    "question": "Which choice best uses data from the text to support the planner's claim?",
+    "choices": [
+      "Driving alone remained the most common way to commute in both years.",
+      "Public transit use was higher than biking in both 2015 and 2025.",
+      "The share of residents who drove alone fell by 11 percentage points from 2015 to 2025.",
+      "Biking rose by 8 percentage points from 2015 to 2025, while public transit rose by only 3 percentage points."
+    ],
+    "answer": 3,
+    "explanation": "The claim compares the growth of biking and transit. D gives both changes (+8 against +3), showing biking accounts for most of the shift. C describes the drop in driving but not where those commuters went."
+  },
+  {
+    "id": "ii-022",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "hard",
+    "passage": "Marine archaeologists studying a sunken merchant ship found that its cargo included glass beads colored with a type of cobalt that, as far as is known, was mined in only one mountain region hundreds of kilometers inland. The ship was built in a style used only by coastal shipbuilders who, according to historical records, had no direct contact with that inland region. These findings suggest that ______",
+    "question": "Which choice most logically completes the text?",
+    "choices": [
+      "the coastal shipbuilders must have mined the cobalt themselves.",
+      "the ship was probably built in the inland mountain region.",
+      "the beads, or the cobalt used to make them, likely passed through one or more intermediaries before reaching the ship.",
+      "cobalt was more common in coastal regions than historians have assumed."
+    ],
+    "answer": 2,
+    "explanation": "The cobalt came only from inland, but the shipbuilders had no direct contact with that region. The logical bridge is indirect trade through intermediaries. A and B contradict the text, and D contradicts the statement that the cobalt was mined in only one inland region."
+  },
+  {
+    "id": "ii-023",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "hard",
+    "passage": "Young male sparrows learn their songs by imitating adult males. Researcher Lionel Okafor raised two groups of young sparrows in the lab. One group heard recordings of adult songs during their first 60 days of life; the other group heard the same recordings only after day 60. The first group developed typical adult songs, while the second group's songs stayed simple and irregular even after months of listening. Okafor's results suggest that ______",
+    "question": "Which choice most logically completes the text?",
+    "choices": [
+      "sparrows cannot hear recordings as clearly as they hear live songs.",
+      "adult sparrows sing more complex songs in the lab than in the wild.",
+      "young sparrows learn songs more quickly from other young sparrows than from adults.",
+      "sparrows' ability to learn songs by imitation may be limited to an early stage of development."
+    ],
+    "answer": 3,
+    "explanation": "Both groups heard the same recordings; only the timing differed. Late exposure didn't produce normal songs even after months, so learning likely depends on an early window. A is ruled out because the early group learned from recordings just fine."
+  },
+  {
+    "id": "ii-024",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "hard",
+    "passage": "A chemist tested whether a new coating keeps steel from rusting. She coated half of each of twenty steel plates, left the other half bare, and placed the plates outdoors for a year. At the end of the year, the coated halves showed no more rust than the bare halves, and neither showed much at all. However, the plates had been placed in a desert that gets almost no rain, so ______",
+    "question": "Which choice most logically completes the text?",
+    "choices": [
+      "the coating must have been applied incorrectly.",
+      "the coating will likely cause steel to rust faster in wet climates.",
+      "the results may not show whether the coating protects steel in conditions where rust is likely to form.",
+      "steel cannot rust in desert climates under any conditions."
+    ],
+    "answer": 2,
+    "explanation": "Rust needs moisture. In a nearly rainless desert, even bare steel barely rusted, so the test couldn't reveal whether the coating helps. A and B aren't supported, and D overstates the case (\"under any conditions\")."
+  },
+  {
+    "id": "ii-025",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Inferences",
+    "difficulty": "medium",
+    "passage": "Most earthquakes recorded in the region occur along the fault that runs beneath the valley. Recently, however, seismologists detected a cluster of small earthquakes in the hills far from the fault. Because these earthquakes began shortly after a large reservoir was filled nearby, the seismologists suspect that ______",
+    "question": "Which choice most logically completes the text?",
+    "choices": [
+      "the weight of the water, or its seepage into the rock, may have triggered the earthquakes.",
+      "the fault beneath the valley has stopped producing earthquakes.",
+      "earthquakes in the hills are usually larger than those along the fault.",
+      "the reservoir was built to reduce the risk of earthquakes in the valley."
+    ],
+    "answer": 0,
+    "explanation": "The key clue is timing: the unusual quakes began right after the reservoir filled, so the reservoir is the suspected cause. The text says nothing about the valley fault stopping (B) or quake sizes (C)."
+  },
+  {
+    "id": "ii-026",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Central ideas and details",
+    "difficulty": "hard",
+    "passage": "For decades, glowing mushrooms puzzled biologists: why would a fungus spend energy making light? One proposal held that the glow was simply a by-product of the fungus's metabolism and served no purpose. But when researchers placed glowing and non-glowing artificial mushrooms on a forest floor, the glowing ones attracted far more insects, which can carry fungal spores to new places. The finding suggests the glow may help the fungus spread.",
+    "question": "Which choice best states the main idea of the text?",
+    "choices": [
+      "Researchers have shown that fungi produce light only at night.",
+      "An experiment suggests that fungal glow may serve a purpose, which challenges the view that it is merely a by-product.",
+      "Insects are attracted to many sources of light in forests.",
+      "Biologists have long agreed that fungal glow helps fungi reproduce."
+    ],
+    "answer": 1,
+    "explanation": "The text sets up a puzzle, gives the by-product explanation, and then describes an experiment pointing to a purpose (attracting spore-carrying insects). B captures that arc. D is wrong because biologists had not agreed."
+  },
+  {
+    "id": "ii-027",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Central ideas and details",
+    "difficulty": "hard",
+    "passage": "The following text is from a short story.\n\nWalter had lived above the bakery for thirty years, and in all that time he had never once bought bread there. Each morning the smell rose through his floorboards, and each morning he told himself that tomorrow he would go down and introduce himself. Now the shop windows were papered over beneath a sign announcing its closing, and Walter stood on the sidewalk holding the coins he had carried in his pocket all week.",
+    "question": "Which choice best states the main idea of the text?",
+    "choices": [
+      "Walter is angry that the bakery's owners never introduced themselves to him.",
+      "Walter has saved money for thirty years in order to buy the bakery.",
+      "Walter realizes that he put off a small action until it was no longer possible.",
+      "Walter dislikes the smell of bread that fills his apartment each morning."
+    ],
+    "answer": 2,
+    "explanation": "For thirty years Walter said \"tomorrow.\" Now the bakery is closing, and he is holding the coins he never spent. The passage centers on a postponed action that is now too late. Nothing suggests anger (A) or dislike of the smell (D)."
+  },
+  {
+    "id": "ii-028",
+    "section": "rw",
+    "domain": "Information and Ideas",
+    "skill": "Central ideas and details",
+    "difficulty": "medium",
+    "passage": "Architect Yuki Tanabe designs public libraries with few interior walls. Tanabe argues that walls sort visitors into separate groups, children in one place and researchers in another, while open floor plans let people see one another's activities and discover interests they might never have sought out. In one of Tanabe's libraries, a teenager browsing comics might glance up and notice a woodworking workshop across the room.",
+    "question": "Which choice best states the main idea of the text?",
+    "choices": [
+      "Tanabe believes open floor plans in libraries can expose visitors to unfamiliar activities.",
+      "Tanabe thinks libraries should mainly serve children and teenagers.",
+      "Tanabe's libraries are cheaper to build than traditional libraries.",
+      "Tanabe prefers that library visitors stay quiet and separate."
+    ],
+    "answer": 0,
+    "explanation": "The text explains Tanabe's reasoning (open plans let people discover new interests) and gives an example. A states that idea. D is the opposite of Tanabe's view."
+  },
+  {
+    "id": "cs-017",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Words in context",
+    "difficulty": "hard",
+    "passage": "Although the committee's report was ______ in its praise of the program's early results, it spent many pages on the program's rising costs, suggesting that its authors had serious reservations.",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": [
+      "sparing",
+      "measured",
+      "effusive",
+      "reluctant"
+    ],
+    "answer": 2,
+    "explanation": "\"Although\" sets up a contrast with the authors' serious reservations, so the praise must have been strong. \"Effusive\" means gushing. Sparing, measured, and reluctant praise would fit the reservations and leave nothing to contrast."
+  },
+  {
+    "id": "cs-018",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Words in context",
+    "difficulty": "hard",
+    "passage": "The biologist's early papers were largely ______: they catalogued the plants of the region in careful detail but proposed no theories about why the plants grew where they did.",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": [
+      "speculative",
+      "descriptive",
+      "contentious",
+      "derivative"
+    ],
+    "answer": 1,
+    "explanation": "After the colon, the text says the papers recorded details but offered no theories, which makes them descriptive. \"Speculative\" is close to the opposite, and nothing suggests the papers were controversial or copied."
+  },
+  {
+    "id": "cs-019",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Words in context",
+    "difficulty": "hard",
+    "passage": "Critics had expected the composer's final symphony to be somber, but its closing movement is anything but ______: bright horn melodies and quick, dancelike rhythms dominate from beginning to end.",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": [
+      "exuberant",
+      "intricate",
+      "mournful",
+      "brief"
+    ],
+    "answer": 2,
+    "explanation": "The movement is bright and dancelike, the opposite of somber. \"Anything but mournful\" expresses that. \"Anything but exuberant\" would contradict the description."
+  },
+  {
+    "id": "cs-020",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Words in context",
+    "difficulty": "medium",
+    "passage": "Before construction began, the bridge design was ______ by engineers from several countries, each of whom checked the calculations independently.",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": [
+      "scrutinized",
+      "improvised",
+      "abandoned",
+      "concealed"
+    ],
+    "answer": 0,
+    "explanation": "Engineers checking calculations independently means the design was examined closely, or scrutinized. The other words don't fit a careful review."
+  },
+  {
+    "id": "cs-021",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Words in context",
+    "difficulty": "hard",
+    "passage": "Historian Amara Diallo cautions against treating the merchant's letters as ______ accounts of the trade: because the merchant was writing to his investors, he had every reason to exaggerate his successes and play down his losses.",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": [
+      "vivid",
+      "lengthy",
+      "obscure",
+      "impartial"
+    ],
+    "answer": 3,
+    "explanation": "Diallo's reasoning is that the merchant had motives to distort the truth, so the letters shouldn't be treated as impartial (unbiased). The letters' vividness or length has nothing to do with his motive to exaggerate."
+  },
+  {
+    "id": "cs-022",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Text structure and purpose",
+    "difficulty": "hard",
+    "passage": "Many people assume that the bright colors of poison dart frogs evolved only to warn predators. Recent studies complicate this view. In some species, females prefer to mate with the most brightly colored males, suggesting that coloration may also help attract mates. Moreover, frogs in sunnier habitats tend to be brighter, raising the possibility that coloration helps regulate body temperature.",
+    "question": "Which choice best describes the overall structure of the text?",
+    "choices": [
+      "It describes a scientific debate and then explains why one side has been proven wrong.",
+      "It explains how a trait developed and then predicts how the trait will change.",
+      "It presents a common explanation for a trait and then describes findings suggesting the trait may have additional functions.",
+      "It compares two frog species and then argues that one is more successful."
+    ],
+    "answer": 2,
+    "explanation": "The text opens with the common view (warning coloration) and then adds two findings that suggest other roles (mating, temperature). The text says those findings \"complicate\" the view, not that they prove it wrong, so A overstates it."
+  },
+  {
+    "id": "cs-023",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Text structure and purpose",
+    "difficulty": "medium",
+    "passage": "The town's lantern festival draws thousands of visitors each autumn. Few of them realize that the festival began as a practical measure: in the 1880s, before the town had streetlights, residents hung lanterns along the main road so that farmers returning from market could find their way home after dark. Over time the lanterns grew more decorative, and the custom became a celebration.",
+    "question": "Which choice best describes the function of the second sentence in the overall structure of the text?",
+    "choices": [
+      "It explains why the festival attracts so many visitors today.",
+      "It reveals the original, practical purpose of a tradition that is now a celebration.",
+      "It argues that the town should install more streetlights.",
+      "It describes how the lanterns' designs changed over time."
+    ],
+    "answer": 1,
+    "explanation": "The second sentence explains the festival's practical origin: lighting the road for farmers. D describes the third sentence, not the second."
+  },
+  {
+    "id": "cs-024",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Text structure and purpose",
+    "difficulty": "hard",
+    "passage": "The following text is from a novel.\n\nRosa examined the letter for the third time. The handwriting was her grandmother's; she would have known those looping capitals anywhere. But the postmark was dated two weeks after the funeral.",
+    "question": "Which choice best states the main purpose of the text?",
+    "choices": [
+      "To describe the personality of Rosa's grandmother",
+      "To explain how the postal system worked in Rosa's town",
+      "To show that Rosa has trouble reading handwriting",
+      "To introduce a puzzling detail that creates suspense"
+    ],
+    "answer": 3,
+    "explanation": "A letter in the grandmother's handwriting, postmarked after her funeral, is an unexplained detail meant to create suspense. The text says nothing about her personality (A), and Rosa recognizes the handwriting easily (C)."
+  },
+  {
+    "id": "cs-025",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Cross-text connections",
+    "difficulty": "hard",
+    "passage": "Text 1\nMany linguists have argued that languages spoken by small, isolated communities tend to have more complex grammar than languages spoken by millions. When many adults learn a language as a second language, the reasoning goes, they simplify it, and those simplifications spread.\n\nText 2\nLinguist Priya Menon agrees that adult learners can simplify a language but notes that the pattern isn't universal. Some widely spoken languages with long histories of adult learners have kept highly intricate systems of verb endings. Menon suggests that writing and formal schooling may help preserve grammatical complexity even as a language spreads.",
+    "question": "Based on the texts, how would Menon (Text 2) most likely respond to the reasoning in Text 1?",
+    "choices": [
+      "She would reject the idea that adult learners ever simplify languages.",
+      "She would argue that the languages of small communities are usually simpler than widely spoken ones.",
+      "She would accept that the process described occurs but argue that other factors can counteract it.",
+      "She would claim that writing systems make every language more complex over time."
+    ],
+    "answer": 2,
+    "explanation": "Menon \"agrees that adult learners can simplify a language,\" so she accepts the mechanism, but she says writing and schooling can preserve complexity. That is C. A contradicts her stated agreement, and D overstates her suggestion."
+  },
+  {
+    "id": "cs-026",
+    "section": "rw",
+    "domain": "Craft and Structure",
+    "skill": "Cross-text connections",
+    "difficulty": "hard",
+    "passage": "Text 1\nUrban planners have promoted rooftop gardens as a way to cool cities, since plants release water vapor that lowers nearby air temperatures. Several cities now offer tax incentives to building owners who install them.\n\nText 2\nEngineer Tomas Reyes compared air temperatures above rooftop gardens with those above white-painted roofs in the same city. White roofs, which reflect sunlight, lowered temperatures slightly more than gardens did and cost far less, though gardens offered other benefits, such as absorbing rainwater.",
+    "question": "Based on the texts, how would Reyes (Text 2) most likely respond to the incentive programs described in Text 1?",
+    "choices": [
+      "By claiming that rooftop gardens actually raise air temperatures",
+      "By suggesting that if cooling is the main goal, cities should consider whether white roofs would achieve it more cheaply",
+      "By recommending that cities stop encouraging any changes to rooftops",
+      "By asserting that rooftop gardens offer no benefits at all"
+    ],
+    "answer": 1,
+    "explanation": "Reyes found that white roofs cool slightly better at far lower cost, while he acknowledged that gardens have other benefits. So he would question paying for gardens specifically for cooling. D contradicts his mention of rainwater absorption."
+  },
+  {
+    "id": "ei-017",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "easy",
+    "passage": "Crews spent several weeks repairing the bridges that spring floods had damaged along the hiking trail. ______ the trail reopened in June.",
+    "question": "Which choice completes the text with the most logical transition?",
+    "choices": [
+      "In contrast,",
+      "Finally,",
+      "For instance,",
+      "Instead,"
+    ],
+    "answer": 1,
+    "explanation": "The second sentence is the end of a sequence: after weeks of repairs, the trail reopened. \"Finally\" signals that endpoint."
+  },
+  {
+    "id": "ei-018",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "medium",
+    "passage": "Octopuses have been observed carrying coconut shells across the seafloor and assembling them into shelters when threatened. ______ some researchers consider this behavior an example of tool use, a skill once thought to be limited to mammals and birds.",
+    "question": "Which choice completes the text with the most logical transition?",
+    "choices": [
+      "For this reason,",
+      "Nevertheless,",
+      "Meanwhile,",
+      "By contrast,"
+    ],
+    "answer": 0,
+    "explanation": "The researchers' view follows from the behavior just described, so a cause-and-effect transition fits. Nothing contrasts, so B and D don't work."
+  },
+  {
+    "id": "ei-019",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "medium",
+    "passage": "The novelist was famous for long, intricate books, some over a thousand pages. Her final work, ______ is a slim collection of stories, none longer than a few pages.",
+    "question": "Which choice completes the text with the most logical transition?",
+    "choices": [
+      "therefore,",
+      "by contrast,",
+      "for example,",
+      "in addition,"
+    ],
+    "answer": 1,
+    "explanation": "A slim book of very short stories is the opposite of her usual long novels, so \"by contrast\" fits."
+  },
+  {
+    "id": "ei-020",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "hard",
+    "passage": "Early studies suggested that the drug shortened colds by several days. Those studies, however, involved only small numbers of patients. When a much larger trial was conducted, the drug's effect proved minimal. ______ many physicians have stopped recommending it.",
+    "question": "Which choice completes the text with the most logical transition?",
+    "choices": [
+      "Previously,",
+      "Likewise,",
+      "Consequently,",
+      "Even so,"
+    ],
+    "answer": 2,
+    "explanation": "Physicians stopping their recommendations is a result of the large trial's disappointing finding. \"Even so\" would imply they stopped despite the evidence, which reverses the logic."
+  },
+  {
+    "id": "ei-021",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "hard",
+    "passage": "The ancient city's walls were long believed to have been built for defense. Recent excavations, ______ have found that the walls were too low and thin to stop attackers; archaeologists now think they mainly served to control trade and collect taxes.",
+    "question": "Which choice completes the text with the most logical transition?",
+    "choices": [
+      "in other words,",
+      "moreover,",
+      "as a result,",
+      "however,"
+    ],
+    "answer": 3,
+    "explanation": "The excavation findings contradict the long-held belief, so a contrast transition is needed. \"Moreover\" would treat the findings as additional support for the defense theory."
+  },
+  {
+    "id": "ei-022",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Transitions",
+    "difficulty": "medium",
+    "passage": "To reduce food waste, the school cafeteria began letting students choose their own portion sizes. ______ it started composting leftover fruit and vegetable scraps for the school garden.",
+    "question": "Which choice completes the text with the most logical transition?",
+    "choices": [
+      "In contrast,",
+      "Regardless,",
+      "That is,",
+      "Additionally,"
+    ],
+    "answer": 3,
+    "explanation": "Composting is a second, separate waste-reduction step, so it adds to the first. \"That is\" would wrongly present composting as a restatement of choosing portion sizes."
+  },
+  {
+    "id": "ei-023",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical synthesis",
+    "difficulty": "hard",
+    "passage": "While researching a topic, a student has taken the following notes:\n• The Riverbend Reforestation Project plants native trees along a 300-kilometer stretch of river.\n• The project began in 2016.\n• Its goal is to plant 2 million trees by 2030.\n• By 2024, about 450,000 trees had been planted.\n• Organizers say the pace of planting has increased every year.",
+    "question": "The student wants to emphasize how far the project remains from its goal. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "choices": [
+      "The Riverbend Reforestation Project, which began in 2016, plants native trees along 300 kilometers of river.",
+      "Although organizers say planting has sped up, the project had planted only about 450,000 of its planned 2 million trees by 2024.",
+      "According to organizers, the pace of planting for the Riverbend Reforestation Project has increased every year.",
+      "By 2030, the project hopes to have planted 2 million native trees."
+    ],
+    "answer": 1,
+    "explanation": "To show the gap, the student needs both the progress and the goal. B puts 450,000 next to 2 million, and \"only\" stresses the shortfall. D gives the goal without the progress."
+  },
+  {
+    "id": "ei-024",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical synthesis",
+    "difficulty": "hard",
+    "passage": "While researching a topic, a student has taken the following notes:\n• Pianist and composer Lena Hartmann wrote more than 200 works.\n• Most of her works were never published during her lifetime.\n• In 2019, a music archive digitized her handwritten scores.\n• Since then, orchestras in six countries have performed her pieces.",
+    "question": "The student wants to explain why Hartmann's music has recently reached a wider audience. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "choices": [
+      "Hartmann, a pianist and composer, wrote more than 200 works.",
+      "Orchestras in six countries have performed pieces by Hartmann.",
+      "Most of Hartmann's more than 200 works went unpublished during her lifetime.",
+      "After a music archive digitized Hartmann's handwritten scores in 2019, orchestras in six countries began performing her pieces."
+    ],
+    "answer": 3,
+    "explanation": "The goal is to explain why: D links the cause (the 2019 digitization) to the effect (performances in six countries). B gives only the effect."
+  },
+  {
+    "id": "ei-025",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical synthesis",
+    "difficulty": "medium",
+    "passage": "While researching a topic, a student has taken the following notes:\n• Tardigrades are microscopic animals sometimes called water bears.\n• They can survive temperatures close to absolute zero.\n• They can survive for years without water by drying out into a dormant state called a tun.\n• Some tardigrades have survived exposure to the vacuum of space.",
+    "question": "The student wants to explain how tardigrades survive without water. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "choices": [
+      "Tardigrades, sometimes called water bears, are microscopic animals.",
+      "Tardigrades can survive temperatures close to absolute zero and even the vacuum of space.",
+      "Some tardigrades have been exposed to the vacuum of space and survived.",
+      "Tardigrades can survive for years without water by drying out into a dormant state called a tun."
+    ],
+    "answer": 3,
+    "explanation": "Only D describes the mechanism for surviving without water: drying out into a tun. The other choices describe other survival feats or just introduce the animal."
+  },
+  {
+    "id": "ei-026",
+    "section": "rw",
+    "domain": "Expression of Ideas",
+    "skill": "Rhetorical synthesis",
+    "difficulty": "hard",
+    "passage": "While researching a topic, a student has taken the following notes:\n• Solar farm A, in a desert, produces about 1,200 megawatt-hours per acre each year.\n• Solar farm B, in a cloudier northern region, produces about 650 megawatt-hours per acre each year.\n• Both farms use the same type of panel.\n• Farm B's panels are cleaned less often because rain washes off dust.",
+    "question": "The student wants to emphasize a difference in output between the two farms. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    "choices": [
+      "Farm A produces about 1,200 megawatt-hours per acre each year, nearly twice the 650 produced by Farm B, even though both use the same panels.",
+      "Farms A and B use the same type of solar panel.",
+      "Because rain washes off dust, Farm B's panels are cleaned less often.",
+      "Farm A, located in a desert, produces about 1,200 megawatt-hours per acre each year."
+    ],
+    "answer": 0,
+    "explanation": "A difference in output needs both farms' figures. A gives both and adds \"nearly twice\" to stress the gap. D gives only one farm's output."
+  },
+  {
+    "id": "sec-017",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuating appositives",
+    "difficulty": "medium",
+    "passage": "Dr. Imani Rowe, the expedition's lead ______ spent a decade studying high-altitude plants before joining the team.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "botanist,",
+      "botanist",
+      "botanist;",
+      "botanist:"
+    ],
+    "answer": 0,
+    "explanation": "\"The expedition's lead botanist\" is an appositive that opens with a comma after \"Rowe,\" so it has to close with a matching comma before the verb \"spent.\""
+  },
+  {
+    "id": "sec-018",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuating a list",
+    "difficulty": "hard",
+    "passage": "The recipe calls for three unusual ______ black garlic, a fermented bulb with a sweet, molasses-like flavor; sumac, a tart red spice; and preserved lemon.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "ingredients;",
+      "ingredients,",
+      "ingredients:",
+      "ingredients"
+    ],
+    "answer": 2,
+    "explanation": "A complete independent clause (\"The recipe calls for three unusual ingredients\") introduces a list, so a colon is correct. A semicolon would need an independent clause after it, and the list isn't one."
+  },
+  {
+    "id": "sec-019",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuation between clauses",
+    "difficulty": "hard",
+    "passage": "The glacier has retreated more than a kilometer since ______ researchers now visit it each summer to measure how quickly it is shrinking.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "1980,",
+      "1980;",
+      "1980",
+      "1980, then"
+    ],
+    "answer": 1,
+    "explanation": "Both sides are independent clauses. A semicolon can join them. A comma alone (A) creates a comma splice, no punctuation (C) creates a run-on, and \"then\" isn't a conjunction that can join clauses after a comma."
+  },
+  {
+    "id": "sec-020",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuating supplementary elements",
+    "difficulty": "hard",
+    "passage": "Many desert plants store water in thick, waxy leaves. The mesquite ______ sends its roots dozens of meters underground to reach water.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "tree; however,",
+      "tree, however",
+      "tree however,",
+      "tree, however,"
+    ],
+    "answer": 3,
+    "explanation": "Here \"however\" interrupts a single clause (\"The mesquite tree sends...\"), so it's set off by a pair of commas. A semicolon (A) would split the subject from its verb."
+  },
+  {
+    "id": "sec-021",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuating supplementary elements",
+    "difficulty": "hard",
+    "passage": "The festival's most popular ______ a race in which teams paddle homemade boats across the harbor—draws crowds of several thousand each year.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "event,",
+      "event—",
+      "event:",
+      "event;"
+    ],
+    "answer": 1,
+    "explanation": "The interruption closes with a dash after \"harbor,\" so it must open with a dash too. Paired punctuation has to match."
+  },
+  {
+    "id": "sec-022",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Sentence boundaries",
+    "difficulty": "medium",
+    "passage": "The bakery opens at 6 a.m. every ______ 7 a.m., a line of customers usually stretches down the block.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "day, by",
+      "day. By",
+      "day by",
+      "day, By"
+    ],
+    "answer": 1,
+    "explanation": "\"The bakery opens at 6 a.m. every day\" and \"By 7 a.m., a line... stretches\" are separate independent clauses. They need a period (or semicolon), and the new sentence starts with a capital letter."
+  },
+  {
+    "id": "sec-023",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Punctuating a list",
+    "difficulty": "easy",
+    "passage": "Maya packed her ______ tent, and hiking boots the night before the trip.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "sleeping bag;",
+      "sleeping bag",
+      "sleeping bag,",
+      "sleeping bag:"
+    ],
+    "answer": 2,
+    "explanation": "Items in a simple series are separated by commas: sleeping bag, tent, and hiking boots."
+  },
+  {
+    "id": "sec-024",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Restrictive clauses",
+    "difficulty": "hard",
+    "passage": "The scientist ______ discovered the comet was only nineteen years old at the time.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      ", who",
+      "who",
+      "who,",
+      "—who"
+    ],
+    "answer": 1,
+    "explanation": "\"Who discovered the comet\" is essential. It tells us which scientist is meant, so it takes no punctuation. A comma after \"who\" would also separate the pronoun from its verb."
+  },
+  {
+    "id": "sec-025",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Subject-verb agreement",
+    "difficulty": "hard",
+    "passage": "The collection of letters, photographs, and diaries that the historian donated to the library ______ a rare glimpse into daily life during the war.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "offer",
+      "offers",
+      "have offered",
+      "are offering"
+    ],
+    "answer": 1,
+    "explanation": "The subject is \"collection,\" which is singular. The plural nouns in between (letters, photographs, diaries) are distractors, so the verb is \"offers.\""
+  },
+  {
+    "id": "sec-026",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Pronoun-antecedent agreement",
+    "difficulty": "hard",
+    "passage": "Each of the islands in the chain has ______ own species of lizard found nowhere else on Earth.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "its",
+      "their",
+      "it's",
+      "they're"
+    ],
+    "answer": 0,
+    "explanation": "The antecedent is \"each,\" which is singular, so the possessive pronoun is \"its.\" \"It's\" means \"it is.\""
+  },
+  {
+    "id": "sec-027",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Verb tense",
+    "difficulty": "medium",
+    "passage": "By the time the rescue team reached the stranded hikers last night, the storm ______ for nearly six hours.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "rages",
+      "will have raged",
+      "had been raging",
+      "is raging"
+    ],
+    "answer": 2,
+    "explanation": "The storm was ongoing before another past event (the team's arrival), so the past perfect progressive \"had been raging\" is needed."
+  },
+  {
+    "id": "sec-028",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Modifier placement",
+    "difficulty": "hard",
+    "passage": "Carved from a single block of marble over eleven years, ______",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "visitors are often moved to silence by the statue.",
+      "the statue often moves visitors to silence.",
+      "the sculptor created a statue that moves visitors to silence.",
+      "moving visitors to silence is what the statue often does."
+    ],
+    "answer": 1,
+    "explanation": "The opening phrase describes what was carved, which is the statue. So \"the statue\" must come right after the comma. The other choices make visitors, the sculptor, or \"moving\" the thing that was carved."
+  },
+  {
+    "id": "sec-029",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Possessives and contractions",
+    "difficulty": "medium",
+    "passage": "Both of the ______ nests were built high in the old oak tree.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "bird's",
+      "birds",
+      "birds's",
+      "birds'"
+    ],
+    "answer": 3,
+    "explanation": "\"Both\" signals more than one bird, and the nests belong to them, so the plural possessive \"birds'\" is correct."
+  },
+  {
+    "id": "sec-030",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Subject-verb agreement",
+    "difficulty": "easy",
+    "passage": "The members of the debate team ______ every Tuesday after school.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "practice",
+      "practices",
+      "has practiced",
+      "is practicing"
+    ],
+    "answer": 0,
+    "explanation": "The subject is \"members,\" which is plural, so the verb is \"practice.\" \"Team\" is part of the prepositional phrase, not the subject."
+  },
+  {
+    "id": "sec-031",
+    "section": "rw",
+    "domain": "Standard English Conventions",
+    "skill": "Verb forms",
+    "difficulty": "hard",
+    "passage": "The ancient manuscript, ______ in a monastery library for centuries, was rediscovered in 1972 by a graduate student.",
+    "question": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+    "choices": [
+      "hid",
+      "had hidden",
+      "hidden",
+      "hiding"
+    ],
+    "answer": 2,
+    "explanation": "The phrase between the commas modifies \"manuscript\" and needs the past participle \"hidden\" (it had been hidden). \"Hiding\" would mean the manuscript was doing the hiding, and \"hid\" and \"had hidden\" are main verbs that don't fit inside the phrase."
   }
 ]
