@@ -16,3 +16,5 @@ prep-rally/data/tutors.json
 
 # Desmos API key (per-deployment, not committed)
 prep-rally/data/desmos_key.txt
+prep-rally/data/lumo.db
+prep-rally/data/lumo.db-journal

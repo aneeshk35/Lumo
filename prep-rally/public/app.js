@@ -27,24 +27,62 @@ const DEFAULT_PROFILE = {
   classes: [],         // [{code, name, isTeacher}] cached for the sidebar
   lessonsDone: [],     // ids from lessons.json
 };
-let profile = { ...DEFAULT_PROFILE, ...JSON.parse(localStorage.getItem('lumo-profile') || '{}') };
-profile.solved = { ...DEFAULT_PROFILE.solved, ...(profile.solved || {}) };
-// Profiles from before per-difficulty ratings start every ladder at their old rating.
-profile.elos = { easy: profile.elo, medium: profile.elo, hard: profile.elo, ...(profile.elos || {}) };
-profile.mistakes = profile.mistakes || [];
-profile.domainStats = profile.domainStats || {};
-profile.vocabKnown = profile.vocabKnown || [];
-profile.friends = profile.friends || [];
-profile.classes = profile.classes || [];
-profile.lessonsDone = profile.lessonsDone || [];
-function saveProfile() { localStorage.setItem('lumo-profile', JSON.stringify(profile)); }
+// Fill in anything an older or partial profile is missing. DEFAULT_PROFILE is
+// cloned so its arrays are never shared with (and mutated through) a profile.
+function normalizeProfile(raw) {
+  const p = { ...JSON.parse(JSON.stringify(DEFAULT_PROFILE)), ...(raw || {}) };
+  p.solved = { ...DEFAULT_PROFILE.solved, ...(p.solved || {}) };
+  // Profiles from before per-difficulty ratings start every ladder at their old rating.
+  p.elos = { easy: p.elo, medium: p.elo, hard: p.elo, ...(p.elos || {}) };
+  ['mistakes', 'vocabKnown', 'friends', 'classes', 'lessonsDone', 'sessions'].forEach((k) => {
+    if (!Array.isArray(p[k])) p[k] = [];
+  });
+  if (!p.domainStats || typeof p.domainStats !== 'object') p.domainStats = {};
+  return p;
+}
+let profile = normalizeProfile(JSON.parse(localStorage.getItem('lumo-profile') || '{}'));
+function saveProfile() {
+  localStorage.setItem('lumo-profile', JSON.stringify(profile));
+  // Signed-in players also save to their account (account.js).
+  if (typeof queueCloudSave === 'function') queueCloudSave();
+}
+// Swap in another profile (an account's, after signing in) without replacing
+// the object every module already holds a reference to.
+function replaceProfile(raw) {
+  const next = normalizeProfile(raw);
+  if (!next.playerKey) next.playerKey = profile.playerKey;
+  Object.keys(profile).forEach((k) => { delete profile[k]; });
+  Object.assign(profile, next);
+  localStorage.setItem('lumo-profile', JSON.stringify(profile));
+}
 // Mint the social identity once and persist it immediately. Without the save,
 // every reload would hand out a new key and the browser would silently lose its
 // classes, friend code, and tutor application.
 if (!profile.playerKey) {
   profile.playerKey = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now())
     .replace(/-/g, '');
-  saveProfile();
+  localStorage.setItem('lumo-profile', JSON.stringify(profile));
+}
+
+// The signed-in username, or '' for a guest. account.js owns the session.
+function accountUsername() {
+  try { return (JSON.parse(localStorage.getItem('lumo-account') || 'null') || {}).username || ''; }
+  catch (e) { return ''; }
+}
+function identityLabel() {
+  const n = profile.name || 'guest';
+  return accountUsername()
+    ? `Signed in as ${n} (@${accountUsername()}) — account`
+    : `Playing as ${n}, not signed in — sign in or change nickname`;
+}
+// Refresh every place the player's name shows outside the current screen.
+function updateIdentityUI() {
+  if ($('sb-username')) $('sb-username').textContent = profile.name || 'Sign in';
+  if ($('btn-user')) {
+    $('btn-user').setAttribute('aria-label', identityLabel());
+    $('btn-user').classList.toggle('signed-in', !!accountUsername());
+  }
+  if ($('greet-name')) $('greet-name').textContent = profile.name || 'friend';
 }
 
 const DOMAIN_SECTION = {
@@ -185,9 +223,9 @@ function buildSidebar() {
 
   html += `</nav>
     <div class="sb-foot">
-      <button class="sb-user" id="btn-user" aria-label="Signed in as ${esc(profile.name || 'guest')} — change nickname">
+      <button class="sb-user ${accountUsername() ? 'signed-in' : ''}" id="btn-user" aria-label="${esc(identityLabel())}">
         <span class="lumo round lilac"></span>
-        <span class="sb-tip" id="sb-username">${esc(profile.name || 'Set nickname')}</span>
+        <span class="sb-tip" id="sb-username">${esc(profile.name || 'Sign in')}</span>
       </button>
       <button class="sb-theme" id="btn-theme" aria-label="Switch between light and dark">
         <svg class="ic moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
@@ -672,6 +710,10 @@ function cancelQueue(silent) {
 }
 
 /* ================= Lobby ================= */
+// When nobody else is in the queue, the server fills seats with bots. They
+// play like people near your rating, but they're always labeled.
+const botTag = (p) => (p.bot ? ' <span class="bot-tag" title="Practice bot: fills in when no one else is in the queue">Bot</span>' : '');
+
 function onLobbyUpdate(lobby) {
   if (game.phase === 'lobby') renderLobby(lobby);
 }
@@ -693,6 +735,9 @@ function renderLobby(lobby) {
     : isDuel
       ? 'Same questions for both players · speed and streaks decide it · Ranked'
       : `${lobby.players.length} player${lobby.players.length === 1 ? '' : 's'} in — up to 20 can join`;
+  if (isDuel && lobby.players.some((p) => p.bot)) {
+    $('lobby-sub').textContent = `No one else was searching, so ${isTeam ? 'bots near your rating fill the open seats' : 'a bot near your rating took the seat'} · still ranked`;
+  }
   $('lobby-code-wrap').classList.toggle('hidden', isDuel);
   if (!isDuel) $('lobby-code').textContent = lobby.code;
 
@@ -703,7 +748,7 @@ function renderLobby(lobby) {
   const cardFor = (p, them) => `
     <div class="player-card">
       <span class="lumo round ${them ? 'pink' : 'lilac'}"></span>
-      <span class="n">${esc(p.name)}</span>
+      <span class="n">${esc(p.name)}${botTag(p)}</span>
       <span class="s">${p.isHost ? 'Host · ' : ''}${isDuel ? `${(p.elo || 1200).toLocaleString()} ELO · ` : ''}${p.connected ? 'connected' : 'disconnected'}</span>
       <span class="ready-pill ${p.ready || (!isDuel && p.isHost) ? 'yes' : 'no'}">
         <span class="${p.ready || (!isDuel && p.isHost) ? 'dot-g' : 'dot-a'}"></span>
@@ -720,7 +765,7 @@ function renderLobby(lobby) {
         ${side(t).map((p) => `
           <div class="player-card compact ${p.name === game.myName ? 'me' : ''}">
             <span class="lumo round ${t === 'A' ? 'lilac' : 'pink'}"></span>
-            <span class="n">${esc(p.name)}${p.name === game.myName ? ' <span class="you-tag">you</span>' : ''}</span>
+            <span class="n">${esc(p.name)}${botTag(p)}${p.name === game.myName ? ' <span class="you-tag">you</span>' : ''}</span>
             <span class="s">${p.role === 'math' ? 'Math specialist' : 'Reading specialist'}</span>
             <span class="ready-pill ${p.ready ? 'yes' : 'no'}">
               <span class="${p.ready ? 'dot-g' : 'dot-a'}"></span>${p.ready ? 'Ready' : 'Getting ready…'}
@@ -1507,7 +1552,7 @@ function onGameOver(data) {
   $('result-rows').innerHTML = board.map((p, i) => `
     <div class="result-row ${p.name === game.myName ? 'me' : ''}">
       <span class="rank">${i + 1}</span>
-      <span class="grow">${esc(p.name)} <span class="detail">· ${p.correct}/${data.total} correct</span></span>
+      <span class="grow">${esc(p.name)}${botTag(p)} <span class="detail">· ${p.correct}/${data.total} correct</span></span>
       <span class="sc tabnum">${p.score}</span>
     </div>`).join('');
 
@@ -2092,28 +2137,6 @@ function ordinal(n) {
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
-/* ================= Name modal ================= */
-let nameCallback = null;
-function promptName(cb) {
-  nameCallback = cb || null;
-  $('name-input').value = profile.name || '';
-  $('name-overlay').classList.remove('hidden');
-  $('name-input').focus();
-}
-$('btn-save-name').onclick = () => {
-  const n = $('name-input').value.trim().slice(0, 16);
-  if (!n) return;
-  profile.name = n;
-  saveProfile();
-  $('name-overlay').classList.add('hidden');
-  $('sb-username').textContent = n;
-  $('btn-user').setAttribute('aria-label', `Signed in as ${n} — change nickname`);
-  $('greet-name').textContent = n;
-  const cb = nameCallback; nameCallback = null;
-  if (cb) cb();
-};
-$('name-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('btn-save-name').click(); });
-
 /* ================= Boot ================= */
 buildSidebar();
 initAnimations();
@@ -2123,4 +2146,4 @@ const homeBtn = document.querySelector('.sb-item[data-navgroup="Home"]');
 homeBtn.classList.add('active');
 movePill(homeBtn);
 renderHome();
-if (!profile.name) promptName();
+// account.js finishes boot: it restores the session or asks for a name.

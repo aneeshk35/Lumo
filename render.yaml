@@ -20,3 +20,9 @@ services:
       # Your own key from https://www.desmos.com/api
       - key: DESMOS_API_KEY
         sync: false
+      # Accounts. Without these, accounts live on Render's disk and vanish on
+      # every restart. Supabase dashboard -> Project Settings -> API.
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false

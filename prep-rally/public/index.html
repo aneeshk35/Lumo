@@ -827,12 +827,55 @@
 
 <!-- name modal -->
 <div class="overlay hidden" id="name-overlay">
-  <div class="modal">
+  <div class="modal acct-modal" role="dialog" aria-modal="true" aria-labelledby="acct-title">
+    <button class="acct-close hidden" id="btn-acct-close" type="button" aria-label="Close">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
     <span class="lumo"><span class="dot"></span></span>
-    <span class="t">Welcome to Lumo</span>
-    <span class="d">Pick a nickname. It shows up on leaderboards and in duels.</span>
-    <input id="name-input" maxlength="16" placeholder="Your nickname" autocomplete="off">
-    <button class="btn btn-primary" id="btn-save-name">Let's go</button>
+    <span class="t" id="acct-title">Welcome to Lumo</span>
+    <span class="d" id="acct-desc">Make an account and your progress, ratings, and mistake list follow you to any device.</span>
+
+    <!-- signed out: create an account, sign in, or play as a guest -->
+    <div class="acct-body" id="acct-guest">
+      <div class="seg acct-tabs" role="tablist" aria-label="How do you want to play?">
+        <button class="seg-btn active" type="button" role="tab" data-acct-tab="signup" aria-selected="true">New account</button>
+        <button class="seg-btn" type="button" role="tab" data-acct-tab="login" aria-selected="false">Sign in</button>
+        <button class="seg-btn" type="button" role="tab" data-acct-tab="guest" aria-selected="false">Guest</button>
+      </div>
+      <form class="acct-form" id="acct-form" novalidate>
+        <label class="acct-field" id="acct-user-row">
+          <span>Username</span>
+          <input id="acct-username" maxlength="20" autocomplete="username" autocapitalize="off" spellcheck="false">
+        </label>
+        <label class="acct-field" id="acct-pass-row">
+          <span>Password</span>
+          <input id="acct-password" type="password" maxlength="128" autocomplete="new-password">
+        </label>
+        <label class="acct-field" id="acct-nick-row">
+          <span>Nickname <em>shown in duels and leaderboards</em></span>
+          <input id="name-input" maxlength="16" placeholder="Your nickname" autocomplete="off">
+        </label>
+        <span class="acct-note" id="acct-note"></span>
+        <span class="acct-error hidden" id="acct-error" role="alert"></span>
+        <button class="btn btn-primary" id="btn-save-name" type="submit">Create account</button>
+      </form>
+    </div>
+
+    <!-- signed in -->
+    <div class="acct-body hidden" id="acct-signed">
+      <div class="acct-status">
+        <span class="acct-dot" id="acct-sync-dot"></span>
+        <span id="acct-sync">All progress saved</span>
+      </div>
+      <form class="acct-form" id="acct-nick-form" novalidate>
+        <label class="acct-field">
+          <span>Nickname <em>shown in duels and leaderboards</em></span>
+          <input id="acct-nick" maxlength="16" autocomplete="off">
+        </label>
+        <button class="btn btn-primary" type="submit">Save nickname</button>
+      </form>
+      <button class="btn btn-lg-outline" id="btn-signout" type="button">Sign out</button>
+    </div>
   </div>
 </div>
 
@@ -908,5 +951,6 @@
 <script src="coach.js"></script>
 <script src="classroom.js"></script>
 <script src="social.js"></script>
+<script src="account.js"></script>
 </body>
 </html>

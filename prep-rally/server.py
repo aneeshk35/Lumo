@@ -17,6 +17,9 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
+import accounts
+import bots
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_DIR = os.path.join(BASE_DIR, "public")
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -131,6 +134,9 @@ def similar_questions(qid, count):
         out += pool[: count - len(out)]
     return out[:count]
 
+
+ACCOUNTS = accounts.Accounts(accounts.open_store(DATA_DIR))
+ACCOUNT_ROUTES = {"/api/signup", "/api/login", "/api/me", "/api/save", "/api/logout"}
 
 TIMER_MS = {"easy": 60000, "medium": 75000, "hard": 90000}
 BASE_POINTS = {"easy": 500, "medium": 750, "hard": 1000}
@@ -298,6 +304,7 @@ class Party:
         # Practice has no per-question clock and no speed bonus; ranked duels,
         # 2v2, and multiplayer parties keep both.
         self.untimed = bool(settings.get("practice")) and mode == "party"
+        self.bot_plans = {}  # pid -> this question's plan for each bot
 
     def auto_advances(self):
         return self.mode in ("duel", "team")
@@ -333,14 +340,19 @@ class Party:
             i += 1
         return f"{name} {i}"
 
-    def add_player(self, name, elo=None):
+    def add_player(self, name, elo=None, bot=None):
         pid = uuid.uuid4().hex
         self.players[pid] = {
             "id": pid, "name": self.unique_name(sanitize_name(name)),
             "score": 0, "streak": 0, "correct": 0, "answers": [],
             "connected": True, "queues": [], "elo": clean_elo(elo),
+            # A bot has no event stream; the server plays its turns (see bots.py).
+            "bot": bot,
         }
         return pid
+
+    def humans(self):
+        return [p for p in self.players.values() if not p["bot"] and p["connected"]]
 
     def lobby_state(self):
         return {
@@ -350,7 +362,8 @@ class Party:
             "players": [
                 {"name": p["name"], "isHost": p["id"] == self.host_id, "elo": p["elo"],
                  "connected": p["connected"], "ready": p["id"] in self.ready,
-                 "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"])}
+                 "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"]),
+                 "bot": bool(p["bot"])}
                 for p in self.players.values()
             ],
             "questionCount": len(self.questions),
@@ -361,7 +374,8 @@ class Party:
         board = [
             {"name": p["name"], "score": p["score"], "streak": p["streak"], "elo": p["elo"],
              "correct": p["correct"], "connected": p["connected"],
-             "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"])}
+             "team": self.teams.get(p["id"]), "role": self.roles.get(p["id"]),
+             "bot": bool(p["bot"])}
             for p in self.players.values()
         ]
         board.sort(key=lambda p: -p["score"])
@@ -408,6 +422,139 @@ class Party:
             self.timer.daemon = True
             self.timer.start()
         self.broadcast("question", self.public_question())
+        self.schedule_bots()
+
+    # ---- answers (people and bots share one path) ----
+    def submit(self, player, choice, response, frac=None):
+        """Record an answer for the current question. `frac` is the share of
+        the clock left; bots pass the one from their planned thinking time."""
+        q = self.questions[self.q_index]
+        if q.get("type") == "spr":
+            correct = grade_response(q, response)
+        else:
+            correct = choice == q["answer"]
+        if frac is None:
+            if self.untimed:
+                frac = 1.0   # practice: full points however long it takes
+            else:
+                remaining = max(0, self.ends_at - now_ms())
+                if remaining <= 0:
+                    return False
+                frac = remaining / TIMER_MS[q["difficulty"]]
+
+        points = 0
+        if correct:
+            player["streak"] += 1
+            streak_bonus = min(STREAK_CAP, (player["streak"] - 1) * STREAK_BONUS)
+            points = round(BASE_POINTS[q["difficulty"]] * (0.5 + 0.5 * frac)) + streak_bonus
+            # 2v2: answering inside the section you were assigned pays extra.
+            if self.mode == "team" and self.roles.get(player["id"]) == q["section"]:
+                points = round(points * SPECIALIST_BONUS)
+            player["score"] += points
+            player["correct"] += 1
+        else:
+            player["streak"] = 0
+        player["answers"].append({"qId": q["id"], "choice": choice, "response": response,
+                                  "correct": correct, "points": points})
+        self.current_answers[player["id"]] = {"choice": choice, "response": response,
+                                              "points": points, "correct": correct}
+
+        self.broadcast("answer_progress", {
+            "answered": len(self.current_answers),
+            "total": len(self.connected()),
+        })
+        if len(self.current_answers) >= len(self.connected()):
+            t = threading.Timer(0.6, self.end_question)
+            t.daemon = True
+            t.start()
+        elif not player["bot"] and all(p["id"] in self.current_answers for p in self.humans()):
+            self.hurry_bots()
+        return True
+
+    # ---- bots ----
+    def bots_list(self):
+        return [p for p in self.players.values() if p["bot"]]
+
+    def schedule_bots(self):
+        """Give each bot a plan for this question and wake it when it's done thinking."""
+        q = self.questions[self.q_index]
+        rng = random.Random()
+        self.bot_plans = {}
+        for p in self.bots_list():
+            plan = bots.plan_answer(p["bot"], q, TIMER_MS[q["difficulty"]], rng)
+            plan["choice"], plan["response"] = bots.pick_choice(q, plan["correct"], rng)
+            if plan["response"] and not plan["correct"] and grade_response(q, plan["response"]):
+                plan["response"] = "-999"  # the "slip" happened to be right; keep it wrong
+            self.bot_plans[p["id"]] = plan
+            if not plan["timeout"]:
+                self._wake_bot(p["id"], plan["delay"])
+
+    def _wake_bot(self, pid, delay):
+        index = self.q_index
+        t = threading.Timer(delay, self._bot_answer, args=(pid, index))
+        t.daemon = True
+        t.start()
+
+    def _bot_answer(self, pid, index):
+        with LOCK:
+            player = self.players.get(pid)
+            plan = self.bot_plans.get(pid)
+            if (self.phase != "question" or self.q_index != index or not player
+                    or not plan or pid in self.current_answers):
+                return
+            q = self.questions[index]
+            # Score from the bot's own thinking time, even when it's woken early
+            # because every person has already answered.
+            frac = max(0.0, 1 - plan["think"] / (TIMER_MS[q["difficulty"]] / 1000))
+            self.submit(player, plan["choice"], plan["response"], frac)
+
+    def hurry_bots(self):
+        """Everyone real has answered. Don't make them sit through a bot's full
+        thinking time: bots still due to answer do so within a few seconds, and
+        a bot that was going to run out of time does it now."""
+        index = self.q_index
+        latest = 0.0
+        for pid, plan in self.bot_plans.items():
+            if pid in self.current_answers or plan["timeout"]:
+                continue
+            delay = min(plan["delay"], random.uniform(1.2, 3.5) * max(bots.BOT_PACE, 0.2))
+            self._wake_bot(pid, delay)
+            latest = max(latest, delay)
+        if any(plan["timeout"] and pid not in self.current_answers
+               for pid, plan in self.bot_plans.items()):
+            t = threading.Timer(latest + 1.0, self._close_if, args=(index,))
+            t.daemon = True
+            t.start()
+
+    def _close_if(self, index):
+        with LOCK:
+            if self.phase == "question" and self.q_index == index:
+                self.end_question()
+
+    def ready_bots(self):
+        """Bots ready up a moment after the lobby opens, like a person would."""
+        for p in self.bots_list():
+            t = threading.Timer(random.uniform(1.5, 4.0) * max(bots.BOT_PACE, 0.2),
+                                self._bot_ready, args=(p["id"],))
+            t.daemon = True
+            t.start()
+
+    def _bot_ready(self, pid):
+        with LOCK:
+            if self.phase != "lobby" or pid not in self.players:
+                return
+            self.ready.add(pid)
+            self.broadcast("lobby_update", self.lobby_state())
+            self.maybe_start()
+
+    def maybe_start(self):
+        """Duels and 2v2 start once every seat is filled and ready."""
+        connected = self.connected()
+        needed = TEAM_PLAYERS if self.mode == "team" else 2
+        if (self.phase == "lobby" and self.auto_advances() and len(connected) >= needed
+                and all(p["id"] in self.ready for p in connected)):
+            self.broadcast("game_started", {})
+            self.start_question()
 
     def end_question(self):
         with LOCK:
@@ -563,24 +710,62 @@ def handle_disconnect(party, player):
     if party.phase == "lobby":
         party.players.pop(player["id"], None)
 
+    # Bots never leave on their own, so a party with no people left is over.
+    if not party.humans():
+        if party.timer:
+            party.timer.cancel()
+        party.phase = "ended"
+        PARTIES.pop(party.code, None)
+        return
+
     if player["id"] == party.host_id:
-        remaining = party.connected()
-        if remaining:
-            party.host_id = remaining[0]["id"]
-            party.broadcast("host_changed", {"hostName": remaining[0]["name"]})
-            party.broadcast("lobby_update", party.lobby_state())
-        else:
-            if party.timer:
-                party.timer.cancel()
-            PARTIES.pop(party.code, None)
-            return
-    else:
-        party.broadcast("lobby_update", party.lobby_state())
+        new_host = party.humans()[0]
+        party.host_id = new_host["id"]
+        party.broadcast("host_changed", {"hostName": new_host["name"]})
+    party.broadcast("lobby_update", party.lobby_state())
 
     still_connected = party.connected()
-    if (party.phase == "question" and still_connected
-            and len(party.current_answers) >= len(still_connected)):
-        party.end_question()
+    if party.phase == "question":
+        if len(party.current_answers) >= len(still_connected):
+            party.end_question()
+        elif all(p["id"] in party.current_answers for p in party.humans()):
+            party.hurry_bots()
+
+
+def queue_peers(mode, section, difficulty):
+    return [t for t in MATCH_QUEUE
+            if t["mode"] == mode and t["section"] == section
+            and t["difficulty"] == difficulty and not t["result"]]
+
+
+def seat_match(mode, section, difficulty, count, entrants, fill_bots=False):
+    """Open a ranked party for `entrants` (queue tickets, plus the caller as a
+    bare {name, elo} last). Tickets get their result filled in for the owner's
+    next poll. With fill_bots, empty seats go to bots rated near the people."""
+    needed = TEAM_PLAYERS if mode == "2v2" else 2
+    settings = {"section": section, "domains": [], "difficulties": [difficulty], "count": count}
+    code = generate_code()
+    party = Party(code, settings, pick_questions(settings), mode="team" if mode == "2v2" else "duel")
+    seats = []
+    for e in entrants:
+        pid = party.add_player(e["name"], e["elo"])
+        if mode == "2v2":
+            party.assign_team(pid)
+        seats.append(pid)
+        if "ticket" in e:
+            e["result"] = {"code": code, "playerId": pid, "yourName": party.players[pid]["name"]}
+    party.host_id = seats[0]
+    if fill_bots:
+        rng = random.Random()
+        target = sum(e["elo"] for e in entrants) / len(entrants)
+        while len(party.players) < needed:
+            bot = bots.make_bot(rng, target, {p["name"] for p in party.players.values()})
+            pid = party.add_player(bot["name"], bot["elo"], bot=bot)
+            if mode == "2v2":
+                party.assign_team(pid)
+        party.ready_bots()
+    PARTIES[code] = party
+    return party, seats
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -640,6 +825,11 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         route = parsed.path
 
+        # Accounts talk to a database (possibly over the network), so they run
+        # outside the game lock and never stall a live match.
+        if route in ACCOUNT_ROUTES:
+            return self.api_account(route, body)
+
         with LOCK:
             if route == "/api/create":
                 return self.api_create(body)
@@ -658,6 +848,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_json({
                     "desmosKey": key,
                     "desmosIsDemoKey": key == DESMOS_DEMO_KEY,
+                    # False when accounts would vanish on the next restart.
+                    "accountsDurable": ACCOUNTS.store.durable,
                 })
             if route == "/api/presence":
                 return self.api_presence(body)
@@ -708,6 +900,33 @@ class Handler(BaseHTTPRequestHandler):
                 return self.api_play_again(party, player)
 
         self.send_json({"error": "Unknown endpoint."}, 404)
+
+    # ---------- accounts ----------
+    def client_ip(self):
+        """The caller's address for rate limits, or '' for local development
+        (no proxy and a loopback address), which isn't IP-limited."""
+        forwarded = self.headers.get("X-Forwarded-For", "")
+        if not forwarded and self.client_address[0] in ("127.0.0.1", "::1"):
+            return ""
+        return forwarded.split(",")[0].strip() or self.client_address[0]
+
+    def api_account(self, route, body):
+        try:
+            if route == "/api/signup":
+                res = ACCOUNTS.signup(body.get("username"), body.get("password"),
+                                      body.get("profile"), self.client_ip())
+            elif route == "/api/login":
+                res = ACCOUNTS.login(body.get("username"), body.get("password"), self.client_ip())
+            elif route == "/api/me":
+                res = ACCOUNTS.me(body.get("token"))
+            elif route == "/api/save":
+                res = ACCOUNTS.save(body.get("token"), body.get("profile"), body.get("rev"))
+            else:
+                res = ACCOUNTS.logout(body.get("token"))
+        except (IOError, OSError) as err:
+            print(f"account storage error: {err}")
+            return self.send_json({"error": "Couldn't reach account storage. Try again in a moment."}, 503)
+        return self.send_json(res, res.pop("status", 200))
 
     # ---------- bank ----------
     def api_bank(self):
@@ -1035,7 +1254,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json({"bank": by_section, "online": online, "queued": len(MATCH_QUEUE)})
 
     def api_queue(self, body):
-        """Join the ladder queue. 1v1 fills at two players, 2v2 at four."""
+        """Join the ladder queue. 1v1 fills at two players, 2v2 at four. If no
+        one else shows up in time, bots take the empty seats (see bots.py)."""
         now = time.time()
         # Keep matched tickets around until their owner polls and collects the result.
         MATCH_QUEUE[:] = [t for t in MATCH_QUEUE if now - t["polled"] < QUEUE_TTL]
@@ -1045,40 +1265,27 @@ class Handler(BaseHTTPRequestHandler):
         difficulty = body.get("difficulty") if body.get("difficulty") in DIFFICULTIES else "medium"
         elo = clean_elo(body.get("elo"))
         name = sanitize_name(body.get("name"))
-        count = max(3, min(int(body.get("count") or 10), 20))
+        try:
+            count = max(3, min(int(body.get("count") or 10), 20))
+        except (TypeError, ValueError):
+            count = 10
         mode = "2v2" if body.get("mode") == "2v2" else "1v1"
         needed = TEAM_PLAYERS if mode == "2v2" else 2
 
-        waiting = [t for t in MATCH_QUEUE
-                   if t["mode"] == mode and t["section"] == section
-                   and t["difficulty"] == difficulty and not t["result"]]
+        waiting = queue_peers(mode, section, difficulty)
         waiting.sort(key=lambda t: abs(t["elo"] - elo))
         if len(waiting) >= needed - 1:
-            joining = waiting[: needed - 1]
-            settings = {"section": section, "domains": [], "difficulties": [difficulty], "count": count}
-            questions = pick_questions(settings)
-            code = generate_code()
-            party = Party(code, settings, questions, mode="team" if mode == "2v2" else "duel")
-
-            # Seat everyone who was waiting, then the caller last.
-            for t in joining:
-                pid = party.add_player(t["name"], t["elo"])
-                if mode == "2v2":
-                    party.assign_team(pid)
-                t["result"] = {"code": code, "playerId": pid,
-                               "yourName": party.players[pid]["name"]}
-            mine = party.add_player(name, elo)
-            if mode == "2v2":
-                party.assign_team(mine)
-            party.host_id = joining[0]["result"]["playerId"]
-            PARTIES[code] = party
-            return self.send_json({"matched": True, "code": code, "playerId": mine,
+            party, seats = seat_match(mode, section, difficulty, count,
+                                      waiting[: needed - 1] + [{"name": name, "elo": elo}])
+            mine = seats[-1]
+            return self.send_json({"matched": True, "code": party.code, "playerId": mine,
                                    "yourName": party.players[mine]["name"], "mode": mode})
 
         ticket = uuid.uuid4().hex
         MATCH_QUEUE.append({"ticket": ticket, "name": name, "section": section, "mode": mode,
-                            "difficulty": difficulty, "elo": elo,
-                            "count": count, "polled": now, "result": None})
+                            "difficulty": difficulty, "elo": elo, "count": count,
+                            "polled": now, "created": now, "bot_after": bots.bot_wait(),
+                            "result": None})
         return self.send_json({"matched": False, "ticket": ticket, "mode": mode,
                                "waiting": len(waiting) + 1, "needed": needed})
 
@@ -1086,13 +1293,21 @@ class Handler(BaseHTTPRequestHandler):
         ticket = body.get("ticket")
         for t in list(MATCH_QUEUE):
             if t["ticket"] == ticket:
-                t["polled"] = time.time()
+                now = time.time()
+                t["polled"] = now
+                if not t["result"] and now - t["created"] >= t["bot_after"]:
+                    # Nobody else came: seat whoever is waiting on this ladder
+                    # (longest-waiting first) and fill the rest with bots.
+                    peers = queue_peers(t["mode"], t["section"], t["difficulty"])
+                    peers.sort(key=lambda o: o["created"])
+                    needed = TEAM_PLAYERS if t["mode"] == "2v2" else 2
+                    group = [t] + [o for o in peers if o is not t][: needed - 1]
+                    seat_match(t["mode"], t["section"], t["difficulty"], t["count"], group,
+                               fill_bots=True)
                 if t["result"]:
                     MATCH_QUEUE.remove(t)
                     return self.send_json(dict({"matched": True, "mode": t["mode"]}, **t["result"]))
-                peers = sum(1 for o in MATCH_QUEUE
-                            if o["mode"] == t["mode"] and o["section"] == t["section"]
-                            and o["difficulty"] == t["difficulty"] and not o["result"])
+                peers = len(queue_peers(t["mode"], t["section"], t["difficulty"]))
                 needed = TEAM_PLAYERS if t["mode"] == "2v2" else 2
                 return self.send_json({"matched": False, "waiting": peers, "needed": needed})
         return self.send_json({"matched": False, "expired": True})
@@ -1107,12 +1322,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json({"error": "Game already started."})
         party.ready.add(player["id"])
         party.broadcast("lobby_update", party.lobby_state())
-        connected = party.connected()
-        needed = TEAM_PLAYERS if party.mode == "team" else 2
-        if (party.auto_advances() and len(connected) >= needed
-                and all(p["id"] in party.ready for p in connected)):
-            party.broadcast("game_started", {})
-            party.start_question()
+        party.maybe_start()
         return self.send_json({"ok": True})
 
     # ---------- API ----------
@@ -1155,12 +1365,11 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json({"ok": False})
         q = party.questions[party.q_index]
         response = None
+        choice = None
         if q.get("type") == "spr":
             response = str(body.get("response") or "").strip()[:8]
             if not response:
                 return self.send_json({"ok": False})
-            choice = None
-            correct = grade_response(q, response)
         else:
             try:
                 choice = int(body.get("choice"))
@@ -1168,41 +1377,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_json({"ok": False})
             if not 0 <= choice <= 3:
                 return self.send_json({"ok": False})
-            correct = choice == q["answer"]
-
-        if party.untimed:
-            frac = 1.0   # practice: full points however long it takes
-        else:
-            remaining = max(0, party.ends_at - now_ms())
-            if remaining <= 0:
-                return self.send_json({"ok": False, "error": "Time's up!"})
-            frac = remaining / TIMER_MS[q["difficulty"]]
-
-        points = 0
-        if correct:
-            player["streak"] += 1
-            streak_bonus = min(STREAK_CAP, (player["streak"] - 1) * STREAK_BONUS)
-            points = round(BASE_POINTS[q["difficulty"]] * (0.5 + 0.5 * frac)) + streak_bonus
-            # 2v2: answering inside the section you were assigned pays extra.
-            if party.mode == "team" and party.roles.get(player["id"]) == q["section"]:
-                points = round(points * SPECIALIST_BONUS)
-            player["score"] += points
-            player["correct"] += 1
-        else:
-            player["streak"] = 0
-        player["answers"].append({"qId": q["id"], "choice": choice, "response": response,
-                                  "correct": correct, "points": points})
-        party.current_answers[player["id"]] = {"choice": choice, "response": response,
-                                               "points": points, "correct": correct}
-
-        party.broadcast("answer_progress", {
-            "answered": len(party.current_answers),
-            "total": len(party.connected()),
-        })
-        if len(party.current_answers) >= len(party.connected()):
-            t = threading.Timer(0.6, party.end_question)
-            t.daemon = True
-            t.start()
+        if not party.submit(player, choice, response):
+            return self.send_json({"ok": False, "error": "Time's up!"})
         self.send_json({"ok": True})
 
     def api_next(self, party, player):
@@ -1294,6 +1470,9 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     CLASSES.update(load_json_file(CLASSES_FILE, {}))
     TUTORS.update(load_json_file(TUTORS_FILE, {}))
+    store = ACCOUNTS.store
+    print(f"Accounts stored in {store.kind}" + ("" if store.durable else
+          " on a disk that resets on restart. Set SUPABASE_URL and SUPABASE_SERVICE_KEY to keep them."))
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     print(f"PrepRally running on http://localhost:{PORT}")
     server.serve_forever()

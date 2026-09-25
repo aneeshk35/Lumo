@@ -32,7 +32,8 @@ Then open http://localhost:3000. To play with friends on your Wi-Fi, they visit 
 
 - **Solo / Rush / Bank / Challenge / Review** — single-player sessions; you control the pace.
 - **Party** — host gets a 5-letter code, friends join, host advances each question. Up to 20 players.
-- **1v1 Duel** — queue by subject, get matched with another waiting player, both ready up, then questions auto-advance 7 seconds after each reveal. Winner takes +24 ELO, loser −18.
+- **1v1 Duel / 2v2** — queue by subject and difficulty, get matched with other waiting players nearest your rating, everyone readies up, then questions auto-advance 7 seconds after each reveal. Each difficulty is its own Elo ladder (standard Elo, K = 32).
+- **Bots** — if nobody else joins your ladder within about 8–13 seconds, bots take the empty seats (`bots.py`). A bot is rated near you and plays like a person at that rating: it's right more often on easy questions than hard ones, is stronger in one section, thinks for a believable time, and sometimes runs out the clock. Bots are always labeled "Bot", and bot matches are ranked. `LUMO_BOT_WAIT` pins the wait and `LUMO_BOT_PACE` speeds bots up (tests use 0.08).
 
 Scoring is server-authoritative: base points by difficulty (500/750/1000), scaled up to 2× by answer speed, plus a streak bonus of +100 per consecutive correct answer, capped at +500.
 
@@ -196,16 +197,21 @@ with zoom. That fallback has no dependencies and works offline.
 
 ## Identity and sign-in
 
-Lumo has no accounts or passwords. On first visit you pick a nickname, which is
-stored in your browser's localStorage along with your ELO, mistakes, study plan,
-and vocab progress. Click your name at the bottom of the nav to change it.
+Anyone can play as a guest: pick a nickname and progress lives in this
+browser's localStorage. Making an account (username + password, no email)
+uploads that progress, and from then on every change also saves to the server,
+so it follows you to any device. Signing in on a new device replaces that
+device's guest progress with the account's.
 
-Consequences worth knowing:
-- Progress is per-browser. A different browser or device is a different profile.
-- Two tabs on the same origin share one profile, so testing multiplayer locally
-  gives both players the same name (the server auto-suffixes the second one).
-- Clearing site data resets progress.
-
-Real accounts (email sign-in, progress that follows you across devices, and
-server-side ELO) are the next step; they need a user table and sessions on the
-server, which the current in-memory design does not have.
+- `accounts.py` hashes passwords with PBKDF2 (200k rounds), issues 60-day
+  session tokens (only their SHA-256 is stored), and rate-limits wrong
+  passwords per username and per IP.
+- Saves carry a revision number. A save from a stale copy (a tab left open on
+  another device) is refused and that tab loads the newer progress instead of
+  overwriting it.
+- Storage is Supabase (Postgres over its REST API) when `SUPABASE_URL` and
+  `SUPABASE_SERVICE_KEY` are set, otherwise SQLite in `data/lumo.db`. On
+  Render's free tier the disk is wiped on every restart, so set the Supabase
+  variables there (see DEPLOY.md). Until then the sign-up window warns that
+  accounts won't last.
+- There's no password reset, since there's no email.

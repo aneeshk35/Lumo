@@ -429,6 +429,32 @@ def audit_viewport(pw_browser, label, size, scheme="light"):
     page.wait_for_selector("#name-overlay:not(.hidden)")
     for f in page.evaluate(PROBE, label == "phone"):
         findings.append((state[0], f))
+    # Every face of the account window: an error, sign in, guest, then signed in.
+    import random as _r
+    for name, step in [
+        ("account: error", lambda: (page.click("#btn-save-name"), page.wait_for_timeout(200))),
+        ("account: sign in tab", lambda: (page.click('[data-acct-tab="login"]'), page.wait_for_timeout(200))),
+        ("account: guest tab", lambda: (page.click('[data-acct-tab="guest"]'), page.wait_for_timeout(200))),
+        ("account: signed in", lambda: (
+            page.click('[data-acct-tab="signup"]'),
+            page.fill("#acct-username", f"audit{_r.randint(100000, 999999)}"),
+            page.fill("#acct-password", "audit-password-1"),
+            page.fill("#name-input", "Auditor"),
+            page.click("#btn-save-name"),
+            page.wait_for_selector("#name-overlay.hidden", state="attached"),
+            page.click("#btn-user"),
+            page.wait_for_selector("#acct-signed:not(.hidden)"),
+            page.wait_for_timeout(300))),
+    ]:
+        state[0] = name
+        try:
+            step()
+        except Exception as exc:
+            findings.append((name, {"kind": "could not reach state", "severity": "error",
+                                    "where": name, "detail": str(exc).splitlines()[0][:160]}))
+            continue
+        for f in page.evaluate(PROBE, label == "phone"):
+            findings.append((name, f))
     page.close()
 
     page = ctx.new_page()

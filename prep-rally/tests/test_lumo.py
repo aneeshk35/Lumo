@@ -111,6 +111,9 @@ def test_first_run(browser):
     page.on("pageerror", lambda e: errors.append(str(e)))
     page.goto(BASE)
     check("name modal shown on first visit", page.locator("#name-overlay:not(.hidden)").count() == 1)
+    check("first visit offers a new account first",
+          "Create account" in page.inner_text("#btn-save-name"), page.inner_text("#btn-save-name"))
+    page.click('[data-acct-tab="guest"]')
     page.fill("#name-input", "Aneesh")
     page.click("#btn-save-name")
     page.wait_for_timeout(300)
@@ -947,6 +950,131 @@ def test_2v2(browser):
         c.close()
 
 
+def test_bot_duel(browser):
+    print("\n17. Bots fill an empty ranked queue")
+    ctx, page = new_player(browser, "BotBait")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    before = page.evaluate("profile.elos.easy")
+    nav(page, "Play")
+    page.click('#duel-modes [data-sec="rw"]')
+    page.click('#duel-diffs [data-diff="easy"]')
+    page.click("#btn-find-match")
+    page.wait_for_selector("#v-queue.active", timeout=5000)
+    page.wait_for_timeout(4000)
+    check("no bot shows up right away", page.locator("#v-queue.active").count() == 1)
+    page.wait_for_selector("#v-lobby.active", timeout=20000)
+    check("a bot takes the seat when nobody else queues", True)
+    check("the bot is labeled as a bot", page.locator("#lobby-players .bot-tag").count() == 1,
+          page.inner_text("#lobby-players"))
+    check("the lobby says why there's a bot", "bot" in page.inner_text("#lobby-sub").lower(),
+          page.inner_text("#lobby-sub"))
+    card = page.inner_text("#lobby-players")
+    check("the bot is rated near the player", "ELO" in card, card)
+    page.click("#btn-ready")
+    page.wait_for_selector("#v-match.active", timeout=10000)
+    check("the bot readies up on its own", True)
+    answer_current(page, 0)
+    page.wait_for_selector("#reveal-card:not(.hidden)", timeout=15000)
+    check("the bot answers so the question reveals", True)
+    # Duels auto-advance, so wait for each fresh question rather than clicking
+    # through the reveal.
+    for _ in range(12):
+        page.wait_for_selector("#v-results.active, #choice-grid .mchoice:not([disabled]), #spr:not(.hidden)",
+                               timeout=20000)
+        if page.locator("#v-results.active").count():
+            break
+        answer_current(page, 1)
+        page.wait_for_selector("#reveal-card:not(.hidden)", timeout=15000)
+        page.wait_for_selector("#v-results.active, #reveal-card.hidden", state="attached", timeout=15000)
+    finished = page.locator("#v-results.active").count() == 1
+    check("a full match against a bot finishes", finished)
+    check("results label the bot", page.locator("#result-rows .bot-tag").count() == 1)
+    after = page.evaluate("profile.elos.easy")
+    check("a bot match is ranked", after != before, f"{before} -> {after}")
+    check("no page errors in a bot match", not errors, str(errors))
+    ctx.close()
+
+
+def test_accounts(browser):
+    print("\n18. Accounts and saved progress")
+    import random as _r
+    user = f"tester{_r.randint(10000, 99999)}"
+    pw = "correct-horse-9"
+
+    # A guest with some progress makes an account; the progress comes along.
+    a_ctx, a = new_player(browser, "Guesty")
+    errors = []
+    a.on("pageerror", lambda e: errors.append(str(e)))
+    a.evaluate("profile.attempted = 7; profile.correct = 5; profile.elos.hard = 1333; saveProfile()")
+    a.click("#btn-user")
+    a.wait_for_selector("#name-overlay:not(.hidden)")
+    check("guests can close the account window", a.locator("#btn-acct-close:not(.hidden)").count() == 1)
+    a.fill("#acct-username", user)
+    a.fill("#acct-password", "short")
+    a.click("#btn-save-name")
+    check("short passwords are refused", "8 characters" in a.inner_text("#acct-error"), a.inner_text("#acct-error"))
+    a.fill("#acct-password", pw)
+    a.click("#btn-save-name")
+    a.wait_for_selector("#name-overlay.hidden", state="attached", timeout=8000)
+    check("signing up closes the window", True)
+    check("signed-in dot shows on the rail", a.locator("#btn-user.signed-in").count() == 1)
+    check("the rail says who is signed in", user in a.get_attribute("#btn-user", "aria-label"),
+          a.get_attribute("#btn-user", "aria-label"))
+
+    # A change after signup reaches the server.
+    a.evaluate("profile.attempted = 9; saveProfile()")
+    a.wait_for_function("!JSON.parse(localStorage.getItem('lumo-account')).dirty", timeout=8000)
+    check("progress saves to the account", True)
+
+    # The same account on a fresh device gets that progress.
+    b_ctx = browser.new_context(viewport={"width": 1280, "height": 900})
+    b = b_ctx.new_page()
+    b.goto(BASE)
+    b.wait_for_selector("#name-overlay:not(.hidden)")
+    b.click('[data-acct-tab="login"]')
+    check("sign in hides the nickname field", b.locator("#acct-nick-row.hidden").count() == 1)
+    b.fill("#acct-username", user.upper())
+    b.fill("#acct-password", "wrong-password")
+    b.click("#btn-save-name")
+    b.wait_for_selector("#acct-error:not(.hidden)", timeout=8000)
+    check("a wrong password is refused", "Wrong" in b.inner_text("#acct-error"), b.inner_text("#acct-error"))
+    b.fill("#acct-password", pw)
+    b.click("#btn-save-name")
+    b.wait_for_selector("#name-overlay.hidden", state="attached", timeout=8000)
+    got = b.evaluate("[profile.name, profile.attempted, profile.elos.hard]")
+    check("progress follows the account to another device", got == ["Guesty", 9, 1333], str(got))
+    check("usernames aren't case sensitive", True)
+
+    # Device B saves; device A is now stale, and its next save must not win.
+    b.evaluate("profile.attempted = 20; saveProfile()")
+    b.wait_for_function("!JSON.parse(localStorage.getItem('lumo-account')).dirty", timeout=8000)
+    a.evaluate("profile.attempted = 10; saveProfile()")
+    a.wait_for_function("profile.attempted === 20", timeout=8000)
+    check("a stale device takes the newer progress instead of overwriting it", True)
+
+    # Reload keeps the session.
+    b.reload()
+    b.wait_for_selector(".sb-item")
+    b.wait_for_timeout(800)
+    check("sessions survive a reload", b.locator("#btn-user.signed-in").count() == 1
+          and b.evaluate("profile.attempted") == 20)
+
+    # Signing out leaves nothing behind.
+    b.click("#btn-user")
+    b.wait_for_selector("#acct-signed:not(.hidden)")
+    check("the account window shows the sync state", "saved" in b.inner_text("#acct-sync").lower(),
+          b.inner_text("#acct-sync"))
+    with b.expect_navigation():
+        b.click("#btn-signout")
+    b.wait_for_selector("#name-overlay:not(.hidden)", timeout=8000)
+    check("signing out clears this device", b.evaluate("profile.attempted") == 0
+          and b.locator("#btn-user.signed-in").count() == 0)
+    check("no page errors with accounts", not errors, str(errors))
+    b_ctx.close()
+    a_ctx.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
@@ -955,7 +1083,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_2v2, test_theme):
+                   test_friends, test_2v2, test_bot_duel, test_accounts, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

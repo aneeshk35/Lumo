@@ -6,7 +6,7 @@ Three services, each doing the part it is good at.
 |---|---|---|
 | **Render** (or Railway / Fly) | the Python game server | parties, duels, matchmaking, live scoring |
 | **Vercel** | the static frontend | fast global delivery, a real URL |
-| **Supabase** | Postgres + Auth | accounts, progress that follows you across devices |
+| **Supabase** | Postgres | accounts, progress that follows you across devices |
 
 You can stop after Render and have a working, shareable app. Vercel and
 Supabase are additive.
@@ -56,27 +56,36 @@ a few seconds to wake.
 If you skip Vercel, leave `config.js` as `''` and Render serves the frontend
 itself. Simpler, one less moving part, and no CORS at all.
 
-## 3. Accounts on Supabase (optional)
+## 3. Accounts on Supabase
 
-1. Create a project at [supabase.com](https://supabase.com).
-2. Apply `supabase/schema.sql` in the SQL editor. It creates `profiles`,
-   `attempts`, and `high_scores`, turns on row level security so players can
-   only touch their own rows, and adds a trigger that creates a profile on
-   signup.
-3. Wire the client to it. This part is not written yet: today the profile lives
-   in `localStorage` (see *Identity and sign-in* in the README). The schema is
-   the target to migrate onto.
+Accounts work without this, but Render's free disk is wiped every time the
+server restarts (including after it sleeps), so accounts would disappear.
+Supabase keeps them.
 
-Scope the Supabase MCP server to this project once it exists by adding
-`&project_ref=<id>` to the URL in `.mcp.json`, and add `&read_only=true`
-whenever schema changes are not needed.
+1. Open your project at [supabase.com](https://supabase.com) (or create one).
+2. **SQL Editor → New query**, paste all of `supabase/schema.sql`, **Run**.
+   It creates `lumo_accounts` and `lumo_sessions` with row level security on
+   and no policies, so only the server's key can touch them.
+3. **Project Settings → API**: copy the **Project URL** and the **secret key**
+   (`sb_secret_…`, or the legacy `service_role` key).
+4. On Render, add them as environment variables:
+   - `SUPABASE_URL` = the project URL
+   - `SUPABASE_SERVICE_KEY` = the secret key
+
+   Never put the secret key in `config.js` or anywhere in `public/`. It
+   bypasses row level security.
+5. Render redeploys. The log should say `Accounts stored in supabase`, and
+   `/api/config` returns `"accountsDurable": true`.
+
+Free Supabase projects pause after a week with no activity; open the dashboard
+to wake one up.
 
 ## Checks after deploying
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" https://YOUR-SERVER/            # 200
 curl -s -X POST https://YOUR-SERVER/api/config \
-  -H 'Content-Type: application/json' -d '{}'                           # desmosIsDemoKey: false
+  -H 'Content-Type: application/json' -d '{}'   # desmosIsDemoKey: false, accountsDurable: true
 ```
 
 Then open the site, start a Question Rush, and have someone join a party code
