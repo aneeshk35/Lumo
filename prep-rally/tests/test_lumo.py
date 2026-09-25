@@ -520,6 +520,18 @@ def test_practice_and_grid_in(browser):
     check("a wrong typed answer shows the right one", "−9" in page.inner_text("#reveal-title"), page.inner_text("#reveal-title"))
     page.wait_for_timeout(1500)
     check("practice never changes Elo", page.evaluate("JSON.stringify(profile.elos)") == elo_before)
+
+    # "More like this" builds a fresh set on the same skill
+    practice("geo-033")
+    answer_current(page, 0)
+    page.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
+    check("practice offers More like this", page.locator("#reveal-more:not(.hidden)").count() == 1)
+    page.click("#btn-similar")
+    page.wait_for_timeout(1800)
+    same = page.evaluate("game.currentQ && game.currentQ.skill")
+    check("More like this starts a same-skill set", same == "Similar triangles" and "of 5" in page.inner_text("#match-progress"),
+          f"{same} / {page.inner_text('#match-progress')}")
+    check("math copies are newly generated", page.evaluate("game.currentQ.id").startswith("var-"), page.evaluate("game.currentQ.id"))
     ctx.close()
 
 

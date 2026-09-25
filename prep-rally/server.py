@@ -63,6 +63,11 @@ MATH_FILE = os.path.join(DATA_DIR, "math.json")
 if os.path.exists(MATH_FILE):
     with open(MATH_FILE, encoding="utf-8") as f:
         QUESTIONS += json.load(f)
+# Hand-written reading passages (tools/gen_reading.py builds this file).
+READING_FILE = os.path.join(DATA_DIR, "reading.json")
+if os.path.exists(READING_FILE):
+    with open(READING_FILE, encoding="utf-8") as f:
+        QUESTIONS += json.load(f)
 # Figures (tools/gen_figures.py): SVGs for existing questions plus questions
 # that are answered from a graph, diagram, chart, or table.
 FIGURES_FILE = os.path.join(DATA_DIR, "figures.json")
@@ -73,6 +78,59 @@ if os.path.exists(FIGURES_FILE):
         if _q["id"] in _figures["attach"]:
             _q["figure"] = _figures["attach"][_q["id"]]
     QUESTIONS += _figures["questions"]
+
+QUESTIONS_BY_ID = {q["id"]: q for q in QUESTIONS}
+# "More like this": math templates can build fresh copies of a question on
+# demand. Those copies live here (not in the bank) so a session can serve them.
+VARIANTS = {}
+VARIANTS_MAX = 5000
+# The template that writes each math skill, so a hand-written question can get
+# generated copies of the same kind.
+SKILL_TPL = {}
+for _q in QUESTIONS:
+    if _q.get("tpl"):
+        SKILL_TPL.setdefault(_q["skill"], _q["tpl"])
+
+
+def find_question(qid):
+    return QUESTIONS_BY_ID.get(qid) or VARIANTS.get(qid)
+
+
+def similar_questions(qid, count):
+    """New questions like `qid`: generated copies for math, then other
+    questions on the same skill, then the same domain and difficulty."""
+    src = find_question(qid)
+    if not src:
+        return []
+    out = []
+    tpl = src.get("tpl") or SKILL_TPL.get(src["skill"])
+    if tpl:
+        try:
+            import sys
+            tools = os.path.join(BASE_DIR, "tools")
+            if tools not in sys.path:
+                sys.path.insert(0, tools)
+            import gen_math
+            with LOCK:   # the generator keeps module-level state
+                made = gen_math.variants(tpl, src["skill"], count,
+                                         avoid={q["question"] for q in QUESTIONS if q.get("tpl") == tpl})
+            for q in made:
+                VARIANTS[q["id"]] = q
+                out.append(q)
+            while len(VARIANTS) > VARIANTS_MAX:
+                VARIANTS.pop(next(iter(VARIANTS)))
+        except Exception as e:   # never block practice on the generator
+            print("variant generation failed:", e)
+    for same in (lambda q: q["skill"] == src["skill"],
+                 lambda q: q["domain"] == src["domain"] and q["difficulty"] == src["difficulty"]):
+        if len(out) >= count:
+            break
+        taken = {q["id"] for q in out} | {qid}
+        pool = [q for q in QUESTIONS if same(q) and q["id"] not in taken]
+        random.shuffle(pool)
+        out += pool[: count - len(out)]
+    return out[:count]
+
 
 TIMER_MS = {"easy": 60000, "medium": 75000, "hard": 90000}
 BASE_POINTS = {"easy": 500, "medium": 750, "hard": 1000}
@@ -439,11 +497,13 @@ class Party:
 
 
 def pick_questions(settings):
+    if settings.get("similar"):
+        return similar_questions(settings["similar"], settings.get("count") or 5)
     # An explicit id list (mistake review) overrides the filters.
     ids = settings.get("ids")
     if ids:
         wanted = set(ids)
-        pool = [q for q in QUESTIONS if q["id"] in wanted]
+        pool = [q for q in QUESTIONS if q["id"] in wanted] + [VARIANTS[i] for i in ids if i in VARIANTS]
         random.shuffle(pool)
         return pool[: max(1, min(int(settings.get("count") or len(pool)), len(pool)))]
 
@@ -493,7 +553,8 @@ def clean_settings(raw):
     return {"section": section, "domains": domains, "difficulties": difficulties,
             "skills": skills, "ids": ids, "count": count,
             # Solo practice: no clock and no speed scoring. Ranked play stays timed.
-            "practice": bool(raw.get("practice"))}
+            "practice": bool(raw.get("practice")),
+            "similar": str(raw.get("similar") or "")[:48]}
 
 
 def handle_disconnect(party, player):

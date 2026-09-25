@@ -534,6 +534,7 @@ async function startPractice(settings, label) {
     domains: settings.domains || [],
     difficulties: settings.difficulties || [],
     ids: settings.ids || [],
+    similar: settings.similar || '',
     count: settings.count || 10,
     practice: true,          // untimed, no speed scoring, never rated
   };
@@ -967,6 +968,12 @@ game.crossOut = false;
 function setMarked(on) {
   $('btn-mark').setAttribute('aria-pressed', String(on));
 }
+$('btn-similar').onclick = () => {
+  const q = game.currentQ;
+  if (!q) return;
+  startPractice({ similar: q.id, count: 5 }, 'More like this');
+};
+
 $('btn-mark').onclick = () => {
   const q = game.currentQ;
   if (!q) return;
@@ -1364,6 +1371,8 @@ function onReveal(data) {
   else if (correct) { title.textContent = 'Correct'; title.className = 't good'; }
   else { title.textContent = `Not quite — the answer was ${rightLabel}`; title.className = 't bad'; }
   $('reveal-ex').textContent = data.explanation;
+  // Practice only: spin up a short set built from this question's skill.
+  $('reveal-more').classList.toggle('hidden', game.mode !== 'solo' || !q.id);
   const players = data.leaderboard.length;
   $('reveal-counts').innerHTML = spr
     ? (players > 1 ? `<span class="count-pill correct">${data.correctCount} of ${players} got it</span>` : '')
@@ -1852,10 +1861,14 @@ function renderMistakes() {
       <div class="why">${esc(m.explanation)}</div>
       <div class="acts">
         <button class="btn-soft" data-retry-id="${esc(m.id)}">Retry this one</button>
+        <button class="btn-soft" data-similar-id="${esc(m.id)}">Practice similar</button>
         <button class="btn-soft" data-forget-id="${esc(m.id)}">Remove</button>
       </div>
     </div>`).join('');
 
+  document.querySelectorAll('[data-similar-id]').forEach((b) => {
+    b.onclick = () => startPractice({ similar: b.dataset.similarId, count: 5 }, 'More like this');
+  });
   document.querySelectorAll('[data-retry-id]').forEach((b) => {
     b.onclick = () => startPractice({ ids: [b.dataset.retryId], count: 1 }, 'Review');
   });

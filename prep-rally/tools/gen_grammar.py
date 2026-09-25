@@ -123,7 +123,7 @@ for i, (a, b, rel) in enumerate(CLAUSES):
     # carry extra shades ("despite that") that not every pair supports.
     right = ("However" if rel == "contrast" else cap(ADVERBS[rel][(i + 1) % len(ADVERBS[rel])])) + ","
     wrong = [cap(ADVERBS[r][i % len(ADVERBS[r])]) + "," for r in DISTRACT[rel]]
-    add("tr", EI, "Transitions", {"contrast": "easy", "result": "medium", "example": "medium", "addition": "hard"}[rel],
+    add("tr", EI, "Transitions", {"contrast": "easy", "result": "medium", "example": "medium", "addition": "medium"}[rel],
         f"{a}. {BLANK} {b}.",
         TRANS, right, wrong, f"{RELATION_WHY[rel]} \"{right[:-1]}\" signals that relationship.")
 
@@ -135,20 +135,20 @@ for i, (subj, app, pred) in enumerate(APPOSITIVES):
     lead = f"{subj_head} " if subj_head else ""
     if i % 2 == 0:
         # closing comma after an appositive that opened with a comma
-        add("gr", SEC, "Punctuating appositives", "hard" if long_app else "medium",
+        add("gr", SEC, "Punctuating appositives", "medium",
             f"{subj}, {app_head} {BLANK} {pred}.", CONV, f"{app_last},",
             [f"{app_last}", f"{app_last};", f"{app_last}—"],
             f"\"{app}\" renames \"{subj}\" and interrupts the sentence. "
             f"It opens with a comma, so it must close with a matching comma before the verb \"{pred.split()[0]}.\"")
     else:
         # dash pair
-        add("gr", SEC, "Punctuating supplementary elements", "hard" if long_app else "medium",
+        add("gr", SEC, "Punctuating supplementary elements", "medium",
             f"{subj}—{app_head} {BLANK} {pred}.", CONV, f"{app_last}—",
             [f"{app_last},", f"{app_last};", f"{app_last}"],
             f"The interruption \"{app}\" opens with a dash, so it must close with a dash too. "
             f"Punctuation that sets off an interruption has to come in a matching pair.")
     # opening comma
-    add("gr", SEC, "Punctuating appositives", "easy" if not long_app else "medium",
+    add("gr", SEC, "Punctuating appositives", "easy",
         f"{lead}{BLANK} {app}, {pred}.", CONV, f"{subj_last},",
         [f"{subj_last}", f"{subj_last};", f"{subj_last}:"],
         f"\"{app}\" is extra information that renames the subject, and it closes with a comma, so it must open with a comma as well. "
@@ -168,7 +168,7 @@ for subj, head, number, verb, rest in AGREEMENT:
     correct, wrong = verb_choices(verb, number)
     compound = " and " in head
     hard_heads = {"Each", "Neither", "one", "One", "series", "number"}
-    diff = "hard" if head in hard_heads or words(subj) >= 7 else "easy" if words(subj) <= 3 else "medium"
+    diff = "hard" if head in hard_heads or words(subj) >= 9 else "easy" if words(subj) <= 3 else "medium"
     if compound:
         why = f"The subject is \"{head},\" two nouns joined by \"and,\" which makes it plural. The verb must be plural too: \"{correct}.\""
     else:
@@ -179,7 +179,7 @@ for subj, head, number, verb, rest in AGREEMENT:
     # Same sentence, testing that nothing separates a subject from its verb.
     if "," not in subj:
         s_head, s_last = split_last(subj)
-        add("gr", SEC, "Punctuation between subject and verb", "hard" if words(subj) >= 7 else "medium",
+        add("gr", SEC, "Punctuation between subject and verb", "medium" if words(subj) >= 5 else "easy",
             f"{s_head} {BLANK} {correct} {rest}.", CONV, s_last,
             [f"{s_last},", f"{s_last};", f"{s_last}:"],
             f"\"{subj}\" is the subject and \"{correct}\" is its verb. No punctuation belongs between a subject and its verb, however long the subject is.")
@@ -200,12 +200,12 @@ for text, ant, number, diff in PRONOUNS:
 for text, sing, plur, number in POSSESSIVES:
     passage = text.replace("___", BLANK)
     if number == "singular":
-        add("gr", SEC, "Possessives and contractions", "medium", passage, CONV, f"{sing}'s",
+        add("gr", SEC, "Possessives and contractions", "easy", passage, CONV, f"{sing}'s",
             [f"{plur}'", plur, f"{plur}'s"],
             f"The sentence refers to one {sing}, so the singular possessive \"{sing}'s\" is correct. "
             f"\"{plur}'\" shows possession by more than one {sing}, and \"{plur}\" is a plain plural that shows no possession.")
     else:
-        add("gr", SEC, "Possessives and contractions", "hard", passage, CONV, f"{plur}'",
+        add("gr", SEC, "Possessives and contractions", "medium", passage, CONV, f"{plur}'",
             [f"{sing}'s", plur, f"{plur}'s"],
             f"The sentence refers to more than one {sing}, so the plural possessive is needed: form the plural \"{plur}\" and add an apostrophe, \"{plur}'.\" "
             f"\"{sing}'s\" would refer to just one.")
@@ -215,8 +215,16 @@ for text, sing, plur in IRREGULAR_POSSESSIVES:
         f"\"{plur}\" is already plural and doesn't end in s, so its possessive is formed by adding 's: \"{plur}'s.\"")
 
 # -------------------------------------------------------------------- tense ----
+def tense_level(correct):
+    if correct in ("had been analyzing", "will have finished", "will have played"):
+        return "hard"
+    if correct.split()[0] in ("had", "has", "have", "was", "could"):
+        return "medium"
+    return "easy"
+
+
 for text, correct, wrong, why in TENSE:
-    add("gr", SEC, "Verb tense", "hard" if "had" in correct or "will have" in correct else "medium",
+    add("gr", SEC, "Verb tense", tense_level(correct),
         text.replace("___", BLANK), CONV, correct, wrong, why)
 
 # -------------------------------------------------------------------- lists ----
@@ -244,13 +252,23 @@ for intro, items in COMPLEX_LISTS:
 
 # ---------------------------------------------------------------- modifiers ----
 for mod, correct, wrong in MODIFIERS:
-    add("gr", SEC, "Modifier placement", "hard", f"{mod} {BLANK}", CONV, correct, wrong,
+    noun = correct.split()[1] if correct.split()[0].lower() in ("the", "a") else correct.split()[0]
+    trap = any(w.split()[0 if not w.lower().startswith(("the ", "a ")) else 1].startswith(noun + "'") for w in wrong)
+    add("gr", SEC, "Modifier placement", "hard" if trap else "medium", f"{mod} {BLANK}", CONV, correct, wrong,
         f"The opening phrase \"{mod[:-1]}\" describes whatever comes right after the comma. "
         f"Only this choice puts the thing it actually describes there; the others make the phrase describe the wrong noun.")
 
 # --------------------------------------------------------------- verb forms ----
+def form_level(text, correct):
+    if correct.startswith("to ") or any(k in text for k in ("after ___", "for ___", "afternoon ___", "requires ___")):
+        return "easy"
+    if ", ___" in text or text.startswith("___"):
+        return "medium"
+    return "hard"   # a modifier squeezed between the subject and the main verb
+
+
 for text, correct, wrong, why in VERB_FORMS:
-    add("gr", SEC, "Verb forms", "hard", text.replace("___", BLANK), CONV, correct, wrong, why)
+    add("gr", SEC, "Verb forms", form_level(text, correct), text.replace("___", BLANK), CONV, correct, wrong, why)
 
 # ------------------------------------------------------------- restrictive ----
 for noun, rel, rest, pred in RESTRICTIVE:
@@ -258,6 +276,56 @@ for noun, rel, rest, pred in RESTRICTIVE:
         [f", {rel}", f"{rel},", f"—{rel}"],
         f"\"{rel} {rest}\" is essential: it tells the reader exactly who or what \"{noun}\" refers to. "
         f"Essential (restrictive) clauses are not set off with commas or dashes.")
+
+# ------------------------------------------- main verb after an interruption ----
+# First word of the predicate -> (plural form or None for past tense, -ing form, "to" form, past participle).
+MAIN_VERB = {
+    "was": ("were", "being", "to be", None), "is": ("are", "being", "to be", None), "has": ("have", "having", "to have", None),
+    "forms": ("form", "forming", "to form", None), "takes": ("take", "taking", "to take", None),
+    "studies": ("study", "studying", "to study", None), "completes": ("complete", "completing", "to complete", None),
+    "trains": ("train", "training", "to train", None), "hosts": ("host", "hosting", "to host", None),
+    "shelters": ("shelter", "sheltering", "to shelter", None), "tells": ("tell", "telling", "to tell", None),
+    "fills": ("fill", "filling", "to fill", None), "appears": ("appear", "appearing", "to appear", None),
+    "houses": ("house", "housing", "to house", None), "measures": ("measure", "measuring", "to measure", None),
+    "leads": ("lead", "leading", "to lead", None), "gives": ("give", "giving", "to give", None),
+    "circles": ("circle", "circling", "to circle", None), "draws": ("draw", "drawing", "to draw", None),
+    "protects": ("protect", "protecting", "to protect", None), "attends": ("attend", "attending", "to attend", None),
+    "knows": ("know", "knowing", "to know", None), "hunts": ("hunt", "hunting", "to hunt", None),
+    "fools": ("fool", "fooling", "to fool", None), "hangs": ("hang", "hanging", "to hang", None),
+    "bakes": ("bake", "baking", "to bake", None), "sits": ("sit", "sitting", "to sit", None),
+    "shows": ("show", "showing", "to show", None), "works": ("work", "working", "to work", None),
+    "holds": ("hold", "holding", "to hold", None), "supplies": ("supply", "supplying", "to supply", None),
+    "sold": (None, "selling", "to sell", "sold"), "played": (None, "playing", "to play", "played"),
+    "opened": (None, "opening", "to open", "opened"), "brought": (None, "bringing", "to bring", "brought"),
+    "presented": (None, "presenting", "to present", "presented"), "carried": (None, "carrying", "to carry", "carried"),
+    "won": (None, "winning", "to win", "won"), "grew": (None, "growing", "to grow", "grown"),
+    "recommended": (None, "recommending", "to recommend", "recommended"), "scored": (None, "scoring", "to score", "scored"),
+    "insisted": (None, "insisting", "to insist", "insisted"), "chose": (None, "choosing", "to choose", "chosen"),
+    "visited": (None, "visiting", "to visit", "visited"), "passed": (None, "passing", "to pass", "passed"),
+    "wrote": (None, "writing", "to write", "written"), "rescued": (None, "rescuing", "to rescue", "rescued"),
+    "covered": (None, "covering", "to cover", "covered"), "spent": (None, "spending", "to spend", "spent"),
+    "served": (None, "serving", "to serve", "served"), "added": (None, "adding", "to add", "added"),
+    "included": (None, "including", "to include", "included"), "earned": (None, "earning", "to earn", "earned"),
+    "fixed": (None, "fixing", "to fix", "fixed"), "answered": (None, "answering", "to answer", "answered"),
+    "made": (None, "making", "to make", "made"), "started": (None, "starting", "to start", "started"),
+    "attracted": (None, "attracting", "to attract", "attracted"), "designed": (None, "designing", "to design", "designed"),
+}
+for subj, app, pred in APPOSITIVES:
+    first, rest = split_first(pred)
+    if first not in MAIN_VERB or subj.endswith("results"):
+        continue
+    plural, ing, to, pp = MAIN_VERB[first]
+    passage = f"{subj}, {app}, {BLANK} {rest}."
+    long_app = words(app) >= 6
+    if plural:
+        add("gr", SEC, "Subject-verb agreement", "hard" if long_app else "medium", passage, CONV, first, [plural, ing, to],
+            f"The subject is \"{subj},\" which is singular; \"{app}\" only renames it, so the nouns inside it don't affect the verb. "
+            f"The sentence still needs a main verb that agrees with a singular subject: \"{first}.\" "
+            f"\"{plural.capitalize()}\" is plural, and \"{ing}\" and \"{to}\" can't serve as a sentence's main verb.")
+    else:
+        add("gr", SEC, "Verb forms", "hard" if long_app else "medium", passage, CONV, first, [ing, to, f"having {pp}"],
+            f"After the interruption \"{app},\" the sentence still needs a main verb for \"{subj}.\" Only \"{first}\" is a finite verb. "
+            f"\"{ing.capitalize()},\" \"{to},\" and \"having {pp}\" would leave the sentence without one.")
 
 # ---------------------------------------------------------------- write out ----
 os.makedirs(os.path.dirname(OUT), exist_ok=True)

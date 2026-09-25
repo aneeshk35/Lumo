@@ -1,0 +1,1090 @@
+[
+ {
+  "id": "rd-0001",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "medium",
+  "passage": "Because the museum's new wing was built with money from hundreds of small donations rather than a single wealthy patron, the director described it as a truly ______ project, one that belonged to the whole city.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "communal",
+   "tentative",
+   "obscure",
+   "lavish"
+  ],
+  "answer": 0,
+  "explanation": "The wing was paid for by many ordinary donors and \"belonged to the whole city,\" so \"communal\" (shared by a community) fits. Nothing suggests it was lavish, tentative, or obscure."
+ },
+ {
+  "id": "rd-0002",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "hard",
+  "passage": "Early reviewers found the composer's harmonies ______, but later listeners, accustomed to the dissonance of twentieth-century music, heard them as surprisingly gentle.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "predictable",
+   "jarring",
+   "elaborate",
+   "soothing"
+  ],
+  "answer": 1,
+  "explanation": "\"But\" sets up a contrast with \"surprisingly gentle,\" so early reviewers must have heard the harmonies as harsh: \"jarring.\" \"Soothing\" would agree with the later view instead of contrasting with it."
+ },
+ {
+  "id": "rd-0003",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "medium",
+  "passage": "The biologist was careful not to ______ her results: although the treated plants grew faster, she noted that the trial involved only twelve plants and would need to be repeated on a larger scale.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "question",
+   "publish",
+   "overstate",
+   "simplify"
+  ],
+  "answer": 2,
+  "explanation": "She stresses the small sample and the need for repetition, which is how a careful scientist avoids claiming too much. \"Overstate\" means to claim more than the evidence shows."
+ },
+ {
+  "id": "rd-0004",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "hard",
+  "passage": "Critics once treated the novelist's detective stories as mere entertainment, but recent scholars have argued that the books ______ serious questions about justice, class, and memory.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "stumble into",
+   "shy away from",
+   "put an end to",
+   "grapple with"
+  ],
+  "answer": 3,
+  "explanation": "The contrast with \"mere entertainment\" means the books engage seriously with big questions. \"Grapple with\" means to work hard at understanding. \"Shy away from\" says the opposite."
+ },
+ {
+  "id": "rd-0005",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "easy",
+  "passage": "The desert tortoise is well suited to its dry habitat: it can ______ water in its bladder for months, drawing on the supply when no rain falls.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "store",
+   "share",
+   "detect",
+   "waste"
+  ],
+  "answer": 0,
+  "explanation": "The tortoise keeps water and draws on it later, so it must \"store\" the water."
+ },
+ {
+  "id": "rd-0006",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "hard",
+  "passage": "Although the treaty was signed with great ceremony, its terms proved ______: within a year, both nations had quietly ignored the limits it set on fishing.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "intricate",
+   "hollow",
+   "binding",
+   "generous"
+  ],
+  "answer": 1,
+  "explanation": "The terms were ignored within a year, so they had no real force: they were \"hollow.\" \"Binding\" would mean they were enforced, the opposite of what happened."
+ },
+ {
+  "id": "rd-0007",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "medium",
+  "passage": "Engineer Dana Whitlock's bridge design was praised for its ______: using only a few standard parts, it could be assembled by a small crew in less than a week.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "fragility",
+   "novelty",
+   "simplicity",
+   "grandeur"
+  ],
+  "answer": 2,
+  "explanation": "Being built from a few standard parts by a small crew points to \"simplicity.\" The details say nothing about grandeur or novelty, and fragility would be a flaw, not praise."
+ },
+ {
+  "id": "rd-0008",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "hard",
+  "passage": "The historian's account of the strike is notably ______; she quotes factory owners and workers at equal length and lets readers weigh their claims for themselves.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "sentimental",
+   "cursory",
+   "partisan",
+   "evenhanded"
+  ],
+  "answer": 3,
+  "explanation": "Giving both sides equal space and letting readers judge is the definition of \"evenhanded.\" \"Partisan\" means taking one side, the opposite."
+ },
+ {
+  "id": "rd-0009",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "medium",
+  "passage": "Octopuses are notoriously difficult to keep in aquariums because they are so ______: they can squeeze through any gap larger than their beak and have been known to unscrew jar lids from the inside.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "resourceful",
+   "timid",
+   "sluggish",
+   "predictable"
+  ],
+  "answer": 0,
+  "explanation": "Squeezing through small gaps and unscrewing lids show cleverness at solving problems, which is what \"resourceful\" means."
+ },
+ {
+  "id": "rd-0010",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "hard",
+  "passage": "Rather than ______ the unpopular zoning rule, the city council chose to revise it, keeping its goal of affordable housing while removing the provisions residents objected to most.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "enforce",
+   "scrap",
+   "celebrate",
+   "misread"
+  ],
+  "answer": 1,
+  "explanation": "\"Rather than\" contrasts with revising the rule and keeping its goal, so the rejected option is getting rid of it entirely: \"scrap.\""
+ },
+ {
+  "id": "rd-0011",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "medium",
+  "passage": "In her first album, the singer's voice sounded ______, but by her third she had learned to control its power, moving easily from a whisper to a full-throated cry.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "faint",
+   "polished",
+   "untamed",
+   "mechanical"
+  ],
+  "answer": 2,
+  "explanation": "The contrast with learning \"to control its power\" means her early voice was powerful but uncontrolled: \"untamed.\" \"Polished\" would make the contrast disappear."
+ },
+ {
+  "id": "rd-0012",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "easy",
+  "passage": "The old map was so ______ that the archivist handled it with gloves and let no one unfold it without her supervision.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "colorful",
+   "accurate",
+   "common",
+   "fragile"
+  ],
+  "answer": 3,
+  "explanation": "Handling it with gloves and supervising every unfolding shows that the map could easily be damaged: \"fragile.\""
+ },
+ {
+  "id": "rd-0013",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "hard",
+  "passage": "Some economists regard the rise in home gardening as a passing trend, but survey data suggest a more ______ shift: people who started gardening five years ago are still doing so at nearly the same rate.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "durable",
+   "expensive",
+   "fleeting",
+   "reluctant"
+  ],
+  "answer": 0,
+  "explanation": "The data show gardeners keep gardening, which contrasts with \"passing trend.\" So the shift is lasting: \"durable.\" \"Fleeting\" repeats the view the text rejects."
+ },
+ {
+  "id": "rd-0014",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Words in context",
+  "difficulty": "medium",
+  "passage": "The coach's instructions were ______: she told each player exactly where to stand, whom to guard, and when to call for a substitution.",
+  "question": "Which choice completes the text with the most logical and precise word or phrase?",
+  "choices": [
+   "optional",
+   "explicit",
+   "hurried",
+   "vague"
+  ],
+  "answer": 1,
+  "explanation": "Telling each player exactly what to do means the instructions were clear and detailed: \"explicit.\""
+ },
+ {
+  "id": "rd-0015",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "medium",
+  "passage": "For centuries, sailors told stories of giant waves that rose without warning in otherwise calm seas. Scientists long dismissed these accounts as exaggerations. Then, in 1995, a sensor on an oil platform in the North Sea recorded a single wave nearly 26 meters high. Since then, satellite data have confirmed that such \"rogue waves\" are rare but real.",
+  "question": "Which choice best describes the overall structure of the text?",
+  "choices": [
+   "It describes a long-doubted claim and then presents evidence that confirmed it.",
+   "It explains how sailors predict dangerous waves and then lists ways to avoid them.",
+   "It compares two theories about ocean waves and argues that both are wrong.",
+   "It describes a scientific instrument and then explains how it was invented."
+  ],
+  "answer": 0,
+  "explanation": "The text moves from sailors' stories that scientists doubted to a 1995 measurement and later satellite data that proved the stories right."
+ },
+ {
+  "id": "rd-0016",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "hard",
+  "passage": "Many people assume that a painting's colors look today as they did when it was finished. But pigments change. Some reds made from insects fade in sunlight, and certain yellows darken as they react with the air. Conservators studying a painting must therefore imagine what its colors once were, a task that relies as much on chemistry as on art history.",
+  "question": "Which choice best states the main purpose of the text?",
+  "choices": [
+   "To argue that museums should keep paintings away from sunlight",
+   "To explain why the colors in old paintings may not match what the artists intended",
+   "To describe how insects were used to make paint",
+   "To compare the value of chemistry with the value of art history"
+  ],
+  "answer": 1,
+  "explanation": "The text challenges the assumption that colors stay the same, gives examples of fading and darkening, and says conservators must reconstruct the original colors. Keeping paintings out of sunlight is a related idea, but it isn't the text's main point."
+ },
+ {
+  "id": "rd-0017",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "medium",
+  "passage": "The town of Harlow once depended entirely on its textile mill. When the mill closed in 1994, nearly a third of residents lost their jobs. Rather than wait for a new factory, residents turned the empty mill into studios for artists and small businesses. Today the building houses more than sixty enterprises and employs more people than the mill did in its final years.",
+  "question": "Which choice best describes the overall structure of the text?",
+  "choices": [
+   "It lists the businesses in a building and then ranks them by size.",
+   "It presents a debate among residents and then describes how it was settled.",
+   "It describes a setback a town faced and then explains how residents responded to it.",
+   "It traces the history of the textile industry and then predicts its future."
+  ],
+  "answer": 2,
+  "explanation": "The mill's closing is the setback, and converting the mill into studios is the response; the last sentence shows how that turned out."
+ },
+ {
+  "id": "rd-0018",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "hard",
+  "passage": "In the following text from a short story, a woman returns to her childhood home.\n\nThe porch was smaller than Amaya remembered. She had once raced her brother from one end to the other and thought it a great distance; now she crossed it in four steps. The door still stuck in the same place, and when she shouldered it open, the house smelled, impossibly, of her mother's cinnamon bread.",
+  "question": "Which choice best states the main purpose of the text?",
+  "choices": [
+   "To show that a character has forgotten most of her childhood",
+   "To describe a competition between two siblings in detail",
+   "To explain why a character decided to sell her family's house",
+   "To convey how a familiar place seems both changed and unchanged to a returning character"
+  ],
+  "answer": 3,
+  "explanation": "The porch feels smaller (changed), while the stuck door and the smell of bread are the same as before (unchanged). The story is about how the place strikes her now."
+ },
+ {
+  "id": "rd-0019",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "medium",
+  "passage": "Honeybees perform a \"waggle dance\" to tell hivemates where to find food. The angle of the dance shows the direction of the flowers relative to the sun, and the length of the waggle shows the distance. Researchers who blocked bees from seeing the dance found that hivemates took far longer to locate food, which suggests the dance really does carry useful information.",
+  "question": "Which choice best describes the function of the second sentence in the overall structure of the text?",
+  "choices": [
+   "It explains how the dance conveys specific information about the location of food.",
+   "It introduces the main claim that the rest of the text disputes.",
+   "It offers an example of a behavior unrelated to finding food.",
+   "It describes an experiment that tested whether the dance matters."
+  ],
+  "answer": 0,
+  "explanation": "The second sentence explains what the angle and length of the dance mean, which is how the dance carries information about direction and distance. The experiment comes in the third sentence."
+ },
+ {
+  "id": "rd-0020",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "hard",
+  "passage": "The first public libraries in the United States often charged small fees or limited borrowing to members. In the late 1800s, however, a movement arose to make libraries free and open to all. Supporters argued that an educated public was essential to democracy and that access to books should not depend on wealth. By 1900, free public libraries had become common in cities across the country.",
+  "question": "Which choice best describes the overall structure of the text?",
+  "choices": [
+   "It compares libraries in two countries and then explains their differences.",
+   "It describes an earlier practice, then a movement that changed it and the reasons behind that movement.",
+   "It presents a problem and then argues that it has never been solved.",
+   "It describes a single library and then explains why it closed."
+  ],
+  "answer": 1,
+  "explanation": "The text moves from fee-based libraries to the free-library movement, gives the movement's reasons (democracy, equal access), and ends with its success."
+ },
+ {
+  "id": "rd-0021",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "medium",
+  "passage": "Architect Rosa Ibarra designs schools with wide hallways lined with benches and whiteboards. Ibarra argues that much of students' learning happens between classes, in conversations with friends and teachers, and that buildings should make room for it. In one of her schools, teachers report that students now linger in the halls to finish solving problems they started in class.",
+  "question": "Which choice best states the main purpose of the text?",
+  "choices": [
+   "To describe the history of school architecture",
+   "To criticize teachers for letting students linger in hallways",
+   "To present an architect's view of how school buildings can support learning outside classrooms",
+   "To argue that schools should eliminate traditional classrooms"
+  ],
+  "answer": 2,
+  "explanation": "The text explains Ibarra's reasoning (learning happens between classes) and gives an example of it working. It doesn't call for eliminating classrooms or criticize teachers."
+ },
+ {
+  "id": "rd-0022",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "hard",
+  "passage": "Some astronomers expected that planets orbiting other stars would resemble those of our own solar system: small rocky planets close to the star and giant gas planets farther out. The first planets discovered around sunlike stars upended that expectation. Many were \"hot Jupiters,\" gas giants orbiting so close to their stars that a year lasts only a few days.",
+  "question": "Which choice best describes the overall structure of the text?",
+  "choices": [
+   "It describes a discovery and then explains why it was later disproved.",
+   "It explains how planets form and then predicts where new ones will be found.",
+   "It compares two stars and then explains why one has more planets.",
+   "It states an expectation and then describes discoveries that contradicted it."
+  ],
+  "answer": 3,
+  "explanation": "The first sentence gives the expectation; the next two show that the first discoveries (hot Jupiters) did not fit it."
+ },
+ {
+  "id": "rd-0023",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "medium",
+  "passage": "For years, the city's riverfront was lined with warehouses that blocked the public from the water. When shipping moved to a larger port downstream, the warehouses emptied. The city bought the land and replaced several buildings with a park and a bike path, and today the riverfront is one of the busiest public spaces in the city.",
+  "question": "Which choice best describes the function of the second sentence in the overall structure of the text?",
+  "choices": [
+   "It explains the change that made the warehouses unnecessary.",
+   "It describes the design of the new park in detail.",
+   "It argues that the city should not have bought the land.",
+   "It gives an example of a warehouse that is still in use."
+  ],
+  "answer": 0,
+  "explanation": "The second sentence says shipping moved and the warehouses emptied. That change opened the way for the park described in the third sentence."
+ },
+ {
+  "id": "rd-0024",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Text structure and purpose",
+  "difficulty": "hard",
+  "passage": "The following text is from a novel.\n\nMr. Castellano measured everything. He measured the flour for his bread to the gram, the distance of his morning walk to the tenth of a mile, and the hours of his sleep to the quarter hour. So when he left the bakery one afternoon without counting his change, the shopkeeper watched him go with open alarm.",
+  "question": "Which choice best states the main purpose of the text?",
+  "choices": [
+   "To show that the shopkeeper distrusts Mr. Castellano",
+   "To establish a character's habits so that a break from them seems significant",
+   "To explain how to bake bread with precise measurements",
+   "To describe a typical afternoon at a neighborhood bakery"
+  ],
+  "answer": 1,
+  "explanation": "The first two sentences set up how carefully he measures everything. That's why his not counting his change alarms the shopkeeper. The text builds a habit and then shows a break from it."
+ },
+ {
+  "id": "rd-0025",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Cross-text connections",
+  "difficulty": "hard",
+  "passage": "Text 1\nFor decades, historians described the Silk Road as a single great highway linking China and the Mediterranean, along which merchants carried goods the whole distance.\n\nText 2\nHistorian Min-jun Seo argues that this picture is misleading. Trade records show that most merchants traveled only short stretches, passing goods to others at regional markets. Seo describes the Silk Road not as a highway but as a web of overlapping local routes.",
+  "question": "Based on the texts, how would Seo (Text 2) most likely respond to the description in Text 1?",
+  "choices": [
+   "By arguing that it overstates how far individual merchants traveled",
+   "By suggesting that historians have exaggerated the importance of silk",
+   "By agreeing that the Silk Road connected China and the Mediterranean directly",
+   "By claiming that no goods ever traveled between China and the Mediterranean"
+  ],
+  "answer": 0,
+  "explanation": "Seo says most merchants traveled only short stretches, which rejects Text 1's image of merchants carrying goods the whole way. Seo doesn't deny that goods moved across the continent, only how they moved."
+ },
+ {
+  "id": "rd-0026",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Cross-text connections",
+  "difficulty": "hard",
+  "passage": "Text 1\nMany nutrition researchers have recommended eating breakfast every day, citing studies in which breakfast eaters weighed less on average than people who skipped the meal.\n\nText 2\nThose studies were observational: they compared people who already ate breakfast with people who didn't. In a later experiment, researchers randomly assigned adults either to eat breakfast or to skip it for sixteen weeks. Weight change did not differ between the groups.",
+  "question": "Based on the texts, how would the author of Text 2 most likely respond to the recommendation in Text 1?",
+  "choices": [
+   "By arguing that skipping breakfast causes weight gain",
+   "By suggesting that the studies behind it may not show that breakfast itself affects weight",
+   "By agreeing that everyone should eat breakfast to control weight",
+   "By claiming that no one should eat breakfast"
+  ],
+  "answer": 1,
+  "explanation": "Text 2 points out that the earlier studies only compared existing habits, and a randomized experiment found no effect. That questions whether breakfast causes lower weight, without saying people must skip it."
+ },
+ {
+  "id": "rd-0027",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Cross-text connections",
+  "difficulty": "hard",
+  "passage": "Text 1\nSome urban planners argue that building more roads reduces traffic congestion by giving cars more space to move.\n\nText 2\nTransportation researcher Kofi Mensah studied highway expansions in dozens of cities. He found that within a few years, traffic on widened roads typically returned to its earlier levels, because the extra space encouraged people to drive more often and farther.",
+  "question": "Based on the texts, how would Mensah (Text 2) most likely respond to the planners' argument in Text 1?",
+  "choices": [
+   "He would claim that traffic congestion has no effect on drivers.",
+   "He would agree that wider roads permanently reduce congestion.",
+   "He would argue that the benefit they expect tends to disappear as new driving fills the added space.",
+   "He would argue that cities should close their highways entirely."
+  ],
+  "answer": 2,
+  "explanation": "Mensah found that traffic on widened roads returned to earlier levels because more driving filled the space. So the planners' expected benefit fades. He doesn't propose closing highways."
+ },
+ {
+  "id": "rd-0028",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Cross-text connections",
+  "difficulty": "medium",
+  "passage": "Text 1\nThe poet Lin Hao is usually praised for her short, plainspoken poems about daily life, which many readers find easy to understand on first reading.\n\nText 2\nCritic Farida Noor admires Lin's poems but warns against calling them simple. Noor points out that Lin's plain words often carry double meanings, and that the poems' quiet endings frequently overturn what came before.",
+  "question": "Based on the texts, how would Noor (Text 2) most likely respond to readers described in Text 1?",
+  "choices": [
+   "She would argue that Lin's poems are too difficult for most readers.",
+   "She would claim that Lin's poems are not about daily life.",
+   "She would agree that the poems have only one clear meaning.",
+   "She would caution that the poems are more complex than they first appear."
+  ],
+  "answer": 3,
+  "explanation": "Noor admires the poems but warns against calling them simple, because of double meanings and surprising endings. So she would say there's more to them than a first reading shows."
+ },
+ {
+  "id": "rd-0029",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Cross-text connections",
+  "difficulty": "hard",
+  "passage": "Text 1\nEcologists have long treated wildfires in pine forests as disasters to be prevented at all costs.\n\nText 2\nForester Elena Ruiz notes that many pine species evolved alongside frequent, low-intensity fires. Such fires clear brush and let seeds sprout. Ruiz argues that decades of suppressing every fire have allowed brush to pile up, making the rare fires that do occur far more destructive.",
+  "question": "Based on the texts, how would Ruiz (Text 2) most likely view the approach described in Text 1?",
+  "choices": [
+   "As a strategy that may have made severe fires more likely",
+   "As an approach supported by the way pines evolved",
+   "As the most effective way to protect pine forests",
+   "As irrelevant to how destructive fires become"
+  ],
+  "answer": 0,
+  "explanation": "Ruiz says suppressing every fire let brush build up, making fires more destructive. That's a criticism of Text 1's prevent-at-all-costs approach."
+ },
+ {
+  "id": "rd-0030",
+  "section": "rw",
+  "domain": "Craft and Structure",
+  "skill": "Cross-text connections",
+  "difficulty": "medium",
+  "passage": "Text 1\nSome teachers ban phones from classrooms entirely, arguing that the devices distract students from lessons.\n\nText 2\nTeacher Marcus Bell agrees that phones can distract but lets students use them for specific tasks, such as recording lab data or looking up definitions. Bell reports that setting clear rules for when phones may be used has worked better in his classes than an outright ban.",
+  "question": "Based on the texts, how would Bell (Text 2) most likely respond to the teachers in Text 1?",
+  "choices": [
+   "He would argue that students should use phones throughout every lesson.",
+   "He would share their concern but suggest that clear limits can work better than a ban.",
+   "He would agree that phones should be banned from every classroom.",
+   "He would reject their concern and argue that phones are never distracting."
+  ],
+  "answer": 1,
+  "explanation": "Bell \"agrees that phones can distract\" but reports that clear rules worked better than a ban, so he shares the concern and proposes a different solution."
+ },
+ {
+  "id": "rd-0031",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "medium",
+  "passage": "Sea otters eat enormous numbers of sea urchins. Where otters disappeared, urchin populations exploded and grazed coastal kelp forests down to bare rock. When otters returned to parts of the Pacific coast, urchin numbers fell and the kelp regrew, bringing back the fish and invertebrates that shelter in it.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Sea otters help keep kelp forests healthy by controlling sea urchin populations.",
+   "Kelp forests grow back quickly after any disturbance.",
+   "Fish avoid kelp forests where sea otters live.",
+   "Sea urchins are the most important animals in coastal ecosystems."
+  ],
+  "answer": 0,
+  "explanation": "The text traces a chain: otters eat urchins, urchins eat kelp, and when otters return the kelp and the life it supports recover. The main idea is the otters' role in protecting kelp."
+ },
+ {
+  "id": "rd-0032",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "hard",
+  "passage": "When the printing press spread through Europe in the late 1400s, some scholars worried that cheap books would lower standards of learning, since anyone could publish anything. Yet the same flood of print let readers compare editions, spot errors, and correct them in later printings. Over time, the ability to check one text against another made printed knowledge more reliable, not less.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Cheap books lowered standards of learning for several centuries.",
+   "Although the printing press raised fears about accuracy, it ultimately helped readers improve the reliability of texts.",
+   "The printing press was invented to correct errors in handwritten books.",
+   "Scholars in the 1400s refused to read printed books."
+  ],
+  "answer": 1,
+  "explanation": "The text opens with a worry (lower standards), then turns (\"Yet\") to how comparing many printed copies helped fix errors, and it concludes that print became more reliable."
+ },
+ {
+  "id": "rd-0033",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "medium",
+  "passage": "The following text is from a short story.\n\nNadia had practiced the speech a hundred times in front of her mirror, and she knew every word. But when she stepped to the podium and saw her grandfather in the third row, wearing the tie he saved for weddings, the words slid away. She folded her notes, looked straight at him, and began to tell the story of the summer he taught her to swim.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Nadia forgets her speech because she did not practice enough.",
+   "Nadia decides not to give a speech at all.",
+   "Seeing her grandfather leads Nadia to abandon her prepared speech and speak from personal memory.",
+   "Nadia's grandfather disapproves of the speech she wrote."
+  ],
+  "answer": 2,
+  "explanation": "She had practiced plenty, but seeing her grandfather made her set aside her notes and tell a personal story instead."
+ },
+ {
+  "id": "rd-0034",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "hard",
+  "passage": "Urban trees do more than provide shade. A study of one city found that blocks with dense tree cover were up to 5 degrees Celsius cooler on summer afternoons than nearby blocks with few trees. Because heat waves are especially dangerous for older residents and people without air conditioning, the researchers argue that planting trees should be treated as a public health measure, not just a matter of appearance.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Heat waves have become less dangerous in cities with many trees.",
+   "Trees are the most attractive feature of city neighborhoods.",
+   "Older residents prefer neighborhoods without air conditioning.",
+   "Researchers argue that urban trees provide cooling that makes them important for public health."
+  ],
+  "answer": 3,
+  "explanation": "The text reports that trees cool city blocks and concludes that planting them should count as public health, not just appearance."
+ },
+ {
+  "id": "rd-0035",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "medium",
+  "passage": "Linguist Carmen Ortega studies whistled languages, in which speakers imitate the rhythm and pitch of speech with whistles that can carry for more than a kilometer. Such languages developed in mountainous regions and dense forests, where shouting was impractical. Ortega notes that as roads and phones reach these areas, fewer young people learn to whistle, and she is recording elderly speakers before the skill disappears.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "A linguist is documenting whistled languages, which developed to suit rugged places and are now declining.",
+   "Phones were invented to replace whistled languages.",
+   "Whistled languages are easier to learn than spoken languages.",
+   "Young people in mountain regions have invented new whistled languages."
+  ],
+  "answer": 0,
+  "explanation": "The text explains what whistled languages are, why they arose, why they're fading, and Ortega's work recording them."
+ },
+ {
+  "id": "rd-0036",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "hard",
+  "passage": "Many people picture Antarctica as a continent where nothing lives. But beneath the ice shelves, where no sunlight reaches, scientists drilling boreholes have found fish, jellyfish, and sponges living hundreds of meters below the surface. These communities feed on bits of organic matter carried in by currents from distant open water.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Fish living beneath the ice shelves hunt jellyfish and sponges.",
+   "Life exists in unexpected places beneath Antarctica's ice shelves, supported by food carried from elsewhere.",
+   "Sunlight penetrates Antarctic ice shelves more than scientists assumed.",
+   "Antarctica is warmer beneath its ice shelves than scientists expected."
+  ],
+  "answer": 1,
+  "explanation": "The text corrects the idea that nothing lives in Antarctica by describing creatures under the ice shelves and how they get food without sunlight."
+ },
+ {
+  "id": "rd-0037",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "medium",
+  "passage": "The composer Ilse Brandt wrote most of her music for amateur choirs in small towns. Brandt believed that singing together strengthened communities, and she deliberately wrote parts that untrained singers could learn in a few rehearsals. Although she was little known in concert halls, her pieces are still sung by hundreds of community choirs.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Brandt believed that only trained singers should perform choral music.",
+   "Brandt was one of the most famous concert-hall composers of her time.",
+   "Brandt wrote music for amateur choirs because she valued community singing, and her work remains widely performed by such groups.",
+   "Community choirs rarely perform music written for amateurs."
+  ],
+  "answer": 2,
+  "explanation": "The text explains whom Brandt wrote for, why, and how her music lives on in community choirs."
+ },
+ {
+  "id": "rd-0038",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Central ideas and details",
+  "difficulty": "hard",
+  "passage": "Traditional weather forecasts rely on computer models that calculate how air, water, and heat move through the atmosphere. Newer forecasting programs instead learn patterns from decades of past weather data. In recent tests, some of these programs matched the older models' accuracy for forecasts up to ten days ahead, while running in minutes instead of hours.",
+  "question": "Which choice best states the main idea of the text?",
+  "choices": [
+   "Forecasts beyond ten days are now fully reliable.",
+   "Weather data from past decades is too incomplete to be useful.",
+   "Traditional weather models no longer produce accurate forecasts.",
+   "Forecasting programs that learn from past data have performed about as accurately as traditional models while working much faster."
+  ],
+  "answer": 3,
+  "explanation": "The text contrasts two approaches and reports that the newer ones matched the older models' accuracy and ran much faster."
+ },
+ {
+  "id": "rd-0039",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "hard",
+  "passage": "Archaeologists excavating an ancient village found hundreds of fish bones in trash pits dated to the village's early years, but almost none in pits from its later years. Over the same period, the pits show a sharp rise in the bones of sheep and goats. Meanwhile, sediment cores from a nearby lake show that it grew much shallower during the village's later years. Taken together, these findings suggest that ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "the villagers turned to herding as the lake became a less reliable source of fish.",
+   "sheep and goats caused the lake to become shallower.",
+   "the villagers stopped eating meat entirely in the later years.",
+   "the village was abandoned before the lake changed."
+  ],
+  "answer": 0,
+  "explanation": "Fish bones dropped off as the lake shrank, while sheep and goat bones rose, so the villagers likely shifted to herding as fishing declined. Nothing links the animals to the lake's change."
+ },
+ {
+  "id": "rd-0040",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "medium",
+  "passage": "A company tested two versions of a sign asking hotel guests to reuse their towels. One sign said reusing towels helps the environment. The other said most guests who had stayed in that room had reused their towels. Guests who saw the second sign reused towels noticeably more often. This result suggests that ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "guests who stay in the same room know one another.",
+   "guests may be more influenced by what others have done than by an appeal to the environment.",
+   "hotels should stop asking guests to reuse towels.",
+   "guests do not care about protecting the environment."
+  ],
+  "answer": 1,
+  "explanation": "The sign about other guests' behavior worked better than the environmental appeal, pointing to the power of what others do. Saying guests don't care about the environment at all goes too far."
+ },
+ {
+  "id": "rd-0041",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "hard",
+  "passage": "In a study of a songbird species, researchers found that birds living near busy highways sang at a higher pitch than birds of the same species living in quiet forests. Traffic noise is concentrated at low pitches. When the researchers played recordings of low-pitched traffic noise in a quiet forest, the birds there began singing at a higher pitch within days. These findings suggest that ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "traffic noise permanently damages the birds' voices.",
+   "highway birds are a different species from forest birds.",
+   "the birds adjust their songs so that they can be heard over low-pitched noise.",
+   "the birds cannot hear low-pitched sounds."
+  ],
+  "answer": 2,
+  "explanation": "Traffic noise is low-pitched, highway birds sing higher, and forest birds sang higher within days of hearing played-back noise. That points to a quick adjustment to be heard, not a species difference or damage."
+ },
+ {
+  "id": "rd-0042",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "medium",
+  "passage": "Every book in the library's rare collection is checked out through a written request that a librarian must approve. Last month, the log of approved requests showed that three people had borrowed the 1802 atlas. Yet the atlas's own borrowing card, which every reader is required to sign, lists only two names for the month. It can be concluded that ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "the atlas was borrowed more times than the log shows.",
+   "no one borrowed the atlas last month.",
+   "the librarian approved a request that was never made.",
+   "at least one person who borrowed the atlas did not sign its borrowing card."
+  ],
+  "answer": 3,
+  "explanation": "The log shows three approved borrowers, but only two signed the card, so at least one borrower skipped signing. Nothing supports the other options."
+ },
+ {
+  "id": "rd-0043",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "hard",
+  "passage": "Painter Joaquín Reyes often reused canvases, painting new works over earlier ones. X-ray images of his 1921 portrait of a dancer reveal a landscape beneath the portrait. The landscape shows a bridge that was built in 1919 and torn down in 1920. Therefore, the landscape was most likely painted ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "between 1919 and 1921.",
+   "at the same time as the portrait.",
+   "before 1919.",
+   "after the portrait was finished."
+  ],
+  "answer": 0,
+  "explanation": "The landscape shows a bridge that existed from 1919 on, so it was painted in 1919 or later, and it sits under the 1921 portrait, so it came before that. That puts it between 1919 and 1921."
+ },
+ {
+  "id": "rd-0044",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "medium",
+  "passage": "A city tried to reduce litter on its beaches by installing more trash cans. Litter did not decrease. Officials then noticed that most of the litter consisted of cigarette filters and bottle caps, items that beachgoers tended to bury in the sand rather than carry to a can. This observation suggests that ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "beachgoers did not use any of the new trash cans.",
+   "adding trash cans may not address the way the most common litter ends up on the beach.",
+   "bottle caps are more harmful than cigarette filters.",
+   "the city should remove all trash cans from its beaches."
+  ],
+  "answer": 1,
+  "explanation": "The common litter was buried in the sand, not dropped for lack of a can, so more cans wouldn't solve that problem. The text doesn't say the cans went unused."
+ },
+ {
+  "id": "rd-0045",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "hard",
+  "passage": "Ecologist Priya Anand compared two islands with nearly identical climates and plants. Island A has foxes, which prey on ground-nesting birds; Island B has none. Anand found that the same bird species nests on the ground on Island B but mostly in shrubs on Island A. Because the two islands differ mainly in whether foxes are present, Anand's findings suggest that ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "the birds on Island A are a different species.",
+   "foxes prefer to hunt birds that nest in shrubs.",
+   "the presence of predators may influence where the birds build their nests.",
+   "shrubs grow only on Island A."
+  ],
+  "answer": 2,
+  "explanation": "The islands match in climate and plants and differ mainly in foxes. Birds nest in shrubs only where foxes live, so predators likely shape nesting choices. The text says the plants are nearly identical, which rules out B."
+ },
+ {
+  "id": "rd-0046",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Inferences",
+  "difficulty": "medium",
+  "passage": "The following text is from a novel.\n\nWhen the letter arrived, Theo read it standing in the doorway, then read it again sitting on the stairs. He did not call his sister, as he usually did with news. Instead he put the letter in the drawer where he kept his father's old watch and did not mention it at dinner. The text suggests that Theo ______",
+  "question": "Which choice most logically completes the text?",
+  "choices": [
+   "has not read the letter carefully.",
+   "is eager to share the news with his family.",
+   "plans to throw the letter away.",
+   "considers the letter's contents private or difficult to discuss."
+  ],
+  "answer": 3,
+  "explanation": "He breaks his habit of calling his sister, hides the letter with a treasured object, and stays silent at dinner, all of which point to news he wants to keep to himself, not news he's eager to share."
+ },
+ {
+  "id": "rd-0047",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Command of evidence",
+  "difficulty": "hard",
+  "passage": "A student is writing about a novel in which the narrator, Ruth, runs her family's orchard after her father's death. The student claims that Ruth is uncertain about her ability to take on this role.",
+  "question": "Which quotation from the novel would most effectively illustrate the student's claim?",
+  "choices": [
+   "\"Each morning Ruth walked the rows repeating her father's instructions aloud, as if afraid she might forget them, and each evening she wondered whether the trees could tell the difference.\"",
+   "\"Buyers from the city arrived in October, and Ruth sold every crate by noon.\"",
+   "\"The orchard had belonged to Ruth's family for four generations, and its oldest trees were nearly a century old.\"",
+   "\"Ruth hired two workers from the village to help with the harvest that fall.\""
+  ],
+  "answer": 0,
+  "explanation": "Repeating instructions \"as if afraid she might forget them\" and wondering whether the trees \"could tell the difference\" both show doubt about filling her father's role. The other quotations give facts or successes, not uncertainty."
+ },
+ {
+  "id": "rd-0048",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Command of evidence",
+  "difficulty": "hard",
+  "passage": "Many astronomers think that some of Earth's water arrived on asteroids early in the planet's history. Planetary scientist Hana Ito argues instead that most of Earth's water was present in the rocky material from which the planet first formed.",
+  "question": "Which finding, if true, would most directly support Ito's argument?",
+  "choices": [
+   "Some asteroids that reach Earth today contain small amounts of ice.",
+   "Rocks similar to the material that built the early Earth contain enough hydrogen to account for most of Earth's water.",
+   "Comets contain a type of water that differs chemically from Earth's water.",
+   "The water in Earth's oceans has changed very little in the past billion years."
+  ],
+  "answer": 1,
+  "explanation": "Ito claims that Earth's building material already held its water. Evidence that such rocks hold enough hydrogen to make most of that water directly supports her. The comet finding is about comets, not about Earth's building material, says nothing about the asteroid view or her own claim."
+ },
+ {
+  "id": "rd-0049",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Command of evidence",
+  "difficulty": "medium",
+  "passage": "Nutrition researcher Diego Salas hypothesizes that students who eat breakfast at school perform better on morning tests than students who skip breakfast, because the meal improves concentration.",
+  "question": "Which finding, if true, would most directly support Salas's hypothesis?",
+  "choices": [
+   "Students who skipped breakfast slept later on school days.",
+   "Students who ate breakfast at school reported enjoying the food.",
+   "After a school began serving free breakfast, students' average scores on morning tests rose, while scores on afternoon tests did not change.",
+   "Afternoon test scores were higher than morning scores at most schools."
+  ],
+  "answer": 2,
+  "explanation": "The hypothesis links breakfast to better morning performance. A rise in morning scores (and not afternoon scores) after breakfast began matches that timing exactly."
+ },
+ {
+  "id": "rd-0050",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Command of evidence",
+  "difficulty": "hard",
+  "passage": "Some historians argue that a nineteenth-century canal was built mainly to carry coal to coastal cities. Historian Grace Obi contends instead that it was built mainly to carry grain from inland farms.",
+  "question": "Which finding, if true, would most directly weaken Obi's argument?",
+  "choices": [
+   "The canal was widened twice in the twentieth century.",
+   "Coastal cities imported some grain from overseas.",
+   "Farmers near the canal grew wheat, corn, and barley.",
+   "Records from the canal's first ten years show that coal made up more than three-quarters of all cargo carried."
+  ],
+  "answer": 3,
+  "explanation": "If coal dominated the canal's cargo from the start, it's hard to argue the canal was built mainly for grain. The other findings don't compare the two cargoes."
+ },
+ {
+  "id": "rd-0051",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Command of evidence",
+  "difficulty": "medium",
+  "passage": "Psychologist Aiko Tanaka claims that people remember information better when they explain it aloud to someone else than when they simply reread it.",
+  "question": "Which finding, if true, would most directly support Tanaka's claim?",
+  "choices": [
+   "Students who explained a lesson to a classmate recalled more of it a week later than students who reread the lesson for the same amount of time.",
+   "Students who explained a lesson spent more time talking than listening.",
+   "Students recalled short lessons better than long ones.",
+   "Students preferred rereading to explaining lessons aloud."
+  ],
+  "answer": 0,
+  "explanation": "Only the classmate finding compares explaining with rereading, holds time equal, and measures memory, which is exactly Tanaka's claim."
+ },
+ {
+  "id": "rd-0052",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Quantitative evidence",
+  "difficulty": "medium",
+  "passage": "A student compared the average daily screen time of teenagers in four countries in 2024:\nCountry P: 7.1 hours\nCountry Q: 5.4 hours\nCountry R: 8.3 hours\nCountry S: 6.0 hours\nThe student claims that teenagers in Country R spent the most time on screens of the four countries.",
+  "question": "Which choice most effectively uses data from the list to support the student's claim?",
+  "choices": [
+   "Teenagers in Country R averaged 8.3 hours of screen time a day, more than in Countries P, Q, and S.",
+   "Teenagers in Country P averaged more screen time than teenagers in Country S.",
+   "Teenagers in Country Q averaged 5.4 hours of screen time a day.",
+   "All four countries averaged more than 5 hours of screen time a day."
+  ],
+  "answer": 0,
+  "explanation": "The claim is that R is highest. Only the answer giving 8.3 hours compares R's value with all three other countries."
+ },
+ {
+  "id": "rd-0053",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Quantitative evidence",
+  "difficulty": "hard",
+  "passage": "A researcher recorded how many bees visited three types of flowers in a garden over one week:\nLavender: 412 visits\nSunflower: 395 visits\nMarigold: 88 visits\nThe researcher concluded that marigolds attracted far fewer bees than either of the other two flowers.",
+  "question": "Which choice most effectively uses data from the list to support the researcher's conclusion?",
+  "choices": [
+   "Sunflowers received 395 visits over the week.",
+   "Marigolds received 88 visits, compared with 412 for lavender and 395 for sunflowers.",
+   "Lavender received slightly more visits than sunflowers did.",
+   "The three flowers received a combined total of 895 visits."
+  ],
+  "answer": 1,
+  "explanation": "The conclusion compares marigolds with both other flowers. Only the answer with all three numbers shows marigolds far behind."
+ },
+ {
+  "id": "rd-0054",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Quantitative evidence",
+  "difficulty": "hard",
+  "passage": "A city tracked the number of riders on its bike-share program:\n2021: 48,000 rides\n2022: 61,000 rides\n2023: 59,000 rides\n2024: 83,000 rides\nA city official claims that ridership grew overall from 2021 to 2024 but did not rise every year.",
+  "question": "Which choice most effectively uses data from the list to support the official's claim?",
+  "choices": [
+   "Rides fell from 61,000 in 2022 to 59,000 in 2023.",
+   "Rides rose from 48,000 in 2021 to 61,000 in 2022.",
+   "Rides rose from 48,000 in 2021 to 83,000 in 2024, although they dipped from 61,000 in 2022 to 59,000 in 2023.",
+   "The highest number of rides was 83,000, in 2024."
+  ],
+  "answer": 2,
+  "explanation": "The claim has two parts: overall growth and a year without a rise. The right answer covers both; the other choices give only the dip, the peak, or a single rise."
+ },
+ {
+  "id": "rd-0055",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Quantitative evidence",
+  "difficulty": "medium",
+  "passage": "In a survey, students at a high school were asked how they usually get to school:\nWalk: 22%\nBus: 41%\nCar: 29%\nBike: 8%\nThe school's principal claims that most students do not usually travel to school by car.",
+  "question": "Which choice most effectively uses data from the survey to support the principal's claim?",
+  "choices": [
+   "Walking is more common than biking among students.",
+   "Fewer students bike to school than travel by car.",
+   "The bus is the most common way students travel to school.",
+   "Only 29% of students usually travel to school by car, so the other 71% use a different method."
+  ],
+  "answer": 3,
+  "explanation": "\"Most students do not travel by car\" needs the car share compared with everyone else. Only 29% travel by car, which leaves 71% traveling another way."
+ },
+ {
+  "id": "rd-0056",
+  "section": "rw",
+  "domain": "Information and Ideas",
+  "skill": "Quantitative evidence",
+  "difficulty": "hard",
+  "passage": "Researchers measured the average height of seedlings grown under three types of light for four weeks:\nBlue light: 11.2 cm\nRed light: 14.8 cm\nMixed red and blue: 18.5 cm\nThe researchers concluded that combining the two colors produced taller seedlings than either color alone.",
+  "question": "Which choice most effectively uses data from the list to support the researchers' conclusion?",
+  "choices": [
+   "Seedlings under mixed light averaged 18.5 cm, taller than those under red light (14.8 cm) or blue light (11.2 cm).",
+   "All seedlings grew at least 11 cm in four weeks.",
+   "Seedlings under red light grew taller than those under blue light.",
+   "Seedlings under blue light averaged 11.2 cm."
+  ],
+  "answer": 0,
+  "explanation": "The conclusion compares mixed light with each single color, and only the right answer gives all three values."
+ },
+ {
+  "id": "rd-0057",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "medium",
+  "passage": "While researching a topic, a student has taken the following notes:\n• The Great Wall of China is a series of walls built over many centuries.\n• Its total length, including all branches, is about 21,000 kilometers.\n• Much of the wall was built during the Ming dynasty (1368–1644).\n• Contrary to a popular myth, it is not visible to the naked eye from space.",
+  "question": "The student wants to correct a common misconception about the Great Wall. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Although many people believe otherwise, the Great Wall of China is not visible to the naked eye from space.",
+   "Including all its branches, the Great Wall stretches about 21,000 kilometers.",
+   "Much of the Great Wall was built during the Ming dynasty, which lasted from 1368 to 1644.",
+   "The Great Wall of China is a series of walls built over many centuries."
+  ],
+  "answer": 0,
+  "explanation": "The goal is to correct a misconception, and only one choice mentions the myth and corrects it."
+ },
+ {
+  "id": "rd-0058",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "hard",
+  "passage": "While researching a topic, a student has taken the following notes:\n• Maria Lindqvist and Tomas Berg are glassblowers.\n• Lindqvist makes large sculptures for public buildings.\n• Berg makes small drinking glasses sold in shops.\n• Both learned their craft at the same workshop in Stockholm.",
+  "question": "The student wants to emphasize a difference between the two artists' work. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Lindqvist and Berg both learned glassblowing at a workshop in Stockholm.",
+   "While Lindqvist creates large sculptures for public buildings, Berg makes small drinking glasses for shops.",
+   "Berg makes small drinking glasses that are sold in shops.",
+   "Lindqvist and Berg are glassblowers."
+  ],
+  "answer": 1,
+  "explanation": "A difference needs both artists' work side by side. The right answer contrasts large public sculptures with small shop glasses; the Stockholm choice stresses what they share."
+ },
+ {
+  "id": "rd-0059",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "medium",
+  "passage": "While researching a topic, a student has taken the following notes:\n• A tardigrade is an animal about half a millimeter long.\n• Tardigrades live in moss, soil, and ocean sediment.\n• They can survive being dried out for years.\n• In 2007, some tardigrades survived ten days exposed to open space.",
+  "question": "The student wants to highlight tardigrades' ability to survive extreme conditions. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Tardigrades, which are about half a millimeter long, live in moss and soil.",
+   "Tardigrades are found in moss, soil, and ocean sediment.",
+   "Tardigrades can survive being dried out for years, and some have even survived ten days exposed to open space.",
+   "A tardigrade is an animal about half a millimeter long."
+  ],
+  "answer": 2,
+  "explanation": "Only the right answer gives the survival feats (drying out and space) that show how tough tardigrades are."
+ },
+ {
+  "id": "rd-0060",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "hard",
+  "passage": "While researching a topic, a student has taken the following notes:\n• A community garden opened in the Eastside neighborhood in 2019.\n• It has 60 plots, all of which are rented each year.\n• A waiting list for plots has more than 120 names.\n• The city is considering whether to build a second garden.",
+  "question": "The student wants to present evidence that demand for garden plots exceeds the current supply. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "The Eastside community garden opened in 2019.",
+   "The city is considering whether to build a second community garden.",
+   "The Eastside community garden has 60 plots.",
+   "All 60 plots in the Eastside community garden are rented each year, and more than 120 people are on the waiting list."
+  ],
+  "answer": 3,
+  "explanation": "Demand exceeding supply needs both sides: every plot is taken, and twice as many people are still waiting. Only the right answer gives both."
+ },
+ {
+  "id": "rd-0061",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "medium",
+  "passage": "While researching a topic, a student has taken the following notes:\n• The Andes are the longest continental mountain range in the world.\n• They run about 7,000 kilometers along the western edge of South America.\n• They pass through seven countries.\n• Their highest peak, Aconcagua, rises nearly 7,000 meters.",
+  "question": "The student wants to emphasize the length of the Andes. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Running about 7,000 kilometers along South America's western edge, the Andes are the longest continental mountain range in the world.",
+   "The highest peak in the Andes, Aconcagua, rises nearly 7,000 meters.",
+   "The Andes pass through seven countries in South America.",
+   "The Andes are a mountain range in South America."
+  ],
+  "answer": 0,
+  "explanation": "Only the right answer gives the length (about 7,000 kilometers) and ranks it as the longest range. Aconcagua's 7,000 meters is a height, not a length."
+ },
+ {
+  "id": "rd-0062",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "hard",
+  "passage": "While researching a topic, a student has taken the following notes:\n• Researcher Leila Haddad studied how long people could focus on a task.\n• Participants who took a five-minute walk every hour made 30% fewer errors.\n• Participants who stayed seated made more errors as the day went on.\n• Haddad's study involved 150 office workers.",
+  "question": "The student wants to present the study's main finding to an audience unfamiliar with it. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Leila Haddad studied how long people could focus on a task.",
+   "In a study of 150 office workers, researcher Leila Haddad found that those who took a five-minute walk every hour made 30% fewer errors.",
+   "Haddad's study involved 150 office workers.",
+   "Participants in Haddad's study who stayed seated made more errors as the day went on."
+  ],
+  "answer": 1,
+  "explanation": "An unfamiliar audience needs the researcher, the study group, and the key result. Only the right answer includes all three."
+ },
+ {
+  "id": "rd-0063",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "medium",
+  "passage": "While researching a topic, a student has taken the following notes:\n• Solar panels convert sunlight into electricity.\n• Wind turbines convert moving air into electricity.\n• Solar panels produce no power at night.\n• Wind turbines can produce power at any hour if the wind is blowing.",
+  "question": "The student wants to explain an advantage wind turbines can have over solar panels. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Wind turbines convert moving air into electricity.",
+   "Solar panels convert sunlight into electricity.",
+   "Unlike solar panels, which produce no power at night, wind turbines can generate electricity at any hour when the wind is blowing.",
+   "Wind turbines and solar panels both produce electricity."
+  ],
+  "answer": 2,
+  "explanation": "An advantage requires a comparison. Only the right answer shows turbines working at night when panels can't."
+ },
+ {
+  "id": "rd-0064",
+  "section": "rw",
+  "domain": "Expression of Ideas",
+  "skill": "Rhetorical synthesis",
+  "difficulty": "hard",
+  "passage": "While researching a topic, a student has taken the following notes:\n• The novel Harbor Lights was published in 1962.\n• Its author, Evelyn Park, wrote it while working as a nurse.\n• The book sold poorly at first.\n• After a film adaptation in 1985, it became a best seller.",
+  "question": "The student wants to explain how the novel's popularity changed over time. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+  "choices": [
+   "Harbor Lights, published in 1962, was written by Evelyn Park.",
+   "Evelyn Park wrote Harbor Lights while working as a nurse.",
+   "A film adaptation of Harbor Lights was released in 1985.",
+   "Harbor Lights sold poorly when it was published in 1962 but became a best seller after a film adaptation in 1985."
+  ],
+  "answer": 3,
+  "explanation": "A change over time needs a before and an after. The right answer gives the poor early sales and the later best-seller status, with the cause."
+ }
+]
