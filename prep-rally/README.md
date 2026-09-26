@@ -203,15 +203,16 @@ uploads that progress, and from then on every change also saves to the server,
 so it follows you to any device. Signing in on a new device replaces that
 device's guest progress with the account's.
 
-- `accounts.py` hashes passwords with PBKDF2 (200k rounds), issues 60-day
+- `accounts.py` hashes passwords with PBKDF2 (600k rounds), issues 30-day
   session tokens (only their SHA-256 is stored), and rate-limits wrong
   passwords per username and per IP.
 - Saves carry a revision number. A save from a stale copy (a tab left open on
   another device) is refused and that tab loads the newer progress instead of
   overwriting it.
-- Storage is Supabase (Postgres over its REST API) when `SUPABASE_URL` and
-  `SUPABASE_SERVICE_KEY` are set, otherwise SQLite in `data/lumo.db`. On
-  Render's free tier the disk is wiped on every restart, so set the Supabase
-  variables there (see DEPLOY.md). Until then the sign-up window warns that
-  accounts won't last.
+- Everything saved (accounts, classes, tutor applications, high scores)
+  lives in Supabase; the server writes nothing to disk. Without
+  `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` those features are off and games
+  still work. See DEPLOY.md and ../SECURITY.md.
+- Ranked Elo, wins, and losses are computed and stored by the server. Edits
+  made in the browser are ignored, and new accounts start their ladders at 1200.
 - There's no password reset, since there's no email.

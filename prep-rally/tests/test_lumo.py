@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """End-to-end tests for Lumo.
 
-Run the server first, then:
+Run the stack first: a stand-in for Supabase (the server has no local
+storage), then the server with fast bots:
+    python3 tests/fake_supabase.py &
+    SUPABASE_URL=http://127.0.0.1:54321 SUPABASE_SERVICE_KEY=test-secret \
+        LUMO_BOT_PACE=0.08 python3 server.py &
+then:
     python3 -m playwright install chromium      # once
     python3 tests/test_lumo.py                  # against http://localhost:3000
 
@@ -35,12 +40,24 @@ def new_player(browser, name):
     # overwriting unconditionally would wipe the profile on each reload and make
     # persistence impossible to test.
     page.add_init_script(
-        "if (!localStorage.getItem('lumo-profile'))"
+        # (top frame only: the sandboxed Desmos frame has no storage)
+        "if (window === top && !localStorage.getItem('lumo-profile'))"
         f" localStorage.setItem('lumo-profile', JSON.stringify({{name: {name!r}}}))"
     )
     page.goto(BASE)
     page.wait_for_selector(".sb-item")
     return ctx, page
+
+
+def wait_js(page, expr, timeout=8000):
+    """Poll a JS expression until it's truthy. Playwright's wait_for_function
+    compiles its predicate with eval, which the app's CSP (rightly) blocks."""
+    deadline = time.time() + timeout / 1000
+    while time.time() < deadline:
+        if page.evaluate(expr):
+            return True
+        page.wait_for_timeout(100)
+    raise TimeoutError(f"timed out waiting for {expr}")
 
 
 def nav(page, item):
@@ -331,13 +348,16 @@ def test_tools(browser):
 
     if state == "ready":
         check("real Desmos mounted", page.locator("#desmos-mount.ready").count() == 1)
-        check("Desmos API is live", page.evaluate("typeof window.Desmos") == "object")
+        frame = next((f for f in page.frames if "desmos-frame" in f.url), None)
+        check("Desmos runs in its sandboxed frame", frame is not None
+              and page.evaluate("typeof window.Desmos") == "undefined")
         check("fallback hidden while Desmos works",
               page.locator("#calc-fallback.hidden").count() == 1)
-        page.evaluate("desmos.calc.setExpression({id:'t', latex:'y=2x^2-3'})")
-        page.wait_for_timeout(600)
-        exprs = page.evaluate("desmos.calc.getExpressions().length")
-        check("Desmos accepts an expression", exprs >= 1, f"{exprs} expressions")
+        frame.locator(".dcg-mq-editable-field").first.click()
+        page.keyboard.type("y=2x^2-3")
+        page.wait_for_timeout(800)
+        typed = frame.locator(".dcg-mq-root-block").first.inner_text()
+        check("Desmos accepts an expression", "2x" in typed, typed)
     else:
         page.fill("#calc-input", "2x^2 - 3")
         page.wait_for_timeout(400)
@@ -543,7 +563,7 @@ def test_responsive(browser):
     ctx = browser.new_context(viewport={"width": 375, "height": 812},
                               user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)")
     page = ctx.new_page()
-    page.add_init_script("localStorage.setItem('lumo-profile', JSON.stringify({name:'Aneesh'}))")
+    page.add_init_script("if (window === top) localStorage.setItem('lumo-profile', JSON.stringify({name:'Aneesh'}))")
     page.goto(BASE)
     page.wait_for_selector(".sb-item")
 
@@ -951,10 +971,16 @@ def test_2v2(browser):
 
 
 def test_bot_duel(browser):
-    print("\n17. Bots fill an empty ranked queue")
+    print("\n17. Bots fill an empty ranked queue (signed in, so the result is saved)")
     ctx, page = new_player(browser, "BotBait")
     errors = []
     page.on("pageerror", lambda e: errors.append(str(e)))
+    import random as _r
+    page.click("#btn-user")
+    page.fill("#acct-username", f"ranked{_r.randint(10000, 99999)}")
+    page.fill("#acct-password", "ranked-player-77")
+    page.click("#btn-save-name")
+    page.wait_for_selector("#btn-user.signed-in", timeout=8000)
     before = page.evaluate("profile.elos.easy")
     nav(page, "Play")
     page.click('#duel-modes [data-sec="rw"]')
@@ -992,6 +1018,9 @@ def test_bot_duel(browser):
     check("results label the bot", page.locator("#result-rows .bot-tag").count() == 1)
     after = page.evaluate("profile.elos.easy")
     check("a bot match is ranked", after != before, f"{before} -> {after}")
+    page.wait_for_timeout(1500)  # the server writes the result in the background
+    saved = page.evaluate("accountCall('me', {token: accountToken()}).then((r) => r.profile.elos.easy)")
+    check("the server saved the ranked result to the account", saved == after, f"server {saved}, page {after}")
     check("no page errors in a bot match", not errors, str(errors))
     ctx.close()
 
@@ -1014,6 +1043,10 @@ def test_accounts(browser):
     a.fill("#acct-password", "short")
     a.click("#btn-save-name")
     check("short passwords are refused", "8 characters" in a.inner_text("#acct-error"), a.inner_text("#acct-error"))
+    a.fill("#acct-password", "password123")
+    a.click("#btn-save-name")
+    wait_js(a, "document.querySelector('#acct-error').textContent.includes('easy to guess')", 8000)
+    check("common passwords are refused", True)
     a.fill("#acct-password", pw)
     a.click("#btn-save-name")
     a.wait_for_selector("#name-overlay.hidden", state="attached", timeout=8000)
@@ -1022,9 +1055,11 @@ def test_accounts(browser):
     check("the rail says who is signed in", user in a.get_attribute("#btn-user", "aria-label"),
           a.get_attribute("#btn-user", "aria-label"))
 
-    # A change after signup reaches the server.
-    a.evaluate("profile.attempted = 9; saveProfile()")
-    a.wait_for_function("!JSON.parse(localStorage.getItem('lumo-account')).dirty", timeout=8000)
+    check("guest ratings don't carry into an account", a.evaluate("profile.elos.hard") == 1200,
+          str(a.evaluate("profile.elos")))
+    # A change after signup reaches the server, but a hand-edited rating doesn't.
+    a.evaluate("profile.attempted = 9; profile.elos.hard = 3000; profile.wins = 99; saveProfile()")
+    wait_js(a, "!JSON.parse(localStorage.getItem('lumo-account')).dirty", 8000)
     check("progress saves to the account", True)
 
     # The same account on a fresh device gets that progress.
@@ -1043,14 +1078,16 @@ def test_accounts(browser):
     b.click("#btn-save-name")
     b.wait_for_selector("#name-overlay.hidden", state="attached", timeout=8000)
     got = b.evaluate("[profile.name, profile.attempted, profile.elos.hard]")
-    check("progress follows the account to another device", got == ["Guesty", 9, 1333], str(got))
+    check("progress follows the account to another device", got[:2] == ["Guesty", 9], str(got))
+    check("the server ignores ratings edited in the browser", got[2] == 1200
+          and b.evaluate("profile.wins") == 0, str(got))
     check("usernames aren't case sensitive", True)
 
     # Device B saves; device A is now stale, and its next save must not win.
     b.evaluate("profile.attempted = 20; saveProfile()")
-    b.wait_for_function("!JSON.parse(localStorage.getItem('lumo-account')).dirty", timeout=8000)
+    wait_js(b, "!JSON.parse(localStorage.getItem('lumo-account')).dirty", 8000)
     a.evaluate("profile.attempted = 10; saveProfile()")
-    a.wait_for_function("profile.attempted === 20", timeout=8000)
+    wait_js(a, "profile.attempted === 20", 8000)
     check("a stale device takes the newer progress instead of overwriting it", True)
 
     # Reload keeps the session.
@@ -1075,6 +1112,81 @@ def test_accounts(browser):
     a_ctx.close()
 
 
+def test_security(browser):
+    print("\n19. Security headers and input handling")
+    import json as _j
+    import urllib.request as _u
+    import urllib.error as _e
+
+    def post(path, body, ctype="application/json"):
+        data = body if isinstance(body, bytes) else _j.dumps(body).encode()
+        req = _u.Request(BASE + path, data=data, headers={"Content-Type": ctype}, method="POST")
+        try:
+            with _u.urlopen(req) as r:
+                return r.status, dict(r.headers), _j.loads(r.read() or b"null")
+        except _e.HTTPError as err:
+            return err.code, dict(err.headers), None
+
+    def get(path):
+        try:
+            with _u.urlopen(BASE + path) as r:
+                return r.status, dict(r.headers), r.read()
+        except _e.HTTPError as err:
+            return err.code, dict(err.headers), b""
+
+    status, h, _ = get("/")
+    csp = h.get("Content-Security-Policy", "")
+    check("the page sends a Content Security Policy", "script-src 'self'" in csp and "'unsafe-eval'" not in csp, csp)
+    check("inline scripts are not allowed", "'unsafe-inline'" not in csp.split("script-src")[1].split(";")[0])
+    check("the page can't be framed", h.get("X-Frame-Options") == "DENY" and "frame-ancestors 'none'" in csp)
+    check("MIME sniffing is off", h.get("X-Content-Type-Options") == "nosniff")
+    check("no server version is advertised", "Python" not in h.get("Server", ""), h.get("Server"))
+    html = get("/")[2].decode()
+    check("CDN scripts carry integrity hashes", html.count('integrity="sha384-') == 3)
+    check("the page has no inline scripts", "<script>" not in html)
+
+    check("path traversal is refused", get("/../server.py")[0] == 404 and get("/%2e%2e/server.py")[0] == 404)
+    check("source files outside public/ aren't served", get("/accounts.py")[0] == 404)
+    check("non-JSON posts are refused", post("/api/config", b"{}", "text/plain")[0] == 415)
+    try:
+        big = post("/api/config", b"{" + b" " * 700000 + b"}")[0]
+    except (_e.URLError, ConnectionError, OSError):
+        big = 413  # refused and hung up before the upload finished
+    check("oversized bodies are refused", big == 413, str(big))
+    check("malformed JSON is refused", post("/api/config", b"{nope")[0] == 400)
+    check("API responses aren't cached", post("/api/config", {})[1].get("Cache-Control") == "no-store")
+
+    st, _, res = post("/api/class_list", {"playerKey": "short"})
+    check("weak player keys are rejected", res == {"classes": []}, str(res))
+    st, _, res = post("/api/create", {"name": "<img src=x onerror=alert(1)>", "settings": {"count": 3}})
+    check("markup is stripped from names", res and "<" not in res.get("yourName", "<"), str(res and res.get("yourName")))
+    st, _, res = post("/api/tutor_apply", {"playerKey": "k" * 32, "attempted": "lots"})
+    check("junk numbers don't crash the server", st == 200)
+    st, _, res = post("/api/me", {"token": "not-a-real-token"})
+    check("a made-up session token is signed out", res and res.get("signedOut") is True, str(res))
+
+    ctx = browser.new_context()
+    page = ctx.new_page()
+    violations = []
+    page.on("console", lambda m: "Content Security Policy" in m.text and violations.append(m.text))
+    page.on("pageerror", lambda e: violations.append(str(e)[:200]))
+    page.add_init_script("if (window === top) localStorage.setItem('lumo-profile', JSON.stringify({name:'Sec'}))")
+    page.goto(BASE)
+    page.wait_for_selector(".sb-item")
+    page.evaluate("startPractice({section:'math', count:3}, 'Drill')")
+    page.wait_for_selector("#v-match.active", timeout=8000)
+    page.click("#btn-calc")
+    wait_js(page, "desmos.state !== 'loading'", 15000)
+    check("Desmos loads inside its sandboxed frame", page.evaluate("desmos.state") == "ready",
+          page.evaluate("desmos.state"))
+    frame = next((f for f in page.frames if "desmos-frame" in f.url), None)
+    blocked = frame and frame.evaluate(
+        "(() => { try { parent.localStorage.length; return false; } catch (e) { return true; } })()")
+    check("the Desmos frame can't reach the app's storage", blocked is True)
+    check("Desmos and the app run under the CSP", not violations, str(violations[:2]))
+    ctx.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
@@ -1083,7 +1195,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_2v2, test_bot_duel, test_accounts, test_theme):
+                   test_friends, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

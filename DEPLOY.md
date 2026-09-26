@@ -56,26 +56,31 @@ a few seconds to wake.
 If you skip Vercel, leave `config.js` as `''` and Render serves the frontend
 itself. Simpler, one less moving part, and no CORS at all.
 
-## 3. Accounts on Supabase
+## 3. Storage on Supabase (required for accounts)
 
-Accounts work without this, but Render's free disk is wiped every time the
-server restarts (including after it sleeps), so accounts would disappear.
-Supabase keeps them.
+Lumo saves nothing on the server's disk. Accounts, classes, tutor
+applications, and high scores all live in Supabase. Until it's connected,
+games work but those features show "the database isn't connected".
 
-1. Open your project at [supabase.com](https://supabase.com) (or create one).
+1. Open your project at [supabase.com](https://supabase.com).
 2. **SQL Editor → New query**, paste all of `supabase/schema.sql`, **Run**.
-   It creates `lumo_accounts` and `lumo_sessions` with row level security on
-   and no policies, so only the server's key can touch them.
-3. **Project Settings → API**: copy the **Project URL** and the **secret key**
-   (`sb_secret_…`, or the legacy `service_role` key).
-4. On Render, add them as environment variables:
+   It creates the `lumo_*` tables with row level security on, no policies,
+   and no grants for the public roles, so only the server's key can touch them.
+   It's safe to run again after updates.
+3. Collect two values:
+   - **Project URL**: `https://<your-project-id>.supabase.co` (also under
+     **Project Settings → Data API**, or the **Connect** button).
+   - **Secret key**: **Project Settings → API Keys → Secret keys**, the
+     `sb_secret_…` key. On older projects, use the `service_role` key under
+     **Legacy API keys**.
+4. On Render → your service → **Environment**, add:
    - `SUPABASE_URL` = the project URL
    - `SUPABASE_SERVICE_KEY` = the secret key
 
-   Never put the secret key in `config.js` or anywhere in `public/`. It
-   bypasses row level security.
-5. Render redeploys. The log should say `Accounts stored in supabase`, and
-   `/api/config` returns `"accountsDurable": true`.
+   The secret key bypasses row level security. Keep it only in Render: never
+   in `config.js`, the repo, or a chat.
+5. Render redeploys. The log should say `storage: Supabase` and
+   `loaded … classes`, and `/api/config` returns `"accounts": true`.
 
 Free Supabase projects pause after a week with no activity; open the dashboard
 to wake one up.
@@ -85,7 +90,7 @@ to wake one up.
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" https://YOUR-SERVER/            # 200
 curl -s -X POST https://YOUR-SERVER/api/config \
-  -H 'Content-Type: application/json' -d '{}'   # desmosIsDemoKey: false, accountsDurable: true
+  -H 'Content-Type: application/json' -d '{}'   # desmosIsDemoKey: false, accounts: true
 ```
 
 Then open the site, start a Question Rush, and have someone join a party code

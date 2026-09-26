@@ -5,11 +5,14 @@ Zero dependencies: Python 3 standard library only.
 Real-time updates via Server-Sent Events (SSE); actions via JSON POST.
 """
 
+import copy
+import hashlib
 import json
 import mimetypes
 import os
 import queue
 import random
+import re
 import string
 import threading
 import time
@@ -23,7 +26,6 @@ import bots
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_DIR = os.path.join(BASE_DIR, "public")
 DATA_DIR = os.path.join(BASE_DIR, "data")
-HIGHSCORES_FILE = os.path.join(DATA_DIR, "highscores.json")
 DESMOS_KEY_FILE = os.path.join(DATA_DIR, "desmos_key.txt")
 
 # Desmos's publicly documented demo key. Fine for local development; a real
@@ -135,8 +137,56 @@ def similar_questions(qid, count):
     return out[:count]
 
 
-ACCOUNTS = accounts.Accounts(accounts.open_store(DATA_DIR))
+# All saved state (accounts, classes, tutor applications, high scores) lives in
+# Supabase. Nothing is written to this server's disk.
+DB = accounts.open_store()
+ACCOUNTS = accounts.Accounts(DB)
 ACCOUNT_ROUTES = {"/api/signup", "/api/login", "/api/me", "/api/save", "/api/logout"}
+STORAGE_ROUTES = {"/api/class_create", "/api/class_join", "/api/class_list", "/api/class_get",
+                  "/api/class_report", "/api/class_assign", "/api/class_leave",
+                  "/api/tutor_apply", "/api/tutor_status", "/api/tutor_withdraw"}
+PUBLIC_ROOT = os.path.realpath(PUBLIC_DIR)
+MAX_BODY = 600 * 1024        # a profile is capped at 512 KB; nothing else is close
+RATE = {}                    # ip -> (tokens, last refill)
+RATE_LOCK = threading.Lock()
+RATE_PER_SEC = 20            # sustained requests per second per address (a school shares one)
+RATE_BURST = 120
+
+# Content Security Policy for the page. Scripts only from this site, the pinned
+# GSAP files on jsDelivr (also checked by SRI), and Desmos. No inline script,
+# no eval, no plugins, no framing. Inline style attributes are allowed because
+# the UI sets styles on elements; styles can't run code.
+CSP = "; ".join([
+    "default-src 'self'",
+    "script-src 'self' https://cdn.jsdelivr.net https://www.desmos.com",
+    "style-src 'self' 'unsafe-inline' https://www.desmos.com",
+    "img-src 'self' data: blob: https://www.desmos.com",
+    "font-src 'self' data: https://www.desmos.com",
+    "connect-src 'self' https://lumo-3vut.onrender.com https://www.desmos.com",
+    "worker-src 'self' blob:",
+    "frame-src 'self'",          # only the sandboxed Desmos frame below
+    "frame-ancestors 'none'",
+    "object-src 'none'",
+    "base-uri 'none'",
+    "form-action 'self'",
+])
+# desmos-frame.html: Desmos compiles expressions with eval, so it gets its own
+# document and policy. The parent loads it with sandbox="allow-scripts" (an
+# opaque origin), so even code run by eval there can't touch the app's
+# storage, cookies, or DOM.
+DESMOS_FRAME = "desmos-frame.html"
+DESMOS_CSP = "; ".join([
+    "default-src 'none'",
+    "script-src 'self' https://www.desmos.com 'unsafe-eval'",
+    "style-src 'self' 'unsafe-inline' https://www.desmos.com",
+    "img-src data: blob: https://www.desmos.com",
+    "font-src data: https://www.desmos.com",
+    "connect-src https://www.desmos.com",
+    "worker-src blob:",
+    "frame-ancestors 'self'",
+    "base-uri 'none'",
+    "form-action 'none'",
+])
 
 TIMER_MS = {"easy": 60000, "medium": 75000, "hard": 90000}
 BASE_POINTS = {"easy": 500, "medium": 750, "hard": 1000}
@@ -157,11 +207,14 @@ TEAM_SIZE = 2
 TEAM_PLAYERS = 4
 SPECIALIST_BONUS = 1.25
 
-CLASSES_FILE = os.path.join(DATA_DIR, "classes.json")
-TUTORS_FILE = os.path.join(DATA_DIR, "tutors.json")
-CLASSES = {}   # code -> class dict
-TUTORS = {}    # playerKey -> application dict
-PRESENCE = {}  # playerKey -> {code, name, elo, activity, lastSeen, invites}
+CLASSES = {}   # code -> class dict (mirrored to lumo_classes)
+TUTORS = {}    # player id -> application dict (mirrored to lumo_tutors)
+HIGHSCORES = []  # top 50 (mirrored to lumo_highscores)
+STORE_READY = threading.Event()  # set once the saved state has loaded from Supabase
+PERSIST = queue.Queue()          # writes to Supabase, applied in order off the request path
+MAX_PARTIES = 3000
+MAX_QUEUE = 2000
+PRESENCE = {}  # player id -> {code, name, elo, activity, lastSeen, invites}
 PRESENCE_TTL = 45      # seconds without a ping before a friend reads as offline
 PRESENCE_SWEEP = 86400  # drop presence rows untouched for a day
 INVITE_TTL = 90        # seconds an unaccepted duel invite survives
@@ -172,50 +225,94 @@ def now_ms():
     return int(time.time() * 1000)
 
 
-def load_json_file(path, default):
-    try:
-        with open(path, encoding="utf-8") as f:
-            return json.load(f)
-    except (OSError, ValueError):
-        return default
+def log(event):
+    """Security-relevant events go to stdout, which Render keeps as logs.
+    Never pass passwords or tokens in here."""
+    print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {event}", flush=True)
 
 
-def save_json_file(path, data):
-    """Write via a temp file so a crash mid-write cannot truncate the real one."""
-    tmp = path + ".tmp"
-    try:
-        with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
-        os.replace(tmp, path)
-    except OSError:
-        pass
+def persist(fn, *args):
+    if DB:
+        PERSIST.put((fn, args))
 
 
-def save_classes():
-    save_json_file(CLASSES_FILE, CLASSES)
+def persist_worker():
+    while True:
+        fn, args = PERSIST.get()
+        for attempt in range(6):
+            try:
+                fn(*args)
+                break
+            except accounts.StorageError as err:
+                log(f"storage write failed: {err}; retrying")
+                time.sleep(min(30, 2 ** attempt))
+        else:
+            log("storage write dropped after retries")
 
 
-def save_tutors():
-    save_json_file(TUTORS_FILE, TUTORS)
+def load_saved_state():
+    """Pull classes, tutor applications, and high scores into memory at boot.
+    Retries until Supabase answers; the features stay closed until then."""
+    while True:
+        try:
+            classes = DB.select("lumo_classes", columns="code,data")
+            tutors = DB.select("lumo_tutors", columns="player_id,data")
+            scores = DB.select("lumo_highscores", columns="name,score,correct,total,section,date",
+                               order="score.desc", limit=50)
+            with LOCK:
+                CLASSES.update({r["code"]: r["data"] for r in classes})
+                TUTORS.update({r["player_id"]: r["data"] for r in tutors})
+                HIGHSCORES[:] = scores
+            STORE_READY.set()
+            log(f"loaded {len(classes)} classes, {len(tutors)} tutor applications, {len(scores)} high scores")
+            return
+        except accounts.StorageError as err:
+            log(f"can't load saved state yet: {err}")
+            time.sleep(10)
+
+
+def save_class(code):
+    cls = CLASSES.get(code)
+    if cls is None:
+        persist(DB.delete, "lumo_classes", {"code": code})
+    else:
+        persist(DB.upsert, "lumo_classes",
+                {"code": code, "data": copy.deepcopy(cls), "updated_at": accounts.iso_now()}, "code")
+
+
+def save_tutor(pid):
+    app = TUTORS.get(pid)
+    if app is None:
+        persist(DB.delete, "lumo_tutors", {"player_id": pid})
+    else:
+        persist(DB.upsert, "lumo_tutors",
+                {"player_id": pid, "data": copy.deepcopy(app), "updated_at": accounts.iso_now()}, "player_id")
+
+
+PLAYER_KEY_RE = re.compile(r"^[A-Za-z0-9-]{20,64}$")
+
+
+def player_id(body):
+    """The browser's playerKey is a bearer secret for classes, friends, and
+    tutoring. The server only ever keeps a hash of it, in memory and in
+    Supabase, so a leaked table can't be used to impersonate anyone."""
+    raw = str(body.get("playerKey") or "")
+    if not PLAYER_KEY_RE.match(raw):
+        return ""
+    return hashlib.sha256(b"lumo-player:" + raw.encode()).hexdigest()[:40]
 
 
 def clip(value, limit, fallback=""):
-    """Trim any client-supplied string to a sane length."""
-    text = str(value if value is not None else "").strip()
+    """Trim any client-supplied string to a sane length, minus control characters."""
+    text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", str(value if value is not None else "")).strip()
     return text[:limit] or fallback
 
 
-def load_highscores():
+def clean_int(value, lo, hi, default=0):
     try:
-        with open(HIGHSCORES_FILE, encoding="utf-8") as f:
-            return json.load(f)
-    except (OSError, ValueError):
-        return []
-
-
-def save_highscores(scores):
-    with open(HIGHSCORES_FILE, "w", encoding="utf-8") as f:
-        json.dump(scores, f, indent=2)
+        return max(lo, min(int(value), hi))
+    except (TypeError, ValueError):
+        return default
 
 
 def generate_code(taken=None, length=5):
@@ -231,8 +328,13 @@ def friend_codes():
     return {p["code"] for p in PRESENCE.values() if p.get("code")}
 
 
+NAME_JUNK = re.compile(r"[\x00-\x1f\x7f<>&\"'`\\]")
+
+
 def sanitize_name(name):
-    return (str(name or "").strip()[:16]) or "Player"
+    """Names are shown to other players. The client escapes them too; this is
+    defence in depth against markup and control characters."""
+    return (NAME_JUNK.sub("", str(name or "")).strip()[:16]) or "Player"
 
 
 def clean_elo(elo):
@@ -305,6 +407,7 @@ class Party:
         # 2v2, and multiplayer parties keep both.
         self.untimed = bool(settings.get("practice")) and mode == "party"
         self.bot_plans = {}  # pid -> this question's plan for each bot
+        self.ranked = False  # set by the ranked queue; only these move Elo
 
     def auto_advances(self):
         return self.mode in ("duel", "team")
@@ -340,7 +443,7 @@ class Party:
             i += 1
         return f"{name} {i}"
 
-    def add_player(self, name, elo=None, bot=None):
+    def add_player(self, name, elo=None, bot=None, account=None):
         pid = uuid.uuid4().hex
         self.players[pid] = {
             "id": pid, "name": self.unique_name(sanitize_name(name)),
@@ -348,6 +451,8 @@ class Party:
             "connected": True, "queues": [], "elo": clean_elo(elo),
             # A bot has no event stream; the server plays its turns (see bots.py).
             "bot": bot,
+            # Signed-in players in ranked games: whose account the result goes to.
+            "account": account,
         }
         return pid
 
@@ -611,17 +716,17 @@ class Party:
         board = self.leaderboard()
         total = len(self.questions)
 
-        highscores = load_highscores()
         date = time.strftime("%Y-%m-%d")
         for p in board:
-            if p["score"] > 0:
-                highscores.append({
-                    "name": p["name"], "score": p["score"], "correct": p["correct"],
-                    "total": total, "section": self.settings["section"], "date": date,
-                })
-        highscores.sort(key=lambda h: -h["score"])
-        top = highscores[:50]
-        save_highscores(top)
+            if p["score"] > 0 and not p["bot"]:
+                row = {"name": p["name"], "score": p["score"], "correct": p["correct"],
+                       "total": total, "section": self.settings["section"], "date": date}
+                HIGHSCORES.append(row)
+                persist(DB.insert, "lumo_highscores", row)
+        HIGHSCORES.sort(key=lambda h: -h["score"])
+        del HIGHSCORES[50:]
+        top = HIGHSCORES
+        ratings = self.rate() if self.ranked else None
 
         breakdowns = {}
         for p in self.players.values():
@@ -640,7 +745,42 @@ class Party:
             "leaderboard": board, "total": total,
             "breakdowns": breakdowns, "highscores": top[:10],
             "teamScores": self.team_scores() if self.mode == "team" else None,
+            "ratings": ratings,
         })
+
+    def rate(self):
+        """Ranked Elo, computed here rather than trusted from the browser.
+        Signed-in players' ratings come from their account and the result is
+        written back to it; guests are rated from what their browser sent."""
+        difficulty = (self.settings.get("difficulties") or ["medium"])[0]
+        out = {}
+        people = [p for p in self.players.values() if not p["bot"]]
+        teams = self.team_scores() if self.mode == "team" else None
+        for p in people:
+            if teams:
+                side = self.teams.get(p["id"])
+                us = next((t for t in teams if t["team"] == side), None)
+                them = next((t for t in teams if t["team"] != side), None)
+                rivals = [o for o in self.players.values()
+                          if self.teams.get(o["id"]) not in (None, side)]
+                if not us or not them or not rivals:
+                    continue
+                opp_elo = sum(o["elo"] for o in rivals) / len(rivals)
+                mine, theirs = us["score"], them["score"]
+            else:
+                others = [o for o in self.players.values() if o["id"] != p["id"]]
+                if not others:
+                    continue
+                opp_elo, mine, theirs = others[0]["elo"], p["score"], others[0]["score"]
+            score = 1.0 if mine > theirs else 0.5 if mine == theirs else 0.0
+            expected = 1 / (1 + 10 ** ((opp_elo - p["elo"]) / 400))
+            delta = round(32 * (score - expected))
+            result = "win" if score == 1 else "tie" if score == 0.5 else "loss"
+            out[p["name"]] = {"difficulty": difficulty, "delta": delta,
+                              "elo": max(100, p["elo"] + delta), "result": result}
+            if p.get("account"):
+                persist(ACCOUNTS.record_result, p["account"], difficulty, delta, result)
+        return out
 
 
 def pick_questions(settings):
@@ -746,9 +886,10 @@ def seat_match(mode, section, difficulty, count, entrants, fill_bots=False):
     settings = {"section": section, "domains": [], "difficulties": [difficulty], "count": count}
     code = generate_code()
     party = Party(code, settings, pick_questions(settings), mode="team" if mode == "2v2" else "duel")
+    party.ranked = True
     seats = []
     for e in entrants:
-        pid = party.add_player(e["name"], e["elo"])
+        pid = party.add_player(e["name"], e["elo"], account=e.get("account"))
         if mode == "2v2":
             party.assign_team(pid)
         seats.append(pid)
@@ -770,6 +911,11 @@ def seat_match(mode, section, difficulty, count, entrants, fill_bots=False):
 
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
+    # Idle or trickling connections are dropped instead of holding a thread.
+    timeout = 30
+    # Don't advertise the server software or Python version.
+    server_version = "Lumo"
+    sys_version = ""
 
     def log_message(self, fmt, *args):
         pass  # keep stdout clean
@@ -783,10 +929,22 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Vary", "Origin")
             self.send_header("Access-Control-Allow-Headers", "Content-Type")
             self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Max-Age", "600")
+
+    def send_security_headers(self, html=False, frame=False):
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("X-Frame-Options", "SAMEORIGIN" if frame else "DENY")
+        self.send_header("Cross-Origin-Opener-Policy", "same-origin")
+        self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()")
+        self.send_header("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+        if html:
+            self.send_header("Content-Security-Policy", DESMOS_CSP if frame else CSP)
 
     def do_OPTIONS(self):
         self.send_response(204)
         self.send_cors()
+        self.send_security_headers()
         self.send_header("Content-Length", "0")
         self.end_headers()
 
@@ -794,17 +952,52 @@ class Handler(BaseHTTPRequestHandler):
         body = json.dumps(obj).encode()
         self.send_response(status)
         self.send_cors()
+        self.send_security_headers()
         self.send_header("Content-Type", "application/json")
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
 
     def read_json(self):
+        """The request body, or None after an error response has been sent."""
+        ctype = (self.headers.get("Content-Type") or "").split(";")[0].strip().lower()
+        if ctype != "application/json":
+            # Forces a CORS preflight for cross-site callers; plain HTML forms can't send this.
+            self.send_json({"error": "Send JSON."}, 415)
+            return None
+        length = clean_int(self.headers.get("Content-Length"), -1, 10 ** 9, -1)
+        if length < 0 or length > MAX_BODY:
+            self.send_json({"error": "Request too large."}, 413)
+            self.close_connection = True
+            return None
         try:
-            length = int(self.headers.get("Content-Length", 0))
-            return json.loads(self.rfile.read(length) or b"{}")
-        except (ValueError, TypeError):
-            return {}
+            body = json.loads(self.rfile.read(length) or b"{}")
+        except (ValueError, UnicodeDecodeError):
+            self.send_json({"error": "Bad JSON."}, 400)
+            return None
+        if not isinstance(body, dict):
+            self.send_json({"error": "Bad JSON."}, 400)
+            return None
+        return body
+
+    def throttled(self):
+        """A per-address token bucket in front of every API call."""
+        ip = self.client_ip()
+        if not ip:
+            return False
+        now = time.time()
+        with RATE_LOCK:
+            if len(RATE) > 20000:
+                for k in [k for k, v in RATE.items() if now - v[1] > 60]:
+                    RATE.pop(k, None)
+            tokens, last = RATE.get(ip, (RATE_BURST, now))
+            tokens = min(RATE_BURST, tokens + (now - last) * RATE_PER_SEC)
+            if tokens < 1:
+                RATE[ip] = (tokens, now)
+                return True
+            RATE[ip] = (tokens - 1, now)
+        return False
 
     def get_party_player(self, body):
         party = PARTIES.get(str(body.get("code", "")).upper())
@@ -816,19 +1009,35 @@ class Handler(BaseHTTPRequestHandler):
     # ---------- routes ----------
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/") and self.throttled():
+            return self.send_json({"error": "Slow down a little."}, 429)
         if parsed.path == "/api/events":
             return self.handle_events(parse_qs(parsed.query))
         self.serve_static(parsed.path)
 
     def do_POST(self):
-        parsed = urlparse(self.path)
+        route = urlparse(self.path).path
+        if self.throttled():
+            log(f"rate-limited {self.client_ip()} {route}")
+            return self.send_json({"error": "Slow down a little."}, 429)
         body = self.read_json()
-        route = parsed.path
+        if body is None:
+            return
 
-        # Accounts talk to a database (possibly over the network), so they run
-        # outside the game lock and never stall a live match.
+        # Accounts talk to Supabase over the network, so they run outside the
+        # game lock and never stall a live match.
         if route in ACCOUNT_ROUTES:
             return self.api_account(route, body)
+        if route in STORAGE_ROUTES and not STORE_READY.is_set():
+            msg = ("Classes and tutoring need the database, which isn't connected."
+                   if not DB else "Still connecting to the database. Try again in a few seconds.")
+            return self.send_json({"error": msg, "storageOff": True}, 503)
+        ladder = (None, None)
+        if route == "/api/queue" and body.get("token") and ACCOUNTS.enabled:
+            try:
+                ladder = ACCOUNTS.ladder(body.get("token"))
+            except accounts.StorageError as err:
+                log(f"queue rating lookup failed: {err}")
 
         with LOCK:
             if route == "/api/create":
@@ -836,7 +1045,7 @@ class Handler(BaseHTTPRequestHandler):
             if route == "/api/join":
                 return self.api_join(body)
             if route == "/api/highscores":
-                return self.send_json({"scores": load_highscores()[:20]})
+                return self.send_json({"scores": HIGHSCORES[:20]})
             if route == "/api/stats":
                 return self.api_stats()
             if route == "/api/bank":
@@ -848,8 +1057,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_json({
                     "desmosKey": key,
                     "desmosIsDemoKey": key == DESMOS_DEMO_KEY,
-                    # False when accounts would vanish on the next restart.
-                    "accountsDurable": ACCOUNTS.store.durable,
+                    # False when Supabase isn't connected: accounts are unavailable.
+                    "accounts": ACCOUNTS.enabled,
                 })
             if route == "/api/presence":
                 return self.api_presence(body)
@@ -878,7 +1087,7 @@ class Handler(BaseHTTPRequestHandler):
             if route == "/api/tutor_withdraw":
                 return self.api_tutor_withdraw(body)
             if route == "/api/queue":
-                return self.api_queue(body)
+                return self.api_queue(body, ladder)
             if route == "/api/queue_status":
                 return self.api_queue_status(body)
             if route == "/api/queue_cancel":
@@ -911,6 +1120,9 @@ class Handler(BaseHTTPRequestHandler):
         return forwarded.split(",")[0].strip() or self.client_address[0]
 
     def api_account(self, route, body):
+        if not ACCOUNTS.enabled:
+            return self.send_json({"error": "Accounts are offline: the database isn't connected.",
+                                   "storageOff": True}, 503)
         try:
             if route == "/api/signup":
                 res = ACCOUNTS.signup(body.get("username"), body.get("password"),
@@ -923,9 +1135,12 @@ class Handler(BaseHTTPRequestHandler):
                 res = ACCOUNTS.save(body.get("token"), body.get("profile"), body.get("rev"))
             else:
                 res = ACCOUNTS.logout(body.get("token"))
-        except (IOError, OSError) as err:
-            print(f"account storage error: {err}")
+        except accounts.StorageError as err:
+            log(f"account storage error on {route}: {err}")
             return self.send_json({"error": "Couldn't reach account storage. Try again in a moment."}, 503)
+        event = res.pop("event", None)
+        if event:
+            log(f"{event} from {self.client_ip() or 'local'}")
         return self.send_json(res, res.pop("status", 200))
 
     # ---------- bank ----------
@@ -982,7 +1197,7 @@ class Handler(BaseHTTPRequestHandler):
         than proof; it is enough for a friends list and deliberately not enough
         for anything destructive.
         """
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         if not key:
             return self.send_json({"error": "Missing player key."}, 400)
         now = time.time()
@@ -1034,7 +1249,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def api_invite(self, body):
         """Push a duel invitation into a friend's next presence poll."""
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         target = clip(body.get("toCode"), FRIEND_CODE_LEN).upper()
         party_code = clip(body.get("partyCode"), 5).upper()
         if party_code not in PARTIES:
@@ -1079,7 +1294,7 @@ class Handler(BaseHTTPRequestHandler):
         }
 
     def api_class_create(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         name = clip(body.get("className"), 40)
         if not key:
             return self.send_json({"error": "Missing player key."}, 400)
@@ -1094,11 +1309,11 @@ class Handler(BaseHTTPRequestHandler):
             "teacherName": sanitize_name(body.get("name")),
             "created": int(time.time() * 1000), "assignment": None, "students": {},
         }
-        save_classes()
+        save_class(code)
         return self.send_json({"ok": True, "class": self.class_view(CLASSES[code], key)})
 
     def api_class_join(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         code = clip(body.get("code"), 5).upper()
         cls = CLASSES.get(code)
         if not cls:
@@ -1113,11 +1328,11 @@ class Handler(BaseHTTPRequestHandler):
         student.setdefault("attempted", 0)
         student.setdefault("correct", 0)
         student.setdefault("points", 0)
-        save_classes()
+        save_class(code)
         return self.send_json({"ok": True, "class": self.class_view(cls, key)})
 
     def api_class_list(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         out = []
         for cls in CLASSES.values():
             if cls["teacherKey"] == key or key in cls["students"]:
@@ -1132,7 +1347,7 @@ class Handler(BaseHTTPRequestHandler):
         return self.send_json({"classes": out})
 
     def api_class_get(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         cls = CLASSES.get(clip(body.get("code"), 5).upper())
         if not cls:
             return self.send_json({"error": "Class not found."}, 404)
@@ -1142,7 +1357,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def api_class_report(self, body):
         """Students push their own totals up after finishing a session."""
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         cls = CLASSES.get(clip(body.get("code"), 5).upper())
         if not cls or key not in cls["students"]:
             return self.send_json({"ok": False})
@@ -1159,11 +1374,11 @@ class Handler(BaseHTTPRequestHandler):
         done = clip(stats.get("assignmentDone"), 40)
         if done:
             student["assignmentDone"] = done
-        save_classes()
+        save_class(cls["code"])
         return self.send_json({"ok": True})
 
     def api_class_assign(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         cls = CLASSES.get(clip(body.get("code"), 5).upper())
         if not cls:
             return self.send_json({"error": "Class not found."}, 404)
@@ -1184,11 +1399,11 @@ class Handler(BaseHTTPRequestHandler):
             }
             for student in cls["students"].values():
                 student.pop("assignmentDone", None)
-        save_classes()
+        save_class(cls["code"])
         return self.send_json({"ok": True, "class": self.class_view(cls, key)})
 
     def api_class_leave(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         code = clip(body.get("code"), 5).upper()
         cls = CLASSES.get(code)
         if not cls:
@@ -1197,12 +1412,12 @@ class Handler(BaseHTTPRequestHandler):
             CLASSES.pop(code, None)  # the teacher leaving closes the class
         else:
             cls["students"].pop(key, None)
-        save_classes()
+        save_class(code)
         return self.send_json({"ok": True})
 
     # ---------- tutor applications ----------
     def api_tutor_apply(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         if not key:
             return self.send_json({"error": "Missing player key."}, 400)
         name = clip(body.get("applicantName"), 40)
@@ -1218,29 +1433,29 @@ class Handler(BaseHTTPRequestHandler):
         if len(about) < 40:
             return self.send_json({"error": "Tell us a little more — 40 characters minimum."})
         app = {
-            "playerKey": key, "name": name, "email": email,
+            "name": name, "email": email,
             "grade": clip(body.get("grade"), 24),
             "score": clip(body.get("score"), 12),
             "subjects": subjects, "availability": clip(body.get("availability"), 40),
             "about": about, "status": "submitted",
             "submitted": int(time.time() * 1000),
             "stats": {
-                "attempted": int(body.get("attempted") or 0),
-                "accuracy": int(body.get("accuracy") or 0),
+                "attempted": clean_int(body.get("attempted"), 0, 10 ** 7),
+                "accuracy": clean_int(body.get("accuracy"), 0, 100),
             },
         }
         TUTORS[key] = app
-        save_tutors()
+        save_tutor(key)
         return self.send_json({"ok": True, "application": app})
 
     def api_tutor_status(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         return self.send_json({"application": TUTORS.get(key)})
 
     def api_tutor_withdraw(self, body):
-        key = clip(body.get("playerKey"), 64)
+        key = player_id(body)
         TUTORS.pop(key, None)
-        save_tutors()
+        save_tutor(key)
         return self.send_json({"ok": True})
 
     # ---------- stats & matchmaking ----------
@@ -1253,9 +1468,10 @@ class Handler(BaseHTTPRequestHandler):
             by_section[q["section"]] = by_section.get(q["section"], 0) + 1
         self.send_json({"bank": by_section, "online": online, "queued": len(MATCH_QUEUE)})
 
-    def api_queue(self, body):
+    def api_queue(self, body, ladder):
         """Join the ladder queue. 1v1 fills at two players, 2v2 at four. If no
-        one else shows up in time, bots take the empty seats (see bots.py)."""
+        one else shows up in time, bots take the empty seats (see bots.py).
+        `ladder` is (username, ratings) for a signed-in player, else (None, None)."""
         now = time.time()
         # Keep matched tickets around until their owner polls and collects the result.
         MATCH_QUEUE[:] = [t for t in MATCH_QUEUE if now - t["polled"] < QUEUE_TTL]
@@ -1263,27 +1479,28 @@ class Handler(BaseHTTPRequestHandler):
         # Each difficulty is its own ladder: players only meet others who picked
         # the same subject and difficulty, closest rating first.
         difficulty = body.get("difficulty") if body.get("difficulty") in DIFFICULTIES else "medium"
-        elo = clean_elo(body.get("elo"))
+        account, ratings = ladder
+        # A signed-in player's rating comes from their account, not the browser.
+        elo = ratings["elos"][difficulty] if ratings else clean_elo(body.get("elo"))
         name = sanitize_name(body.get("name"))
-        try:
-            count = max(3, min(int(body.get("count") or 10), 20))
-        except (TypeError, ValueError):
-            count = 10
+        count = clean_int(body.get("count") or 10, 3, 20, 10)
         mode = "2v2" if body.get("mode") == "2v2" else "1v1"
+        if len(MATCH_QUEUE) >= MAX_QUEUE or len(PARTIES) >= MAX_PARTIES:
+            return self.send_json({"error": "Lumo is at capacity right now. Try again in a minute."}, 503)
         needed = TEAM_PLAYERS if mode == "2v2" else 2
 
         waiting = queue_peers(mode, section, difficulty)
         waiting.sort(key=lambda t: abs(t["elo"] - elo))
         if len(waiting) >= needed - 1:
             party, seats = seat_match(mode, section, difficulty, count,
-                                      waiting[: needed - 1] + [{"name": name, "elo": elo}])
+                                      waiting[: needed - 1] + [{"name": name, "elo": elo, "account": account}])
             mine = seats[-1]
             return self.send_json({"matched": True, "code": party.code, "playerId": mine,
                                    "yourName": party.players[mine]["name"], "mode": mode})
 
         ticket = uuid.uuid4().hex
         MATCH_QUEUE.append({"ticket": ticket, "name": name, "section": section, "mode": mode,
-                            "difficulty": difficulty, "elo": elo, "count": count,
+                            "difficulty": difficulty, "elo": elo, "count": count, "account": account,
                             "polled": now, "created": now, "bot_after": bots.bot_wait(),
                             "result": None})
         return self.send_json({"matched": False, "ticket": ticket, "mode": mode,
@@ -1327,6 +1544,8 @@ class Handler(BaseHTTPRequestHandler):
 
     # ---------- API ----------
     def api_create(self, body):
+        if len(PARTIES) >= MAX_PARTIES:
+            return self.send_json({"error": "Lumo is at capacity right now. Try again in a minute."}, 503)
         settings = clean_settings(body.get("settings"))
         questions = pick_questions(settings)
         if not questions:
@@ -1421,6 +1640,7 @@ class Handler(BaseHTTPRequestHandler):
 
         self.send_response(200)
         self.send_cors()
+        self.send_security_headers()
         self.send_header("Content-Type", "text/event-stream")
         self.send_header("Cache-Control", "no-cache")
         self.send_header("Connection", "keep-alive")
@@ -1453,14 +1673,18 @@ class Handler(BaseHTTPRequestHandler):
     def serve_static(self, path):
         if path == "/":
             path = "/index.html"
-        safe = os.path.normpath(path).lstrip("/\\")
-        full = os.path.join(PUBLIC_DIR, safe)
-        if not full.startswith(PUBLIC_DIR) or not os.path.isfile(full):
+        full = os.path.realpath(os.path.join(PUBLIC_DIR, path.lstrip("/\\")))
+        name = os.path.basename(full)
+        # Only real files inside public/, never dotfiles, and never anything a
+        # symlink or ../ could reach outside it.
+        if (os.path.commonpath([full, PUBLIC_ROOT]) != PUBLIC_ROOT or name.startswith(".")
+                or not os.path.isfile(full)):
             return self.send_json({"error": "Not found"}, 404)
         ctype = mimetypes.guess_type(full)[0] or "application/octet-stream"
         with open(full, "rb") as f:
             body = f.read()
         self.send_response(200)
+        self.send_security_headers(html=ctype == "text/html", frame=name == DESMOS_FRAME)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -1468,11 +1692,14 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    CLASSES.update(load_json_file(CLASSES_FILE, {}))
-    TUTORS.update(load_json_file(TUTORS_FILE, {}))
-    store = ACCOUNTS.store
-    print(f"Accounts stored in {store.kind}" + ("" if store.durable else
-          " on a disk that resets on restart. Set SUPABASE_URL and SUPABASE_SERVICE_KEY to keep them."))
+    if DB:
+        threading.Thread(target=persist_worker, daemon=True).start()
+        threading.Thread(target=load_saved_state, daemon=True).start()
+        log("storage: Supabase")
+    else:
+        log("storage: OFF. Set SUPABASE_URL and SUPABASE_SERVICE_KEY to enable accounts, "
+            "classes, tutoring, and high scores. Games still work.")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    print(f"PrepRally running on http://localhost:{PORT}")
+    server.daemon_threads = True
+    log(f"Lumo running on http://localhost:{PORT}")
     server.serve_forever()

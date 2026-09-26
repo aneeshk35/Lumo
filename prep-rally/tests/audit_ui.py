@@ -459,7 +459,7 @@ def audit_viewport(pw_browser, label, size, scheme="light"):
 
     page = ctx.new_page()
     attach(page, state)
-    page.add_init_script("localStorage.setItem('lumo-profile', JSON.stringify({name:'Aneesh'}))")
+    page.add_init_script("if (window === top) localStorage.setItem('lumo-profile', JSON.stringify({name:'Aneesh'}))")
     page.goto(BASE)
     page.wait_for_selector(".sb-item")
     for name, step in plan(page):

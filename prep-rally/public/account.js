@@ -9,7 +9,7 @@
 
 const ACCOUNT_KEY = 'lumo-account';
 let account = loadAccount();      // {token, username, rev, dirty} or null
-let accountsDurable = true;       // false when the server would lose accounts on restart
+let accountsOn = true;            // false when the server's database isn't connected
 let acctTab = 'signup';
 let nameCallback = null;
 let saveTimer = null;
@@ -186,21 +186,24 @@ function setAcctTab(tab) {
   $('acct-password').setAttribute('autocomplete', tab === 'login' ? 'current-password' : 'new-password');
   $('btn-save-name').textContent = { signup: 'Create account', login: 'Sign in', guest: 'Play as guest' }[tab];
 
+  if (!accountsOn && tab !== 'guest') return setAcctTab('guest');
+  document.querySelectorAll('[data-acct-tab]').forEach((b) => {
+    if (b.dataset.acctTab !== 'guest') b.disabled = !accountsOn;
+  });
   const hasProgress = (profile.attempted || 0) > 0;
   let note = '';
   if (tab === 'signup') {
-    note = hasProgress ? 'Everything you’ve done on this device comes with you.'
+    note = hasProgress
+      ? 'Your progress on this device comes with you. Ranked ratings start fresh at 1200, since only the server can vouch for them.'
       : 'Passwords need at least 8 characters. There’s no email, so don’t forget it.';
   } else if (tab === 'login') {
     note = hasProgress ? 'Signing in replaces this device’s guest progress with your account’s.' : '';
   } else {
-    note = 'Progress stays in this browser only. You can make an account any time.';
-  }
-  if (tab !== 'guest' && !accountsDurable) {
-    note = 'Heads up: account storage isn’t set up on this server yet, so accounts are wiped when it restarts.';
+    note = accountsOn ? 'Progress stays in this browser only. You can make an account any time.'
+      : 'Accounts are offline right now because the server’s database isn’t connected. You can play as a guest.';
   }
   $('acct-note').textContent = note;
-  $('acct-note').classList.toggle('warn', tab !== 'guest' && !accountsDurable);
+  $('acct-note').classList.toggle('warn', !accountsOn);
   showError('');
 }
 
@@ -253,6 +256,7 @@ async function submitAccountForm() {
   }
   btn.disabled = false;
   btn.textContent = label;
+  if (res.storageOff) { accountsOn = false; setAcctTab('guest'); }
   if (!res.token) return showError(res.error || 'Something went wrong. Try again.');
 
   $('acct-password').value = '';
@@ -263,7 +267,7 @@ async function submitAccountForm() {
     if (!profile.name) { profile.name = res.username.slice(0, 16); saveProfile(); }
     finishIdentity(`Signed in as ${res.username}. Welcome back!`);
   } else {
-    setSyncState('saved');
+    adoptProfile(res.profile, res.rev);
     finishIdentity('Account created — your progress now saves to it.');
   }
 }
@@ -302,9 +306,11 @@ $('name-overlay').addEventListener('keydown', (e) => {
 updateIdentityUI();
 if (!profile.name && !account) promptName();
 accountCall('config', {}).then((cfg) => {
-  if (cfg && cfg.accountsDurable === false) {
-    accountsDurable = false;
+  if (cfg && cfg.accounts === false) {
+    accountsOn = false;
     if (!$('name-overlay').classList.contains('hidden') && !account) setAcctTab(acctTab);
   }
 });
+// The ranked queue sends this so the server rates the account, not the browser.
+function accountToken() { return account ? account.token : ''; }
 if (account) pullProfile();

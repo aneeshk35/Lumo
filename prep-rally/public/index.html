@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Applied before the first paint so a dark viewer never sees a white flash. -->
-  <script>
-    try {
-      var t = localStorage.getItem('lumo-theme');
-      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
-    } catch (e) { /* private mode: fall back to the OS preference */ }
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lumo — SAT Prep</title>
+  <!-- Applied before the first paint so a dark viewer never sees a white flash.
+       A file, not inline, so the Content Security Policy can forbid inline scripts. -->
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js" integrity="sha384-lg3+EgIwmxYq9YD4ix279pdUEasqmOS17fF+2mI/NEg6JHkawYaWYpJ6nKZenPOy" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js" integrity="sha384-8oj95/2bNit2rlOOsJCaGBxSngfBWjoyQ8MtNbxmuk0v0B2nAK3Bwb1OJ5fWMWlk" crossorigin="anonymous"></script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238B5CF6'/%3E%3Cstop offset='1' stop-color='%236D28D9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='36' fill='url(%23g)'/%3E%3Cellipse cx='36' cy='52' rx='9' ry='11' fill='white'/%3E%3Cellipse cx='66' cy='52' rx='9' ry='11' fill='white'/%3E%3Ccircle cx='12' cy='12' r='12' fill='%23A3E635'/%3E%3C/svg%3E">
 </head>
 <body>

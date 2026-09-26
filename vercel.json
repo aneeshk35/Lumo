@@ -4,12 +4,80 @@
   "framework": null,
   "headers": [
     {
-      "source": "/fonts/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "source": "/((?!desmos-frame\\.html).*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.desmos.com; style-src 'self' 'unsafe-inline' https://www.desmos.com; img-src 'self' data: blob: https://www.desmos.com; font-src 'self' data: https://www.desmos.com; connect-src 'self' https://lumo-3vut.onrender.com https://www.desmos.com; worker-src 'self' blob:; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; form-action 'self'"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
+      ]
     },
     {
-      "source": "/(app|config|calc).js",
-      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      "source": "/desmos-frame.html",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; script-src 'self' https://www.desmos.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://www.desmos.com; img-src data: blob: https://www.desmos.com; font-src data: https://www.desmos.com; connect-src https://www.desmos.com; worker-src blob:; frame-ancestors 'self'; base-uri 'none'; form-action 'none'"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(app|config|calc|account|theme|social|classroom|coach|masterclass).js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
     }
   ]
 }

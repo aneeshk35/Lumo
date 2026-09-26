@@ -1033,6 +1033,7 @@ body.testing .sidebar { display: none; }
   display: none; border: 1px solid var(--border-soft);
 }
 .desmos-mount.ready { display: block; }
+.desmos-frame { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
 .ref-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
 .ref-grid { display: grid; grid-template-columns: auto 1fr; gap: 9px 18px; margin: 4px 0 0; font-size: 14px; }
 .ref-grid dt { font-weight: 600; color: var(--slate-7); }

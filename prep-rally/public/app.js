@@ -639,6 +639,15 @@ function applyElo(difficulty, oppElo, score) {
   profile.elo = Math.max(...Object.values(profile.elos));
   return delta;
 }
+// Ranked results come from the server, which also saves them to the player's
+// account. The local calculation is only a fallback for an older server.
+function takeRating(data, fallback) {
+  const r = data.ratings && data.ratings[game.myName];
+  if (!r || !DIFF_LABEL[r.difficulty]) return fallback();
+  profile.elos[r.difficulty] = r.elo;
+  profile.elo = Math.max(...Object.values(profile.elos));
+  return r.delta;
+}
 async function findMatch(mode) {
   const queueMode = mode === '2v2' ? '2v2' : '1v1';
   if (!profile.name) return promptName(() => findMatch(queueMode));
@@ -666,6 +675,7 @@ async function findMatch(mode) {
   const res = await api('queue', {
     name: profile.name, section: duelSection, count: 10, mode: queueMode,
     difficulty: duelDifficulty, elo: myElo(),
+    token: typeof accountToken === 'function' ? accountToken() : '',
   });
   if (res.matched) return enterDuel(res);
   game.queueTicket = res.ticket;
@@ -1227,7 +1237,7 @@ async function desmosScriptUrl() {
       return null;
     }
   }
-  return `https://www.desmos.com/api/v1.11/calculator.js?apiKey=${encodeURIComponent(desmos.key)}`;
+  return desmos.key ? 'ok' : null;
 }
 
 function useFallbackCalc(reason) {
@@ -1240,6 +1250,9 @@ function useFallbackCalc(reason) {
   drawGraph();
 }
 
+// Desmos runs in a sandboxed frame (desmos-frame.html): it needs eval, which
+// this page's Content Security Policy forbids, and the sandbox keeps it away
+// from the app and the player's sign-in.
 async function loadDesmos() {
   if (desmos.state === 'loading' || desmos.state === 'ready') return;
   desmos.state = 'loading';
@@ -1249,38 +1262,26 @@ async function loadDesmos() {
   const url = await desmosScriptUrl();
   if (!url) return useFallbackCalc('Could not reach the server for the Desmos key; using the built-in calculator.');
 
-  const script = document.createElement('script');
-  script.src = url;
+  const frame = document.createElement('iframe');
+  frame.className = 'desmos-frame';
+  frame.title = 'Desmos graphing calculator';
+  frame.setAttribute('sandbox', 'allow-scripts');
+  frame.src = `desmos-frame.html#key=${encodeURIComponent(desmos.key)}`;
   const timer = setTimeout(() => {
     if (desmos.state !== 'ready') useFallbackCalc('Desmos took too long to load, so this is the built-in calculator.');
   }, 12000);
-
-  script.onload = () => {
+  window.addEventListener('message', function onMsg(e) {
+    if (e.source !== frame.contentWindow || !e.data || !e.data.lumoDesmos) return;
+    window.removeEventListener('message', onMsg);
     clearTimeout(timer);
-    if (!window.Desmos) return useFallbackCalc('Desmos did not initialise; using the built-in calculator.');
-    try {
-      desmos.calc = Desmos.GraphingCalculator($('desmos-mount'), {
-        keypad: true, expressions: true, settingsMenu: false,
-        zoomButtons: true, border: false, lockViewport: false,
-        expressionsCollapsed: false,
-      });
-      desmos.state = 'ready';
-      $('calc-title').textContent = 'Desmos';
-      $('desmos-mount').classList.add('ready');
-      $('calc-fallback').classList.add('hidden');
-      $('calc-note').classList.add('hidden');
-      desmos.calc.resize();
-      // redraw when the student drags the panel's corner
-      if (window.ResizeObserver) new ResizeObserver(() => desmos.calc.resize()).observe($('desmos-mount'));
-    } catch (e) {
-      useFallbackCalc('Desmos failed to start; using the built-in calculator.');
-    }
-  };
-  script.onerror = () => {
-    clearTimeout(timer);
-    useFallbackCalc('No connection to Desmos, so this is the built-in calculator.');
-  };
-  document.head.appendChild(script);
+    if (e.data.lumoDesmos !== 'ready') return useFallbackCalc('No connection to Desmos, so this is the built-in calculator.');
+    desmos.state = 'ready';
+    $('calc-title').textContent = 'Desmos';
+    $('desmos-mount').classList.add('ready');
+    $('calc-fallback').classList.add('hidden');
+    $('calc-note').classList.add('hidden');
+  });
+  $('desmos-mount').appendChild(frame);
 }
 
 function openCalc(open) {
@@ -1289,7 +1290,6 @@ function openCalc(open) {
   if (!open) return;
   calcFloat.restore();
   if (desmos.state === 'idle') loadDesmos();
-  else if (desmos.state === 'ready') desmos.calc.resize();
   else if (desmos.state === 'failed') { $('calc-input').focus(); drawGraph(); }
 }
 $('btn-calc').onclick = () => openCalc($('calc-panel').classList.contains('hidden'));
@@ -1517,7 +1517,8 @@ function onGameOver(data) {
     const tie = us && them && us.score === them.score;
     const rivals = board.filter((p) => p.team && p.team !== myTeam);
     const rivalElo = rivals.length ? rivals.reduce((t, p) => t + (p.elo || 1200), 0) / rivals.length : 1200;
-    const delta = game.ranked ? applyElo(game.difficulty, rivalElo, won ? 1 : tie ? 0.5 : 0) : 0;
+    const delta = game.ranked
+      ? takeRating(data, () => applyElo(game.difficulty, rivalElo, won ? 1 : tie ? 0.5 : 0)) : 0;
     if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
     $('result-hero').textContent = won ? 'Team victory' : tie ? 'Team tie' : 'Team defeat';
     sub = `Team ${myTeam} ${us ? us.score.toLocaleString() : 0} — ${them ? them.score.toLocaleString() : 0} Team ${them ? them.team : ''}`
@@ -1526,7 +1527,7 @@ function onGameOver(data) {
     const opp = board.find((p) => p.name === game.opponent) || { score: 0 };
     const won = (meRow.score || 0) > opp.score;
     const tie = (meRow.score || 0) === opp.score;
-    const delta = applyElo(game.difficulty, opp.elo, won ? 1 : tie ? 0.5 : 0);
+    const delta = takeRating(data, () => applyElo(game.difficulty, opp.elo, won ? 1 : tie ? 0.5 : 0));
     if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
     $('result-hero').textContent = won ? 'Victory' : tie ? 'Tie game' : 'Defeat';
     sub += ` · ${delta >= 0 ? '+' : ''}${delta} ${DIFF_LABEL[game.difficulty] || ''} ELO → ${myElo(game.difficulty).toLocaleString()}`;
@@ -2101,8 +2102,8 @@ async function renderAnalytics() {
   $('hs-list').innerHTML = list.length ? list.map((h2, i) => `
     <div class="result-row ${h2.name === profile.name ? 'me' : ''}">
       <span class="rank">${i + 1}</span>
-      <span class="grow">${esc(h2.name)} <span class="detail">· ${SECTION_LABEL[h2.section] || h2.section} · ${h2.date}</span></span>
-      <span class="sc tabnum">${h2.score}</span>
+      <span class="grow">${esc(h2.name)} <span class="detail">· ${esc(SECTION_LABEL[h2.section] || h2.section)} · ${esc(h2.date)}</span></span>
+      <span class="sc tabnum">${esc(Number(h2.score) || 0)}</span>
     </div>`).join('')
     : '<span class="muted" style="font-size:13px">No scores yet — play a rush or a duel to get on the board.</span>';
 }
