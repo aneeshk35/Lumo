@@ -1154,10 +1154,110 @@ def hard_H11():
             mcq(ALG, "Linear functions", "hard", stem, val, distinct(val, [f0 + rise * n, rise * n, f0 + F(rise * n, step) + step]), why)
 
 
+# Added later. They run in their own loop after everything above, so no
+# existing question id moves.
+def xhard_X1():
+    """A power of a trapped between two fractional powers of a. The 0 < a < 1
+    version flips every inequality, which is the trap."""
+    made = tries = 0
+    while made < 5 and tries < 200:
+        tries += 1
+        q = rng.choice([2, 3]) if made % 3 == 1 else rng.choice([2, 3, 4])
+        lo_n = rng.randint(2 * q + 1, 7 * q)
+        hi_n = lo_n + rng.randint(3 * q, 8 * q)
+        if lo_n % q == 0 or hi_n % q == 0 or math.gcd(lo_n, q) != 1 or math.gcd(hi_n, q) != 1:
+            continue
+        if (lo_n, hi_n, q) == (13, 29, 2):
+            continue  # the numbers from the screenshot this template was inspired by
+        lo, hi = F(lo_n, q), F(hi_n, q)
+        inside = [k for k in range(math.ceil(lo), math.floor(hi) + 1)]
+        right = rng.choice(inside)
+        below = math.floor(lo) - rng.randint(0, 2)
+        above = math.ceil(hi) + rng.randint(0, 2)
+        extra = rng.choice([below - rng.randint(2, 4), above + rng.randint(2, 5)])
+        if below < 1 or extra < 1 or len({right, below, above, extra}) < 4:
+            continue
+        style = made % 3
+        if style == 1:
+            root = "√" if q == 2 else "∛"
+            lower, upper = f"{root}(a^{lo_n})", f"({root}a)^{hi_n}"
+            convert = (f"{lower} = a^({lo_n}/{q}) and {upper} = a^({hi_n}/{q}), so the conditions say "
+                       f"a^b > a^({num(lo)}) and a^b < a^({num(hi)}). ")
+        else:
+            lower, upper = f"a^({num(lo)})", f"a^({num(hi)})"
+            convert = ""
+        if style == 2:
+            stem = (f"The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that "
+                    f"0 < a < 1, f(a) < {lower} and f(a) > {upper}. ")
+            logic = (f"When 0 < a < 1, a larger exponent gives a smaller value (for example, (1/2)² < (1/2)¹). "
+                     f"So a^b < {lower} means b > {num(lo)}, and a^b > {upper} means b < {num(hi)}. ")
+        else:
+            stem = (f"The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that "
+                    f"a > 1, f(a) > {lower} and f(a) < {upper}. ")
+            logic = (f"When a > 1, a larger exponent gives a larger value. So a^b > a^({num(lo)}) means b > {num(lo)}, "
+                     f"and a^b < a^({num(hi)}) means b < {num(hi)}. ")
+        window = f"So {num(lo)} < b < {num(hi)}, that is, {dec(lo)} < b < {dec(hi)}. "
+        if made == 4:
+            top = math.floor(hi)
+            spr(ADV, "Exponent rules", "hard", stem + "What is the greatest integer value of b?",
+                top, convert + logic + window + f"The greatest integer below {dec(hi)} is {top}.")
+        else:
+            mcq(ADV, "Exponent rules", "hard", stem + "Which of the following could be the value of b?",
+                right, [below, above, extra], convert + logic + window + f"Of the choices, only {right} is in that range.")
+        made += 1
+
+
+def xhard_X2():
+    """Chain two ratios to compare the first and last quantity as a percent."""
+    letters = [("a", "b", "c"), ("x", "y", "z"), ("p", "q", "r"), ("j", "k", "m")]
+    made = tries = 0
+    while made < 5 and tries < 3000:
+        tries += 1
+        m, n, p, s = rng.randint(2, 9), rng.randint(3, 19), rng.randint(2, 9), rng.randint(3, 19)
+        if math.gcd(m, n) != 1 or math.gcd(p, s) != 1 or m == p or n == s:
+            continue
+        ratio = F(n * s, m * p)      # first / last
+        if not F(6, 5) <= ratio <= 10:
+            continue
+        kind = made % 3
+        greater = (ratio - 1) * 100
+        less = (1 - 1 / ratio) * 100
+        of = ratio * 100
+        val = [greater, less, of][kind]
+        if val.denominator != 1:
+            continue
+        u, v, w = letters[made % 4]
+        setup = f"For the positive numbers {u}, {v}, and {w}, {m}{u} = {n}{v} and {p}{v} = {s}{w}. "
+        ask = [f"By what percent is {u} greater than {w}?",
+               f"By what percent is {w} less than {u}?",
+               f"The value of {u} is what percent of the value of {w}?"][kind]
+        chain = (f"From {m}{u} = {n}{v}, {u} = ({n}/{m}){v}. From {p}{v} = {s}{w}, {v} = ({s}/{p}){w}. "
+                 f"So {u} = ({n}/{m})({s}/{p}){w} = {num(ratio)}{w}, which is {dec(ratio, 4)}{w}. ")
+        finish = [f"{u} is {dec(ratio * 100)}% of {w}, so it is {dec(ratio * 100)}% − 100% = {num(val)}% greater.",
+                  f"{w} = {u} ÷ {dec(ratio, 4)}, so {w} is {dec(100 / ratio, 4)}% of {u}, which is {num(val)}% less.",
+                  f"So {u} is {num(val)}% of {w}."][kind]
+        # The usual slips: the wrong direction, "percent of" instead of
+        # "percent greater/less", and the last quantity as a percent of the first.
+        pool_ = {0: [of, less, 100 / ratio], 1: [greater, 100 / ratio, of], 2: [greater, 100 / ratio, less]}[kind]
+        wrong = [F(round(float(x))) for x in pool_]
+        if len({val, *wrong}) < 4 or min(wrong) <= 0:
+            continue
+        if made % 2 == 0:
+            spr(PSD, "Percentages", "hard", setup + ask, val, chain + finish)
+        else:
+            try:
+                mcq(PSD, "Percentages", "hard", setup + ask, val, distinct(val, wrong, spread=(10, -10, 20, 50, -20, 100)),
+                    chain + finish + " The other choices come from comparing in the wrong direction or flipping one of the ratios.")
+            except AssertionError:
+                continue
+        made += 1
+
+
 # ------------------------------------------------------------------- runners
 TEMPLATES = {name[4:]: fn for name, fn in list(globals().items()) if name.startswith("tpl_")}
 HARD = {name[5:]: fn for name, fn in list(globals().items()) if name.startswith("hard_")}
-ALL_TEMPLATES = {**TEMPLATES, **HARD}
+EXTRA = {name[6:]: fn for name, fn in list(globals().items()) if name.startswith("xhard_")}
+ALL_TEMPLATES = {**TEMPLATES, **HARD, **EXTRA}
 SEED = 20260925
 PASSES = 4   # each pass redraws every template's numbers; pass 1 is the original set
 
@@ -1178,6 +1278,13 @@ def build():
         PASS[0] = p + 1
         rng = random.Random(SEED * 3 + p * 104729)
         for name, fn in HARD.items():
+            CURRENT[0] = name
+            fn()
+    # templates added after the bank shipped go last, for the same reason
+    for p in range(PASSES):
+        PASS[0] = p + 1
+        rng = random.Random(SEED * 5 + p * 15485863)
+        for name, fn in EXTRA.items():
             CURRENT[0] = name
             fn()
     return list(questions)
