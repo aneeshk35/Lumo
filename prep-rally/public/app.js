@@ -26,6 +26,7 @@ const DEFAULT_PROFILE = {
   friends: [],         // [{code, name}] added by friend code
   classes: [],         // [{code, name, isTeacher}] cached for the sidebar
   lessonsDone: [],     // ids from lessons.json
+  seen: [],            // ids of answered questions, newest last (so sets avoid repeats)
 };
 // Fill in anything an older or partial profile is missing. DEFAULT_PROFILE is
 // cloned so its arrays are never shared with (and mutated through) a profile.
@@ -34,7 +35,7 @@ function normalizeProfile(raw) {
   p.solved = { ...DEFAULT_PROFILE.solved, ...(p.solved || {}) };
   // Profiles from before per-difficulty ratings start every ladder at their old rating.
   p.elos = { easy: p.elo, medium: p.elo, hard: p.elo, ...(p.elos || {}) };
-  ['mistakes', 'vocabKnown', 'friends', 'classes', 'lessonsDone', 'sessions'].forEach((k) => {
+  ['mistakes', 'vocabKnown', 'friends', 'classes', 'lessonsDone', 'sessions', 'seen'].forEach((k) => {
     if (!Array.isArray(p[k])) p[k] = [];
   });
   if (!p.domainStats || typeof p.domainStats !== 'object') p.domainStats = {};
@@ -577,7 +578,7 @@ async function startPractice(settings, label) {
     practice: true,          // untimed, no speed scoring, never rated
   };
   game.ranked = false;
-  const res = await api('create', { name: profile.name, elo: myElo(), settings: s });
+  const res = await api('create', { name: profile.name, elo: myElo(), settings: s, seen: profile.seen });
   if (res.error) return toast(res.error);
   ME.code = res.code; ME.playerId = res.playerId;
   game.myName = res.yourName || profile.name;
@@ -597,7 +598,7 @@ function startSolo(section) {
 async function hostParty() {
   if (!profile.name) return promptName(hostParty);
   const res = await api('create', {
-    name: profile.name,
+    name: profile.name, seen: profile.seen,
     settings: { section: 'mixed', domains: [], difficulties: [], count: 10 },
   });
   if (res.error) return toast(res.error);
@@ -676,6 +677,7 @@ async function findMatch(mode) {
     name: profile.name, section: duelSection, count: 10, mode: queueMode,
     difficulty: duelDifficulty, elo: myElo(),
     token: typeof accountToken === 'function' ? accountToken() : '',
+    seen: profile.seen,
   });
   if (res.matched) return enterDuel(res);
   game.queueTicket = res.ticket;
@@ -1434,6 +1436,10 @@ function onReveal(data) {
 
   // ---- stats, mistake log, domain mastery ----
   profile.attempted += 1;
+  // Remember it so later sets (duels included) serve something new.
+  if (q.id) {
+    profile.seen = profile.seen.filter((id) => id !== q.id).concat(q.id).slice(-3000);
+  }
   if (correct) { profile.correct += 1; profile.solved[q.section] = (profile.solved[q.section] || 0) + 1; }
   else profile.errors += 1;
   if (meRow) profile.bestStreak = Math.max(profile.bestStreak, meRow.streak || 0);

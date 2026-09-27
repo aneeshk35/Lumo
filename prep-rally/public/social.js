@@ -108,7 +108,7 @@ async function addFriend() {
 async function challengeFriend(code) {
   if (!profile.name) return promptName(() => challengeFriend(code));
   const res = await api('create', {
-    name: profile.name, elo: myElo(),
+    name: profile.name, elo: myElo(), seen: profile.seen,
     settings: { section: duelSection, difficulties: [duelDifficulty], count: 10 },
   });
   if (res.error) return toast(res.error);

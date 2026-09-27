@@ -412,6 +412,7 @@ class Party:
         self.untimed = bool(settings.get("practice")) and mode == "party"
         self.bot_plans = {}  # pid -> this question's plan for each bot
         self.ranked = False  # set by the ranked queue; only these move Elo
+        self.seen = []       # question ids to avoid on a rematch
 
     def auto_advances(self):
         return self.mode in ("duel", "team")
@@ -787,7 +788,26 @@ class Party:
         return out
 
 
-def pick_questions(settings):
+SEEN_MAX = 3000
+
+
+def clean_seen(raw):
+    """Question ids a player has already answered, as sent by their browser."""
+    if not isinstance(raw, list):
+        return []
+    return [str(i)[:48] for i in raw[-SEEN_MAX:] if isinstance(i, str)]
+
+
+def question_kind(q):
+    """What makes two questions 'the same kind': the generator template when
+    there is one (same problem, different numbers), otherwise the skill."""
+    return q.get("tpl") or q["skill"]
+
+
+def pick_questions(settings, seen=()):
+    """Deal a set. Questions in `seen` are skipped until the pool runs out,
+    no kind repeats within a set until every kind has been used, and kinds
+    seen recently are pushed to the back."""
     if settings.get("similar"):
         return similar_questions(settings["similar"], settings.get("count") or 5)
     # An explicit id list (mistake review) overrides the filters.
@@ -809,20 +829,37 @@ def pick_questions(settings):
         and (not difficulties or q["difficulty"] in difficulties)
         and (not skills or q["skill"] in skills)
     ]
-    random.shuffle(pool)
+    if not pool:
+        return []
     count = max(1, min(int(settings.get("count") or 10), len(pool)))
-    # Deal round-robin across domains so the thousand generated grammar drills
-    # can't crowd everything else out of a mixed or whole-section session.
-    by_domain = {}
-    for q in pool:
-        by_domain.setdefault(q["domain"], []).append(q)
-    decks = list(by_domain.values())
-    random.shuffle(decks)
-    picked = []
+    seen = list(seen)
+    seen_ids = set(seen)
+    recent = {}
+    for i in seen[-80:]:
+        q = QUESTIONS_BY_ID.get(i)
+        if q:
+            recent[question_kind(q)] = recent.get(question_kind(q), 0) + 1
+
+    # One ranking for every slot: something new before anything repeated, then
+    # a kind this set hasn't had, then the least-used domain (so the thousand
+    # generated grammar drills can't crowd out everything else), then a kind
+    # not seen lately.
+    picked, used_kinds, used_domains, taken = [], {}, {}, set()
+    jitter = {q["id"]: random.random() for q in pool}
     while len(picked) < count:
-        for deck in decks:
-            if deck and len(picked) < count:
-                picked.append(deck.pop())
+        options = [q for q in pool if q["id"] not in taken]
+        if not options:
+            break
+        best = min(options, key=lambda q: (
+            q["id"] in seen_ids,
+            used_kinds.get(question_kind(q), 0),
+            used_domains.get(q["domain"], 0),
+            recent.get(question_kind(q), 0),
+            jitter[q["id"]]))
+        picked.append(best)
+        taken.add(best["id"])
+        used_kinds[question_kind(best)] = used_kinds.get(question_kind(best), 0) + 1
+        used_domains[best["domain"]] = used_domains.get(best["domain"], 0) + 1
     random.shuffle(picked)
     return picked
 
@@ -889,7 +926,10 @@ def seat_match(mode, section, difficulty, count, entrants, fill_bots=False):
     needed = TEAM_PLAYERS if mode == "2v2" else 2
     settings = {"section": section, "domains": [], "difficulties": [difficulty], "count": count}
     code = generate_code()
-    party = Party(code, settings, pick_questions(settings), mode="team" if mode == "2v2" else "duel")
+    # Nobody at the table should get a question they've already answered.
+    seen = [i for e in entrants for i in e.get("seen", [])][-SEEN_MAX * 2:]
+    party = Party(code, settings, pick_questions(settings, seen), mode="team" if mode == "2v2" else "duel")
+    party.seen = seen
     party.ranked = True
     seats = []
     for e in entrants:
@@ -1487,6 +1527,7 @@ class Handler(BaseHTTPRequestHandler):
         # A signed-in player's rating comes from their account, not the browser.
         elo = ratings["elos"][difficulty] if ratings else clean_elo(body.get("elo"))
         name = sanitize_name(body.get("name"))
+        seen = clean_seen(body.get("seen"))
         count = clean_int(body.get("count") or 10, 3, 20, 10)
         mode = "2v2" if body.get("mode") == "2v2" else "1v1"
         if len(MATCH_QUEUE) >= MAX_QUEUE or len(PARTIES) >= MAX_PARTIES:
@@ -1497,7 +1538,8 @@ class Handler(BaseHTTPRequestHandler):
         waiting.sort(key=lambda t: abs(t["elo"] - elo))
         if len(waiting) >= needed - 1:
             party, seats = seat_match(mode, section, difficulty, count,
-                                      waiting[: needed - 1] + [{"name": name, "elo": elo, "account": account}])
+                                      waiting[: needed - 1] + [{"name": name, "elo": elo, "account": account,
+                                                                "seen": seen}])
             mine = seats[-1]
             return self.send_json({"matched": True, "code": party.code, "playerId": mine,
                                    "yourName": party.players[mine]["name"], "mode": mode})
@@ -1505,6 +1547,7 @@ class Handler(BaseHTTPRequestHandler):
         ticket = uuid.uuid4().hex
         MATCH_QUEUE.append({"ticket": ticket, "name": name, "section": section, "mode": mode,
                             "difficulty": difficulty, "elo": elo, "count": count, "account": account,
+                            "seen": seen,
                             "polled": now, "created": now, "bot_after": bots.bot_wait(),
                             "result": None})
         return self.send_json({"matched": False, "ticket": ticket, "mode": mode,
@@ -1551,11 +1594,13 @@ class Handler(BaseHTTPRequestHandler):
         if len(PARTIES) >= MAX_PARTIES:
             return self.send_json({"error": "Lumo is at capacity right now. Try again in a minute."}, 503)
         settings = clean_settings(body.get("settings"))
-        questions = pick_questions(settings)
+        seen = clean_seen(body.get("seen"))
+        questions = pick_questions(settings, seen)
         if not questions:
             return self.send_json({"error": "No questions match those filters. Try widening them."})
         code = generate_code()
         party = Party(code, settings, questions)
+        party.seen = seen
         pid = party.add_player(body.get("name"), body.get("elo"))
         party.host_id = pid
         PARTIES[code] = party
@@ -1617,7 +1662,7 @@ class Handler(BaseHTTPRequestHandler):
     def api_play_again(self, party, player):
         if player["id"] != party.host_id or party.phase != "ended":
             return self.send_json({"error": "Only the host can restart."})
-        party.questions = pick_questions(party.settings)
+        party.questions = pick_questions(party.settings, party.seen)
         party.q_index = 0
         party.phase = "lobby"
         for pid in list(party.players):
