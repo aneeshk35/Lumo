@@ -116,8 +116,6 @@ def password_problem(username, password):
 # ---------- Supabase ----------
 class Supabase:
     def __init__(self, url, key):
-        if not url.startswith("https://") and not url.startswith("http://127.0.0.1"):
-            raise ValueError("SUPABASE_URL must be an https:// URL")
         self.base = url.rstrip("/") + "/rest/v1/"
         self.headers = {"apikey": key, "Content-Type": "application/json"}
         # Legacy service_role keys are JWTs and go in Authorization too. The
@@ -190,12 +188,62 @@ class Supabase:
             raise StorageError(f"delete {table} failed ({status})")
 
 
-def open_store():
-    url = os.environ.get("SUPABASE_URL", "").strip()
-    key = os.environ.get("SUPABASE_SERVICE_KEY", "").strip()
-    if url and key:
-        return Supabase(url, key)
+def normalize_url(raw):
+    """Accept the forms people actually paste: the full project URL, the host
+    without https://, the bare project ID, a dashboard link, or the URL with
+    /rest/v1 on the end. Returns https://<ref>.supabase.co, or None."""
+    text = raw.strip().strip('"').strip("'").rstrip("/")
+    dash = re.search(r"supabase\.com/dashboard/project/([a-z0-9]{15,40})", text)
+    if dash:
+        return f"https://{dash.group(1)}.supabase.co"
+    if re.fullmatch(r"[a-z0-9]{15,40}", text):
+        return f"https://{text}.supabase.co"
+    text = re.sub(r"/rest/v1$", "", text)
+    if not re.match(r"^[a-z]+://", text):
+        text = "https://" + text
+    if text.startswith("http://127.0.0.1"):
+        return text  # the test stand-in
+    if re.fullmatch(r"https://[A-Za-z0-9.-]+(:\d+)?", text):
+        return text
     return None
+
+
+def key_problem(key):
+    """Spot the public key pasted where the secret one belongs."""
+    if key.startswith("sb_publishable_"):
+        return "that's the publishable (public) key; use the secret key (sb_secret_...)"
+    if key.startswith("eyJ"):
+        try:
+            import base64
+            part = key.split(".")[1]
+            claims = json.loads(base64.urlsafe_b64decode(part + "=" * (-len(part) % 4)))
+            if claims.get("role") == "anon":
+                return "that's the anon (public) key; use the service_role or sb_secret_ key"
+        except (IndexError, ValueError):
+            pass
+    return None
+
+
+def open_store(log=print):
+    """The Supabase connection, or None (storage off). Never raises: a bad
+    setting is logged and the game server still starts."""
+    raw_url = os.environ.get("SUPABASE_URL", "")
+    key = os.environ.get("SUPABASE_SERVICE_KEY", "").strip().strip('"').strip("'")
+    if not raw_url.strip() and not key:
+        return None
+    if not raw_url.strip() or not key:
+        log("storage config: set both SUPABASE_URL and SUPABASE_SERVICE_KEY "
+            f"(missing {'SUPABASE_URL' if not raw_url.strip() else 'SUPABASE_SERVICE_KEY'})")
+        return None
+    url = normalize_url(raw_url)
+    if not url:
+        log("storage config: SUPABASE_URL doesn't look like https://<project-id>.supabase.co")
+        return None
+    problem = key_problem(key)
+    if problem:
+        log(f"storage config: SUPABASE_SERVICE_KEY is wrong: {problem}")
+        return None
+    return Supabase(url, key)
 
 
 def iso_now():

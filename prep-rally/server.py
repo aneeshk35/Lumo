@@ -139,7 +139,7 @@ def similar_questions(qid, count):
 
 # All saved state (accounts, classes, tutor applications, high scores) lives in
 # Supabase. Nothing is written to this server's disk.
-DB = accounts.open_store()
+DB = accounts.open_store(lambda msg: print(msg, flush=True))
 ACCOUNTS = accounts.Accounts(DB)
 ACCOUNT_ROUTES = {"/api/signup", "/api/login", "/api/me", "/api/save", "/api/logout"}
 STORAGE_ROUTES = {"/api/class_create", "/api/class_join", "/api/class_list", "/api/class_get",
@@ -267,7 +267,11 @@ def load_saved_state():
             log(f"loaded {len(classes)} classes, {len(tutors)} tutor applications, {len(scores)} high scores")
             return
         except accounts.StorageError as err:
-            log(f"can't load saved state yet: {err}")
+            text = str(err)
+            hint = (" (the secret key was rejected; check SUPABASE_SERVICE_KEY)" if "(401)" in text or "(403)" in text
+                    else " (tables missing; run supabase/schema.sql in the SQL editor)" if "(404)" in text
+                    else "")
+            log(f"can't load saved state yet: {text}{hint}")
             time.sleep(10)
 
 
