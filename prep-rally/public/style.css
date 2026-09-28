@@ -712,6 +712,21 @@ body.testing .sidebar { display: none; }
   background: var(--tb-surface); color: var(--slate-7); font-size: 12px; font-weight: 700;
 }
 .q-abc[aria-pressed="true"] { background: var(--tb-fill); border-color: var(--tb-fill); color: var(--tb-on-fill); }
+.q-report {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 3px 8px; border-radius: 6px;
+  font-size: 12.5px; font-weight: 600; color: var(--slate-6);
+}
+.q-report .ic { width: 15px; height: 15px; }
+.q-report:hover { color: var(--ink); background: var(--tb-surface); }
+.q-report[disabled] { opacity: .55; cursor: default; }
+/* keyboard shortcut hint; only where there's a keyboard */
+.kbd-tip { margin: 2px 0 0; font-size: 12.5px; color: var(--slate-5); line-height: 1.6; }
+.kbd-tip:empty { display: none; }
+.kbd-tip kbd {
+  display: inline-block; min-width: 20px; padding: 0 5px; margin: 0 1px; border: 1px solid var(--slate-4);
+  border-bottom-width: 2px; border-radius: 5px; font: 600 11.5px/18px inherit; text-align: center; color: var(--slate-7);
+}
+@media (hover: none), (max-width: 700px) { .kbd-tip { display: none; } }
 .q-kicker { font-size: 11px; font-weight: 600; letter-spacing: .6px; color: var(--slate-6); text-transform: uppercase; }
 .q-text { font-size: 17px; line-height: 1.6; font-weight: 500; text-wrap: pretty; white-space: pre-line; }
 
@@ -978,6 +993,22 @@ body.testing .sidebar { display: none; }
   font-size: 10px; font-weight: 700; color: var(--sky-ink); background: var(--sky-wash);
   padding: 2px 6px; border-radius: 5px; vertical-align: middle; letter-spacing: .02em;
 }
+/* report dialog */
+.report-modal { width: 420px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; }
+.report-reasons { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.report-reasons label {
+  display: flex; align-items: center; gap: 10px; padding: 9px 11px; border-radius: 9px; cursor: pointer;
+  font-size: 13.5px; color: var(--ink); border: 1px solid var(--border-soft);
+}
+.report-reasons label:has(input:checked) { border-color: var(--purple); background: var(--purple-wash); }
+.report-reasons input { accent-color: var(--purple); margin: 0; }
+.modal textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px;
+  font: 14px/1.5 inherit; background: var(--surface); color: var(--ink); resize: vertical; outline: none;
+}
+.modal textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-wash); }
+.report-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
 /* Sized to its text up to the screen edge; a long message wraps as a card, not a squeezed pill. */
 .toast {
   width: max-content; max-width: calc(100vw - 32px); text-align: center; line-height: 1.45;

@@ -57,14 +57,31 @@ create table if not exists public.lumo_highscores (
 );
 create index if not exists lumo_highscores_top on public.lumo_highscores (score desc);
 
+-- ---------- question reports ----------
+-- Players flag questions from the test screen. Read them in the Table Editor.
+create table if not exists public.lumo_reports (
+  id           bigserial primary key,
+  question_id  text not null,
+  reason       text not null,         -- wrong-answer | unclear | difficulty | display | other
+  note         text not null default '',
+  question     text not null,         -- snapshot, since generated variants aren't stored
+  answer       text not null,
+  difficulty   text not null,
+  reporter     text not null,         -- hashed player key, never the key itself
+  name         text not null default '',
+  created_at   timestamptz not null default now()
+);
+create index if not exists lumo_reports_question on public.lumo_reports (question_id);
+
 -- ---------- lock everything down ----------
 alter table public.lumo_accounts   enable row level security;
 alter table public.lumo_sessions   enable row level security;
 alter table public.lumo_classes    enable row level security;
 alter table public.lumo_tutors     enable row level security;
 alter table public.lumo_highscores enable row level security;
+alter table public.lumo_reports    enable row level security;
 
 -- Belt and braces: the public roles get no table privileges at all.
 revoke all on public.lumo_accounts, public.lumo_sessions, public.lumo_classes,
-              public.lumo_tutors, public.lumo_highscores from anon, authenticated;
-revoke all on sequence public.lumo_highscores_id_seq from anon, authenticated;
+              public.lumo_tutors, public.lumo_highscores, public.lumo_reports from anon, authenticated;
+revoke all on sequence public.lumo_highscores_id_seq, public.lumo_reports_id_seq from anon, authenticated;

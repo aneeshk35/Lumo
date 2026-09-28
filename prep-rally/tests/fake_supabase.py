@@ -21,7 +21,7 @@ from urllib.parse import parse_qs, urlparse
 
 KEY = "test-secret"
 PK = {"lumo_accounts": "username", "lumo_sessions": "token_hash", "lumo_classes": "code",
-      "lumo_tutors": "player_id", "lumo_highscores": "id"}
+      "lumo_tutors": "player_id", "lumo_highscores": "id", "lumo_reports": "id"}
 DB = {t: [] for t in PK}
 LOCK = threading.Lock()
 SEQ = [0]
@@ -79,7 +79,7 @@ class Handler(BaseHTTPRequestHandler):
                     out = [{c: r.get(c) for c in columns.split(",")} for r in out]
                 return self.reply(200, out)
             if self.command == "POST":
-                if pk == "id" and "id" not in body:
+                if pk == "id" and "id" not in body:  # bigserial tables
                     SEQ[0] += 1
                     body = dict(body, id=SEQ[0])
                 existing = next((r for r in rows if r.get(on_conflict or pk) == body.get(on_conflict or pk)), None)

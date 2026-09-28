@@ -1254,6 +1254,50 @@ def test_mark_reviewed(browser):
     ctx.close()
 
 
+def test_shortcuts_and_report(browser):
+    print("\n23. Keyboard shortcuts and reporting a question")
+    ctx, page = new_player(browser, "Keys")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.evaluate("startPractice({section:'rw', count:3}, 'Drill')")
+    page.wait_for_selector("#v-match.active", timeout=8000)
+    check("the shortcut tip is shown", "1" in page.inner_text("#kbd-tip") and "Enter" in page.inner_text("#kbd-tip"))
+    page.locator("body").focus()
+    page.keyboard.press("3")
+    check("pressing 3 picks choice C", page.locator('#choice-grid .mchoice.sel[data-i="2"]').count() == 1)
+    page.keyboard.press("b")
+    check("pressing B picks choice B", page.locator('#choice-grid .mchoice.sel[data-i="1"]').count() == 1)
+    page.keyboard.press("Enter")
+    page.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
+    check("Enter submits the answer", True)
+    check("the tip switches to next-question", "next question" in page.inner_text("#kbd-tip"))
+    page.keyboard.press("Enter")
+    page.wait_for_timeout(900)
+    check("Enter moves to the next question", page.locator("#reveal-card.hidden").count() == 1
+          and "2" in page.inner_text("#q-num"), page.inner_text("#q-num"))
+
+    # Keys typed into a text box must not answer the question.
+    page.click("#btn-report")
+    page.wait_for_selector("#report-overlay:not(.hidden)")
+    page.fill("#report-note", "1234 abcd")
+    page.keyboard.press("2")
+    check("typing in the report box doesn't pick answers", page.locator("#choice-grid .mchoice.sel").count() == 0)
+    page.click('#report-form input[value="unclear"]')
+    page.click("#btn-report-send")
+    page.wait_for_selector("#report-overlay.hidden", state="attached", timeout=8000)
+    check("a report sends and the dialog closes", True)
+    check("the Report button shows it was reported", page.locator("#btn-report[disabled]").count() == 1
+          and "Reported" in page.inner_text("#btn-report"))
+    qid = page.evaluate("game.currentQ.id")
+    res = page.evaluate("(id) => api('report', {questionId: id, reason: 'bogus', playerKey: profile.playerKey})", qid)
+    check("a report with a made-up reason is refused", "error" in res, str(res))
+    res = page.evaluate("api('report', {questionId: 'no-such-question', reason: 'other', playerKey: profile.playerKey})")
+    check("a report for a question that doesn't exist is refused", "error" in res, str(res))
+    page.keyboard.press("Escape")
+    check("no page errors with shortcuts and reports", not errors, str(errors))
+    ctx.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
@@ -1262,7 +1306,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_invite_join, test_mark_reviewed, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
+                   test_friends, test_invite_join, test_mark_reviewed, test_shortcuts_and_report, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

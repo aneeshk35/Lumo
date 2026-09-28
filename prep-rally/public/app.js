@@ -893,6 +893,10 @@ function onQuestion(q) {
 
   $('btn-lock').disabled = true;
   $('btn-lock').classList.remove('hidden');
+  setKbdTip(spr ? 'spr' : 'mcq');
+  const reported = game.reported && game.reported.has(q.id);
+  $('btn-report').disabled = !!reported;
+  $('btn-report').lastChild.textContent = reported ? ' Reported' : ' Report';
   if (spr) setTimeout(() => $('spr-input').focus(), 50);
   $('locked-note').classList.add('hidden');
   $('match-actions').classList.remove('hidden');
@@ -1493,9 +1497,96 @@ function onReveal(data) {
     nextBtn.classList.add('hidden');
     note.textContent = 'Waiting for the host…';
   }
+  setKbdTip(nextBtn.classList.contains('hidden') ? '' : 'next');
 }
 
 $('btn-next').onclick = () => api('next');
+
+/* ================= Keyboard shortcuts =================
+   On the question screen: 1-4 (or A-D) pick an answer, Enter submits, and
+   Enter again moves on when there's a Next button. Nothing fires while the
+   player is typing somewhere or a dialog is open. */
+const KEY_CHOICE = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
+function setKbdTip(kind) {
+  const tip = $('kbd-tip');
+  if (!tip) return;
+  tip.innerHTML = {
+    mcq: 'Tip: press <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> to pick an answer, then <kbd>Enter</kbd> to submit',
+    spr: 'Tip: press <kbd>Enter</kbd> to submit your answer',
+    next: 'Tip: press <kbd>Enter</kbd> for the next question',
+  }[kind] || '';
+}
+document.addEventListener('keydown', (e) => {
+  if (!$('v-match').classList.contains('active') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (document.querySelector('.overlay:not(.hidden)')) return;
+  const t = e.target;
+  if (t.closest && t.closest('input, textarea, select, [contenteditable="true"], .float-panel, .tb-pop')) return;
+  const q = game.currentQ;
+  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  if (key in KEY_CHOICE && game.phase === 'question' && !game.answered && q && q.type !== 'spr') {
+    const btn = document.querySelector(`#choice-grid .mchoice[data-i="${KEY_CHOICE[key]}"]`);
+    if (btn) { e.preventDefault(); btn.click(); btn.focus(); }
+    return;
+  }
+  if (key !== 'Enter') return;
+  // Leave Enter alone on other focused controls (Mark for Review, tools, and so on).
+  if (t !== document.body && !(t.closest && t.closest('#choice-grid, #btn-lock, #btn-next, .tb-body'))) return;
+  if (t.closest && t.closest('.tb-body') && t.tagName === 'BUTTON' && !t.closest('#choice-grid')) return;
+  if (game.phase === 'question' && !$('btn-lock').disabled && !$('btn-lock').classList.contains('hidden')) {
+    e.preventDefault();
+    $('btn-lock').click();
+  } else if (game.phase === 'reveal' && !$('btn-next').classList.contains('hidden')) {
+    e.preventDefault();
+    $('btn-next').click();
+  }
+});
+
+/* ================= Report a question ================= */
+function openReport() {
+  const q = game.currentQ;
+  if (!q || !q.id) return;
+  $('report-form').reset();
+  $('report-error').classList.add('hidden');
+  $('btn-report-send').disabled = false;
+  $('report-overlay').classList.remove('hidden');
+  const first = document.querySelector('#report-form input[name="report-reason"]');
+  if (first) first.focus();
+}
+function closeReport() {
+  $('report-overlay').classList.add('hidden');
+  $('btn-report').focus();
+}
+$('btn-report').onclick = openReport;
+$('btn-report-cancel').onclick = closeReport;
+$('report-overlay').addEventListener('keydown', (e) => { if (e.key === 'Escape') closeReport(); });
+$('report-overlay').addEventListener('click', (e) => { if (e.target === $('report-overlay')) closeReport(); });
+$('report-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const q = game.currentQ;
+  if (!q || !q.id) return closeReport();
+  const reason = (document.querySelector('#report-form input[name="report-reason"]:checked') || {}).value;
+  $('btn-report-send').disabled = true;
+  let res;
+  try {
+    res = await api('report', {
+      questionId: q.id, reason, note: $('report-note').value.trim(),
+      playerKey: profile.playerKey, name: profile.name,
+    });
+  } catch (err) {
+    res = { error: 'Can\u2019t reach the server. Try again in a moment.' };
+  }
+  $('btn-report-send').disabled = false;
+  if (!res.ok) {
+    $('report-error').textContent = res.error || 'That didn\u2019t send. Try again.';
+    $('report-error').classList.remove('hidden');
+    return;
+  }
+  (game.reported = game.reported || new Set()).add(q.id);
+  $('btn-report').disabled = true;
+  $('btn-report').lastChild.textContent = ' Reported';
+  closeReport();
+  toast('Thanks! Your report was sent.');
+});
 
 /* ================= Game over ================= */
 function onGameOver(data) {

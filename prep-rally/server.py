@@ -146,6 +146,10 @@ STORAGE_ROUTES = {"/api/class_create", "/api/class_join", "/api/class_list", "/a
                   "/api/class_report", "/api/class_assign", "/api/class_leave",
                   "/api/tutor_apply", "/api/tutor_status", "/api/tutor_withdraw"}
 PUBLIC_ROOT = os.path.realpath(PUBLIC_DIR)
+REPORT_REASONS = {"wrong-answer", "unclear", "difficulty", "display", "other"}
+REPORTS_PER_HOUR = 20
+REPORTS_SENT = {}     # reporter -> [timestamps] in the last hour
+REPORTED = set()      # (reporter, question id): one report per question per player
 MAX_BODY = 600 * 1024        # a profile is capped at 512 KB; nothing else is close
 RATE = {}                    # ip -> (tokens, last refill)
 RATE_LOCK = threading.Lock()
@@ -1087,6 +1091,8 @@ class Handler(BaseHTTPRequestHandler):
         # game lock and never stall a live match.
         if route in ACCOUNT_ROUTES:
             return self.api_account(route, body)
+        if route == "/api/report":
+            return self.api_report(body)
         if route in STORAGE_ROUTES and not STORE_READY.is_set():
             msg = ("Classes and tutoring need the database, which isn't connected."
                    if not DB else "Still connecting to the database. Try again in a few seconds.")
@@ -1201,6 +1207,45 @@ class Handler(BaseHTTPRequestHandler):
         if event:
             log(f"{event} from {self.client_ip() or 'local'}")
         return self.send_json(res, res.pop("status", 200))
+
+    # ---------- question reports ----------
+    def api_report(self, body):
+        """A player flags a question. Saved straight to lumo_reports (outside
+        the game lock) so the player only hears "sent" once it really is."""
+        if not DB:
+            return self.send_json({"error": "Reports need the database, which isn't connected.",
+                                   "storageOff": True}, 503)
+        qid = clip(body.get("questionId"), 48)
+        q = find_question(qid)
+        reason = body.get("reason") if body.get("reason") in REPORT_REASONS else None
+        if not q or not reason:
+            return self.send_json({"error": "That report is missing something."}, 400)
+        reporter = player_id(body) or f"ip:{hashlib.sha256((self.client_ip() or 'local').encode()).hexdigest()[:16]}"
+        now = time.time()
+        with RATE_LOCK:
+            mine = [t for t in REPORTS_SENT.get(reporter, []) if now - t < 3600]
+            if len(mine) >= REPORTS_PER_HOUR:
+                return self.send_json({"error": "That's a lot of reports in an hour. Try again later."}, 429)
+            if (reporter, qid) in REPORTED:
+                return self.send_json({"ok": True, "duplicate": True})
+            if len(REPORTED) > 50000 or len(REPORTS_SENT) > 20000:
+                REPORTED.clear()
+                REPORTS_SENT.clear()
+            REPORTS_SENT[reporter] = mine + [now]
+            REPORTED.add((reporter, qid))
+        answer = q["answers"][0] if q.get("type") == "spr" else (q.get("choices") or ["?"])[q.get("answer", 0)]
+        row = {"question_id": qid, "reason": reason, "note": clip(body.get("note"), 300),
+               "question": q["question"][:500], "answer": str(answer)[:200],
+               "difficulty": q["difficulty"], "reporter": reporter, "name": sanitize_name(body.get("name"))}
+        try:
+            DB.insert("lumo_reports", row)
+        except accounts.StorageError as err:
+            with RATE_LOCK:
+                REPORTED.discard((reporter, qid))
+            log(f"report not saved: {err}")
+            return self.send_json({"error": "Couldn't save the report. Try again in a moment."}, 503)
+        log(f"question report {qid} ({reason})")
+        return self.send_json({"ok": True})
 
     # ---------- bank ----------
     def api_bank(self):

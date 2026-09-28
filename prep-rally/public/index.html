@@ -339,6 +339,10 @@
                 Mark for Review
               </button>
               <span class="grow"></span>
+              <button class="q-report" id="btn-report" title="Something wrong with this question? Tell us.">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4h11l-1.5 4L16 12H5"/></svg>
+                Report
+              </button>
               <button class="q-abc" id="btn-abc" aria-pressed="false" aria-label="Cross out answer choices" title="Cross out answer choices"><s>ABC</s></button>
             </div>
             <span class="q-kicker" id="q-kicker"></span>
@@ -352,6 +356,7 @@
               <div class="spr-preview">Answer preview: <b id="spr-preview">—</b></div>
               <p class="spr-help" id="spr-help">Type a number, a fraction like 7/2, or a decimal like 3.5. For a long decimal, enter at least three decimal places.</p>
             </div>
+            <p class="kbd-tip" id="kbd-tip" aria-hidden="true"></p>
             <div class="reveal-card hidden" id="reveal-card">
               <span class="t" id="reveal-title"></span>
               <span class="ex" id="reveal-ex"></span>
@@ -872,6 +877,31 @@
       </form>
       <button class="btn btn-lg-outline" id="btn-signout" type="button">Sign out</button>
     </div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="report-overlay">
+  <div class="modal report-modal" role="dialog" aria-modal="true" aria-labelledby="report-title">
+    <span class="t" id="report-title">Report this question</span>
+    <span class="d">What's wrong with it? Reports go straight to the people who maintain Lumo's question bank.</span>
+    <form class="acct-form" id="report-form" novalidate>
+      <fieldset class="report-reasons" role="radiogroup" aria-label="Reason">
+        <label><input type="radio" name="report-reason" value="wrong-answer" checked> The marked answer is wrong</label>
+        <label><input type="radio" name="report-reason" value="unclear"> It's confusing, or has a typo</label>
+        <label><input type="radio" name="report-reason" value="difficulty"> The difficulty label is off</label>
+        <label><input type="radio" name="report-reason" value="display"> It doesn't display right</label>
+        <label><input type="radio" name="report-reason" value="other"> Something else</label>
+      </fieldset>
+      <label class="acct-field">
+        <span>Details <em>optional</em></span>
+        <textarea id="report-note" maxlength="300" rows="3" placeholder="e.g. I think the answer should be 22"></textarea>
+      </label>
+      <span class="acct-error hidden" id="report-error" role="alert"></span>
+      <div class="report-actions">
+        <button class="btn btn-lg-outline" type="button" id="btn-report-cancel">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="btn-report-send">Send report</button>
+      </div>
+    </form>
   </div>
 </div>
 
