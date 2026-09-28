@@ -5,7 +5,9 @@ Run the stack first: a stand-in for Supabase (the server has no local
 storage), then the server with fast bots:
     python3 tests/fake_supabase.py &
     SUPABASE_URL=http://127.0.0.1:54321 SUPABASE_SERVICE_KEY=test-secret \
-        LUMO_BOT_PACE=0.08 python3 server.py &
+        LUMO_BOT_PACE=0.08 LUMO_BOT_WAIT=20 python3 server.py &
+(LUMO_BOT_WAIT=20 keeps bots from taking a seat while a multiplayer test is
+still adding its real players on a busy machine.)
 then:
     python3 -m playwright install chromium      # once
     python3 tests/test_lumo.py                  # against http://localhost:3000
@@ -989,7 +991,7 @@ def test_bot_duel(browser):
     page.wait_for_selector("#v-queue.active", timeout=5000)
     page.wait_for_timeout(4000)
     check("no bot shows up right away", page.locator("#v-queue.active").count() == 1)
-    page.wait_for_selector("#v-lobby.active", timeout=20000)
+    page.wait_for_selector("#v-lobby.active", timeout=40000)
     check("a bot takes the seat when nobody else queues", True)
     check("the bot is labeled as a bot", page.locator("#lobby-players .bot-tag").count() == 1,
           page.inner_text("#lobby-players"))

@@ -396,7 +396,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation C = 12 + 4h models the cost, in dollars, of renting a kayak for h hours. What is the best interpretation of 4 in this context?",
   "tpl": "A3",
   "choices": [
@@ -430,7 +430,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation P = 240 − 8d models the number of pages Mira has left to read d days after starting a book. What is the best interpretation of 8 in this context?",
   "tpl": "A3",
   "choices": [
@@ -464,7 +464,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation T = 12 + 5w models the height, in centimeters, of a plant w weeks after it was measured. What is the best interpretation of 5 in this context?",
   "tpl": "A3",
   "choices": [
@@ -498,7 +498,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation B = 150 − 12m models the balance, in dollars, on a gift card after m movie tickets are bought. What is the best interpretation of 12 in this context?",
   "tpl": "A3",
   "choices": [
@@ -532,7 +532,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation W = 18 + 12t models the amount of water, in liters, in a tank t minutes after a hose is turned on. What is the best interpretation of 12 in this context?",
   "tpl": "A3",
   "choices": [
@@ -566,7 +566,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation S = 42,000 + 1500y models a worker's annual salary, in dollars, y years after being hired. What is the best interpretation of 1500 in this context?",
   "tpl": "A3",
   "choices": [
@@ -600,7 +600,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation D = 120 − 5t models a hiker's distance, in kilometers, from the end of a trail t hours after starting. What is the best interpretation of 5 in this context?",
   "tpl": "A3",
   "choices": [
@@ -634,7 +634,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation F = 25 + 4n models the total fee, in dollars, for a school trip with n students. What is the best interpretation of 4 in this context?",
   "tpl": "A3",
   "choices": [
@@ -2225,7 +2225,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 3ˣ + 4. What is the value of g(3)?",
   "tpl": "B4",
   "choices": [
@@ -2274,7 +2274,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 2ˣ + 2. What is the value of g(4)?",
   "tpl": "B4",
   "type": "spr",
@@ -2321,7 +2321,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 5ˣ + 2. What is the value of g(2)?",
   "tpl": "B4",
   "choices": [
@@ -2370,7 +2370,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The value V, in dollars, of a car t years after it was bought is modeled by V = 500(0.92)ᵗ. Which statement best describes how the value of the car changes?",
   "tpl": "B5",
   "choices": [
@@ -2387,7 +2387,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 6,000 at time t = 0 and decreases by 7% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -2404,7 +2404,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The population P of a town t years after 2020 is modeled by P = 1,200(1.12)ᵗ. Which statement best describes how the town's population changes?",
   "tpl": "B5",
   "choices": [
@@ -2421,7 +2421,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 6,000 at time t = 0 and increases by 10% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -2438,7 +2438,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of bacteria N in a sample h hours after an experiment begins is modeled by N = 24,000(1.05)ʰ. Which statement best describes how the number of bacteria changes?",
   "tpl": "B5",
   "choices": [
@@ -2455,7 +2455,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 1,500 at time t = 0 and increases by 7% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -2472,7 +2472,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The mass M, in grams, of a substance d days after it was measured is modeled by M = 800(0.95)ᵈ. Which statement best describes how the mass of the substance changes?",
   "tpl": "B5",
   "choices": [
@@ -2489,7 +2489,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 2,400 at time t = 0 and decreases by 30% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -2506,7 +2506,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of subscribers S to a channel m months after launch is modeled by S = 800(1.08)ᵐ. Which statement best describes how the number of subscribers changes?",
   "tpl": "B5",
   "choices": [
@@ -2523,7 +2523,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The amount A, in milligrams, of a medicine in a patient's blood h hours after a dose is modeled by A = 24,000(0.88)ʰ. Which statement best describes how the amount of medicine changes?",
   "tpl": "B5",
   "choices": [
@@ -2540,7 +2540,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 3,200 at time t = 0 and decreases by 30% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -2685,7 +2685,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponent rules",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For x > 0, which expression is equivalent to the fourth root of x³?",
   "tpl": "B6",
   "choices": [
@@ -2702,7 +2702,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponent rules",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For x > 0, which expression is equivalent to the fifth root of x²?",
   "tpl": "B6",
   "choices": [
@@ -2719,7 +2719,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponent rules",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For x > 0, which expression is equivalent to the cube root of x⁵?",
   "tpl": "B6",
   "choices": [
@@ -2736,7 +2736,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponent rules",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For x > 0, which expression is equivalent to √(x⁷)?",
   "tpl": "B6",
   "choices": [
@@ -2932,7 +2932,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(−5) = −3. What is the remainder when p(x) is divided by x + 5?",
   "tpl": "B8",
   "choices": [
@@ -2966,7 +2966,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(−5) = 7. What is the remainder when p(x) is divided by x + 5?",
   "tpl": "B8",
   "choices": [
@@ -3000,7 +3000,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(2) = 4. What is the remainder when p(x) is divided by x − 2?",
   "tpl": "B8",
   "choices": [
@@ -3034,7 +3034,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(−5) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -4429,7 +4429,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 3 and height 7 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -4444,7 +4444,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 9 and height 10 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -4461,7 +4461,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a sphere with radius 9 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -4476,7 +4476,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 6 and height 8 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -4491,7 +4491,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a sphere with radius 3 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -4508,7 +4508,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 4 and height 7 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -4523,7 +4523,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 3 and height 8 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -4683,68 +4683,68 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 28°, and sin(28°) ≈ 0.47. What is the approximate value of cos(62°)?",
   "tpl": "D8",
   "choices": [
    "0.47",
-   "0.235",
-   "0.53",
-   "−0.47"
+   "2.13",
+   "0.88",
+   "0.53"
   ],
   "answer": 0,
-  "explanation": "The two acute angles of a right triangle are complementary (28° + 62° = 90°), and the sine of an angle equals the cosine of its complement. So cos(62°) = sin(28°) ≈ 0.47."
+  "explanation": "The two acute angles of a right triangle are complementary (28° + 62° = 90°), and the sine of an angle equals the cosine of its complement. So cos(62°) = sin(28°) ≈ 0.47. (0.88 is cos(28°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0287",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 35°, and sin(35°) ≈ 0.57. What is the approximate value of cos(55°)?",
   "tpl": "D8",
   "choices": [
-   "−0.57",
-   "0.57",
    "0.43",
-   "0.285"
+   "0.57",
+   "0.82",
+   "1.75"
   ],
   "answer": 1,
-  "explanation": "The two acute angles of a right triangle are complementary (35° + 55° = 90°), and the sine of an angle equals the cosine of its complement. So cos(55°) = sin(35°) ≈ 0.57."
+  "explanation": "The two acute angles of a right triangle are complementary (35° + 55° = 90°), and the sine of an angle equals the cosine of its complement. So cos(55°) = sin(35°) ≈ 0.57. (0.82 is cos(35°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0288",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 53°, and sin(53°) ≈ 0.80. What is the approximate value of cos(37°)?",
   "tpl": "D8",
   "choices": [
+   "0.60",
    "0.20",
-   "−0.80",
    "0.80",
-   "0.4"
+   "1.25"
   ],
   "answer": 2,
-  "explanation": "The two acute angles of a right triangle are complementary (53° + 37° = 90°), and the sine of an angle equals the cosine of its complement. So cos(37°) = sin(53°) ≈ 0.80."
+  "explanation": "The two acute angles of a right triangle are complementary (53° + 37° = 90°), and the sine of an angle equals the cosine of its complement. So cos(37°) = sin(53°) ≈ 0.80. (0.60 is cos(53°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0289",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 17°, and sin(17°) ≈ 0.29. What is the approximate value of cos(73°)?",
   "tpl": "D8",
   "choices": [
+   "0.96",
    "0.71",
-   "−0.29",
-   "0.145",
+   "3.45",
    "0.29"
   ],
   "answer": 3,
-  "explanation": "The two acute angles of a right triangle are complementary (17° + 73° = 90°), and the sine of an angle equals the cosine of its complement. So cos(73°) = sin(17°) ≈ 0.29."
+  "explanation": "The two acute angles of a right triangle are complementary (17° + 73° = 90°), and the sine of an angle equals the cosine of its complement. So cos(73°) = sin(17°) ≈ 0.29. (0.96 is cos(17°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0290",
@@ -5143,7 +5143,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation C = 18 + 4h models the cost, in dollars, of renting a kayak for h hours. What is the best interpretation of 4 in this context?",
   "tpl": "A3",
   "choices": [
@@ -5177,7 +5177,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation P = 350 − 12d models the number of pages Mira has left to read d days after starting a book. What is the best interpretation of 12 in this context?",
   "tpl": "A3",
   "choices": [
@@ -5211,7 +5211,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation T = 12 + 15w models the height, in centimeters, of a plant w weeks after it was measured. What is the best interpretation of 15 in this context?",
   "tpl": "A3",
   "choices": [
@@ -5245,7 +5245,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation B = 240 − 3m models the balance, in dollars, on a gift card after m movie tickets are bought. What is the best interpretation of 3 in this context?",
   "tpl": "A3",
   "choices": [
@@ -5279,7 +5279,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation W = 40 + 6t models the amount of water, in liters, in a tank t minutes after a hose is turned on. What is the best interpretation of 6 in this context?",
   "tpl": "A3",
   "choices": [
@@ -5313,7 +5313,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation D = 240 − 6t models a hiker's distance, in kilometers, from the end of a trail t hours after starting. What is the best interpretation of 6 in this context?",
   "tpl": "A3",
   "choices": [
@@ -5347,7 +5347,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation F = 30 + 3n models the total fee, in dollars, for a school trip with n students. What is the best interpretation of 3 in this context?",
   "tpl": "A3",
   "choices": [
@@ -6536,7 +6536,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 2ˣ + 1. What is the value of g(4)?",
   "tpl": "B4",
   "choices": [
@@ -6585,7 +6585,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 5ˣ + 7. What is the value of g(4)?",
   "tpl": "B4",
   "type": "spr",
@@ -6632,7 +6632,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 3ˣ + 6. What is the value of g(2)?",
   "tpl": "B4",
   "choices": [
@@ -6681,7 +6681,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The value V, in dollars, of a car t years after it was bought is modeled by V = 24,000(0.88)ᵗ. Which statement best describes how the value of the car changes?",
   "tpl": "B5",
   "choices": [
@@ -6698,7 +6698,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 750 at time t = 0 and decreases by 7% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -6715,7 +6715,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The population P of a town t years after 2020 is modeled by P = 800(1.12)ᵗ. Which statement best describes how the town's population changes?",
   "tpl": "B5",
   "choices": [
@@ -6732,7 +6732,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 750 at time t = 0 and increases by 7% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -6749,7 +6749,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of bacteria N in a sample h hours after an experiment begins is modeled by N = 2,500(1.04)ʰ. Which statement best describes how the number of bacteria changes?",
   "tpl": "B5",
   "choices": [
@@ -6766,7 +6766,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 3,200 at time t = 0 and increases by 3% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -6783,7 +6783,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The mass M, in grams, of a substance d days after it was measured is modeled by M = 24,000(0.75)ᵈ. Which statement best describes how the mass of the substance changes?",
   "tpl": "B5",
   "choices": [
@@ -6800,7 +6800,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 1,500 at time t = 0 and decreases by 10% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -6817,7 +6817,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of subscribers S to a channel m months after launch is modeled by S = 2,500(1.04)ᵐ. Which statement best describes how the number of subscribers changes?",
   "tpl": "B5",
   "choices": [
@@ -6834,7 +6834,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 750 at time t = 0 and increases by 10% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -6851,7 +6851,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The amount A, in milligrams, of a medicine in a patient's blood h hours after a dose is modeled by A = 4,000(0.88)ʰ. Which statement best describes how the amount of medicine changes?",
   "tpl": "B5",
   "choices": [
@@ -6868,7 +6868,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 2,400 at time t = 0 and decreases by 7% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -7158,7 +7158,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(2) = −3. What is the remainder when p(x) is divided by x − 2?",
   "tpl": "B8",
   "choices": [
@@ -7192,7 +7192,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(−3) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -7226,7 +7226,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(3) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -8523,7 +8523,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 2 and height 5 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -8538,7 +8538,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 3 and height 10 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -8555,7 +8555,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a sphere with radius 6 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -8570,7 +8570,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 2 and height 10 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -8587,7 +8587,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 3 and height 4 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -8602,7 +8602,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 9 and height 5 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -8715,51 +8715,51 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 47°, and sin(47°) ≈ 0.73. What is the approximate value of cos(43°)?",
   "tpl": "D8",
   "choices": [
-   "−0.73",
+   "0.27",
    "0.73",
-   "0.365",
-   "0.27"
+   "1.37",
+   "0.68"
   ],
   "answer": 1,
-  "explanation": "The two acute angles of a right triangle are complementary (47° + 43° = 90°), and the sine of an angle equals the cosine of its complement. So cos(43°) = sin(47°) ≈ 0.73."
+  "explanation": "The two acute angles of a right triangle are complementary (47° + 43° = 90°), and the sine of an angle equals the cosine of its complement. So cos(43°) = sin(47°) ≈ 0.73. (0.68 is cos(47°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0533",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 20°, and sin(20°) ≈ 0.34. What is the approximate value of cos(70°)?",
   "tpl": "D8",
   "choices": [
-   "0.66",
-   "0.17",
+   "0.94",
+   "2.94",
    "0.34",
-   "−0.34"
+   "0.66"
   ],
   "answer": 2,
-  "explanation": "The two acute angles of a right triangle are complementary (20° + 70° = 90°), and the sine of an angle equals the cosine of its complement. So cos(70°) = sin(20°) ≈ 0.34."
+  "explanation": "The two acute angles of a right triangle are complementary (20° + 70° = 90°), and the sine of an angle equals the cosine of its complement. So cos(70°) = sin(20°) ≈ 0.34. (0.94 is cos(20°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0534",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 49°, and sin(49°) ≈ 0.75. What is the approximate value of cos(41°)?",
   "tpl": "D8",
   "choices": [
-   "−0.75",
-   "0.375",
    "0.25",
+   "1.33",
+   "0.66",
    "0.75"
   ],
   "answer": 3,
-  "explanation": "The two acute angles of a right triangle are complementary (49° + 41° = 90°), and the sine of an angle equals the cosine of its complement. So cos(41°) = sin(49°) ≈ 0.75."
+  "explanation": "The two acute angles of a right triangle are complementary (49° + 41° = 90°), and the sine of an angle equals the cosine of its complement. So cos(41°) = sin(49°) ≈ 0.75. (0.66 is cos(49°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0535",
@@ -9158,7 +9158,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation C = 18 + 6h models the cost, in dollars, of renting a kayak for h hours. What is the best interpretation of 6 in this context?",
   "tpl": "A3",
   "choices": [
@@ -9192,7 +9192,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation P = 300 − 4d models the number of pages Mira has left to read d days after starting a book. What is the best interpretation of 4 in this context?",
   "tpl": "A3",
   "choices": [
@@ -9226,7 +9226,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation T = 40 + 3w models the height, in centimeters, of a plant w weeks after it was measured. What is the best interpretation of 3 in this context?",
   "tpl": "A3",
   "choices": [
@@ -9260,7 +9260,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation B = 200 − 5m models the balance, in dollars, on a gift card after m movie tickets are bought. What is the best interpretation of 5 in this context?",
   "tpl": "A3",
   "choices": [
@@ -9294,7 +9294,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation W = 30 + 3t models the amount of water, in liters, in a tank t minutes after a hose is turned on. What is the best interpretation of 3 in this context?",
   "tpl": "A3",
   "choices": [
@@ -9328,7 +9328,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation D = 150 − 8t models a hiker's distance, in kilometers, from the end of a trail t hours after starting. What is the best interpretation of 8 in this context?",
   "tpl": "A3",
   "choices": [
@@ -9362,7 +9362,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation F = 30 + 15n models the total fee, in dollars, for a school trip with n students. What is the best interpretation of 15 in this context?",
   "tpl": "A3",
   "choices": [
@@ -10551,7 +10551,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 5ˣ + 1. What is the value of g(4)?",
   "tpl": "B4",
   "choices": [
@@ -10600,7 +10600,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 2ˣ + 8. What is the value of g(2)?",
   "tpl": "B4",
   "type": "spr",
@@ -10647,7 +10647,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 5ˣ + 6. What is the value of g(2)?",
   "tpl": "B4",
   "choices": [
@@ -10696,7 +10696,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The value V, in dollars, of a car t years after it was bought is modeled by V = 18,000(0.95)ᵗ. Which statement best describes how the value of the car changes?",
   "tpl": "B5",
   "choices": [
@@ -10713,7 +10713,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The population P of a town t years after 2020 is modeled by P = 1,200(1.04)ᵗ. Which statement best describes how the town's population changes?",
   "tpl": "B5",
   "choices": [
@@ -10730,7 +10730,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 1,500 at time t = 0 and increases by 3% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -10747,7 +10747,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of bacteria N in a sample h hours after an experiment begins is modeled by N = 18,000(1.2)ʰ. Which statement best describes how the number of bacteria changes?",
   "tpl": "B5",
   "choices": [
@@ -10764,7 +10764,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 1,500 at time t = 0 and increases by 30% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -10781,7 +10781,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The mass M, in grams, of a substance d days after it was measured is modeled by M = 1,200(0.85)ᵈ. Which statement best describes how the mass of the substance changes?",
   "tpl": "B5",
   "choices": [
@@ -10798,7 +10798,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 2,400 at time t = 0 and decreases by 6% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -10815,7 +10815,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of subscribers S to a channel m months after launch is modeled by S = 500(1.15)ᵐ. Which statement best describes how the number of subscribers changes?",
   "tpl": "B5",
   "choices": [
@@ -10832,7 +10832,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The amount A, in milligrams, of a medicine in a patient's blood h hours after a dose is modeled by A = 800(0.8)ʰ. Which statement best describes how the amount of medicine changes?",
   "tpl": "B5",
   "choices": [
@@ -10849,7 +10849,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 3,200 at time t = 0 and decreases by 6% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -11141,7 +11141,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(6) = 4. What is the remainder when p(x) is divided by x − 6?",
   "tpl": "B8",
   "choices": [
@@ -11192,7 +11192,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(1) = 0. Which of the following must be a factor of p(x)?",
   "tpl": "B8",
   "choices": [
@@ -11226,7 +11226,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(1) = 4. What is the remainder when p(x) is divided by x − 1?",
   "tpl": "B8",
   "choices": [
@@ -12421,7 +12421,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 2 and height 8 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -12436,7 +12436,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 5 and height 10 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -12453,7 +12453,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 3 and height 7 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -12468,7 +12468,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 5 and height 4 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -12483,7 +12483,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 6 and height 5 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -12598,68 +12598,68 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 63°, and sin(63°) ≈ 0.89. What is the approximate value of cos(27°)?",
   "tpl": "D8",
   "choices": [
    "0.89",
-   "0.11",
-   "0.445",
-   "−0.89"
+   "0.45",
+   "1.12",
+   "0.11"
   ],
   "answer": 0,
-  "explanation": "The two acute angles of a right triangle are complementary (63° + 27° = 90°), and the sine of an angle equals the cosine of its complement. So cos(27°) = sin(63°) ≈ 0.89."
+  "explanation": "The two acute angles of a right triangle are complementary (63° + 27° = 90°), and the sine of an angle equals the cosine of its complement. So cos(27°) = sin(63°) ≈ 0.89. (0.45 is cos(63°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0770",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 78°, and sin(78°) ≈ 0.98. What is the approximate value of cos(12°)?",
   "tpl": "D8",
   "choices": [
-   "0.49",
+   "1.02",
    "0.98",
-   "−0.98",
-   "0.02"
+   "0.02",
+   "0.21"
   ],
   "answer": 1,
-  "explanation": "The two acute angles of a right triangle are complementary (78° + 12° = 90°), and the sine of an angle equals the cosine of its complement. So cos(12°) = sin(78°) ≈ 0.98."
+  "explanation": "The two acute angles of a right triangle are complementary (78° + 12° = 90°), and the sine of an angle equals the cosine of its complement. So cos(12°) = sin(78°) ≈ 0.98. (0.21 is cos(78°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0771",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 65°, and sin(65°) ≈ 0.91. What is the approximate value of cos(25°)?",
   "tpl": "D8",
   "choices": [
-   "0.455",
-   "0.09",
+   "1.10",
+   "0.42",
    "0.91",
-   "−0.91"
+   "0.09"
   ],
   "answer": 2,
-  "explanation": "The two acute angles of a right triangle are complementary (65° + 25° = 90°), and the sine of an angle equals the cosine of its complement. So cos(25°) = sin(65°) ≈ 0.91."
+  "explanation": "The two acute angles of a right triangle are complementary (65° + 25° = 90°), and the sine of an angle equals the cosine of its complement. So cos(25°) = sin(65°) ≈ 0.91. (0.42 is cos(65°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0772",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 40°, and sin(40°) ≈ 0.64. What is the approximate value of cos(50°)?",
   "tpl": "D8",
   "choices": [
+   "0.77",
    "0.36",
-   "−0.64",
-   "0.32",
+   "1.56",
    "0.64"
   ],
   "answer": 3,
-  "explanation": "The two acute angles of a right triangle are complementary (40° + 50° = 90°), and the sine of an angle equals the cosine of its complement. So cos(50°) = sin(40°) ≈ 0.64."
+  "explanation": "The two acute angles of a right triangle are complementary (40° + 50° = 90°), and the sine of an angle equals the cosine of its complement. So cos(50°) = sin(40°) ≈ 0.64. (0.77 is cos(40°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-0773",
@@ -13058,7 +13058,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation C = 30 + 15h models the cost, in dollars, of renting a kayak for h hours. What is the best interpretation of 15 in this context?",
   "tpl": "A3",
   "choices": [
@@ -13092,7 +13092,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation P = 150 − 12d models the number of pages Mira has left to read d days after starting a book. What is the best interpretation of 12 in this context?",
   "tpl": "A3",
   "choices": [
@@ -13126,7 +13126,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation T = 60 + 4w models the height, in centimeters, of a plant w weeks after it was measured. What is the best interpretation of 4 in this context?",
   "tpl": "A3",
   "choices": [
@@ -13160,7 +13160,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation B = 500 − 8m models the balance, in dollars, on a gift card after m movie tickets are bought. What is the best interpretation of 8 in this context?",
   "tpl": "A3",
   "choices": [
@@ -13194,7 +13194,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation W = 30 + 4t models the amount of water, in liters, in a tank t minutes after a hose is turned on. What is the best interpretation of 4 in this context?",
   "tpl": "A3",
   "choices": [
@@ -13228,7 +13228,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation D = 300 − 12t models a hiker's distance, in kilometers, from the end of a trail t hours after starting. What is the best interpretation of 12 in this context?",
   "tpl": "A3",
   "choices": [
@@ -13262,7 +13262,7 @@
   "section": "math",
   "domain": "Algebra",
   "skill": "Linear functions in context",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The equation F = 18 + 6n models the total fee, in dollars, for a school trip with n students. What is the best interpretation of 6 in this context?",
   "tpl": "A3",
   "choices": [
@@ -14432,7 +14432,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 3ˣ + 9. What is the value of g(2)?",
   "tpl": "B4",
   "choices": [
@@ -14481,7 +14481,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 5ˣ + 8. What is the value of g(4)?",
   "tpl": "B4",
   "type": "spr",
@@ -14528,7 +14528,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Function notation",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The function g is defined by g(x) = 5ˣ + 6. What is the value of g(4)?",
   "tpl": "B4",
   "choices": [
@@ -14577,7 +14577,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The value V, in dollars, of a car t years after it was bought is modeled by V = 500(0.96)ᵗ. Which statement best describes how the value of the car changes?",
   "tpl": "B5",
   "choices": [
@@ -14594,7 +14594,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 3,200 at time t = 0 and decreases by 3% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -14611,7 +14611,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The population P of a town t years after 2020 is modeled by P = 24,000(1.05)ᵗ. Which statement best describes how the town's population changes?",
   "tpl": "B5",
   "choices": [
@@ -14628,7 +14628,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of bacteria N in a sample h hours after an experiment begins is modeled by N = 4,000(1.04)ʰ. Which statement best describes how the number of bacteria changes?",
   "tpl": "B5",
   "choices": [
@@ -14645,7 +14645,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "A quantity is 6,000 at time t = 0 and increases by 6% every year. Which function Q gives the quantity after t years?",
   "tpl": "B5",
   "choices": [
@@ -14662,7 +14662,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The mass M, in grams, of a substance d days after it was measured is modeled by M = 4,000(0.92)ᵈ. Which statement best describes how the mass of the substance changes?",
   "tpl": "B5",
   "choices": [
@@ -14679,7 +14679,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The number of subscribers S to a channel m months after launch is modeled by S = 24,000(1.12)ᵐ. Which statement best describes how the number of subscribers changes?",
   "tpl": "B5",
   "choices": [
@@ -14696,7 +14696,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Exponential functions",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The amount A, in milligrams, of a medicine in a patient's blood h hours after a dose is modeled by A = 18,000(0.8)ʰ. Which statement best describes how the amount of medicine changes?",
   "tpl": "B5",
   "choices": [
@@ -14988,7 +14988,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(3) = 4. What is the remainder when p(x) is divided by x − 3?",
   "tpl": "B8",
   "choices": [
@@ -15039,7 +15039,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(3) = −3. What is the remainder when p(x) is divided by x − 3?",
   "tpl": "B8",
   "choices": [
@@ -15073,7 +15073,7 @@
   "section": "math",
   "domain": "Advanced Math",
   "skill": "Polynomial factors and remainders",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "For the polynomial p, p(−3) = −3. What is the remainder when p(x) is divided by x + 3?",
   "tpl": "B8",
   "choices": [
@@ -16251,7 +16251,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 4 and height 5 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -16266,7 +16266,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 5 and height 8 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -16283,7 +16283,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cylinder with radius 5 and height 7 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "type": "spr",
@@ -16298,7 +16298,7 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Volume",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "The volume of a right circular cone with radius 3 and height 5 is kπ cubic units. What is the value of k?",
   "tpl": "D5",
   "choices": [
@@ -16379,68 +16379,68 @@
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 38°, and sin(38°) ≈ 0.62. What is the approximate value of cos(52°)?",
   "tpl": "D8",
   "choices": [
    "0.62",
-   "0.38",
-   "0.31",
-   "−0.62"
+   "0.79",
+   "1.61",
+   "0.38"
   ],
   "answer": 0,
-  "explanation": "The two acute angles of a right triangle are complementary (38° + 52° = 90°), and the sine of an angle equals the cosine of its complement. So cos(52°) = sin(38°) ≈ 0.62."
+  "explanation": "The two acute angles of a right triangle are complementary (38° + 52° = 90°), and the sine of an angle equals the cosine of its complement. So cos(52°) = sin(38°) ≈ 0.62. (0.79 is cos(38°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-1001",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 42°, and sin(42°) ≈ 0.67. What is the approximate value of cos(48°)?",
   "tpl": "D8",
   "choices": [
-   "0.33",
+   "0.74",
    "0.67",
-   "0.335",
-   "−0.67"
+   "1.49",
+   "0.33"
   ],
   "answer": 1,
-  "explanation": "The two acute angles of a right triangle are complementary (42° + 48° = 90°), and the sine of an angle equals the cosine of its complement. So cos(48°) = sin(42°) ≈ 0.67."
+  "explanation": "The two acute angles of a right triangle are complementary (42° + 48° = 90°), and the sine of an angle equals the cosine of its complement. So cos(48°) = sin(42°) ≈ 0.67. (0.74 is cos(42°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-1002",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 14°, and sin(14°) ≈ 0.24. What is the approximate value of cos(76°)?",
   "tpl": "D8",
   "choices": [
+   "0.97",
    "0.76",
-   "−0.24",
    "0.24",
-   "0.12"
+   "4.17"
   ],
   "answer": 2,
-  "explanation": "The two acute angles of a right triangle are complementary (14° + 76° = 90°), and the sine of an angle equals the cosine of its complement. So cos(76°) = sin(14°) ≈ 0.24."
+  "explanation": "The two acute angles of a right triangle are complementary (14° + 76° = 90°), and the sine of an angle equals the cosine of its complement. So cos(76°) = sin(14°) ≈ 0.24. (0.97 is cos(14°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-1003",
   "section": "math",
   "domain": "Geometry and Trigonometry",
   "skill": "Complementary angle identities",
-  "difficulty": "medium",
+  "difficulty": "easy",
   "question": "In a right triangle, one acute angle measures 58°, and sin(58°) ≈ 0.85. What is the approximate value of cos(32°)?",
   "tpl": "D8",
   "choices": [
-   "0.425",
+   "1.18",
+   "0.53",
    "0.15",
-   "−0.85",
    "0.85"
   ],
   "answer": 3,
-  "explanation": "The two acute angles of a right triangle are complementary (58° + 32° = 90°), and the sine of an angle equals the cosine of its complement. So cos(32°) = sin(58°) ≈ 0.85."
+  "explanation": "The two acute angles of a right triangle are complementary (58° + 32° = 90°), and the sine of an angle equals the cosine of its complement. So cos(32°) = sin(58°) ≈ 0.85. (0.53 is cos(58°), the cosine of the angle you were given, not its complement.)"
  },
  {
   "id": "mth-1004",

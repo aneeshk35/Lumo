@@ -238,7 +238,7 @@ def tpl_A3():
         eq = form.format(b=f"{b:,}", m=m)
         ctx = f"The equation {eq} models {meaning}."
         wrong_pool = [e.format(m=m, b=b) for e in extra]
-        mcq(ALG, "Linear functions in context", "medium", f"{ctx} What is the best interpretation of {m} in this context?",
+        mcq(ALG, "Linear functions in context", "easy", f"{ctx} What is the best interpretation of {m} in this context?",
             slope_m, [int_m] + wrong_pool, f"In a linear model, the number multiplying the variable is the rate of change. Here {m} is {slope_m}.", numeric=False)
         mcq(ALG, "Linear functions in context", "easy", f"{ctx} What is the best interpretation of {b:,} in this context?",
             int_m, [slope_m] + wrong_pool, f"The constant term is the value of {var} when the variable is 0, so {b:,} is {int_m}.", numeric=False)
@@ -484,9 +484,9 @@ def tpl_B4():
             why = f"Set {poly((m, 'x'), (k, ''))} equal to {num(m * x + k)}: {m}t = {num(m * x)}, so t = {num(x)}."
             wrong = [m * x + k, m * (m * x + k) + k, -x]
         if i % 2 == 0:
-            spr(ADV, "Function notation", "easy" if kind == 0 else "medium", stem, val, why)
+            spr(ADV, "Function notation", "medium" if kind == 2 else "easy", stem, val, why)
         else:
-            mcq(ADV, "Function notation", "easy" if kind == 0 else "medium", stem, val, distinct(val, wrong), why)
+            mcq(ADV, "Function notation", "medium" if kind == 2 else "easy", stem, val, distinct(val, wrong), why)
 
 
 # B5: exponential growth and decay models
@@ -509,7 +509,7 @@ def tpl_B5():
         other = "decreases" if kind == "growth" else "increases"
         right = f"It {word} by {r}% each {per}."
         wrong = [f"It {word} by {dec(fac * 100, 0)}% each {per}.", f"It {other} by {r}% each {per}.", f"It {word} by {f} each {per}."]
-        mcq(ADV, "Exponential functions", "medium", stem, right, wrong,
+        mcq(ADV, "Exponential functions", "easy", stem, right, wrong,
             f"Each {per} the {thing} is multiplied by {f}, which is {'100% + ' + str(r) + '%' if kind == 'growth' else '100% − ' + str(r) + '%'}. So it {word} by {r}% each time, not by a fixed amount.",
             numeric=False)
         start = rng.choice([1500, 2400, 3200, 6000, 750])
@@ -521,7 +521,7 @@ def tpl_B5():
             continue
         right2 = f"Q(t) = {start:,}({dec(g, 2)})ᵗ"
         wrong2 = [f"Q(t) = {start:,}({dec(F(r2, 100), 2)})ᵗ", f"Q(t) = {start:,}({dec(2 - g, 2)})ᵗ", f"Q(t) = {start:,} {'+' if kind == 'growth' else '−'} {dec(F(r2, 100), 2)}t"]
-        mcq(ADV, "Exponential functions", "medium", stem2, right2, wrong2,
+        mcq(ADV, "Exponential functions", "easy", stem2, right2, wrong2,
             f"A {r2}% {'increase' if kind == 'growth' else 'decrease'} each year multiplies the amount by {dec(g, 2)}, so Q(t) = {start:,}({dec(g, 2)})ᵗ. The last choice is linear, which adds the same amount every year.",
             numeric=False)
 
@@ -546,7 +546,7 @@ def tpl_B6():
         if n_ == 2:
             stem = f"For x > 0, which expression is equivalent to √(x{str(m).translate(SUP)})?"
         alt = m - n_ if m - n_ not in (0, 1) else m + n_
-        mcq(ADV, "Exponent rules", "medium", stem, right, [f"x^({n_}/{m})", "x" + str(m * n_).translate(SUP), "x" + str(alt).translate(SUP)],
+        mcq(ADV, "Exponent rules", "easy", stem, right, [f"x^({n_}/{m})", "x" + str(m * n_).translate(SUP), "x" + str(alt).translate(SUP)],
             f"The nth root of xᵐ is x^(m/n). Here that is x^({m}/{n_}).", numeric=False)
 
 
@@ -595,9 +595,9 @@ def tpl_B8():
             else:
                 stem = f"For the polynomial p, p({num(k)}) = {num(v)}. What is the remainder when p(x) is divided by x {signed(-k)}?"
                 why = f"The remainder when p(x) is divided by x − a is p(a). Here a = {num(k)}, so the remainder is {num(v)}."
-                mcq(ADV, "Polynomial factors and remainders", "medium", stem, v, distinct(v, [k, -v, 0, -k]), why)
+                mcq(ADV, "Polynomial factors and remainders", "easy", stem, v, distinct(v, [k, -v, 0, -k]), why)
                 continue
-            mcq(ADV, "Polynomial factors and remainders", "medium", stem, right, wrong, why, numeric=False)
+            mcq(ADV, "Polynomial factors and remainders", "easy", stem, right, wrong, why, numeric=False)
 
 
 # B9: line meets parabola
@@ -893,12 +893,12 @@ def tpl_D5():
             continue
         why = f"Use {form}: " + (f"π({r})²({h}) = {num(val)}π." if name == "cylinder" else f"(1/3)π({r})²({h}) = {num(val)}π." if name == "cone" else f"(4/3)π({r})³ = {num(val)}π.")
         if i % 2 == 0:
-            spr(GEO, "Volume", "medium", stem, val, why)
+            spr(GEO, "Volume", "easy", stem, val, why)
         else:
             wrong = [r * r * h, 2 * r * h, F(r * r * h, 3)] if name != "cone" else [r * r * h, F(r * r * h, 2), 3 * r * h]
             if name == "sphere":
                 wrong = [4 * r ** 3, 4 * r * r, F(4 * r * r, 3)]
-            mcq(GEO, "Volume", "medium", stem, val, distinct(val, wrong), why)
+            mcq(GEO, "Volume", "easy", stem, val, distinct(val, wrong), why)
 
 
 # D6: similar triangles
@@ -946,9 +946,16 @@ def tpl_D8():
         pairs = [(a, f"{_m.sin(_m.radians(a)):.2f}") for a in rng.sample(range(12, 79), 4)]
     for i, (a, v) in enumerate(pairs):
         stem = f"In a right triangle, one acute angle measures {a}°, and sin({a}°) ≈ {v}. What is the approximate value of cos({90 - a}°)?"
-        wrong = [f"{1 - float(v):.2f}", f"{-float(v):.2f}".replace("-", "−"), f"{float(v) / 2:.3f}".rstrip("0")]
-        mcq(GEO, "Complementary angle identities", "medium", stem, v, wrong,
-            f"The two acute angles of a right triangle are complementary ({a}° + {90 - a}° = 90°), and the sine of an angle equals the cosine of its complement. So cos({90 - a}°) = sin({a}°) ≈ {v}.",
+        # The real slips: taking cos of the angle you were given, 1 − sin, and 1/sin.
+        wrong = []
+        for w in (f"{_m.cos(_m.radians(a)):.2f}", f"{1 - float(v):.2f}", f"{1 / float(v):.2f}",
+                  f"{-float(v):.2f}".replace("-", "−")):
+            if w != v and w not in wrong and len(wrong) < 3:
+                wrong.append(w)
+        # One step and a fact you know or don't: easy by the rubric (tools/DIFFICULTY.md).
+        mcq(GEO, "Complementary angle identities", "easy", stem, v, wrong,
+            f"The two acute angles of a right triangle are complementary ({a}° + {90 - a}° = 90°), and the sine of an angle equals the cosine of its complement. So cos({90 - a}°) = sin({a}°) ≈ {v}. "
+            f"({_m.cos(_m.radians(a)):.2f} is cos({a}°), the cosine of the angle you were given, not its complement.)",
             numeric=False)
 
 

@@ -7,7 +7,9 @@ have to mean the same thing everywhere. Rate the question, not the topic.
 ## Easy
 One step, or a fact you recognize on sight.
 - Math: evaluate f(3), find 15% of 60, the hypotenuse of a 6-8-10 triangle,
-  read a vertex off vertex form, read a value off a graph.
+  read a vertex off vertex form, read a value off a graph, cos(48°) from
+  sin(42°), a volume from a reference-sheet formula, what the slope or the
+  growth factor in a model means, the remainder when p(x) is divided by x − a.
 - Reading and writing: a word whose meaning the sentence spells out, a plain
   comma in a list, an infinitive after "decided" or "plans".
 
