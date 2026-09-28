@@ -192,7 +192,8 @@ DESMOS_CSP = "; ".join([
     "form-action 'none'",
 ])
 
-TIMER_MS = {"easy": 60000, "medium": 75000, "hard": 90000}
+# Time per question in timed play (duels, 2v2, parties). Practice is untimed.
+TIMER_MS = {"easy": 90000, "medium": 120000, "hard": 180000}
 BASE_POINTS = {"easy": 500, "medium": 750, "hard": 1000}
 STREAK_BONUS = 100
 STREAK_CAP = 500

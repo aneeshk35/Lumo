@@ -491,6 +491,8 @@ def test_duel_difficulty(browser):
     b.click("#btn-ready")
     a.wait_for_selector("#v-match.active", timeout=8000)
     check("hard duel serves hard questions", "hard" in a.inner_text("#q-kicker").lower(), a.inner_text("#q-kicker"))
+    clock = a.inner_text("#match-timer-txt")
+    check("a hard question gets a 3-minute clock", clock in ("3:00", "2:59", "2:58"), clock)
 
     elos = a.evaluate("""() => {
         const before = { ...profile.elos };

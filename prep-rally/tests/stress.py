@@ -323,6 +323,9 @@ def play_duel(section, difficulty, skill_a, skill_b, report):
         questions_seen.append(qs[tag_a]["id"])
         if qs[tag_a]["difficulty"] != difficulty or (section != "mixed" and qs[tag_a]["section"] != section):
             report.append(("wrong ladder question", qs[tag_a]["id"], section, difficulty))
+        want_ms = {"easy": 90000, "medium": 120000, "hard": 180000}[difficulty]
+        if qs[tag_a].get("durationMs") != want_ms:
+            report.append(("wrong clock length", difficulty, qs[tag_a].get("durationMs")))
         for t, (pid, skill) in players.items():
             good = rng.random() < skill
             ans = right_answer(qs[t]["id"]) if good else wrong_answer(qs[t]["id"])
