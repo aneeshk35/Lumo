@@ -404,6 +404,9 @@ def plan(page):
                                            page.fill("#spr-input", "5/6"), page.wait_for_timeout(200))),
         ("saved & mistakes, filled", lambda: nav(page, "Saved & Mistakes")),
         ("analytics, filled", lambda: nav(page, "Analytics")),
+        ("game-lost notice", lambda: (page.evaluate(
+            "notice('That game ended', 'The Lumo server restarted (usually for an update), so the game in progress was lost. Everything you answered before that is saved.')"),
+            page.wait_for_timeout(200))),
     ]
 
 

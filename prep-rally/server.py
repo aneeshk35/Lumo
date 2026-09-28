@@ -417,6 +417,10 @@ class Party:
         self.bot_plans = {}  # pid -> this question's plan for each bot
         self.ranked = False  # set by the ranked queue; only these move Elo
         self.seen = []       # question ids to avoid on a rematch
+        # The last reveal and final results, so a player whose event stream
+        # dropped can catch up through /api/sync instead of freezing.
+        self.last_reveal = None
+        self.last_over = None
 
     def auto_advances(self):
         return self.mode in ("duel", "team")
@@ -707,7 +711,7 @@ class Party:
                 return {"name": p["name"], "answered": ans is not None,
                         "correct": bool(ans and ans["correct"]), "points": ans["points"] if ans else 0}
 
-            self.broadcast_personal("reveal", {
+            self.last_reveal = {
                 "type": q.get("type", "mcq"),
                 "correctIndex": None if spr else q["answer"],
                 "correctAnswer": q["answers"][0] if spr else None,
@@ -719,7 +723,8 @@ class Party:
                 "isLast": is_last,
                 "autoAdvanceSecs": DUEL_REVEAL_SECS if self.auto_advances() else None,
                 "teamScores": self.team_scores() if self.mode == "team" else None,
-            }, mine)
+            }
+            self.broadcast_personal("reveal", self.last_reveal, mine)
             if self.auto_advances():
                 self.timer = threading.Timer(DUEL_REVEAL_SECS, self.auto_advance)
                 self.timer.daemon = True
@@ -765,12 +770,30 @@ class Party:
                     d["correct"] += 1
             breakdowns[p["name"]] = by_domain
 
-        self.broadcast_personal("game_over", {
+        self.last_over = {
             "leaderboard": board, "total": total,
             "breakdowns": breakdowns, "highscores": top[:10],
             "teamScores": self.team_scores() if self.mode == "team" else None,
             "ratings": ratings,
-        }, lambda p: {"name": p["name"]})
+        }
+        self.broadcast_personal("game_over", self.last_over, lambda p: {"name": p["name"]})
+
+    def sync_state(self, player):
+        """Everything a client needs to catch up after missing events."""
+        out = {"ok": True, "phase": self.phase, "index": self.q_index, "you": {"name": player["name"]}}
+        if self.phase in ("question", "reveal"):
+            out["question"] = self.public_question()
+            out["answered"] = player["id"] in self.current_answers
+        if self.phase == "reveal" and self.last_reveal:
+            ans = self.current_answers.get(player["id"])
+            out["reveal"] = dict(self.last_reveal, you={
+                "name": player["name"], "answered": ans is not None,
+                "correct": bool(ans and ans["correct"]), "points": ans["points"] if ans else 0})
+        elif self.phase == "ended" and self.last_over:
+            out["over"] = dict(self.last_over, you={"name": player["name"]})
+        elif self.phase == "lobby":
+            out["lobby"] = self.lobby_state()
+        return out
 
     def rate(self):
         """Ranked Elo, computed here rather than trusted from the browser.
@@ -1162,6 +1185,8 @@ class Handler(BaseHTTPRequestHandler):
             if not party or not player:
                 return self.send_json({"error": "Party not found."}, 404)
 
+            if route == "/api/sync":
+                return self.send_json(party.sync_state(player))
             if route == "/api/start":
                 return self.api_start(party, player)
             if route == "/api/ready":

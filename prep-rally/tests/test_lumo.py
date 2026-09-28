@@ -1300,6 +1300,45 @@ def test_shortcuts_and_report(browser):
     ctx.close()
 
 
+def test_resync(browser):
+    print("\n24. Catching up after a dropped connection, and a lost game")
+    a_ctx, a = new_player(browser, "Hoster")
+    b_ctx, b = new_player(browser, "Dropper")
+    errors = []
+    b.on("pageerror", lambda e: errors.append(str(e)))
+    code = a.evaluate("""async () => {
+        const res = await api('create', {name: profile.name, settings: {section: 'rw', count: 3}});
+        ME.code = res.code; ME.playerId = res.playerId; game.myName = res.yourName;
+        game.mode = 'party'; game.isHost = true; game.phase = 'lobby';
+        await connectEvents(); renderLobby(res.state); switchView('v-lobby'); return res.code; }""")
+    b.evaluate("""async (c) => {
+        const res = await api('join', {code: c, name: profile.name});
+        ME.code = res.code; ME.playerId = res.playerId; game.myName = res.yourName;
+        game.mode = 'party'; game.isHost = false; game.phase = 'lobby';
+        await connectEvents(); renderLobby(res.state); switchView('v-lobby'); }""", code)
+    b.wait_for_timeout(600)
+    # B's stream silently dies; the host starts and the first question goes out without B.
+    b.evaluate("eventSource.close()")
+    a.evaluate("api('start')")
+    a.wait_for_selector("#v-match.active", timeout=8000)
+    b.wait_for_timeout(800)
+    check("a player with a dead stream missed the question", b.locator("#v-match.active").count() == 0)
+    b.evaluate("syncGame()")
+    b.wait_for_selector("#v-match.active", timeout=8000)
+    check("syncing catches them up to the current question",
+          b.inner_text("#q-text") == a.inner_text("#q-text"))
+    check("syncing reconnects the event stream", b.evaluate("!!eventSource && eventSource.readyState !== 2"))
+    # The game disappears (what a server restart does): the page says so and leaves.
+    b.evaluate("ME.code = 'ZZZZZ'; syncGame()")
+    b.wait_for_selector("#notice-overlay:not(.hidden)", timeout=8000)
+    check("a lost game is explained", "ended" in b.inner_text("#notice-title").lower(), b.inner_text("#notice-title"))
+    check("and the player lands back on Play", b.locator("#v-play.active").count() == 1 and b.evaluate("game.phase") == "idle")
+    b.click("#btn-notice-ok")
+    check("no page errors while resyncing", not errors, str(errors))
+    a_ctx.close()
+    b_ctx.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
@@ -1308,7 +1347,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_invite_join, test_mark_reviewed, test_shortcuts_and_report, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
+                   test_friends, test_invite_join, test_mark_reviewed, test_shortcuts_and_report, test_resync, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

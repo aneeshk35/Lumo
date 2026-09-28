@@ -478,6 +478,15 @@ function leaveGuard() {
   return false;
 }
 
+// A message that needs reading, with an OK button (a toast vanishes too fast).
+function notice(title, body) {
+  $('notice-title').textContent = title;
+  $('notice-body').textContent = body;
+  $('notice-overlay').classList.remove('hidden');
+  $('btn-notice-ok').focus();
+}
+$('btn-notice-ok').onclick = () => $('notice-overlay').classList.add('hidden');
+
 function toast(msg) {
   const t = $('toast');
   t.textContent = msg;
@@ -522,7 +531,11 @@ function connectEvents() {
   on('reveal', onReveal);
   on('game_over', onGameOver);
   on('back_to_lobby', (lobby) => { game.phase = 'lobby'; renderLobby(lobby); switchView('v-lobby'); });
-  eventSource.onerror = () => {};
+  // A dropped stream (network blip, or the server restarting for an update)
+  // used to freeze the game. Now it asks the server where things stand.
+  eventSource.onerror = () => {
+    scheduleSync(eventSource && eventSource.readyState === EventSource.CLOSED ? 300 : 3000);
+  };
 
   return new Promise((resolve) => {
     let settled = false;
@@ -531,6 +544,50 @@ function connectEvents() {
     setTimeout(done, 2000); // fallback so a stalled stream never blocks the UI
   });
 }
+
+/* ================= Keeping in sync =================
+   /api/sync returns the game's current phase with the question, reveal, or
+   results in it, so a player who missed events catches up instead of
+   waiting forever. If the game no longer exists, say so and go back. */
+let syncTimer = null;
+let syncing = false;
+function scheduleSync(delay) {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(syncGame, delay);
+}
+async function syncGame() {
+  if (syncing || !ME.code || !['lobby', 'question', 'reveal'].includes(game.phase)) return;
+  syncing = true;
+  let st = null;
+  try { st = await api('sync'); } catch (e) { st = null; }
+  syncing = false;
+  if (!ME.code) return;
+  if (!st) return scheduleSync(5000);            // offline: keep trying
+  if (st.error) return gameLost();
+  if (st.you && st.you.name) game.myName = st.you.name;
+  const shownIndex = game.currentQ ? game.currentQ.index : -1;
+  if ((st.phase === 'question' || st.phase === 'reveal') && st.question
+      && (st.question.index !== shownIndex || game.phase === 'lobby')) {
+    onQuestion(st.question);
+  }
+  if (st.phase === 'reveal' && st.reveal && game.phase !== 'reveal') onReveal(st.reveal);
+  if (st.phase === 'ended' && st.over) onGameOver(st.over);
+  if (eventSource && eventSource.readyState === EventSource.CLOSED && ['lobby', 'question', 'reveal'].includes(game.phase)) {
+    connectEvents();
+  }
+}
+function gameLost() {
+  teardownGame();
+  navTo('Play');
+  notice('That game ended',
+    'The Lumo server restarted (usually for an update), so the game in progress was lost. '
+    + 'Everything you answered before that is saved. Start a new game whenever you\u2019re ready.');
+}
+// A quiet check every 15 seconds while in a game catches a stream that died
+// without telling anyone.
+setInterval(() => {
+  if (['lobby', 'question', 'reveal'].includes(game.phase) && !document.hidden) syncGame();
+}, 15000);
 
 /* ================= Game state ================= */
 const game = {
@@ -971,7 +1028,11 @@ function startTimer(endsAt, durationMs) {
     $('match-timer-txt').textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`;
     $('match-timer').classList.toggle('low', secs <= 10);
     $('speed-fill').style.width = `${(remaining / durationMs) * 100}%`;
-    if (remaining <= 0) clearInterval(game.timerInterval);
+    if (remaining <= 0) {
+      clearInterval(game.timerInterval);
+      // The server reveals right at 0; if nothing arrives, go and ask.
+      scheduleSync(4000);
+    }
   };
   tick();
   game.timerInterval = setInterval(tick, 200);
@@ -1390,6 +1451,7 @@ window.addEventListener('resize', () => { if (!$('calc-panel').classList.contain
 
 /* ================= Reveal ================= */
 function onReveal(data) {
+  clearTimeout(syncTimer);
   game.phase = 'reveal';
   // The server says who we are; trust that over whatever name we joined with.
   if (data.you && data.you.name) game.myName = data.you.name;
