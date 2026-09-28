@@ -1891,7 +1891,7 @@ function renderMistakes() {
     el.innerHTML = `<div class="empty-note">
       <span class="lumo"><span class="dot"></span></span>
       <span class="t">Nothing missed yet</span>
-      <span class="d">Questions you get wrong land here with the full explanation. Answer one correctly on review and it drops off the list.</span>
+      <span class="d">Questions you get wrong land here with the full explanation. Get one right on review, or mark it reviewed, and it goes back into the regular rotation.</span>
       <button class="btn btn-primary" style="font-size:13px;padding:9px 18px" data-nav="Question Rush">Start a rush</button>
     </div>`;
     bindNavButtons();
@@ -1916,7 +1916,7 @@ function renderMistakes() {
       <div class="acts">
         <button class="btn-soft" data-retry-id="${esc(m.id)}">Retry this one</button>
         <button class="btn-soft" data-similar-id="${esc(m.id)}">Practice similar</button>
-        <button class="btn-soft" data-forget-id="${esc(m.id)}">Remove</button>
+        <button class="btn-soft" data-reviewed-id="${esc(m.id)}" title="Take it off this list and put it back in the regular question rotation">Mark reviewed</button>
       </div>
     </div>`).join('');
 
@@ -1926,13 +1926,22 @@ function renderMistakes() {
   document.querySelectorAll('[data-retry-id]').forEach((b) => {
     b.onclick = () => startPractice({ ids: [b.dataset.retryId], count: 1 }, 'Review');
   });
-  document.querySelectorAll('[data-forget-id]').forEach((b) => {
+  document.querySelectorAll('[data-reviewed-id]').forEach((b) => {
     b.onclick = () => {
-      profile.mistakes = profile.mistakes.filter((m) => m.id !== b.dataset.forgetId);
-      saveProfile();
-      renderMistakes();
+      markReviewed([b.dataset.reviewedId]);
+      toast('Marked reviewed. It\u2019s back in the question rotation.');
     };
   });
+}
+
+// Reviewed mistakes leave the list and go back into the regular rotation:
+// forgetting that they were seen lets drills and duels deal them again.
+function markReviewed(ids) {
+  const done = new Set(ids);
+  profile.mistakes = profile.mistakes.filter((m) => !done.has(m.id));
+  profile.seen = profile.seen.filter((id) => !done.has(id));
+  saveProfile();
+  renderMistakes();
 }
 
 $('btn-review-all').onclick = () => {
@@ -1941,11 +1950,11 @@ $('btn-review-all').onclick = () => {
   startPractice({ ids, count: ids.length }, 'Review');
 };
 $('btn-clear-mistakes').onclick = () => {
-  if (!profile.mistakes.length) return;
-  if (!confirm(`Clear all ${profile.mistakes.length} saved mistakes?`)) return;
-  profile.mistakes = [];
-  saveProfile();
-  renderMistakes();
+  const n = profile.mistakes.length;
+  if (!n) return;
+  if (!confirm(`Mark all ${n} as reviewed? They leave this list and go back into the regular question rotation.`)) return;
+  markReviewed(profile.mistakes.map((m) => m.id));
+  toast(`${n} question${n === 1 ? '' : 's'} back in the rotation.`);
 };
 
 /* ================= Study Planner ================= */

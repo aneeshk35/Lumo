@@ -1220,6 +1220,40 @@ def test_invite_join(browser):
     b_ctx.close()
 
 
+def test_mark_reviewed(browser):
+    print("\n22. Mark mistakes reviewed and put them back in rotation")
+    ctx, page = new_player(browser, "Reviewer")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.evaluate("startPractice({section:'rw', count:3}, 'Drill')")
+    page.wait_for_selector("#v-match.active", timeout=8000)
+    for _ in range(3):
+        answer_current(page, 3)
+        page.wait_for_selector("#reveal-card:not(.hidden)", timeout=8000)
+        if page.locator("#btn-next").is_visible():
+            page.click("#btn-next")
+            page.wait_for_timeout(400)
+    page.evaluate("profile.mistakes.length || (profile.mistakes = profile.seen.map((id) => ({id, question: 'Q', choices: ['a','b','c','d'], domain: 'Craft and Structure', skill: 'Words in context', difficulty: 'easy', mine: 0, correctIndex: 1, explanation: 'E', when: Date.now()})))")
+    nav(page, "Saved & Mistakes")
+    before = page.locator("#mistake-list .mistake").count()
+    check("missed questions are listed", before >= 1, str(before))
+    first = page.get_attribute("#mistake-list [data-reviewed-id]", "data-reviewed-id")
+    check("each mistake offers Mark reviewed", page.locator("#mistake-list [data-reviewed-id]").count() == before)
+    page.click("#mistake-list [data-reviewed-id]")
+    page.wait_for_timeout(300)
+    check("marking reviewed takes it off the list", page.locator("#mistake-list .mistake").count() == before - 1)
+    check("a reviewed question goes back into rotation",
+          page.evaluate("(id) => !profile.seen.includes(id) && !profile.mistakes.some((m) => m.id === id)", first))
+    if before > 1:
+        page.once("dialog", lambda d: d.accept())
+        page.click("#btn-clear-mistakes")
+        page.wait_for_timeout(300)
+        check("Mark all reviewed empties the list and the seen history for them",
+              page.evaluate("profile.mistakes.length") == 0 and page.locator("#mistake-list .mistake").count() == 0)
+    check("no page errors when marking reviewed", not errors, str(errors))
+    ctx.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
@@ -1228,7 +1262,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_invite_join, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
+                   test_friends, test_invite_join, test_mark_reviewed, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest
