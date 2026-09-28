@@ -59,7 +59,7 @@ itself. Simpler, one less moving part, and no CORS at all.
 ## 3. Storage on Supabase (required for accounts)
 
 Lumo saves nothing on the server's disk. Accounts, classes, tutor
-applications, and high scores all live in Supabase. Until it's connected,
+applications, and friend codes all live in Supabase. Until it's connected,
 games work but those features show "the database isn't connected".
 
 1. Open your project at [supabase.com](https://supabase.com).

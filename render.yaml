@@ -21,7 +21,7 @@ services:
       - key: DESMOS_API_KEY
         sync: false
       # All saved data lives in Supabase (nothing on Render's disk). Without
-      # these, accounts/classes/tutoring/high scores are off. See DEPLOY.md.
+      # these, accounts/classes/tutoring/saved friends are off. See DEPLOY.md.
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_SERVICE_KEY

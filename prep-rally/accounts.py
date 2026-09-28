@@ -3,7 +3,7 @@
 The server talks to Postgres through Supabase's REST API (PostgREST) with the
 secret key from SUPABASE_URL / SUPABASE_SERVICE_KEY. Nothing is written to the
 server's disk. Without those variables storage is off: games still run, but
-accounts, classes, tutor applications, and high scores are unavailable.
+accounts, classes, and tutor applications are unavailable.
 
 Tables are in supabase/schema.sql. Every table has row level security on and
 no policies, so Supabase's public keys can read nothing; only this server can.

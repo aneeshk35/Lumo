@@ -27,6 +27,7 @@ const DEFAULT_PROFILE = {
   classes: [],         // [{code, name, isTeacher}] cached for the sidebar
   lessonsDone: [],     // ids from lessons.json
   seen: [],            // ids of answered questions, newest last (so sets avoid repeats)
+  matchLog: [],        // past games, newest first, each with every question and your answer
 };
 // Fill in anything an older or partial profile is missing. DEFAULT_PROFILE is
 // cloned so its arrays are never shared with (and mutated through) a profile.
@@ -35,7 +36,7 @@ function normalizeProfile(raw) {
   p.solved = { ...DEFAULT_PROFILE.solved, ...(p.solved || {}) };
   // Profiles from before per-difficulty ratings start every ladder at their old rating.
   p.elos = { easy: p.elo, medium: p.elo, hard: p.elo, ...(p.elos || {}) };
-  ['mistakes', 'vocabKnown', 'friends', 'classes', 'lessonsDone', 'sessions', 'seen'].forEach((k) => {
+  ['mistakes', 'vocabKnown', 'friends', 'classes', 'lessonsDone', 'sessions', 'seen', 'matchLog'].forEach((k) => {
     if (!Array.isArray(p[k])) p[k] = [];
   });
   if (!p.domainStats || typeof p.domainStats !== 'object') p.domainStats = {};
@@ -157,6 +158,7 @@ const NAV = [
   { name: 'Progress', icon: 'analytics', items: [
     { name: 'Study Planner', view: 'v-planner', badge: plannerBadge },
     { name: 'Saved & Mistakes', view: 'v-mistakes' },
+    { name: 'Game History', view: 'v-history' },
     { name: 'Analytics', view: 'v-analytics' },
   ]},
   { name: 'Classes', icon: 'classes', items: [
@@ -449,6 +451,7 @@ function navTo(name) {
   if (item.view === 'v-analytics') renderAnalytics();
   if (item.view === 'v-bank') renderBank();
   if (item.view === 'v-mistakes') renderMistakes();
+  if (item.view === 'v-history') renderHistory();
   if (item.view === 'v-planner') renderPlanner();
   if (item.view === 'v-vocab') renderVocab();
   if (RENDERERS[item.view]) RENDERERS[item.view](item);
@@ -1701,6 +1704,7 @@ function onGameOver(data) {
     $('result-hero').textContent = game.mode === 'solo' ? 'Session complete'
       : myRank === 1 ? 'You win' : `You placed ${ordinal(myRank)}`;
   }
+  const logged = logGame(data, meRow, $('result-hero').textContent, sub);
   saveProfile();
   $('result-sub').textContent = sub;
   // Push fresh totals to any class this player is a student in.
@@ -1729,9 +1733,180 @@ function onGameOver(data) {
     </div>`;
   }).join('') : '<span class="muted" style="font-size:13px">No answers recorded.</span>';
 
+  $('result-review-block').classList.toggle('hidden', !logged);
+  if (logged) renderReview('result', logged);
   $('btn-play-again').classList.toggle('hidden', !(game.mode === 'party' && game.isHost) && game.mode !== 'solo');
   switchView('v-results');
+  bindNavButtons();
 }
+
+/* ================= Question review & game history =================
+   Game over carries every question with its answer and your own answer.
+   The results screen shows it, and it's kept in profile.matchLog (saved to the
+   account like the rest of the profile) so players can go back through it. */
+const LOG_MAX = 15;            // games kept
+const LOG_BYTES = 150000;      // and never more than this much of the profile
+
+function gameKindLabel() {
+  if (game.mode === 'duel') return game.ranked ? `Ranked duel · ${DIFF_LABEL[game.difficulty] || ''}`.replace(/ · $/, '') : 'Duel';
+  if (game.mode === 'team') return '2v2';
+  if (game.mode === 'party') return 'Party';
+  return game.label || 'Practice';
+}
+
+function logGame(data, meRow, hero, sub) {
+  const questions = data.review || [];
+  const answers = (data.you && data.you.answers) || [];
+  // One-question retries aren't worth a history entry.
+  if (questions.length < 3 || answers.length !== questions.length) return null;
+  const entry = {
+    id: `g${Date.now().toString(36)}`, when: Date.now(), kind: gameKindLabel(),
+    hero, sub, score: meRow.score || 0, correct: meRow.correct || 0, total: data.total,
+    questions, answers,
+  };
+  // A reconnect can deliver the same results twice; keep one copy.
+  const prev = profile.matchLog[0];
+  const same = prev && Date.now() - prev.when < 600000
+    && prev.questions.map((q) => q.id).join() === questions.map((q) => q.id).join();
+  profile.matchLog = [entry, ...profile.matchLog.slice(same ? 1 : 0)].slice(0, LOG_MAX);
+  while (profile.matchLog.length > 1 && JSON.stringify(profile.matchLog).length > LOG_BYTES) {
+    profile.matchLog.pop();
+  }
+  return entry;
+}
+
+function answeredAt(a) {
+  return !!a && (a.choice !== null && a.choice !== undefined
+    || (a.response !== null && a.response !== undefined && a.response !== ''));
+}
+function reviewState(a) {
+  if (!answeredAt(a)) return 'skip';
+  return a.correct ? 'ok' : 'miss';
+}
+function prettyNum(v) { return String(v).replace(/-/g, '\u2212'); }
+
+const RV_MARK = {
+  ok: '<svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  miss: '<svg class="ic" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
+  skip: '<svg class="ic" viewBox="0 0 24 24"><path d="M6.5 12h11"/></svg>',
+};
+const RV_LABEL = { ok: 'Correct', miss: 'Missed', skip: 'No answer' };
+
+function reviewCard(q, a, i, open) {
+  const st = reviewState(a);
+  const spr = q.type === 'spr';
+  // Figures render as images, which can never run anything.
+  const fig = typeof q.figure === 'string' && q.figure.startsWith('<svg')
+    ? `<img class="rv-fig" alt="Figure for question ${i + 1}" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(q.figure)}">` : '';
+  const mineIdx = a && a.choice !== null && a.choice !== undefined ? a.choice : -1;
+  const body = spr ? `
+      <div class="answers">
+        <span class="ans-chip ${st === 'ok' ? 'right' : 'mine'}">You: ${answeredAt(a) ? esc(prettyNum(a.response)) : 'no answer'}</span>
+        ${st === 'ok' ? '' : `<span class="ans-chip right">Correct: ${esc(prettyNum(q.correctAnswer))}</span>`}
+      </div>` : `
+      <div class="rv-choices">
+        ${(q.choices || []).map((c, ci) => {
+          const cls = ci === q.correctIndex ? 'right' : ci === mineIdx ? 'mine' : '';
+          const note = ci === q.correctIndex ? (ci === mineIdx ? 'Your answer · correct' : 'Correct answer')
+            : ci === mineIdx ? 'Your answer' : '';
+          return `<div class="rv-choice ${cls}"><span class="key">${LETTERS[ci]}</span><span class="val">${esc(c)}</span>${note ? `<span class="rv-pick">${note}</span>` : ''}</div>`;
+        }).join('')}
+      </div>`;
+  const short = q.question.length > 110 ? `${q.question.slice(0, 110)}…` : q.question;
+  return `<div class="rv-item ${st}">
+    <button class="rv-head" aria-expanded="${open}" data-rv="${i}">
+      <span class="rv-mark">${RV_MARK[st]}</span>
+      <span class="rv-title"><span class="rv-num">Question ${i + 1} · ${esc(q.domain)} · ${esc(q.difficulty)}</span><span class="rv-q">${esc(short)}</span></span>
+      <span class="rv-tag">${RV_LABEL[st]}${a && a.points ? ` · +${a.points}` : ''}</span>
+      <svg class="ic rv-chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg>
+    </button>
+    <div class="rv-body rv-detail"${open ? '' : ' hidden'}>
+      <div class="top"><span class="kicker">${esc(q.domain)} · ${esc(q.difficulty)}</span><span class="tag-subject">${esc(q.skill)}</span></div>
+      ${q.passage ? `<div class="rv-passage">${esc(q.passage)}</div>` : ''}
+      ${fig}
+      <div class="qt">${esc(q.question)}</div>
+      ${body}
+      <div class="why">${esc(q.explanation)}</div>
+      <div class="acts"><button class="btn-soft" data-rv-similar="${esc(q.id)}">Practice similar</button></div>
+    </div>
+  </div>`;
+}
+
+// prefix is 'result' or 'history': the ids of that screen's filter and list.
+function renderReview(prefix, entry, filter) {
+  const qs = entry.questions;
+  const states = qs.map((q, i) => reviewState(entry.answers[i]));
+  const missed = states.filter((st) => st !== 'ok').length;
+  if (!filter) filter = missed ? 'missed' : 'all';
+  const seg = $(`${prefix}-rv-filter`);
+  seg.innerHTML = `<button class="seg-btn ${filter === 'missed' ? 'active' : ''}" data-f="missed">Missed (${missed})</button>`
+    + `<button class="seg-btn ${filter === 'all' ? 'active' : ''}" data-f="all">All (${qs.length})</button>`;
+  seg.querySelectorAll('[data-f]').forEach((b) => { b.onclick = () => renderReview(prefix, entry, b.dataset.f); });
+
+  const list = $(`${prefix}-review`);
+  const shown = qs.map((q, i) => i).filter((i) => filter === 'all' || states[i] !== 'ok');
+  list.innerHTML = shown.length
+    ? shown.map((i) => reviewCard(qs[i], entry.answers[i], i, states[i] !== 'ok')).join('')
+    : '<div class="empty-note small">You got every question right. Nothing to go over!</div>';
+  list.querySelectorAll('.rv-head').forEach((b) => {
+    b.onclick = () => {
+      const open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', String(open));
+      b.nextElementSibling.hidden = !open;
+    };
+  });
+  list.querySelectorAll('[data-rv-similar]').forEach((b) => {
+    b.onclick = () => {
+      if (prefix === 'result') teardownGame();
+      startPractice({ similar: b.dataset.rvSimilar, count: 5 }, 'More like this');
+    };
+  });
+}
+
+function renderHistory() {
+  $('history-detail').classList.add('hidden');
+  const list = $('history-list');
+  list.classList.remove('hidden');
+  const log = profile.matchLog;
+  if (!log.length) {
+    list.innerHTML = `<div class="empty-note">
+      <span class="lumo"><span class="dot"></span></span>
+      <span class="t">No games yet</span>
+      <span class="d">Every duel, 2v2, party, and practice set you finish shows up here, with each question, your answer, and the explanation.</span>
+      <button class="btn btn-primary" style="font-size:13px;padding:9px 18px" data-nav="Play">Play a duel</button>
+    </div>`;
+    bindNavButtons();
+    return;
+  }
+  list.innerHTML = log.map((g) => {
+    const missed = g.questions.length - g.answers.filter((a) => a && a.correct).length;
+    return `<button class="hist-row" data-game="${esc(g.id)}">
+      <span class="hist-main">
+        <span class="hist-kind">${esc(g.kind)} · ${esc(timeAgo(g.when))}</span>
+        <span class="hist-hero">${esc(g.hero)}</span>
+      </span>
+      <span class="hist-stats">
+        <span class="hist-score tabnum">${g.correct}/${g.total}</span>
+        <span class="hist-miss">${missed ? `${missed} to review` : 'All correct'}</span>
+      </span>
+      <svg class="ic hist-go" viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg>
+    </button>`;
+  }).join('');
+  list.querySelectorAll('[data-game]').forEach((b) => { b.onclick = () => openHistoryGame(b.dataset.game); });
+}
+
+function openHistoryGame(id) {
+  const g = profile.matchLog.find((x) => x.id === id);
+  if (!g) return renderHistory();
+  $('history-list').classList.add('hidden');
+  $('history-detail').classList.remove('hidden');
+  $('hist-kind').textContent = `${g.kind} · ${new Date(g.when).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`;
+  $('hist-hero').textContent = g.hero;
+  $('hist-sub').textContent = g.sub;
+  renderReview('history', g);
+  window.scrollTo(0, 0);
+}
+$('btn-history-back').onclick = renderHistory;
 
 $('btn-play-again').onclick = async () => {
   if (game.mode === 'solo') {
@@ -2267,15 +2442,6 @@ async function renderAnalytics() {
       <span class="val">${d.correct}/${d.total}</span>
     </div>`;
   }).join('') : '<span class="muted" style="font-size:13px">Play a session to see accuracy by domain.</span>';
-  const res = await api('highscores');
-  const list = res.scores || [];
-  $('hs-list').innerHTML = list.length ? list.map((h2, i) => `
-    <div class="result-row ${h2.name === profile.name ? 'me' : ''}">
-      <span class="rank">${i + 1}</span>
-      <span class="grow">${esc(h2.name)} <span class="detail">· ${esc(SECTION_LABEL[h2.section] || h2.section)} · ${esc(h2.date)}</span></span>
-      <span class="sc tabnum">${esc(Number(h2.score) || 0)}</span>
-    </div>`).join('')
-    : '<span class="muted" style="font-size:13px">No scores yet — play a rush or a duel to get on the board.</span>';
 }
 
 /* ================= Shared helpers ================= */

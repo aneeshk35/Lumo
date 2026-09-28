@@ -224,6 +224,33 @@ def test_solo_and_mistakes(browser):
     mistakes = page.evaluate("JSON.parse(localStorage.getItem('lumo-profile')).mistakes.length")
     check("missed questions were logged", mistakes > 0, f"{mistakes} logged")
 
+    # Question review on the results screen, and the saved game log
+    check("results show a question review", page.locator("#result-review-block:not(.hidden)").count() == 1)
+    missed_items = page.locator("#result-review .rv-item.miss, #result-review .rv-item.skip").count()
+    check("review lists the missed questions", missed_items == mistakes, f"{missed_items} vs {mistakes}")
+    check("missed questions open with the explanation",
+          page.locator("#result-review .rv-body:not([hidden]) .why").count() == missed_items)
+    check("your pick and the right answer are marked",
+          page.locator("#result-review .rv-choice.right, #result-review .ans-chip.right").count() >= 1)
+    page.click('#result-rv-filter [data-f="all"]')
+    check("'All' shows every question", page.locator("#result-review .rv-item").count() == 5,
+          str(page.locator("#result-review .rv-item").count()))
+    first = page.locator("#result-review .rv-head").first
+    was = first.get_attribute("aria-expanded")
+    first.click()
+    check("a review card toggles open and closed", first.get_attribute("aria-expanded") != was)
+    logged = page.evaluate("profile.matchLog.length")
+    check("the game is saved to the history log", logged == 1, str(logged))
+    page.click('#result-review-block [data-nav="Game History"]')
+    page.wait_for_selector("#v-history.active", timeout=5000)
+    check("Game History lists the game", page.locator("#history-list .hist-row").count() == 1)
+    page.click("#history-list .hist-row")
+    check("opening a past game shows its questions",
+          page.locator("#history-review .rv-item").count() == missed_items
+          and page.locator("#history-detail:not(.hidden)").count() == 1)
+    page.click("#btn-history-back")
+    check("back returns to the game list", page.locator("#history-list .hist-row:visible").count() == 1)
+
     nav(page, "Saved & Mistakes")
     check("mistake rows render", page.locator(".mistake").count() == mistakes)
     check("weakest domain identified", page.inner_text("#mk-weak") != "—")
@@ -1072,6 +1099,12 @@ def test_bot_duel(browser):
     finished = page.locator("#v-results.active").count() == 1
     check("a full match against a bot finishes", finished)
     check("results label the bot", page.locator("#result-rows .bot-tag").count() == 1)
+    rv = page.locator("#result-review .rv-item").count()
+    page.click('#result-rv-filter [data-f="all"]')
+    check("a duel's review covers all 10 questions", page.locator("#result-review .rv-item").count() == 10,
+          f"{rv} shown first, {page.locator('#result-review .rv-item').count()} in All")
+    check("the duel is in the game log", page.evaluate("profile.matchLog[0].kind").startswith("Ranked duel"),
+          page.evaluate("profile.matchLog[0].kind"))
     after = page.evaluate("profile.elos.easy")
     check("a bot match is ranked", after != before, f"{before} -> {after}")
     page.wait_for_timeout(1500)  # the server writes the result in the background

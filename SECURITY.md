@@ -7,7 +7,7 @@ says how each risk is handled and lists the rules every change has to keep.
 
 1. **All saved data goes to Supabase. Nothing is stored on the server's disk.**
    The server writes no files; without `SUPABASE_URL` and
-   `SUPABASE_SERVICE_KEY`, accounts, classes, tutoring, and high scores are off.
+   `SUPABASE_SERVICE_KEY`, accounts, classes, and tutoring are off.
    Friend codes, last-online times, and friend requests are saved too
    (`lumo_presence`). Live game state (parties, the queue, who is online
    right now, duel invites) stays in memory only.

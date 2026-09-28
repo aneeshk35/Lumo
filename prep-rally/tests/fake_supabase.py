@@ -21,7 +21,7 @@ from urllib.parse import parse_qs, urlparse
 
 KEY = "test-secret"
 PK = {"lumo_accounts": "username", "lumo_sessions": "token_hash", "lumo_classes": "code",
-      "lumo_tutors": "player_id", "lumo_highscores": "id", "lumo_reports": "id",
+      "lumo_tutors": "player_id", "lumo_reports": "id",
       "lumo_presence": "player_id"}
 DB = {t: [] for t in PK}
 LOCK = threading.Lock()

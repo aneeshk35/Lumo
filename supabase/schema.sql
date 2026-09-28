@@ -44,18 +44,9 @@ create table if not exists public.lumo_tutors (
   updated_at   timestamptz not null default now()
 );
 
--- ---------- high scores ----------
-create table if not exists public.lumo_highscores (
-  id           bigserial primary key,
-  name         text not null,
-  score        integer not null,
-  correct      integer not null,
-  total        integer not null,
-  section      text not null,
-  date         text not null,
-  created_at   timestamptz not null default now()
-);
-create index if not exists lumo_highscores_top on public.lumo_highscores (score desc);
+-- ---------- removed ----------
+-- The all-time high score board is gone.
+drop table if exists public.lumo_highscores;
 
 -- ---------- question reports ----------
 -- Players flag questions from the test screen. Read them in the Table Editor.
@@ -91,12 +82,11 @@ alter table public.lumo_accounts   enable row level security;
 alter table public.lumo_sessions   enable row level security;
 alter table public.lumo_classes    enable row level security;
 alter table public.lumo_tutors     enable row level security;
-alter table public.lumo_highscores enable row level security;
 alter table public.lumo_reports    enable row level security;
 alter table public.lumo_presence   enable row level security;
 
 -- Belt and braces: the public roles get no table privileges at all.
 revoke all on public.lumo_accounts, public.lumo_sessions, public.lumo_classes,
-              public.lumo_tutors, public.lumo_highscores, public.lumo_reports,
+              public.lumo_tutors, public.lumo_reports,
               public.lumo_presence from anon, authenticated;
-revoke all on sequence public.lumo_highscores_id_seq, public.lumo_reports_id_seq from anon, authenticated;
+revoke all on sequence public.lumo_reports_id_seq from anon, authenticated;

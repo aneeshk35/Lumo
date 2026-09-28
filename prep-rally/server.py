@@ -137,7 +137,7 @@ def similar_questions(qid, count):
     return out[:count]
 
 
-# All saved state (accounts, classes, tutor applications, high scores) lives in
+# All saved state (accounts, classes, tutor applications, friends) lives in
 # Supabase. Nothing is written to this server's disk.
 DB = accounts.open_store(lambda msg: print(msg, flush=True))
 ACCOUNTS = accounts.Accounts(DB)
@@ -218,7 +218,6 @@ SPECIALIST_BONUS = 1.25
 
 CLASSES = {}   # code -> class dict (mirrored to lumo_classes)
 TUTORS = {}    # player id -> application dict (mirrored to lumo_tutors)
-HIGHSCORES = []  # top 50 (mirrored to lumo_highscores)
 STORE_READY = threading.Event()  # set once the saved state has loaded from Supabase
 PERSIST = queue.Queue()          # writes to Supabase, applied in order off the request path
 MAX_PARTIES = 3000
@@ -265,22 +264,19 @@ def persist_worker():
 
 
 def load_saved_state():
-    """Pull classes, tutor applications, and high scores into memory at boot.
+    """Pull classes, tutor applications, and friend codes into memory at boot.
     Retries until Supabase answers; the features stay closed until then."""
     while True:
         try:
             classes = DB.select("lumo_classes", columns="code,data")
             tutors = DB.select("lumo_tutors", columns="player_id,data")
-            scores = DB.select("lumo_highscores", columns="name,score,correct,total,section,date",
-                               order="score.desc", limit=50)
             with LOCK:
                 CLASSES.update({r["code"]: r["data"] for r in classes})
                 TUTORS.update({r["player_id"]: r["data"] for r in tutors})
-                HIGHSCORES[:] = scores
             if not load_presence():
                 threading.Thread(target=retry_presence, daemon=True).start()
             STORE_READY.set()
-            log(f"loaded {len(classes)} classes, {len(tutors)} tutor applications, {len(scores)} high scores")
+            log(f"loaded {len(classes)} classes, {len(tutors)} tutor applications")
             return
         except accounts.StorageError as err:
             text = str(err)
@@ -497,6 +493,7 @@ class Party:
         # dropped can catch up through /api/sync instead of freezing.
         self.last_reveal = None
         self.last_over = None
+        self.over_personal = None
 
     def auto_advances(self):
         return self.mode in ("duel", "team")
@@ -854,17 +851,6 @@ class Party:
         self.phase = "ended"
         board = self.leaderboard()
         total = len(self.questions)
-
-        date = time.strftime("%Y-%m-%d")
-        for p in board:
-            if p["score"] > 0 and not p["bot"]:
-                row = {"name": p["name"], "score": p["score"], "correct": p["correct"],
-                       "total": total, "section": self.settings["section"], "date": date}
-                HIGHSCORES.append(row)
-                persist(DB.insert, "lumo_highscores", row)
-        HIGHSCORES.sort(key=lambda h: -h["score"])
-        del HIGHSCORES[50:]
-        top = HIGHSCORES
         ratings = self.rate() if self.ranked else None
 
         breakdowns = {}
@@ -880,13 +866,39 @@ class Party:
                     d["correct"] += 1
             breakdowns[p["name"]] = by_domain
 
+        # Every question with its answer, so players can go back through the
+        # match. Safe to send now: each one was already revealed at the time.
+        review = []
+        for q in self.questions:
+            spr = q.get("type") == "spr"
+            review.append({
+                "id": q["id"], "section": q["section"], "domain": q["domain"], "skill": q["skill"],
+                "difficulty": q["difficulty"], "type": q.get("type", "mcq"),
+                "question": q["question"], "passage": q.get("passage"), "figure": q.get("figure"),
+                "choices": q.get("choices") or [],
+                "correctIndex": None if spr else q["answer"],
+                "correctAnswer": q["answers"][0] if spr else None,
+                "explanation": q["explanation"],
+            })
+
+        def personal(p):
+            by_id = {a["qId"]: a for a in p["answers"]}
+            answers = []
+            for q in self.questions:
+                a = by_id.get(q["id"])
+                answers.append({"choice": a.get("choice") if a else None,
+                                "response": a.get("response") if a else None,
+                                "correct": bool(a and a["correct"]), "points": a["points"] if a else 0})
+            return {"name": p["name"], "answers": answers}
+
         self.last_over = {
             "leaderboard": board, "total": total,
-            "breakdowns": breakdowns, "highscores": top[:10],
+            "breakdowns": breakdowns, "review": review,
             "teamScores": self.team_scores() if self.mode == "team" else None,
             "ratings": ratings,
         }
-        self.broadcast_personal("game_over", self.last_over, lambda p: {"name": p["name"]})
+        self.over_personal = personal
+        self.broadcast_personal("game_over", self.last_over, personal)
 
     def sync_state(self, player):
         """Everything a client needs to catch up after missing events."""
@@ -900,7 +912,7 @@ class Party:
                 "name": player["name"], "answered": ans is not None,
                 "correct": bool(ans and ans["correct"]), "points": ans["points"] if ans else 0})
         elif self.phase == "ended" and self.last_over:
-            out["over"] = dict(self.last_over, you={"name": player["name"]})
+            out["over"] = dict(self.last_over, you=self.over_personal(player))
         elif self.phase == "lobby":
             out["lobby"] = self.lobby_state()
         return out
@@ -1265,8 +1277,6 @@ class Handler(BaseHTTPRequestHandler):
                 return self.api_create(body)
             if route == "/api/join":
                 return self.api_join(body)
-            if route == "/api/highscores":
-                return self.send_json({"scores": HIGHSCORES[:20]})
             if route == "/api/stats":
                 return self.api_stats()
             if route == "/api/bank":
@@ -2021,7 +2031,7 @@ if __name__ == "__main__":
         log("storage: Supabase")
     else:
         log("storage: OFF. Set SUPABASE_URL and SUPABASE_SERVICE_KEY to enable accounts, "
-            "classes, tutoring, and high scores. Games still work.")
+            "classes, tutoring, and saved friend codes. Games still work.")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     server.daemon_threads = True
     log(f"Lumo running on http://localhost:{PORT}")

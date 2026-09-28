@@ -26,7 +26,7 @@ Then open http://localhost:3000. To play with friends on your Wi-Fi, they visit 
 | **Saved & Mistakes** | Every missed question saved with the full explanation and your wrong answer. Retry one or review them all; answering correctly retires it. Tracks retry accuracy and your weakest domain |
 | **Study Planner** | A weekly plan generated from the domains you actually miss, with persistent checkboxes and a live sidebar badge |
 | **Vocab** | 40 high-frequency SAT words as flip cards; mark words known to pull them from rotation |
-| **Analytics** | Attempts, accuracy, duel wins, best streak, accuracy by domain, and the all-time high score board |
+| **Analytics** | Attempts, accuracy, duel wins, best streak, and accuracy by domain |
 
 ## How the game modes work
 
@@ -45,7 +45,6 @@ Scoring is server-authoritative: base points by difficulty (500/750/1000), scale
 | `public/` | Frontend: single-page vanilla JS app, self-hosted Inter, CSS-only mascot |
 | `public/vocab.json` | Vocab flashcard deck |
 | `data/questions.json` | The question bank, tagged by section, domain, skill, and difficulty |
-| `data/highscores.json` | Persisted all-time top 50 scores |
 | `docs/PRD.md` | Product requirements document |
 | `docs/MARKET_RESEARCH.md` | Market research and competitive analysis |
 
@@ -87,9 +86,9 @@ See [DEPLOY.md](../DEPLOY.md) for the full walkthrough. Short version:
   `public/config.js` to the game server URL, and list the Vercel origin in the
   server's `ALLOWED_ORIGINS` env var so CORS lets the calls through. Skip this
   and the game server serves the frontend itself, which is simpler.
-- **Supabase** is for accounts. `supabase/schema.sql` creates profiles,
-  attempts, and high scores with row level security. The client still needs
-  wiring to it; profiles live in localStorage today.
+- **Supabase** holds everything saved: accounts, classes, tutor applications,
+  friend codes, and question reports. `supabase/schema.sql` creates the tables
+  with row level security on and no public access.
 
 Serverless alone cannot host the game server: stateless functions lose the
 in-memory parties between requests and cannot hold SSE connections or timers.
@@ -218,7 +217,7 @@ device's guest progress with the account's.
 - Saves carry a revision number. A save from a stale copy (a tab left open on
   another device) is refused and that tab loads the newer progress instead of
   overwriting it.
-- Everything saved (accounts, classes, tutor applications, high scores, friend codes and requests)
+- Everything saved (accounts, classes, tutor applications, friend codes and requests)
   lives in Supabase; the server writes nothing to disk. Without
   `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` those features are off and games
   still work. See DEPLOY.md and ../SECURITY.md.

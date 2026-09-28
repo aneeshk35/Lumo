@@ -423,6 +423,14 @@
           <div class="section-title" style="font-size:15px">Topic breakdown</div>
           <div class="bd-list panel" id="result-bd"></div>
         </div>
+        <div class="result-bd-block review-block" id="result-review-block">
+          <div class="rv-top">
+            <div class="section-title" style="font-size:15px">Question review</div>
+            <div class="seg" id="result-rv-filter"></div>
+          </div>
+          <div class="rv-list" id="result-review"></div>
+          <div class="rv-note">Saved to your <button class="rv-link" data-nav="Game History">Game History</button> so you can go back through it any time.</div>
+        </div>
         <div class="stage-btns">
           <button class="btn btn-primary hidden" id="btn-play-again">Play again</button>
           <button class="btn-lg-outline" id="btn-back-play">Back to Play</button>
@@ -446,10 +454,6 @@
         <div class="section-block">
           <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Accuracy by domain</div>
           <div id="an2-domains" class="bd-list panel"></div>
-        </div>
-        <div class="section-block">
-          <div class="section-title"><svg class="ic" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.6.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.6-.8z"/></svg>All-time high scores</div>
-          <div id="hs-list" class="result-grid panel two-col"></div>
         </div>
       </div>
     </section>
@@ -531,6 +535,30 @@
           </div>
         </div>
         <div id="mistake-list" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+    </section>
+
+    <!-- ============ GAME HISTORY ============ -->
+    <section id="v-history" class="view">
+      <div class="page">
+        <div class="title-row">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+          <span class="page-title">Game History</span>
+        </div>
+        <div id="history-list" class="history-list"></div>
+        <div id="history-detail" class="history-detail hidden">
+          <button class="btn-outline" id="btn-history-back">&larr; All games</button>
+          <div class="hist-head">
+            <span class="hist-kind" id="hist-kind"></span>
+            <span class="hist-hero" id="hist-hero"></span>
+            <span class="hist-sub" id="hist-sub"></span>
+          </div>
+          <div class="rv-top">
+            <div class="section-title">Questions</div>
+            <div class="seg" id="history-rv-filter"></div>
+          </div>
+          <div class="rv-list" id="history-review"></div>
+        </div>
       </div>
     </section>
 
@@ -854,7 +882,7 @@
           <input id="acct-password" type="password" maxlength="128" autocomplete="new-password">
         </label>
         <label class="acct-field" id="acct-nick-row">
-          <span>Nickname <em>shown in duels and leaderboards</em></span>
+          <span>Nickname <em>shown in duels and parties</em></span>
           <input id="name-input" maxlength="16" placeholder="Your nickname" autocomplete="off">
         </label>
         <span class="acct-note" id="acct-note"></span>
@@ -871,7 +899,7 @@
       </div>
       <form class="acct-form" id="acct-nick-form" novalidate>
         <label class="acct-field">
-          <span>Nickname <em>shown in duels and leaderboards</em></span>
+          <span>Nickname <em>shown in duels and parties</em></span>
           <input id="acct-nick" maxlength="16" autocomplete="off">
         </label>
         <button class="btn btn-primary" type="submit">Save nickname</button>
