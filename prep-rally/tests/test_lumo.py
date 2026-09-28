@@ -887,6 +887,36 @@ def test_friends(browser):
     check("friend shows as online", "Online" in b.inner_text("#friends-list .friend .s")
           or "Play" in b.inner_text("#friends-list .friend .s"),
           b.inner_text("#friends-list .friend .s"))
+    check("status never says 'Never seen online'",
+          "Never seen" not in b.inner_text("#friends-list"), b.inner_text("#friends-list"))
+
+    # A gets a friend request to accept
+    a.evaluate("pingPresence()")
+    a.wait_for_timeout(900)
+    check("friend request reaches the other player",
+          a.locator("#friend-requests [data-accept]").count() == 1, a.inner_text("#friend-requests"))
+    check("request names who sent it", "FriendB" in a.inner_text("#friend-requests"),
+          a.inner_text("#friend-requests"))
+    check("Play shows a badge for the request",
+          a.locator('.sb-item[data-navgroup="Play"] .sb-badge').count() == 1)
+    b.evaluate("pingPresence()")
+    b.wait_for_timeout(700)
+    check("sender sees 'Request sent'", "Request sent" in b.inner_text("#friends-list .friend .s"),
+          b.inner_text("#friends-list .friend .s"))
+    a.click("#friend-requests [data-accept]")
+    a.wait_for_timeout(900)
+    check("accepting adds them to your friends", a.locator("#friends-list .friend").count() == 1
+          and "FriendB" in a.inner_text("#friends-list"), a.inner_text("#friends-list"))
+    check("accepting clears the request and badge",
+          a.locator("#friend-requests .friend").count() == 0
+          and a.locator('.sb-item[data-navgroup="Play"] .sb-badge').count() == 0)
+    a.evaluate("pingPresence()")
+    a.wait_for_timeout(700)
+    check("an accepted request doesn't come back", a.locator("#friend-requests .friend").count() == 0)
+    b.evaluate("pingPresence()")
+    b.wait_for_timeout(700)
+    check("'Request sent' clears once accepted", "Request sent" not in b.inner_text("#friends-list"),
+          b.inner_text("#friends-list"))
 
     # B challenges A; A picks the invite up on its next presence poll
     b.click("[data-challenge]")
@@ -911,6 +941,28 @@ def test_friends(browser):
     b.wait_for_timeout(400)
     check("removing a friend empties the list",
           b.locator("#friends-list .empty-note").count() == 1)
+
+    # declining: C adds A, A declines
+    c_ctx, c = new_player(browser, "FriendC")
+    c.on("pageerror", lambda e: errors.append(str(e)))
+    nav(c, "Play")
+    c.wait_for_timeout(1200)
+    c.fill("#friend-code-input", a_code)
+    c.click("#btn-add-friend")
+    c.wait_for_timeout(900)
+    a.evaluate("teardownGame()")
+    nav(a, "Play")
+    a.evaluate("pingPresence()")
+    a.wait_for_timeout(900)
+    check("second request arrives", "FriendC" in a.inner_text("#friend-requests"),
+          a.inner_text("#friend-requests"))
+    a.click("#friend-requests [data-decline]")
+    a.wait_for_timeout(600)
+    a.evaluate("pingPresence()")
+    a.wait_for_timeout(700)
+    check("declining removes the request for good", a.locator("#friend-requests .friend").count() == 0)
+    check("declining doesn't add them", "FriendC" not in a.inner_text("#friends-list"))
+    c_ctx.close()
     check("no page errors in friends", not errors, str(errors))
     b_ctx.close()
     a_ctx.close()

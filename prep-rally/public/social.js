@@ -2,12 +2,14 @@
 
    Presence is a heartbeat: this browser tells the server its nickname and what
    it is doing, and gets back the status of the friend codes it asked about,
-   plus any duel invitations waiting for it. Friend codes are the only handle —
-   there are no accounts, so a code identifies a browser, not a person. */
+   plus friend requests and duel invitations waiting for it. Adding someone by
+   code sends them a request to accept, so friendships go both ways. */
 
 const PRESENCE_EVERY = 12000;   // ms between heartbeats
 let presenceTimer = null;
 let friendRows = [];
+let friendRequests = [];         // [{code, name, when}] waiting on this player
+const announcedRequests = new Set();
 let pendingInvite = null;
 
 function currentActivity() {
@@ -32,13 +34,22 @@ async function pingPresence() {
       name: profile.name || 'Player',
       elo: profile.elo,
       activity: currentActivity(),
+      friendCode: profile.friendCode,
       friends: profile.friends.map((f) => f.code),
     });
+    if (!res.code) return;
     if (res.code && res.code !== profile.friendCode) {
       profile.friendCode = res.code;
       saveProfile();
     }
     friendRows = res.friends || [];
+    friendRequests = res.requests || [];
+    friendRequests.forEach((r) => {
+      if (announcedRequests.has(r.code)) return;
+      announcedRequests.add(r.code);
+      toast(`${r.name} sent you a friend request. Accept it under Play.`);
+    });
+    refreshFriendBadge();
     if ($('my-friend-code')) $('my-friend-code').textContent = profile.friendCode || '—';
     if (document.querySelector('#v-play.active')) paintFriends();
     if (res.invites && res.invites.length) showInvite(res.invites[res.invites.length - 1]);
@@ -51,7 +62,59 @@ function startPresence() {
   presenceTimer = setInterval(pingPresence, PRESENCE_EVERY);
 }
 
+// A count on the Play icon in the sidebar while friend requests are waiting.
+function refreshFriendBadge() {
+  const item = document.querySelector('.sb-item[data-navgroup="Play"]');
+  if (!item) return;
+  let badge = item.querySelector('.sb-badge');
+  if (friendRequests.length) {
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'sb-badge';
+      item.appendChild(badge);
+    }
+    badge.textContent = friendRequests.length;
+  } else if (badge) {
+    badge.remove();
+  }
+}
+
+function paintRequests() {
+  const box = $('friend-requests');
+  if (!box) return;
+  if (!friendRequests.length) {
+    box.innerHTML = '';
+    return;
+  }
+  box.innerHTML = `<div class="req-head">Friend requests <span class="req-count">${friendRequests.length}</span></div>`
+    + friendRequests.map((r) => `<div class="friend request">
+      <span class="ava"><span class="circ"></span></span>
+      <span class="body"><span class="n">${esc(r.name)}</span><span class="s">Wants to be friends</span></span>
+      <button class="friend-btn solid" data-accept="${esc(r.code)}">Accept</button>
+      <button class="friend-x" data-decline="${esc(r.code)}" title="Decline" aria-label="Decline ${esc(r.name)}">&times;</button>
+    </div>`).join('');
+  box.querySelectorAll('[data-accept]').forEach((b) => { b.onclick = () => answerRequest(b.dataset.accept, true); });
+  box.querySelectorAll('[data-decline]').forEach((b) => { b.onclick = () => answerRequest(b.dataset.decline, false); });
+}
+
+async function answerRequest(code, accept) {
+  const req = friendRequests.find((r) => r.code === code);
+  friendRequests = friendRequests.filter((r) => r.code !== code);
+  if (accept && req && !profile.friends.some((f) => f.code === code)) {
+    profile.friends.push({ code, name: req.name || code });
+    saveProfile();
+  }
+  refreshFriendBadge();
+  paintFriends();
+  toast(accept ? `You and ${req ? req.name : code} are now friends.` : 'Request declined.');
+  try {
+    await api('friend_respond', { playerKey: profile.playerKey, from: code, accept });
+  } catch { /* the next heartbeat settles it */ }
+  pingPresence();
+}
+
 function paintFriends() {
+  paintRequests();
   const list = $('friends-list');
   if (!list) return;
   if (!profile.friends.length) {
@@ -63,9 +126,9 @@ function paintFriends() {
     const live = byCode[f.code] || {};
     const name = live.name || f.name || f.code;
     const online = !!live.online;
-    const status = live.unknown ? 'Never seen online'
-      : online ? `${live.activity || 'Online'}${live.elo ? ` · ${live.elo} ELO` : ''}`
-      : live.lastSeen ? `Last online ${timeAgo(live.lastSeen)}` : 'Offline';
+    const status = (online ? `${live.activity || 'Online'}${live.elo ? ` · ${live.elo} ELO` : ''}`
+      : live.lastSeen ? `Last online ${timeAgo(live.lastSeen)}` : 'Offline')
+      + (live.requested ? ' · Request sent' : '');
     return `<div class="friend">
       <span class="ava"><span class="circ"></span><span class="st" style="background:${online ? 'var(--green)' : 'var(--slate-3)'}"></span></span>
       <span class="body"><span class="n">${esc(name)}</span><span class="s">${esc(status)}</span></span>
@@ -94,14 +157,20 @@ async function addFriend() {
   if (code.length !== 6) return toast('A friend code is 6 characters.');
   if (code === profile.friendCode) return toast('That is your own code.');
   if (profile.friends.some((f) => f.code === code)) return toast('They are already on your list.');
-  const res = await api('friend_lookup', { code });
-  if (!res.found) return toast('No player with that code has been online yet.');
+  // They already asked: adding them back is the same as accepting.
+  if (friendRequests.some((r) => r.code === code)) {
+    input.value = '';
+    return answerRequest(code, true);
+  }
+  const res = await api('friend_lookup', { code, playerKey: profile.playerKey });
+  if (res.error) return toast(res.error);
+  if (!res.found) return toast('No player has that friend code. Check it and try again.');
   profile.friends.push({ code, name: res.name || code });
   saveProfile();
   input.value = '';
   paintFriends();
   pingPresence();
-  toast(`Added ${res.name || code}.`);
+  toast(`Friend request sent to ${res.name || code}. They show up here now, and you'll show up for them once they accept.`);
 }
 
 /* Challenge: open a private party, then push an invite to the friend. */

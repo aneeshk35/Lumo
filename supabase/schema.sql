@@ -73,6 +73,19 @@ create table if not exists public.lumo_reports (
 );
 create index if not exists lumo_reports_question on public.lumo_reports (question_id);
 
+-- ---------- friends ----------
+-- Friend codes, last-online times, and pending friend requests. Keyed by a hash
+-- of the browser's player key, never the key.
+create table if not exists public.lumo_presence (
+  player_id    text primary key,
+  code         text not null unique,        -- 6-character friend code
+  name         text not null default '',
+  elo          integer not null default 1200,
+  last_seen    bigint not null default 0,   -- unix seconds
+  requests     jsonb not null default '[]'::jsonb,  -- [{code, name, when}] waiting to be accepted
+  updated_at   timestamptz not null default now()
+);
+
 -- ---------- lock everything down ----------
 alter table public.lumo_accounts   enable row level security;
 alter table public.lumo_sessions   enable row level security;
@@ -80,8 +93,10 @@ alter table public.lumo_classes    enable row level security;
 alter table public.lumo_tutors     enable row level security;
 alter table public.lumo_highscores enable row level security;
 alter table public.lumo_reports    enable row level security;
+alter table public.lumo_presence   enable row level security;
 
 -- Belt and braces: the public roles get no table privileges at all.
 revoke all on public.lumo_accounts, public.lumo_sessions, public.lumo_classes,
-              public.lumo_tutors, public.lumo_highscores, public.lumo_reports from anon, authenticated;
+              public.lumo_tutors, public.lumo_highscores, public.lumo_reports,
+              public.lumo_presence from anon, authenticated;
 revoke all on sequence public.lumo_highscores_id_seq, public.lumo_reports_id_seq from anon, authenticated;

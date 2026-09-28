@@ -1340,6 +1340,10 @@ body.testing .sidebar { display: none; }
 }
 .friend-add input:focus { border-color: var(--purple); background: var(--surface); box-shadow: 0 0 0 3px var(--purple-wash); }
 .friend-btn:disabled { opacity: .55; cursor: default; }
+.friend-requests:empty { display: none; }
+.friend-requests { display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 12px; background: var(--purple-wash); border: 1px solid var(--purple-line); }
+.req-head { display: flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--purple-ink); }
+.req-count { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--purple); color: #fff; font-size: 10.5px; line-height: 18px; text-align: center; }
 .friend-x { font-size: 17px; line-height: 1; color: var(--slate-3); padding: 2px 4px; border-radius: 5px; }
 .friend-x:hover { color: var(--danger-strong); background: var(--danger-wash); }
 .invite-pop {

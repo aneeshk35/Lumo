@@ -8,7 +8,7 @@ and point the server at it:
     python3 tests/fake_supabase.py &            # listens on 127.0.0.1:54321
     SUPABASE_URL=http://127.0.0.1:54321 SUPABASE_SERVICE_KEY=test-secret python3 server.py
 
-It implements just what Lumo uses: eq/lt filters, select, order, limit,
+It implements just what Lumo uses: eq/lt filters, select, order, limit, offset,
 insert (409 on a duplicate key), upsert, PATCH with return=representation,
 and DELETE. Requests without the right apikey get 401, like the real thing.
 """
@@ -21,7 +21,8 @@ from urllib.parse import parse_qs, urlparse
 
 KEY = "test-secret"
 PK = {"lumo_accounts": "username", "lumo_sessions": "token_hash", "lumo_classes": "code",
-      "lumo_tutors": "player_id", "lumo_highscores": "id", "lumo_reports": "id"}
+      "lumo_tutors": "player_id", "lumo_highscores": "id", "lumo_reports": "id",
+      "lumo_presence": "player_id"}
 DB = {t: [] for t in PK}
 LOCK = threading.Lock()
 SEQ = [0]
@@ -61,6 +62,7 @@ class Handler(BaseHTTPRequestHandler):
         columns = q.pop("select", "*")
         order = q.pop("order", None)
         limit = q.pop("limit", None)
+        offset = int(q.pop("offset", 0) or 0)
         on_conflict = q.pop("on_conflict", None)
         length = int(self.headers.get("Content-Length") or 0)
         body = json.loads(self.rfile.read(length)) if length else None
@@ -73,6 +75,7 @@ class Handler(BaseHTTPRequestHandler):
                 if order:
                     col, _, direction = order.partition(".")
                     out.sort(key=lambda r: r.get(col) or 0, reverse=direction == "desc")
+                out = out[offset:]
                 if limit:
                     out = out[: int(limit)]
                 if columns != "*":

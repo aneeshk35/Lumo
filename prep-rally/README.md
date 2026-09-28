@@ -218,7 +218,7 @@ device's guest progress with the account's.
 - Saves carry a revision number. A save from a stale copy (a tab left open on
   another device) is refused and that tab loads the newer progress instead of
   overwriting it.
-- Everything saved (accounts, classes, tutor applications, high scores)
+- Everything saved (accounts, classes, tutor applications, high scores, friend codes and requests)
   lives in Supabase; the server writes nothing to disk. Without
   `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` those features are off and games
   still work. See DEPLOY.md and ../SECURITY.md.

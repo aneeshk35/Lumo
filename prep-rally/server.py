@@ -223,9 +223,14 @@ STORE_READY = threading.Event()  # set once the saved state has loaded from Supa
 PERSIST = queue.Queue()          # writes to Supabase, applied in order off the request path
 MAX_PARTIES = 3000
 MAX_QUEUE = 2000
-PRESENCE = {}  # player id -> {code, name, elo, activity, lastSeen, invites}
+PRESENCE = {}  # player id -> {code, name, elo, activity, lastSeen, invites, requests, friends}
+PRESENCE_BY_CODE = {}  # friend code -> player id
+PRESENCE_STORED = threading.Event()  # set once lumo_presence has loaded; until then rows stay in memory
 PRESENCE_TTL = 45      # seconds without a ping before a friend reads as offline
-PRESENCE_SWEEP = 86400  # drop presence rows untouched for a day
+PRESENCE_SWEEP = 86400  # without Supabase, drop presence rows untouched for a day
+PRESENCE_SAVE_EVERY = 300  # at most one last-seen write per player per five minutes
+MAX_FRIEND_REQUESTS = 30
+FRIEND_ROUTES = {"/api/presence", "/api/friend_lookup", "/api/friend_respond", "/api/invite"}
 INVITE_TTL = 90        # seconds an unaccepted duel invite survives
 FRIEND_CODE_LEN = 6
 
@@ -272,6 +277,8 @@ def load_saved_state():
                 CLASSES.update({r["code"]: r["data"] for r in classes})
                 TUTORS.update({r["player_id"]: r["data"] for r in tutors})
                 HIGHSCORES[:] = scores
+            if not load_presence():
+                threading.Thread(target=retry_presence, daemon=True).start()
             STORE_READY.set()
             log(f"loaded {len(classes)} classes, {len(tutors)} tutor applications, {len(scores)} high scores")
             return
@@ -337,8 +344,72 @@ def generate_code(taken=None, length=5):
             return code
 
 
-def friend_codes():
-    return {p["code"] for p in PRESENCE.values() if p.get("code")}
+def friend_code_ok(code):
+    return len(code) == FRIEND_CODE_LEN and all(c in CODE_CHARS for c in code)
+
+
+def presence_row(pid, code, name="", elo=1200, last_seen=None, requests=None):
+    """Register a player under a friend code, in memory. Callers hold LOCK."""
+    last_seen = time.time() if last_seen is None else last_seen
+    row = {"code": code, "name": name, "elo": elo, "activity": "", "lastSeen": last_seen,
+           "savedAt": last_seen, "invites": [], "requests": requests or [], "friends": set()}
+    PRESENCE[pid] = row
+    PRESENCE_BY_CODE[code] = pid
+    return row
+
+
+def save_presence(pid):
+    """Friend codes, names, last-online times, and pending friend requests
+    live in Supabase so a restart never wipes anyone's friends list."""
+    row = PRESENCE.get(pid)
+    if row is None:
+        return
+    row["savedAt"] = time.time()
+    if not PRESENCE_STORED.is_set():
+        return
+    persist(DB.upsert, "lumo_presence", {
+        "player_id": pid, "code": row["code"], "name": row["name"], "elo": row["elo"],
+        "last_seen": int(row["lastSeen"]), "requests": copy.deepcopy(row["requests"]),
+        "updated_at": accounts.iso_now(),
+    }, "player_id")
+
+
+def load_presence():
+    """Pull every saved friend code into memory. False if lumo_presence can't
+    be read yet (an older database), in which case rows stay in memory."""
+    try:
+        rows = []
+        while True:
+            page = DB.select("lumo_presence", columns="player_id,code,name,elo,last_seen,requests",
+                             order="player_id.asc", limit=1000, extra={"offset": str(len(rows))})
+            rows += page
+            if len(page) < 1000:
+                break
+    except accounts.StorageError as err:
+        hint = " (run supabase/schema.sql to add lumo_presence)" if "(404)" in str(err) else ""
+        log(f"can't load friend codes yet: {err}{hint}")
+        return False
+    with LOCK:
+        saved = set()
+        for r in rows:
+            code = str(r.get("code") or "")
+            saved.add(r["player_id"])
+            # Anyone who pinged before a late load keeps their newer row.
+            if r["player_id"] in PRESENCE or code in PRESENCE_BY_CODE or not friend_code_ok(code):
+                continue
+            presence_row(r["player_id"], code, r.get("name") or "", r.get("elo") or 1200,
+                         float(r.get("last_seen") or 0),
+                         [q for q in (r.get("requests") or []) if isinstance(q, dict)])
+        PRESENCE_STORED.set()
+        for pid in [p for p in PRESENCE if p not in saved]:
+            save_presence(pid)
+    log(f"loaded {len(rows)} friend codes")
+    return True
+
+
+def retry_presence():
+    while not load_presence():
+        time.sleep(60)
 
 
 NAME_JUNK = re.compile(r"[\x00-\x1f\x7f<>&\"'`\\]")
@@ -1176,6 +1247,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.api_account(route, body)
         if route == "/api/report":
             return self.api_report(body)
+        if route in FRIEND_ROUTES and DB and not STORE_READY.is_set():
+            return self.send_json({"error": "Still connecting to the database.", "storageOff": True}, 503)
         if route in STORAGE_ROUTES and not STORE_READY.is_set():
             msg = ("Classes and tutoring need the database, which isn't connected."
                    if not DB else "Still connecting to the database. Try again in a few seconds.")
@@ -1212,6 +1285,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.api_presence(body)
             if route == "/api/friend_lookup":
                 return self.api_friend_lookup(body)
+            if route == "/api/friend_respond":
+                return self.api_friend_respond(body)
             if route == "/api/invite":
                 return self.api_invite(body)
             if route == "/api/class_create":
@@ -1379,41 +1454,56 @@ class Handler(BaseHTTPRequestHandler):
 
     # ---------- friends & presence ----------
     def api_presence(self, body):
-        """Heartbeat. Registers this player, then reports back on their friends.
+        """Heartbeat. Registers this player, then reports back on their friends,
+        their pending friend requests, and any duel invitations.
 
-        Identity is the browser-generated playerKey, the same one the rest of the
-        social features use. There are no passwords, so a key is a claim rather
-        than proof; it is enough for a friends list and deliberately not enough
-        for anything destructive.
+        Identity is the browser-generated playerKey (synced with an account when
+        signed in). A key is a claim rather than proof; it is enough for a
+        friends list and deliberately not enough for anything destructive.
         """
         key = player_id(body)
         if not key:
             return self.send_json({"error": "Missing player key."}, 400)
         now = time.time()
 
-        # Drop rows nobody has touched in a day so the dict cannot grow forever.
-        for stale in [k for k, v in PRESENCE.items() if now - v["lastSeen"] > PRESENCE_SWEEP]:
-            PRESENCE.pop(stale, None)
+        if not DB:
+            # No database: drop rows nobody has touched in a day so memory can't grow forever.
+            for stale in [k for k, v in PRESENCE.items() if now - v["lastSeen"] > PRESENCE_SWEEP]:
+                PRESENCE_BY_CODE.pop(PRESENCE[stale]["code"], None)
+                PRESENCE.pop(stale, None)
 
         me = PRESENCE.get(key)
+        dirty = False
         if not me:
-            me = {"code": generate_code(friend_codes(), FRIEND_CODE_LEN),
-                  "name": "", "elo": 1200, "activity": "", "lastSeen": now, "invites": []}
-            PRESENCE[key] = me
-        me["name"] = sanitize_name(body.get("name"))
+            # Keep the code this browser already had if nobody else holds it.
+            want = clip(body.get("friendCode"), FRIEND_CODE_LEN).upper()
+            code = (want if friend_code_ok(want) and want not in PRESENCE_BY_CODE
+                    else generate_code(PRESENCE_BY_CODE, FRIEND_CODE_LEN))
+            me = presence_row(key, code)
+            dirty = True
+        name = sanitize_name(body.get("name"))
+        try:
+            elo = max(0, min(int(body.get("elo") or 1200), 9999))
+        except (TypeError, ValueError):
+            elo = me["elo"]
+        dirty = dirty or name != me["name"] or elo != me["elo"]
+        me["name"], me["elo"] = name, elo
         me["activity"] = clip(body.get("activity"), 40)
         me["lastSeen"] = now
-        try:
-            me["elo"] = max(0, min(int(body.get("elo") or 1200), 9999))
-        except (TypeError, ValueError):
-            pass
 
         wanted = [clip(c, FRIEND_CODE_LEN).upper()
                   for c in (body.get("friends") or [])][:50]
-        by_code = {v["code"]: v for v in PRESENCE.values()}
+        me["friends"] = set(wanted)
+        # A request from someone already on my list is settled.
+        kept = [r for r in me["requests"] if r.get("code") not in me["friends"]]
+        if len(kept) != len(me["requests"]):
+            me["requests"], dirty = kept, True
+        if dirty or now - me["savedAt"] > PRESENCE_SAVE_EVERY:
+            save_presence(key)
+
         friends = []
         for code in wanted:
-            row = by_code.get(code)
+            row = PRESENCE.get(PRESENCE_BY_CODE.get(code, ""))
             if not row:
                 friends.append({"code": code, "name": "", "online": False,
                                 "activity": "", "elo": None, "unknown": True})
@@ -1423,18 +1513,55 @@ class Handler(BaseHTTPRequestHandler):
                 "online": now - row["lastSeen"] < PRESENCE_TTL,
                 "activity": row["activity"],
                 "lastSeen": int(row["lastSeen"] * 1000),
+                # They haven't added me back yet.
+                "requested": any(r.get("code") == me["code"] for r in row["requests"]),
             })
+
+        requests = []
+        for r in me["requests"]:
+            sender = PRESENCE.get(PRESENCE_BY_CODE.get(r.get("code"), ""))
+            requests.append({"code": r.get("code"), "when": int(r.get("when", 0) * 1000),
+                             "name": (sender or {}).get("name") or r.get("name") or r.get("code")})
 
         me["invites"] = [i for i in me["invites"] if now - i["when"] < INVITE_TTL]
         invites, me["invites"] = me["invites"], []
-        return self.send_json({"code": me["code"], "friends": friends, "invites": invites})
+        return self.send_json({"code": me["code"], "friends": friends,
+                               "requests": requests, "invites": invites})
 
     def api_friend_lookup(self, body):
+        """Add a friend by code: finds them and leaves a friend request for them
+        to accept, unless they already have this player on their list."""
         code = clip(body.get("code"), FRIEND_CODE_LEN).upper()
-        for row in PRESENCE.values():
-            if row["code"] == code:
-                return self.send_json({"found": True, "code": code, "name": row["name"]})
-        return self.send_json({"found": False})
+        target_id = PRESENCE_BY_CODE.get(code)
+        if not target_id:
+            return self.send_json({"found": False})
+        target = PRESENCE[target_id]
+        me = PRESENCE.get(player_id(body))
+        if me and me is not target and me["code"] not in target["friends"]:
+            if not any(r.get("code") == me["code"] for r in target["requests"]):
+                target["requests"] = (target["requests"] + [
+                    {"code": me["code"], "name": me["name"], "when": time.time()}
+                ])[-MAX_FRIEND_REQUESTS:]
+                save_presence(target_id)
+        return self.send_json({"found": True, "code": code, "name": target["name"]})
+
+    def api_friend_respond(self, body):
+        """Accept or decline a pending friend request. Accepting is recorded on
+        the client's friends list; here the request just stops being pending."""
+        key = player_id(body)
+        me = PRESENCE.get(key)
+        code = clip(body.get("from"), FRIEND_CODE_LEN).upper()
+        if not me:
+            return self.send_json({"error": "Missing player key."}, 400)
+        kept = [r for r in me["requests"] if r.get("code") != code]
+        if len(kept) == len(me["requests"]):
+            return self.send_json({"error": "That request is gone."}, 404)
+        me["requests"] = kept
+        if body.get("accept"):
+            me["friends"].add(code)
+        save_presence(key)
+        sender = PRESENCE.get(PRESENCE_BY_CODE.get(code, ""))
+        return self.send_json({"ok": True, "code": code, "name": (sender or {}).get("name") or code})
 
     def api_invite(self, body):
         """Push a duel invitation into a friend's next presence poll."""
@@ -1444,18 +1571,18 @@ class Handler(BaseHTTPRequestHandler):
         if party_code not in PARTIES:
             return self.send_json({"error": "That game no longer exists."}, 404)
         me = PRESENCE.get(key)
-        for row in PRESENCE.values():
-            if row["code"] == target:
-                if len(row["invites"]) >= 10:
-                    return self.send_json({"error": "That player has too many pending invites."})
-                row["invites"].append({
-                    "fromName": me["name"] if me else "A player",
-                    "fromCode": me["code"] if me else "",
-                    "partyCode": party_code,
-                    "mode": clip(body.get("mode"), 12, "duel"),
-                    "when": time.time(),
-                })
-                return self.send_json({"ok": True})
+        row = PRESENCE.get(PRESENCE_BY_CODE.get(target, ""))
+        if row:
+            if len(row["invites"]) >= 10:
+                return self.send_json({"error": "That player has too many pending invites."})
+            row["invites"].append({
+                "fromName": me["name"] if me else "A player",
+                "fromCode": me["code"] if me else "",
+                "partyCode": party_code,
+                "mode": clip(body.get("mode"), 12, "duel"),
+                "when": time.time(),
+            })
+            return self.send_json({"ok": True})
         return self.send_json({"error": "That friend is not online right now."})
 
     # ---------- classes ----------
