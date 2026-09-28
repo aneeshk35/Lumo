@@ -516,6 +516,16 @@ class Party:
             for q in list(p["queues"]):
                 q.put(payload)
 
+    def broadcast_personal(self, event, data, personal):
+        """Like broadcast, but each player's copy carries `you`: their own
+        name and result, so a client never has to find itself by name."""
+        for p in self.players.values():
+            if not p["queues"]:
+                continue
+            payload = (event, json.dumps(dict(data, you=personal(p))))
+            for q in list(p["queues"]):
+                q.put(payload)
+
     # ---- game flow ----
     def start_question(self):
         q = self.questions[self.q_index]
@@ -688,7 +698,12 @@ class Party:
                     per_player[p["name"]] = {"correct": ans["correct"], "points": ans["points"]}
             is_last = self.q_index >= len(self.questions) - 1
             spr = q.get("type") == "spr"
-            self.broadcast("reveal", {
+            def mine(p):
+                ans = self.current_answers.get(p["id"])
+                return {"name": p["name"], "answered": ans is not None,
+                        "correct": bool(ans and ans["correct"]), "points": ans["points"] if ans else 0}
+
+            self.broadcast_personal("reveal", {
                 "type": q.get("type", "mcq"),
                 "correctIndex": None if spr else q["answer"],
                 "correctAnswer": q["answers"][0] if spr else None,
@@ -700,7 +715,7 @@ class Party:
                 "isLast": is_last,
                 "autoAdvanceSecs": DUEL_REVEAL_SECS if self.auto_advances() else None,
                 "teamScores": self.team_scores() if self.mode == "team" else None,
-            })
+            }, mine)
             if self.auto_advances():
                 self.timer = threading.Timer(DUEL_REVEAL_SECS, self.auto_advance)
                 self.timer.daemon = True
@@ -746,12 +761,12 @@ class Party:
                     d["correct"] += 1
             breakdowns[p["name"]] = by_domain
 
-        self.broadcast("game_over", {
+        self.broadcast_personal("game_over", {
             "leaderboard": board, "total": total,
             "breakdowns": breakdowns, "highscores": top[:10],
             "teamScores": self.team_scores() if self.mode == "team" else None,
             "ratings": ratings,
-        })
+        }, lambda p: {"name": p["name"]})
 
     def rate(self):
         """Ranked Elo, computed here rather than trusted from the browser.

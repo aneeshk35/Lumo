@@ -1387,14 +1387,15 @@ window.addEventListener('resize', () => { if (!$('calc-panel').classList.contain
 /* ================= Reveal ================= */
 function onReveal(data) {
   game.phase = 'reveal';
+  // The server says who we are; trust that over whatever name we joined with.
+  if (data.you && data.you.name) game.myName = data.you.name;
   clearInterval(game.timerInterval);
   const q = game.currentQ;
   const spr = data.type === 'spr';
   const answered = game.answered && (spr ? !!game.response : game.selected !== null);
   const mine = answered ? (spr ? game.response : game.selected) : null;
-  const correct = spr
-    ? !!(data.perPlayer[game.myName] && data.perPlayer[game.myName].correct)
-    : mine === data.correctIndex;
+  const own = data.you || data.perPlayer[game.myName];
+  const correct = spr ? !!(own && own.correct) : mine === data.correctIndex;
   const rightLabel = spr ? String(data.correctAnswer).replace(/-/g, '−') : LETTERS[data.correctIndex];
   if (spr) {
     $('spr-input').disabled = true;
@@ -1499,6 +1500,7 @@ $('btn-next').onclick = () => api('next');
 /* ================= Game over ================= */
 function onGameOver(data) {
   game.phase = 'over';
+  if (data.you && data.you.name) game.myName = data.you.name;
   const board = data.leaderboard;
   const meRow = board.find((p) => p.name === game.myName) || { score: 0, correct: 0 };
   const myRank = board.indexOf(board.find((p) => p.name === game.myName)) + 1;

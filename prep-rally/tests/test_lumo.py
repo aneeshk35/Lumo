@@ -1187,6 +1187,39 @@ def test_security(browser):
     ctx.close()
 
 
+def test_invite_join(browser):
+    print("\n21. Joining by invite: grading, score, and labels")
+    a_ctx, a = new_player(browser, "Hosty")
+    b_ctx, b = new_player(browser, "Guesto")
+    code = a.evaluate("""async () => {
+        const res = await api('create', {name: profile.name, settings: {ids: ['mth-0853'], count: 1}});
+        ME.code = res.code; ME.playerId = res.playerId; game.myName = res.yourName;
+        game.mode = 'party'; game.isHost = true; game.phase = 'lobby';
+        await connectEvents(); renderLobby(res.state); switchView('v-lobby'); return res.code; }""")
+    # Leftovers from an earlier solo game are exactly what broke this before.
+    b.evaluate("(c) => { game.myName = ''; game.mode = 'solo'; pendingInvite = {partyCode: c, fromName: 'Hosty'};"
+               " $('invite-accept').click(); }", code)
+    b.wait_for_selector("#v-lobby.active", timeout=8000)
+    a.wait_for_timeout(800)
+    a.evaluate("api('start')")
+    b.wait_for_selector("#spr:not(.hidden)", timeout=8000)
+    check("an invited player's game isn't labelled solo", "SOLO" not in b.inner_text("#match-mode").upper(),
+          b.inner_text("#match-mode"))
+    b.fill("#spr-input", "22")
+    b.click("#btn-lock")
+    answer_current(a, "5")
+    b.wait_for_selector("#reveal-card:not(.hidden)", timeout=10000)
+    check("the right typed answer is marked correct", b.locator("#spr-input.correct").count() == 1
+          and "Not quite" not in b.inner_text("#reveal-card"), b.inner_text("#reveal-card")[:80])
+    check("the joiner knows their own name", b.evaluate("game.myName") == "Guesto", b.evaluate("game.myName"))
+    hth = b.inner_text("#hth")
+    lines = [x.strip() for x in hth.split("\n") if x.strip()]
+    check("the score header shows the joiner's own points",
+          len(lines) >= 2 and lines[0] == "Guesto" and lines[1] != "0 pts", " | ".join(lines))
+    a_ctx.close()
+    b_ctx.close()
+
+
 def main():
     print(f"Lumo end-to-end tests against {BASE}")
     with sync_playwright() as p:
@@ -1195,7 +1228,7 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
+                   test_friends, test_invite_join, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

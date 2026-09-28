@@ -114,6 +114,8 @@ async function challengeFriend(code) {
   if (res.error) return toast(res.error);
   ME.code = res.code;
   ME.playerId = res.playerId;
+  game.myName = res.yourName || profile.name;
+  game.mode = 'party';
   game.ranked = false;     // friendly challenges never move Elo
   await connectEvents();
   const sent = await api('invite', {
@@ -149,6 +151,9 @@ $('invite-accept').onclick = async () => {
   game.ranked = false;
   ME.code = res.code;
   ME.playerId = res.playerId;
+  // The server may have renamed us (two players can't share a name).
+  game.myName = res.yourName || profile.name;
+  game.mode = 'party';
   await connectEvents();
   game.phase = 'lobby';
   game.isHost = false;
