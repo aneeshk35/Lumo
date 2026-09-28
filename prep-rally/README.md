@@ -96,6 +96,15 @@ in-memory parties between requests and cannot hold SSE connections or timers.
 
 ## Running the tests
 
+`tests/stress.py [rounds]` hammers a running server directly. Each round:
+- checks every answer key in the bank, including every typed answer in all its equivalent forms
+- sends 240 real answers, right and wrong
+- queues 44 players at once across all nine ladders, plus 2v2
+- plays 6 duels and 4 bot games at the same time to the end
+- checks that closed tabs never leave a real player stuck
+
+`tests/test_picker.py` checks how sets are dealt.
+
 The Playwright end-to-end suite covers every screen, both multiplayer modes, the
 mistake review loop, the calculator engine, and the mobile layout.
 

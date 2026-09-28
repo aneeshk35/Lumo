@@ -202,7 +202,11 @@ CODE_CHARS = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 LOCK = threading.RLock()
 PARTIES = {}
 MATCH_QUEUE = []  # waiting tickets: {ticket, name, section, count, created, result}
-QUEUE_TTL = 120  # seconds before an unpolled ticket is dropped
+QUEUE_TTL = 120  # seconds a matched ticket waits for its owner to collect it
+# A searching player's page polls every 1.5s. A ticket unpolled for longer than
+# this belongs to a closed tab and must never be matched with a real person.
+WAIT_TTL = 8
+NO_SHOW_SECS = 12  # a matched player who never connects is replaced by a bot
 DUEL_REVEAL_SECS = 7
 
 # 2v2: four players, two teams, one Reading specialist and one Math specialist
@@ -675,6 +679,40 @@ class Party:
             self.broadcast("lobby_update", self.lobby_state())
             self.maybe_start()
 
+    def seat_bot(self, leaving_pid):
+        """Put a bot in a ranked seat a person has left, so the others still get
+        their game. The bot inherits the seat's team and role."""
+        gone = self.players.pop(leaving_pid, None)
+        team, role = self.teams.pop(leaving_pid, None), self.roles.pop(leaving_pid, None)
+        self.ready.discard(leaving_pid)
+        people = [p for p in self.players.values() if not p["bot"]]
+        target = sum(p["elo"] for p in people) / len(people) if people else (gone or {}).get("elo", 1200)
+        bot = bots.make_bot(random.Random(), target, {p["name"] for p in self.players.values()})
+        pid = self.add_player(bot["name"], bot["elo"], bot=bot)
+        if team:
+            self.teams[pid], self.roles[pid] = team, role
+        t = threading.Timer(random.uniform(1.0, 2.5) * max(bots.BOT_PACE, 0.2), self._bot_ready, args=(pid,))
+        t.daemon = True
+        t.start()
+        return pid
+
+    def replace_no_shows(self):
+        """A matched player whose page never connected (a closed tab) gets a bot."""
+        with LOCK:
+            if self.phase != "lobby" or PARTIES.get(self.code) is not self:
+                return
+            missing = [p["id"] for p in self.players.values() if not p["bot"] and not p["queues"]]
+            if not missing:
+                return
+            if len(missing) == len(self.humans()) and not any(p["queues"] for p in self.players.values()):
+                PARTIES.pop(self.code, None)   # nobody showed up at all
+                self.phase = "ended"
+                return
+            for pid in missing:
+                self.seat_bot(pid)
+            self.broadcast("lobby_update", self.lobby_state())
+            self.maybe_start()
+
     def maybe_start(self):
         """Duels and 2v2 start once every seat is filled and ready."""
         connected = self.connected()
@@ -930,6 +968,16 @@ def clean_settings(raw):
 def handle_disconnect(party, player):
     """Called when a player's last SSE stream dies."""
     player["connected"] = False
+    if party.phase == "lobby" and party.ranked and any(
+            p["queues"] for p in party.players.values() if not p["bot"] and p["id"] != player["id"]):
+        # Someone left a ranked lobby before it started: a bot takes the seat.
+        was_host = player["id"] == party.host_id
+        party.seat_bot(player["id"])
+        if was_host:
+            party.host_id = party.humans()[0]["id"]
+        party.broadcast("lobby_update", party.lobby_state())
+        party.maybe_start()
+        return
     if party.phase == "lobby":
         party.players.pop(player["id"], None)
 
@@ -956,9 +1004,17 @@ def handle_disconnect(party, player):
 
 
 def queue_peers(mode, section, difficulty):
+    now = time.time()
     return [t for t in MATCH_QUEUE
             if t["mode"] == mode and t["section"] == section
-            and t["difficulty"] == difficulty and not t["result"]]
+            and t["difficulty"] == difficulty and not t["result"]
+            and now - t["polled"] < WAIT_TTL]
+
+
+def prune_queue():
+    now = time.time()
+    MATCH_QUEUE[:] = [t for t in MATCH_QUEUE
+                      if now - t["polled"] < (QUEUE_TTL if t["result"] else WAIT_TTL)]
 
 
 def seat_match(mode, section, difficulty, count, entrants, fill_bots=False):
@@ -992,6 +1048,9 @@ def seat_match(mode, section, difficulty, count, entrants, fill_bots=False):
                 party.assign_team(pid)
         party.ready_bots()
     PARTIES[code] = party
+    t = threading.Timer(NO_SHOW_SECS, party.replace_no_shows)
+    t.daemon = True
+    t.start()
     return party, seats
 
 
@@ -1603,7 +1662,7 @@ class Handler(BaseHTTPRequestHandler):
         `ladder` is (username, ratings) for a signed-in player, else (None, None)."""
         now = time.time()
         # Keep matched tickets around until their owner polls and collects the result.
-        MATCH_QUEUE[:] = [t for t in MATCH_QUEUE if now - t["polled"] < QUEUE_TTL]
+        prune_queue()
         section = body.get("section") if body.get("section") in ("math", "rw", "mixed") else "mixed"
         # Each difficulty is its own ladder: players only meet others who picked
         # the same subject and difficulty, closest rating first.

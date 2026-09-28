@@ -20001,5 +20001,3181 @@
    "84"
   ],
   "explanation": "From 4a = 15b, a = (15/4)b. From 3b = 5c, b = (5/3)c. So a = (15/4)(5/3)c = 25/4c, which is 6.25c. c = a ÷ 6.25, so c is 16% of a, which is 84% less."
+ },
+ {
+  "id": "mth-1224",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = 12, what is the length of PQ?",
+  "tpl": "G1",
+  "choices": [
+   "6√3",
+   "6",
+   "6√2",
+   "12√3"
+  ],
+  "answer": 0,
+  "explanation": "A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is PR = 12 = 2x, so x = 6. PQ is next to the 30° angle, so it is the longer leg: x√3 = 6√3. 6 is QR, the side opposite the 30° angle."
+ },
+ {
+  "id": "mth-1225",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 7√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "7/2",
+   "49/2",
+   "49",
+   "98"
+  ],
+  "answer": 1,
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 7. The area is (1/2)(7)(7) = 49/2."
+ },
+ {
+  "id": "mth-1226",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 7√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "21 + 14√3",
+   "21 + 7√3",
+   "21√3",
+   "14 + 7√3"
+  ],
+  "answer": 1,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 7√3, so x = 7. The perimeter is 7 + 7√3 + 14 = 21 + 7√3."
+ },
+ {
+  "id": "mth-1227",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = 4, what is the length of PQ?",
+  "tpl": "G1",
+  "choices": [
+   "4√3",
+   "2",
+   "2√3",
+   "2√2"
+  ],
+  "answer": 2,
+  "explanation": "A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is PR = 4 = 2x, so x = 2. PQ is next to the 30° angle, so it is the longer leg: x√3 = 2√3. 2 is QR, the side opposite the 30° angle."
+ },
+ {
+  "id": "mth-1228",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 2√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 2. The area is (1/2)(2)(2) = 2."
+ },
+ {
+  "id": "mth-1229",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 11√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "33√3",
+   "33 + 22√3",
+   "22 + 11√3",
+   "33 + 11√3"
+  ],
+  "answer": 3,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 11√3, so x = 11. The perimeter is 11 + 11√3 + 22 = 33 + 11√3."
+ },
+ {
+  "id": "mth-1230",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 144°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "Each exterior angle is 180° − 144° = 36°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 36 = 10 sides."
+ },
+ {
+  "id": "mth-1231",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "The sum of the measures of the interior angles of a regular polygon is 5,040°. What is the measure, in degrees, of each exterior angle?",
+  "tpl": "G2",
+  "choices": [
+   "12",
+   "13",
+   "30",
+   "168"
+  ],
+  "answer": 0,
+  "explanation": "The interior angles add up to (n − 2)(180°), so (n − 2)(180) = 5,040 and n = 30. Each exterior angle is 360° ÷ 30 = 12°."
+ },
+ {
+  "id": "mth-1232",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 162°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Each exterior angle is 180° − 162° = 18°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 18 = 20 sides."
+ },
+ {
+  "id": "mth-1233",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "The sum of the measures of the interior angles of a regular polygon is 3,240°. What is the measure, in degrees, of each exterior angle?",
+  "tpl": "G2",
+  "choices": [
+   "18",
+   "19",
+   "20",
+   "162"
+  ],
+  "answer": 0,
+  "explanation": "The interior angles add up to (n − 2)(180°), so (n − 2)(180) = 3,240 and n = 20. Each exterior angle is 360° ÷ 20 = 18°."
+ },
+ {
+  "id": "mth-1234",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 160°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "Each exterior angle is 180° − 160° = 20°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 20 = 18 sides."
+ },
+ {
+  "id": "mth-1235",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 8, DB = 7, and DE = 4, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "15/2"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 8 + 7 = 15, so 4/BC = 8/15 and BC = 4(15)/8 = 15/2."
+ },
+ {
+  "id": "mth-1236",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 2, DB = 12, and DE = 14, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "49/3",
+   "26",
+   "84",
+   "98"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 2 + 12 = 14, so 14/BC = 2/14 and BC = 14(14)/2 = 98. Using DB = 12 in place of AB = 14 gives 84."
+ },
+ {
+  "id": "mth-1237",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 3, DB = 12, and DE = 4, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 3 + 12 = 15, so 4/BC = 3/15 and BC = 4(15)/3 = 20."
+ },
+ {
+  "id": "mth-1238",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 8, DB = 10, and DE = 10, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "25/2",
+   "18",
+   "20",
+   "45/2"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 8 + 10 = 18, so 10/BC = 8/18 and BC = 10(18)/8 = 45/2. Using DB = 10 in place of AB = 18 gives 25/2."
+ },
+ {
+  "id": "mth-1239",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 6, DB = 5, and DE = 6, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "11"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 6 + 5 = 11, so 6/BC = 6/11 and BC = 6(11)/6 = 11."
+ },
+ {
+  "id": "mth-1240",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 8π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "16"
+  ],
+  "explanation": "C = 2πr = 8π, so r = 4. The area is πr² = 16π, so k = 16."
+ },
+ {
+  "id": "mth-1241",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The area of a circle is 36π square units. What is the circumference of the circle?",
+  "tpl": "G4",
+  "choices": [
+   "12π",
+   "24π",
+   "6π",
+   "36π"
+  ],
+  "answer": 0,
+  "explanation": "A = πr² = 36π, so r = 6. The circumference is 2πr = 12π."
+ },
+ {
+  "id": "mth-1242",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 6π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "C = 2πr = 6π, so r = 3. The area is πr² = 9π, so k = 9."
+ },
+ {
+  "id": "mth-1243",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The area of a circle is 169π square units. What is the circumference of the circle?",
+  "tpl": "G4",
+  "choices": [
+   "52π",
+   "26π",
+   "169π",
+   "13π"
+  ],
+  "answer": 1,
+  "explanation": "A = πr² = 169π, so r = 13. The circumference is 2πr = 26π."
+ },
+ {
+  "id": "mth-1244",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 16π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "64"
+  ],
+  "explanation": "C = 2πr = 16π, so r = 8. The area is πr² = 64π, so k = 64."
+ },
+ {
+  "id": "mth-1245",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 6. A central angle of 2π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 6 × 2π/3 = 4π, so k = 4."
+ },
+ {
+  "id": "mth-1246",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 6. A central angle of 3π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "3/2",
+   "9/2",
+   "9",
+   "18"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 6 × 3π/2 = 9π, so k = 9."
+ },
+ {
+  "id": "mth-1247",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 15. A central angle of π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 15 × π/3 = 5π, so k = 5."
+ },
+ {
+  "id": "mth-1248",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 18. A central angle of π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "1/3",
+   "3",
+   "6",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 18 × π/3 = 6π, so k = 6."
+ },
+ {
+  "id": "mth-1249",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 4. A central angle of 3π/4 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 4 × 3π/4 = 3π, so k = 3."
+ },
+ {
+  "id": "mth-1250",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² + 28x − 8y + 56 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Divide every term by 2: x² + y² + 14x − 4y + 28 = 0. Complete the square: (x + 7)² + (y − 2)² = 49 + 4 − 28 = 25. So the radius is √25 = 5."
+ },
+ {
+  "id": "mth-1251",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 4x² + 4y² − 8x − 32y + 4 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "4",
+   "8",
+   "16",
+   "64"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 4: x² + y² − 2x − 8y + 1 = 0. Complete the square: (x − 1)² + (y − 4)² = 1 + 16 − 1 = 16. So r² = 16 and the area is 16π. Skipping the division by 4 gives 64."
+ },
+ {
+  "id": "mth-1252",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² + 12x − 42y + 111 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Divide every term by 3: x² + y² + 4x − 14y + 37 = 0. Complete the square: (x + 2)² + (y − 7)² = 4 + 49 − 37 = 16. So the radius is √16 = 4."
+ },
+ {
+  "id": "mth-1253",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² + 28x + 12y − 12 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "8",
+   "16",
+   "64",
+   "128"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 2: x² + y² + 14x + 6y − 6 = 0. Complete the square: (x + 7)² + (y + 3)² = 49 + 9 + 6 = 64. So r² = 64 and the area is 64π. Skipping the division by 2 gives 128."
+ },
+ {
+  "id": "mth-1254",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² + 28x − 4y + 50 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Divide every term by 2: x² + y² + 14x − 2y + 25 = 0. Complete the square: (x + 7)² + (y − 1)² = 49 + 1 − 25 = 25. So the radius is √25 = 5."
+ },
+ {
+  "id": "mth-1255",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 8 and the area of U is 50. The perimeter of T is 10. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "25",
+   "52",
+   "125/2",
+   "625/4"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 50/8 = 25/4 = (5/2)², so lengths, including perimeters, scale by 5/2. The perimeter of U is 10 × 5/2 = 25. Scaling the perimeter by the area ratio gives 125/2."
+ },
+ {
+  "id": "mth-1256",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 64π cubic inches and the volume of the larger is 125π cubic inches. The height of the smaller cylinder is 8 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 125/64 = (5/4)³. So every length scales by 5/4, and the height is 8 × 5/4 = 10."
+ },
+ {
+  "id": "mth-1257",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 1 and the area of U is 4. The perimeter of T is 5. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "8",
+   "10",
+   "20",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 4/1 = 4 = (2/1)², so lengths, including perimeters, scale by 2/1. The perimeter of U is 5 × 2/1 = 10. Scaling the perimeter by the area ratio gives 20."
+ },
+ {
+  "id": "mth-1258",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 1 and the area of U is 4. The perimeter of T is 2. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "4",
+   "5",
+   "8",
+   "16"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 4/1 = 4 = (2/1)², so lengths, including perimeters, scale by 2/1. The perimeter of U is 2 × 2/1 = 4. Scaling the perimeter by the area ratio gives 8."
+ },
+ {
+  "id": "mth-1259",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 16 and DB = 9, what is the length of CD?",
+  "tpl": "GH3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 16 × 9 = 144, and CD = 12."
+ },
+ {
+  "id": "mth-1260",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 32 and DB = 18, what is the length of AC?",
+  "tpl": "GH3",
+  "choices": [
+   "24",
+   "30",
+   "40",
+   "50"
+  ],
+  "answer": 2,
+  "explanation": "Triangle ACD is similar to triangle ABC, so AD/AC = AC/AB. AB = 32 + 18 = 50, so AC² = AD × AB = 32 × 50 = 1600, and AC = 40. 24 is CD, the altitude, and 30 is BC, the other leg."
+ },
+ {
+  "id": "mth-1261",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 4 and DB = 9, what is the length of CD?",
+  "tpl": "GH3",
+  "choices": [
+   "5",
+   "6",
+   "13/2",
+   "36"
+  ],
+  "answer": 1,
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 4 × 9 = 36, and CD = 6."
+ },
+ {
+  "id": "mth-1262",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 64 and DB = 36, what is the length of AC?",
+  "tpl": "GH3",
+  "choices": [
+   "48",
+   "60",
+   "80",
+   "100"
+  ],
+  "answer": 2,
+  "explanation": "Triangle ACD is similar to triangle ABC, so AD/AC = AC/AB. AB = 64 + 36 = 100, so AC² = AD × AB = 64 × 100 = 6400, and AC = 80. 48 is CD, the altitude, and 60 is BC, the other leg."
+ },
+ {
+  "id": "mth-1263",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 30 is 8 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "17"
+  ],
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 15 (half the chord) and 8, and the radius as the hypotenuse: √(15² + 8²) = √289 = 17."
+ },
+ {
+  "id": "mth-1264",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 25. A chord of the circle is 24 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "2",
+   "7",
+   "14",
+   "49"
+  ],
+  "answer": 2,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(25² − 24²) = √49 = 7. The whole chord is 2 × 7 = 14. Stopping at 7 gives only half the chord."
+ },
+ {
+  "id": "mth-1265",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 14 is 24 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "choices": [
+   "14",
+   "25",
+   "31",
+   "38"
+  ],
+  "answer": 1,
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 7 (half the chord) and 24, and the radius as the hypotenuse: √(7² + 24²) = √625 = 25. Using the whole chord, 14, is the usual slip."
+ },
+ {
+  "id": "mth-1266",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 17. A chord of the circle is 8 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "15",
+   "18",
+   "25",
+   "30"
+  ],
+  "answer": 3,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(17² − 8²) = √225 = 15. The whole chord is 2 × 15 = 30. Stopping at 15 gives only half the chord."
+ },
+ {
+  "id": "mth-1267",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 16 is 6 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 8 (half the chord) and 6, and the radius as the hypotenuse: √(8² + 6²) = √100 = 10."
+ },
+ {
+  "id": "mth-1268",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 10. A chord of the circle is 8 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "4",
+   "6",
+   "12",
+   "18"
+  ],
+  "answer": 2,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(10² − 8²) = √36 = 6. The whole chord is 2 × 6 = 12. Stopping at 6 gives only half the chord."
+ },
+ {
+  "id": "mth-1269",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 4. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "16",
+   "32",
+   "64",
+   "128"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 8. A square with diagonal d has area d²/2, so the area is 8²/2 = 32. Treating the diameter as the side of the square gives 64."
+ },
+ {
+  "id": "mth-1270",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A circle is inscribed in a square, and a second square is inscribed in that circle. The larger square has side length 18. What is the area of the smaller square?",
+  "tpl": "GH5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "162"
+  ],
+  "explanation": "The circle's diameter equals the larger square's side, 18. That diameter is the diagonal of the smaller square, whose area is then 18²/2 = 162."
+ },
+ {
+  "id": "mth-1271",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 11. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "121",
+   "242",
+   "484",
+   "968"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 22. A square with diagonal d has area d²/2, so the area is 22²/2 = 242. Treating the diameter as the side of the square gives 484."
+ },
+ {
+  "id": "mth-1272",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A circle is inscribed in a square, and a second square is inscribed in that circle. The larger square has side length 16. What is the area of the smaller square?",
+  "tpl": "GH5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "128"
+  ],
+  "explanation": "The circle's diameter equals the larger square's side, 16. That diameter is the diagonal of the smaller square, whose area is then 16²/2 = 128."
+ },
+ {
+  "id": "mth-1273",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 9 has an area of 9π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "The whole circle has area 81π, so the sector is 9/81 = 1/9 of the circle. The arc is that fraction of the circumference 18π: 1/9 × 18 = 2."
+ },
+ {
+  "id": "mth-1274",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 10 has an area of 75π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "15/2",
+   "15",
+   "16",
+   "30"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 100π, so the sector is 75/100 = 3/4 of the circle. The arc is that fraction of the circumference 20π: 3/4 × 20 = 15. Dividing the area by the radius gives 15/2, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1275",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 12 has an area of 108π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "The whole circle has area 144π, so the sector is 108/144 = 3/4 of the circle. The arc is that fraction of the circumference 24π: 3/4 × 24 = 18."
+ },
+ {
+  "id": "mth-1276",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 12 has an area of 60π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "5",
+   "10",
+   "11",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 144π, so the sector is 60/144 = 5/12 of the circle. The arc is that fraction of the circumference 24π: 5/12 × 24 = 10. Dividing the area by the radius gives 5, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1277",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 8 has an area of 16π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "The whole circle has area 64π, so the sector is 16/64 = 1/4 of the circle. The arc is that fraction of the circumference 16π: 1/4 × 16 = 4."
+ },
+ {
+  "id": "mth-1278",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cylinder is multiplied by 4, and its height is divided by 2. The volume of the new cylinder is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "V = πr²h. The radius appears squared, so multiplying it by 4 multiplies V by 16. Dividing the height by 2 divides V by 2. So k = 16/2 = 8."
+ },
+ {
+  "id": "mth-1279",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cylinder is multiplied by 2, and its height is divided by 3. The volume of the new cylinder is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "choices": [
+   "2/3",
+   "4/3",
+   "8/3",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "V = πr²h. The radius appears squared, so multiplying it by 2 multiplies V by 4. Dividing the height by 3 divides V by 3. So k = 4/3 = 4/3. Forgetting to square the radius gives 2/3."
+ },
+ {
+  "id": "mth-1280",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 2, and its height is divided by 3. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4/3"
+  ],
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 2 multiplies V by 4. Dividing the height by 3 divides V by 3. So k = 4/3 = 4/3."
+ },
+ {
+  "id": "mth-1281",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 3, and its height is divided by 3. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "choices": [
+   "1",
+   "3",
+   "9",
+   "27"
+  ],
+  "answer": 1,
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 3 divides V by 3. So k = 9/3 = 3. Forgetting to square the radius gives 1."
+ },
+ {
+  "id": "mth-1282",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cylinder is multiplied by 2, and its height is divided by 4. The volume of the new cylinder is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1"
+  ],
+  "explanation": "V = πr²h. The radius appears squared, so multiplying it by 2 multiplies V by 4. Dividing the height by 4 divides V by 4. So k = 4/4 = 1."
+ },
+ {
+  "id": "mth-1283",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = 22, what is the length of PQ?",
+  "tpl": "G1",
+  "choices": [
+   "11√3",
+   "11√2",
+   "11",
+   "22√3"
+  ],
+  "answer": 0,
+  "explanation": "A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is PR = 22 = 2x, so x = 11. PQ is next to the 30° angle, so it is the longer leg: x√3 = 11√3. 11 is QR, the side opposite the 30° angle."
+ },
+ {
+  "id": "mth-1284",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 3√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "3/2",
+   "9/2",
+   "9",
+   "18"
+  ],
+  "answer": 1,
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 3. The area is (1/2)(3)(3) = 9/2."
+ },
+ {
+  "id": "mth-1285",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 8√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "24 + 16√3",
+   "24 + 8√3",
+   "24√3",
+   "16 + 8√3"
+  ],
+  "answer": 1,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 8√3, so x = 8. The perimeter is 8 + 8√3 + 16 = 24 + 8√3."
+ },
+ {
+  "id": "mth-1286",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = 20, what is the length of PQ?",
+  "tpl": "G1",
+  "choices": [
+   "10",
+   "20√3",
+   "10√3",
+   "10√2"
+  ],
+  "answer": 2,
+  "explanation": "A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is PR = 20 = 2x, so x = 10. PQ is next to the 30° angle, so it is the longer leg: x√3 = 10√3. 10 is QR, the side opposite the 30° angle."
+ },
+ {
+  "id": "mth-1287",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 9√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "81/2"
+  ],
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 9. The area is (1/2)(9)(9) = 81/2."
+ },
+ {
+  "id": "mth-1288",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 10√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "30 + 20√3",
+   "20 + 10√3",
+   "30√3",
+   "30 + 10√3"
+  ],
+  "answer": 3,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 10√3, so x = 10. The perimeter is 10 + 10√3 + 20 = 30 + 10√3."
+ },
+ {
+  "id": "mth-1289",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 165°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "Each exterior angle is 180° − 165° = 15°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 15 = 24 sides."
+ },
+ {
+  "id": "mth-1290",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "The sum of the measures of the interior angles of a regular polygon is 1,800°. What is the measure, in degrees, of each exterior angle?",
+  "tpl": "G2",
+  "choices": [
+   "12",
+   "30",
+   "31",
+   "150"
+  ],
+  "answer": 1,
+  "explanation": "The interior angles add up to (n − 2)(180°), so (n − 2)(180) = 1,800 and n = 12. Each exterior angle is 360° ÷ 12 = 30°."
+ },
+ {
+  "id": "mth-1291",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 120°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "Each exterior angle is 180° − 120° = 60°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 60 = 6 sides."
+ },
+ {
+  "id": "mth-1292",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 6, DB = 12, and DE = 13, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "39"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 6 + 12 = 18, so 13/BC = 6/18 and BC = 13(18)/6 = 39."
+ },
+ {
+  "id": "mth-1293",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 8, DB = 11, and DE = 12, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "33/2",
+   "228/11",
+   "23",
+   "57/2"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 8 + 11 = 19, so 12/BC = 8/19 and BC = 12(19)/8 = 57/2. Using DB = 11 in place of AB = 19 gives 33/2."
+ },
+ {
+  "id": "mth-1294",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 2, DB = 5, and DE = 9, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "63/2"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 2 + 5 = 7, so 9/BC = 2/7 and BC = 9(7)/2 = 63/2."
+ },
+ {
+  "id": "mth-1295",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 2, DB = 3, and DE = 4, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "6",
+   "20/3",
+   "7",
+   "10"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 2 + 3 = 5, so 4/BC = 2/5 and BC = 4(5)/2 = 10. Using DB = 3 in place of AB = 5 gives 6."
+ },
+ {
+  "id": "mth-1296",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 4, DB = 10, and DE = 13, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "91/2"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 4 + 10 = 14, so 13/BC = 4/14 and BC = 13(14)/4 = 91/2."
+ },
+ {
+  "id": "mth-1297",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 10π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "25"
+  ],
+  "explanation": "C = 2πr = 10π, so r = 5. The area is πr² = 25π, so k = 25."
+ },
+ {
+  "id": "mth-1298",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The area of a circle is 196π square units. What is the circumference of the circle?",
+  "tpl": "G4",
+  "choices": [
+   "14π",
+   "196π",
+   "28π",
+   "56π"
+  ],
+  "answer": 2,
+  "explanation": "A = πr² = 196π, so r = 14. The circumference is 2πr = 28π."
+ },
+ {
+  "id": "mth-1299",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 22π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "121"
+  ],
+  "explanation": "C = 2πr = 22π, so r = 11. The area is πr² = 121π, so k = 121."
+ },
+ {
+  "id": "mth-1300",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The area of a circle is 64π square units. What is the circumference of the circle?",
+  "tpl": "G4",
+  "choices": [
+   "64π",
+   "32π",
+   "8π",
+   "16π"
+  ],
+  "answer": 3,
+  "explanation": "A = πr² = 64π, so r = 8. The circumference is 2πr = 16π."
+ },
+ {
+  "id": "mth-1301",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 18π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "81"
+  ],
+  "explanation": "C = 2πr = 18π, so r = 9. The area is πr² = 81π, so k = 81."
+ },
+ {
+  "id": "mth-1302",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 18. A central angle of 4π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 18 × 4π/3 = 24π, so k = 24."
+ },
+ {
+  "id": "mth-1303",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 18. A central angle of 3π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "3/2",
+   "27/2",
+   "27",
+   "54"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 18 × 3π/2 = 27π, so k = 27."
+ },
+ {
+  "id": "mth-1304",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 12. A central angle of 3π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "3/2",
+   "9",
+   "18",
+   "36"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 12 × 3π/2 = 18π, so k = 18."
+ },
+ {
+  "id": "mth-1305",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 6. A central angle of π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 6 × π/2 = 3π, so k = 3."
+ },
+ {
+  "id": "mth-1306",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 4x² + 4y² − 48x + 32y + 64 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "Divide every term by 4: x² + y² − 12x + 8y + 16 = 0. Complete the square: (x − 6)² + (y + 4)² = 36 + 16 − 16 = 36. So the radius is √36 = 6."
+ },
+ {
+  "id": "mth-1307",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² + 24x − 36y + 129 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "3",
+   "6",
+   "9",
+   "27"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 3: x² + y² + 8x − 12y + 43 = 0. Complete the square: (x + 4)² + (y − 6)² = 16 + 36 − 43 = 9. So r² = 9 and the area is 9π. Skipping the division by 3 gives 27."
+ },
+ {
+  "id": "mth-1308",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² + 24x − 30y + 111 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "Divide every term by 3: x² + y² + 8x − 10y + 37 = 0. Complete the square: (x + 4)² + (y − 5)² = 16 + 25 − 37 = 4. So the radius is √4 = 2."
+ },
+ {
+  "id": "mth-1309",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 4x² + 4y² + 56x − 56y + 196 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "7",
+   "14",
+   "49",
+   "196"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 4: x² + y² + 14x − 14y + 49 = 0. Complete the square: (x + 7)² + (y − 7)² = 49 + 49 − 49 = 49. So r² = 49 and the area is 49π. Skipping the division by 4 gives 196."
+ },
+ {
+  "id": "mth-1310",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 4x² + 4y² − 48x − 32y + 144 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Divide every term by 4: x² + y² − 12x − 8y + 36 = 0. Complete the square: (x − 6)² + (y − 4)² = 36 + 16 − 36 = 16. So the radius is √16 = 4."
+ },
+ {
+  "id": "mth-1311",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 1π cubic inches and the volume of the larger is 8π cubic inches. The height of the smaller cylinder is 5 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 8/1 = (2/1)³. So every length scales by 2/1, and the height is 5 × 2/1 = 10."
+ },
+ {
+  "id": "mth-1312",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 8 and the area of U is 18. The perimeter of T is 12. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "18",
+   "22",
+   "27",
+   "81/2"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 18/8 = 9/4 = (3/2)², so lengths, including perimeters, scale by 3/2. The perimeter of U is 12 × 3/2 = 18. Scaling the perimeter by the area ratio gives 27."
+ },
+ {
+  "id": "mth-1313",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 27π cubic inches and the volume of the larger is 64π cubic inches. The height of the smaller cylinder is 15 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 64/27 = (4/3)³. So every length scales by 4/3, and the height is 15 × 4/3 = 20."
+ },
+ {
+  "id": "mth-1314",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 4 and the area of U is 16. The perimeter of T is 4. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "8",
+   "9",
+   "16",
+   "32"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 16/4 = 4 = (2/1)², so lengths, including perimeters, scale by 2/1. The perimeter of U is 4 × 2/1 = 8. Scaling the perimeter by the area ratio gives 16."
+ },
+ {
+  "id": "mth-1315",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 4 and DB = 16, what is the length of CD?",
+  "tpl": "GH3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 4 × 16 = 64, and CD = 8."
+ },
+ {
+  "id": "mth-1316",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 3 and DB = 12, what is the length of CD?",
+  "tpl": "GH3",
+  "choices": [
+   "6",
+   "15/2",
+   "9",
+   "36"
+  ],
+  "answer": 0,
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 3 × 12 = 36, and CD = 6."
+ },
+ {
+  "id": "mth-1317",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 9 and DB = 16, what is the length of CD?",
+  "tpl": "GH3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 9 × 16 = 144, and CD = 12."
+ },
+ {
+  "id": "mth-1318",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 48 and DB = 27, what is the length of AC?",
+  "tpl": "GH3",
+  "choices": [
+   "36",
+   "45",
+   "60",
+   "75"
+  ],
+  "answer": 2,
+  "explanation": "Triangle ACD is similar to triangle ABC, so AD/AC = AC/AB. AB = 48 + 27 = 75, so AC² = AD × AB = 48 × 75 = 3600, and AC = 60. 36 is CD, the altitude, and 45 is BC, the other leg."
+ },
+ {
+  "id": "mth-1319",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 10 is 12 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "13"
+  ],
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 5 (half the chord) and 12, and the radius as the hypotenuse: √(5² + 12²) = √169 = 13."
+ },
+ {
+  "id": "mth-1320",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 25. A chord of the circle is 7 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "24",
+   "32",
+   "36",
+   "48"
+  ],
+  "answer": 3,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(25² − 7²) = √576 = 24. The whole chord is 2 × 24 = 48. Stopping at 24 gives only half the chord."
+ },
+ {
+  "id": "mth-1321",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 24 is 9 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "choices": [
+   "15",
+   "21",
+   "24",
+   "33"
+  ],
+  "answer": 0,
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 12 (half the chord) and 9, and the radius as the hypotenuse: √(12² + 9²) = √225 = 15. Using the whole chord, 24, is the usual slip."
+ },
+ {
+  "id": "mth-1322",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 10. A chord of the circle is 6 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "8",
+   "15",
+   "16",
+   "17"
+  ],
+  "answer": 2,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(10² − 6²) = √64 = 8. The whole chord is 2 × 8 = 16. Stopping at 8 gives only half the chord."
+ },
+ {
+  "id": "mth-1323",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 5. A chord of the circle is 3 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "4",
+   "7",
+   "8",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(5² − 3²) = √16 = 4. The whole chord is 2 × 4 = 8. Stopping at 4 gives only half the chord."
+ },
+ {
+  "id": "mth-1324",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 7. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "49",
+   "98",
+   "196",
+   "392"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 14. A square with diagonal d has area d²/2, so the area is 14²/2 = 98. Treating the diameter as the side of the square gives 196."
+ },
+ {
+  "id": "mth-1325",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 5. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "25",
+   "50",
+   "100",
+   "200"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 10. A square with diagonal d has area d²/2, so the area is 10²/2 = 50. Treating the diameter as the side of the square gives 100."
+ },
+ {
+  "id": "mth-1326",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A circle is inscribed in a square, and a second square is inscribed in that circle. The larger square has side length 14. What is the area of the smaller square?",
+  "tpl": "GH5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "98"
+  ],
+  "explanation": "The circle's diameter equals the larger square's side, 14. That diameter is the diagonal of the smaller square, whose area is then 14²/2 = 98."
+ },
+ {
+  "id": "mth-1327",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 8. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "64",
+   "128",
+   "256",
+   "512"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 16. A square with diagonal d has area d²/2, so the area is 16²/2 = 128. Treating the diameter as the side of the square gives 256."
+ },
+ {
+  "id": "mth-1328",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 8 has an area of 48π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "The whole circle has area 64π, so the sector is 48/64 = 3/4 of the circle. The arc is that fraction of the circumference 16π: 3/4 × 16 = 12."
+ },
+ {
+  "id": "mth-1329",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 9 has an area of 27π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "3",
+   "6",
+   "7",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 81π, so the sector is 27/81 = 1/3 of the circle. The arc is that fraction of the circumference 18π: 1/3 × 18 = 6. Dividing the area by the radius gives 3, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1330",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 9 has an area of 54π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "The whole circle has area 81π, so the sector is 54/81 = 2/3 of the circle. The arc is that fraction of the circumference 18π: 2/3 × 18 = 12."
+ },
+ {
+  "id": "mth-1331",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 4 has an area of 12π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "3",
+   "6",
+   "7",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 16π, so the sector is 12/16 = 3/4 of the circle. The arc is that fraction of the circumference 8π: 3/4 × 8 = 6. Dividing the area by the radius gives 3, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1332",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 2, and its height is divided by 4. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1"
+  ],
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 2 multiplies V by 4. Dividing the height by 4 divides V by 4. So k = 4/4 = 1."
+ },
+ {
+  "id": "mth-1333",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 3, and its height is divided by 2. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9/2"
+  ],
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 2 divides V by 2. So k = 9/2 = 9/2."
+ },
+ {
+  "id": "mth-1334",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 4, and its height is divided by 2. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "choices": [
+   "2",
+   "8",
+   "9",
+   "32"
+  ],
+  "answer": 1,
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 4 multiplies V by 16. Dividing the height by 2 divides V by 2. So k = 16/2 = 8. Forgetting to square the radius gives 2."
+ },
+ {
+  "id": "mth-1335",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = 18, what is the length of PQ?",
+  "tpl": "G1",
+  "choices": [
+   "9√3",
+   "9",
+   "18√3",
+   "9√2"
+  ],
+  "answer": 0,
+  "explanation": "A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is PR = 18 = 2x, so x = 9. PQ is next to the 30° angle, so it is the longer leg: x√3 = 9√3. 9 is QR, the side opposite the 30° angle."
+ },
+ {
+  "id": "mth-1336",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 10√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "5",
+   "50",
+   "100",
+   "200"
+  ],
+  "answer": 1,
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 10. The area is (1/2)(10)(10) = 50."
+ },
+ {
+  "id": "mth-1337",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = 16, what is the length of PQ?",
+  "tpl": "G1",
+  "choices": [
+   "16√3",
+   "8√2",
+   "8√3",
+   "8"
+  ],
+  "answer": 2,
+  "explanation": "A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is PR = 16 = 2x, so x = 8. PQ is next to the 30° angle, so it is the longer leg: x√3 = 8√3. 8 is QR, the side opposite the 30° angle."
+ },
+ {
+  "id": "mth-1338",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 8√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "32"
+  ],
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 8. The area is (1/2)(8)(8) = 32."
+ },
+ {
+  "id": "mth-1339",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 5√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "10 + 5√3",
+   "15 + 10√3",
+   "15√3",
+   "15 + 5√3"
+  ],
+  "answer": 3,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 5√3, so x = 5. The perimeter is 5 + 5√3 + 10 = 15 + 5√3."
+ },
+ {
+  "id": "mth-1340",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 135°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "Each exterior angle is 180° − 135° = 45°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 45 = 8 sides."
+ },
+ {
+  "id": "mth-1341",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "The sum of the measures of the interior angles of a regular polygon is 3,960°. What is the measure, in degrees, of each exterior angle?",
+  "tpl": "G2",
+  "choices": [
+   "15",
+   "16",
+   "24",
+   "165"
+  ],
+  "answer": 0,
+  "explanation": "The interior angles add up to (n − 2)(180°), so (n − 2)(180) = 3,960 and n = 24. Each exterior angle is 360° ÷ 24 = 15°."
+ },
+ {
+  "id": "mth-1342",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "The sum of the measures of the interior angles of a regular polygon is 1,440°. What is the measure, in degrees, of each exterior angle?",
+  "tpl": "G2",
+  "choices": [
+   "10",
+   "36",
+   "37",
+   "144"
+  ],
+  "answer": 1,
+  "explanation": "The interior angles add up to (n − 2)(180°), so (n − 2)(180) = 1,440 and n = 10. Each exterior angle is 360° ÷ 10 = 36°."
+ },
+ {
+  "id": "mth-1343",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 5, DB = 7, and DE = 10, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "24"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 5 + 7 = 12, so 10/BC = 5/12 and BC = 10(12)/5 = 24."
+ },
+ {
+  "id": "mth-1344",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 4, DB = 8, and DE = 13, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "39/2",
+   "21",
+   "26",
+   "39"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 4 + 8 = 12, so 13/BC = 4/12 and BC = 13(12)/4 = 39. Using DB = 8 in place of AB = 12 gives 26."
+ },
+ {
+  "id": "mth-1345",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 3, DB = 6, and DE = 11, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "33"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 3 + 6 = 9, so 11/BC = 3/9 and BC = 11(9)/3 = 33."
+ },
+ {
+  "id": "mth-1346",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 2, DB = 8, and DE = 6, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "15/2",
+   "14",
+   "24",
+   "30"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 2 + 8 = 10, so 6/BC = 2/10 and BC = 6(10)/2 = 30. Using DB = 8 in place of AB = 10 gives 24."
+ },
+ {
+  "id": "mth-1347",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 2, DB = 9, and DE = 6, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "33"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 2 + 9 = 11, so 6/BC = 2/11 and BC = 6(11)/2 = 33."
+ },
+ {
+  "id": "mth-1348",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 26π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "169"
+  ],
+  "explanation": "C = 2πr = 26π, so r = 13. The area is πr² = 169π, so k = 169."
+ },
+ {
+  "id": "mth-1349",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 3. A central angle of 2π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 3 × 2π/3 = 2π, so k = 2."
+ },
+ {
+  "id": "mth-1350",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 12. A central angle of 5π/6 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "5/6",
+   "5",
+   "10",
+   "20"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 12 × 5π/6 = 10π, so k = 10."
+ },
+ {
+  "id": "mth-1351",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 4. A central angle of π/4 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 4 × π/4 = 1π, so k = 1."
+ },
+ {
+  "id": "mth-1352",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 18. A central angle of π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "1/2",
+   "9/2",
+   "9",
+   "18"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 18 × π/2 = 9π, so k = 9."
+ },
+ {
+  "id": "mth-1353",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 12. A central angle of π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 12 × π/3 = 4π, so k = 4."
+ },
+ {
+  "id": "mth-1354",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 4x² + 4y² + 16x + 56y + 68 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "Divide every term by 4: x² + y² + 4x + 14y + 17 = 0. Complete the square: (x + 2)² + (y + 7)² = 4 + 49 − 17 = 36. So the radius is √36 = 6."
+ },
+ {
+  "id": "mth-1355",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² − 18x + 24y + 63 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "2",
+   "4",
+   "5",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "Divide every term by 3: x² + y² − 6x + 8y + 21 = 0. Complete the square: (x − 3)² + (y + 4)² = 9 + 16 − 21 = 4. So r² = 4 and the area is 4π. Skipping the division by 3 gives 12."
+ },
+ {
+  "id": "mth-1356",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² − 18x + 42y − 69 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "Divide every term by 3: x² + y² − 6x + 14y − 23 = 0. Complete the square: (x − 3)² + (y + 7)² = 9 + 49 + 23 = 81. So the radius is √81 = 9."
+ },
+ {
+  "id": "mth-1357",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² − 24x + 8y − 18 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "7",
+   "14",
+   "49",
+   "98"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 2: x² + y² − 12x + 4y − 9 = 0. Complete the square: (x − 6)² + (y + 2)² = 36 + 4 + 9 = 49. So r² = 49 and the area is 49π. Skipping the division by 2 gives 98."
+ },
+ {
+  "id": "mth-1358",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² − 12x − 16y + 32 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Divide every term by 2: x² + y² − 6x − 8y + 16 = 0. Complete the square: (x − 3)² + (y − 4)² = 9 + 16 − 16 = 9. So the radius is √9 = 3."
+ },
+ {
+  "id": "mth-1359",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 48 and the area of U is 147. The perimeter of T is 20. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "35",
+   "245/4",
+   "1715/16",
+   "119"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 147/48 = 49/16 = (7/4)², so lengths, including perimeters, scale by 7/4. The perimeter of U is 20 × 7/4 = 35. Scaling the perimeter by the area ratio gives 245/4."
+ },
+ {
+  "id": "mth-1360",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 64π cubic inches and the volume of the larger is 125π cubic inches. The height of the smaller cylinder is 16 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 125/64 = (5/4)³. So every length scales by 5/4, and the height is 16 × 5/4 = 20."
+ },
+ {
+  "id": "mth-1361",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 1 and the area of U is 4. The perimeter of T is 3. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "6",
+   "7",
+   "12",
+   "24"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 4/1 = 4 = (2/1)², so lengths, including perimeters, scale by 2/1. The perimeter of U is 3 × 2/1 = 6. Scaling the perimeter by the area ratio gives 12."
+ },
+ {
+  "id": "mth-1362",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 1π cubic inches and the volume of the larger is 27π cubic inches. The height of the smaller cylinder is 4 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 27/1 = (3/1)³. So every length scales by 3/1, and the height is 4 × 3/1 = 12."
+ },
+ {
+  "id": "mth-1363",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 36 and the area of U is 64. The perimeter of T is 6. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "8",
+   "32/3",
+   "128/9",
+   "34"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 64/36 = 16/9 = (4/3)², so lengths, including perimeters, scale by 4/3. The perimeter of U is 6 × 4/3 = 8. Scaling the perimeter by the area ratio gives 32/3."
+ },
+ {
+  "id": "mth-1364",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 2 and DB = 18, what is the length of CD?",
+  "tpl": "GH3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 2 × 18 = 36, and CD = 6."
+ },
+ {
+  "id": "mth-1365",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 18 and DB = 32, what is the length of AC?",
+  "tpl": "GH3",
+  "choices": [
+   "24",
+   "30",
+   "40",
+   "50"
+  ],
+  "answer": 1,
+  "explanation": "Triangle ACD is similar to triangle ABC, so AD/AC = AC/AB. AB = 18 + 32 = 50, so AC² = AD × AB = 18 × 50 = 900, and AC = 30. 24 is CD, the altitude, and 40 is BC, the other leg."
+ },
+ {
+  "id": "mth-1366",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Right triangles",
+  "difficulty": "hard",
+  "question": "In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. If AD = 8 and DB = 18, what is the length of CD?",
+  "tpl": "GH3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. Then CD² = AD × DB = 8 × 18 = 144, and CD = 12."
+ },
+ {
+  "id": "mth-1367",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 8 is 3 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 4 (half the chord) and 3, and the radius as the hypotenuse: √(4² + 3²) = √25 = 5."
+ },
+ {
+  "id": "mth-1368",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "A circle has radius 5. A chord of the circle is 4 units from the center. What is the length of the chord?",
+  "tpl": "GH4",
+  "choices": [
+   "2",
+   "3",
+   "6",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "The perpendicular from the center bisects the chord, so half the chord is √(5² − 4²) = √9 = 3. The whole chord is 2 × 3 = 6. Stopping at 3 gives only half the chord."
+ },
+ {
+  "id": "mth-1369",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 18 is 12 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "choices": [
+   "15",
+   "18",
+   "21",
+   "30"
+  ],
+  "answer": 0,
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 9 (half the chord) and 12, and the radius as the hypotenuse: √(9² + 12²) = √225 = 15. Using the whole chord, 18, is the usual slip."
+ },
+ {
+  "id": "mth-1370",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 12. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "144",
+   "288",
+   "576",
+   "1152"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 24. A square with diagonal d has area d²/2, so the area is 24²/2 = 288. Treating the diameter as the side of the square gives 576."
+ },
+ {
+  "id": "mth-1371",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A circle is inscribed in a square, and a second square is inscribed in that circle. The larger square has side length 6. What is the area of the smaller square?",
+  "tpl": "GH5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "18"
+  ],
+  "explanation": "The circle's diameter equals the larger square's side, 6. That diameter is the diagonal of the smaller square, whose area is then 6²/2 = 18."
+ },
+ {
+  "id": "mth-1372",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 3. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "9",
+   "18",
+   "36",
+   "72"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 6. A square with diagonal d has area d²/2, so the area is 6²/2 = 18. Treating the diameter as the side of the square gives 36."
+ },
+ {
+  "id": "mth-1373",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 12 has an area of 96π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "16"
+  ],
+  "explanation": "The whole circle has area 144π, so the sector is 96/144 = 2/3 of the circle. The arc is that fraction of the circumference 24π: 2/3 × 24 = 16."
+ },
+ {
+  "id": "mth-1374",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 12 has an area of 32π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "8/3",
+   "16/3",
+   "19/3",
+   "32/3"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 144π, so the sector is 32/144 = 2/9 of the circle. The arc is that fraction of the circumference 24π: 2/9 × 24 = 16/3. Dividing the area by the radius gives 8/3, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1375",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 10 has an area of 25π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "5/2",
+   "5",
+   "6",
+   "10"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 100π, so the sector is 25/100 = 1/4 of the circle. The arc is that fraction of the circumference 20π: 1/4 × 20 = 5. Dividing the area by the radius gives 5/2, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1376",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 6 has an area of 27π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "The whole circle has area 36π, so the sector is 27/36 = 3/4 of the circle. The arc is that fraction of the circumference 12π: 3/4 × 12 = 9."
+ },
+ {
+  "id": "mth-1377",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cylinder is multiplied by 3, and its height is divided by 4. The volume of the new cylinder is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9/4"
+  ],
+  "explanation": "V = πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 4 divides V by 4. So k = 9/4 = 9/4."
+ },
+ {
+  "id": "mth-1378",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 2, and its height is divided by 5. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "choices": [
+   "2/5",
+   "4/5",
+   "8/5",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 2 multiplies V by 4. Dividing the height by 5 divides V by 5. So k = 4/5 = 4/5. Forgetting to square the radius gives 2/5."
+ },
+ {
+  "id": "mth-1379",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 3, and its height is divided by 9. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1"
+  ],
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 9 divides V by 9. So k = 9/9 = 1."
+ },
+ {
+  "id": "mth-1380",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 6√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "3",
+   "18",
+   "36",
+   "72"
+  ],
+  "answer": 1,
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 6. The area is (1/2)(6)(6) = 18."
+ },
+ {
+  "id": "mth-1381",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 12√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "36 + 24√3",
+   "36 + 12√3",
+   "24 + 12√3",
+   "36√3"
+  ],
+  "answer": 1,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 12√3, so x = 12. The perimeter is 12 + 12√3 + 24 = 36 + 12√3."
+ },
+ {
+  "id": "mth-1382",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "An isosceles right triangle has a hypotenuse of length 11√2. What is the area of the triangle?",
+  "tpl": "G1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "121/2"
+  ],
+  "explanation": "In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is 11. The area is (1/2)(11)(11) = 121/2."
+ },
+ {
+  "id": "mth-1383",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Special right triangles",
+  "difficulty": "medium",
+  "question": "In a 30°-60°-90° triangle, the side opposite the 60° angle has length 2√3. What is the perimeter of the triangle?",
+  "tpl": "G1",
+  "choices": [
+   "4 + 2√3",
+   "6 + 4√3",
+   "6√3",
+   "6 + 2√3"
+  ],
+  "answer": 3,
+  "explanation": "The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = 2√3, so x = 2. The perimeter is 2 + 2√3 + 4 = 6 + 2√3."
+ },
+ {
+  "id": "mth-1384",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 108°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Each exterior angle is 180° − 108° = 72°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 72 = 5 sides."
+ },
+ {
+  "id": "mth-1385",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "The sum of the measures of the interior angles of a regular polygon is 2,880°. What is the measure, in degrees, of each exterior angle?",
+  "tpl": "G2",
+  "choices": [
+   "18",
+   "20",
+   "21",
+   "160"
+  ],
+  "answer": 1,
+  "explanation": "The interior angles add up to (n − 2)(180°), so (n − 2)(180) = 2,880 and n = 18. Each exterior angle is 360° ÷ 18 = 20°."
+ },
+ {
+  "id": "mth-1386",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Polygons",
+  "difficulty": "medium",
+  "question": "Each interior angle of a regular polygon measures 140°. How many sides does the polygon have?",
+  "tpl": "G2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "Each exterior angle is 180° − 140° = 40°. The exterior angles of any polygon add up to 360°, so there are 360 ÷ 40 = 9 sides."
+ },
+ {
+  "id": "mth-1387",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 8, DB = 3, and DE = 8, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "11"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 8 + 3 = 11, so 8/BC = 8/11 and BC = 8(11)/8 = 11."
+ },
+ {
+  "id": "mth-1388",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 3, DB = 9, and DE = 13, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "52/3",
+   "22",
+   "39",
+   "52"
+  ],
+  "answer": 3,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 3 + 9 = 12, so 13/BC = 3/12 and BC = 13(12)/3 = 52. Using DB = 9 in place of AB = 12 gives 39."
+ },
+ {
+  "id": "mth-1389",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 3, DB = 12, and DE = 13, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "65"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 3 + 12 = 15, so 13/BC = 3/15 and BC = 13(15)/3 = 65."
+ },
+ {
+  "id": "mth-1390",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 6, DB = 9, and DE = 4, what is the length of BC?",
+  "tpl": "G3",
+  "choices": [
+   "6",
+   "20/3",
+   "10",
+   "13"
+  ],
+  "answer": 2,
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 6 + 9 = 15, so 4/BC = 6/15 and BC = 4(15)/6 = 10. Using DB = 9 in place of AB = 15 gives 6."
+ },
+ {
+  "id": "mth-1391",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "medium",
+  "question": "In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. If AD = 3, DB = 5, and DE = 12, what is the length of BC?",
+  "tpl": "G3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "32"
+  ],
+  "explanation": "Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = 3 + 5 = 8, so 12/BC = 3/8 and BC = 12(8)/3 = 32."
+ },
+ {
+  "id": "mth-1392",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The area of a circle is 49π square units. What is the circumference of the circle?",
+  "tpl": "G4",
+  "choices": [
+   "28π",
+   "7π",
+   "14π",
+   "49π"
+  ],
+  "answer": 2,
+  "explanation": "A = πr² = 49π, so r = 7. The circumference is 2πr = 14π."
+ },
+ {
+  "id": "mth-1393",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 14π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "49"
+  ],
+  "explanation": "C = 2πr = 14π, so r = 7. The area is πr² = 49π, so k = 49."
+ },
+ {
+  "id": "mth-1394",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The area of a circle is 144π square units. What is the circumference of the circle?",
+  "tpl": "G4",
+  "choices": [
+   "12π",
+   "48π",
+   "144π",
+   "24π"
+  ],
+  "answer": 3,
+  "explanation": "A = πr² = 144π, so r = 12. The circumference is 2πr = 24π."
+ },
+ {
+  "id": "mth-1395",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "medium",
+  "question": "The circumference of a circle is 28π. The area of the circle is kπ. What is the value of k?",
+  "tpl": "G4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "196"
+  ],
+  "explanation": "C = 2πr = 28π, so r = 14. The area is πr² = 196π, so k = 196."
+ },
+ {
+  "id": "mth-1396",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 8. A central angle of 3π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "12"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 8 × 3π/2 = 12π, so k = 12."
+ },
+ {
+  "id": "mth-1397",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 12. A central angle of π/2 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "1/2",
+   "3",
+   "6",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 12 × π/2 = 6π, so k = 6."
+ },
+ {
+  "id": "mth-1398",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 6. A central angle of 5π/6 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "Arc length = radius × angle in radians = 6 × 5π/6 = 5π, so k = 5."
+ },
+ {
+  "id": "mth-1399",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Arc length",
+  "difficulty": "medium",
+  "question": "A circle has radius 12. A central angle of 2π/3 radians intercepts an arc of length kπ. What is the value of k?",
+  "tpl": "G5",
+  "choices": [
+   "2/3",
+   "4",
+   "8",
+   "16"
+  ],
+  "answer": 2,
+  "explanation": "Arc length = radius × angle in radians = 12 × 2π/3 = 8π, so k = 8."
+ },
+ {
+  "id": "mth-1400",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² + 28x + 12y + 98 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "Divide every term by 2: x² + y² + 14x + 6y + 49 = 0. Complete the square: (x + 7)² + (y + 3)² = 49 + 9 − 49 = 9. So the radius is √9 = 3."
+ },
+ {
+  "id": "mth-1401",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 2x² + 2y² + 24x − 12y + 40 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "5",
+   "10",
+   "25",
+   "50"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 2: x² + y² + 12x − 6y + 20 = 0. Complete the square: (x + 6)² + (y − 3)² = 36 + 9 − 20 = 25. So r² = 25 and the area is 25π. Skipping the division by 2 gives 50."
+ },
+ {
+  "id": "mth-1402",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² + 18x + 18y + 42 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "Divide every term by 3: x² + y² + 6x + 6y + 14 = 0. Complete the square: (x + 3)² + (y + 3)² = 9 + 9 − 14 = 4. So the radius is √4 = 2."
+ },
+ {
+  "id": "mth-1403",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 4x² + 4y² + 48x − 24y + 36 = 0 in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?",
+  "tpl": "GH1",
+  "choices": [
+   "6",
+   "12",
+   "36",
+   "144"
+  ],
+  "answer": 2,
+  "explanation": "Divide every term by 4: x² + y² + 12x − 6y + 9 = 0. Complete the square: (x + 6)² + (y − 3)² = 36 + 9 − 9 = 36. So r² = 36 and the area is 36π. Skipping the division by 4 gives 144."
+ },
+ {
+  "id": "mth-1404",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circle equations",
+  "difficulty": "hard",
+  "question": "The graph of 3x² + 3y² + 6x + 12y − 33 = 0 in the xy-plane is a circle. What is the length of the circle's radius?",
+  "tpl": "GH1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "Divide every term by 3: x² + y² + 2x + 4y − 11 = 0. Complete the square: (x + 1)² + (y + 2)² = 1 + 4 + 11 = 16. So the radius is √16 = 4."
+ },
+ {
+  "id": "mth-1405",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 3 and the area of U is 27. The perimeter of T is 3. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "9",
+   "10",
+   "27",
+   "81"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 27/3 = 9 = (3/1)², so lengths, including perimeters, scale by 3/1. The perimeter of U is 3 × 3/1 = 9. Scaling the perimeter by the area ratio gives 27."
+ },
+ {
+  "id": "mth-1406",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 8π cubic inches and the volume of the larger is 125π cubic inches. The height of the smaller cylinder is 8 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 125/8 = (5/2)³. So every length scales by 5/2, and the height is 8 × 5/2 = 20."
+ },
+ {
+  "id": "mth-1407",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 16 and the area of U is 36. The perimeter of T is 4. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "6",
+   "9",
+   "27/2",
+   "24"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 36/16 = 9/4 = (3/2)², so lengths, including perimeters, scale by 3/2. The perimeter of U is 4 × 3/2 = 6. Scaling the perimeter by the area ratio gives 9."
+ },
+ {
+  "id": "mth-1408",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar solids",
+  "difficulty": "hard",
+  "question": "Two cylinders are similar. The volume of the smaller cylinder is 1π cubic inches and the volume of the larger is 27π cubic inches. The height of the smaller cylinder is 3 inches. What is the height, in inches, of the larger cylinder?",
+  "tpl": "GH2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "9"
+  ],
+  "explanation": "Volumes of similar solids scale by the cube of the scale factor: 27/1 = (3/1)³. So every length scales by 3/1, and the height is 3 × 3/1 = 9."
+ },
+ {
+  "id": "mth-1409",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Similar triangles",
+  "difficulty": "hard",
+  "question": "Triangles T and U are similar. The area of T is 16 and the area of U is 100. The perimeter of T is 6. What is the perimeter of U?",
+  "tpl": "GH2",
+  "choices": [
+   "15",
+   "75/2",
+   "90",
+   "375/4"
+  ],
+  "answer": 0,
+  "explanation": "Areas of similar figures scale by the square of the scale factor. 100/16 = 25/4 = (5/2)², so lengths, including perimeters, scale by 5/2. The perimeter of U is 6 × 5/2 = 15. Scaling the perimeter by the area ratio gives 75/2."
+ },
+ {
+  "id": "mth-1410",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 6 is 4 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 3 (half the chord) and 4, and the radius as the hypotenuse: √(3² + 4²) = √25 = 5."
+ },
+ {
+  "id": "mth-1411",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 48 is 7 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "choices": [
+   "25",
+   "31",
+   "48",
+   "55"
+  ],
+  "answer": 0,
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 24 (half the chord) and 7, and the radius as the hypotenuse: √(24² + 7²) = √625 = 25. Using the whole chord, 48, is the usual slip."
+ },
+ {
+  "id": "mth-1412",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Circles",
+  "difficulty": "hard",
+  "question": "In a circle, a chord of length 12 is 8 units from the center of the circle. What is the radius of the circle?",
+  "tpl": "GH4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10"
+  ],
+  "explanation": "The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs 6 (half the chord) and 8, and the radius as the hypotenuse: √(6² + 8²) = √100 = 10."
+ },
+ {
+  "id": "mth-1413",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A square is inscribed in a circle of radius 9. What is the area of the square?",
+  "tpl": "GH5",
+  "choices": [
+   "81",
+   "162",
+   "324",
+   "648"
+  ],
+  "answer": 1,
+  "explanation": "The diagonal of an inscribed square is a diameter of the circle: 18. A square with diagonal d has area d²/2, so the area is 18²/2 = 162. Treating the diameter as the side of the square gives 324."
+ },
+ {
+  "id": "mth-1414",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Area",
+  "difficulty": "hard",
+  "question": "A circle is inscribed in a square, and a second square is inscribed in that circle. The larger square has side length 4. What is the area of the smaller square?",
+  "tpl": "GH5",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "8"
+  ],
+  "explanation": "The circle's diameter equals the larger square's side, 4. That diameter is the diagonal of the smaller square, whose area is then 4²/2 = 8."
+ },
+ {
+  "id": "mth-1415",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 8 has an area of 8π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "The whole circle has area 64π, so the sector is 8/64 = 1/8 of the circle. The arc is that fraction of the circumference 16π: 1/8 × 16 = 2."
+ },
+ {
+  "id": "mth-1416",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 10 has an area of 20π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "2",
+   "4",
+   "5",
+   "8"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 100π, so the sector is 20/100 = 1/5 of the circle. The arc is that fraction of the circumference 20π: 1/5 × 20 = 4. Dividing the area by the radius gives 2, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1417",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 6 has an area of 9π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "choices": [
+   "3/2",
+   "3",
+   "4",
+   "6"
+  ],
+  "answer": 1,
+  "explanation": "The whole circle has area 36π, so the sector is 9/36 = 1/4 of the circle. The arc is that fraction of the circumference 12π: 1/4 × 12 = 3. Dividing the area by the radius gives 3/2, which isn't a step that means anything here."
+ },
+ {
+  "id": "mth-1418",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Sector area",
+  "difficulty": "hard",
+  "question": "A sector of a circle with radius 4 has an area of 6π. The arc length of the sector is kπ. What is the value of k?",
+  "tpl": "GH6",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "The whole circle has area 16π, so the sector is 6/16 = 3/8 of the circle. The arc is that fraction of the circumference 8π: 3/8 × 8 = 3."
+ },
+ {
+  "id": "mth-1419",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cylinder is multiplied by 3, and its height is divided by 3. The volume of the new cylinder is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "V = πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 3 divides V by 3. So k = 9/3 = 3."
+ },
+ {
+  "id": "mth-1420",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cylinder is multiplied by 3, and its height is divided by 2. The volume of the new cylinder is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "choices": [
+   "3/2",
+   "9/2",
+   "27/2",
+   "18"
+  ],
+  "answer": 1,
+  "explanation": "V = πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 2 divides V by 2. So k = 9/2 = 9/2. Forgetting to square the radius gives 3/2."
+ },
+ {
+  "id": "mth-1421",
+  "section": "math",
+  "domain": "Geometry and Trigonometry",
+  "skill": "Volume",
+  "difficulty": "hard",
+  "question": "The radius of a right circular cone is multiplied by 3, and its height is divided by 4. The volume of the new cone is k times the volume of the original. What is the value of k?",
+  "tpl": "GH7",
+  "choices": [
+   "3/4",
+   "9/4",
+   "27/4",
+   "36"
+  ],
+  "answer": 1,
+  "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 4 divides V by 4. So k = 9/4 = 9/4. Forgetting to square the radius gives 3/4."
  }
 ]

@@ -1260,11 +1260,286 @@ def xhard_X2():
         made += 1
 
 
+# More geometry: a medium tier and a genuinely hard tier. These run in their
+# own loop after everything above, so no existing question id moves.
+TRIPLES = [(3, 4, 5), (4, 3, 5), (5, 12, 13), (12, 5, 13), (6, 8, 10), (8, 6, 10),
+           (8, 15, 17), (15, 8, 17), (7, 24, 25), (24, 7, 25), (9, 12, 15), (12, 9, 15)]
+
+
+def xgeo_G1():
+    """Special right triangles, with radicals."""
+    for i in range(6):
+        s = rng.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+        kind = i % 3
+        if kind == 0:
+            stem = (f"In right triangle PQR, angle Q is 90° and angle P measures 30°. If PR = {2 * s}, "
+                    f"what is the length of PQ?")
+            why = (f"A 30°-60°-90° triangle has sides x, x√3, and 2x, with x opposite the 30° angle. The hypotenuse is "
+                   f"PR = {2 * s} = 2x, so x = {s}. PQ is next to the 30° angle, so it is the longer leg: x√3 = {s}√3.")
+            mcq(GEO, "Special right triangles", "medium", stem, f"{s}√3",
+                [f"{s}", f"{2 * s}√3", f"{s}√2"], why + f" {s} is QR, the side opposite the 30° angle.", numeric=False)
+        elif kind == 1:
+            stem = f"An isosceles right triangle has a hypotenuse of length {s}√2. What is the area of the triangle?"
+            why = (f"In a 45°-45°-90° triangle the hypotenuse is a leg times √2, so each leg is {s}. "
+                   f"The area is (1/2)({s})({s}) = {num(F(s * s, 2))}.")
+            if i % 2:
+                mcq(GEO, "Special right triangles", "medium", stem, F(s * s, 2), distinct(F(s * s, 2), [s * s, 2 * s * s, F(s, 2)]), why)
+            else:
+                spr(GEO, "Special right triangles", "medium", stem, F(s * s, 2), why)
+        else:
+            stem = (f"In a 30°-60°-90° triangle, the side opposite the 60° angle has length {s}√3. "
+                    f"What is the perimeter of the triangle?")
+            why = (f"The sides are x, x√3, and 2x, and the side opposite 60° is x√3 = {s}√3, so x = {s}. "
+                   f"The perimeter is {s} + {s}√3 + {2 * s} = {3 * s} + {s}√3.")
+            mcq(GEO, "Special right triangles", "medium", stem, f"{3 * s} + {s}√3",
+                [f"{3 * s}√3", f"{2 * s} + {s}√3", f"{3 * s} + {2 * s}√3"], why, numeric=False)
+
+
+def xgeo_G2():
+    """Regular polygons: angle measures and number of sides."""
+    sides = [5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36]
+    for i in range(5):
+        n = rng.choice(sides)
+        interior = 180 - F(360, n)
+        if i % 2 == 0:
+            stem = f"Each interior angle of a regular polygon measures {num(interior)}°. How many sides does the polygon have?"
+            why = (f"Each exterior angle is 180° − {num(interior)}° = {num(180 - interior)}°. The exterior angles of any "
+                   f"polygon add up to 360°, so there are 360 ÷ {num(180 - interior)} = {n} sides.")
+            spr(GEO, "Polygons", "medium", stem, n, why)
+        else:
+            total = (n - 2) * 180
+            stem = f"The sum of the measures of the interior angles of a regular polygon is {total:,}°. What is the measure, in degrees, of each exterior angle?"
+            why = (f"The interior angles add up to (n − 2)(180°), so (n − 2)(180) = {total:,} and n = {n}. "
+                   f"Each exterior angle is 360° ÷ {n} = {num(F(360, n))}°.")
+            mcq(GEO, "Polygons", "medium", stem, F(360, n), distinct(F(360, n), [interior, F(total, n), n]), why)
+
+
+def xgeo_G3():
+    """A segment parallel to one side of a triangle."""
+    made = 0
+    while made < 5:
+        a, b = rng.randint(2, 9), rng.randint(2, 12)
+        d = rng.randint(3, 14)
+        bc = F(d * (a + b), a)
+        if bc.denominator not in (1, 2) or a == b:
+            continue
+        stem = (f"In triangle ABC, point D lies on side AB and point E lies on side AC so that DE is parallel to BC. "
+                f"If AD = {a}, DB = {b}, and DE = {d}, what is the length of BC?")
+        why = (f"Since DE ∥ BC, triangle ADE is similar to triangle ABC, so DE/BC = AD/AB. AB = {a} + {b} = {a + b}, "
+               f"so {d}/BC = {a}/{a + b} and BC = {d}({a + b})/{a} = {num(bc)}.")
+        wrong = [F(d * b, a), F(d * (a + b), b), d + b]
+        if made % 2:
+            mcq(GEO, "Similar triangles", "medium", stem, bc, distinct(bc, wrong),
+                why + f" Using DB = {b} in place of AB = {a + b} gives {num(F(d * b, a))}.")
+        else:
+            spr(GEO, "Similar triangles", "medium", stem, bc, why)
+        made += 1
+
+
+def xgeo_G4():
+    """Circumference to area and back."""
+    for i in range(5):
+        r = rng.randint(3, 15)   # r = 2 would make r² equal 2r
+        if i % 2 == 0:
+            stem = f"The circumference of a circle is {2 * r}π. The area of the circle is kπ. What is the value of k?"
+            why = f"C = 2πr = {2 * r}π, so r = {r}. The area is πr² = {r * r}π, so k = {r * r}."
+            spr(GEO, "Circles", "medium", stem, r * r, why)
+        else:
+            stem = f"The area of a circle is {r * r}π square units. What is the circumference of the circle?"
+            why = f"A = πr² = {r * r}π, so r = {r}. The circumference is 2πr = {2 * r}π."
+            mcq(GEO, "Circles", "medium", stem, f"{2 * r}π", [f"{r}π", f"{r * r}π", f"{4 * r}π"], why, numeric=False)
+
+
+def xgeo_G5():
+    """Arc length with the angle in radians."""
+    made = 0
+    while made < 5:
+        p, q = rng.choice([(1, 6), (1, 4), (1, 3), (1, 2), (2, 3), (3, 4), (5, 6), (5, 4), (4, 3), (3, 2)])
+        r = rng.choice([3, 4, 6, 8, 9, 10, 12, 15, 18])
+        k = F(r * p, q)
+        if k.denominator != 1:
+            continue
+        angle = f"{p}π/{q}" if p != 1 else f"π/{q}"
+        stem = f"A circle has radius {r}. A central angle of {angle} radians intercepts an arc of length kπ. What is the value of k?"
+        why = f"Arc length = radius × angle in radians = {r} × {angle} = {num(k)}π, so k = {num(k)}."
+        if made % 2:
+            mcq(GEO, "Arc length", "medium", stem, k, distinct(k, [F(p, q), 2 * k, F(r * p * 180, q * 360)]), why)
+        else:
+            spr(GEO, "Arc length", "medium", stem, k, why)
+        made += 1
+
+
+def xhard_GH1():
+    """Circle equation with a leading coefficient: divide first."""
+    made = 0
+    while made < 5:
+        a = rng.choice([2, 3, 4])
+        h, k = rng.choice([v for v in range(-7, 8) if v]), rng.choice([v for v in range(-7, 8) if v])
+        r = rng.randint(2, 9)
+        c = a * (h * h + k * k - r * r)
+        eq = f"{poly((a, 'x²'), (a, 'y²'), (-2 * a * h, 'x'), (-2 * a * k, 'y'), (c, ''))} = 0"
+        if c == 0:
+            continue
+        why = (f"Divide every term by {a}: {poly((1, 'x²'), (1, 'y²'), (-2 * h, 'x'), (-2 * k, 'y'), (F(c, a), ''))} = 0. "
+               f"Complete the square: (x {signed(-h)})² + (y {signed(-k)})² = {h * h} + {k * k} {signed(-F(c, a))} = {r * r}. ")
+        if made % 2 == 0:
+            stem = f"The graph of {eq} in the xy-plane is a circle. What is the length of the circle's radius?"
+            spr(GEO, "Circle equations", "hard", stem, r, why + f"So the radius is √{r * r} = {r}.")
+        else:
+            stem = f"The graph of {eq} in the xy-plane is a circle. The area of the circle is nπ. What is the value of n?"
+            mcq(GEO, "Circle equations", "hard", stem, r * r, distinct(r * r, [a * r * r, r, 2 * r]),
+                why + f"So r² = {r * r} and the area is {r * r}π. Skipping the division by {a} gives {a * r * r}.")
+        made += 1
+
+
+def xhard_GH2():
+    """Similar figures from areas or volumes: take the square or cube root."""
+    made = 0
+    while made < 5:
+        p, q = rng.choice([(3, 2), (5, 3), (4, 3), (5, 2), (5, 4), (7, 4), (2, 1), (3, 1)])
+        if made % 2 == 0:
+            m = rng.randint(1, 4)
+            a1, a2 = q * q * m, p * p * m
+            s = q * rng.randint(2, 6)
+            big = F(s * p, q)
+            stem = (f"Triangles T and U are similar. The area of T is {a1} and the area of U is {a2}. "
+                    f"The perimeter of T is {s}. What is the perimeter of U?")
+            why = (f"Areas of similar figures scale by the square of the scale factor. {a2}/{a1} = {num(F(a2, a1))} = ({p}/{q})², "
+                   f"so lengths, including perimeters, scale by {p}/{q}. The perimeter of U is {s} × {p}/{q} = {num(big)}.")
+            mcq(GEO, "Similar triangles", "hard", stem, big, distinct(big, [F(s * a2, a1), s + a2 - a1, F(s * p * p * p, q * q * q)]),
+                why + f" Scaling the perimeter by the area ratio gives {num(F(s * a2, a1))}.")
+        else:
+            v1, v2 = q ** 3, p ** 3
+            h = q * rng.randint(2, 5)
+            big = F(h * p, q)
+            stem = (f"Two cylinders are similar. The volume of the smaller cylinder is {v1}π cubic inches and the volume "
+                    f"of the larger is {v2}π cubic inches. The height of the smaller cylinder is {h} inches. "
+                    f"What is the height, in inches, of the larger cylinder?")
+            why = (f"Volumes of similar solids scale by the cube of the scale factor: {v2}/{v1} = ({p}/{q})³. "
+                   f"So every length scales by {p}/{q}, and the height is {h} × {p}/{q} = {num(big)}.")
+            spr(GEO, "Similar solids", "hard", stem, big, why)
+        made += 1
+
+
+def xhard_GH3():
+    """Altitude to the hypotenuse: the geometric mean."""
+    ALT = [(1, 4), (4, 9), (2, 8), (3, 12), (4, 16), (9, 16), (1, 9), (2, 18), (8, 18), (5, 20), (6, 24), (16, 9), (9, 4)]
+    # 3-4-5 shapes, so the other leg, the altitude, and the hypotenuse are all whole numbers too
+    LEG = [(9, 16), (16, 9), (18, 32), (32, 18), (27, 48), (48, 27), (36, 64), (64, 36)]
+    for i in range(6):
+        if i % 2 == 0:
+            p, q = rng.choice(ALT)
+            alt = math.isqrt(p * q)
+            stem = (f"In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. "
+                    f"If AD = {p} and DB = {q}, what is the length of CD?")
+            why = (f"The altitude to the hypotenuse makes two triangles similar to each other, so AD/CD = CD/DB. "
+                   f"Then CD² = AD × DB = {p} × {q} = {p * q}, and CD = {alt}.")
+            wrong = [F(p + q, 2), p * q, abs(q - p) or p + q]
+            if i % 4 == 0:
+                spr(GEO, "Right triangles", "hard", stem, alt, why)
+            else:
+                mcq(GEO, "Right triangles", "hard", stem, alt, distinct(alt, wrong), why)
+        else:
+            p, q = rng.choice(LEG)
+            leg, other, alt = math.isqrt(p * (p + q)), math.isqrt(q * (p + q)), math.isqrt(p * q)
+            stem = (f"In right triangle ABC, angle C is a right angle. The altitude from C meets hypotenuse AB at D. "
+                    f"If AD = {p} and DB = {q}, what is the length of AC?")
+            why = (f"Triangle ACD is similar to triangle ABC, so AD/AC = AC/AB. AB = {p} + {q} = {p + q}, "
+                   f"so AC² = AD × AB = {p} × {p + q} = {p * (p + q)}, and AC = {leg}.")
+            mcq(GEO, "Right triangles", "hard", stem, leg, distinct(leg, [other, alt, p + q]),
+                why + f" {alt} is CD, the altitude, and {other} is BC, the other leg.")
+
+
+def xhard_GH4():
+    """A chord and its distance from the center."""
+    for i in range(6):
+        m, d, r = rng.choice(TRIPLES)
+        if i % 2 == 0:
+            stem = (f"In a circle, a chord of length {2 * m} is {d} units from the center of the circle. "
+                    f"What is the radius of the circle?")
+            why = (f"The perpendicular from the center to a chord bisects the chord. That makes a right triangle with legs "
+                   f"{m} (half the chord) and {d}, and the radius as the hypotenuse: √({m}² + {d}²) = √{m * m + d * d} = {r}.")
+            wrong = [math.isqrt(4 * m * m + d * d) if math.isqrt(4 * m * m + d * d) ** 2 == 4 * m * m + d * d else 2 * m + d, m + d, 2 * m]
+            if i % 4 == 0:
+                spr(GEO, "Circles", "hard", stem, r, why)
+            else:
+                mcq(GEO, "Circles", "hard", stem, r, distinct(r, wrong), why + f" Using the whole chord, {2 * m}, is the usual slip.")
+        else:
+            stem = (f"A circle has radius {r}. A chord of the circle is {d} units from the center. "
+                    f"What is the length of the chord?")
+            why = (f"The perpendicular from the center bisects the chord, so half the chord is √({r}² − {d}²) = √{r * r - d * d} = {m}. "
+                   f"The whole chord is 2 × {m} = {2 * m}.")
+            mcq(GEO, "Circles", "hard", stem, 2 * m, distinct(2 * m, [m, r + d, 2 * (r - d)]),
+                why + f" Stopping at {m} gives only half the chord.")
+
+
+def xhard_GH5():
+    """Squares and circles inscribed in each other."""
+    for i in range(5):
+        if i % 2 == 0:
+            r = rng.randint(3, 12)
+            stem = f"A square is inscribed in a circle of radius {r}. What is the area of the square?"
+            why = (f"The diagonal of an inscribed square is a diameter of the circle: {2 * r}. A square with diagonal d has "
+                   f"area d²/2, so the area is {2 * r}²/2 = {2 * r * r}.")
+            mcq(GEO, "Area", "hard", stem, 2 * r * r, distinct(2 * r * r, [4 * r * r, r * r, 8 * r * r]),
+                why + f" Treating the diameter as the side of the square gives {4 * r * r}.")
+        else:
+            s = 2 * rng.randint(2, 9)
+            stem = (f"A circle is inscribed in a square, and a second square is inscribed in that circle. "
+                    f"The larger square has side length {s}. What is the area of the smaller square?")
+            small = F(s * s, 2)
+            why = (f"The circle's diameter equals the larger square's side, {s}. That diameter is the diagonal of the smaller "
+                   f"square, whose area is then {s}²/2 = {num(small)}.")
+            spr(GEO, "Area", "hard", stem, small, why)
+
+
+def xhard_GH6():
+    """Sector area to arc length (find the angle first)."""
+    made = 0
+    while made < 5:
+        r = rng.choice([4, 6, 8, 9, 10, 12, 15])
+        deg = rng.choice([30, 40, 45, 60, 72, 80, 90, 120, 135, 150, 216, 240, 270])
+        area = F(deg, 360) * r * r
+        arc = F(deg, 360) * 2 * r
+        if area.denominator != 1 or arc.denominator not in (1, 2, 3, 5):
+            continue
+        stem = (f"A sector of a circle with radius {r} has an area of {num(area)}π. The arc length of the sector is kπ. "
+                f"What is the value of k?")
+        why = (f"The whole circle has area {r * r}π, so the sector is {num(area)}/{r * r} = {num(F(deg, 360))} of the circle. "
+               f"The arc is that fraction of the circumference {2 * r}π: {num(F(deg, 360))} × {2 * r} = {num(arc)}.")
+        if made % 2 == 0:
+            spr(GEO, "Sector area", "hard", stem, arc, why)
+        else:
+            mcq(GEO, "Sector area", "hard", stem, arc, distinct(arc, [F(area, r), F(arc, 2), 2 * arc]),
+                why + f" Dividing the area by the radius gives {num(F(area, r))}, which isn't a step that means anything here.")
+        made += 1
+
+
+def xhard_GH7():
+    """How volume changes when a solid's dimensions change."""
+    for i in range(5):
+        a, b = rng.choice([(2, 3), (3, 2), (2, 4), (3, 3), (2, 5), (4, 2), (3, 4), (3, 9)])
+        solid = rng.choice(["right circular cylinder", "right circular cone"])
+        factor = F(a * a, b)
+        stem = (f"The radius of a {solid} is multiplied by {a}, and its height is divided by {b}. "
+                f"The volume of the new {solid.split()[-1]} is k times the volume of the original. What is the value of k?")
+        form = "πr²h" if solid.endswith("cylinder") else "(1/3)πr²h"
+        why = (f"V = {form}. The radius appears squared, so multiplying it by {a} multiplies V by {a * a}. "
+               f"Dividing the height by {b} divides V by {b}. So k = {a * a}/{b} = {num(factor)}.")
+        if i % 2 == 0:
+            spr(GEO, "Volume", "hard", stem, factor, why)
+        else:
+            mcq(GEO, "Volume", "hard", stem, factor, distinct(factor, [F(a, b), a * a * b, F(a ** 3, b)]),
+                why + f" Forgetting to square the radius gives {num(F(a, b))}.")
+
+
 # ------------------------------------------------------------------- runners
 TEMPLATES = {name[4:]: fn for name, fn in list(globals().items()) if name.startswith("tpl_")}
 HARD = {name[5:]: fn for name, fn in list(globals().items()) if name.startswith("hard_")}
-EXTRA = {name[6:]: fn for name, fn in list(globals().items()) if name.startswith("xhard_")}
-ALL_TEMPLATES = {**TEMPLATES, **HARD, **EXTRA}
+EXTRA = {name[6:]: fn for name, fn in list(globals().items()) if name.startswith("xhard_X")}
+GEO_MORE = {name.split("_", 1)[1]: fn for name, fn in list(globals().items())
+            if name.startswith("xgeo_") or name.startswith("xhard_GH")}
+ALL_TEMPLATES = {**TEMPLATES, **HARD, **EXTRA, **GEO_MORE}
 SEED = 20260925
 PASSES = 4   # each pass redraws every template's numbers; pass 1 is the original set
 
@@ -1292,6 +1567,13 @@ def build():
         PASS[0] = p + 1
         rng = random.Random(SEED * 5 + p * 15485863)
         for name, fn in EXTRA.items():
+            CURRENT[0] = name
+            fn()
+    # the second geometry set, added later still
+    for p in range(PASSES):
+        PASS[0] = p + 1
+        rng = random.Random(SEED * 7 + p * 32452843)
+        for name, fn in GEO_MORE.items():
             CURRENT[0] = name
             fn()
     return list(questions)
