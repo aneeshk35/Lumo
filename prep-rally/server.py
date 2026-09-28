@@ -1782,7 +1782,9 @@ class Handler(BaseHTTPRequestHandler):
         by_section = {"math": 0, "rw": 0}
         for q in QUESTIONS:
             by_section[q["section"]] = by_section.get(q["section"], 0) + 1
-        self.send_json({"bank": by_section, "online": online, "queued": len(MATCH_QUEUE)})
+        self.send_json({"bank": by_section, "online": online, "queued": len(MATCH_QUEUE),
+                        # Health: has saved state (and the friends table) loaded from Supabase?
+                        "storage": {"ready": STORE_READY.is_set(), "friends": PRESENCE_STORED.is_set()}})
 
     def api_queue(self, body, ladder):
         """Join the ladder queue. 1v1 fills at two players, 2v2 at four. If no
