@@ -1,4 +1,4 @@
-/* Lumo — My Classes and Apply As A Tutor.
+/* Lumo: My Classes and Apply As A Tutor.
 
    Classes are server-side rooms keyed by a 5-letter code, the same shape as a
    party. Students push their own totals up after each session; the teacher sees
@@ -23,7 +23,7 @@ async function renderClasses() {
         <span class="cc-name">${esc(c.name)}</span>
         <span class="cc-role ${c.isTeacher ? 'teacher' : ''}">${c.isTeacher ? 'Teacher' : 'Student'}</span>
       </span>
-      <span class="cc-meta">${c.isTeacher ? `${c.size} student${c.size === 1 ? '' : 's'}` : `Taught by ${esc(c.teacherName || '—')}`}</span>
+      <span class="cc-meta">${c.isTeacher ? `${c.size} student${c.size === 1 ? '' : 's'}` : `Taught by ${esc(c.teacherName || 'your teacher')}`}</span>
       <span class="cc-foot">
         <span class="cc-code">${esc(c.code)}</span>
         ${c.hasAssignment ? '<span class="cc-badge">Assignment set</span>' : ''}
@@ -52,7 +52,7 @@ function paintClass() {
   $('cd-code').textContent = c.code;
   $('cd-meta').textContent = c.isTeacher
     ? `You teach this class · ${c.students.length} student${c.students.length === 1 ? '' : 's'}`
-    : `Taught by ${c.teacherName || '—'} · ${c.students.length} student${c.students.length === 1 ? '' : 's'}`;
+    : `Taught by ${c.teacherName || 'your teacher'} · ${c.students.length} student${c.students.length === 1 ? '' : 's'}`;
 
   const a = c.assignment;
   $('cd-assign-title').textContent = a ? a.title : 'No assignment set';
@@ -74,12 +74,12 @@ function paintClass() {
     </div>
     ${c.students.map((st) => `
       <div class="roster-row ${st.isMe ? 'me' : ''}">
-        <span class="rn">${esc(st.name || '—')}${st.isMe ? ' <span class="you-tag">you</span>' : ''}</span>
+        <span class="rn">${esc(st.name || 'Unnamed student')}${st.isMe ? ' <span class="you-tag">you</span>' : ''}</span>
         <span class="rv tabnum">${st.attempted}</span>
-        <span class="rv tabnum">${st.accuracy === null ? '—' : `${st.accuracy}%`}</span>
+        <span class="rv tabnum">${st.accuracy === null ? 'n/a' : `${st.accuracy}%`}</span>
         <span class="rv tabnum">${st.points.toLocaleString()}</span>
         <span class="rv">${c.assignment ? (st.assignmentDone
-          ? '<span class="tick done">Done</span>' : '<span class="tick">Not yet</span>') : '—'}</span>
+          ? '<span class="tick done">Done</span>' : '<span class="tick">Not yet</span>') : 'n/a'}</span>
       </div>`).join('')}`
     : '<div class="empty-note">No students yet. Share the class code above.</div>';
 }
@@ -88,7 +88,7 @@ function paintClass() {
 function fillAssignDomains() {
   const sel = $('cd-assign-domain');
   if (sel.options.length) return;
-  sel.innerHTML = `<option value="">Mixed — all domains</option>`
+  sel.innerHTML = `<option value="">Mixed (all domains)</option>`
     + Object.keys(DOMAIN_SECTION).map((d) => `<option value="${esc(d)}">${esc(d)}</option>`).join('');
 }
 
@@ -177,7 +177,7 @@ $('btn-class-create').onclick = async () => {
   paintClass();
   $('class-list-wrap').classList.add('hidden');
   $('class-detail').classList.remove('hidden');
-  toast(`Class created — code ${res.class.code}.`);
+  toast(`Class created. The code is ${res.class.code}.`);
 };
 
 /* Students push their own totals after a session so the roster stays live. */
@@ -224,8 +224,8 @@ async function renderTutor() {
     $('ts-sub').textContent = `Submitted ${timeAgo(app.submitted)} as ${app.name}. `
       + 'Applications are reviewed by hand, so there is nothing more to do right now.';
     $('ts-grid').innerHTML = [
-      ['Email', app.email], ['Grade', app.grade || '—'],
-      ['SAT score', app.score || 'Not given'], ['Availability', app.availability || '—'],
+      ['Email', app.email], ['Grade', app.grade || 'Not given'],
+      ['SAT score', app.score || 'Not given'], ['Availability', app.availability || 'Not given'],
       ['Subjects', app.subjects.join(', ')],
       ['Record at apply time', `${app.stats.attempted} answered · ${app.stats.accuracy}%`],
     ].map(([k, v]) => `<div class="ts-cell"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join('');
@@ -267,7 +267,7 @@ $('tutor-form').addEventListener('submit', async (e) => {
   }
   if (!subjects.length) { err.textContent = 'Pick at least one subject you can tutor.'; return; }
   if (about.length < 40) {
-    err.textContent = `Tell us a bit more — ${40 - about.length} more character${40 - about.length === 1 ? '' : 's'}.`;
+    err.textContent = `Tell us a bit more: ${40 - about.length} more character${40 - about.length === 1 ? '' : 's'}.`;
     return;
   }
 

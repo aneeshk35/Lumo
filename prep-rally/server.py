@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PrepRally — multiplayer SAT practice game server.
+"""Lumo: multiplayer SAT practice game server.
 
 Zero dependencies: Python 3 standard library only.
 Real-time updates via Server-Sent Events (SSE); actions via JSON POST.
@@ -146,6 +146,7 @@ STORAGE_ROUTES = {"/api/class_create", "/api/class_join", "/api/class_list", "/a
                   "/api/class_report", "/api/class_assign", "/api/class_leave",
                   "/api/tutor_apply", "/api/tutor_status", "/api/tutor_withdraw"}
 PUBLIC_ROOT = os.path.realpath(PUBLIC_DIR)
+PAGE_ALIASES = {"/privacy": "/privacy.html", "/terms": "/terms.html"}  # short links to the legal pages
 REPORT_REASONS = {"wrong-answer", "unclear", "difficulty", "display", "other"}
 REPORTS_PER_HOUR = 20
 REPORTS_SENT = {}     # reporter -> [timestamps] in the last hour
@@ -162,7 +163,7 @@ RATE_BURST = 120
 # the UI sets styles on elements; styles can't run code.
 CSP = "; ".join([
     "default-src 'self'",
-    "script-src 'self' https://cdn.jsdelivr.net https://www.desmos.com",
+    "script-src 'self' https://www.desmos.com",
     "style-src 'self' 'unsafe-inline' https://www.desmos.com",
     "img-src 'self' data: blob: https://www.desmos.com",
     "font-src 'self' data: https://www.desmos.com",
@@ -1757,7 +1758,7 @@ class Handler(BaseHTTPRequestHandler):
         if not subjects:
             return self.send_json({"error": "Pick at least one subject you can tutor."})
         if len(about) < 40:
-            return self.send_json({"error": "Tell us a little more — 40 characters minimum."})
+            return self.send_json({"error": "Tell us a little more. The minimum is 40 characters."})
         app = {
             "name": name, "email": email,
             "grade": clip(body.get("grade"), 24),
@@ -1792,7 +1793,10 @@ class Handler(BaseHTTPRequestHandler):
         by_section = {"math": 0, "rw": 0}
         for q in QUESTIONS:
             by_section[q["section"]] = by_section.get(q["section"], 0) + 1
-        self.send_json({"bank": by_section, "online": online, "queued": len(MATCH_QUEUE),
+        # People with the app open: anyone whose friends heartbeat arrived recently.
+        now = time.time()
+        active = sum(1 for p in PRESENCE.values() if now - p["lastSeen"] < PRESENCE_TTL)
+        self.send_json({"bank": by_section, "online": online, "active": active, "queued": len(MATCH_QUEUE),
                         # Health: has saved state (and the friends table) loaded from Supabase?
                         "storage": {"ready": STORE_READY.is_set(), "friends": PRESENCE_STORED.is_set()}})
 
@@ -2006,6 +2010,7 @@ class Handler(BaseHTTPRequestHandler):
     def serve_static(self, path):
         if path == "/":
             path = "/index.html"
+        path = PAGE_ALIASES.get(path, path)
         full = os.path.realpath(os.path.join(PUBLIC_DIR, path.lstrip("/\\")))
         name = os.path.basename(full)
         # Only real files inside public/, never dotfiles, and never anything a

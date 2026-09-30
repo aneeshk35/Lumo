@@ -18,6 +18,7 @@ localStorage (same-origin tabs otherwise share one profile).
 """
 
 import os
+import re
 import sys
 import time
 
@@ -253,7 +254,7 @@ def test_solo_and_mistakes(browser):
 
     nav(page, "Saved & Mistakes")
     check("mistake rows render", page.locator(".mistake").count() == mistakes)
-    check("weakest domain identified", page.inner_text("#mk-weak") != "—")
+    check("weakest domain identified", page.inner_text("#mk-weak") not in ("None yet", ""))
 
     # Review them, answering correctly using the stored answer keys.
     key = page.evaluate(
@@ -605,7 +606,7 @@ def test_responsive(browser):
     check("nav is compact", box["height"] < 130, f"height={box['height']}")
     check("group headings hidden for minimalism",
           page.locator(".sb-label:visible").count() == 0)
-    check("second banner hidden on mobile", page.locator("#announce-bar:visible").count() == 0)
+    check("no announcement banner", page.locator("#announce-bar").count() == 0)
 
     for item in ["Question Bank", "Saved & Mistakes", "Study Planner", "Vocab", "Play", "Home"]:
         nav(page, item)
@@ -1231,7 +1232,26 @@ def test_security(browser):
     check("MIME sniffing is off", h.get("X-Content-Type-Options") == "nosniff")
     check("no server version is advertised", "Python" not in h.get("Server", ""), h.get("Server"))
     html = get("/")[2].decode()
-    check("CDN scripts carry integrity hashes", html.count('integrity="sha384-') == 3)
+    srcs = re.findall(r'<script[^>]*src="([^"]+)"', html)
+    check("the app page loads no third-party scripts", srcs and all("//" not in u for u in srcs), str(srcs))
+    check("the CSP no longer allows the old CDN", "jsdelivr" not in csp, csp)
+
+    # Legal pages, icons, and house style on the static pages
+    for path in ("/privacy", "/terms", "/privacy.html", "/terms.html"):
+        status, headers, body = get(path)
+        page = body.decode()
+        check(f"{path} is served with the CSP", status == 200 and "script-src 'self'" in headers.get("Content-Security-Policy", ""),
+              str(status))
+        check(f"{path} has no em dashes", "\u2014" not in page and "&mdash;" not in page)
+    check("privacy policy names what is stored and where",
+          all(w in get("/privacy")[2].decode() for w in ("Supabase", "Render", "Vercel", "Desmos", "under 13")))
+    check("terms carry the College Board trademark notice", "College Board" in get("/terms")[2].decode())
+    check("Home links both legal pages", 'href="privacy.html"' in html and 'href="terms.html"' in html)
+    for path, ctype in (("/favicon.ico", "image/"), ("/favicon.svg", "image/svg+xml"), ("/apple-touch-icon.png", "image/png")):
+        status, headers, _ = get(path)
+        check(f"{path} is served", status == 200 and headers.get("Content-Type", "").startswith(ctype),
+              f"{status} {headers.get('Content-Type')}")
+    check("no data-URI favicon left", 'rel="icon" href="data:' not in html)
     check("the page has no inline scripts", "<script>" not in html)
 
     check("path traversal is refused", get("/../server.py")[0] == 404 and get("/%2e%2e/server.py")[0] == 404)

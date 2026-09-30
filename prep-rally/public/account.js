@@ -1,4 +1,4 @@
-/* Lumo — accounts. A guest's progress lives in this browser only. Signing up
+/* Lumo: accounts. A guest's progress lives in this browser only. Signing up
    uploads it to an account; after that every saveProfile() also saves to the
    server, so progress follows the player to any device.
 
@@ -45,7 +45,7 @@ async function accountCall(action, body) {
 /* ---------- sync ---------- */
 function setSyncState(state) {
   const text = { saved: 'All progress saved', saving: 'Saving…',
-    offline: 'Offline — your progress is kept here and saves when you reconnect' }[state];
+    offline: 'Offline. Your progress is kept here and saves when you reconnect' }[state];
   if ($('acct-sync')) $('acct-sync').textContent = text;
   if ($('acct-sync-dot')) $('acct-sync-dot').dataset.state = state;
 }
@@ -268,7 +268,7 @@ async function submitAccountForm() {
     finishIdentity(`Signed in as ${res.username}. Welcome back!`);
   } else {
     adoptProfile(res.profile, res.rev);
-    finishIdentity('Account created — your progress now saves to it.');
+    finishIdentity('Account created. Your progress now saves to it.');
   }
 }
 

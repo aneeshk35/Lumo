@@ -1,4 +1,4 @@
-/* Lumo — Ask Lumo. A coach that answers from what Lumo actually has: the
+/* Lumo: Ask Lumo. A coach that answers from what Lumo actually has: the
    lesson library, the question bank, the vocab deck, and your own stats.
 
    It is deliberately not a chatbot. Everything it says is retrieved from real
@@ -71,7 +71,7 @@ function answerStudyPlan() {
   const weak = weakestDomains(3).filter((d) => d.total > 0);
   if (!weak.length) {
     return {
-      title: 'Not enough data yet — start here',
+      title: 'Not enough data yet. Start here',
       body: ['I build this answer from the questions you have actually answered, and you have not '
         + 'answered enough yet for the numbers to mean anything. Do one 10-question mixed set and '
         + 'ask me again; I will point at your real weak spots rather than guessing.'],
@@ -80,7 +80,7 @@ function answerStudyPlan() {
   }
   const lines = weak.map((d) => {
     const pct = d.total ? Math.round((d.acc) * 100) : 0;
-    return `${d.domain} — ${pct}% on ${d.total} question${d.total === 1 ? '' : 's'}${d.missed ? `, ${d.missed} missed` : ''}`;
+    return `${d.domain}: ${pct}% on ${d.total} question${d.total === 1 ? '' : 's'}${d.missed ? `, ${d.missed} missed` : ''}`;
   });
   const target = weak[0];
   const lesson = (LESSONS || []).find((l) => l.domain === target.domain);
@@ -112,7 +112,7 @@ function answerMistakes() {
     title: `You have ${n} saved mistake${n === 1 ? '' : 's'}`,
     body: [
       'They cluster like this:',
-      ...ranked.map(([d, c]) => `• ${d} — ${c}`),
+      ...ranked.map(([d, c]) => `• ${d}: ${c}`),
       'Answering one correctly in a review session retires it from the list.',
     ],
     actions: [{ label: 'Review them all', nav: 'Saved & Mistakes' }],
@@ -121,7 +121,7 @@ function answerMistakes() {
 
 function answerVocab(hit) {
   return {
-    title: `${hit.word} — ${hit.pos}`,
+    title: `${hit.word} (${hit.pos})`,
     body: [hit.def, `Example: ${hit.ex}`],
     actions: [{ label: 'Open the vocab deck', nav: 'Vocab' }],
   };
@@ -154,9 +154,9 @@ async function answerQuestions(query) {
   return {
     title: `${res.results.length} question${res.results.length === 1 ? '' : 's'} in the bank match that`,
     body: ['I could not find a lesson on it, but these bank questions cover it. '
-      + 'Practising one shows the full explanation after you answer.',
-      ...hits.map((h) => `• ${h.domain} · ${h.difficulty} — ${h.question}`)],
-    actions: [{ label: 'Practise these', search: query }],
+      + 'Practicing one shows the full explanation after you answer.',
+      ...hits.map((h) => `• ${h.domain} · ${h.difficulty}: ${h.question}`)],
+    actions: [{ label: 'Practice these', search: query }],
   };
 }
 
@@ -281,7 +281,7 @@ async function coachSubmit() {
 function renderCoach() {
   if (!$('coach-thread').childElementCount) {
     coachPush('lumo', {
-      title: `Hi ${profile.name || 'there'} — ask me about any SAT skill`,
+      title: `Hi ${profile.name || 'there'}. Ask me about any SAT skill`,
       body: ['I answer from Lumo\'s 27 masterclass lessons, the question bank, the vocab deck, '
         + 'and your own results. I will tell you when I do not have something rather than guess.'],
       actions: [{ label: 'What should I study next?', ask: 'What should I study next?' }],

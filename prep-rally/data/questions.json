@@ -415,7 +415,7 @@
       "To describe the difficulties of long sea voyages"
     ],
     "answer": 1,
-    "explanation": "The passage's pivot — \"These methods did more than prevent spoilage\" — frames its purpose: showing preservation's broader effects on diet and trade."
+    "explanation": "The passage's pivot, \"These methods did more than prevent spoilage,\" frames its purpose: showing preservation's broader effects on diet and trade."
   },
   {
     "id": "ii-003",
@@ -449,7 +449,7 @@
       "Students who handwrote notes took longer to finish than students who typed"
     ],
     "answer": 1,
-    "explanation": "The claim links better memory to summarizing during handwriting. Only choice B connects handwriting, rephrasing, and higher recall — directly supporting the proposed mechanism."
+    "explanation": "The claim links better memory to summarizing during handwriting. Only choice B connects handwriting, rephrasing, and higher recall, which directly supports the proposed mechanism."
   },
   {
     "id": "ii-005",
@@ -466,7 +466,7 @@
       "a trait with no clear function in the deep-sea environment"
     ],
     "answer": 1,
-    "explanation": "The passage resolves the contradiction by pointing to prey animals' sensitivity to faint light — so the lure functions as bait that exploits the prey's vision, not the anglerfish's."
+    "explanation": "The passage resolves the contradiction by pointing to prey animals' sensitivity to faint light, so the lure functions as bait that exploits the prey's vision, not the anglerfish's."
   },
   {
     "id": "ii-006",
@@ -500,7 +500,7 @@
       "Cautious"
     ],
     "answer": 1,
-    "explanation": "The context — every scene advancing the plot, no wasted sentences — describes writing that is efficient, not writing related to money."
+    "explanation": "The context (every scene advancing the plot, no wasted sentences) describes writing that is efficient, not writing related to money."
   },
   {
     "id": "cs-002",
@@ -517,7 +517,7 @@
       "measured"
     ],
     "answer": 0,
-    "explanation": "The professor's response — requiring a redo — shows the discrepancy demanded attention; it could not be ignored."
+    "explanation": "The professor's response, requiring a redo, shows the discrepancy demanded attention; it could not be ignored."
   },
   {
     "id": "cs-003",
@@ -525,7 +525,7 @@
     "domain": "Craft and Structure",
     "skill": "Text structure and purpose",
     "difficulty": "medium",
-    "passage": "Most people picture glaciers as static mountains of ice. In reality, glaciers flow — slowly, but measurably — deforming under their own weight and sliding along meltwater at their base. Some Greenland glaciers travel more than 10 kilometers per year.",
+    "passage": "Most people picture glaciers as static mountains of ice. In reality, glaciers flow, slowly but measurably, deforming under their own weight and sliding along meltwater at their base. Some Greenland glaciers travel more than 10 kilometers per year.",
     "question": "Which choice best describes the function of the first sentence in the text as a whole?",
     "choices": [
       "It presents a common assumption that the rest of the text corrects",
@@ -534,7 +534,7 @@
       "It summarizes the evidence presented later in the text"
     ],
     "answer": 0,
-    "explanation": "The first sentence gives the popular view (\"static mountains of ice\"), which \"In reality…\" immediately overturns — a classic misconception-then-correction structure."
+    "explanation": "The first sentence gives the popular view (\"static mountains of ice\"), which \"In reality…\" immediately overturns. That is a classic misconception-then-correction structure."
   },
   {
     "id": "cs-004",
@@ -551,7 +551,7 @@
       "obsolete"
     ],
     "answer": 1,
-    "explanation": "Laying out options without recommending one is the definition of noncommittal — the opposite of decisive."
+    "explanation": "Laying out options without recommending one is the definition of noncommittal, the opposite of decisive."
   },
   {
     "id": "cs-005",
@@ -559,7 +559,7 @@
     "domain": "Craft and Structure",
     "skill": "Text structure and purpose",
     "difficulty": "medium",
-    "passage": "It is tempting to credit the printing press alone for the rapid spread of Renaissance ideas. Yet presses were expensive, and most Europeans could not read. The machine mattered, but it worked through a human network: itinerant booksellers, translators who rendered Latin texts into local languages, and readers who read aloud to the unlettered. Print accelerated the Renaissance the way a river accelerates trade — only where people had already built the ports.",
+    "passage": "It is tempting to credit the printing press alone for the rapid spread of Renaissance ideas. Yet presses were expensive, and most Europeans could not read. The machine mattered, but it worked through a human network: itinerant booksellers, translators who rendered Latin texts into local languages, and readers who read aloud to the unlettered. Print accelerated the Renaissance the way a river accelerates trade: only where people had already built the ports.",
     "question": "Which choice best describes the overall structure of the text?",
     "choices": [
       "A claim is introduced, complicated, and then refined into a more nuanced position",
@@ -568,7 +568,7 @@
       "A chronological narrative traces the invention of the printing press"
     ],
     "answer": 0,
-    "explanation": "The text starts with a tempting claim (press alone), complicates it (cost, illiteracy), and refines it (the press worked through human networks) — the claim is qualified, not rejected outright, so choice C goes too far."
+    "explanation": "The text starts with a tempting claim (press alone), complicates it (cost, illiteracy), and refines it (the press worked through human networks). The claim is qualified, not rejected outright, so choice C goes too far."
   },
   {
     "id": "cs-006",
@@ -585,7 +585,7 @@
       "By suggesting the recovery may have several contributing causes beyond wolves alone"
     ],
     "answer": 3,
-    "explanation": "Text 2 doesn't deny the wolf effect; it lists other factors (beavers, rainfall, hunting) that make attribution difficult — i.e., multiple contributing causes."
+    "explanation": "Text 2 doesn't deny the wolf effect; it lists other factors (beavers, rainfall, hunting) that make attribution difficult. In other words, it points to multiple contributing causes."
   },
   {
     "id": "ei-001",
@@ -602,7 +602,7 @@
       "In contrast"
     ],
     "answer": 1,
-    "explanation": "Her fast finish is the outcome of six months of training — a cause-and-effect relationship signaled by \"As a result.\""
+    "explanation": "Her fast finish is the outcome of six months of training. That cause-and-effect relationship is signaled by \"As a result.\""
   },
   {
     "id": "ei-002",
@@ -619,7 +619,7 @@
       "For instance"
     ],
     "answer": 2,
-    "explanation": "The second sentence cuts against the expectation set by falling prices, so a contrast transition — \"Nevertheless\" — is needed."
+    "explanation": "The second sentence cuts against the expectation set by falling prices, so a contrast transition (\"Nevertheless\") is needed."
   },
   {
     "id": "ei-003",
@@ -653,7 +653,7 @@
       "for example"
     ],
     "answer": 0,
-    "explanation": "The safety bicycle's low, stable design is being set against the dangerous high-wheel design — a contrast."
+    "explanation": "The safety bicycle's low, stable design is being set against the dangerous high-wheel design, which is a contrast."
   },
   {
     "id": "ei-005",
@@ -687,7 +687,7 @@
       "Nonetheless"
     ],
     "answer": 1,
-    "explanation": "The final sentence restates the discovery's meaning — the \"twilight\" was really midday — so \"In other words\" fits; nothing is being contrasted (\"Nonetheless\") or paralleled (\"Likewise\")."
+    "explanation": "The final sentence restates the discovery's meaning (the \"twilight\" was really midday), so \"In other words\" fits; nothing is being contrasted (\"Nonetheless\") or paralleled (\"Likewise\")."
   },
   {
     "id": "sec-001",
@@ -721,7 +721,7 @@
       "their's"
     ],
     "answer": 1,
-    "explanation": "The possessive form of \"it\" is \"its\" — no apostrophe. \"It's\" means \"it is.\""
+    "explanation": "The possessive form of \"it\" is \"its,\" with no apostrophe. \"It's\" means \"it is.\""
   },
   {
     "id": "sec-003",
@@ -789,7 +789,7 @@
       "— a mathematician whose work was depicted in a popular film:"
     ],
     "answer": 1,
-    "explanation": "A nonessential appositive must be set off by a pair of commas — one before and one after: \"Katherine Johnson, a mathematician…, calculated…\""
+    "explanation": "A nonessential appositive must be set off by a pair of commas, one before and one after: \"Katherine Johnson, a mathematician…, calculated…\""
   },
   {
     "id": "alg-007",
@@ -951,7 +951,7 @@
       "most medieval people were buried in the villages where they were born"
     ],
     "answer": 2,
-    "explanation": "Adults buried in villages grew up elsewhere, which directly contradicts the assumption that villagers rarely traveled — so movement was more common than assumed."
+    "explanation": "Adults buried in villages grew up elsewhere, which directly contradicts the assumption that villagers rarely traveled, so movement was more common than assumed."
   },
   {
     "id": "cs-007",
@@ -968,7 +968,7 @@
       "impartial"
     ],
     "answer": 1,
-    "explanation": "Examining everything in detail — the opposite of skimming — is an exhaustive analysis. \"Cursory\" means the opposite; \"impartial\" is about fairness, not depth."
+    "explanation": "Examining everything in detail, the opposite of skimming, is an exhaustive analysis. \"Cursory\" means the opposite; \"impartial\" is about fairness, not depth."
   },
   {
     "id": "cs-008",
@@ -985,7 +985,7 @@
       "It summarizes the history of reef research"
     ],
     "answer": 1,
-    "explanation": "The previous sentence claims reefs recycle nutrients efficiently; the final sentence explains how — tight nutrient loops among corals, algae, and microbes."
+    "explanation": "The previous sentence claims reefs recycle nutrients efficiently; the final sentence explains how: tight nutrient loops among corals, algae, and microbes."
   },
   {
     "id": "ei-007",
@@ -2285,7 +2285,7 @@
       "(4, 1)"
     ],
     "answer": 1,
-    "explanation": "Test (1, 2): 2 > 2(1) − 3 = −1 ✓ and 2 < −1 + 6 = 5 ✓. The other points fail: (0, 7) needs 7 < 6, (3, 2) needs 2 > 3, and (4, 1) needs 1 > 5."
+    "explanation": "Test (1, 2): 2 > 2(1) − 3 = −1 and 2 < −1 + 6 = 5 are both true. The other points fail: (0, 7) needs 7 < 6, (3, 2) needs 2 > 3, and (4, 1) needs 1 > 5."
   },
   {
     "id": "alg-028",

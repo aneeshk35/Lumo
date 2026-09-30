@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumo — SAT Prep</title>
+  <title>Lumo | SAT Prep</title>
+  <meta name="description" content="Free SAT practice with original questions: solo drills, live duels, 2v2, parties, and classes.">
   <!-- Applied before the first paint so a dark viewer never sees a white flash.
        A file, not inline, so the Content Security Policy can forbid inline scripts. -->
   <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js" integrity="sha384-lg3+EgIwmxYq9YD4ix279pdUEasqmOS17fF+2mI/NEg6JHkawYaWYpJ6nKZenPOy" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js" integrity="sha384-8oj95/2bNit2rlOOsJCaGBxSngfBWjoyQ8MtNbxmuk0v0B2nAK3Bwb1OJ5fWMWlk" crossorigin="anonymous"></script>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238B5CF6'/%3E%3Cstop offset='1' stop-color='%236D28D9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='36' fill='url(%23g)'/%3E%3Cellipse cx='36' cy='52' rx='9' ry='11' fill='white'/%3E%3Cellipse cx='66' cy='52' rx='9' ry='11' fill='white'/%3E%3Ccircle cx='12' cy='12' r='12' fill='%23A3E635'/%3E%3C/svg%3E">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
@@ -19,12 +19,6 @@
   <aside class="sidebar" id="sidebar"></aside>
 
   <div class="main">
-    <!-- promo + announcement banners (home & rush) -->
-    <div id="announce-bar" class="announce-bar">
-      <svg class="ic ic-fill" style="width:14px;height:14px;color:#0284C7" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8z"/></svg>
-      <span>New original question sets have been added to the bank. <a href="#" data-nav="Question Rush">Try Question Rush</a></span>
-    </div>
-
     <!-- ============ HOME ============ -->
     <section id="v-home" class="view active">
       <div class="page">
@@ -56,12 +50,12 @@
         <div class="promo-cards">
           <div class="promo-card tinted">
             <span class="lumo"><span class="dot"></span></span>
-            <span class="body"><span class="t">Play a live duel</span><span class="d">Race a friend through real SAT-style questions.</span></span>
+            <span class="body"><span class="t">Play a live duel</span><span class="d">Race a friend through original SAT-style questions.</span></span>
             <button class="pillbtn solid" data-nav="Play">Play &nbsp;&rsaquo;</button>
           </div>
           <div class="promo-card">
             <span class="lumo lilac"></span>
-            <span class="body"><span class="t">Browse the question bank</span><span class="d"><span id="home-bank-count">128</span> original questions across all 8 SAT domains.</span></span>
+            <span class="body"><span class="t">Browse the question bank</span><span class="d" id="home-bank-line">Original questions across all 8 SAT domains.</span></span>
             <button class="pillbtn soft" data-nav="Question Bank">Browse &nbsp;&rsaquo;</button>
           </div>
         </div>
@@ -73,7 +67,7 @@
           </div>
           <div class="stat-grid">
             <div class="stat-card"><span class="lbl">Questions Attempted</span><span class="num" id="an-attempted">0</span></div>
-            <div class="stat-card"><span class="lbl">Current Accuracy</span><span class="num" id="an-accuracy">—</span></div>
+            <div class="stat-card"><span class="lbl">Current Accuracy</span><span class="num" id="an-accuracy">None yet</span></div>
             <div class="stat-card"><span class="lbl">Sessions Played</span><span class="num" id="an-sessions">0</span><button class="btn-outline" data-nav="Question Rush">Play Again</button></div>
             <div class="stat-card"><span class="lbl">Recent Errors</span><span class="num" id="an-errors">0</span><button class="btn-outline" id="btn-review-errors">Start Review</button></div>
           </div>
@@ -100,6 +94,11 @@
             </div>
           </div>
         </div>
+
+        <footer class="site-foot">
+          <span>SAT&reg; is a trademark registered by the College Board, which is not affiliated with, and does not endorse, Lumo.</span>
+          <nav aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms and Conditions</a></nav>
+        </footer>
       </div>
     </section>
 
@@ -118,7 +117,7 @@
           </div>
         </div>
         <div class="hero-grid">
-          <div class="hero-card grad-pink">
+          <div class="hero-card fill-pink">
             <div class="body">
               <span class="t">Reading &amp; Writing</span>
               <span class="prog-row"><span id="rw-solved">0 of 0 solved</span><b id="rw-pct">0%</b></span>
@@ -128,7 +127,7 @@
             </div>
             <span class="hero-art"><span class="lumo"><span class="dot"></span></span></span>
           </div>
-          <div class="hero-card grad-purple">
+          <div class="hero-card fill-purple">
             <div class="body">
               <span class="t">Math</span>
               <span class="prog-row"><span id="math-solved">0 of 0 solved</span><b id="math-pct">0%</b></span>
@@ -155,19 +154,19 @@
               <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg>
               <span class="page-title">Play</span>
             </div>
-            <div class="sub">Race real people through real SAT-style questions. Wins add to your weekly ladder.</div>
+            <div class="sub">Race other players through original SAT-style questions. Ranked wins and losses move your rating.</div>
           </div>
           <div style="display:flex;align-items:center;gap:10px">
-            <span class="online-pill"><span class="dot-g"></span><span id="online-count">—</span> online</span>
+            <span class="online-pill hidden" id="online-pill"><span class="dot-g"></span><span id="online-count">0</span> online</span>
             <span class="rank-pill" id="elo-pill">1,200 ELO</span>
           </div>
         </div>
         <div class="play-grid">
           <div class="play-col">
-            <div class="hero-card grad-purple" style="min-height:168px">
+            <div class="hero-card fill-purple" style="min-height:168px">
               <div class="body">
                 <span style="display:flex;align-items:center;gap:9px"><span class="t" style="font-size:23px">1v1 Duel</span><span class="mode-tag">RANKED</span></span>
-                <span class="mode-sub">10 questions, same set for both players. Each difficulty has its own rating.</span>
+                <span class="mode-sub">10 questions, same set for both players. Each difficulty has its own rating. If nobody is free within a few seconds, a bot takes the seat and is labeled as one.</span>
                 <span class="duel-modes" id="duel-modes" role="group" aria-label="Subject">
                   <button class="duel-mode sel" data-sec="mixed">Mixed</button>
                   <button class="duel-mode" data-sec="math">Math</button>
@@ -184,29 +183,29 @@
               <span class="hero-art"><span class="lumo"><span class="dot"></span></span></span>
             </div>
             <div class="mode-grid">
-              <div class="mode-sm grad-pink">
+              <div class="mode-sm fill-pink">
                 <span class="t" style="font-size:19px;font-weight:700">2v2</span>
-                <span class="mode-sub" style="font-size:13px">Pair up. One teammate on Reading, one on Math — answer in your own section for a 25% bonus.</span>
+                <span class="mode-sub" style="font-size:13px">Pair up: one teammate takes Reading and Writing, the other takes Math. Correct answers in your own section earn 25% more points.</span>
                 <span class="grow" style="flex:1"></span>
                 <span class="mode-meta"><span class="dot-lime"></span>Fills at 4 players</span>
                 <button class="hero-btn on-pink" style="font-size:12.5px" id="btn-find-2v2">Queue up <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
               </div>
-              <div class="mode-sm grad-lilac">
-                <span style="display:flex;align-items:center;gap:9px"><span style="font-size:19px;font-weight:700">Squad</span><span class="mode-tag" style="background:#EDE9FE">5 PLAYERS</span></span>
-                <span class="mode-sub" style="font-size:13px">Your class against another. Combined score wins.</span>
+              <div class="mode-sm fill-violet">
+                <span style="display:flex;align-items:center;gap:9px"><span style="font-size:19px;font-weight:700">Party</span><span class="mode-tag" style="background:#EDE9FE">UP TO 20</span></span>
+                <span class="mode-sub" style="font-size:13px">A private game for a group or a class. Everyone gets the same questions and the highest score wins.</span>
                 <span class="grow" style="flex:1"></span>
-                <span class="mode-meta">Party codes support up to 20 players</span>
-                <button class="hero-btn on-purple" style="font-size:12.5px" id="btn-squad">Create squad <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+                <span class="mode-meta">Invite people with a 5-letter code</span>
+                <button class="hero-btn on-purple" style="font-size:12.5px" id="btn-squad">Host a party <svg class="ic" style="width:11px;height:11px;stroke-width:2.4" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
               </div>
             </div>
             <div class="ladder-card">
               <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-                <span class="t">Weekly ladder</span>
-                <span class="d" id="ladder-note">Win duels to climb the ladder.</span>
+                <span class="t">Ranked record</span>
+                <span class="d" id="ladder-note">Play ranked duels to build your record.</span>
               </div>
               <div class="ladder-prog">
                 <span class="track"><span class="fill" id="ladder-fill" style="width:0%"></span></span>
-                <span class="lbl" id="ladder-lbl">0 / 10 wins</span>
+                <span class="lbl" id="ladder-lbl">No games yet</span>
               </div>
             </div>
           </div>
@@ -222,7 +221,7 @@
               <div class="head">
                 <span class="t">Friends</span>
                 <button class="mycode" id="btn-my-code" title="Copy your friend code">
-                  <span class="lbl">Your code</span><span class="code" id="my-friend-code">—</span>
+                  <span class="lbl">Your code</span><span class="code" id="my-friend-code">…</span>
                 </button>
               </div>
               <div class="friend-add">
@@ -272,7 +271,7 @@
         </div>
         <div id="lobby-code-wrap" class="hidden" style="display:flex;flex-direction:column;align-items:center;gap:8px">
           <span class="lobby-code-chip" id="lobby-code"></span>
-          <span class="stage-sub">Share this code — friends enter it under Play → Join with code</span>
+          <span class="stage-sub">Share this code. Friends enter it under Play, then Join with code.</span>
         </div>
         <div class="lobby-vs" id="lobby-players"></div>
         <div class="stage-btns">
@@ -354,7 +353,7 @@
             <div class="spr hidden" id="spr">
               <label class="spr-label" for="spr-input">Your answer</label>
               <input id="spr-input" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="7" aria-describedby="spr-help">
-              <div class="spr-preview">Answer preview: <b id="spr-preview">—</b></div>
+              <div class="spr-preview">Answer preview: <b id="spr-preview"></b></div>
               <p class="spr-help" id="spr-help">Type a number, a fraction like 7/2, or a decimal like 3.5. For a long decimal, enter at least three decimal places.</p>
             </div>
             <p class="kbd-tip" id="kbd-tip" aria-hidden="true"></p>
@@ -382,7 +381,7 @@
         <button class="tb-qpill" id="match-progress" aria-expanded="false" aria-controls="tb-pop">Question 1 of 10</button>
         <div class="tb-actions">
           <div class="match-actions" id="match-actions">
-            <span class="auto-note hidden" id="locked-note">Locked in — waiting for others…</span>
+            <span class="auto-note hidden" id="locked-note">Locked in. Waiting for others…</span>
             <button class="tb-btn" id="btn-lock" disabled>Submit</button>
           </div>
           <div class="match-actions hidden" id="reveal-actions">
@@ -447,7 +446,7 @@
         </div>
         <div class="stat-grid">
           <div class="stat-card"><span class="lbl">Questions Attempted</span><span class="num" id="an2-attempted">0</span></div>
-          <div class="stat-card"><span class="lbl">Current Accuracy</span><span class="num" id="an2-accuracy">—</span></div>
+          <div class="stat-card"><span class="lbl">Current Accuracy</span><span class="num" id="an2-accuracy">None yet</span></div>
           <div class="stat-card"><span class="lbl">Duel Wins</span><span class="num" id="an2-wins">0</span></div>
           <div class="stat-card"><span class="lbl">Best Streak</span><span class="num" id="an2-streak">0</span></div>
         </div>
@@ -524,8 +523,8 @@
         </div>
         <div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">
           <div class="stat-card"><span class="lbl">Questions missed</span><span class="num" id="mk-count">0</span></div>
-          <div class="stat-card"><span class="lbl">Weakest domain</span><span class="num" id="mk-weak" style="font-size:19px;line-height:1.3">—</span></div>
-          <div class="stat-card"><span class="lbl">Retry accuracy</span><span class="num" id="mk-retry">—</span></div>
+          <div class="stat-card"><span class="lbl">Weakest domain</span><span class="num" id="mk-weak" style="font-size:19px;line-height:1.3">None yet</span></div>
+          <div class="stat-card"><span class="lbl">Retry accuracy</span><span class="num" id="mk-retry">None yet</span></div>
         </div>
         <div class="section-head">
           <div class="section-title">Your missed questions</div>
@@ -617,7 +616,7 @@
         <div class="vocab-wrap">
           <div class="vocab-card" id="vocab-card">
             <div class="vocab-front" id="vocab-front">
-              <span class="vc-word" id="vc-word">—</span>
+              <span class="vc-word" id="vc-word"></span>
               <span class="vc-pos" id="vc-pos"></span>
               <span class="vc-hint">Tap to flip</span>
             </div>
@@ -688,7 +687,7 @@
               <svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
               <span class="page-title">Ask Lumo</span>
             </div>
-            <div class="sub">Your built-in coach. Answers come from Lumo's own lesson library, question bank, vocab deck, and your stats — it works offline and never invents facts.</div>
+            <div class="sub">Ask about a skill, a word, or what to study next. Answers come only from Lumo's lessons, question bank, vocab deck, and your own stats.</div>
           </div>
         </div>
         <div class="coach-thread" id="coach-thread"></div>
@@ -775,7 +774,7 @@
             </div>
             <div class="code-card">
               <span class="t">Start a class</span>
-              <span class="d">Create a class, share the code, and watch the roster fill in as students practise.</span>
+              <span class="d">Create a class, share the code, and watch the roster fill in as students practice.</span>
               <input id="class-new-name" maxlength="40" placeholder="e.g. Period 3 SAT" aria-label="Class name">
               <button class="btn-outline" id="btn-class-create" style="text-align:center;justify-content:center;display:flex">Create class</button>
             </div>
@@ -847,6 +846,7 @@
               <button class="btn btn-primary" type="submit" id="btn-tutor-submit">Submit application</button>
               <span class="tf-error" id="tf-error"></span>
             </div>
+            <p class="acct-legal" style="text-align:left">Your email is used only to reply about your application. See the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
           </form>
         </div>
       </div>
@@ -888,6 +888,7 @@
         <span class="acct-note" id="acct-note"></span>
         <span class="acct-error hidden" id="acct-error" role="alert"></span>
         <button class="btn btn-primary" id="btn-save-name" type="submit">Create account</button>
+        <p class="acct-legal">By continuing, you agree to the <a href="terms.html" target="_blank" rel="noopener">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
       </form>
     </div>
 

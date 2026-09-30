@@ -1,4 +1,4 @@
-/* Lumo calculator — a small self-contained expression engine and grapher.
+/* Lumo calculator: a small self-contained expression engine and grapher.
    No external scripts, so it works offline and inside the SAT-style match view.
    Supports + - * / ^, parentheses, implicit multiplication (2x, 3(x+1)),
    sin cos tan asin acos atan sqrt abs ln log exp, and the constants pi and e. */

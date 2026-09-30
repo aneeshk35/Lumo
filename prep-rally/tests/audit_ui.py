@@ -12,6 +12,7 @@ For each screen, at a desktop and a phone viewport, it reports:
   - buttons, links, and inputs with no accessible name
   - tap targets under 24px on the phone viewport
   - page errors, console errors, and failed requests
+  - house style: pill-shaped controls, gradient backgrounds, and em dashes
 
 Exits non-zero when anything is found.
 """
@@ -301,6 +302,41 @@ PROBE = r"""
       }
     }
   }
+
+  // ---- house style ----
+  // No pill-shaped controls. A round icon button is fine; a wide button, chip,
+  // tag, or input with fully rounded ends is not.
+  for (const el of document.querySelectorAll('button, a, input, select, [role="button"], [class*="pill"], [class*="chip"], [class*="tag"], .toast')) {
+    if (skip(el) || !shown(el)) continue;
+    const r = el.getBoundingClientRect();
+    if (r.height < 14 || r.width <= r.height * 1.3) continue;
+    const radius = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
+    if (radius >= r.height / 2 - 1) {
+      out.push({ kind: 'pill-shaped control', severity: 'error', where: desc(el),
+                 detail: `${Math.round(r.width)}x${Math.round(r.height)}px with ${radius}px corners` });
+    }
+  }
+  // No decorative gradients: a background that blends two different solid
+  // colours. Stripes, hard-stop rings, and transparent fades are allowed.
+  for (const el of document.querySelectorAll('body *')) {
+    if (skip(el) || !shown(el)) continue;
+    const img = getComputedStyle(el).backgroundImage || '';
+    if (!/(^|[^-])(linear|radial)-gradient/.test(img)) continue;
+    const solid = new Set(stops(img).filter((c) => c.a > 0.5).map(hex));
+    if (solid.size > 1) {
+      out.push({ kind: 'gradient background', severity: 'error', where: desc(el), detail: img.slice(0, 120) });
+    }
+  }
+  // No em dashes in the interface. Question passages and answer choices are
+  // exempt: punctuation questions test the dash itself.
+  const CONTENT = '#q-passage, #q-text, #choice-grid, .rv-passage, .rv-choices, .rv-q, .rv-detail .qt, .mistake, #search-results, .bank-card';
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+    if (!n.textContent.includes('\u2014')) continue;
+    const el = n.parentElement;
+    if (!el || skip(el) || el.closest(CONTENT) || !shown(el)) continue;
+    out.push({ kind: 'em dash', severity: 'error', where: desc(el), detail: n.textContent.trim().slice(0, 100) });
+  }
   return out;
 }
 """
@@ -412,6 +448,9 @@ def plan(page):
         ("game-lost notice", lambda: (page.evaluate(
             "notice('That game ended', 'The Lumo server restarted (usually for an update), so the game in progress was lost. Everything you answered before that is saved.')"),
             page.wait_for_timeout(200))),
+        # Standalone pages last, since they leave the app.
+        ("privacy policy", lambda: (page.goto(BASE + "/privacy"), page.wait_for_timeout(300))),
+        ("terms", lambda: (page.goto(BASE + "/terms"), page.wait_for_timeout(300))),
     ]
 
 

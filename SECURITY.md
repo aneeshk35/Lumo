@@ -25,8 +25,9 @@ says how each risk is handled and lists the rules every change has to keep.
 6. **Anything that needs `eval` or looser rules goes in its own sandboxed
    frame** (`sandbox="allow-scripts"`, never `allow-same-origin`), like
    `desmos-frame.html`.
-7. **Pin third-party scripts to an exact version with an `integrity` hash**
-   (see the GSAP tags in `index.html`), and add any new host to the CSP in
+7. **Avoid third-party scripts.** The app page loads none; Desmos runs only
+   inside its sandboxed frame. If one is ever added, pin it to an exact
+   version with an `integrity` hash and add its host to the CSP in
    `server.py` and `vercel.json`.
 8. **Never log passwords, tokens, or player keys.** Use `log()` for security
    events.
@@ -42,9 +43,9 @@ says how each risk is handled and lists the rules every change has to keep.
 | **A03 Injection** | Every piece of dynamic HTML escapes player text. A strict CSP blocks inline and injected scripts and `eval`. Desmos needs `eval`, so it runs in `desmos-frame.html`, a sandboxed frame with an opaque origin and its own policy that can't reach the app's storage or page. Names are stripped of markup server-side. Supabase queries go through PostgREST with URL-encoded, validated values, so no SQL is built from input. |
 | **A04 Insecure design** | Elo, wins, and losses are computed on the server from ranked results, and edits made in the browser are ignored. Stale devices can't overwrite newer progress (revision check). Saves are capped at 512 KB. Parties and the queue are capped. |
 | **A05 Security misconfiguration** | Security headers: CSP, `X-Frame-Options: DENY`, `nosniff`, `no-referrer`, COOP, and Permissions-Policy. No server version banner. CORS is an explicit allowlist. API responses are `no-store`. Errors never include stack traces. |
-| **A06 Vulnerable components** | The server uses only the Python standard library. Front-end libraries are pinned to exact versions with SRI hashes. |
+| **A06 Vulnerable components** | The server uses only the Python standard library. The app page loads no third-party scripts; Desmos is confined to a sandboxed frame. |
 | **A07 Identification and authentication failures** | Passwords must be 8+ characters, not a common password, and must not contain the username. Wrong-password lockout is per username (10 per 15 minutes) and per IP (60). Sign-ups are limited per IP and globally. A miss costs the same time for unknown usernames. Sessions expire after 30 days and are deleted on sign-out. |
-| **A08 Software and data integrity failures** | SRI covers CDN scripts. The server decides ranked results. Every JSON body is checked for type, size, and shape. |
+| **A08 Software and data integrity failures** | No CDN scripts run on the app page, and the CSP allows scripts only from Lumo itself and Desmos. The server decides ranked results. Every JSON body is checked for type, size, and shape. |
 | **A09 Logging and monitoring failures** | Sign-ups, sign-ins, failures, lockouts, rate limiting, and storage errors are logged with timestamps to Render's logs, never with secrets. |
 | **A10 Server-side request forgery** | The server makes outbound requests only to `SUPABASE_URL`, which comes from the environment and must be `https://`. No request goes to a URL taken from user input. |
 

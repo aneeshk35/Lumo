@@ -1,4 +1,4 @@
-/* Lumo — SAT prep app. Frontend for the "Lumo SAT Prep" design, wired to the
+/* Lumo: SAT prep app. Frontend for the "Lumo SAT Prep" design, wired to the
    Python SSE game server (solo rush, code parties, 1v1 duel matchmaking). */
 
 const $ = (id) => document.getElementById(id);
@@ -21,7 +21,7 @@ const DEFAULT_PROFILE = {
   retryCorrect: 0, retryTotal: 0,
   // Social identity. playerKey is this browser's handle for classes, the friends
   // list, and tutor applications. There are no passwords, so it identifies a
-  // browser rather than a person — enough for a roster, not for anything risky.
+  // browser rather than a person: enough for a roster, not for anything risky.
   playerKey: '', friendCode: '',
   friends: [],         // [{code, name}] added by friend code
   classes: [],         // [{code, name, isTeacher}] cached for the sidebar
@@ -74,8 +74,8 @@ function accountUsername() {
 function identityLabel() {
   const n = profile.name || 'guest';
   return accountUsername()
-    ? `Signed in as ${n} (@${accountUsername()}) — account`
-    : `Playing as ${n}, not signed in — sign in or change nickname`;
+    ? `Signed in as ${n} (@${accountUsername()}). Open your account`
+    : `Playing as ${n}, not signed in. Sign in or change your nickname`;
 }
 // Refresh every place the player's name shows outside the current screen.
 function updateIdentityUI() {
@@ -135,7 +135,7 @@ const ICONS = {
 };
 // Six rail destinations, not fourteen. Each one is a section: the rail picks the
 // section, a tab row inside the page picks the screen within it. Nothing was
-// dropped — Vocab, Analytics and the rest moved one level down.
+// dropped: Vocab, Analytics and the rest moved one level down.
 const NAV = [
   { name: 'Home', icon: 'home', items: [
     { name: 'Home', view: 'v-home' },
@@ -179,7 +179,6 @@ const groupBadge = (g) => g.items.reduce((n, i) => {
 // Feature modules register their render function here so navTo does not need to
 // know about every screen. Filled in by masterclass.js, coach.js, classroom.js.
 const RENDERERS = {};
-const BANNER_VIEWS = new Set(['v-home', 'v-rush']);
 
 
 function icon(k, size = 18, sw = 1.7) {
@@ -190,24 +189,15 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-// Three near-identical blob outlines the mascot morphs between.
-const LUMO_BLOBS = [
-  'M50 4C78 4 96 22 96 50C96 78 78 96 50 96C22 96 4 78 4 50C4 22 22 4 50 4Z',
-  'M50 6C77 6 95 25 95 53C95 79 75 95 50 95C24 95 5 79 5 51C5 24 23 6 50 6Z',
-  'M50 5C81 7 93 25 96 53C98 78 73 96 49 95C25 94 4 77 4 49C4 23 21 3 50 5Z',
-];
+// The mascot's outline in the sidebar.
+const LUMO_BLOB = 'M50 4C78 4 96 22 96 50C96 78 78 96 50 96C22 96 4 78 4 50C4 22 22 4 50 4Z';
 
 function buildSidebar() {
   const sb = $('sidebar');
   let html = `
-    <button class="sb-brand" id="sb-brand" aria-label="Lumo — go home">
+    <button class="sb-brand" id="sb-brand" aria-label="Lumo home">
       <svg class="lumo-svg" viewBox="0 0 100 100" aria-hidden="true">
-        <defs>
-          <linearGradient id="lumoGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#6D28D9"/>
-          </linearGradient>
-        </defs>
-        <path id="lumo-blob" class="lumo-blob" d="${LUMO_BLOBS[0]}"/>
+        <path id="lumo-blob" class="lumo-blob" d="${LUMO_BLOB}"/>
         <ellipse class="eye" cx="36" cy="53" rx="8.5" ry="10.5"/>
         <ellipse class="eye" cx="66" cy="53" rx="8.5" ry="10.5"/>
         <circle class="spark" cx="13" cy="13" r="10"/>
@@ -280,81 +270,10 @@ if (window.matchMedia) {
   if (mq.addEventListener) mq.addEventListener('change', onChange);
 }
 
-/* ================= Motion (GSAP) =================
-   Every animation here is optional decoration. If the GSAP bundles fail to
-   load the app still works: CSS handles hover and the active state, and each
-   helper below no-ops. */
-const anim = { on: false, morph: false, pill: null, blob: 0 };
-
-function initAnimations() {
-  // Honour the OS "reduce motion" setting: no bouncing, no morphing, no stagger.
-  const calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  anim.on = typeof window.gsap !== 'undefined' && !calm;
-  if (!anim.on) return;
-  if (window.Flip) gsap.registerPlugin(Flip);
-  if (window.MorphSVGPlugin) { gsap.registerPlugin(MorphSVGPlugin); anim.morph = true; }
-
-  $('sidebar').classList.add('gsap-on');
-  anim.pill = document.createElement('span');
-  anim.pill.className = 'sb-pill';
-
-  // Icons lean and grow under the cursor.
-  document.querySelectorAll('.sb-item').forEach((b) => {
-    const ico = b.querySelector('.ic');
-    if (!ico) return;
-    b.addEventListener('mouseenter', () =>
-      gsap.to(ico, { scale: 1.12, duration: 0.22, ease: 'power2.out' }));
-    b.addEventListener('mouseleave', () =>
-      gsap.to(ico, { scale: 1, duration: 0.22, ease: 'power2.out', clearProps: 'transform' }));
-  });
-
-  // The mascot breathes between blob shapes.
-  if (anim.morph) idleMorph();
-  $('sidebar').classList.add('rail-in');
-}
-
-function idleMorph() {
-  anim.blob = (anim.blob + 1) % LUMO_BLOBS.length;
-  gsap.to('#lumo-blob', {
-    morphSVG: LUMO_BLOBS[anim.blob],
-    duration: 1.2,
-    ease: 'sine.inOut',
-    onComplete: () => gsap.delayedCall(2.4, idleMorph),
-  });
-}
-
-// FLIP: the pill measures its old box, jumps to the new item, then animates the difference.
-function movePill(btn) {
-  if (!anim.on || !anim.pill || !btn) return;
-  if (anim.pill.parentElement === btn) return;
-  if (!anim.pill.parentElement || !window.Flip) { btn.appendChild(anim.pill); return; }
-  const state = Flip.getState(anim.pill);
-  btn.appendChild(anim.pill);
-  Flip.from(state, { duration: 0.34, ease: 'power3.out', absolute: true });
-}
-
-function popIcon(btn) {
-  if (!anim.on || !btn) return;
-  const ico = btn.querySelector('.ic');
-  if (ico) gsap.fromTo(ico, { scale: 0.88 },
-    { scale: 1, duration: 0.3, ease: 'back.out(1.7)', clearProps: 'transform' });
-  gsap.fromTo('#sb-brand', { scale: 0.94 },
-    { scale: 1, duration: 0.3, ease: 'back.out(1.7)', clearProps: 'transform' });
-  if (anim.morph) {
-    anim.blob = (anim.blob + 1) % LUMO_BLOBS.length;
-    gsap.to('#lumo-blob', { morphSVG: LUMO_BLOBS[anim.blob], duration: 0.5, ease: 'back.inOut(3)' });
-  }
-}
-
-// Content settles in behind the pill. Only page-style views; the match screen
-// stays still so questions never jump while you are reading them.
-// Content settles in behind the pill. This is a CSS animation, not a GSAP tween,
-// on purpose: an element's resting style is the visible one, so if the animation
-// never runs — a background tab throttles rAF and timers to a standstill — the
-// content is simply there. A JS tween that fades from opacity 0 can freeze
-// half-way and leave a screen permanently blank. The rise distance does the
-// staggering, because an animation-delay would need a fill mode that reintroduces
-// exactly that risk.
+// A short fade when a page opens. Only page-style views; the match screen stays
+// still so questions never jump while you are reading them. It's a CSS animation
+// whose resting style is the visible one, so if it never runs (a background tab
+// can throttle it) the content is simply there.
 function animateView(id) {
   const view = $(id);
   if (!view) return;
@@ -426,8 +345,6 @@ function navTo(name) {
     b.classList.toggle('active', on);
     if (on) activeBtn = b;
   });
-  movePill(activeBtn);
-  popIcon(activeBtn);
   // On narrow screens the rail becomes a horizontally scrolling top bar, so the
   // item you just picked can sit off-screen. Bring it into view.
   if (activeBtn && activeBtn.scrollIntoView) {
@@ -462,8 +379,6 @@ function switchView(id) {
   $(id).classList.add('active');
   document.body.classList.toggle('testing', id === 'v-match');
   if (id !== 'v-match') { openCalc(false); openRef(false); closeTrack(); }
-  const showBanners = BANNER_VIEWS.has(id);
-  $('announce-bar').classList.toggle('hidden', !showBanners);
   document.querySelector('.main').scrollTop = 0;
   animateView(id);
 }
@@ -529,7 +444,7 @@ function connectEvents() {
   on('question', onQuestion);
   on('answer_progress', ({ answered, total }) => {
     // only meaningful with other players; solo practice just reveals
-    if (game.answered && game.mode !== 'solo') $('locked-note').textContent = `Locked in — ${answered} / ${total} answered`;
+    if (game.answered && game.mode !== 'solo') $('locked-note').textContent = `Locked in. ${answered} of ${total} answered`;
   });
   on('reveal', onReveal);
   on('game_over', onGameOver);
@@ -746,7 +661,7 @@ async function findMatch(mode) {
     if (game.phase !== 'queue') return clearInterval(poll);
     const st = await api('queue_status', { ticket: game.queueTicket });
     if (st.matched) { clearInterval(poll); enterDuel(st); }
-    else if (st.expired) { clearInterval(poll); cancelQueue(); toast('Queue timed out — try again.'); }
+    else if (st.expired) { clearInterval(poll); cancelQueue(); toast('The queue timed out. Try again.'); }
     else showQueueWaiting(st.waiting, st.needed);
   }, 1500);
   game.queueTimers.push(poll);
@@ -806,7 +721,7 @@ function renderLobby(lobby) {
     ? 'Two teams of two · answer inside your own section for a 25% specialist bonus'
     : isDuel
       ? 'Same questions for both players · speed and streaks decide it · Ranked'
-      : `${lobby.players.length} player${lobby.players.length === 1 ? '' : 's'} in — up to 20 can join`;
+      : `${lobby.players.length} player${lobby.players.length === 1 ? '' : 's'} in. Up to 20 can join.`;
   if (isDuel && lobby.players.some((p) => p.bot)) {
     $('lobby-sub').textContent = `No one else was searching, so ${isTeam ? 'bots near your rating fill the open seats' : 'a bot near your rating took the seat'} · still ranked`;
   }
@@ -859,7 +774,7 @@ function renderLobby(lobby) {
 
   const btn = $('btn-ready');
   if (isDuel) {
-    btn.textContent = mine && mine.ready ? 'Ready — waiting…' : 'Ready up';
+    btn.textContent = mine && mine.ready ? 'Ready. Waiting…' : 'Ready up';
     btn.disabled = !!(mine && mine.ready);
     btn.classList.remove('hidden');
   } else if (game.isHost) {
@@ -926,7 +841,7 @@ function onQuestion(q) {
   input.value = '';
   input.disabled = false;
   input.className = '';
-  $('spr-preview').textContent = '—';
+  $('spr-preview').textContent = '';
   const grid = $('choice-grid');
   grid.className = `choice-grid${game.crossOut ? ' xo-on' : ''}${spr ? ' hidden' : ''}`;
   grid.innerHTML = q.choices.map((c, i) => `
@@ -993,7 +908,7 @@ $('spr-input').addEventListener('input', () => {
   const clean = input.value.replace(/−/g, '-').replace(/[^0-9./-]/g, '').slice(0, 7);
   if (clean !== input.value) input.value = clean;
   game.response = clean;
-  $('spr-preview').textContent = clean ? clean.replace(/-/g, '−') : '—';
+  $('spr-preview').textContent = clean ? clean.replace(/-/g, '−') : '';
   $('btn-lock').disabled = !clean || game.answered;
 });
 $('spr-input').addEventListener('keydown', (e) => {
@@ -1007,10 +922,10 @@ $('btn-lock').onclick = async () => {
   $('btn-lock').disabled = true;
   if (spr) {
     $('spr-input').disabled = true;
-    $('locked-note').textContent = `Locked in ${game.response.replace(/-/g, '−')} — waiting…`;
+    $('locked-note').textContent = `Locked in ${game.response.replace(/-/g, '−')}. Waiting…`;
   } else {
     document.querySelectorAll('#choice-grid .mchoice').forEach((b) => (b.disabled = true));
-    $('locked-note').textContent = `Locked in ${LETTERS[game.selected]} — waiting…`;
+    $('locked-note').textContent = `Locked in ${LETTERS[game.selected]}. Waiting…`;
   }
   // Solo practice has no one to wait for: Submit goes straight to the answer.
   $('locked-note').classList.toggle('hidden', game.mode === 'solo');
@@ -1278,7 +1193,7 @@ function applyHighlight() {
     range.insertNode(mark);
     sel.removeAllRanges();
   } catch {
-    toast('That selection spans too much to highlight — try a smaller piece.');
+    toast('That selection spans too much to highlight. Try a smaller piece.');
   }
 }
 
@@ -1289,7 +1204,7 @@ $('btn-highlight').onclick = () => setHighlightMode(!highlightOn);
 const calc = { range: 10, expr: '' };
 
 // Desmos is loaded on first use (it is a ~4MB script, so not at page load).
-// If it cannot load — offline, blocked, no network — the built-in calculator
+// If it cannot load (offline, blocked, no network), the built-in calculator
 // takes over so the tool always works.
 const desmos = { state: 'idle', calc: null, key: null };
 
@@ -1484,9 +1399,9 @@ function onReveal(data) {
   const card = $('reveal-card');
   card.classList.remove('hidden');
   const title = $('reveal-title');
-  if (mine === null) { title.innerHTML = `${icon('planner', 16, 2)} Time's up — no answer`; title.className = 't bad'; }
+  if (mine === null) { title.innerHTML = `${icon('planner', 16, 2)} Time's up. No answer`; title.className = 't bad'; }
   else if (correct) { title.textContent = 'Correct'; title.className = 't good'; }
-  else { title.textContent = `Not quite — the answer was ${rightLabel}`; title.className = 't bad'; }
+  else { title.textContent = `Not quite. The answer was ${rightLabel}`; title.className = 't bad'; }
   $('reveal-ex').textContent = data.explanation;
   // Practice only: spin up a short set built from this question's skill.
   $('reveal-more').classList.toggle('hidden', game.mode !== 'solo' || !q.id);
@@ -1685,7 +1600,7 @@ function onGameOver(data) {
       ? takeRating(data, () => applyElo(game.difficulty, rivalElo, won ? 1 : tie ? 0.5 : 0)) : 0;
     if (won) profile.wins += 1; else if (!tie) profile.losses += 1;
     $('result-hero').textContent = won ? 'Team victory' : tie ? 'Team tie' : 'Team defeat';
-    sub = `Team ${myTeam} ${us ? us.score.toLocaleString() : 0} — ${them ? them.score.toLocaleString() : 0} Team ${them ? them.team : ''}`
+    sub = `Team ${myTeam} ${us ? us.score.toLocaleString() : 0}, Team ${them ? them.team : ''} ${them ? them.score.toLocaleString() : 0}`
       + ` · you scored ${(meRow.score || 0).toLocaleString()} · ${delta >= 0 ? '+' : ''}${delta} ELO`;
   } else if (game.mode === 'duel' && game.opponent && game.ranked) {
     const opp = board.find((p) => p.name === game.opponent) || { score: 0 };
@@ -1927,12 +1842,14 @@ function renderHome() {
   $('stat-streak').textContent = profile.dayStreak;
   $('stat-points').textContent = profile.points.toLocaleString();
   $('an-attempted').textContent = profile.attempted.toLocaleString();
-  $('an-accuracy').textContent = profile.attempted ? `${Math.round((profile.correct / profile.attempted) * 100)}%` : '—';
+  $('an-accuracy').textContent = profile.attempted ? `${Math.round((profile.correct / profile.attempted) * 100)}%` : 'None yet';
   $('an-sessions').textContent = profile.sessions.length;
   $('an-errors').textContent = profile.errors;
 
   api('bank').then((res) => {
-    if (res && res.total) $('home-bank-count').textContent = res.total.toLocaleString();
+    if (res && res.total) {
+      $('home-bank-line').textContent = `${res.total.toLocaleString()} original questions across all 8 SAT domains.`;
+    }
   }).catch(() => {});
 
   const today = new Date();
@@ -2053,19 +1970,24 @@ async function renderRush() {
 /* ================= Play ================= */
 async function renderPlay() {
   paintEloPill();
-  const wins = profile.wins % 10;
-  $('ladder-fill').style.width = `${wins * 10}%`;
-  $('ladder-lbl').textContent = `${wins} / 10 wins`;
-  $('ladder-note').textContent = profile.wins
-    ? `Win ${10 - wins} more duel${10 - wins === 1 ? '' : 's'} to climb a tier.`
-    : 'Win duels to climb the ladder.';
-  $('my-friend-code').textContent = profile.friendCode || '—';
+  // Ranked record: real wins and losses, and the share of games won.
+  const wins = profile.wins || 0, losses = profile.losses || 0, played = wins + losses;
+  const rate = played ? Math.round((wins / played) * 100) : 0;
+  $('ladder-fill').style.width = `${rate}%`;
+  $('ladder-lbl').textContent = played ? `${rate}% won` : 'No games yet';
+  $('ladder-note').textContent = played
+    ? `${wins} win${wins === 1 ? '' : 's'}, ${losses} loss${losses === 1 ? '' : 'es'} in ranked games.`
+    : 'Play ranked duels to build your record.';
+  $('my-friend-code').textContent = profile.friendCode || '…';
   paintFriends();
   pingPresence();
+  // People with Lumo open right now (you included). Hidden if the count can't be read.
   try {
     const res = await api('stats');
-    $('online-count').textContent = Math.max(1, res.online || 0).toLocaleString();
-  } catch { $('online-count').textContent = '1'; }
+    const active = Number(res.active);
+    $('online-pill').classList.toggle('hidden', !(active >= 1));
+    if (active >= 1) $('online-count').textContent = active.toLocaleString();
+  } catch { $('online-pill').classList.add('hidden'); }
 }
 
 document.querySelectorAll('#duel-modes .duel-mode').forEach((b) => {
@@ -2203,14 +2125,14 @@ function renderMistakes() {
   const list = profile.mistakes;
   $('mk-count').textContent = list.length;
   $('mk-retry').textContent = profile.retryTotal
-    ? `${Math.round((profile.retryCorrect / profile.retryTotal) * 100)}%` : '—';
+    ? `${Math.round((profile.retryCorrect / profile.retryTotal) * 100)}%` : 'None yet';
 
   const attempted = Object.entries(profile.domainStats).filter(([, s]) => s.total >= 2);
   if (attempted.length) {
     attempted.sort((a, b) => (a[1].correct / a[1].total) - (b[1].correct / b[1].total));
     $('mk-weak').textContent = attempted[0][0];
   } else {
-    $('mk-weak').textContent = '—';
+    $('mk-weak').textContent = 'None yet';
   }
 
   $('btn-review-all').disabled = !list.length;
@@ -2314,7 +2236,7 @@ function startPlanTask(id) {
   if (!t) return;
   if (t.section === 'review') {
     const ids = profile.mistakes.slice(0, 10).map((m) => m.id);
-    if (!ids.length) return toast('No missed questions saved yet — play a session first.');
+    if (!ids.length) return toast('No missed questions saved yet. Play a session first.');
     t.done = true; saveProfile();
     return startPractice({ ids, count: ids.length }, 'Review');
   }
@@ -2426,7 +2348,7 @@ $('vc-reset').onclick = () => { profile.vocabKnown = []; vocabIdx = 0; saveProfi
 /* ================= Analytics ================= */
 async function renderAnalytics() {
   $('an2-attempted').textContent = profile.attempted.toLocaleString();
-  $('an2-accuracy').textContent = profile.attempted ? `${Math.round((profile.correct / profile.attempted) * 100)}%` : '—';
+  $('an2-accuracy').textContent = profile.attempted ? `${Math.round((profile.correct / profile.attempted) * 100)}%` : 'None yet';
   $('an2-wins').textContent = profile.wins;
   $('an2-streak').textContent = profile.bestStreak;
 
@@ -2476,11 +2398,9 @@ function ordinal(n) {
 
 /* ================= Boot ================= */
 buildSidebar();
-initAnimations();
 if (profile.plan && profile.plan.week !== weekKey()) buildPlan(); // fresh week, fresh plan
 refreshPlannerBadge();
 const homeBtn = document.querySelector('.sb-item[data-navgroup="Home"]');
 homeBtn.classList.add('active');
-movePill(homeBtn);
 renderHome();
 // account.js finishes boot: it restores the session or asks for a name.

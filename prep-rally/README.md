@@ -158,23 +158,16 @@ the labels stay in the DOM for screen readers and the buttons carry
 Light and dark both ship. With no choice stored the app follows the OS; the
 button beside the avatar pins one for this browser, and `index.html` applies the
 stored value before the first paint so a dark viewer never sees a white flash.
-Colours resolve through tokens on `:root`, which the dark block redefines — so
+Colours resolve through tokens on `:root`, which the dark block redefines, so
 dark mode is a token swap, not a second stylesheet. Two pairs are deliberately
 split: `--purple` fills a button that carries white text while `--purple-ink`
 is purple *as* text on a wash, and `--purple-deep` stays fixed because it only
-ever sits on a white chip over a brand gradient.
+ever sits on a white chip over a brand fill.
 
-Motion is handled by GSAP, loaded from a CDN:
-
-- **Flip** moves the purple selection pill between nav icons. It measures the
-  pill's old box, moves it into the new button, and animates the difference.
-- **MorphSVG** morphs the mascot between three blob outlines, idling slowly and
-  reacting when you change page.
-- Icons grow slightly on hover and settle on click; page content fades up.
-
-All of it is optional. If the GSAP bundles fail to load, CSS handles hover and
-the active state and every animation helper becomes a no-op. Motion is also
-skipped entirely when the OS requests reduced motion.
+Motion is deliberately small: pages fade in over about a third of a second and
+nothing moves on its own or follows the cursor. There are no gradients, no
+pill-shaped buttons, and no animation library. Reduced-motion settings turn the
+fade off.
 
 ## The calculator
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Lumo</title>
+  <meta name="description" content="What Lumo collects, why, where it is stored, and how to delete it.">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body class="legal-body">
+<header class="legal-top">
+  <a class="legal-brand" href="./">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="30" fill="#6D28D9"/><ellipse cx="36" cy="53" rx="8.5" ry="10.5" fill="#fff"/><ellipse cx="66" cy="53" rx="8.5" ry="10.5" fill="#fff"/><circle cx="14" cy="14" r="11" fill="#A3E635"/></svg>
+    <span>Lumo</span>
+  </a>
+  <nav class="legal-nav" aria-label="Legal">
+    <a href="privacy.html" aria-current="page">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="./">Back to Lumo</a>
+  </nav>
+</header>
+
+<main class="legal">
+  <h1>Privacy Policy</h1>
+  <p class="legal-date">Effective September 30, 2026</p>
+
+  <p>Lumo is a free SAT practice site. This page explains what information Lumo collects, why, where it is kept, who can see it, and how to have it deleted. Lumo does not show ads, does not use analytics or tracking cookies, and does not sell or rent anyone's information.</p>
+
+  <h2>What we collect</h2>
+
+  <h3>If you play as a guest</h3>
+  <p>Your progress (answers, scores, mistakes, study plan, game history, and settings) is saved only in your own browser's local storage. It is not sent to Lumo's database. Clearing your browser's site data for Lumo deletes it.</p>
+  <p>Your browser also creates a random player key. Lumo's server stores only a one-way hash of that key, which it uses to connect you to your friends list, classes, and tutor application.</p>
+
+  <h3>If you create an account</h3>
+  <ul>
+    <li><strong>Username and nickname.</strong> Your nickname is shown to other players in games, to your friends, and to classes you join.</li>
+    <li><strong>Password.</strong> Stored only as a salted PBKDF2 hash. Nobody at Lumo can read your password.</li>
+    <li><strong>Your progress.</strong> The same progress a guest keeps in the browser, saved to your account so it follows you to other devices. This includes the questions you have answered and missed and your recent games.</li>
+    <li><strong>Ratings.</strong> Your rating for each difficulty, and your ranked wins and losses.</li>
+    <li><strong>Sign-in sessions.</strong> A sign-in token kept in your browser. The server stores only a hash of it, and sessions expire after 30 days or when you sign out.</li>
+  </ul>
+
+  <h3>Friends</h3>
+  <p>Lumo gives each player a friend code. To show your friends whether you are online, Lumo stores your friend code, nickname, rating, the last time you had Lumo open, and friend requests you have received. Friends can see your nickname, whether you are online, what you are doing in the app (for example, "In a game"), your rating, and when you were last online.</p>
+
+  <h3>Classes</h3>
+  <p>If you create or join a class, Lumo stores the class name, the teacher's and students' nicknames, and each student's practice totals: questions attempted, questions correct, points, weakest area, whether they finished the current assignment, and when they last practiced. The teacher and the other members of the class can see these. Leaving a class removes your entry from it, and when the teacher leaves, the class is deleted.</p>
+
+  <h3>Tutor applications</h3>
+  <p>If you apply to be a tutor, Lumo stores what you enter on the form: your full name, email address, grade, SAT score if you give one, availability, subjects, and your written answer, along with your practice totals at the time you applied. Applications are read by the person who runs Lumo, and your email is used only to reply about your application.</p>
+
+  <h3>Question reports</h3>
+  <p>If you report a question, Lumo stores your reason, any note you write, a copy of the question, your nickname, and a hash of your player key.</p>
+
+  <h3>Games</h3>
+  <p>Live games (parties, duels, and 2v2 matches) are held in the game server's memory while they run and are not saved to the database. Other players in a game see your nickname, your score, and whether you answered each question correctly. When no one is free, a computer-controlled bot may fill a seat, and it is labeled as a bot.</p>
+
+  <h3>Technical information</h3>
+  <p>Like any website, Lumo's servers receive your IP address with each request. The game server uses it briefly, in memory, to limit abuse such as password guessing. Sign-ups, sign-ins, failed sign-ins, and rate-limited requests are written to the server's logs with the username involved and the IP address, so attacks can be spotted. Passwords and tokens are never logged.</p>
+
+  <h2>Where your information is kept</h2>
+  <p>Lumo uses these services to run:</p>
+  <ul>
+    <li><strong>Supabase</strong> stores accounts, progress, friends, classes, tutor applications, and question reports. The database is locked so that only Lumo's server and the person who runs Lumo can reach it, never other visitors.</li>
+    <li><strong>Render</strong> runs the game server and keeps its logs.</li>
+    <li><strong>Vercel</strong> hosts the website files.</li>
+    <li><strong>Desmos</strong> provides the graphing calculator. When you open the calculator, your browser loads it from desmos.com, and Desmos receives the usual request information, such as your IP address. Desmos's own privacy policy applies to that.</li>
+  </ul>
+  <p>These providers process information only to provide their service to Lumo. All connections use HTTPS.</p>
+
+  <h2>What we do not do</h2>
+  <ul>
+    <li>No advertising and no ad networks.</li>
+    <li>No analytics, tracking pixels, or tracking cookies.</li>
+    <li>No selling or sharing of personal information for marketing.</li>
+  </ul>
+  <p>Lumo uses your browser's local storage only for things the site needs: your progress, your sign-in, your light or dark theme, and where you last placed the calculator.</p>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li>Account information and progress: until you ask us to delete your account.</li>
+    <li>Sign-in sessions: 30 days, or until you sign out.</li>
+    <li>Friend codes and last-online times: until you ask us to delete them.</li>
+    <li>Classes: until you leave the class, or until the teacher leaves, which deletes the class.</li>
+    <li>Tutor applications: until you withdraw the application, which deletes it.</li>
+    <li>Question reports: until they are no longer needed to review and fix the question.</li>
+    <li>Server logs: as long as Render keeps them.</li>
+  </ul>
+
+  <h2>Your choices and rights</h2>
+  <ul>
+    <li>You can use Lumo as a guest, without an account.</li>
+    <li>You can change your nickname at any time.</li>
+    <li>You can leave a class, or withdraw a tutor application from the tutor page. Both delete that information.</li>
+    <li>You can ask for a copy of your information, ask us to correct it, or ask us to delete your account and everything linked to it by emailing the address below. We will reply within 30 days.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Lumo is meant for high school students preparing for the SAT and is not directed to children under 13. If you are under 13, please do not create an account or apply to be a tutor. If we learn that we have collected personal information from a child under 13, we will delete it. A parent or guardian who believes this has happened can contact us at the address below.</p>
+
+  <h2>Security</h2>
+  <p>Passwords are hashed, sign-in tokens and player keys are stored only as hashes, the database is locked so that visitors cannot reach it directly, and the site sends strict security headers. No system is perfectly secure, but we work to keep your information safe and will fix problems quickly when we find them.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the new version will be posted on this page with a new effective date. If a change is significant, Lumo will also note it in the app.</p>
+
+  <h2>Contact</h2>
+  <p>For privacy questions or requests, email <span class="legal-todo">[Lumo contact email, to be added before launch]</span>.</p>
+
+  <p class="legal-foot">SAT&reg; is a trademark registered by the College Board, which is not affiliated with, and does not endorse, Lumo.</p>
+</main>
+</body>
+</html>

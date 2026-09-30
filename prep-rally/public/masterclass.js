@@ -1,4 +1,4 @@
-/* Lumo — Masterclass. Short written lessons per SAT domain, each ending in a
+/* Lumo: Masterclass. Short written lessons per SAT domain, each ending in a
    worked example you actually answer, then a one-click drill into the bank.
    Lesson text lives in public/lessons.json. */
 
@@ -165,7 +165,7 @@ async function openLesson(id) {
           else if (i === picked) b2.classList.add('wrong');
         });
         $('lb-walk-h').textContent = right
-          ? 'Correct — here is why'
+          ? 'Correct. Here is why'
           : `Not quite. The answer is ${LETTERS[ex.answer]}`;
         $('lb-walk').classList.remove('hidden');
         $('lb-walk').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -181,7 +181,7 @@ async function openLesson(id) {
 
 function syncLessonFoot() {
   const done = lessonDone(currentLesson.id);
-  $('lesson-complete').textContent = done ? 'Completed ✓' : 'Mark complete';
+  $('lesson-complete').textContent = done ? 'Completed' : 'Mark complete';
   $('lesson-complete').classList.toggle('btn-primary', !done);
   $('lesson-complete').classList.toggle('btn-done', done);
   const rest = sectionLessons(currentLesson.section);

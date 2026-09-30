@@ -1,4 +1,4 @@
-/* Lumo — friends, presence, and 2v2 queueing.
+/* Lumo: friends, presence, and 2v2 queueing.
 
    Presence is a heartbeat: this browser tells the server its nickname and what
    it is doing, and gets back the status of the friend codes it asked about,
@@ -50,7 +50,7 @@ async function pingPresence() {
       toast(`${r.name} sent you a friend request. Accept it under Play.`);
     });
     refreshFriendBadge();
-    if ($('my-friend-code')) $('my-friend-code').textContent = profile.friendCode || '—';
+    if ($('my-friend-code')) $('my-friend-code').textContent = profile.friendCode || '…';
     if (document.querySelector('#v-play.active')) paintFriends();
     if (res.invites && res.invites.length) showInvite(res.invites[res.invites.length - 1]);
   } catch { /* offline is fine; the next tick retries */ }
@@ -118,7 +118,7 @@ function paintFriends() {
   const list = $('friends-list');
   if (!list) return;
   if (!profile.friends.length) {
-    list.innerHTML = `<div class="empty-note small">No friends yet. Share your code above, or add someone with theirs — you will see when they are online and can challenge them straight to a duel.</div>`;
+    list.innerHTML = `<div class="empty-note small">No friends yet. Share your code above, or add someone with theirs. You'll see when they're online and can challenge them to a duel.</div>`;
     return;
   }
   const byCode = Object.fromEntries(friendRows.map((f) => [f.code, f]));
@@ -198,7 +198,7 @@ async function challengeFriend(code) {
   game.isHost = true;
   renderLobby(res.state);
   switchView('v-lobby');
-  toast('Invite sent — waiting for them to join.');
+  toast('Invite sent. Waiting for them to join.');
 }
 
 function showInvite(inv) {
@@ -237,7 +237,7 @@ $('invite-dismiss').onclick = () => {
 $('btn-add-friend').onclick = addFriend;
 $('friend-code-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') addFriend(); });
 $('btn-my-code').onclick = async () => {
-  if (!profile.friendCode) return toast('Your code is still being assigned — try again in a moment.');
+  if (!profile.friendCode) return toast('Your code is still being assigned. Try again in a moment.');
   try {
     await navigator.clipboard.writeText(profile.friendCode);
     toast(`Your friend code ${profile.friendCode} is copied.`);
