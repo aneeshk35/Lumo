@@ -1006,6 +1006,16 @@
   <button class="invite-x" id="invite-dismiss" aria-label="Dismiss invite">&times;</button>
 </div>
 
+<!-- shown when a newer version of Lumo is deployed while this tab is open -->
+<div id="update-pop" class="invite-pop update-pop hidden" role="status">
+  <span class="body">
+    <span class="t">Lumo was updated</span>
+    <span class="d">Reload to get the latest version. Your progress is saved.</span>
+  </span>
+  <button class="btn btn-primary" id="update-reload">Reload</button>
+  <button class="invite-x" id="update-dismiss" aria-label="Dismiss update notice">&times;</button>
+</div>
+
 <div id="toast" class="toast hidden"></div>
 
 <script src="calc.js"></script>

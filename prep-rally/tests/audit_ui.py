@@ -241,8 +241,9 @@ PROBE = r"""
         const v = sc.getBoundingClientRect();
         if (cy < v.top || cy > v.bottom || cx < v.left || cx > v.right) continue;
       }
-      // A dialog sitting over the page it interrupts is the point of a dialog.
-      const inModal = (el) => el.closest('.overlay, .modal, dialog, [role="dialog"]');
+      // A dialog sitting over the page it interrupts is the point of a dialog, and
+      // so is a dismissable notice (duel invite, update available) floating over it.
+      const inModal = (el) => el.closest('.overlay, .modal, dialog, [role="dialog"], .invite-pop');
       if (inModal(cover.el) && !inModal(covered.el)) continue;
       out.push({ kind: 'control covered by another control', severity: 'error',
                  where: desc(covered.el),
@@ -445,7 +446,9 @@ def plan(page):
         ("analytics, filled", lambda: nav(page, "Analytics")),
         ("game history, filled", lambda: nav(page, "Game History")),
         ("game history, one game", lambda: (page.click("#history-list .hist-row"), page.wait_for_timeout(300))),
-        ("game-lost notice", lambda: (page.evaluate(
+        ("update notice", lambda: (page.evaluate("document.getElementById('update-pop').classList.remove('hidden')"),
+                                   page.wait_for_timeout(200))),
+        ("game-lost notice", lambda: (page.evaluate("document.getElementById('update-pop').classList.add('hidden')"), page.evaluate(
             "notice('That game ended', 'The Lumo server restarted (usually for an update), so the game in progress was lost. Everything you answered before that is saved.')"),
             page.wait_for_timeout(200))),
         # Standalone pages last, since they leave the app.

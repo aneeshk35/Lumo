@@ -615,6 +615,36 @@ def test_responsive(browser):
     ctx.close()
 
 
+def test_update_notice(browser):
+    print("\n26. Stale tabs after a deploy")
+    ctx, page = new_player(browser, "Fresh")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.evaluate("pingPresence()")
+    page.wait_for_timeout(800)
+    first = page.evaluate("loadedVersion")
+    check("the tab records the version it loaded", len(first) == 12, first)
+    page.evaluate("noticeUpdate(loadedVersion)")
+    check("no notice while the version is unchanged", page.locator("#update-pop:not(.hidden)").count() == 0)
+    page.evaluate("game.phase = 'question'; noticeUpdate('000000000000')")
+    check("no notice in the middle of a game", page.locator("#update-pop:not(.hidden)").count() == 0)
+    page.evaluate("game.phase = 'idle'; pingPresence()")
+    page.wait_for_timeout(800)
+    check("a new version shows a reload notice once the game is over",
+          page.locator("#update-pop:not(.hidden)").count() == 1)
+    page.click("#update-dismiss")
+    page.evaluate("pingPresence()")
+    page.wait_for_timeout(600)
+    check("dismissing keeps it closed", page.locator("#update-pop:not(.hidden)").count() == 0)
+    import urllib.request as _u
+    for path in ("/style.css", "/app.js", "/"):
+        with _u.urlopen(BASE + path) as r:
+            check(f"{path} is revalidated on every load", r.headers.get("Cache-Control") == "no-cache",
+                  str(r.headers.get("Cache-Control")))
+    check("no page errors around the update notice", not errors, str(errors))
+    ctx.close()
+
+
 def test_theme(browser):
     print("\n17. Light and dark")
     ctx, page = new_player(browser, "Aneesh")
@@ -1454,7 +1484,8 @@ def main():
                    test_solo_and_mistakes, test_planner_and_vocab, test_search,
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
-                   test_friends, test_invite_join, test_mark_reviewed, test_shortcuts_and_report, test_resync, test_2v2, test_bot_duel, test_accounts, test_security, test_theme):
+                   test_friends, test_invite_join, test_mark_reviewed, test_shortcuts_and_report, test_resync, test_2v2, test_bot_duel, test_accounts, test_security, test_theme,
+                   test_update_notice):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest

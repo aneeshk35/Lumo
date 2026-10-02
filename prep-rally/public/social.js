@@ -11,6 +11,8 @@ let friendRows = [];
 let friendRequests = [];         // [{code, name, when}] waiting on this player
 const announcedRequests = new Set();
 let pendingInvite = null;
+let loadedVersion = '';          // the server's asset version when this tab loaded
+let updateWaiting = false;
 
 function currentActivity() {
   if (game.phase === 'question' || game.phase === 'reveal') return 'In a game';
@@ -38,6 +40,7 @@ async function pingPresence() {
       friends: profile.friends.map((f) => f.code),
     });
     if (!res.code) return;
+    noticeUpdate(res.version);
     if (res.code && res.code !== profile.friendCode) {
       profile.friendCode = res.code;
       saveProfile();
@@ -55,6 +58,25 @@ async function pingPresence() {
     if (res.invites && res.invites.length) showInvite(res.invites[res.invites.length - 1]);
   } catch { /* offline is fine; the next tick retries */ }
 }
+
+// A deploy while this tab is open: offer a reload, but never in the middle of a game.
+function noticeUpdate(version) {
+  if (!version) return;
+  if (!loadedVersion) loadedVersion = version;
+  if (version !== loadedVersion) updateWaiting = true;
+  const playing = ['queue', 'lobby', 'question', 'reveal'].includes(game.phase);
+  if (updateWaiting && !playing && $('update-pop').classList.contains('hidden') && !noticeUpdate.dismissed) {
+    $('update-pop').classList.remove('hidden');
+  }
+}
+$('update-reload').onclick = () => {
+  if (typeof flushOnLeave === 'function') flushOnLeave();
+  window.location.reload();
+};
+$('update-dismiss').onclick = () => {
+  noticeUpdate.dismissed = true;
+  $('update-pop').classList.add('hidden');
+};
 
 function startPresence() {
   if (presenceTimer) return;

@@ -146,6 +146,21 @@ STORAGE_ROUTES = {"/api/class_create", "/api/class_join", "/api/class_list", "/a
                   "/api/class_report", "/api/class_assign", "/api/class_leave",
                   "/api/tutor_apply", "/api/tutor_status", "/api/tutor_withdraw"}
 PUBLIC_ROOT = os.path.realpath(PUBLIC_DIR)
+
+
+def asset_version():
+    """A short fingerprint of the site's own files. Render and Vercel deploy the
+    same commit, so when this changes, the website changed too, and an open tab
+    still running the old files is told to reload."""
+    h = hashlib.sha256()
+    for name in sorted(os.listdir(PUBLIC_DIR)):
+        if name.endswith((".html", ".css", ".js")):
+            with open(os.path.join(PUBLIC_DIR, name), "rb") as f:
+                h.update(name.encode() + b"\0" + f.read())
+    return h.hexdigest()[:12]
+
+
+ASSET_VERSION = asset_version()
 PAGE_ALIASES = {"/privacy": "/privacy.html", "/terms": "/terms.html"}  # short links to the legal pages
 REPORT_REASONS = {"wrong-answer", "unclear", "difficulty", "display", "other"}
 REPORTS_PER_HOUR = 20
@@ -1537,7 +1552,7 @@ class Handler(BaseHTTPRequestHandler):
         me["invites"] = [i for i in me["invites"] if now - i["when"] < INVITE_TTL]
         invites, me["invites"] = me["invites"], []
         return self.send_json({"code": me["code"], "friends": friends,
-                               "requests": requests, "invites": invites})
+                               "requests": requests, "invites": invites, "version": ASSET_VERSION})
 
     def api_friend_lookup(self, body):
         """Add a friend by code: finds them and leaves a friend request for them
@@ -2023,6 +2038,12 @@ class Handler(BaseHTTPRequestHandler):
             body = f.read()
         self.send_response(200)
         self.send_security_headers(html=ctype == "text/html", frame=name == DESMOS_FRAME)
+        # Pages, styles, and scripts are checked for a newer copy on every load,
+        # so nobody keeps running an old design after a deploy. Fonts never change.
+        if name.endswith((".html", ".css", ".js", ".json")):
+            self.send_header("Cache-Control", "no-cache")
+        elif "/fonts/" in full:
+            self.send_header("Cache-Control", "public, max-age=31536000, immutable")
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
