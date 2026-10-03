@@ -417,6 +417,7 @@
           <div class="result-hero" id="result-hero">Match complete</div>
           <div class="result-sub" id="result-sub"></div>
         </div>
+        <button class="btn btn-primary hidden" id="btn-jump-review"></button>
         <div class="result-grid" id="result-rows"></div>
         <div class="result-bd-block">
           <div class="section-title" style="font-size:15px">Topic breakdown</div>
@@ -977,22 +978,74 @@
     <button class="calc-x" id="btn-ref-close" aria-label="Close reference sheet">&times;</button>
   </div>
   <div class="ref-body">
-    <dl class="ref-grid">
-      <dt>Circle</dt><dd>A = πr² &nbsp;·&nbsp; C = 2πr</dd>
-      <dt>Rectangle</dt><dd>A = ℓw</dd>
-      <dt>Triangle</dt><dd>A = ½bh</dd>
-      <dt>Pythagorean theorem</dt><dd>c² = a² + b²</dd>
-      <dt>30°-60°-90°</dt><dd>sides x, x√3, 2x</dd>
-      <dt>45°-45°-90°</dt><dd>sides s, s, s√2</dd>
-      <dt>Rectangular prism</dt><dd>V = ℓwh</dd>
-      <dt>Cylinder</dt><dd>V = πr²h</dd>
-      <dt>Sphere</dt><dd>V = ⁴⁄₃πr³</dd>
-      <dt>Cone</dt><dd>V = ⅓πr²h</dd>
-      <dt>Pyramid</dt><dd>V = ⅓ℓwh</dd>
-    </dl>
-    <p class="ref-note">A circle has 360° of arc, or 2π radians. The angles of a triangle add up to 180°.</p>
+    <div class="ref-grid">
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A circle with radius r."><circle cx="60" cy="45" r="32"/><line x1="60" y1="45" x2="92" y2="45"/><circle class="pt" cx="60" cy="45" r="1.8"/><text class="v" x="76" y="40">r</text></svg>
+        <figcaption><span class="ref-name">Circle</span><span class="ref-f">A = πr²</span><span class="ref-f">C = 2πr</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A rectangle with length ℓ and width w."><rect x="20" y="22" width="80" height="46"/><text class="v" x="60" y="82">ℓ</text><text class="v" x="108" y="49">w</text></svg>
+        <figcaption><span class="ref-name">Rectangle</span><span class="ref-f">A = <span class="ell">ℓ</span>w</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A triangle with base b and height h."><polygon points="14,70 106,70 40,16"/><line class="dash" x1="40" y1="16" x2="40" y2="70"/><path class="ra" d="M40 63h7v7"/><text class="v" x="60" y="83">b</text><text class="v" x="33" y="47">h</text></svg>
+        <figcaption><span class="ref-name">Triangle</span><span class="ref-f">A = ½bh</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A right triangle with legs a and b and hypotenuse c."><polygon points="22,70 100,70 22,18"/><path class="ra" d="M22 62h8v8"/><text class="v" x="13" y="47">a</text><text class="v" x="61" y="83">b</text><text class="v" x="65" y="40">c</text></svg>
+        <figcaption><span class="ref-name">Right triangle</span><span class="ref-f">c² = a² + b²</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A 30-60-90 triangle with short leg x, long leg x√3, and hypotenuse 2x."><polygon points="22,70 100,70 22,25"/><path class="ra" d="M22 62h8v8"/><text class="v" x="13" y="50">x</text><text class="v" x="61" y="83">x√3</text><text class="v" x="66" y="42">2x</text><text class="deg" x="25" y="46">60°</text><text class="deg" x="62" y="66">30°</text></svg>
+        <figcaption><span class="ref-name">Special right triangle</span><span class="ref-f">sides x, x√3, 2x</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A 45-45-90 triangle with legs s and hypotenuse s√2."><polygon points="28,72 84,72 28,16"/><path class="ra" d="M28 64h8v8"/><text class="v" x="19" y="47">s</text><text class="v" x="56" y="85">s</text><text class="v" x="70" y="36">s√2</text><text class="deg" x="30" y="45">45°</text><text class="deg" x="50" y="68">45°</text></svg>
+        <figcaption><span class="ref-name">Special right triangle</span><span class="ref-f">sides s, s, s√2</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A rectangular prism with length ℓ, width w, and height h."><path d="M18 36h60v38H18z M18 36l22-18h60l-22 18 M100 18v38l-22 18"/><path class="dash" d="M40 18v38l-22 18 M40 56h60"/><text class="v" x="48" y="86">ℓ</text><text class="v" x="94" y="73">w</text><text class="v" x="9" y="58">h</text></svg>
+        <figcaption><span class="ref-name">Rectangular prism</span><span class="ref-f">V = <span class="ell">ℓ</span>wh</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A cylinder with radius r and height h."><ellipse cx="60" cy="22" rx="30" ry="8"/><path d="M30 22v48 M90 22v48 M30 70a30 8 0 0 0 60 0"/><path class="dash" d="M30 70a30 8 0 0 1 60 0"/><line x1="60" y1="22" x2="90" y2="22"/><circle class="pt" cx="60" cy="22" r="1.8"/><text class="v" x="75" y="10">r</text><text class="v" x="98" y="50">h</text></svg>
+        <figcaption><span class="ref-name">Cylinder</span><span class="ref-f">V = πr²h</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A sphere with radius r."><circle cx="60" cy="45" r="32"/><path d="M28 45a32 8 0 0 0 64 0"/><path class="dash" d="M28 45a32 8 0 0 1 64 0"/><line x1="60" y1="45" x2="86" y2="27"/><circle class="pt" cx="60" cy="45" r="1.8"/><text class="v" x="69" y="31">r</text></svg>
+        <figcaption><span class="ref-name">Sphere</span><span class="ref-f">V = ⁴⁄₃πr³</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A cone with radius r and height h."><path d="M30 70L60 12L90 70 M30 70a30 8 0 0 0 60 0"/><path class="dash" d="M30 70a30 8 0 0 1 60 0 M60 12v58"/><line x1="60" y1="70" x2="90" y2="70"/><circle class="pt" cx="60" cy="70" r="1.8"/><text class="v" x="51" y="47">h</text><text class="v" x="98" y="74">r</text></svg>
+        <figcaption><span class="ref-name">Cone</span><span class="ref-f">V = ⅓πr²h</span></figcaption>
+      </figure>
+      <figure class="ref-item">
+        <svg viewBox="0 0 120 90" role="img" aria-label="A rectangular pyramid with base length ℓ, base width w, and height h."><path d="M20 72h60l20-16 M20 72L60 14L80 72 M60 14l40 42"/><path class="dash" d="M20 72l20-16h60 M40 56L60 14 M60 14v50"/><text class="v" x="48" y="85">ℓ</text><text class="v" x="95" y="70">w</text><text class="v" x="53" y="47">h</text></svg>
+        <figcaption><span class="ref-name">Pyramid</span><span class="ref-f">V = ⅓<span class="ell">ℓ</span>wh</span></figcaption>
+      </figure>
+    </div>
+    <ul class="ref-notes">
+      <li>A circle has 360 degrees of arc.</li>
+      <li>A circle has 2π radians of arc.</li>
+      <li>The angles of a triangle add up to 180 degrees.</li>
+    </ul>
   </div>
   <div class="float-resize" aria-hidden="true"></div>
+</div>
+
+<!-- SAT date picker: official dates only, up to six months ahead -->
+<div class="overlay hidden" id="date-overlay">
+  <div class="modal report-modal" role="dialog" aria-modal="true" aria-labelledby="date-title">
+    <span class="t" id="date-title">When is your SAT?</span>
+    <span class="d">These are the official SAT dates in the next six months.</span>
+    <form class="acct-form" id="date-form" novalidate>
+      <fieldset class="report-reasons" id="date-options" aria-label="SAT date"></fieldset>
+      <div class="report-actions">
+        <button class="btn btn-lg-outline" type="button" id="btn-date-cancel">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="btn-date-save">Save date</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <!-- duel invitation from a friend -->

@@ -893,7 +893,7 @@ body.testing .sidebar { display: none; }
 }
 .mistake .top, .rv-detail .top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .mistake .kicker, .rv-detail .kicker { font-size: 11px; font-weight: 700; letter-spacing: .6px; color: var(--slate-5); text-transform: uppercase; }
-.mistake .qt, .rv-detail .qt { font-size: 14.5px; line-height: 1.55; font-weight: 500; }
+.mistake .qt, .rv-detail .qt { font-size: 14.5px; line-height: 1.55; font-weight: 500; white-space: pre-line; }
 .mistake .answers, .rv-detail .answers { display: flex; gap: 8px; flex-wrap: wrap; }
 /* not a pill: long answer text (typed answers, word choices) wraps cleanly */
 .ans-chip { font-size: 11.5px; font-weight: 600; line-height: 1.45; padding: 5px 11px; border-radius: 8px; max-width: 100%; }
@@ -988,6 +988,8 @@ body.testing .sidebar { display: none; }
 }
 .report-reasons label:has(input:checked) { border-color: var(--purple); background: var(--purple-wash); }
 .report-reasons input { accent-color: var(--purple); margin: 0; }
+.date-opt { flex: 1; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.date-when { font-size: 12px; color: var(--slate-5); white-space: nowrap; }
 .modal textarea {
   width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px;
   font: 14px/1.5 inherit; background: var(--surface); color: var(--ink); resize: vertical; outline: none;
@@ -1032,7 +1034,7 @@ body.testing .sidebar { display: none; }
 .float-panel.dragging, .float-panel.resizing { user-select: none; }
 .float-panel.dragging { box-shadow: 0 22px 56px rgba(16,24,39,.3); }
 .calc-panel { left: 24px; top: 92px; width: 460px; height: 600px; }
-.ref-panel { right: 24px; top: 92px; width: 380px; height: 470px; }
+.ref-panel { right: 24px; top: 92px; width: 470px; height: 620px; }
 .float-grip {
   flex: none; display: flex; align-items: center; gap: 8px; padding: 6px 8px 6px 10px;
   background: var(--bg-softer); border-bottom: 1px solid var(--border); cursor: grab; touch-action: none; user-select: none;
@@ -1052,10 +1054,21 @@ body.testing .sidebar { display: none; }
 .desmos-mount.ready { display: block; }
 .desmos-frame { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
 .ref-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-.ref-grid { display: grid; grid-template-columns: auto 1fr; gap: 9px 18px; margin: 4px 0 0; font-size: 14px; }
-.ref-grid dt { font-weight: 600; color: var(--slate-7); }
-.ref-grid dd { margin: 0; color: var(--ink); }
-.ref-note { font-size: 13px; line-height: 1.55; color: var(--slate-6); }
+/* Reference sheet: the same formulas and facts as the official SAT sheet, drawn here. */
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 8px; margin-top: 4px; }
+.ref-item { margin: 0; border: 1px solid var(--border-soft); border-radius: 10px; padding: 8px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.ref-item svg { width: 100%; max-width: 136px; height: auto; display: block; color: var(--ink); overflow: visible; }
+.ref-item svg :is(line, rect, circle, ellipse, polygon, path) { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.ref-item svg .dash { stroke-dasharray: 4 3; stroke-width: 1.2; }
+.ref-item svg .ra { stroke-width: 1.1; }
+.ref-item svg .pt { fill: currentColor; stroke: none; }
+.ref-item svg text { fill: currentColor; font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 12px; text-anchor: middle; }
+.ref-item svg text.deg { font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-style: normal; font-size: 8.5px; text-anchor: start; }
+.ref-item figcaption { display: flex; flex-direction: column; align-items: center; gap: 1px; text-align: center; }
+.ref-name { font-size: 11px; font-weight: 600; color: var(--slate-5); }
+.ref-f { font-size: 13.5px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ref-f .ell { font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
+.ref-notes { margin: 2px 0 6px; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; font-size: 13px; line-height: 1.5; color: var(--slate-6); }
 .calc-note { font-size: 12px; color: var(--slate-5); }
 .calc-note.hidden { display: none; }
 #calc-fallback { display: flex; flex-direction: column; gap: 10px; }

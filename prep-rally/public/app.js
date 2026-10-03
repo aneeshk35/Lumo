@@ -12,7 +12,7 @@ const DEFAULT_PROFILE = {
   // One rating per duel difficulty; `elo` above is the best of the three.
   elos: { easy: 1200, medium: 1200, hard: 1200 },
   attempted: 0, correct: 0, errors: 0, bestStreak: 0, dayStreak: 1,
-  solved: { math: 0, rw: 0 }, sessions: [], testDate: '2026-10-03',
+  solved: { math: 0, rw: 0 }, sessions: [], testDate: '',
   lastPlayed: 0,
   mistakes: [],        // [{id, question, passage, choices, domain, skill, difficulty, mine, correctIndex, explanation, when}]
   domainStats: {},     // { [domain]: {correct, total} }
@@ -1650,6 +1650,13 @@ function onGameOver(data) {
 
   $('result-review-block').classList.toggle('hidden', !logged);
   if (logged) renderReview('result', logged);
+  // Right under the score: a way straight to the questions you missed.
+  const jump = $('btn-jump-review');
+  const missedCount = logged ? logged.answers.filter((a) => !a || !a.correct).length : 0;
+  jump.classList.toggle('hidden', !logged);
+  jump.textContent = missedCount
+    ? `Review the ${missedCount} question${missedCount === 1 ? '' : 's'} you missed`
+    : `Go over all ${logged ? logged.questions.length : 0} questions`;
   $('btn-play-again').classList.toggle('hidden', !(game.mode === 'party' && game.isHost) && game.mode !== 'solo');
   switchView('v-results');
   bindNavButtons();
@@ -1823,6 +1830,13 @@ function openHistoryGame(id) {
 }
 $('btn-history-back').onclick = renderHistory;
 
+$('btn-jump-review').onclick = () => {
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('result-review-block').scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+  const first = document.querySelector('#result-review .rv-head');
+  if (first) first.focus({ preventScroll: true });
+};
+
 $('btn-play-again').onclick = async () => {
   if (game.mode === 'solo') {
     const section = game.section;
@@ -1892,8 +1906,47 @@ function renderHome() {
   renderExamCountdown();
 }
 
+/* ================= SAT test date =================
+   Official SAT dates from College Board (satsuite.collegeboard.org/sat/dates-deadlines,
+   checked October 2026). The 2027-28 dates are College Board's anticipated dates;
+   update this list when new ones are announced. Students can pick only these, and
+   only up to six months ahead. */
+const SAT_DATES = [
+  '2026-10-03', '2026-11-07', '2026-12-05', '2027-03-06', '2027-05-01', '2027-06-05',
+  '2027-08-28', '2027-09-18', '2027-10-09', '2027-11-06', '2027-12-04',
+  '2028-03-04', '2028-05-06', '2028-06-03',
+];
+const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+function sixMonthsOut() {
+  const now = new Date();
+  const end = new Date(now.getFullYear(), now.getMonth() + 6, 1);
+  // Same day of the month, or the month's last day (Aug 31 -> Feb 28).
+  const last = new Date(end.getFullYear(), end.getMonth() + 1, 0).getDate();
+  end.setDate(Math.min(now.getDate(), last));
+  return isoDay(end);
+}
+function pickableSatDates() {
+  const today = isoDay(new Date()), limit = sixMonthsOut();
+  return SAT_DATES.filter((d) => d >= today && d <= limit);
+}
+// The date the countdown uses: the student's pick while it's still ahead,
+// otherwise the next official date.
+function currentTestDate() {
+  const today = isoDay(new Date());
+  if (SAT_DATES.includes(profile.testDate) && profile.testDate >= today) return profile.testDate;
+  return SAT_DATES.find((d) => d >= today) || '';
+}
+const longDate = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString('en-US',
+  { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
 function renderExamCountdown(numsId = 'exam-nums', dateId = 'exam-date') {
-  const target = new Date(profile.testDate + 'T08:00:00');
+  const date = currentTestDate();
+  if (!date) {
+    $(numsId).innerHTML = '<span class="u">No upcoming SAT dates are listed yet.</span>';
+    $(dateId).textContent = '';
+    return;
+  }
+  const target = new Date(date + 'T08:00:00');
   const diff = Math.max(0, target - Date.now());
   const days = Math.floor(diff / 86400000);
   const hrs = Math.floor((diff % 86400000) / 3600000);
@@ -1905,20 +1958,45 @@ function renderExamCountdown(numsId = 'exam-nums', dateId = 'exam-date') {
   $(dateId).textContent = target.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 }
 
-function switchTestDate() {
-  const d = prompt('When is your SAT? (YYYY-MM-DD)', profile.testDate);
-  if (!d) return;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || isNaN(new Date(d + 'T08:00:00'))) {
-    return toast('Use the format YYYY-MM-DD, for example 2026-10-03');
-  }
-  profile.testDate = d;
+let dateOpener = null;
+function switchTestDate(e) {
+  dateOpener = (e && e.currentTarget) || document.activeElement;
+  const options = pickableSatDates();
+  const chosen = currentTestDate();
+  const today = isoDay(new Date());
+  $('date-options').innerHTML = options.map((d) => {
+    const days = Math.round((new Date(`${d}T12:00:00`) - new Date(`${today}T12:00:00`)) / 86400000);
+    const when = days === 0 ? 'today' : days === 1 ? 'tomorrow' : `in ${days} days`;
+    return `<label><input type="radio" name="sat-date" value="${d}" ${d === chosen ? 'checked' : ''}>
+      <span class="date-opt"><span>${esc(longDate(d))}</span><span class="date-when">${when}</span></span></label>`;
+  }).join('');
+  if (options.length && !options.includes(chosen)) $('date-options').querySelector('input').checked = true;
+  $('btn-date-save').disabled = !options.length;
+  $('date-overlay').classList.remove('hidden');
+  const first = $('date-options').querySelector('input:checked') || $('btn-date-cancel');
+  first.focus();
+}
+function closeTestDate() {
+  $('date-overlay').classList.add('hidden');
+  if (dateOpener && dateOpener.focus) dateOpener.focus();
+}
+$('btn-date-cancel').onclick = closeTestDate;
+$('date-overlay').addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTestDate(); });
+$('date-overlay').addEventListener('click', (e) => { if (e.target === $('date-overlay')) closeTestDate(); });
+$('date-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const picked = (document.querySelector('#date-options input:checked') || {}).value;
+  // Only an official date inside the window is ever saved.
+  if (!picked || !pickableSatDates().includes(picked)) return closeTestDate();
+  profile.testDate = picked;
   saveProfile();
   renderExamCountdown();
   if ($('v-planner').classList.contains('active')) renderExamCountdown('planner-exam-nums', 'planner-exam-date');
-  toast('Test date updated');
-}
+  closeTestDate();
+  toast(`Test date set to ${longDate(picked)}.`);
+});
 
-$('btn-switch-date').onclick = (e) => { e.preventDefault(); switchTestDate(); };
+$('btn-switch-date').onclick = (e) => { e.preventDefault(); switchTestDate(e); };
 $('btn-review-errors').onclick = () => {
   const ids = profile.mistakes.slice(0, 10).map((m) => m.id);
   if (ids.length) return startPractice({ ids, count: ids.length }, 'Review');
@@ -2298,7 +2376,7 @@ $('btn-reset-plan').onclick = () => {
   saveProfile();
   renderPlanner();
 };
-$('btn-switch-date-2').onclick = (e) => { e.preventDefault(); switchTestDate(); };
+$('btn-switch-date-2').onclick = (e) => { e.preventDefault(); switchTestDate(e); };
 
 /* ================= Vocab ================= */
 let vocab = null;

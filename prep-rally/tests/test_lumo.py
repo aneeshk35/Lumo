@@ -227,10 +227,16 @@ def test_solo_and_mistakes(browser):
 
     # Question review on the results screen, and the saved game log
     check("results show a question review", page.locator("#result-review-block:not(.hidden)").count() == 1)
+    check("a button under the score jumps to the missed questions",
+          page.locator("#btn-jump-review:not(.hidden)").count() == 1
+          and f"Review the {mistakes} question" in page.inner_text("#btn-jump-review"),
+          page.inner_text("#btn-jump-review"))
     missed_items = page.locator("#result-review .rv-item.miss, #result-review .rv-item.skip").count()
     check("review lists the missed questions", missed_items == mistakes, f"{missed_items} vs {mistakes}")
     check("missed questions open with the explanation",
           page.locator("#result-review .rv-body:not([hidden]) .why").count() == missed_items)
+    check("review keeps a question's line breaks (systems of equations stay on separate lines)",
+          page.evaluate("getComputedStyle(document.querySelector('#result-review .rv-detail .qt')).whiteSpace") == "pre-line")
     check("your pick and the right answer are marked",
           page.locator("#result-review .rv-choice.right, #result-review .ans-chip.right").count() >= 1)
     page.click('#result-rv-filter [data-f="all"]')
@@ -642,6 +648,47 @@ def test_update_notice(browser):
             check(f"{path} is revalidated on every load", r.headers.get("Cache-Control") == "no-cache",
                   str(r.headers.get("Cache-Control")))
     check("no page errors around the update notice", not errors, str(errors))
+    ctx.close()
+
+
+def test_test_date_and_reference(browser):
+    print("\n27. SAT date picker and reference sheet")
+    ctx, page = new_player(browser, "Dates")
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.click("#btn-switch-date")
+    page.wait_for_selector("#date-overlay:not(.hidden)")
+    opts = page.eval_on_selector_all("#date-options input", "els => els.map(e => e.value)")
+    info = page.evaluate("({ all: SAT_DATES, today: isoDay(new Date()), limit: sixMonthsOut() })")
+    check("the picker offers only official SAT dates", opts and all(o in info["all"] for o in opts), str(opts))
+    check("no date in the past or more than six months out",
+          all(info["today"] <= o <= info["limit"] for o in opts), f"{opts} window {info['today']}..{info['limit']}")
+    check("every official date in the window is offered",
+          opts == [d for d in info["all"] if info["today"] <= d <= info["limit"]], str(opts))
+    pick = opts[-1]
+    page.check(f'#date-options input[value="{pick}"]')
+    page.click("#btn-date-save")
+    page.wait_for_timeout(200)
+    check("saving a date updates the profile and closes the picker",
+          page.evaluate("profile.testDate") == pick and page.locator("#date-overlay.hidden").count() == 1)
+    page.evaluate("profile.testDate = '2020-01-01'")
+    rolled = page.evaluate("currentTestDate()")
+    check("a date that has passed rolls to the next official date", rolled == min(o for o in info["all"] if o >= info["today"]), rolled)
+    page.evaluate("profile.testDate = '2027-01-15'")
+    check("a date that isn't an official SAT date is never used", page.evaluate("currentTestDate()") != "2027-01-15")
+
+    page.evaluate("startPractice({ section: 'math', count: 3 }, 'Ref')")
+    page.wait_for_selector("#v-match.active")
+    page.click("#btn-ref")
+    page.wait_for_selector("#ref-panel:not(.hidden)")
+    names = page.eval_on_selector_all("#ref-panel .ref-name", "els => els.map(e => e.innerText)")
+    formulas = page.inner_text("#ref-panel")
+    check("the reference sheet has all 11 figures", len(names) == 11 and page.locator("#ref-panel figure svg").count() == 11, str(names))
+    check("every figure has its formula",
+          all(f in formulas for f in ("πr²", "2πr", "½bh", "c² = a² + b²", "x√3", "s√2", "πr²h", "⁴⁄₃πr³", "⅓πr²h")))
+    check("the three notes are there",
+          all(n in formulas for n in ("360 degrees", "2π radians", "180 degrees")))
+    check("no page errors in the date picker or reference sheet", not errors, str(errors))
     ctx.close()
 
 
@@ -1485,7 +1532,7 @@ def main():
                    test_tools, test_party, test_duel, test_duel_difficulty, test_practice_and_grid_in, test_responsive,
                    test_masterclass, test_coach, test_tutor, test_classes,
                    test_friends, test_invite_join, test_mark_reviewed, test_shortcuts_and_report, test_resync, test_2v2, test_bot_duel, test_accounts, test_security, test_theme,
-                   test_update_notice):
+                   test_update_notice, test_test_date_and_reference):
             try:
                 fn(browser)
             except Exception as exc:  # a crash in one group shouldn't hide the rest
