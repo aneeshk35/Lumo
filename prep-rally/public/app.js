@@ -195,14 +195,14 @@ const LUMO_BLOB = 'M50 4C78 4 96 22 96 50C96 78 78 96 50 96C22 96 4 78 4 50C4 22
 function buildSidebar() {
   const sb = $('sidebar');
   let html = `
-    <button class="sb-brand" id="sb-brand" aria-label="Lumo home">
+    <span class="sb-brand" id="sb-brand" role="img" aria-label="Lumo">
       <svg class="lumo-svg" viewBox="0 0 100 100" aria-hidden="true">
         <path id="lumo-blob" class="lumo-blob" d="${LUMO_BLOB}"/>
         <ellipse class="eye" cx="36" cy="53" rx="8.5" ry="10.5"/>
         <ellipse class="eye" cx="66" cy="53" rx="8.5" ry="10.5"/>
         <circle class="spark" cx="13" cy="13" r="10"/>
       </svg>
-    </button>
+    </span>
     <nav class="sb-nav" id="sb-nav">`;
 
   NAV.forEach((group) => {
@@ -232,7 +232,6 @@ function buildSidebar() {
     b.onclick = () => navTo(b.dataset.navgroup);
   });
   $('btn-user').onclick = () => promptName();
-  $('sb-brand').onclick = () => navTo('Home');
   $('btn-theme').onclick = toggleTheme;
   syncThemeLabel();
 }

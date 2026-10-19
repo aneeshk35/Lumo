@@ -155,6 +155,9 @@ def test_navigation(browser):
     check("rail renders one button per section",
           rail == page.evaluate("NAV.map(g => g.name)"), f"got {rail}")
     check("rail stays short enough to scan", len(rail) <= 7, f"{len(rail)} rail buttons")
+    check("the logo is branding, not a second Home button",
+          page.locator("#sb-brand").evaluate("el => el.tagName") != "BUTTON"
+          and page.locator('.sb-item[data-navgroup="Home"]').count() == 1)
     check("every destination is reachable from a section",
           all(page.evaluate("(n) => !!NAV.find(g => g.items.some(i => i.name === n))", n)
               for n in items), str(items))
