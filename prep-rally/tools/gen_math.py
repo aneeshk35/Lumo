@@ -1260,6 +1260,348 @@ def xhard_X2():
         made += 1
 
 
+# A third family, added 2026-10: more questions like the two the user sent
+# (a power of a trapped between two powers of a, and chained ratios turned into
+# a percent), each varying a different step. They run in their own loop after
+# every other group, so no existing question id moves.
+ROOT = {2: "√", 3: "∛", 4: "∜"}
+
+
+def times(v, var):
+    """A coefficient on a variable, unambiguous when it is a fraction: 4b, (7/2)d."""
+    v = F(v)
+    return f"{num(v)}{var}" if v.denominator == 1 else f"({num(v)}){var}"
+
+
+def pw(v):
+    """a raised to an exact power: a^7, a^(15/2)."""
+    v = F(v)
+    return f"a^{num(v)}" if v.denominator == 1 else f"a^({num(v)})"
+
+
+def _in_window(v, lo, hi):
+    return lo < v < hi
+
+
+def _exp_choices(right, lo, hi, pool):
+    """Three wrong integers outside (lo, hi), drawn from the likely slips first."""
+    out = []
+    for w in pool + [math.floor(lo), math.ceil(hi), math.floor(lo) - 1, math.ceil(hi) + 1,
+                     math.ceil(hi) + 3, math.floor(lo) - 3]:
+        w = F(w)
+        if w.denominator == 1 and w >= 1 and not _in_window(w, lo, hi) and w != right and w not in out:
+            out.append(w)
+        if len(out) == 3:
+            return out
+    return None
+
+
+def xfam_XP1():
+    """Bounds with two different denominators, so both fractions have to be
+    converted before the window is clear."""
+    made = tries = 0
+    while made < 5 and tries < 600:
+        tries += 1
+        q1, q2 = rng.sample([2, 3, 4, 5], 2)
+        n1, n2 = rng.randint(3 * q1 + 1, 9 * q1), rng.randint(4 * q2 + 1, 13 * q2)
+        lo, hi = F(n1, q1), F(n2, q2)
+        if lo.denominator != q1 or hi.denominator != q2 or not F(3, 2) <= hi - lo <= 5:
+            continue
+        inside = [k for k in range(math.ceil(lo), math.floor(hi) + 1) if _in_window(k, lo, hi)]
+        if not inside:
+            continue
+        right = F(rng.choice(inside))
+        # Slips: reading only the numerators, or swapping the denominators.
+        wrong = _exp_choices(right, lo, hi, [round(F(n1, q2)), round(F(n2, q1)), n1, n2])
+        if not wrong:
+            continue
+        style = made % 3
+        radical = style == 1 and q1 in ROOT and q2 in ROOT
+        if radical:
+            lower, upper = f"{ROOT[q1]}(a^{n1})", f"({ROOT[q2]}a)^{n2}"
+            convert = f"{lower} = a^({n1}/{q1}) and {upper} = a^({n2}/{q2}). "
+        else:
+            lower, upper = f"a^({n1}/{q1})", f"a^({n2}/{q2})"
+            convert = ""
+        flip = style == 2
+        if flip:
+            cond = f"0 < a < 1, f(a) < {lower} and f(a) > {upper}. "
+            logic = ("When 0 < a < 1, a larger exponent gives a smaller value, so both inequalities "
+                     f"flip when you compare exponents: b > {n1}/{q1} and b < {n2}/{q2}. ")
+        else:
+            cond = f"a > 1, f(a) > {lower} and f(a) < {upper}. "
+            logic = (f"When a > 1, a larger exponent gives a larger value, so b > {n1}/{q1} and b < {n2}/{q2}. ")
+        stem = ("The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that "
+                + cond + "Which of the following could be the value of b?")
+        why = (convert + logic + f"With a common denominator of {q1 * q2}, that is {n1 * q2}/{q1 * q2} < b < {n2 * q1}/{q1 * q2}, "
+               f"or about {dec(lo)} < b < {dec(hi)}. Of the choices, only {num(right)} is in that range.")
+        mcq(ADV, "Exponent rules", "hard", stem, right, wrong, why)
+        made += 1
+
+
+def xfam_XP2():
+    """The exponent is scaled before the comparison: f(x) = (x^b)^k or √(x^b)."""
+    made = tries = 0
+    while made < 5 and tries < 600:
+        tries += 1
+        k = rng.choice([2, 3, 4, F(1, 2), F(1, 3)])
+        if k >= 1:
+            L = rng.randint(5, 30)
+            H = L + rng.randint(int(k) + 2, 3 * int(k) + 2)
+            lo, hi = F(L) / k, F(H) / k
+            form = f"(x^b)^{k}"
+            show_lo, show_hi = f"a^{L}", f"a^{H}"
+            step = f"(a^b)^{k} = a^({k}b), so {L} < {k}b < {H}, which means {num(lo)} < b < {num(hi)}. "
+        else:
+            m = int(1 / k)
+            L = F(rng.randint(3 * m + 1, 12 * m), m)
+            H = L + F(rng.randint(m + 1, 3 * m), m)
+            if L.denominator != m or H.denominator != m:
+                continue
+            lo, hi = L * m, H * m
+            form = f"{ROOT[m]}(x^b)"
+            show_lo, show_hi = f"a^({num(L)})", f"a^({num(H)})"
+            step = (f"{ROOT[m]}(a^b) = a^(b/{m}), so {num(L)} < b/{m} < {num(H)}. Multiplying by {m} gives "
+                    f"{num(lo)} < b < {num(hi)}. ")
+        inside = [v for v in range(math.ceil(lo), math.floor(hi) + 1) if _in_window(v, lo, hi)]
+        if not inside:
+            continue
+        right = F(rng.choice(inside))
+        # Slips: forgetting to scale (using the exponents as they are), or scaling the wrong way.
+        raw = [v for v in range(math.ceil(F(L)), math.floor(F(H)) + 1)]
+        wrong = _exp_choices(right, lo, hi, raw[:2] + [round(F(L) * k), round(F(H) * k)])
+        if not wrong:
+            continue
+        stem = (f"The function f is defined by f(x) = {form}, where b is a constant. For every value of a such that "
+                f"a > 1, f(a) > {show_lo} and f(a) < {show_hi}. Which of the following could be the value of b?")
+        why = (step + f"Of the choices, only {num(right)} is in that range. Using the exponents {show_lo[2:]} and "
+               f"{show_hi[2:]} without accounting for the outer operation is the usual mistake.")
+        mcq(ADV, "Exponent rules", "hard", stem, right, wrong, why)
+        made += 1
+
+
+def xfam_XP3():
+    """Count the integer values of b in the window (typed answer)."""
+    made = tries = 0
+    while made < 5 and tries < 600:
+        tries += 1
+        q1, q2 = rng.choice([2, 3, 4]), rng.choice([2, 3, 4])
+        n1, n2 = rng.randint(2 * q1 + 1, 8 * q1), rng.randint(5 * q2 + 1, 16 * q2)
+        lo, hi = F(n1, q1), F(n2, q2)
+        if hi - lo < 2 or hi - lo > 7:
+            continue
+        count = sum(1 for v in range(math.floor(lo), math.ceil(hi) + 1) if _in_window(v, lo, hi))
+        if count < 2:
+            continue
+        flip = made % 2 == 1
+        lower, upper = pw(lo), pw(hi)
+        if flip:
+            cond = f"0 < a < 1, f(a) < {lower} and f(a) > {upper}"
+            logic = f"For 0 < a < 1, a larger exponent gives a smaller value, so b > {num(lo)} and b < {num(hi)}. "
+        else:
+            cond = f"a > 1, f(a) > {lower} and f(a) < {upper}"
+            logic = f"For a > 1, a larger exponent gives a larger value, so b > {num(lo)} and b < {num(hi)}. "
+        first = min(v for v in range(math.floor(lo), math.ceil(hi) + 1) if _in_window(v, lo, hi))
+        last = max(v for v in range(math.floor(lo), math.ceil(hi) + 1) if _in_window(v, lo, hi))
+        stem = ("The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that "
+                f"{cond}. How many different values of b are possible?")
+        edge = ""
+        if lo.denominator == 1 or hi.denominator == 1:
+            edge = " The inequalities are strict, so a bound that is itself an integer is not allowed."
+        why = (logic + f"That is {dec(lo)} < b < {dec(hi)}, so the integers are {first} through {last}: "
+               f"{count} values." + edge)
+        spr(ADV, "Exponent rules", "hard", stem, count, why)
+        made += 1
+
+
+def xfam_XP4():
+    """Medium: the bounds are written with exponent rules that must be simplified first."""
+    made = tries = 0
+    while made < 5 and tries < 600:
+        tries += 1
+        m, n = rng.randint(2, 6), rng.randint(2, 6)
+        p, s = rng.randint(2, 5), rng.randint(2, 5)
+        style = made % 3
+        if style == 0:
+            lo, show_lo, how_lo = m + n, f"a^{m} · a^{n}", f"a^{m} · a^{n} = a^{m + n}"
+        elif style == 1:
+            big = m + n + rng.randint(4, 9)
+            lo, show_lo, how_lo = big - n, f"a^{big} / a^{n}", f"a^{big} / a^{n} = a^{big - n}"
+        else:
+            lo, show_lo, how_lo = m * n, f"(a^{m})^{n}", f"(a^{m})^{n} = a^{m * n}"
+        hi = lo + rng.randint(3, 4)
+        # Upper bound as a power of a power when it divides evenly, else a product.
+        if hi % s == 0 and hi // s >= 2:
+            show_hi, how_hi = f"(a^{hi // s})^{s}", f"(a^{hi // s})^{s} = a^{hi}"
+        else:
+            show_hi, how_hi = f"a^{hi - p} · a^{p}", f"a^{hi - p} · a^{p} = a^{hi}"
+        inside = list(range(lo + 1, hi))
+        right = F(rng.choice(inside))
+        # Slips: the bounds themselves (the inequalities are strict), or multiplying where you should add.
+        slip = m * n if style == 0 else m + n if style == 2 else None
+        pool = [lo, hi] + ([slip] if slip else [])
+        wrong = _exp_choices(right, F(lo), F(hi), pool)
+        if not wrong:
+            continue
+        stem = (f"For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies "
+                f"f(a) > {show_lo} and f(a) < {show_hi}. Which of the following could be the value of b?")
+        why = (f"{how_lo} and {how_hi}. Because a > 1, a^b > a^{lo} means b > {lo}, and a^b < a^{hi} means b < {hi}. "
+               f"So {lo} < b < {hi}, and of the choices only {num(right)} works. {lo} and {hi} themselves are not allowed "
+               f"because the inequalities are strict.")
+        mcq(ADV, "Exponent rules", "medium", stem, right, wrong, why)
+        made += 1
+
+
+def xfam_XR1():
+    """Three links in the chain instead of two."""
+    names = [("a", "b", "c", "d"), ("p", "q", "r", "s"), ("w", "x", "y", "z")]
+    made = tries = 0
+    while made < 5 and tries < 6000:
+        tries += 1
+        cs = [rng.randint(2, 9) for _ in range(6)]
+        m, n, p, s, t, u = cs
+        if any(math.gcd(x, y) != 1 for x, y in ((m, n), (p, s), (t, u))):
+            continue
+        ratio = F(n * s * u, m * p * t)     # first / last
+        kind = made % 3
+        if kind == 0 and not F(6, 5) <= ratio <= 5:
+            continue
+        if kind == 1 and not F(1, 5) <= ratio <= F(5, 6):
+            continue
+        if kind == 2 and not F(1, 4) <= ratio <= 4:
+            continue
+        val = [(ratio - 1) * 100, (1 - ratio) * 100, ratio * 100][kind]
+        if val.denominator != 1 or val <= 0:
+            continue
+        A, B, C, D = names[made % 3]
+        setup = f"For the positive numbers {A}, {B}, {C}, and {D}, {m}{A} = {n}{B}, {p}{B} = {s}{C}, and {t}{C} = {u}{D}. "
+        ask = [f"By what percent is {A} greater than {D}?",
+               f"By what percent is {A} less than {D}?",
+               f"The value of {A} is what percent of the value of {D}?"][kind]
+        chain = (f"{A} = ({n}/{m}){B}, {B} = ({s}/{p}){C}, and {C} = ({u}/{t}){D}. Multiplying, "
+                 f"{A} = ({n}/{m})({s}/{p})({u}/{t}){D} = {times(ratio, D)}, which is {dec(ratio * 100, 4)}% of {D}. ")
+        finish = [f"So {A} is {num(val)}% greater than {D}.", f"So {A} is {num(val)}% less than {D}.",
+                  f"So {A} is {num(val)}% of {D}."][kind]
+        if made % 2 == 0:
+            spr(PSD, "Percentages", "hard", setup + ask, val, chain + finish)
+        else:
+            flipped = 100 / ratio
+            pool_ = [ratio * 100, abs(1 - 1 / ratio) * 100, flipped, (ratio - 1) * 100 if ratio > 1 else (1 - ratio) * 100]
+            wrong = [F(round(float(x))) for x in pool_ if F(round(float(x))) != val and round(float(x)) > 0]
+            try:
+                mcq(PSD, "Percentages", "hard", setup + ask, val,
+                    distinct(val, wrong, spread=(10, -10, 20, 25, -20, 50)),
+                    chain + finish + " The other choices come from comparing in the wrong direction or using one link backward.")
+            except AssertionError:
+                continue
+        made += 1
+
+
+def xfam_XR2():
+    """Percent relationships chained together: the percents don't simply add."""
+    names = [("x", "y", "z"), ("A", "B", "C"), ("m", "n", "k")]
+    made = tries = 0
+    while made < 5 and tries < 4000:
+        tries += 1
+        P, Q = rng.choice(range(10, 81, 5)), rng.choice(range(10, 61, 5))
+        up_first = rng.random() < 0.5
+        f1 = F(100 + P, 100) if up_first else F(100 - Q, 100)
+        f2 = F(100 - Q, 100) if up_first else F(100 + P, 100)
+        r = f1 * f2                         # first / last
+        if r == 1:
+            continue
+        val = abs(r - 1) * 100
+        if val.denominator != 1 or val < 2:
+            continue
+        X, Y, Z = names[made % 3]
+        rel1 = f"{P}% greater than" if up_first else f"{Q}% less than"
+        rel2 = f"{Q}% less than" if up_first else f"{P}% greater than"
+        more = r > 1
+        setup = f"{X} is {rel1} {Y}, and {Y} is {rel2} {Z}. "
+        ask = f"By what percent is {X} {'greater' if more else 'less'} than {Z}?"
+        why = (f"{X} = {dec(f1)}{Y} and {Y} = {dec(f2)}{Z}, so {X} = ({dec(f1)})({dec(f2)}){Z} = {dec(r, 4)}{Z}. "
+               f"That is {dec(r * 100, 4)}% of {Z}, so {X} is {num(val)}% {'greater' if more else 'less'} than {Z}. "
+               f"Simply combining {P}% and {Q}% gives the wrong answer, because the second percent is taken of a "
+               f"different base.")
+        if made % 2 == 1:
+            spr(PSD, "Successive percent changes", "hard", setup + ask, val, why)
+        else:
+            naive = abs(P - Q)
+            wrong = [F(naive), F(P + Q), F(round(float(abs(1 - 1 / r) * 100)))]
+            wrong = [w for w in wrong if w != val and w > 0]
+            try:
+                mcq(PSD, "Successive percent changes", "hard", setup + ask, val,
+                    distinct(val, wrong, spread=(5, -5, 10, 15, -10, 20)), why)
+            except AssertionError:
+                continue
+        made += 1
+
+
+def xfam_XR3():
+    """Medium: chain two ratios and give the ratio itself, not a percent."""
+    names = [("a", "b", "c"), ("x", "y", "z"), ("r", "s", "t")]
+    made = tries = 0
+    while made < 5 and tries < 3000:
+        tries += 1
+        m, n, p, s = rng.randint(2, 9), rng.randint(2, 9), rng.randint(2, 9), rng.randint(2, 9)
+        if math.gcd(m, n) != 1 or math.gcd(p, s) != 1 or m == n or p == s:
+            continue
+        ratio = F(n * s, m * p)
+        if ratio.denominator == 1 or ratio.numerator > 40 or ratio == 1:
+            continue
+        A, B, C = names[made % 3]
+        stem = f"If {m}{A} = {n}{B} and {p}{B} = {s}{C}, where {A}, {B}, and {C} are positive, what is the value of {A}/{C}?"
+        why = (f"{A} = ({n}/{m}){B} and {B} = ({s}/{p}){C}, so {A} = ({n}/{m})({s}/{p}){C} = {times(ratio, C)}. "
+               f"So {A}/{C} = {num(ratio)}.")
+        if made % 2 == 1:
+            spr(PSD, "Ratios and proportions", "medium", stem, ratio, why)
+        else:
+            # Slips: flipping the answer, or flipping one link.
+            wrong = [1 / ratio, F(n * p, m * s), F(m * s, n * p)]
+            wrong = [w for w in wrong if w != ratio]
+            try:
+                mcq(PSD, "Ratios and proportions", "medium", stem, ratio, distinct(ratio, wrong), why)
+            except AssertionError:
+                continue
+        made += 1
+
+
+def xfam_XR4():
+    """Decimal coefficients, and the comparison asked from the other end."""
+    made = tries = 0
+    coefs = [F(k, 10) for k in range(2, 30) if k % 10]
+    while made < 5 and tries < 8000:
+        tries += 1
+        m, n, p, s = (rng.choice(coefs) for _ in range(4))
+        if m == n or p == s:
+            continue
+        ratio = (n / m) * (s / p)            # a / c
+        if not F(1, 4) <= ratio <= 4 or ratio == 1:
+            continue
+        # Ask about c relative to a, the less natural direction.
+        cr = 1 / ratio                       # c / a
+        more = cr > 1
+        val = abs(cr - 1) * 100
+        if val.denominator != 1 or val < 5:
+            continue
+        stem = (f"For the positive numbers a, b, and c, {dec(m)}a = {dec(n)}b and {dec(p)}b = {dec(s)}c. "
+                f"By what percent is c {'greater' if more else 'less'} than a?")
+        why = (f"a = ({dec(n)}/{dec(m)})b = {times(n / m, 'b')} and b = ({dec(s)}/{dec(p)})c = {times(s / p, 'c')}, "
+               f"so a = {times(ratio, 'c')} and c = {times(cr, 'a')}. That is {dec(cr * 100, 4)}% of a, so c is {num(val)}% "
+               f"{'greater' if more else 'less'} than a.")
+        if made % 2 == 0:
+            spr(PSD, "Percentages", "hard", stem, val, why)
+        else:
+            wrong = [F(round(float(abs(ratio - 1) * 100))), F(round(float(cr * 100))), F(round(float(ratio * 100)))]
+            wrong = [w for w in wrong if w != val and w > 0]
+            try:
+                mcq(PSD, "Percentages", "hard", stem, val, distinct(val, wrong, spread=(10, -10, 20, 25, -20, 50)),
+                    why + " Answering for a compared with c, instead of c compared with a, is the trap.")
+            except AssertionError:
+                continue
+        made += 1
+
+
 # More geometry: a medium tier and a genuinely hard tier. These run in their
 # own loop after everything above, so no existing question id moves.
 TRIPLES = [(3, 4, 5), (4, 3, 5), (5, 12, 13), (12, 5, 13), (6, 8, 10), (8, 6, 10),
@@ -1539,7 +1881,8 @@ HARD = {name[5:]: fn for name, fn in list(globals().items()) if name.startswith(
 EXTRA = {name[6:]: fn for name, fn in list(globals().items()) if name.startswith("xhard_X")}
 GEO_MORE = {name.split("_", 1)[1]: fn for name, fn in list(globals().items())
             if name.startswith("xgeo_") or name.startswith("xhard_GH")}
-ALL_TEMPLATES = {**TEMPLATES, **HARD, **EXTRA, **GEO_MORE}
+FAMILY = {name.split("_", 1)[1]: fn for name, fn in list(globals().items()) if name.startswith("xfam_")}
+ALL_TEMPLATES = {**TEMPLATES, **HARD, **EXTRA, **GEO_MORE, **FAMILY}
 SEED = 20260925
 PASSES = 4   # each pass redraws every template's numbers; pass 1 is the original set
 
@@ -1574,6 +1917,13 @@ def build():
         PASS[0] = p + 1
         rng = random.Random(SEED * 7 + p * 32452843)
         for name, fn in GEO_MORE.items():
+            CURRENT[0] = name
+            fn()
+    # more exponent-bounds and chained-ratio questions, added after that
+    for p in range(PASSES):
+        PASS[0] = p + 1
+        rng = random.Random(SEED * 11 + p * 49979687)
+        for name, fn in FAMILY.items():
             CURRENT[0] = name
             fn()
     return list(questions)

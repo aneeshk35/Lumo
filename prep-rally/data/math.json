@@ -23177,5 +23177,2605 @@
   ],
   "answer": 1,
   "explanation": "V = (1/3)πr²h. The radius appears squared, so multiplying it by 3 multiplies V by 9. Dividing the height by 4 divides V by 4. So k = 9/4 = 9/4. Forgetting to square the radius gives 3/4."
+ },
+ {
+  "id": "mth-1422",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(15/2) and f(a) < a^(32/3). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "5",
+   "9",
+   "15",
+   "16"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 15/2 and b < 32/3. With a common denominator of 6, that is 45/6 < b < 64/6, or about 7.5 < b < 10.67. Of the choices, only 9 is in that range."
+ },
+ {
+  "id": "mth-1423",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(17/5) and f(a) < a^(22/3). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "7",
+   "17",
+   "22"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 17/5 and b < 22/3. With a common denominator of 15, that is 51/15 < b < 110/15, or about 3.4 < b < 7.33. Of the choices, only 7 is in that range."
+ },
+ {
+  "id": "mth-1424",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that 0 < a < 1, f(a) < a^(41/5) and f(a) > a^(25/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "5",
+   "10",
+   "20",
+   "41"
+  ],
+  "answer": 1,
+  "explanation": "When 0 < a < 1, a larger exponent gives a smaller value, so both inequalities flip when you compare exponents: b > 41/5 and b < 25/2. With a common denominator of 10, that is 82/10 < b < 125/10, or about 8.2 < b < 12.5. Of the choices, only 10 is in that range."
+ },
+ {
+  "id": "mth-1425",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(44/5) and f(a) < a^(34/3). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "7",
+   "10",
+   "15",
+   "44"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 44/5 and b < 34/3. With a common denominator of 15, that is 132/15 < b < 170/15, or about 8.8 < b < 11.33. Of the choices, only 10 is in that range."
+ },
+ {
+  "id": "mth-1426",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(23/5) and f(a) < a^(15/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "7",
+   "12",
+   "23"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 23/5 and b < 15/2. With a common denominator of 10, that is 46/10 < b < 75/10, or about 4.6 < b < 7.5. Of the choices, only 7 is in that range."
+ },
+ {
+  "id": "mth-1427",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^7 and f(a) < a^14. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "3",
+   "7",
+   "8",
+   "21"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 7 < 3b < 14, which means 7/3 < b < 14/3. Of the choices, only 3 is in that range. Using the exponents 7 and 14 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1428",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^4, where b is a constant. For every value of a such that a > 1, f(a) > a^12 and f(a) < a^23. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "4",
+   "12",
+   "13",
+   "48"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^4 = a^(4b), so 12 < 4b < 23, which means 3 < b < 23/4. Of the choices, only 4 is in that range. Using the exponents 12 and 23 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1429",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^16 and f(a) < a^27. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "6",
+   "16",
+   "17",
+   "48"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 16 < 3b < 27, which means 16/3 < b < 9. Of the choices, only 6 is in that range. Using the exponents 16 and 27 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1430",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^4, where b is a constant. For every value of a such that a > 1, f(a) > a^11 and f(a) < a^17. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "4",
+   "11",
+   "12",
+   "44"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^4 = a^(4b), so 11 < 4b < 17, which means 11/4 < b < 17/4. Of the choices, only 4 is in that range. Using the exponents 11 and 17 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1431",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = ∛(x^b), where b is a constant. For every value of a such that a > 1, f(a) > a^(16/3) and f(a) < a^(20/3). Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "2",
+   "6",
+   "16",
+   "19"
+  ],
+  "answer": 3,
+  "explanation": "∛(a^b) = a^(b/3), so 16/3 < b/3 < 20/3. Multiplying by 3 gives 16 < b < 20. Of the choices, only 19 is in that range. Using the exponents (16/3) and (20/3) without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1432",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(22/3) and f(a) < a^(40/3). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 22/3 and b < 40/3. That is 7.33 < b < 13.33, so the integers are 8 through 13: 6 values."
+ },
+ {
+  "id": "mth-1433",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^(15/2) and f(a) > a^(23/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 15/2 and b < 23/2. That is 7.5 < b < 11.5, so the integers are 8 through 11: 4 values."
+ },
+ {
+  "id": "mth-1434",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^3 and f(a) < a^(29/4). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 3 and b < 29/4. That is 3 < b < 7.25, so the integers are 4 through 7: 4 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1435",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^8 and f(a) > a^(35/3). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 8 and b < 35/3. That is 8 < b < 11.67, so the integers are 9 through 11: 3 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1436",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^4 and f(a) < a^9. How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 4 and b < 9. That is 4 < b < 9, so the integers are 5 through 8: 4 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1437",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^4 · a^6 and f(a) < (a^7)^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "10",
+   "12",
+   "14",
+   "24"
+  ],
+  "answer": 1,
+  "explanation": "a^4 · a^6 = a^10 and (a^7)^2 = a^14. Because a > 1, a^b > a^10 means b > 10, and a^b < a^14 means b < 14. So 10 < b < 14, and of the choices only 12 works. 10 and 14 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1438",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^16 / a^6 and f(a) < a^11 · a^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "9",
+   "10",
+   "11",
+   "13"
+  ],
+  "answer": 2,
+  "explanation": "a^16 / a^6 = a^10 and a^11 · a^2 = a^13. Because a > 1, a^b > a^10 means b > 10, and a^b < a^13 means b < 13. So 10 < b < 13, and of the choices only 11 works. 10 and 13 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1439",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > (a^2)^3 and f(a) < (a^5)^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "5",
+   "6",
+   "8",
+   "10"
+  ],
+  "answer": 2,
+  "explanation": "(a^2)^3 = a^6 and (a^5)^2 = a^10. Because a > 1, a^b > a^6 means b > 6, and a^b < a^10 means b < 10. So 6 < b < 10, and of the choices only 8 works. 6 and 10 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1440",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^6 · a^4 and f(a) < a^12 · a^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "10",
+   "13",
+   "14",
+   "24"
+  ],
+  "answer": 1,
+  "explanation": "a^6 · a^4 = a^10 and a^12 · a^2 = a^14. Because a > 1, a^b > a^10 means b > 10, and a^b < a^14 means b < 14. So 10 < b < 14, and of the choices only 13 works. 10 and 14 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1441",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^12 / a^4 and f(a) < a^7 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "7",
+   "8",
+   "10",
+   "11"
+  ],
+  "answer": 2,
+  "explanation": "a^12 / a^4 = a^8 and a^7 · a^4 = a^11. Because a > 1, a^b > a^8 means b > 8, and a^b < a^11 means b < 11. So 8 < b < 11, and of the choices only 10 works. 8 and 11 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1442",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 3a = 7b, 6b = 7c, and 7c = 9d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "250"
+  ],
+  "explanation": "a = (7/3)b, b = (7/6)c, and c = (9/7)d. Multiplying, a = (7/3)(7/6)(9/7)d = (7/2)d, which is 350% of d. So a is 250% greater than d."
+ },
+ {
+  "id": "mth-1443",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 8p = 9q, 9q = 7r, and 5r = 4s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "choices": [
+   "30",
+   "43",
+   "70",
+   "143"
+  ],
+  "answer": 0,
+  "explanation": "p = (9/8)q, q = (7/9)r, and r = (4/5)s. Multiplying, p = (9/8)(7/9)(4/5)s = (7/10)s, which is 70% of s. So p is 30% less than s. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1444",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers w, x, y, and z, 7w = 5x, 5x = 3y, and 3y = 7z. The value of w is what percent of the value of z?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "100"
+  ],
+  "explanation": "w = (5/7)x, x = (3/5)y, and y = (7/3)z. Multiplying, w = (5/7)(3/5)(7/3)z = 1z, which is 100% of z. So w is 100% of z."
+ },
+ {
+  "id": "mth-1445",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 2a = 9b, 9b = 2c, and 4c = 5d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "choices": [
+   "20",
+   "25",
+   "80",
+   "125"
+  ],
+  "answer": 1,
+  "explanation": "a = (9/2)b, b = (2/9)c, and c = (5/4)d. Multiplying, a = (9/2)(2/9)(5/4)d = (5/4)d, which is 125% of d. So a is 25% greater than d. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1446",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 5p = 3q, 5q = 3r, and 3r = 2s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "76"
+  ],
+  "explanation": "p = (3/5)q, q = (3/5)r, and r = (2/3)s. Multiplying, p = (3/5)(3/5)(2/3)s = (6/25)s, which is 24% of s. So p is 76% less than s."
+ },
+ {
+  "id": "mth-1447",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 35% less than y, and y is 20% greater than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "choices": [
+   "15",
+   "22",
+   "28",
+   "55"
+  ],
+  "answer": 1,
+  "explanation": "x = 0.65y and y = 1.2z, so x = (0.65)(1.2)z = 0.78z. That is 78% of z, so x is 22% less than z. Simply combining 20% and 35% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1448",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 40% less than B, and B is 10% greater than C. By what percent is A less than C?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "34"
+  ],
+  "explanation": "A = 0.6B and B = 1.1C, so A = (0.6)(1.1)C = 0.66C. That is 66% of C, so A is 34% less than C. Simply combining 10% and 40% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1449",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "m is 20% less than n, and n is 65% greater than k. By what percent is m greater than k?",
+  "tpl": "XR2",
+  "choices": [
+   "24",
+   "32",
+   "45",
+   "85"
+  ],
+  "answer": 1,
+  "explanation": "m = 0.8n and n = 1.65k, so m = (0.8)(1.65)k = 1.32k. That is 132% of k, so m is 32% greater than k. Simply combining 65% and 20% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1450",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 10% greater than y, and y is 40% less than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "34"
+  ],
+  "explanation": "x = 1.1y and y = 0.6z, so x = (1.1)(0.6)z = 0.66z. That is 66% of z, so x is 34% less than z. Simply combining 10% and 40% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1451",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 70% greater than B, and B is 10% less than C. By what percent is A greater than C?",
+  "tpl": "XR2",
+  "choices": [
+   "35",
+   "53",
+   "60",
+   "80"
+  ],
+  "answer": 1,
+  "explanation": "A = 1.7B and B = 0.9C, so A = (1.7)(0.9)C = 1.53C. That is 153% of C, so A is 53% greater than C. Simply combining 70% and 10% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1452",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 6a = 7b and 8b = 3c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "choices": [
+   "9/28",
+   "7/16",
+   "16/7",
+   "28/9"
+  ],
+  "answer": 1,
+  "explanation": "a = (7/6)b and b = (3/8)c, so a = (7/6)(3/8)c = (7/16)c. So a/c = 7/16."
+ },
+ {
+  "id": "mth-1453",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 3x = 7y and 5y = 6z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "14/5"
+  ],
+  "explanation": "x = (7/3)y and y = (6/5)z, so x = (7/3)(6/5)z = (14/5)z. So x/z = 14/5."
+ },
+ {
+  "id": "mth-1454",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 7r = 8s and 3s = 7t, where r, s, and t are positive, what is the value of r/t?",
+  "tpl": "XR3",
+  "choices": [
+   "3/8",
+   "24/49",
+   "49/24",
+   "8/3"
+  ],
+  "answer": 3,
+  "explanation": "r = (8/7)s and s = (7/3)t, so r = (8/7)(7/3)t = (8/3)t. So r/t = 8/3."
+ },
+ {
+  "id": "mth-1455",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 2a = 3b and 4b = 9c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "27/8"
+  ],
+  "explanation": "a = (3/2)b and b = (9/4)c, so a = (3/2)(9/4)c = (27/8)c. So a/c = 27/8."
+ },
+ {
+  "id": "mth-1456",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 3x = 7y and 6y = 5z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "choices": [
+   "5/14",
+   "18/35",
+   "35/18",
+   "14/5"
+  ],
+  "answer": 2,
+  "explanation": "x = (7/3)y and y = (5/6)z, so x = (7/3)(5/6)z = (35/18)z. So x/z = 35/18."
+ },
+ {
+  "id": "mth-1457",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.4a = 1.6b and 2.4b = 0.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "a = (1.6/0.4)b = 4b and b = (0.5/2.4)c = (5/24)c, so a = (5/6)c and c = (6/5)a. That is 120% of a, so c is 20% greater than a."
+ },
+ {
+  "id": "mth-1458",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.6a = 0.5b and 0.7b = 2.6c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "29",
+   "40",
+   "71",
+   "140"
+  ],
+  "answer": 1,
+  "explanation": "a = (0.5/2.6)b = (5/26)b and b = (2.6/0.7)c = (26/7)c, so a = (5/7)c and c = (7/5)a. That is 140% of a, so c is 40% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1459",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 1.5a = 1.3b and 2.6b = 1.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "100"
+  ],
+  "explanation": "a = (1.3/1.5)b = (13/15)b and b = (1.5/2.6)c = (15/26)c, so a = (1/2)c and c = 2a. That is 200% of a, so c is 100% greater than a."
+ },
+ {
+  "id": "mth-1460",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 1.3a = 2.6b and 2.7b = 0.9c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "33",
+   "50",
+   "67",
+   "150"
+  ],
+  "answer": 1,
+  "explanation": "a = (2.6/1.3)b = 2b and b = (0.9/2.7)c = (1/3)c, so a = (2/3)c and c = (3/2)a. That is 150% of a, so c is 50% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1461",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 1.4a = 0.8b and 0.3b = 0.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "a = (0.8/1.4)b = (4/7)b and b = (0.5/0.3)c = (5/3)c, so a = (20/21)c and c = (21/20)a. That is 105% of a, so c is 5% greater than a."
+ },
+ {
+  "id": "mth-1462",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(20/3) and f(a) < a^(21/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "6",
+   "10",
+   "20",
+   "21"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 20/3 and b < 21/2. With a common denominator of 6, that is 40/6 < b < 63/6, or about 6.67 < b < 10.5. Of the choices, only 10 is in that range."
+ },
+ {
+  "id": "mth-1463",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > ∛(a^14) and f(a) < (√a)^13. Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "4",
+   "5",
+   "7",
+   "14"
+  ],
+  "answer": 1,
+  "explanation": "∛(a^14) = a^(14/3) and (√a)^13 = a^(13/2). When a > 1, a larger exponent gives a larger value, so b > 14/3 and b < 13/2. With a common denominator of 6, that is 28/6 < b < 39/6, or about 4.67 < b < 6.5. Of the choices, only 5 is in that range."
+ },
+ {
+  "id": "mth-1464",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that 0 < a < 1, f(a) < a^(17/3) and f(a) > a^(41/5). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "8",
+   "14",
+   "17"
+  ],
+  "answer": 1,
+  "explanation": "When 0 < a < 1, a larger exponent gives a smaller value, so both inequalities flip when you compare exponents: b > 17/3 and b < 41/5. With a common denominator of 15, that is 85/15 < b < 123/15, or about 5.67 < b < 8.2. Of the choices, only 8 is in that range."
+ },
+ {
+  "id": "mth-1465",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(26/3) and f(a) < a^(21/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "7",
+   "9",
+   "13",
+   "26"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 26/3 and b < 21/2. With a common denominator of 6, that is 52/6 < b < 63/6, or about 8.67 < b < 10.5. Of the choices, only 9 is in that range."
+ },
+ {
+  "id": "mth-1466",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > √(a^11) and f(a) < (∜a)^39. Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "8",
+   "11",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "√(a^11) = a^(11/2) and (∜a)^39 = a^(39/4). When a > 1, a larger exponent gives a larger value, so b > 11/2 and b < 39/4. With a common denominator of 8, that is 44/8 < b < 78/8, or about 5.5 < b < 9.75. Of the choices, only 8 is in that range."
+ },
+ {
+  "id": "mth-1467",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = ∛(x^b), where b is a constant. For every value of a such that a > 1, f(a) > a^(25/3) and f(a) < a^(32/3). Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "3",
+   "9",
+   "10",
+   "28"
+  ],
+  "answer": 3,
+  "explanation": "∛(a^b) = a^(b/3), so 25/3 < b/3 < 32/3. Multiplying by 3 gives 25 < b < 32. Of the choices, only 28 is in that range. Using the exponents (25/3) and (32/3) without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1468",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = ∛(x^b), where b is a constant. For every value of a such that a > 1, f(a) > a^(14/3) and f(a) < a^(23/3). Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "2",
+   "5",
+   "6",
+   "18"
+  ],
+  "answer": 3,
+  "explanation": "∛(a^b) = a^(b/3), so 14/3 < b/3 < 23/3. Multiplying by 3 gives 14 < b < 23. Of the choices, only 18 is in that range. Using the exponents (14/3) and (23/3) without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1469",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^2, where b is a constant. For every value of a such that a > 1, f(a) > a^15 and f(a) < a^22. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "8",
+   "15",
+   "16",
+   "30"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^2 = a^(2b), so 15 < 2b < 22, which means 15/2 < b < 11. Of the choices, only 8 is in that range. Using the exponents 15 and 22 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1470",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = √(x^b), where b is a constant. For every value of a such that a > 1, f(a) > a^(21/2) and f(a) < a^(27/2). Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "5",
+   "11",
+   "12",
+   "26"
+  ],
+  "answer": 3,
+  "explanation": "√(a^b) = a^(b/2), so 21/2 < b/2 < 27/2. Multiplying by 2 gives 21 < b < 27. Of the choices, only 26 is in that range. Using the exponents (21/2) and (27/2) without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1471",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^13 and f(a) < a^18. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "5",
+   "13",
+   "14",
+   "39"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 13 < 3b < 18, which means 13/3 < b < 6. Of the choices, only 5 is in that range. Using the exponents 13 and 18 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1472",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^7 and f(a) < a^12. How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 7 and b < 12. That is 7 < b < 12, so the integers are 8 through 11: 4 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1473",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^8 and f(a) > a^(21/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 8 and b < 21/2. That is 8 < b < 10.5, so the integers are 9 through 10: 2 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1474",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(21/4) and f(a) < a^(39/4). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 21/4 and b < 39/4. That is 5.25 < b < 9.75, so the integers are 6 through 9: 4 values."
+ },
+ {
+  "id": "mth-1475",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^(11/3) and f(a) > a^8. How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 11/3 and b < 8. That is 3.67 < b < 8, so the integers are 4 through 7: 4 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1476",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(11/3) and f(a) < a^(19/3). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 11/3 and b < 19/3. That is 3.67 < b < 6.33, so the integers are 4 through 6: 3 values."
+ },
+ {
+  "id": "mth-1477",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^4 · a^2 and f(a) < a^6 · a^3. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "5",
+   "6",
+   "7",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "a^4 · a^2 = a^6 and a^6 · a^3 = a^9. Because a > 1, a^b > a^6 means b > 6, and a^b < a^9 means b < 9. So 6 < b < 9, and of the choices only 7 works. 6 and 9 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1478",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^13 / a^5 and f(a) < (a^4)^3. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "7",
+   "8",
+   "9",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "a^13 / a^5 = a^8 and (a^4)^3 = a^12. Because a > 1, a^b > a^8 means b > 8, and a^b < a^12 means b < 12. So 8 < b < 12, and of the choices only 9 works. 8 and 12 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1479",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > (a^3)^5 and f(a) < a^16 · a^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "8",
+   "15",
+   "16",
+   "18"
+  ],
+  "answer": 2,
+  "explanation": "(a^3)^5 = a^15 and a^16 · a^2 = a^18. Because a > 1, a^b > a^15 means b > 15, and a^b < a^18 means b < 18. So 15 < b < 18, and of the choices only 16 works. 15 and 18 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1480",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^4 · a^3 and f(a) < a^6 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "7",
+   "9",
+   "10",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "a^4 · a^3 = a^7 and a^6 · a^4 = a^10. Because a > 1, a^b > a^7 means b > 7, and a^b < a^10 means b < 10. So 7 < b < 10, and of the choices only 9 works. 7 and 10 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1481",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^21 / a^6 and f(a) < a^14 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "14",
+   "15",
+   "16",
+   "18"
+  ],
+  "answer": 2,
+  "explanation": "a^21 / a^6 = a^15 and a^14 · a^4 = a^18. Because a > 1, a^b > a^15 means b > 15, and a^b < a^18 means b < 18. So 15 < b < 18, and of the choices only 16 works. 15 and 18 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1482",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 4a = 3b, 5b = 8c, and 4c = 7d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "110"
+  ],
+  "explanation": "a = (3/4)b, b = (8/5)c, and c = (7/4)d. Multiplying, a = (3/4)(8/5)(7/4)d = (21/10)d, which is 210% of d. So a is 110% greater than d."
+ },
+ {
+  "id": "mth-1483",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 3p = 7q, 5q = 3r, and 7r = 2s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "choices": [
+   "40",
+   "60",
+   "150",
+   "250"
+  ],
+  "answer": 1,
+  "explanation": "p = (7/3)q, q = (3/5)r, and r = (2/7)s. Multiplying, p = (7/3)(3/5)(2/7)s = (2/5)s, which is 40% of s. So p is 60% less than s. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1484",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers w, x, y, and z, 5w = 4x, 4x = 5y, and 2y = 3z. The value of w is what percent of the value of z?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "150"
+  ],
+  "explanation": "w = (4/5)x, x = (5/4)y, and y = (3/2)z. Multiplying, w = (4/5)(5/4)(3/2)z = (3/2)z, which is 150% of z. So w is 150% of z."
+ },
+ {
+  "id": "mth-1485",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 4a = 5b, 5b = 6c, and 6c = 5d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "choices": [
+   "20",
+   "25",
+   "80",
+   "125"
+  ],
+  "answer": 1,
+  "explanation": "a = (5/4)b, b = (6/5)c, and c = (5/6)d. Multiplying, a = (5/4)(6/5)(5/6)d = (5/4)d, which is 125% of d. So a is 25% greater than d. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1486",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 5p = 8q, 8q = 5r, and 5r = 4s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "p = (8/5)q, q = (5/8)r, and r = (4/5)s. Multiplying, p = (8/5)(5/8)(4/5)s = (4/5)s, which is 80% of s. So p is 20% less than s."
+ },
+ {
+  "id": "mth-1487",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 50% less than y, and y is 70% greater than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "choices": [
+   "15",
+   "18",
+   "20",
+   "120"
+  ],
+  "answer": 0,
+  "explanation": "x = 0.5y and y = 1.7z, so x = (0.5)(1.7)z = 0.85z. That is 85% of z, so x is 15% less than z. Simply combining 70% and 50% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1488",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 10% less than B, and B is 70% greater than C. By what percent is A greater than C?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "53"
+  ],
+  "explanation": "A = 0.9B and B = 1.7C, so A = (0.9)(1.7)C = 1.53C. That is 153% of C, so A is 53% greater than C. Simply combining 70% and 10% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1489",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "m is 80% greater than n, and n is 20% less than k. By what percent is m greater than k?",
+  "tpl": "XR2",
+  "choices": [
+   "31",
+   "44",
+   "60",
+   "100"
+  ],
+  "answer": 1,
+  "explanation": "m = 1.8n and n = 0.8k, so m = (1.8)(0.8)k = 1.44k. That is 144% of k, so m is 44% greater than k. Simply combining 80% and 20% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1490",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 60% greater than y, and y is 50% less than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "x = 1.6y and y = 0.5z, so x = (1.6)(0.5)z = 0.8z. That is 80% of z, so x is 20% less than z. Simply combining 60% and 50% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1491",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 60% less than B, and B is 15% greater than C. By what percent is A less than C?",
+  "tpl": "XR2",
+  "choices": [
+   "45",
+   "54",
+   "75",
+   "117"
+  ],
+  "answer": 1,
+  "explanation": "A = 0.4B and B = 1.15C, so A = (0.4)(1.15)C = 0.46C. That is 46% of C, so A is 54% less than C. Simply combining 15% and 60% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1492",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 3a = 5b and 3b = 8c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "choices": [
+   "9/40",
+   "5/8",
+   "8/5",
+   "40/9"
+  ],
+  "answer": 3,
+  "explanation": "a = (5/3)b and b = (8/3)c, so a = (5/3)(8/3)c = (40/9)c. So a/c = 40/9."
+ },
+ {
+  "id": "mth-1493",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 5x = 7y and 8y = 3z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "21/40"
+  ],
+  "explanation": "x = (7/5)y and y = (3/8)z, so x = (7/5)(3/8)z = (21/40)z. So x/z = 21/40."
+ },
+ {
+  "id": "mth-1494",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 7r = 6s and 7s = 3t, where r, s, and t are positive, what is the value of r/t?",
+  "tpl": "XR3",
+  "choices": [
+   "18/49",
+   "1/2",
+   "2",
+   "49/18"
+  ],
+  "answer": 0,
+  "explanation": "r = (6/7)s and s = (3/7)t, so r = (6/7)(3/7)t = (18/49)t. So r/t = 18/49."
+ },
+ {
+  "id": "mth-1495",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 9a = 7b and 5b = 6c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "14/15"
+  ],
+  "explanation": "a = (7/9)b and b = (6/5)c, so a = (7/9)(6/5)c = (14/15)c. So a/c = 14/15."
+ },
+ {
+  "id": "mth-1496",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 7x = 2y and 8y = 5z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "choices": [
+   "5/28",
+   "16/35",
+   "35/16",
+   "28/5"
+  ],
+  "answer": 0,
+  "explanation": "x = (2/7)y and y = (5/8)z, so x = (2/7)(5/8)z = (5/28)z. So x/z = 5/28."
+ },
+ {
+  "id": "mth-1497",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.9a = 0.6b and 2.6b = 1.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "160"
+  ],
+  "explanation": "a = (0.6/0.9)b = (2/3)b and b = (1.5/2.6)c = (15/26)c, so a = (5/13)c and c = (13/5)a. That is 260% of a, so c is 160% greater than a."
+ },
+ {
+  "id": "mth-1498",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.7a = 1.7b and 1.7b = 0.2c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "29",
+   "71",
+   "250",
+   "350"
+  ],
+  "answer": 2,
+  "explanation": "a = (1.7/0.7)b = (17/7)b and b = (0.2/1.7)c = (2/17)c, so a = (2/7)c and c = (7/2)a. That is 350% of a, so c is 250% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1499",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.2a = 1.8b and 0.9b = 2.5c. By what percent is c less than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "56"
+  ],
+  "explanation": "a = (1.8/2.2)b = (9/11)b and b = (2.5/0.9)c = (25/9)c, so a = (25/11)c and c = (11/25)a. That is 44% of a, so c is 56% less than a."
+ },
+ {
+  "id": "mth-1500",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 1.3a = 2.4b and 0.6b = 1.3c. By what percent is c less than a?",
+  "tpl": "XR4",
+  "choices": [
+   "25",
+   "75",
+   "300",
+   "400"
+  ],
+  "answer": 1,
+  "explanation": "a = (2.4/1.3)b = (24/13)b and b = (1.3/0.6)c = (13/6)c, so a = 4c and c = (1/4)a. That is 25% of a, so c is 75% less than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1501",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.1a = 2.5b and 0.3b = 0.9c. By what percent is c less than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "72"
+  ],
+  "explanation": "a = (2.5/2.1)b = (25/21)b and b = (0.9/0.3)c = 3c, so a = (25/7)c and c = (7/25)a. That is 28% of a, so c is 72% less than a."
+ },
+ {
+  "id": "mth-1502",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(35/4) and f(a) < a^(21/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "5",
+   "9",
+   "18",
+   "35"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 35/4 and b < 21/2. With a common denominator of 8, that is 70/8 < b < 84/8, or about 8.75 < b < 10.5. Of the choices, only 9 is in that range."
+ },
+ {
+  "id": "mth-1503",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(14/3) and f(a) < a^(32/5). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "5",
+   "11",
+   "14"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 14/3 and b < 32/5. With a common denominator of 15, that is 70/15 < b < 96/15, or about 4.67 < b < 6.4. Of the choices, only 5 is in that range."
+ },
+ {
+  "id": "mth-1504",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that 0 < a < 1, f(a) < a^(16/3) and f(a) > a^(37/4). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "4",
+   "8",
+   "12",
+   "16"
+  ],
+  "answer": 1,
+  "explanation": "When 0 < a < 1, a larger exponent gives a smaller value, so both inequalities flip when you compare exponents: b > 16/3 and b < 37/4. With a common denominator of 12, that is 64/12 < b < 111/12, or about 5.33 < b < 9.25. Of the choices, only 8 is in that range."
+ },
+ {
+  "id": "mth-1505",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(27/4) and f(a) < a^(31/3). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "6",
+   "7",
+   "27",
+   "31"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 27/4 and b < 31/3. With a common denominator of 12, that is 81/12 < b < 124/12, or about 6.75 < b < 10.33. Of the choices, only 7 is in that range."
+ },
+ {
+  "id": "mth-1506",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(18/5) and f(a) < a^(13/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "4",
+   "9",
+   "18"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 18/5 and b < 13/2. With a common denominator of 10, that is 36/10 < b < 65/10, or about 3.6 < b < 6.5. Of the choices, only 4 is in that range."
+ },
+ {
+  "id": "mth-1507",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^4, where b is a constant. For every value of a such that a > 1, f(a) > a^7 and f(a) < a^15. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "2",
+   "7",
+   "8",
+   "28"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^4 = a^(4b), so 7 < 4b < 15, which means 7/4 < b < 15/4. Of the choices, only 2 is in that range. Using the exponents 7 and 15 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1508",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^16 and f(a) < a^26. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "7",
+   "16",
+   "17",
+   "48"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 16 < 3b < 26, which means 16/3 < b < 26/3. Of the choices, only 7 is in that range. Using the exponents 16 and 26 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1509",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^4, where b is a constant. For every value of a such that a > 1, f(a) > a^27 and f(a) < a^40. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "7",
+   "27",
+   "28",
+   "108"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^4 = a^(4b), so 27 < 4b < 40, which means 27/4 < b < 10. Of the choices, only 7 is in that range. Using the exponents 27 and 40 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1510",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = ∛(x^b), where b is a constant. For every value of a such that a > 1, f(a) > a^(22/3) and f(a) < a^(26/3). Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "2",
+   "3",
+   "8",
+   "25"
+  ],
+  "answer": 3,
+  "explanation": "∛(a^b) = a^(b/3), so 22/3 < b/3 < 26/3. Multiplying by 3 gives 22 < b < 26. Of the choices, only 25 is in that range. Using the exponents (22/3) and (26/3) without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1511",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^21 and f(a) < a^31. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "10",
+   "21",
+   "22",
+   "63"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 21 < 3b < 31, which means 7 < b < 31/3. Of the choices, only 10 is in that range. Using the exponents 21 and 31 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1512",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(23/4) and f(a) < a^(47/4). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 23/4 and b < 47/4. That is 5.75 < b < 11.75, so the integers are 6 through 11: 6 values."
+ },
+ {
+  "id": "mth-1513",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^3 and f(a) > a^(19/3). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "3"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 3 and b < 19/3. That is 3 < b < 6.33, so the integers are 4 through 6: 3 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1514",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(25/4) and f(a) < a^(17/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 25/4 and b < 17/2. That is 6.25 < b < 8.5, so the integers are 7 through 8: 2 values."
+ },
+ {
+  "id": "mth-1515",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^4 and f(a) > a^(25/4). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "2"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 4 and b < 25/4. That is 4 < b < 6.25, so the integers are 5 through 6: 2 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1516",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^8 and f(a) < a^(49/4). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 8 and b < 49/4. That is 8 < b < 12.25, so the integers are 9 through 12: 4 values. The inequalities are strict, so a bound that is itself an integer is not allowed."
+ },
+ {
+  "id": "mth-1517",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^6 · a^5 and f(a) < (a^3)^5. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "11",
+   "12",
+   "15",
+   "30"
+  ],
+  "answer": 1,
+  "explanation": "a^6 · a^5 = a^11 and (a^3)^5 = a^15. Because a > 1, a^b > a^11 means b > 11, and a^b < a^15 means b < 15. So 11 < b < 15, and of the choices only 12 works. 11 and 15 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1518",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^17 / a^4 and f(a) < a^13 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "12",
+   "13",
+   "14",
+   "17"
+  ],
+  "answer": 2,
+  "explanation": "a^17 / a^4 = a^13 and a^13 · a^4 = a^17. Because a > 1, a^b > a^13 means b > 13, and a^b < a^17 means b < 17. So 13 < b < 17, and of the choices only 14 works. 13 and 17 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1519",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > (a^6)^3 and f(a) < a^18 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "9",
+   "18",
+   "20",
+   "22"
+  ],
+  "answer": 2,
+  "explanation": "(a^6)^3 = a^18 and a^18 · a^4 = a^22. Because a > 1, a^b > a^18 means b > 18, and a^b < a^22 means b < 22. So 18 < b < 22, and of the choices only 20 works. 18 and 22 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1520",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^2 · a^5 and f(a) < a^6 · a^5. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "6",
+   "7",
+   "8",
+   "11"
+  ],
+  "answer": 2,
+  "explanation": "a^2 · a^5 = a^7 and a^6 · a^5 = a^11. Because a > 1, a^b > a^7 means b > 7, and a^b < a^11 means b < 11. So 7 < b < 11, and of the choices only 8 works. 7 and 11 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1521",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^9 / a^3 and f(a) < (a^5)^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "5",
+   "6",
+   "7",
+   "10"
+  ],
+  "answer": 2,
+  "explanation": "a^9 / a^3 = a^6 and (a^5)^2 = a^10. Because a > 1, a^b > a^6 means b > 6, and a^b < a^10 means b < 10. So 6 < b < 10, and of the choices only 7 works. 6 and 10 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1522",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 2a = 5b, 4b = 7c, and 5c = 4d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "250"
+  ],
+  "explanation": "a = (5/2)b, b = (7/4)c, and c = (4/5)d. Multiplying, a = (5/2)(7/4)(4/5)d = (7/2)d, which is 350% of d. So a is 250% greater than d."
+ },
+ {
+  "id": "mth-1523",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 5p = 4q, 2q = 3r, and 3r = 2s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "choices": [
+   "20",
+   "25",
+   "80",
+   "125"
+  ],
+  "answer": 0,
+  "explanation": "p = (4/5)q, q = (3/2)r, and r = (2/3)s. Multiplying, p = (4/5)(3/2)(2/3)s = (4/5)s, which is 80% of s. So p is 20% less than s. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1524",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers w, x, y, and z, 6w = 7x, 2x = 3y, and 7y = 9z. The value of w is what percent of the value of z?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "225"
+  ],
+  "explanation": "w = (7/6)x, x = (3/2)y, and y = (9/7)z. Multiplying, w = (7/6)(3/2)(9/7)z = (9/4)z, which is 225% of z. So w is 225% of z."
+ },
+ {
+  "id": "mth-1525",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 4a = 5b, 7b = 6c, and 3c = 7d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "choices": [
+   "40",
+   "60",
+   "150",
+   "250"
+  ],
+  "answer": 2,
+  "explanation": "a = (5/4)b, b = (6/7)c, and c = (7/3)d. Multiplying, a = (5/4)(6/7)(7/3)d = (5/2)d, which is 250% of d. So a is 150% greater than d. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1526",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 2p = 3q, 5q = 2r, and 3r = 4s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "20"
+  ],
+  "explanation": "p = (3/2)q, q = (2/5)r, and r = (4/3)s. Multiplying, p = (3/2)(2/5)(4/3)s = (4/5)s, which is 80% of s. So p is 20% less than s."
+ },
+ {
+  "id": "mth-1527",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 50% less than y, and y is 50% greater than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "choices": [
+   "25",
+   "30",
+   "33",
+   "100"
+  ],
+  "answer": 0,
+  "explanation": "x = 0.5y and y = 1.5z, so x = (0.5)(1.5)z = 0.75z. That is 75% of z, so x is 25% less than z. Simply combining 50% and 50% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1528",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 60% less than B, and B is 65% greater than C. By what percent is A less than C?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "34"
+  ],
+  "explanation": "A = 0.4B and B = 1.65C, so A = (0.4)(1.65)C = 0.66C. That is 66% of C, so A is 34% less than C. Simply combining 65% and 60% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1529",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "m is 80% greater than n, and n is 10% less than k. By what percent is m greater than k?",
+  "tpl": "XR2",
+  "choices": [
+   "38",
+   "62",
+   "70",
+   "90"
+  ],
+  "answer": 1,
+  "explanation": "m = 1.8n and n = 0.9k, so m = (1.8)(0.9)k = 1.62k. That is 162% of k, so m is 62% greater than k. Simply combining 80% and 10% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1530",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 55% greater than y, and y is 40% less than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "7"
+  ],
+  "explanation": "x = 1.55y and y = 0.6z, so x = (1.55)(0.6)z = 0.93z. That is 93% of z, so x is 7% less than z. Simply combining 55% and 40% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1531",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 60% greater than B, and B is 50% less than C. By what percent is A less than C?",
+  "tpl": "XR2",
+  "choices": [
+   "10",
+   "20",
+   "25",
+   "110"
+  ],
+  "answer": 1,
+  "explanation": "A = 1.6B and B = 0.5C, so A = (1.6)(0.5)C = 0.8C. That is 80% of C, so A is 20% less than C. Simply combining 60% and 50% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1532",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 7a = 3b and 8b = 7c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "choices": [
+   "3/8",
+   "24/49",
+   "49/24",
+   "8/3"
+  ],
+  "answer": 0,
+  "explanation": "a = (3/7)b and b = (7/8)c, so a = (3/7)(7/8)c = (3/8)c. So a/c = 3/8."
+ },
+ {
+  "id": "mth-1533",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 4x = 9y and 8y = 3z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "27/32"
+  ],
+  "explanation": "x = (9/4)y and y = (3/8)z, so x = (9/4)(3/8)z = (27/32)z. So x/z = 27/32."
+ },
+ {
+  "id": "mth-1534",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 6r = 7s and 7s = 5t, where r, s, and t are positive, what is the value of r/t?",
+  "tpl": "XR3",
+  "choices": [
+   "30/49",
+   "5/6",
+   "6/5",
+   "49/30"
+  ],
+  "answer": 1,
+  "explanation": "r = (7/6)s and s = (5/7)t, so r = (7/6)(5/7)t = (5/6)t. So r/t = 5/6."
+ },
+ {
+  "id": "mth-1535",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 7a = 5b and 4b = 5c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "25/28"
+  ],
+  "explanation": "a = (5/7)b and b = (5/4)c, so a = (5/7)(5/4)c = (25/28)c. So a/c = 25/28."
+ },
+ {
+  "id": "mth-1536",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 8x = 7y and 7y = 6z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "choices": [
+   "3/4",
+   "48/49",
+   "49/48",
+   "4/3"
+  ],
+  "answer": 0,
+  "explanation": "x = (7/8)y and y = (6/7)z, so x = (7/8)(6/7)z = (3/4)z. So x/z = 3/4."
+ },
+ {
+  "id": "mth-1537",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 1.5a = 2.9b and 2.9b = 0.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "200"
+  ],
+  "explanation": "a = (2.9/1.5)b = (29/15)b and b = (0.5/2.9)c = (5/29)c, so a = (1/3)c and c = 3a. That is 300% of a, so c is 200% greater than a."
+ },
+ {
+  "id": "mth-1538",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.7a = 2.1b and 2.1b = 0.9c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "33",
+   "67",
+   "200",
+   "300"
+  ],
+  "answer": 2,
+  "explanation": "a = (2.1/2.7)b = (7/9)b and b = (0.9/2.1)c = (3/7)c, so a = (1/3)c and c = 3a. That is 300% of a, so c is 200% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1539",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.7a = 0.5b and 0.3b = 0.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "224"
+  ],
+  "explanation": "a = (0.5/2.7)b = (5/27)b and b = (0.5/0.3)c = (5/3)c, so a = (25/81)c and c = (81/25)a. That is 324% of a, so c is 224% greater than a."
+ },
+ {
+  "id": "mth-1540",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.5a = 1.2b and 2.1b = 2.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "43",
+   "57",
+   "75",
+   "175"
+  ],
+  "answer": 2,
+  "explanation": "a = (1.2/2.5)b = (12/25)b and b = (2.5/2.1)c = (25/21)c, so a = (4/7)c and c = (7/4)a. That is 175% of a, so c is 75% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1541",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.2a = 2.1b and 2.1b = 0.4c. By what percent is c less than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "50"
+  ],
+  "explanation": "a = (2.1/0.2)b = (21/2)b and b = (0.4/2.1)c = (4/21)c, so a = 2c and c = (1/2)a. That is 50% of a, so c is 50% less than a."
+ },
+ {
+  "id": "mth-1542",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(7/2) and f(a) < a^(26/5). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "1",
+   "5",
+   "7",
+   "13"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 7/2 and b < 26/5. With a common denominator of 10, that is 35/10 < b < 52/10, or about 3.5 < b < 5.2. Of the choices, only 5 is in that range."
+ },
+ {
+  "id": "mth-1543",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(44/5) and f(a) < a^(35/3). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "7",
+   "9",
+   "15",
+   "44"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 44/5 and b < 35/3. With a common denominator of 15, that is 132/15 < b < 175/15, or about 8.8 < b < 11.67. Of the choices, only 9 is in that range."
+ },
+ {
+  "id": "mth-1544",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that 0 < a < 1, f(a) < a^(21/4) and f(a) > a^(17/2). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "4",
+   "7",
+   "10",
+   "21"
+  ],
+  "answer": 1,
+  "explanation": "When 0 < a < 1, a larger exponent gives a smaller value, so both inequalities flip when you compare exponents: b > 21/4 and b < 17/2. With a common denominator of 8, that is 42/8 < b < 68/8, or about 5.25 < b < 8.5. Of the choices, only 7 is in that range."
+ },
+ {
+  "id": "mth-1545",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(29/5) and f(a) < a^(32/3). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "5",
+   "9",
+   "29",
+   "32"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 29/5 and b < 32/3. With a common denominator of 15, that is 87/15 < b < 160/15, or about 5.8 < b < 10.67. Of the choices, only 9 is in that range."
+ },
+ {
+  "id": "mth-1546",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is a constant. For every value of a such that a > 1, f(a) > a^(16/5) and f(a) < a^(23/4). Which of the following could be the value of b?",
+  "tpl": "XP1",
+  "choices": [
+   "3",
+   "4",
+   "16",
+   "23"
+  ],
+  "answer": 1,
+  "explanation": "When a > 1, a larger exponent gives a larger value, so b > 16/5 and b < 23/4. With a common denominator of 20, that is 64/20 < b < 115/20, or about 3.2 < b < 5.75. Of the choices, only 4 is in that range."
+ },
+ {
+  "id": "mth-1547",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^20 and f(a) < a^29. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "7",
+   "20",
+   "21",
+   "60"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 20 < 3b < 29, which means 20/3 < b < 29/3. Of the choices, only 7 is in that range. Using the exponents 20 and 29 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1548",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^25 and f(a) < a^33. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "10",
+   "25",
+   "26",
+   "75"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 25 < 3b < 33, which means 25/3 < b < 11. Of the choices, only 10 is in that range. Using the exponents 25 and 33 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1549",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^4, where b is a constant. For every value of a such that a > 1, f(a) > a^25 and f(a) < a^39. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "7",
+   "25",
+   "26",
+   "100"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^4 = a^(4b), so 25 < 4b < 39, which means 25/4 < b < 39/4. Of the choices, only 7 is in that range. Using the exponents 25 and 39 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1550",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = √(x^b), where b is a constant. For every value of a such that a > 1, f(a) > a^(19/2) and f(a) < a^(25/2). Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "5",
+   "10",
+   "11",
+   "21"
+  ],
+  "answer": 3,
+  "explanation": "√(a^b) = a^(b/2), so 19/2 < b/2 < 25/2. Multiplying by 2 gives 19 < b < 25. Of the choices, only 21 is in that range. Using the exponents (19/2) and (25/2) without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1551",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = (x^b)^3, where b is a constant. For every value of a such that a > 1, f(a) > a^6 and f(a) < a^12. Which of the following could be the value of b?",
+  "tpl": "XP2",
+  "choices": [
+   "3",
+   "6",
+   "7",
+   "18"
+  ],
+  "answer": 0,
+  "explanation": "(a^b)^3 = a^(3b), so 6 < 3b < 12, which means 2 < b < 4. Of the choices, only 3 is in that range. Using the exponents 6 and 12 without accounting for the outer operation is the usual mistake."
+ },
+ {
+  "id": "mth-1552",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(5/2) and f(a) < a^(20/3). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 5/2 and b < 20/3. That is 2.5 < b < 6.67, so the integers are 3 through 6: 4 values."
+ },
+ {
+  "id": "mth-1553",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^(10/3) and f(a) > a^(17/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "5"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 10/3 and b < 17/2. That is 3.33 < b < 8.5, so the integers are 4 through 8: 5 values."
+ },
+ {
+  "id": "mth-1554",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(13/2) and f(a) < a^(21/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 13/2 and b < 21/2. That is 6.5 < b < 10.5, so the integers are 7 through 10: 4 values."
+ },
+ {
+  "id": "mth-1555",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that 0 < a < 1, f(a) < a^(23/4) and f(a) > a^(19/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "4"
+  ],
+  "explanation": "For 0 < a < 1, a larger exponent gives a smaller value, so b > 23/4 and b < 19/2. That is 5.75 < b < 9.5, so the integers are 6 through 9: 4 values."
+ },
+ {
+  "id": "mth-1556",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "hard",
+  "question": "The function f is defined by f(x) = x^b, where b is an integer. For every value of a such that a > 1, f(a) > a^(14/3) and f(a) < a^(21/2). How many different values of b are possible?",
+  "tpl": "XP3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "6"
+  ],
+  "explanation": "For a > 1, a larger exponent gives a larger value, so b > 14/3 and b < 21/2. That is 4.67 < b < 10.5, so the integers are 5 through 10: 6 values."
+ },
+ {
+  "id": "mth-1557",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^3 · a^4 and f(a) < a^7 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "7",
+   "8",
+   "11",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "a^3 · a^4 = a^7 and a^7 · a^4 = a^11. Because a > 1, a^b > a^7 means b > 7, and a^b < a^11 means b < 11. So 7 < b < 11, and of the choices only 8 works. 7 and 11 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1558",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^12 / a^5 and f(a) < (a^5)^2. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "6",
+   "7",
+   "8",
+   "10"
+  ],
+  "answer": 2,
+  "explanation": "a^12 / a^5 = a^7 and (a^5)^2 = a^10. Because a > 1, a^b > a^7 means b > 7, and a^b < a^10 means b < 10. So 7 < b < 10, and of the choices only 8 works. 7 and 10 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1559",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > (a^6)^2 and f(a) < (a^3)^5. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "8",
+   "12",
+   "13",
+   "15"
+  ],
+  "answer": 2,
+  "explanation": "(a^6)^2 = a^12 and (a^3)^5 = a^15. Because a > 1, a^b > a^12 means b > 12, and a^b < a^15 means b < 15. So 12 < b < 15, and of the choices only 13 works. 12 and 15 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1560",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^6 · a^4 and f(a) < a^10 · a^3. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "10",
+   "11",
+   "13",
+   "24"
+  ],
+  "answer": 1,
+  "explanation": "a^6 · a^4 = a^10 and a^10 · a^3 = a^13. Because a > 1, a^b > a^10 means b > 10, and a^b < a^13 means b < 13. So 10 < b < 13, and of the choices only 11 works. 10 and 13 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1561",
+  "section": "math",
+  "domain": "Advanced Math",
+  "skill": "Exponent rules",
+  "difficulty": "medium",
+  "question": "For every value of a such that a > 1, the function f(x) = x^b, where b is a constant, satisfies f(a) > a^20 / a^6 and f(a) < a^14 · a^4. Which of the following could be the value of b?",
+  "tpl": "XP4",
+  "choices": [
+   "13",
+   "14",
+   "15",
+   "18"
+  ],
+  "answer": 2,
+  "explanation": "a^20 / a^6 = a^14 and a^14 · a^4 = a^18. Because a > 1, a^b > a^14 means b > 14, and a^b < a^18 means b < 18. So 14 < b < 18, and of the choices only 15 works. 14 and 18 themselves are not allowed because the inequalities are strict."
+ },
+ {
+  "id": "mth-1562",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 7a = 8b, 5b = 7c, and 5c = 6d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "92"
+  ],
+  "explanation": "a = (8/7)b, b = (7/5)c, and c = (6/5)d. Multiplying, a = (8/7)(7/5)(6/5)d = (48/25)d, which is 192% of d. So a is 92% greater than d."
+ },
+ {
+  "id": "mth-1563",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 5p = 3q, 9q = 8r, and 8r = 9s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "choices": [
+   "40",
+   "60",
+   "67",
+   "167"
+  ],
+  "answer": 0,
+  "explanation": "p = (3/5)q, q = (8/9)r, and r = (9/8)s. Multiplying, p = (3/5)(8/9)(9/8)s = (3/5)s, which is 60% of s. So p is 40% less than s. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1564",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers w, x, y, and z, 9w = 5x, 5x = 9y, and 2y = 7z. The value of w is what percent of the value of z?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "350"
+  ],
+  "explanation": "w = (5/9)x, x = (9/5)y, and y = (7/2)z. Multiplying, w = (5/9)(9/5)(7/2)z = (7/2)z, which is 350% of z. So w is 350% of z."
+ },
+ {
+  "id": "mth-1565",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, c, and d, 3a = 5b, 5b = 9c, and 3c = 5d. By what percent is a greater than d?",
+  "tpl": "XR1",
+  "choices": [
+   "20",
+   "80",
+   "400",
+   "500"
+  ],
+  "answer": 2,
+  "explanation": "a = (5/3)b, b = (9/5)c, and c = (5/3)d. Multiplying, a = (5/3)(9/5)(5/3)d = 5d, which is 500% of d. So a is 400% greater than d. The other choices come from comparing in the wrong direction or using one link backward."
+ },
+ {
+  "id": "mth-1566",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers p, q, r, and s, 5p = 8q, 8q = 3r, and 4r = 5s. By what percent is p less than s?",
+  "tpl": "XR1",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "25"
+  ],
+  "explanation": "p = (8/5)q, q = (3/8)r, and r = (5/4)s. Multiplying, p = (8/5)(3/8)(5/4)s = (3/4)s, which is 75% of s. So p is 25% less than s."
+ },
+ {
+  "id": "mth-1567",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 20% less than y, and y is 55% greater than z. By what percent is x greater than z?",
+  "tpl": "XR2",
+  "choices": [
+   "19",
+   "24",
+   "35",
+   "75"
+  ],
+  "answer": 1,
+  "explanation": "x = 0.8y and y = 1.55z, so x = (0.8)(1.55)z = 1.24z. That is 124% of z, so x is 24% greater than z. Simply combining 55% and 20% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1568",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 80% greater than B, and B is 60% less than C. By what percent is A less than C?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "28"
+  ],
+  "explanation": "A = 1.8B and B = 0.4C, so A = (1.8)(0.4)C = 0.72C. That is 72% of C, so A is 28% less than C. Simply combining 80% and 60% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1569",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "m is 40% less than n, and n is 45% greater than k. By what percent is m less than k?",
+  "tpl": "XR2",
+  "choices": [
+   "5",
+   "13",
+   "15",
+   "85"
+  ],
+  "answer": 1,
+  "explanation": "m = 0.6n and n = 1.45k, so m = (0.6)(1.45)k = 0.87k. That is 87% of k, so m is 13% less than k. Simply combining 45% and 40% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1570",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "x is 40% greater than y, and y is 55% less than z. By what percent is x less than z?",
+  "tpl": "XR2",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "37"
+  ],
+  "explanation": "x = 1.4y and y = 0.45z, so x = (1.4)(0.45)z = 0.63z. That is 63% of z, so x is 37% less than z. Simply combining 40% and 55% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1571",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Successive percent changes",
+  "difficulty": "hard",
+  "question": "A is 50% greater than B, and B is 60% less than C. By what percent is A less than C?",
+  "tpl": "XR2",
+  "choices": [
+   "10",
+   "40",
+   "67",
+   "110"
+  ],
+  "answer": 1,
+  "explanation": "A = 1.5B and B = 0.4C, so A = (1.5)(0.4)C = 0.6C. That is 60% of C, so A is 40% less than C. Simply combining 50% and 60% gives the wrong answer, because the second percent is taken of a different base."
+ },
+ {
+  "id": "mth-1572",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 7a = 4b and 3b = 2c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "choices": [
+   "8/21",
+   "6/7",
+   "7/6",
+   "21/8"
+  ],
+  "answer": 0,
+  "explanation": "a = (4/7)b and b = (2/3)c, so a = (4/7)(2/3)c = (8/21)c. So a/c = 8/21."
+ },
+ {
+  "id": "mth-1573",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 3x = 5y and 7y = 6z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "10/7"
+  ],
+  "explanation": "x = (5/3)y and y = (6/7)z, so x = (5/3)(6/7)z = (10/7)z. So x/z = 10/7."
+ },
+ {
+  "id": "mth-1574",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 4r = 7s and 5s = 8t, where r, s, and t are positive, what is the value of r/t?",
+  "tpl": "XR3",
+  "choices": [
+   "5/14",
+   "32/35",
+   "35/32",
+   "14/5"
+  ],
+  "answer": 3,
+  "explanation": "r = (7/4)s and s = (8/5)t, so r = (7/4)(8/5)t = (14/5)t. So r/t = 14/5."
+ },
+ {
+  "id": "mth-1575",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 4a = 3b and 9b = 4c, where a, b, and c are positive, what is the value of a/c?",
+  "tpl": "XR3",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "1/3"
+  ],
+  "explanation": "a = (3/4)b and b = (4/9)c, so a = (3/4)(4/9)c = (1/3)c. So a/c = 1/3."
+ },
+ {
+  "id": "mth-1576",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Ratios and proportions",
+  "difficulty": "medium",
+  "question": "If 8x = 7y and 4y = 3z, where x, y, and z are positive, what is the value of x/z?",
+  "tpl": "XR3",
+  "choices": [
+   "21/32",
+   "6/7",
+   "7/6",
+   "32/21"
+  ],
+  "answer": 0,
+  "explanation": "x = (7/8)y and y = (3/4)z, so x = (7/8)(3/4)z = (21/32)z. So x/z = 21/32."
+ },
+ {
+  "id": "mth-1577",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.1a = 2.8b and 2.2b = 2.5c. By what percent is c less than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "34"
+  ],
+  "explanation": "a = (2.8/2.1)b = (4/3)b and b = (2.5/2.2)c = (25/22)c, so a = (50/33)c and c = (33/50)a. That is 66% of a, so c is 34% less than a."
+ },
+ {
+  "id": "mth-1578",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.9a = 0.2b and 1.3b = 2.5c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "43",
+   "57",
+   "134",
+   "234"
+  ],
+  "answer": 2,
+  "explanation": "a = (0.2/0.9)b = (2/9)b and b = (2.5/1.3)c = (25/13)c, so a = (50/117)c and c = (117/50)a. That is 234% of a, so c is 134% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1579",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 2.3a = 0.5b and 0.9b = 2.3c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "80"
+  ],
+  "explanation": "a = (0.5/2.3)b = (5/23)b and b = (2.3/0.9)c = (23/9)c, so a = (5/9)c and c = (9/5)a. That is 180% of a, so c is 80% greater than a."
+ },
+ {
+  "id": "mth-1580",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.6a = 1.2b and 1.5b = 0.2c. By what percent is c greater than a?",
+  "tpl": "XR4",
+  "choices": [
+   "27",
+   "73",
+   "275",
+   "375"
+  ],
+  "answer": 2,
+  "explanation": "a = (1.2/0.6)b = 2b and b = (0.2/1.5)c = (2/15)c, so a = (4/15)c and c = (15/4)a. That is 375% of a, so c is 275% greater than a. Answering for a compared with c, instead of c compared with a, is the trap."
+ },
+ {
+  "id": "mth-1581",
+  "section": "math",
+  "domain": "Problem-Solving and Data Analysis",
+  "skill": "Percentages",
+  "difficulty": "hard",
+  "question": "For the positive numbers a, b, and c, 0.2a = 0.4b and 0.9b = 0.6c. By what percent is c less than a?",
+  "tpl": "XR4",
+  "type": "spr",
+  "choices": [],
+  "answers": [
+   "25"
+  ],
+  "explanation": "a = (0.4/0.2)b = 2b and b = (0.6/0.9)c = (2/3)c, so a = (4/3)c and c = (3/4)a. That is 75% of a, so c is 25% less than a."
  }
 ]
