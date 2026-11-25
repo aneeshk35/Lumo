@@ -2,7 +2,7 @@
 
 Multiplayer SAT practice, played like a game. The UI implements the "Lumo SAT Prep" Claude Design project: navy sidebar shell, purple/white system, Inter, and the Lumo blob mascot.
 
-**128 original Digital-SAT-style questions**, 16 in each of the 8 official College Board domains, tagged by skill and difficulty.
+**More than 3,000 original Digital-SAT-style questions** across the 8 official College Board domains, tagged by skill and difficulty.
 
 ## Run it
 
